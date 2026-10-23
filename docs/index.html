@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watcher Exploit Radar</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: '#6366F1',
+            darkBase: '#0F1117',
+            darkCard: '#1A1D24',
+            darkBorder: '#282D37'
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-gray-50 dark:bg-darkBase text-gray-900 dark:text-gray-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+<!-- ================= TOP STICKY NAVBAR ================= -->
+  <header class="sticky top-0 z-50 bg-white/95 dark:bg-darkCard/95 backdrop-blur border-b border-gray-200 dark:border-darkBorder shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Navigation Tabs -->
+      <div class="flex items-center gap-6 flex-shrink-0">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="switchTab('radar')">
+          <span class="text-xl font-black tracking-wider text-indigo-600 dark:text-indigo-400">WATCHER</span>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-1">
+          <button id="tab-radar" onclick="switchTab('radar')" class="nav-tab px-3 py-1.5 rounded-lg text-sm font-medium transition-colors bg-indigo-600 text-white">
+            Exploit Radar
+          </button>
+          <button id="tab-vendor" onclick="switchTab('vendor')" class="nav-tab px-3 py-1.5 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+            Vendor Focus
+          </button>
+          <button id="tab-news" onclick="switchTab('news')" class="nav-tab px-3 py-1.5 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+            News Feed
+          </button>
+        </nav>
+      </div>
+
+      <!-- Global Search & Theme Toggle -->
+      <div class="flex items-center gap-3 flex-1 max-w-lg justify-end">
+        <div class="relative w-full max-w-md">
+          <svg class="w-4 h-4 absolute left-3 top-3 text-gray-400 pointer-events-none z-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+          </svg>
+          <input 
+            type="text" 
+            id="global-search"
+            placeholder="Search CVE, CWE, CPE, Vendor, or News..."
+            autocomplete="off"
+            class="relative z-20 w-full pl-9 pr-4 py-1.5 text-sm rounded-lg border border-gray-300 dark:border-darkBorder bg-gray-100 dark:bg-darkBase text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400 pointer-events-auto cursor-text"
+          />
+        </div>
+
+        <!-- Light / Dark Mode Toggle -->
+        <button 
+          id="theme-toggle" 
+          aria-label="Toggle Theme"
+          class="relative z-20 p-2 rounded-lg border border-gray-300 dark:border-darkBorder bg-gray-100 dark:bg-darkBase hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0"
+        >
+          <svg id="theme-icon-sun" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+          </svg>
+          <svg id="theme-icon-moon" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Sub-bar -->
+    <div class="flex md:hidden border-t border-gray-200 dark:border-darkBorder px-4 py-2 gap-2 bg-gray-50 dark:bg-darkBase">
+      <button onclick="switchTab('radar')" class="flex-1 py-1 text-xs text-center font-medium rounded bg-indigo-600 text-white">Radar</button>
+      <button onclick="switchTab('vendor')" class="flex-1 py-1 text-xs text-center font-medium rounded text-gray-600 dark:text-gray-300">Vendors</button>
+      <button onclick="switchTab('news')" class="flex-1 py-1 text-xs text-center font-medium rounded text-gray-600 dark:text-gray-300">News</button>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT AREA ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- SEARCH RESULTS CONTAINER (Triggered on search input) -->
+    <section id="search-view" class="hidden mb-8">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-bold flex items-center gap-2">
+          <span>Search Results</span>
+          <span id="search-count" class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-0.5 rounded-full font-normal">0 results</span>
+        </h2>
+        <button onclick="clearSearch()" class="text-xs text-indigo-500 hover:underline">Clear Search</button>
+      </div>
+      <div id="search-results-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- 1. EXPLOIT RADAR VIEW (Landing Page) -->
+    <section id="view-radar" class="space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Column 1: Confirmed in the Wild (CISA KEV) -->
+        <div class="flex flex-col">
+          <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-darkBorder mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+              <h2 class="text-lg font-bold">Confirmed In The Wild</h2>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/70 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900">CISA KEV</span>
+            </div>
+            <span id="kev-count" class="text-xs text-gray-400">Loading...</span>
+          </div>
+          <div id="radar-kev-list" class="space-y-3 overflow-y-auto max-h-[78vh] pr-1"></div>
+        </div>
+
+        <!-- Column 2: Early Warning Radar (Pre-KEV) -->
+        <div class="flex flex-col">
+          <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-darkBorder mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+              <h2 class="text-lg font-bold">Early Warning Radar</h2>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900">PoC / Nuclei / EPSS</span>
+            </div>
+            <span id="early-count" class="text-xs text-gray-400">Loading...</span>
+          </div>
+          <div id="radar-early-list" class="space-y-3 overflow-y-auto max-h-[78vh] pr-1"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. VENDOR FOCUS VIEW -->
+    <section id="view-vendor" class="hidden space-y-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-gray-200 dark:border-darkBorder">
+        <div>
+          <h2 class="text-lg font-bold">Vendor Focus</h2>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Targeted tracking for priority infrastructure and software stacks</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="text-xs text-gray-400">Exploit Filter:</label>
+          <select id="vendor-exploit-filter" class="text-xs rounded border border-gray-300 dark:border-darkBorder bg-white dark:bg-darkCard px-2 py-1">
+            <option value="all">All Vendor Vulnerabilities</option>
+            <option value="exploited">Exploited / PoC Only</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Horizontal Vendor Badges Filter -->
+      <div id="vendor-pills" class="flex flex-wrap gap-2"></div>
+
+      <!-- Vendor Cards Grid -->
+      <div id="vendor-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- 3. CURATED NEWS FEED VIEW -->
+    <section id="view-news" class="hidden space-y-6">
+      <div class="pb-4 border-b border-gray-200 dark:border-darkBorder">
+        <h2 class="text-lg font-bold">Curated Threat News</h2>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Filtered security intelligence correlated with CVEs and tracked vendors</p>
+      </div>
+
+      <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+  </main>
+
+  <!-- ================= BOTTOM UPDATE / STATUS BOX ================= -->
+  <footer class="mt-auto border-t border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard py-3 px-4 sm:px-6 lg:px-8 text-xs text-gray-500 dark:text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-2">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+      <span>Sync Engine: <span id="meta-sync-time" class="font-medium text-gray-700 dark:text-gray-300">Checking...</span></span>
+    </div>
+    <div class="flex items-center gap-4 text-[11px]">
+      <span id="meta-counts">Developed by: Devansh Goel</span>
+      <span>•</span>
+      <a href="https://github.com/DvnshG764/watcher" target="_blank" class="hover:text-indigo-500 transition-colors">DvnshG764</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>
