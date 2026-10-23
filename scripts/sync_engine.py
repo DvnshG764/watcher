@@ -73,26 +73,29 @@ def fetch_poc_and_nuclei():
     poc_cves = set()
     nuclei_cves = set()
 
-    # Query recent PoC repos updated on GitHub
-    try:
-        github_headers = dict(HEADERS)
-        gh_token = os.getenv("GITHUB_TOKEN")
-        if gh_token:
-            github_headers["Authorization"] = f"token {gh_token}"
+    github_headers = dict(HEADERS)
+    gh_token = os.getenv("GITHUB_TOKEN")
+    if gh_token:
+        github_headers["Authorization"] = f"token {gh_token}"
 
-        # Fetch recent commits from nomi-sec/PoC-in-GitHub
-        poc_api_url = "https://api.github.com/repos/nomi-sec/PoC-in-GitHub/commits?per_page=100"
-        res = requests.get(poc_api_url, headers=github_headers, timeout=15)
-        if res.status_code == 200:
-            commits = res.json()
-            for c in commits:
-                msg = c.get("commit", {}).get("message", "")
-                matches = CVE_REGEX.findall(msg)
-                for m in matches:
-                    poc_cves.add(m.upper())
-            logging.info(f"Found {len(poc_cves)} CVEs with recent PoC repos.")
-    except Exception as e:
-        logging.error(f"Error fetching PoC repository signals: {e}")
+    # Fetch PoCs from nomi-sec/PoC-in-GitHub by inspecting recent year directories
+    current_year = datetime.now(timezone.utc).year
+    for year in [current_year, current_year - 1]:
+        try:
+            poc_url = f"https://api.github.com/repos/nomi-sec/PoC-in-GitHub/contents/{year}"
+            res = requests.get(poc_url, headers=github_headers, timeout=15)
+            if res.status_code == 200:
+                files = res.json()
+                for item in files:
+                    name = item.get("name", "")
+                    matches = CVE_REGEX.findall(name)
+                    for m in matches:
+                        poc_cves.add(m.upper())
+            elif res.status_code == 404:
+                continue
+        except Exception as e:
+            logging.error(f"Error fetching PoC repo contents for {year}: {e}")
+    logging.info(f"Found {len(poc_cves)} CVEs with recent PoC repos.")
 
     # Fetch recently merged Nuclei CVE templates
     try:
@@ -100,7 +103,6 @@ def fetch_poc_and_nuclei():
         res = requests.get(nuclei_api, headers=github_headers, timeout=15)
         if res.status_code == 200:
             dirs = res.json()
-            # Inspect the newest year folders (e.g. 2024, 2025, 2026)
             for folder in dirs[-3:]:
                 if folder.get("type") == "dir":
                     year_url = folder.get("url")
