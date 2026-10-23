@@ -1,5 +1,236 @@
 [
   {
+    "cve_id": "CVE-2026-112783",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "OpenCATS before 0.10.0 contains a missing authorization vulnerability in ajax/deleteActivity.php and ajax/editActivity.php that allows READ-level users to edit and delete activity entries. Authenticated attackers can supply an arbitrary activityID via GET or POST to modify or delete activity and pipeline history for candidates, contacts and companies.",
+    "date": "2026-10-20",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00204
+  },
+  {
+    "cve_id": "CVE-2026-112030",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was found in diem-project diem up to 5.1.3. This vulnerability affects unknown code of the file dmCorePlugin/lib/data/dmDataLoad.php. Performing a manipulation results in use of default password. The attack is possible to be carried out remotely. The exploit has been made public and could be used. It is suggested to update the configuration settings. The project was informed of the problem early through an issue report but has not responded yet.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00209
+  },
+  {
+    "cve_id": "CVE-2026-112034",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A weakness has been identified in aircheng-org iWebShop-5 up to 5.16. The impacted element is the function IController::redirect of the file plugins/_userInfo/_userInfo.php of the component Login Redirect. This manipulation of the argument callback causes open redirect. The attack can be initiated remotely. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00348
+  },
+  {
+    "cve_id": "CVE-2026-112042",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A security flaw has been discovered in diem-project diem up to 116974edfb9a5b8bd69cb13586dc62bcdbb485ad. This issue affects the function dmBaseLinkTag::text of the file dmCorePlugin/lib/view/html/link/dmBaseLinkTag.php of the component dmWidget. Performing a manipulation of the argument text results in cross site scripting. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. This product is using a rolling release to provide continious delivery. Therefore, no version details for affected nor updated releases are available. The project was informed of the problem early through an issue report but has not responded yet.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00199
+  },
+  {
+    "cve_id": "CVE-2026-112077",
+    "vendor": "Apache",
+    "product": "Unknown",
+    "description": "A vulnerability was detected in radareorg radare2 6.2.0/6.2.2. This issue affects the function r_core_cmd_str_pipe in the library libr/core/rtr_http.inc.c of the component HTTP Sandbox Policy Handler. Performing a manipulation results in protection mechanism failure. Remote exploitation of the attack is possible. The attack is considered to have high complexity. The exploitability is assessed as difficult. Upgrading to version 6.2.4 is capable of addressing this issue. The patch is named 18fd12efa98a7d1977de7bdd379d8a848777b90f. Upgrading the affected component is recommended. The pre-requisite of the vulnerability is reflected by the CVSS vector. One of the project maintainers explains: \"There is a real sandbox configuration issue here, but the report overstates it. The HTTP server defaults to http.sandbox=true, so commands received through /cmd temporarily enable cfg.sandbox. However, cfg.sandbox.grain defaults to all, which means all sandbox capabilities - including exec - remain allowed. Therefore enabling the HTTP sandbox alone does NOT prevent commands from spawning processes. This only matters when the HTTP command endpoint is reachable by someone you do not trust. It is not a remote vulnerability by default: the HTTP server must first be started and exposed to the attacker.\"",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00285
+  },
+  {
+    "cve_id": "CVE-2026-112087",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A weakness has been identified in itsourcecode Online Cake Ordering System 1.0. This issue affects some unknown processing of the file confirm.php. This manipulation of the argument cancel causes sql injection. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0025
+  },
+  {
+    "cve_id": "CVE-2026-112091",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A flaw has been found in Dav-ee dairy-management-system 31ace9692d1e1e6d64339a42c463b361319c615c/f31a584c3330c013b61f8b0306d9e0849c6d693d. Impacted is an unknown function of the file delivery/checkfarmer.json.php of the component AJAX Endpoint. This manipulation of the argument fname causes information disclosure. Remote exploitation of the attack is possible. The exploit has been published and may be used. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The project was informed of the problem early through an issue report but has not responded yet.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00311
+  },
+  {
+    "cve_id": "CVE-2026-112095",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A flaw has been found in SourceCodester Inventory System 1.0. This affects an unknown part of the file /api/products_handler.php?action=save of the component Product Management. Executing a manipulation of the argument Product_Id/Product_Name can lead to cross site scripting. The attack may be performed from remote. The exploit has been published and may be used.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00199
+  },
+  {
+    "cve_id": "CVE-2026-112141",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was determined in satya-vinay Events-Management-System up to 437c77ceb69bf9fe2e3f4f46f7871b83f425383a. Affected is the function mysqli_query of the file doedit.php of the component Registration-Edit Handler. This manipulation of the argument id/name/title/year/gender/fromdate/todate/people causes sql injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The project was informed of the problem early through an issue report but has not responded yet.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00412
+  },
+  {
+    "cve_id": "CVE-2026-112150",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A security flaw has been discovered in vraj404 Criminal-Management-System up to 2808d057e7ddc5295519a487365b0cacfd0ba8c4. Affected is an unknown function of the file search.php. The manipulation of the argument Search results in sql injection. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00263
+  },
+  {
+    "cve_id": "CVE-2026-107081",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "SQL injection via identifier injection in the tableName and tableFields POST parameters of admin AJAX endpoints (admin/AJAX_lookup_handler.php, admin/AJAX_check_id.php, admin/AJAX_vocabolary_control.php) in SENAYAN Library Management System (SLiMS) Bulian 9.8.0 allows any authenticated staff user to extract arbitrary database contents.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": true,
+    "has_nuclei": false,
+    "epss": 0.00487
+  },
+  {
+    "cve_id": "CVE-2026-112193",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was detected in Webkul Aureus ERP up to 1.6.0. Impacted is an unknown function of the file plugins/webkul/security/src/Filament/Resources/UserResource/Schemas/UserForm.php. Performing a manipulation of the argument Password results in weak password requirements. Remote exploitation of the attack is possible. The complexity of an attack is rather high. The exploitability is considered difficult. The exploit is now public and may be used. The vendor was contacted early about this disclosure.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00362
+  },
+  {
+    "cve_id": "CVE-2026-112302",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A weakness has been identified in kiwilan php-archive up to 2.3.02. This affects the function ArchiveZip::extract of the file src/Readers/ArchiveZip.php of the component Extraction. This manipulation causes path traversal. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "date": "2026-10-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0041
+  },
+  {
+    "cve_id": "CVE-2026-111873",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was detected in itsmeravitejak Online-Examination-System up to e6208e630b14657999bbfe4c9912302d2a1e2449. This impacts the function MySQLDB::topicslist of the file exammanger.php of the component AJAX Endpoint. The manipulation of the argument subject results in sql injection. The attack may be launched remotely. The exploit is now public and may be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The project was informed of the problem early through an issue report but has not responded yet.",
+    "date": "2026-10-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00263
+  },
+  {
+    "cve_id": "CVE-2026-111877",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was determined in dext34-morgan Books4Cash up to a8d3e357db75c07ac5ffbadcbaee2aeb4db3e571. This affects an unknown part of the file search.php. Executing a manipulation of the argument Search can lead to cross site scripting. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. The code repository of the project has not been active for many years.",
+    "date": "2026-10-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00263
+  },
+  {
+    "cve_id": "CVE-2026-112026",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A security vulnerability has been detected in light0011 cms c774dce31c6df0055568a8d5c53d964d99be199d/f72cf46f601efb2a0618c3814cc2f61380b38930. Affected is the function sha1 of the file App/Home/Model/UserModel.class.php. The manipulation of the argument Password leads to password hash with insufficient computational effort. The attack may be initiated remotely. A high degree of complexity is needed for the attack. The exploitability is told to be difficult. The exploit has been disclosed publicly and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "date": "2026-10-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00202
+  },
+  {
+    "cve_id": "CVE-2026-111894",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "phpMyFAQ 3.2.1 before 4.1.9 and 4.2.0-alpha before 4.2.0-beta contains a stored cross-site scripting vulnerability that allows authenticated content authors to inject JavaScript by embedding iframes with data:text/html sources in FAQ or News content. Attackers can bypass the hostless media-host allowlist in FaqHelper::cleanUpContent(), which is rendered via Twig's raw filter, to run phishing interfaces or top-frame redirects for viewers.",
+    "date": "2026-10-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00182
+  },
+  {
+    "cve_id": "CVE-2026-111900",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "phpMyFAQ before 4.1.9 and 4.2.0-alpha before 4.2.0-beta contains an improper authorization vulnerability in attachment.php that fails to verify whether an attachment's parent FAQ is published or visible to the requester. Authenticated users with the dlattachment permission can request index.php?action=attachment&id=<ID> to download complete attachment files belonging to draft FAQs.",
+    "date": "2026-10-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00204
+  },
+  {
+    "cve_id": "CVE-2026-111905",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "phpMyFAQ 3.2.0 before 4.1.9 and 4.2.0-alpha before 4.2.0-beta contains an insecure direct object reference vulnerability in GET /admin/api/user/data/{userId}, which returns any user's full faquserdata row, including the live TOTP secret, without a SuperAdmin or protected-target check. Delegated administrators with user-management rights can read a SuperAdmin's TOTP secret and generate valid codes to bypass two-factor authentication.",
+    "date": "2026-10-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00336
+  },
+  {
+    "cve_id": "CVE-2026-111910",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "phpMyFAQ before 4.1.9 and 4.2.0-alpha before 4.2.0-beta contains an authorization bypass vulnerability in attachment.php that allows attackers to download attachments of restricted FAQs by bypassing per-record permission checks. Low-privileged users with the dlattachment right, or anonymous users when allowDownloadsForGuests is enabled, can request attachment IDs to retrieve confidential files from restricted FAQs.",
+    "date": "2026-10-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00221
+  },
+  {
+    "cve_id": "CVE-2026-111916",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Admidio before 5.0.16 contains an information disclosure vulnerability that allows unauthenticated attackers to view role-restricted weblinks because rss/links.php omits the category_view role-visibility filter. Attackers can request the weblinks RSS feed for an organization to retrieve link names, URLs, descriptions, categories, and creator names from restricted LNK categories.",
+    "date": "2026-10-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0027
+  },
+  {
     "cve_id": "CVE-2025-61624",
     "vendor": "Fortinet",
     "product": "Multiple Products",
@@ -9,6 +240,28 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.01081
+  },
+  {
+    "cve_id": "CVE-2026-111619",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "FilePress through 3.0.1 contains an sql injection vulnerability that allows authenticated low-privilege users to inject SQL into ORDER BY clauses via the unvalidated asc parameter. Attackers can use blind boolean or time-based subqueries in dzz/pichome/library/filelist.php and dzz/collection/filelist.php to extract database rows including administrator credential hashes.",
+    "date": "2026-10-16",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00336
+  },
+  {
+    "cve_id": "CVE-2026-111683",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Allegro Ralph through 20260902.1 contains a missing authorization vulnerability that allows authenticated staff users to bypass rack model permissions because RalphPermission skips checks for views without a queryset. Attackers can call DCAssetsView and SRRacksAPIView at /api/rack/<id> and /api/server_room/<id> to read asset hostnames, serials and management IPs, and to modify, move or create racks.",
+    "date": "2026-10-16",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00239
   },
   {
     "cve_id": "CVE-2026-21589",
@@ -66,6 +319,116 @@
     "epss": 0.01512
   },
   {
+    "cve_id": "CVE-2026-23705",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "An Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability [CWE-89] vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.2, FortiAnalyzer 7.4.0 through 7.4.6, FortiAnalyzer 7.2.0 through 7.2.12, FortiManager 7.4.0 through 7.4.6, FortiManager 7.2 all versions may allow a low privileged user to execute arbitrary commands via crafted requests.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00309
+  },
+  {
+    "cve_id": "CVE-2026-23706",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "An Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability [CWE-89] vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.2, FortiAnalyzer 7.4.1 through 7.4.6, FortiAnalyzer Cloud 7.6.2, FortiAnalyzer Cloud 7.4.1 through 7.4.6, FortiAnalyzer Cloud 7.2.1 through 7.2.9, FortiManager 7.6.0 through 7.6.2, FortiManager 7.4.0 through 7.4.6 may allow a low privileged user to execute arbitrary commands via crafted requests.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00251
+  },
+  {
+    "cve_id": "CVE-2026-105016",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Heap-based buffer overflow in Microsoft QUIC allows an unauthorized attacker to execute code over a network.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00986
+  },
+  {
+    "cve_id": "CVE-2026-70162",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "A denial of service vulnerability exists when Microsoft Common Object Runtime Library improperly handles web requests. An attacker who successfully exploited this vulnerability could cause a denial of service against a .NET web application.\nA remote unauthenticated attacker could exploit this vulnerability by issuing specially crafted requests to the .NET application.\nThe update addresses the vulnerability by correcting how the .NET web application handles web requests.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00768
+  },
+  {
+    "cve_id": "CVE-2026-83681",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Weak authentication in Microsoft PowerToys allows an authorized attacker to perform tampering locally.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00297
+  },
+  {
+    "cve_id": "CVE-2026-85790",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Use after free in Microsoft QUIC allows an unauthorized attacker to disclose information over a network.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0069
+  },
+  {
+    "cve_id": "CVE-2026-96222",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Improper certificate validation in Active Directory Federation Services (AD FS) allows an unauthorized attacker to perform spoofing over a network.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0057
+  },
+  {
+    "cve_id": "CVE-2026-96251",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Reliance on untrusted inputs in a security decision in Microsoft PowerShell allows an unauthorized attacker to execute code over a network.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00524
+  },
+  {
+    "cve_id": "CVE-2026-96303",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Improperly implemented security check for standard in Microsoft PowerShell allows an unauthorized attacker to bypass a security feature over a network.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00593
+  },
+  {
+    "cve_id": "CVE-2026-96911",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Improper link resolution before file access ('link following') in Microsoft Windows Search Component allows an authorized attacker to elevate privileges locally.",
+    "date": "2026-10-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00393
+  },
+  {
     "cve_id": "CVE-2016-3081",
     "vendor": "Apache",
     "product": "Struts",
@@ -75,6 +438,17 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.96052
+  },
+  {
+    "cve_id": "CVE-2026-93017",
+    "vendor": "F5",
+    "product": "Unknown",
+    "description": "The `insights-operator-gather` ClusterRole grants the operator's service account read access to secrets in the core API group with no namespace or resourceNames restriction — therefore, access to every secret in every namespace in the cluster.\n\nRef: https://github.com/openshift/insights-operator/blob/8f15e3157ff09f54ab22801f5b21da35a195cc6d/manifests/03-clusterrole.yaml#L368-L373\n```\n- apiGroups:\n  - \"\"\n  resources:\n  - secrets\n  verbs:\n  - get\n  - list\n```\n\nBy spawning a pod with the gather service account mounted, an attacker will be able to access any secret in any namespace.\n\n```\nspec:\n serviceAccountName:\"gather\"\n```",
+    "date": "2026-10-08",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00263
   },
   {
     "cve_id": "CVE-2026-104286",
@@ -130,6 +504,61 @@
     "has_poc": false,
     "has_nuclei": true,
     "epss": 0.39979
+  },
+  {
+    "cve_id": "CVE-2026-98095",
+    "vendor": "Cisco",
+    "product": "Unknown",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naf_packet: Don't cast tpacket_hdr.tp_len to int in tpacket_parse_header().\n\nsyzbot reported BUG() in sock_sendmsg_nosec(). [0]\n\nThe problem is that tpacket_parse_header() casts user-provided\ntpacket_hdr.tp_len, which is u32, to int.\n\nIf the length is larger than INT_MAX, the following condition\nin tpacket_parse_header() passes,\n\n  if (unlikely(tp_len > size_max))\n\nand any negative value can be returned to the caller, up to\nsock_sendmsg_nosec().\n\nThe repro set tpacket_hdr.tp_len to 0xfffffdef, which is cast\nto -EIOCBQUEUED (-529), triggering BUG() in sock_sendmsg_nosec().\n\n  *(uint64_t*)0x200000000008 = 0xfffffdef;\n  ...\n  syscall(__NR_write, /*fd=*/r[0], /*buf=*/0x200000000000ul, /*count=*/1ul);\n\nLet's define the local tp_len as u32 in tpacket_parse_header().\n\n[0]:\nkernel BUG at net/socket.c:803!\nOops: invalid opcode: 0000 [#1] SMP KASAN PTI\nCPU: 0 UID: 0 PID: 5628 Comm: syz-executor176 Not tainted syzkaller #0 PREEMPT(full)\nHardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 07/24/2026\nRIP: 0010:sock_sendmsg_nosec+0x145/0x180 net/socket.c:803\nCode: 06 67 48 0f b9 3a eb 95 e8 e8 3a 22 f8 48 89 df 4c 89 f6 4c 89 e2 4d 89 fb 2e e8 32 a5 5c 16 e9 51 ff ff ff e8 cc 3a 22 f8 90 <0f> 0b e8 c4 3a 22 f8 48 83 c3 18 48 89 d8 48 c1 e8 03 42 80 3c 28\nRSP: 0018:ffffc90003aefb48 EFLAGS: 00010293\nRAX: ffffffff89a578d4 RBX: ffff8880764c67c0 RCX: ffff88807fb23e80\nRDX: 0000000000000000 RSI: 00000000fffffdef RDI: 00000000fffffdef\nRBP: 00000000fffffdef R08: ffffc90003aef747 R09: 1ffff9200075dee8\nR10: dffffc0000000000 R11: fffff5200075dee9 R12: 0000000000000001\nR13: dffffc0000000000 R14: ffffc90003aefbc0 R15: ffffffff8aac4310\nFS:  000055559101b400(0000) GS:ffff888124ce0000(0000) knlGS:0000000000000000\nCS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033\nCR2: 0000200000000210 CR3: 0000000073dca000 CR4: 00000000003526f0\nCall Trace:\n <TASK>\n __sock_sendmsg net/socket.c:815 [inline]\n sock_write_iter+0x2de/0x3e0 net/socket.c:1266\n new_sync_write fs/read_write.c:595 [inline]\n vfs_write+0x612/0xba0 fs/read_write.c:687\n ksys_write+0x150/0x270 fs/read_write.c:739\n do_syscall_x64 arch/x86/entry/syscall_64.c:61 [inline]\n do_syscall_64+0x166/0x520 arch/x86/entry/syscall_64.c:84\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\nRIP: 0033:0x7f173130ecb9\nCode: c0 79 93 eb d5 48 8d 7c 1d 00 eb 99 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 d8 ff ff ff f7 d8 64 89 01 48\nRSP: 002b:00007ffd67e44248 EFLAGS: 00000246 ORIG_RAX: 0000000000000001\nRAX: ffffffffffffffda RBX: 0000200000000000 RCX: 00007f173130ecb9\nRDX: 0000000000000001 RSI: 0000200000000000 RDI: 0000000000000003\nRBP: 0000000000000001 R08: 0000000000000000 R09: 0000000000000000\nR10: 0000000000000000 R11: 0000000000000246 R12: 00007ffd67e44388\nR13: 0000000000000002 R14: 00002000000000c0 R15: 0000000000000002\n </TASK>",
+    "date": "2026-09-25",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00176
+  },
+  {
+    "cve_id": "CVE-2026-98122",
+    "vendor": "Cisco",
+    "product": "Unknown",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: mdb: Fix use-after-free in vxlan_mdb_remote_src_del()\n\nvxlan_mdb_is_valid_source(), which validates MDBE_ATTR_SOURCE and every\nMDBE_ATTR_SRC_LIST member, accepts the all-zeros address.\n\nA source list is only accepted on a (*, G) entry, whose source is the\nall-zeros address, and for each member of the list an (S, G) entry is\nderived from it by substituting the source. Entries are keyed by a plain\nmemcmp() of struct vxlan_mdb_entry_key, so if MDBE_ATTR_SOURCE is present\nand holds the all-zeros address and the source list holds it as well, the\nderived (S, G) key is byte-identical to the (*, G) key and resolves to the\nsame entry. Omitting MDBE_ATTR_SOURCE is not equivalent, as the key is\nthen left with a zero address family.\n\nvxlan_mdb_remote_src_del() removes the forwarding entry of a source before\nfreeing the source entry:\n\n\tvxlan_mdb_remote_src_fwd_del(vxlan, group, remote, &ent->addr);\n\tvxlan_mdb_remote_src_entry_del(ent);\n\nWith the keys aliased, the first call deletes the remote of the entry that\nowns 'ent' instead of a separate (S, G) entry, and frees 'ent'. The second\ncall then runs on the freed entry, and its hlist_del() reads ->pprev and\n->next out of it and writes through them.\n\nAdding the (*, G) entry with NLM_F_REPLACE and no source list marks the\nall-zeros source for deletion and reaches this from the sweep at the end\nof vxlan_mdb_remote_srcs_replace().\n\n  BUG: KASAN: slab-use-after-free in __vxlan_mdb_add+0x1cd/0xd70\n  Read of size 8 at addr ffff888102852500 by task poc/84\n   __vxlan_mdb_add+0x1cd/0xd70\n   vxlan_mdb_add+0xc0/0x140\n   rtnl_mdb_add+0x157/0x2a0\n   rtnetlink_rcv_msg+0x207/0x5a0\n  Allocated by task 84:\n   __kmalloc_cache_noprof+0x153/0x360\n   vxlan_mdb_remote_srcs_add+0x2eb/0x440\n   __vxlan_mdb_add+0x803/0xd70\n  Freed by task 84:\n   kfree+0x14c/0x3b0\n   vxlan_mdb_remote_del+0x129/0x1a0\n   __vxlan_mdb_del+0x4f/0xe0\n   vxlan_mdb_remote_src_fwd_del.isra.0+0x162/0x1b0\n   __vxlan_mdb_add+0x1c5/0xd70\n\nThe MDB operations are netns-scoped, so an unprivileged user can perform\nthem in a new user and network namespace.\n\nReject the all-zeros address in vxlan_mdb_is_valid_source(), which covers\nboth call sites. A (*, G) entry is expressed by omitting the source, so\nnothing legitimate is refused.\n\nDiscovered by XBOW, triaged by Baul Lee <baul.lee@xbow.com>",
+    "date": "2026-09-25",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00125
+  },
+  {
+    "cve_id": "CVE-2026-98123",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: fix soft lockup from unpadded ASCONF-ACK parameter iteration\n\nsctp_verify_asconf() walks ASCONF-ACK parameters with\nsctp_walk_params(), which advances by SCTP_PAD4(length), while the\nconsumer sctp_get_asconf_response() iterates the same parameters\nadvancing by the raw length, without padding. A single odd-length\nparameter desynchronises the two walks and makes the consumer\ninterpret attacker-controlled bytes at a misaligned offset.\n\nWhen those bytes yield a length of zero, the while loop over\nasconf_ack_len makes no progress, spinning forever in softirq\ncontext, and the watchdog reports a soft lockup. All reads stay\nwithin the received skb, so the lockup is a pure remote denial of\nservice. A remote peer can trigger it with a crafted ASCONF-ACK on\nan ADD-IP enabled association with an outstanding ASCONF (RFC 5061\nsection 4.1.2 requires the chunk to be authenticated, but the\npredefined empty key id 0 allows the peer to compute the same\nassociation HMAC from publicly exchanged parameters, so the gate\ndoes not help).\n\nThe SCTP_PARAM_ERR_CAUSE case of sctp_verify_asconf() also performs\nno length check, letting a parameter without a complete error\nheader reach the consumer, which reads errhdr.cause past the end of\nthe parameter, an out-of-bounds read.\n\nReject SCTP_PARAM_ERR_CAUSE parameters shorter than\nsizeof(struct sctp_addip_param) + sizeof(struct sctp_errhdr) at the\nverifier, and advance the consumer iterator with the same padding\nrule as the verifier to keep the two walks in lockstep. The verifier\nchange guarantees a complete error header in every ERR_CAUSE\nparameter the consumer can see, so the consumer's asconf_ack_len\ncheck is dropped and it returns err_param->cause directly. The\nconsumer padding fix is still required because odd lengths remain\nvalid for SCTP_PARAM_ERR_CAUSE per RFC 5061.\n\nThe issue was found by ZeroHive, a vulnerability hunting agent at\nTencent Yunding Lab.",
+    "date": "2026-09-25",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00095
+  },
+  {
+    "cve_id": "CVE-2026-17545",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "On Windows, PHP's filesystem and stream APIs do not reject reserved device names such as CON, PRN, AUX, NUL, COM1 to COM9, LPT1 to LPT9, CONIN$ and CONOUT$ when they appear as a component of a path. An attacker-controlled filename therefore reaches CreateFileW() and opens a device instead of the regular file the application expected, which can block or hang the request and exhaust worker processes.",
+    "date": "2026-09-25",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00322
+  },
+  {
+    "cve_id": "CVE-2026-91769",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "PHP's OpenSSL stream peer verification checks the certificate's subjectAltName entries first and, whenever no entry matches, falls back to the Common Name. RFC 6125 requires the CN to be ignored once the certificate presents any service identity, so a certificate carrying a non-matching DNS SAN was still accepted when its CN matched the requested peer_name. A certificate trusted by the client for one name can therefore be used to impersonate another.",
+    "date": "2026-09-25",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00135
   },
   {
     "cve_id": "CVE-2026-94127",
@@ -319,6 +748,72 @@
     "epss": 0.73192
   },
   {
+    "cve_id": "CVE-2026-75986",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability has been found in code-projects Online Job Portal System 1.0. The impacted element is an unknown function of the file /ForPass.php of the component Password Recovery. Such manipulation of the argument txtUserName leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.",
+    "date": "2026-08-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00431
+  },
+  {
+    "cve_id": "CVE-2026-76048",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A flaw has been found in SourceCodester Simple Online Food Ordering System 1.0. The impacted element is an unknown function of the file /admin/ajax.php?action=login. Executing a manipulation of the argument Username can lead to sql injection. The attack may be performed from remote. The exploit has been published and may be used.",
+    "date": "2026-08-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00431
+  },
+  {
+    "cve_id": "CVE-2026-76049",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability has been found in SourceCodester Simple Online Food Ordering System 1.0. This affects an unknown function of the file /admin/ajax.php?action=save_menu. The manipulation of the argument ID leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.",
+    "date": "2026-08-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00431
+  },
+  {
+    "cve_id": "CVE-2026-76050",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was found in SourceCodester Simple Online Food Ordering System 1.0. This impacts an unknown function of the file /admin/ajax.php?action=delete_menu. The manipulation of the argument ID results in sql injection. It is possible to launch the attack remotely. The exploit has been made public and could be used.",
+    "date": "2026-08-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00431
+  },
+  {
+    "cve_id": "CVE-2026-19942",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "The Atarim – AI Agency for WordPress: Edit Pages, Fix Code, Update Plugins, SEO & Client Feedback plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the AVCF_Abilities_Media::register (replace-media-file execute_callback) function in all versions up to, and including, 5.1.1. This makes it possible for authenticated attackers, with author-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). This is exploitable by first using the atarim/update-post-field ability to overwrite the _wp_attached_file meta of an attacker-owned attachment with a directory-traversal path, then invoking atarim/replace-media-file to cause get_attached_file() to resolve and unlink the targeted file.",
+    "date": "2026-08-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01083
+  },
+  {
+    "cve_id": "CVE-2026-11565",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "The Advanced File Manager  WordPress plugin before 5.4.13 does not perform capability checks in several of its file management AJAX actions, allowing users with any role to which an administrator has granted file-manager access (as low as Subscriber) to read arbitrary files on the server — including sensitive configuration files — and to overwrite existing non-PHP files, which can be leveraged to compromise administrator accounts and the whole site.",
+    "date": "2026-08-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00323
+  },
+  {
     "cve_id": "CVE-2026-33824",
     "vendor": "Microsoft",
     "product": "Internet Key Exchange (IKE) Service Extensions",
@@ -352,6 +847,523 @@
     "epss": 0.69536
   },
   {
+    "cve_id": "CVE-2026-75079",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A weakness has been identified in SourceCodester Class and Exam Timetabling System 1.0. This vulnerability affects unknown code of the file /edit_subject2.php. Executing a manipulation of the argument ID can lead to sql injection. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00431
+  },
+  {
+    "cve_id": "CVE-2026-75080",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A security vulnerability has been detected in SourceCodester Class and Exam Timetabling System 1.0. This issue affects some unknown processing of the file /edit_subject1.php. The manipulation of the argument ID leads to sql injection. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00431
+  },
+  {
+    "cve_id": "CVE-2026-75086",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability has been found in itsourcecode Hospital Management System 1.0. The impacted element is an unknown function of the file /viewroom.php. Such manipulation of the argument delid leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00333
+  },
+  {
+    "cve_id": "CVE-2026-75087",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was found in itsourcecode Hospital Management System 1.0. This affects an unknown function of the file /viewdepartment.php. Performing a manipulation of the argument delid results in sql injection. The attack can be initiated remotely. The exploit has been made public and could be used.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00333
+  },
+  {
+    "cve_id": "CVE-2026-75088",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was determined in itsourcecode Hospital Management System 1.0. This impacts an unknown function of the file /viewbilling.php. Executing a manipulation of the argument delid can lead to sql injection. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00333
+  },
+  {
+    "cve_id": "CVE-2026-75089",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A weakness has been identified in PHPGurukul Complaint Management System 1.0. Affected by this issue is some unknown functionality of the file user/check_availability.php. This manipulation of the argument email causes sql injection. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00431
+  },
+  {
+    "cve_id": "CVE-2026-75093",
+    "vendor": "F5",
+    "product": "Unknown",
+    "description": "A security vulnerability has been detected in sonos tract up to 0.23.4. This impacts the function Tensor::from_raw_dt_align of the file data/src/tensor.rs of the component ONNX Initializer Loader. Such manipulation leads to incorrect calculation of buffer size. The attack may be launched remotely. The exploit has been disclosed publicly and may be used. The name of the patch is 66b10bda8895f4bfaf8c205361f0125cdf51f99b. It is best practice to apply a patch to resolve this issue.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00594
+  },
+  {
+    "cve_id": "CVE-2026-34884",
+    "vendor": "Apache",
+    "product": "Unknown",
+    "description": "SSRF via set_skywalking_url Tool and GraphQL expression injection vulnerability in Apache SkyWalking MCP.\n\n\n\n\n\nThis issue affects Apache SkyWalking MCP: 0.1.0.\n\nUsers are recommended to upgrade to version 0.2.0, which fixes this issue.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0069
+  },
+  {
+    "cve_id": "CVE-2026-74907",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Grav before 2.0.15 contains a path traversal vulnerability in the static asset server within index.php that uses string prefix matching instead of directory-boundary validation. Unauthenticated attackers can access files in sibling directories by exploiting directory names that extend the base path string, such as requesting assets-secret when assets is the configured base.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00432
+  },
+  {
+    "cve_id": "CVE-2026-75827",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Grav before 2.0.15 contains an arbitrary file write vulnerability in the Blueprint dynamic-data bare-function validation that uses an incomplete denylist instead of a positive allowlist. Attackers with page-edit or blueprint-config access can invoke the error_log function through a data directive to append PHP payloads to web-accessible files, achieving remote code execution.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00859
+  },
+  {
+    "cve_id": "CVE-2026-75834",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Grav before 2.0.14 contains a stored cross-site scripting vulnerability in the Security::detectXss() function (system/src/Grav/Common/Security.php). All XSS detection patterns use the PCRE /u (UTF-8) modifier, so a single invalid UTF-8 byte anywhere in page content causes preg_match() to return false for every pattern, silently bypassing the save-time XSS safety gate (Validation::checkSafety()). An authenticated attacker with page-edit permissions (without the security.xss_whitelist privilege) can store malicious JavaScript that executes in the browser of a visitor who views the affected page.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00255
+  },
+  {
+    "cve_id": "CVE-2026-75835",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Grav API plugin (getgrav/grav-plugin-api) before 1.0.14 contains a missing authorization vulnerability in userPassesAuthorize() (AbstractApiController.php). The function fails to consult the calling request's API key scopes, relying instead on the account's raw super-admin flag and ACL grants. As a result, an authenticated attacker holding a scoped API key minted on a privileged account can bypass their declared scope restrictions to access authorize-gated UI metadata and item definitions (sidebar/menubar/widget items and users-list columns/row-actions/filter-tabs) that their key scope should deny, resulting in information disclosure.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00308
+  },
+  {
+    "cve_id": "CVE-2026-75778",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was identified in code-projects Task Management System 1.0. This affects the function Operation::select_with_multiple_condition of the file /index.php of the component Login Form. Such manipulation of the argument email leads to sql injection. It is possible to launch the attack remotely. The exploit is publicly available and might be used.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00431
+  },
+  {
+    "cve_id": "CVE-2026-24301",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Improper neutralization of special elements used in a command ('command injection') in Microsoft Copilot allows an unauthorized attacker to disclose information over a network.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": true,
+    "has_nuclei": false,
+    "epss": 0.04094
+  },
+  {
+    "cve_id": "CVE-2026-32465",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Customer PHP Object Injection in Essential Real Estate <= 5.3.3 versions.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00518
+  },
+  {
+    "cve_id": "CVE-2026-32470",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Unauthenticated PHP Object Injection in FundEngine <= 1.7.9 versions.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00564
+  },
+  {
+    "cve_id": "CVE-2026-66620",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Editor PHP Object Injection in OptionTree <= 2.7.3 versions.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00539
+  },
+  {
+    "cve_id": "CVE-2026-73341",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Unauthenticated PHP Object Injection in RegistrationMagic <= 6.0.9.7 versions.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00564
+  },
+  {
+    "cve_id": "CVE-2026-73366",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Unauthenticated PHP Object Injection in Easy Google Maps <= 1.13.0 versions.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00564
+  },
+  {
+    "cve_id": "CVE-2026-73376",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Unauthenticated PHP Object Injection in Ultimate Maps by Supsystic < 1.5.0 versions.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00564
+  },
+  {
+    "cve_id": "CVE-2026-73380",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Unauthenticated PHP Object Injection in Popup by Supsystic <= 1.13.0 versions.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00564
+  },
+  {
+    "cve_id": "CVE-2026-49221",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. Prior to 1.0.8.4, Vvveb backend digital asset operations allow a low-privileged Vendor to access digital assets linked to another Vendor's products. The admin/controller/product/digital-asset.php and admin/controller/product/digital-assets.php controllers and the admin/sql/sqlite/digital_asset.sql data queries use a caller-controlled digital_asset_id without consistently enforcing the current admin_id ownership boundary. An attacker can list assets, read asset names and file metadata, edit asset metadata, or delete asset records, which can disclose private product metadata, corrupt resource links, and cause data loss. This issue is fixed in version 1.0.8.4.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00551
+  },
+  {
+    "cve_id": "CVE-2026-49226",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. Prior to 1.0.8.4, Vvveb backend post operations allow a low-privileged Author to access posts owned by another Author. The admin/controller/content/posts.php controller permits filter[admin_id] to replace the server-selected admin_id restriction and accepts a caller-controlled post_id for duplicate and delete actions, while admin/sql/sqlite/post.sql does not consistently enforce post.admin_id. An attacker can view post metadata, discover post identifiers, duplicate posts, or delete posts and related content, exposing private drafts and causing content pollution, data loss, or business disruption. This issue is fixed in version 1.0.8.4.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0048
+  },
+  {
+    "cve_id": "CVE-2026-49227",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. Prior to 1.0.8.4, Vvveb backend comment operations allow a low-privileged Author to manage comments under another Author's posts. The admin/controller/content/comment.php and admin/controller/content/comments.php controllers and the admin/sql/sqlite/comment.sql queries accept a caller-controlled comment_id without verifying comment.post_id against post.admin_id for the current admin_id. An attacker can read pending comment content and commenter email addresses, change moderation status, edit comment content, or delete comments, breaking author and moderation boundaries. This issue is fixed in version 1.0.8.4.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00418
+  },
+  {
+    "cve_id": "CVE-2026-49224",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. Prior to 1.0.8.4, Vvveb backend post revision operations allow a low-privileged Author to access revisions for posts owned by another Author. The admin/controller/content/revisions.php controller and admin/sql/sqlite/post_content_revision.sql queries trust caller-controlled post_id, language_id, and created_at values without consistently applying the current admin_id to revision lists, reads, restores, and deletes. An attacker can read historic post content, restore a revision over another Author's live post content, or delete revision records, exposing drafts, corrupting published content, and removing audit history. This issue is fixed in version 1.0.8.4.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0048
+  },
+  {
+    "cve_id": "CVE-2026-49225",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. Prior to 1.0.8.4, Vvveb backend product revision operations allow a low-privileged Vendor to access revisions for products owned by another Vendor. The admin/controller/product/revisions.php route reuses admin/controller/content/revisions.php, while admin/sql/sqlite/product_content_revision.sql trusts caller-controlled product_id, language_id, and created_at values without applying the current admin_id to revision reads, restores, and deletes. An attacker can read historic product content, restore a revision over another Vendor's live product content, or delete revision records, exposing private copy, corrupting product pages, and removing audit history. This issue is fixed in version 1.0.8.4.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0048
+  },
+  {
+    "cve_id": "CVE-2026-49228",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. Prior to 1.0.8.4, Vvveb backend product operations allow a low-privileged Vendor to access products owned by another Vendor. The admin/controller/product/products.php controller accepts a caller-controlled product_id for duplicate and delete actions, and admin/sql/sqlite/product.sql loads and mutates products without consistently applying the current admin_id when view_other_products or edit_other_products is absent. An attacker can read product details, duplicate products, or delete products and related catalog data, exposing commercial information and causing unauthorized copies, catalog pollution, data loss, or business disruption. This issue is fixed in version 1.0.8.4.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00551
+  },
+  {
+    "cve_id": "CVE-2026-50578",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "ePA 3.x Integration implements the authorization workflow and writes Medical Information Objects to Germany's electronic patient record. Prior to 1.3.0, ePA 3.x Integration disables TLS certificate verification for both ePA connections in app/vau/VAUProtokoll.py and Konnektor connections in app/konnektor/Konnektor.py. A network-positioned attacker can present an arbitrary certificate, terminate the TLS connection, and intercept ePA traffic. The VAU protocol does not provide an effective fallback because its application-layer certificate validation is also broken in affected versions. The Konnektor session uses self.session.verify set to False while the client authenticates with self.session.cert, so an attacker impersonating the Konnektor can receive the client's mutual TLS certificate exchange and observe smartcard operations. This issue is fixed in version 1.3.0.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0031
+  },
+  {
+    "cve_id": "CVE-2026-63641",
+    "vendor": "Apache",
+    "product": "Unknown",
+    "description": "MagicMirror² is an open source modular smart mirror platform. Prior to 2.37.0, MagicMirror applies ipWhitelist only as Express middleware, while the Socket.IO server in js/server.js is attached directly to the HTTP server without equivalent IP allowlist, origin, or namespace authentication checks. In a documented non-loopback deployment that relies on ipWhitelist, an unauthenticated adjacent-network client can connect directly to module Socket.IO namespaces, and js/node_helper.js dispatches arbitrary events and payloads to socketNotificationReceived. The default newsfeed and calendar helpers can make server-side requests to attacker-selected URLs, while the default updatenotification helper can reach child_process.exec when a third-party module update is pending and the attacker supplies an update command through the socket CONFIG path. This can expose internal services, manipulate module-helper state, and conditionally execute commands. This issue is fixed in version 2.37.0.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00433
+  },
+  {
+    "cve_id": "CVE-2026-73529",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Plainpad through 1.1.1, fixed in commit d3823fc, contains a missing rate limiting vulnerability that allows unauthenticated attackers to send unbounded login requests to the POST /v1/sessions endpoint due to dead code in App\\Http\\Kernel.php that is never instantiated under the Laravel 11+ skeleton, leaving the API throttle configuration unattached to any route. Attackers can exploit this by sending unlimited credential attempts with no lockout or CAPTCHA enforcement, and additionally trigger CPU exhaustion by forcing repeated bcrypt comparisons on each request.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00409
+  },
+  {
+    "cve_id": "CVE-2026-60998",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Vulnerability in the Oracle Identity Manager Connector product of Oracle Fusion Middleware (component: Microsoft Active Directory).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Difficult to exploit vulnerability allows high privileged attacker with network access via LDAP to compromise Oracle Identity Manager Connector.  While the vulnerability is in Oracle Identity Manager Connector, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle Identity Manager Connector. CVSS 3.1 Base Score 8.0 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H).",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00375
+  },
+  {
+    "cve_id": "CVE-2026-21582",
+    "vendor": "Atlassian",
+    "product": "Unknown",
+    "description": "This High severity BASM (Broken Authentication & Session Management) vulnerability known as CVE-2026-21582 was introduced in version 7.2.1 of Crowd Data Center.\r\n\r\nThis BASM (Broken Authentication & Session Management) vulnerability, with a CVSS Score of 8.8, allows an unauthenticated attacker to perform actions as another user.\r\n\t\r\n\tAtlassian recommends that Crowd Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions:\r\n\t\t\r\n\t\tCrowd Data Center 7.2: Upgrade to a release greater than or equal to 7.2.2\r\n\t\t\r\n\t\t\r\n\t\r\n\tSee the release notes (https://confluence.atlassian.com/crowd/crowd-release-notes-199094.html). You can download the latest version of Crowd Data Center from the download center (https://www.atlassian.com/software/crowd/download-archive). \r\n\t\r\n\tThis vulnerability was reported via our Penetration Testing program.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00462
+  },
+  {
+    "cve_id": "CVE-2026-21584",
+    "vendor": "Atlassian",
+    "product": "Unknown",
+    "description": "This High severity Improper Authorization vulnerability was introduced in versions 10.0.0, 10.1.0, 10.2.0, 11.0.0, 12.0.0, and 12.1.0 of Bamboo Data Center. \n\t\n\tThis Improper Authorization vulnerability, with a CVSS Score of 7.6, allows an authenticated attacker to gain unintended access and can lead to the exposure of resources or functionality, possibly providing attackers with sensitive information or even execute arbitrary code. \n\t\n\tAtlassian recommends that Bamboo Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions:\n\t\t\n\t\t* Bamboo Data Center 10.2: Upgrade to a release greater than or equal to 10.2.22\n\t\t\n\t\t* Bamboo Data Center 12.1: Upgrade to a release greater than or equal to 12.1.10\n\t\t\n\t\t\n\t\n\tSee the release notes (https://confluence.atlassian.com/bambooreleases/bamboo-release-notes-1189793869.html). You can download the latest version of Bamboo Data Center from the download center (https://www.atlassian.com/software/bamboo/download-archives). \n\t\n\tThis vulnerability was reported via our Penetration Testing program.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00309
+  },
+  {
+    "cve_id": "CVE-2026-50191",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "4gaBoards is a boards system for realtime project management. Prior to 3.3.8, 4gaBoards is vulnerable to pre-account takeover when registrationEnabled, localRegistrationEnabled, and ssoRegistrationEnabled are enabled and Google, GitHub, Microsoft, or OIDC SSO is configured. The POST /api/register endpoint permits creation of an unverified local account with a victim's email address, and POST /api/access-tokens permits that account to authenticate while isVerified is false. During the victim's first SSO login, server/api/helpers/users/get-create-one-for-github-sso.js, server/api/helpers/users/get-create-one-for-google-sso.js, server/api/helpers/users/get-create-one-for-microsoft-sso.js, and server/api/helpers/users/get-create-one-for-oidc-sso.js find the attacker-controlled account by email and link the verified SSO identity without confirming ownership of the local account. The attacker can retain local-password access to the linked account and obtain the victim's projects, data, and permissions. This issue is fixed in version 3.3.8.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00473
+  },
+  {
+    "cve_id": "CVE-2026-53958",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "4gaBoards is a boards system for realtime project management. Prior to 3.3.9, 4gaBoards allows an authenticated user to modify ssoGoogleId, ssoGoogleEmail, ssoGithubId, ssoGithubUsername, ssoGithubEmail, ssoMicrosoftId, ssoMicrosoftEmail, ssoOidcId, and ssoOidcEmail through PATCH /api/users/:id. The whitelist in server/api/controllers/users/update.js mass assigns these backend-managed identity attributes from user input. An attacker can place a victim's provider identifier on an attacker-controlled account, causing the default lookup in helpers such as server/api/helpers/users/get-create-one-for-github-sso.js to match the victim's first SSO login to the attacker's account before the email-linkage flow runs. The victim is logged into the attacker-controlled account, and projects, boards, or data the victim creates remain accessible through the attacker's original local credentials. This issue is fixed in version 3.3.9.",
+    "date": "2026-08-18",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00396
+  },
+  {
+    "cve_id": "CVE-2026-59894",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, sqlparse/filters/output.py fails to escape existing backslashes before quotes in sqlparse.format output_format='python' and output_format='php' and the corresponding sqlformat -l modes, allowing crafted SQL to terminate the generated string and inject Python or PHP code when a downstream consumer executes or imports the generated source. This issue is fixed in version 0.6.0.",
+    "date": "2026-08-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00129
+  },
+  {
+    "cve_id": "CVE-2026-75014",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A flaw has been found in SourceCodester Pet Grooming Management Software 1.0. This vulnerability affects unknown code of the file /admin/get_barcode_data.php. This manipulation of the argument barcode causes sql injection. The attack may be initiated remotely. The exploit has been published and may be used.",
+    "date": "2026-08-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00431
+  },
+  {
+    "cve_id": "CVE-2026-67960",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "An issue in PbootCMS v.3.2.15 allows an attacker to execute arbitrary code via the MemberController.php, UserController.php, CommentController.php, ContentController.php, and helper.php components",
+    "date": "2026-08-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00726
+  },
+  {
+    "cve_id": "CVE-2026-75077",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A vulnerability was identified in SourceCodester Class and Exam Timetabling System 1.0. Affected by this issue is some unknown functionality of the file /BSCE2.php. Such manipulation of the argument course leads to cross site scripting. The attack may be launched remotely. The exploit is publicly available and might be used.",
+    "date": "2026-08-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0047
+  },
+  {
+    "cve_id": "CVE-2026-75078",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "A security flaw has been discovered in SourceCodester Class and Exam Timetabling System 1.0. This affects an unknown part of the file /BSHRM1.php. Performing a manipulation of the argument course results in cross site scripting. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks.",
+    "date": "2026-08-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0047
+  },
+  {
+    "cve_id": "CVE-2026-73628",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Serendipity versions >= 2.3.5 and <= 2.6.0 contain a reflected cross-site scripting vulnerability in the search clean-URL route (/search/<term>). In include/functions_routing.inc.php serveSearch(), the sanitisation pipeline runs urldecode() after HTML-encoding, so a single URL-encoded HTML payload survives strip_tags() and htmlspecialchars() and is then decoded back into live HTML in the page. A crafted search link can execute arbitrary JavaScript in the victim's browser. Fixed in 2.6.1.",
+    "date": "2026-08-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00263
+  },
+  {
+    "cve_id": "CVE-2026-49827",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "WebErpMesv2 is a Resource Management and Manufacturing execution system Web for industry. Versions 1.19 and prior allow any self-registered user to upload arbitrary PHP files through the HR Expense scan_file parameter, leading to Remote Code Execution. Combined with open registration (no invite required) and broken role middleware (CheckUserRole silently swallows RouteNotFoundException), this chain is effectively unauthenticated RCE against any default installation. The issue is patched in commit 5c54862fa044b363fd2be03d586750e81afd6818.",
+    "date": "2026-08-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00862
+  },
+  {
+    "cve_id": "CVE-2026-27380",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Editor PHP Object Injection in Car Rental Manager <= 1.3.9 versions.",
+    "date": "2026-08-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00539
+  },
+  {
+    "cve_id": "CVE-2026-28149",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Unauthenticated PHP Object Injection in Headless Single Sign On <= 1.6 versions.",
+    "date": "2026-08-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00564
+  },
+  {
+    "cve_id": "CVE-2026-28176",
+    "vendor": "PHP",
+    "product": "Unknown",
+    "description": "Unauthenticated PHP Object Injection in Booking Activities <= 1.18.4 versions.",
+    "date": "2026-08-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00461
+  },
+  {
+    "cve_id": "CVE-2026-73647",
+    "vendor": "Cisco",
+    "product": "Unknown",
+    "description": "Quasar Framework is a framework for building high-performance Vue.js user interfaces. Prior to 2.22.0, the public extend() utility in ui/src/utils/extend/extend.js recursively copied attacker-controlled object keys during extend(true, target, source) deep merges without rejecting an own __proto__ property. The merge could descend into the prototype object and write attacker-controlled properties to Object.prototype in the same JavaScript process. Applications that passed user-controlled or partially user-controlled objects to extend() could experience logic bypass, unsafe default-option injection, denial of service, or other application-specific impact when polluted properties were later consumed. This issue is fixed in version 2.22.0.",
+    "date": "2026-08-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00387
+  },
+  {
+    "cve_id": "CVE-2026-73649",
+    "vendor": "Apache",
+    "product": "Unknown",
+    "description": "Velocity.js is a JavaScript implementation of the Apache Velocity template engine. Prior to 2.1.7, the earlier fix for CVE-2026-44966 filtered constructor, __proto__, and prototype only in the #set assignment handler in src/compile/set.ts, while property-read expressions in src/compile/references.ts remained unfiltered. The getReferences() flow called getAttributes(), whose property access allowed an attacker-controlled template to traverse constructor.constructor to the JavaScript Function constructor. The #set handler validated only the assignment target and did not inspect the right-hand property-read expression, allowing arbitrary shell commands, environment-variable access, cloud-credential access, and internal-network access in the server process. This issue is fixed in version 2.1.7.",
+    "date": "2026-08-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00726
+  },
+  {
     "cve_id": "CVE-2026-20349",
     "vendor": "Cisco",
     "product": "Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) ",
@@ -374,6 +1386,61 @@
     "epss": 0.00332
   },
   {
+    "cve_id": "CVE-2026-50516",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Incorrect authorization in Microsoft Azure Kubernetes Service allows an authorized attacker to elevate privileges over a network.",
+    "date": "2026-08-11",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00831
+  },
+  {
+    "cve_id": "CVE-2026-65673",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Incorrect authorization in Microsoft Entra Connect Sync allows an authorized attacker to elevate privileges over a network.",
+    "date": "2026-08-11",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00322
+  },
+  {
+    "cve_id": "CVE-2026-66805",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Deserialization of untrusted data in Microsoft Office SharePoint allows an authorized attacker to execute code over a network.",
+    "date": "2026-08-11",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.02044
+  },
+  {
+    "cve_id": "CVE-2026-68798",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Heap-based buffer overflow in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
+    "date": "2026-08-11",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00466
+  },
+  {
+    "cve_id": "CVE-2026-68800",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Heap-based buffer overflow in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
+    "date": "2026-08-11",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00466
+  },
+  {
     "cve_id": "CVE-2026-34486",
     "vendor": "Apache",
     "product": "Tomcat",
@@ -383,6 +1450,17 @@
     "has_poc": false,
     "has_nuclei": true,
     "epss": 0.06561
+  },
+  {
+    "cve_id": "CVE-2026-18654",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "Key exchange without entity authentication in the EMR SSH helper commands in Amazon AWS CLI before 1.45.28 and AWS CLI v2 before 2.35.3 might allow man-in-the-middle attackers to intercept SSHsessions and file transfers via network positioning between the client and the EMR cluster endpoint.\n\n\n\nTo remediate this issue, users should upgrade to AWS CLI v1 1.45.28 or later, or AWS CLI v2 2.35.3 or later.",
+    "date": "2026-08-03",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00291
   },
   {
     "cve_id": "CVE-2026-20316",
@@ -427,6 +1505,50 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.03042
+  },
+  {
+    "cve_id": "CVE-2026-63808",
+    "vendor": "Cisco",
+    "product": "Unknown",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nexfat: fix potential use-after-free in exfat_find_dir_entry()\n\nIn exfat_find_dir_entry(), the buffer_head obtained from\nexfat_get_dentry() is released with brelse(bh) before the fall-through\nTYPE_EXTEND branch reads the directory entry through ep (which points\ninto bh->b_data):\n\n\tbrelse(bh);\n\tif (entry_type == TYPE_EXTEND) {\n\t\t...\n\t\tlen = exfat_extract_uni_name(ep, entry_uniname);\n\t\t...\n\t}\n\nAfter brelse() drops our reference, nothing guarantees that the\nunderlying page backing bh->b_data remains valid for the subsequent\nexfat_extract_uni_name() read. This is the same pattern fixed in\ncommit fc961522ddbd (\"exfat: Fix potential use after free in\nexfat_load_upcase_table()\").\n\nMove brelse(bh) so it runs after ep is no longer dereferenced on\neach branch.\n\nConfirmed on QEMU x86_64 with CONFIG_KASAN=y + CONFIG_DEBUG_PAGEALLOC=y\n+ CONFIG_PAGE_POISONING=y on linux-next, using a crafted exFAT image\n(long filename with same-hash collisions forcing the TYPE_EXTEND path).\nWith a debug-only invalidate_bdev() inserted between brelse(bh) and\nthe ep read to make the stale-deref window deterministic, the\nunpatched kernel faults:\n\n  BUG: KASAN: use-after-free in exfat_find_dir_entry+0x133b/0x15a0\n  BUG: unable to handle page fault for address: ffff88801a5fa0c2\n  Oops: 0000 [#1] SMP DEBUG_PAGEALLOC KASAN NOPTI\n  RIP: 0010:exfat_find_dir_entry+0x1188/0x15a0\n\nWith this patch applied, the same instrumented harness completes\ncleanly under the same sanitizer stack. I have not reproduced a\ncrash on an uninstrumented kernel under ordinary reclaim; the\ninstrumented A/B establishes the lifetime violation and that the\npatch closes it, not an unaided triggerability claim.",
+    "date": "2026-07-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00527
+  },
+  {
+    "cve_id": "CVE-2026-63809",
+    "vendor": "Cisco",
+    "product": "Unknown",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: use kvfree() for replaced sysctl write buffer\n\nproc_sys_call_handler() allocates its temporary sysctl buffer with\nkvzalloc() and passes it to __cgroup_bpf_run_filter_sysctl(). Since\nkvzalloc() may fall back to vmalloc() for large allocations, freeing\nthat buffer with kfree() is wrong and can corrupt memory.\n\nUse kvfree() to safely handle both kmalloc and kvzalloc()/vmalloc\nallocations.\n\nThe bug was first flagged by an experimental analysis tool we are\ndeveloping for kernel memory-management bugs while analyzing\nv6.13-rc1. The tool is still under development and is not yet publicly\navailable. Manual inspection confirms that the bug is still\npresent in v7.1-rc5.\n\nReproduced the bug based on v7.1-rc4 in a QEMU x86_64 guest booted with\nKASAN and CONFIG_FAILSLAB enabled. To exercise the replacement path, the\ntest tree also included the accompanying fix for the stale ret == 1\ncheck in __cgroup_bpf_run_filter_sysctl(). The reproducer confines\nfailslab injections to the proc_sys_call_handler() range, uses\nstacktrace-depth=32, and injects fail-nth=1 while writing 8191 bytes to\n/proc/sys/kernel/domainname from a task in the target cgroup. Under\nthat setup, fail-nth=1 triggered the fault:\n\n  BUG: unable to handle page fault for address: ffffeb0200024d48\n  #PF: supervisor read access in kernel mode\n  #PF: error_code(0x0000) - not-present page\n  PGD 0 P4D 0\n  Oops: Oops: 0000  SMP KASAN NOPTI\n  CPU: 2 UID: 0 PID: 209 Comm: repro_proc_sys_ Not tainted 7.1.0-rc4-00686-g97625979a5d4  PREEMPT(lazy)\n  Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.15.0-1 04/01/2014\n  RIP: 0010:kfree+0x6e/0x510\n  ...\n  Call Trace:\n   <TASK>\n   ? __cgroup_bpf_run_filter_sysctl+0x626/0xc30\n   __cgroup_bpf_run_filter_sysctl+0x74d/0xc30\n   ? __pfx___cgroup_bpf_run_filter_sysctl+0x10/0x10\n   ? srso_return_thunk+0x5/0x5f\n   ? __kvmalloc_node_noprof+0x345/0x870\n   ? proc_sys_call_handler+0x250/0x480\n   ? srso_return_thunk+0x5/0x5f\n   proc_sys_call_handler+0x3a2/0x480\n   ? __pfx_proc_sys_call_handler+0x10/0x10\n   ? srso_return_thunk+0x5/0x5f\n   ? selinux_file_permission+0x39f/0x500\n   ? srso_return_thunk+0x5/0x5f\n   ? lock_is_held_type+0x9e/0x120\n   vfs_write+0x98e/0x1000\n   ...\n   </TASK>\n\nWith this fix applied on top of the same test setup, rerunning the\nreproducer with fail-nth=1 yields no corresponding Oops reports.",
+    "date": "2026-07-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00154
+  },
+  {
+    "cve_id": "CVE-2026-63831",
+    "vendor": "Cisco",
+    "product": "Unknown",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmac802154: llsec: add skb_cow_data() before in-place crypto\n\nllsec_do_encrypt_unauth(), llsec_do_encrypt_auth(),\nllsec_do_decrypt_unauth(), and llsec_do_decrypt_auth() all perform\nin-place cryptographic transformations on skb data.  They build a\nscatterlist with sg_init_one() pointing into the skb's linear data area\nand then pass the same scatterlist as both src and dst to the crypto API\n(e.g. crypto_skcipher_encrypt/decrypt, crypto_aead_encrypt/decrypt).\n\nOn the RX path, __ieee802154_rx_handle_packet() clones the received skb\nbefore handing it to each subscriber via ieee802154_subif_frame().  The\ncloned skb shares the same underlying data buffer via reference\ncounting.  When llsec_do_decrypt() subsequently modifies this shared\nbuffer in place, it corrupts data that other clones -- potentially\nbelonging to other sockets or subsystems -- still reference.\n\nOn the TX path, similar data sharing can occur when an skb's head has\nbeen cloned (skb_cloned() returns true).\n\nThe fix is to call skb_cow_data() before performing any in-place crypto\noperation.  skb_cow_data() ensures that the skb's data area is not\nshared: if the skb head is cloned or the data spans multiple fragments,\nit copies the data into a private buffer that can be safely modified in\nplace.  This is the same pattern used by:\n\n  - ESP (net/ipv4/esp4.c, net/ipv6/esp6.c)\n  - MACsec (drivers/net/macsec.c)\n  - WireGuard (drivers/net/wireguard/receive.c)\n  - TIPC (net/tipc/crypto.c)\n\nWithout this guard, in-place crypto on shared skb data leads to:\n  - Silent data corruption of other skb clones\n  - Use-after-free when the crypto API scatterwalk writes through a\n    page that has already been freed by another clone's kfree_skb()\n  - Kernel crashes under concurrent 802.15.4 traffic with security\n    enabled (KASAN/KMSAN reports slab-use-after-free)\n\nFound by 0sec (https://0sec.ai) using automated source analysis.",
+    "date": "2026-07-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00252
+  },
+  {
+    "cve_id": "CVE-2026-63847",
+    "vendor": "F5",
+    "product": "Unknown",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v2.5 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit 3216a7f4e2642bda5fd14f57586e835ae9202587)",
+    "date": "2026-07-19",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00175
   },
   {
     "cve_id": "CVE-2026-58644",
@@ -647,6 +1769,17 @@
     "has_poc": true,
     "has_nuclei": false,
     "epss": 0.96895
+  },
+  {
+    "cve_id": "CVE-2026-5260",
+    "vendor": "Microsoft",
+    "product": "Unknown",
+    "description": "A flaw was found in libgnutls. A remote attacker, by sending an extremely short premaster secret during an RSA key exchange to a server using an RSA key backed by a PKCS#11 token, could trigger a short heap overread. This memory corruption vulnerability could lead to information disclosure.",
+    "date": "2026-05-26",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00945
   },
   {
     "cve_id": "CVE-2008-4250",
@@ -1384,6 +2517,28 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.0
+  },
+  {
+    "cve_id": "CVE-2024-47569",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A insertion of sensitive information into sent data vulnerability in Fortinet FortiMail 7.4.0 through 7.4.2, FortiMail 7.2.0 through 7.2.6, FortiMail 7.0 all versions, FortiManager 7.6.0 through 7.6.1, FortiManager 7.4.1 through 7.4.3, FortiManager Cloud 7.4.1 through 7.4.3, FortiNDR 7.6.0 through 7.6.1, FortiNDR 7.4.0 through 7.4.8, FortiNDR 7.2 all versions, FortiNDR 7.1 all versions, FortiNDR 7.0 all versions, FortiNDR 1.5 all versions, FortiOS 7.6.0, FortiOS 7.4.0 through 7.4.4, FortiOS 7.2.0 through 7.2.8, FortiOS 7.0.0 through 7.0.15, FortiOS 6.4.0 through 6.4.15, FortiOS 6.2 all versions, FortiOS 6.0 all versions, FortiPAM 1.3 all versions, FortiPAM 1.2 all versions, FortiPAM 1.1 all versions, FortiPAM 1.0 all versions, FortiProxy 7.4.0 through 7.4.4, FortiProxy 7.2.0 through 7.2.10, FortiProxy 7.0 all versions, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions, FortiRecorder 7.2.0 through 7.2.1, FortiRecorder 7.0.0 through 7.0.4, FortiTester 7.4.0 through 7.4.2, FortiTester 7.3 all versions, FortiTester 7.2 all versions, FortiTester 7.1 all versions, FortiTester 7.0 all versions, FortiTester 4.2 all versions, FortiVoice 7.0.0 through 7.0.4, FortiVoice 6.4.0 through 6.4.9, FortiVoice 6.0.7 through 6.0.12, FortiWeb 7.6.0, FortiWeb 7.4.0 through 7.4.4, FortiWeb 7.2 all versions, FortiWeb 7.0 all versions, FortiWeb 6.4 all versions allows attacker to disclose sensitive information via specially crafted packets.",
+    "date": "2025-10-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00473
+  },
+  {
+    "cve_id": "CVE-2024-50571",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A heap-based buffer overflow vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.2, FortiAnalyzer 7.4.0 through 7.4.5, FortiAnalyzer 7.2.0 through 7.2.9, FortiAnalyzer 7.0.0 through 7.0.13, FortiAnalyzer 6.4 all versions, FortiAnalyzer 6.2 all versions, FortiAnalyzer 6.0 all versions, FortiAnalyzer Cloud 7.4.1 through 7.4.5, FortiAnalyzer Cloud 7.2.1 through 7.2.9, FortiAnalyzer Cloud 7.0.1 through 7.0.13, FortiAnalyzer Cloud 6.4 all versions, FortiManager 7.6.0 through 7.6.1, FortiManager 7.4.0 through 7.4.5, FortiManager 7.2.0 through 7.2.9, FortiManager 7.0.0 through 7.0.13, FortiManager 6.4 all versions, FortiManager 6.2 all versions, FortiManager 6.0 all versions, FortiManager Cloud 7.6.2, FortiManager Cloud 7.4.1 through 7.4.5, FortiManager Cloud 7.2.1 through 7.2.9, FortiManager Cloud 7.0.1 through 7.0.13, FortiManager Cloud 6.4 all versions, FortiOS 7.6.0 through 7.6.2, FortiOS 7.4.0 through 7.4.6, FortiOS 7.2.0 through 7.2.10, FortiOS 7.0.0 through 7.0.16, FortiOS 6.4.0 through 6.4.15, FortiOS 6.2 all versions, FortiProxy 7.6.0 through 7.6.1, FortiProxy 7.4.0 through 7.4.7, FortiProxy 7.2.0 through 7.2.12, FortiProxy 7.0.0 through 7.0.19, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions allows attacker to execute unauthorized code or commands via specifically crafted requests.",
+    "date": "2025-10-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00536
   },
   {
     "cve_id": "CVE-2010-3962",
@@ -2233,6 +3388,17 @@
     "epss": 0.9435
   },
   {
+    "cve_id": "CVE-2024-48884",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiManager 7.6.0 through 7.6.1, FortiManager 7.4.1 through 7.4.3, FortiManager Cloud 7.4.1 through 7.4.3, FortiOS 7.6.0, FortiOS 7.4.0 through 7.4.4, FortiOS 7.2.0 through 7.2.9, FortiOS 7.0.0 through 7.0.15, FortiOS 6.4.0 through 6.4.15, FortiProxy 7.4.0 through 7.4.5, FortiProxy 7.2.0 through 7.2.11, FortiProxy 7.0.0 through 7.0.18, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions may allow a remote authenticated attacker with access to the security fabric interface and port to write arbitrary files or a remote unauthenticated attacker to delete an arbitrary folder",
+    "date": "2025-01-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.15212
+  },
+  {
     "cve_id": "CVE-2025-0282",
     "vendor": "Ivanti",
     "product": "Connect Secure, Policy Secure, and ZTA Gateways",
@@ -2396,6 +3562,17 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.0
+  },
+  {
+    "cve_id": "CVE-2024-26011",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A missing authentication for critical function vulnerability in Fortinet FortiManager 7.4.0 through 7.4.2, FortiManager 7.2.0 through 7.2.4, FortiManager 7.0.0 through 7.0.11, FortiManager 6.4.0 through 6.4.14, FortiOS 7.4.0 through 7.4.3, FortiOS 7.2.0 through 7.2.7, FortiOS 7.0.0 through 7.0.14, FortiOS 6.4 all versions, FortiOS 6.2 all versions, FortiOS 6.0 all versions, FortiPAM 1.2 all versions, FortiPAM 1.1 all versions, FortiPAM 1.0 all versions, FortiPortal 6.0.0 through 6.0.14, FortiPortal 5.3 all versions, FortiProxy 7.4.0 through 7.4.3, FortiProxy 7.2.0 through 7.2.9, FortiProxy 7.0.0 through 7.0.16, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions, FortiSwitchManager 7.2.0 through 7.2.3, FortiSwitchManager 7.0.0 through 7.0.3 allows attacker to execute unauthorized code or commands via specially crafted packets.",
+    "date": "2024-11-12",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00597
   },
   {
     "cve_id": "CVE-2024-5910",
@@ -2616,6 +3793,17 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.0
+  },
+  {
+    "cve_id": "CVE-2024-21753",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiClientEMS 7.2.0 through 7.2.4, FortiClientEMS 7.0 all versions, FortiClientEMS 6.4 all versions, FortiClientEMS 06.02 all versions, FortiClientEMS 6.2 all versions, FortiClientEMS 06.00 all versions, FortiClientEMS 6.0 all versions, FortiClientEMS 01.02.02 through 01.02.05 allows attacker to perform a denial of service, read or write a limited number of files via specially crafted HTTP requests",
+    "date": "2024-09-10",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00741
   },
   {
     "cve_id": "CVE-2024-40766",
@@ -2849,6 +4037,17 @@
     "epss": 0.99987
   },
   {
+    "cve_id": "CVE-2024-26010",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A stack-based buffer overflow vulnerability in Fortinet FortiOS 7.4.0 through 7.4.3, FortiOS 7.2.0 through 7.2.7, FortiOS 7.0.0 through 7.0.14, FortiOS 6.4 all versions, FortiOS 6.2 all versions, FortiOS 6.0 all versions, FortiPAM 1.2 all versions, FortiPAM 1.1 all versions, FortiPAM 1.0 all versions, FortiProxy 7.4.0 through 7.4.3, FortiProxy 7.2.0 through 7.2.9, FortiProxy 7.0.0 through 7.0.16, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions, FortiSwitchManager 7.2.0 through 7.2.3, FortiSwitchManager 7.0.1 through 7.0.3 allows attacker to execute unauthorized code or commands via specially crafted packets.",
+    "date": "2024-06-11",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00786
+  },
+  {
     "cve_id": "CVE-2024-24919",
     "vendor": "Check Point",
     "product": "Quantum Security Gateways",
@@ -2926,6 +4125,28 @@
     "epss": 0.0
   },
   {
+    "cve_id": "CVE-2023-36640",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A use of externally-controlled format string vulnerability in Fortinet FortiOS 7.4.0, FortiOS 7.2.0 through 7.2.5, FortiOS 7.0 all versions, FortiOS 6.4 all versions, FortiOS 6.2 all versions, FortiOS 6.0.0 through 6.0.16, FortiPAM 1.1.0, FortiPAM 1.0 all versions, FortiProxy 7.2.0 through 7.2.5, FortiProxy 7.0.0 through 7.0.11, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions allows attacker to execute unauthorized code or commands via specially crafted commands",
+    "date": "2024-05-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00279
+  },
+  {
+    "cve_id": "CVE-2023-45583",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A use of externally-controlled format string vulnerability in Fortinet FortiOS 7.4.0, FortiOS 7.2.0 through 7.2.5, FortiOS 7.0 all versions, FortiOS 6.4 all versions, FortiOS 6.2 all versions, FortiPAM 1.1.0, FortiPAM 1.0 all versions, FortiProxy 7.2.0 through 7.2.5, FortiProxy 7.0.0 through 7.0.11, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiSwitchManager 7.2.0 through 7.2.2, FortiSwitchManager 7.0.0 through 7.0.2 allows attacker to execute unauthorized code or commands via specially crafted cli commands and http requests.",
+    "date": "2024-05-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00659
+  },
+  {
     "cve_id": "CVE-2024-4671",
     "vendor": "Microsoft",
     "product": "Chromium",
@@ -2992,6 +4213,17 @@
     "epss": 0.99999
   },
   {
+    "cve_id": "CVE-2023-41677",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A insufficiently protected credentials vulnerability in Fortinet FortiOS 7.4.0 through 7.4.1, FortiOS 7.2.0 through 7.2.6, FortiOS 7.0.0 through 7.0.12, FortiOS 6.4.0 through 6.4.14, FortiOS 6.2.0 through 6.2.15, FortiOS 6.0 all versions, FortiProxy 7.4.0 through 7.4.1, FortiProxy 7.2.0 through 7.2.7, FortiProxy 7.0.0 through 7.0.13, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions allows attacker to execute unauthorized code or commands via targeted social engineering attack",
+    "date": "2024-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00753
+  },
+  {
     "cve_id": "CVE-2023-24955",
     "vendor": "Microsoft",
     "product": "SharePoint Server",
@@ -3025,6 +4257,17 @@
     "epss": 0.0
   },
   {
+    "cve_id": "CVE-2023-47534",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A improper neutralization of formula elements in a csv file vulnerability in Fortinet FortiClientEMS 7.2.0 through 7.2.2, FortiClientEMS 7.0.0 through 7.0.10, FortiClientEMS 6.4 all versions, FortiClientEMS 06.02 all versions, FortiClientEMS 6.2 all versions, FortiClientEMS 06.00 all versions, FortiClientEMS 6.0 all versions allows attacker to execute unauthorized code or commands via specially crafted packets.",
+    "date": "2024-03-12",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01051
+  },
+  {
     "cve_id": "CVE-2024-21338",
     "vendor": "Microsoft",
     "product": "Windows",
@@ -3047,6 +4290,28 @@
     "epss": 0.0
   },
   {
+    "cve_id": "CVE-2023-29180",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A null pointer dereference vulnerability in Fortinet FortiOS 7.2.0 through 7.2.4, FortiOS 7.0.0 through 7.0.11, FortiOS 6.4.0 through 6.4.12, FortiOS 6.2.0 through 6.2.14, FortiOS 6.0.0 through 6.0.16, FortiProxy 7.2.0 through 7.2.3, FortiProxy 7.0.0 through 7.0.10, FortiProxy 2.0.0 through 2.0.12, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions allows attacker to denial of service via specially crafted HTTP requests.",
+    "date": "2024-02-22",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0261
+  },
+  {
+    "cve_id": "CVE-2023-29181",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A use of externally-controlled format string vulnerability in Fortinet FortiOS 7.2.0 through 7.2.4, FortiOS 7.0.0 through 7.0.11, FortiOS 6.4.0 through 6.4.12, FortiOS 6.2.0 through 6.2.14, FortiOS 6.0.0 through 6.0.16, FortiOS 5.6 all versions, FortiOS 5.4 all versions, FortiOS 5.2 all versions, FortiOS 5.0 all versions, FortiOS 4.3 all versions, FortiOS 4.2 all versions, FortiOS 4.1 all versions, FortiOS 4.0 all versions, FortiPAM 1.0 all versions, FortiProxy 7.2.0 through 7.2.4, FortiProxy 7.0.0 through 7.0.10, FortiProxy 2.0.0 through 2.0.12, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions allows attacker to execute unauthorized code or commands via specially crafted command.",
+    "date": "2024-02-22",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00724
+  },
+  {
     "cve_id": "CVE-2020-3259",
     "vendor": "Cisco",
     "product": "Adaptive Security Appliance (ASA) and Firepower Threat Defense (FTD)",
@@ -3067,6 +4332,17 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.0
+  },
+  {
+    "cve_id": "CVE-2023-45581",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "An improper privilege management vulnerability [CWE-269] vulnerability in Fortinet FortiClientEMS 7.2.0 through 7.2.2, FortiClientEMS 7.0.6 through 7.0.10, FortiClientEMS 7.0.0 through 7.0.4, FortiClientEMS 6.4 all versions, FortiClientEMS 06.02 all versions, FortiClientEMS 6.2 all versions allows an Site administrator with Super Admin privileges to perform global administrative operations affecting other sites via crafted HTTP or HTTPS requests.",
+    "date": "2024-02-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00823
   },
   {
     "cve_id": "CVE-2024-21412",
@@ -3099,7 +4375,7 @@
     "is_kev": true,
     "has_poc": false,
     "has_nuclei": false,
-    "epss": 0.0
+    "epss": 0.83428
   },
   {
     "cve_id": "CVE-2023-4762",
@@ -3265,6 +4541,17 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.0
+  },
+  {
+    "cve_id": "CVE-2023-36641",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A numeric truncation error vulnerability in Fortinet FortiOS 7.4.0, FortiOS 7.2.0 through 7.2.5, FortiOS 7.0.0 through 7.0.12, FortiOS 6.4 all versions, FortiOS 6.2 all versions, FortiOS 6.0 all versions, FortiProxy 7.2.0 through 7.2.4, FortiProxy 7.0.0 through 7.0.10, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions allows attacker to denial of service via specifically crafted HTTP requests.",
+    "date": "2023-11-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01269
   },
   {
     "cve_id": "CVE-2023-36844",
@@ -3641,6 +4928,17 @@
     "epss": 0.0
   },
   {
+    "cve_id": "CVE-2023-29178",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A access of uninitialized pointer vulnerability [CWE-824] vulnerability in Fortinet FortiOS 7.2.0 through 7.2.4, FortiOS 7.0.0 through 7.0.11, FortiOS 6.4 all versions, FortiOS 6.2 all versions, FortiOS 6.0 all versions, FortiProxy 7.2.0 through 7.2.3, FortiProxy 7.0.0 through 7.0.9, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions allows an authenticated attacker to repetitively crash the httpsd process via crafted HTTP or HTTPS requests.",
+    "date": "2023-06-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00884
+  },
+  {
     "cve_id": "CVE-2023-3079",
     "vendor": "Microsoft",
     "product": "Chromium V8",
@@ -3705,6 +5003,17 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.0
+  },
+  {
+    "cve_id": "CVE-2023-22640",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A out-of-bounds write vulnerability in Fortinet FortiOS 7.2.0 through 7.2.3, FortiOS 7.0.0 through 7.0.10, FortiOS 6.4.0 through 6.4.11, FortiOS 6.2.0 through 6.2.13, FortiOS 6.0.0 through 6.0.16, FortiProxy 7.2.0 through 7.2.1, FortiProxy 7.0.0 through 7.0.7, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions allows an authenticated attacker to execute unauthorized code or commands via specifically crafted requests.",
+    "date": "2023-05-03",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0089
   },
   {
     "cve_id": "CVE-2021-45046",
@@ -3837,6 +5146,28 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.0
+  },
+  {
+    "cve_id": "CVE-2022-42476",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A relative path traversal vulnerability [CWE-23] vulnerability in Fortinet FortiOS 7.2.0 through 7.2.3, FortiOS 7.0.0 through 7.0.8, FortiOS 6.4.0 through 6.4.11, FortiOS 6.2.0 through 6.2.12, FortiProxy 7.2.0 through 7.2.1, FortiProxy 7.0.0 through 7.0.7, FortiProxy 2.0.0 through 2.0.11, FortiProxy 1.2 all versions, FortiProxy 01.02 all versions, FortiProxy 1.1 all versions, FortiProxy 01.01 all versions allows privileged VDOM administrators to escalate their privileges to super admin of the box via crafted CLI requests.",
+    "date": "2023-03-07",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00217
+  },
+  {
+    "cve_id": "CVE-2022-42472",
+    "vendor": "Fortinet",
+    "product": "Unknown",
+    "description": "A improper neutralization of crlf sequences in http headers ('http response splitting') vulnerability in Fortinet FortiOS 7.2.0 through 7.2.2, FortiOS 7.0.0 through 7.0.8, FortiOS 6.4.0 through 6.4.12, FortiOS 6.2 all versions, FortiOS 6.0 all versions, FortiProxy 7.2.0 through 7.2.1, FortiProxy 7.0.0 through 7.0.7, FortiProxy 2.0.0 through 2.0.10, FortiProxy 1.2 all versions, FortiProxy 01.02 all versions, FortiProxy 1.1 all versions, FortiProxy 01.01 all versions may allow an authenticated and remote attacker to perform an HTTP request splitting attack which gives attackers control of the remaining headers and body of the response.",
+    "date": "2023-02-16",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00464
   },
   {
     "cve_id": "CVE-2023-21715",
