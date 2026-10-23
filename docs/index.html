@@ -88,8 +88,8 @@
     </div>
   </header>
 
-  <!-- ================= MAIN CONTENT AREA ================= -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<!-- ================= MAIN CONTENT AREA ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-16">
 
     <!-- SEARCH RESULTS CONTAINER (Triggered on search input) -->
     <section id="search-view" class="hidden mb-8">
@@ -171,16 +171,18 @@
 
   </main>
 
-  <!-- ================= BOTTOM UPDATE / STATUS BOX ================= -->
-  <footer class="mt-auto border-t border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard py-3 px-4 sm:px-6 lg:px-8 text-xs text-gray-500 dark:text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-2">
-    <div class="flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-      <span>Sync Engine: <span id="meta-sync-time" class="font-medium text-gray-700 dark:text-gray-300">Checking...</span></span>
-    </div>
-    <div class="flex items-center gap-4 text-[11px]">
-      <span id="meta-counts">Developed by: Devansh Goel</span>
-      <span>•</span>
-      <a href="https://github.com/DvnshG764/watcher" target="_blank" class="hover:text-indigo-500 transition-colors">DvnshG764</a>
+<!-- ================= PERSISTENT BOTTOM SYNC BAR ================= -->
+  <footer class="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 dark:border-darkBorder bg-white/95 dark:bg-darkCard/95 backdrop-blur py-2.5 px-4 sm:px-6 lg:px-8 text-xs text-gray-500 dark:text-gray-400 shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Sync Engine: <span id="meta-sync-time" class="font-medium text-gray-700 dark:text-gray-300">Checking...</span></span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <span id="meta-counts">Tracking Active Advisories</span>
+        <span>•</span>
+        <a href="https://github.com/DvnshG764/watcher" target="_blank" class="hover:text-indigo-500 transition-colors font-medium">GitHub Repository</a>
+      </div>
     </div>
   </footer>
 

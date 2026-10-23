@@ -2,7 +2,7 @@ let cweMap = {};
 
 // Load static CWE definitions with path fallback
 async function loadCWE() {
-  const paths = ['data/cwe_definitions.json', './data/cwe_definitions.json', '../data/cwe_definitions.json'];
+  const paths = ['data/cwe_definitions.json', './data/cwe_definitions.json', '../data/cwe_definitions.json', 'docs/data/cwe_definitions.json'];
   for (const p of paths) {
     try {
       const res = await fetch(p);
@@ -23,7 +23,8 @@ const searchCount = document.getElementById('search-count');
 searchInput.addEventListener('input', (e) => {
   const query = e.target.value.trim().toLowerCase();
   if (query.length < 2) {
-    clearSearch();
+    // Only hide the dropdown view; DO NOT wipe searchInput.value
+    searchView.classList.add('hidden');
     return;
   }
   executeSearch(query);
@@ -44,14 +45,14 @@ function executeSearch(query) {
   searchView.classList.remove('hidden');
   const results = [];
 
-  // 1. Search CWEs
+  // 1. Search CWEs (IDs and definitions)
   Object.keys(cweMap).forEach(cweId => {
     const item = cweMap[cweId];
-    if (cweId.toLowerCase().includes(query) || item.name.toLowerCase().includes(query)) {
+    if (cweId.toLowerCase().includes(query) || item.name.toLowerCase().includes(query) || (item.description && item.description.toLowerCase().includes(query))) {
       results.push({
-        type: 'CWE Definition',
+        type: 'CWE Weakness',
         title: `${cweId}: ${item.name}`,
-        subtitle: `Severity: ${item.severity}`,
+        subtitle: `Severity: ${item.severity || 'UNKNOWN'}`,
         desc: item.description,
         badge: 'CWE',
         link: `https://cwe.mitre.org/data/definitions/${cweId.replace('CWE-', '')}.html`
@@ -60,7 +61,7 @@ function executeSearch(query) {
   });
 
   // 2. Search KEV
-  trendingData.confirmed_in_wild.forEach(k => {
+  (trendingData.confirmed_in_wild || []).forEach(k => {
     const blob = `${k.cve_id} ${k.vendor} ${k.product} ${k.description}`.toLowerCase();
     if (blob.includes(query)) {
       results.push({
@@ -75,7 +76,7 @@ function executeSearch(query) {
   });
 
   // 3. Search Early Warning Radar
-  trendingData.early_warning.forEach(w => {
+  (trendingData.early_warning || []).forEach(w => {
     const blob = `${w.cve_id} ${w.description}`.toLowerCase();
     if (blob.includes(query)) {
       results.push({
@@ -90,7 +91,7 @@ function executeSearch(query) {
   });
 
   // 4. Search News Feed
-  newsData.forEach(n => {
+  (newsData || []).forEach(n => {
     const blob = `${n.title} ${n.snippet} ${(n.matched_cves || []).join(' ')} ${(n.matched_vendors || []).join(' ')}`.toLowerCase();
     if (blob.includes(query)) {
       results.push({
@@ -115,7 +116,7 @@ function executeSearch(query) {
     return;
   }
 
-  searchList.innerHTML = results.slice(0, 15).map(res => `
+  searchList.innerHTML = results.slice(0, 18).map(res => `
     <div class="vuln-card p-4 rounded-xl border border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
       <div>
         <div class="flex items-center justify-between gap-2 mb-1.5">

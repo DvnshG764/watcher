@@ -4,29 +4,94 @@
     "description": "The software constructs an OS command using externally-influenced input, allowing attackers to execute arbitrary system commands.",
     "severity": "CRITICAL"
   },
+  "CWE-79": {
+    "name": "Cross-Site Scripting (XSS)",
+    "description": "The software does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page.",
+    "severity": "HIGH"
+  },
+  "CWE-80": {
+    "name": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
+    "description": "The software receives input from an upstream component, but does not neutralize or incorrectly neutralizes script-related HTML tags before inserting it into dynamic web content.",
+    "severity": "MEDIUM"
+  },
   "CWE-89": {
     "name": "SQL Injection",
-    "description": "The software constructs a SQL query using untrusted user input without proper validation or parameterization.",
+    "description": "The software constructs a SQL query using untrusted user input without proper validation or parameterization, allowing database compromise.",
     "severity": "CRITICAL"
+  },
+  "CWE-20": {
+    "name": "Improper Input Validation",
+    "description": "The software receives input or data, but does not validate or incorrectly validates that the input has the properties that are required to process the data safely.",
+    "severity": "HIGH"
   },
   "CWE-22": {
     "name": "Path Traversal",
     "description": "The software uses external input to construct a pathname intended to identify a file or directory located underneath a restricted directory.",
     "severity": "HIGH"
   },
+  "CWE-119": {
+    "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+    "description": "The software performs operations on a memory buffer, but can read from or write to a memory location that is outside the intended buffer boundary.",
+    "severity": "CRITICAL"
+  },
+  "CWE-125": {
+    "name": "Out-of-bounds Read",
+    "description": "The software reads data past the end, or before the beginning, of the intended buffer, leading to information disclosure or crashes.",
+    "severity": "HIGH"
+  },
+  "CWE-190": {
+    "name": "Integer Overflow or Wraparound",
+    "description": "The software performs a calculation that can produce an integer overflow or wraparound, resulting in logic flaws or buffer overflows.",
+    "severity": "HIGH"
+  },
+  "CWE-200": {
+    "name": "Exposure of Sensitive Information to an Unauthorized Actor",
+    "description": "The software exposes sensitive information to an actor that is not explicitly authorized to have access to that information.",
+    "severity": "MEDIUM"
+  },
   "CWE-287": {
     "name": "Improper Authentication",
     "description": "The software accepts claims about identity from an actor without adequately verifying that the claims are true.",
     "severity": "CRITICAL"
   },
-  "CWE-502": {
-    "name": "Deserialization of Untrusted Data",
-    "description": "The software deserializes untrusted data without sufficiently verifying that the resulting data will be valid.",
+  "CWE-306": {
+    "name": "Missing Authentication for Critical Function",
+    "description": "The software does not perform any authentication for functionality that requires a provable user identity or consumes significant resources.",
     "severity": "CRITICAL"
   },
-  "CWE-79": {
-    "name": "Cross-Site Scripting (XSS)",
-    "description": "The software does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page.",
-    "severity": "MEDIUM"
+  "CWE-352": {
+    "name": "Cross-Site Request Forgery (CSRF)",
+    "description": "The web application does not, or cannot, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user.",
+    "severity": "HIGH"
+  },
+  "CWE-416": {
+    "name": "Use After Free",
+    "description": "The software references memory after it has been freed, which can lead to program execution flow manipulation or remote code execution.",
+    "severity": "CRITICAL"
+  },
+  "CWE-434": {
+    "name": "Unrestricted Upload of File with Dangerous Type",
+    "description": "The software allows the attacker to upload or transfer files of dangerous types that can be directly processed or executed by the environment.",
+    "severity": "CRITICAL"
+  },
+  "CWE-502": {
+    "name": "Deserialization of Untrusted Data",
+    "description": "The software deserializes untrusted data without sufficiently verifying that the resulting data will be valid, leading to remote code execution.",
+    "severity": "CRITICAL"
+  },
+  "CWE-787": {
+    "name": "Out-of-bounds Write",
+    "description": "The software writes data past the end, or before the beginning, of the intended buffer, causing data corruption or code execution.",
+    "severity": "CRITICAL"
+  },
+  "CWE-862": {
+    "name": "Missing Authorization",
+    "description": "The software does not perform an authorization check when an actor attempts to access a resource or perform an action.",
+    "severity": "HIGH"
+  },
+  "CWE-918": {
+    "name": "Server-Side Request Forgery (SSRF)",
+    "description": "The web server receives a URL or similar request from an upstream component and retrieves the contents without adequate validation.",
+    "severity": "HIGH"
   }
 }

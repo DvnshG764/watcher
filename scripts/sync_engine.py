@@ -8,6 +8,11 @@ import requests
 import feedparser
 import shutil
 
+IST = timezone(timedelta(hours=5, minutes=30))
+
+def get_ist_now_str():
+    return datetime.now(IST).strftime("%I:%M %p, %d-%m-%Y (IST)")
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -160,13 +165,16 @@ def fetch_news(vendor_rules):
                 summary = entry.get("summary", "")
                 pub_raw = entry.get("published", "") or entry.get("updated", "")
 
-                # Parse date to Unix timestamp for precise multi-source sorting
+                # 1. Parse date and make timezone-aware
                 dt_obj = None
                 try:
                     dt_obj = date_parser.parse(pub_raw) if pub_raw else datetime.now(timezone.utc)
+                    if dt_obj.tzinfo is None:
+                        dt_obj = dt_obj.replace(tzinfo=timezone.utc)
                 except Exception:
                     dt_obj = datetime.now(timezone.utc)
 
+                # 2. Extract CVEs and target vendors
                 text_corpus = f"{title} {summary}"
                 matched_cves = [c.upper() for c in set(CVE_REGEX.findall(text_corpus))]
 
@@ -177,11 +185,13 @@ def fetch_news(vendor_rules):
 
                 clean_summary = re.sub(r'<[^>]+>', '', summary).strip()
 
+                # 3. Convert to IST and append once
+                dt_ist = dt_obj.astimezone(IST)
                 articles.append({
                     "title": title,
                     "url": link,
                     "source": source_name,
-                    "published": dt_obj.strftime("%Y-%m-%d %H:%M UTC"),
+                    "published": dt_ist.strftime("%I:%M %p, %d-%m-%Y (IST)"),
                     "timestamp": dt_obj.timestamp(),
                     "snippet": clean_summary,
                     "matched_cves": matched_cves,
@@ -397,7 +407,7 @@ def main():
 
     # --- 4. SYNC METADATA ---
     save_json(os.path.join(DATA_DIR, "sync_meta.json"), {
-        "last_sync": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+        "last_sync": get_ist_now_str(),
         "counts": {
             "cisa_kev": len(cisa_kev),
             "early_warning": len(early_warning),
