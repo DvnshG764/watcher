@@ -2,11 +2,11 @@ import os
 import re
 import json
 import logging
+import shutil
 from datetime import datetime, timezone, timedelta
 from dateutil import parser as date_parser
 import requests
 import feedparser
-import shutil
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
@@ -145,7 +145,7 @@ def fetch_epss(cve_list):
     return epss_map
 
 # -------------------------------------------------------------
-# 4. FETCH AND NORMALIZE NEWS FEEDS (STRICT CHRONOLOGICAL SORT)
+# 4. FETCH AND NORMALIZE NEWS FEEDS
 # -------------------------------------------------------------
 def fetch_news(vendor_rules):
     feeds_config = load_json(os.path.join(CONFIG_DIR, "feeds.json"), [])
@@ -165,7 +165,6 @@ def fetch_news(vendor_rules):
                 summary = entry.get("summary", "")
                 pub_raw = entry.get("published", "") or entry.get("updated", "")
 
-                # 1. Parse date and make timezone-aware
                 dt_obj = None
                 try:
                     dt_obj = date_parser.parse(pub_raw) if pub_raw else datetime.now(timezone.utc)
@@ -174,7 +173,6 @@ def fetch_news(vendor_rules):
                 except Exception:
                     dt_obj = datetime.now(timezone.utc)
 
-                # 2. Extract CVEs and target vendors
                 text_corpus = f"{title} {summary}"
                 matched_cves = [c.upper() for c in set(CVE_REGEX.findall(text_corpus))]
 
@@ -184,9 +182,8 @@ def fetch_news(vendor_rules):
                         matched_vendors.append(v_name)
 
                 clean_summary = re.sub(r'<[^>]+>', '', summary).strip()
-
-                # 3. Convert to IST and append once
                 dt_ist = dt_obj.astimezone(IST)
+
                 articles.append({
                     "title": title,
                     "url": link,
@@ -200,13 +197,12 @@ def fetch_news(vendor_rules):
         except Exception as e:
             logging.error(f"Failed parsing feed {source_name}: {e}")
 
-    # Sort strictly by timestamp descending so sources interleave naturally
     articles = sorted(articles, key=lambda x: x.get("timestamp", 0), reverse=True)
     logging.info(f"Loaded {len(articles)} chronological news items.")
     return articles
 
 # -------------------------------------------------------------
-# 5. FETCH RECENT NVD DELTA
+# 5. FETCH RECENT NVD DELTA (PRIORITIZING CVSS v3.1 / v3.0)
 # -------------------------------------------------------------
 def fetch_nvd_recent():
     logging.info("Querying NVD API 2.0 delta...")
@@ -231,10 +227,17 @@ def fetch_nvd_recent():
 
                 cvss_score = None
                 metrics = cve.get("metrics", {})
-                for m_ver in ["cvssMetricV31", "cvssMetricV40", "cvssMetricV30"]:
+                
+                # Strict Priority: CVSS v3.1 -> CVSS v3.0 -> CVSS v4.0 -> CVSS v2
+                for m_ver in ["cvssMetricV31", "cvssMetricV30", "cvssMetricV40", "cvssMetricV2"]:
                     if m_ver in metrics and len(metrics[m_ver]) > 0:
-                        cvss_score = metrics[m_ver][0].get("cvssData", {}).get("baseScore")
-                        break
+                        score = metrics[m_ver][0].get("cvssData", {}).get("baseScore")
+                        if score is not None:
+                            try:
+                                cvss_score = float(score)
+                                break
+                            except ValueError:
+                                pass
 
                 desc_text = ""
                 for d in cve.get("descriptions", []):
@@ -254,10 +257,13 @@ def fetch_nvd_recent():
     return recent_nvd
 
 # -------------------------------------------------------------
-# 6. ENRICH DESCRIPTIONS FROM MITRE CVELIST V5 (FAST SESSION)
+# 6. ENRICH DESCRIPTIONS, CVSS (v3 PREFERRED), VENDOR/PRODUCT FROM CVELIST V5
 # -------------------------------------------------------------
-def enrich_cve_description(cve_id, session=None):
-    """Fetches real description from CVEProject raw repo if NVD had no record"""
+def enrich_cve_details(cve_id, session=None):
+    desc = ""
+    cvss = None
+    vendor = "Unknown"
+    product = "Unknown"
     try:
         parts = cve_id.split("-")
         if len(parts) == 3:
@@ -270,14 +276,45 @@ def enrich_cve_description(cve_id, session=None):
             r = req_func(raw_url, headers=HEADERS, timeout=4)
             if r.status_code == 200:
                 data = r.json()
-                containers = data.get("containers", {}).get("cna", {})
-                descriptions = containers.get("descriptions", [])
-                for d in descriptions:
+                cna = data.get("containers", {}).get("cna", {})
+                
+                # Extract Description
+                for d in cna.get("descriptions", []):
                     if d.get("lang", "en").startswith("en"):
-                        return d.get("value", "")
+                        desc = d.get("value", "")
+                        break
+
+                # Extract Vendor and Product
+                affected_list = cna.get("affected", [])
+                if affected_list and isinstance(affected_list, list):
+                    first_aff = affected_list[0]
+                    vendor_val = first_aff.get("vendor", "")
+                    product_val = first_aff.get("product", "")
+                    if vendor_val and vendor_val.lower() not in ["n/a", "unknown"]:
+                        vendor = vendor_val
+                    if product_val and product_val.lower() not in ["n/a", "unknown"]:
+                        product = product_val
+
+                # Priority: v3.1 / v3.0 first, then v4.0 fallback
+                metrics_list = cna.get("metrics", [])
+                for target_keys in [["cvssV3_1", "cvssV3_0"], ["cvssV4_0", "cvssV2_0"]]:
+                    for metric in metrics_list:
+                        for k in target_keys:
+                            if k in metric:
+                                score = metric[k].get("baseScore")
+                                if score is not None:
+                                    try:
+                                        cvss = float(score)
+                                        break
+                                    except ValueError:
+                                        pass
+                        if cvss is not None:
+                            break
+                    if cvss is not None:
+                        break
     except Exception:
         pass
-    return ""
+    return desc, cvss, vendor, product
 
 # -------------------------------------------------------------
 # MAIN COMPILATION ENGINE
@@ -300,112 +337,127 @@ def main():
 
     epss_data = fetch_epss(list(candidate_cves))
 
-    # --- 1. TRENDING / EXPLOIT RADAR ---
-    # Column 1: KEV
-    confirmed_kev = []
-    sorted_kev = sorted(cisa_kev.values(), key=lambda x: x.get("date_added", ""), reverse=True)
-    for k in sorted_kev[:40]:
-        cve_id = k["cve_id"]
-        epss_info = epss_data.get(cve_id, {"epss": 0.0, "percentile": 0.0})
-        confirmed_kev.append({
-            **k,
-            "epss": epss_info["epss"],
-            "has_poc": cve_id in poc_cves,
-            "has_nuclei": cve_id in nuclei_cves
-        })
-
-    # Column 2: Early Warning (Pre-KEV)
-    early_candidates = []
-    radar_candidates = candidate_cves - set(cisa_kev.keys())
-    for cve_id in radar_candidates:
-        has_poc = cve_id in poc_cves
-        has_nuclei = cve_id in nuclei_cves
-        epss_info = epss_data.get(cve_id, {"epss": 0.0, "percentile": 0.0})
-        in_news = any(cve_id in art["matched_cves"] for art in news_articles)
-
-        if has_poc or has_nuclei or in_news or epss_info["epss"] >= 0.15:
-            nvd_info = nvd_delta.get(cve_id, {})
-            early_candidates.append({
-                "cve_id": cve_id,
-                "cvss": nvd_info.get("cvss", None),
-                "description": nvd_info.get("description", ""),
-                "epss": epss_info["epss"],
-                "epss_percentile": epss_info["percentile"],
-                "has_poc": has_poc,
-                "has_nuclei": has_nuclei,
-                "in_news": in_news,
-                "first_seen": datetime.now(timezone.utc).strftime("%Y-%m-%d")
-            })
-
-    # CRITICAL: Sort and take TOP 40 FIRST before making any external calls
-    early_candidates = sorted(
-        early_candidates, 
-        key=lambda x: (x["has_poc"] or x["has_nuclei"], x["epss"]), 
-        reverse=True
-    )[:40]
-
-    # Enrich descriptions ONLY for the top 40 candidates using a shared session
-    logging.info(f"Enriching descriptions for top {len(early_candidates)} early warning CVEs...")
     with requests.Session() as session:
         session.headers.update(HEADERS)
+
+        # --- 1. TRENDING: KEV (Confirmed in the Wild) ---
+        confirmed_kev = []
+        sorted_kev = sorted(cisa_kev.values(), key=lambda x: x.get("date_added", ""), reverse=True)
+        for k in sorted_kev[:40]:
+            cve_id = k["cve_id"]
+            epss_info = epss_data.get(cve_id, {"epss": 0.0, "percentile": 0.0})
+            
+            cvss_score = nvd_delta.get(cve_id, {}).get("cvss")
+            if cvss_score is None:
+                _, cvss_score, _, _ = enrich_cve_details(cve_id, session=session)
+
+            confirmed_kev.append({
+                **k,
+                "cvss": cvss_score,
+                "epss": epss_info["epss"],
+                "has_poc": cve_id in poc_cves,
+                "has_nuclei": cve_id in nuclei_cves
+            })
+
+        # --- 2. TRENDING: Exploit Radar (Pre-KEV) ---
+        early_candidates = []
+        radar_candidates = candidate_cves - set(cisa_kev.keys())
+        for cve_id in radar_candidates:
+            has_poc = cve_id in poc_cves
+            has_nuclei = cve_id in nuclei_cves
+            epss_info = epss_data.get(cve_id, {"epss": 0.0, "percentile": 0.0})
+            in_news = any(cve_id in art["matched_cves"] for art in news_articles)
+
+            if has_poc or has_nuclei or in_news or epss_info["epss"] >= 0.15:
+                nvd_info = nvd_delta.get(cve_id, {})
+                early_candidates.append({
+                    "cve_id": cve_id,
+                    "vendor": "Unknown",
+                    "product": "Unknown",
+                    "cvss": nvd_info.get("cvss", None),
+                    "description": nvd_info.get("description", ""),
+                    "epss": epss_info["epss"],
+                    "epss_percentile": epss_info["percentile"],
+                    "has_poc": has_poc,
+                    "has_nuclei": has_nuclei,
+                    "in_news": in_news,
+                    "first_seen": datetime.now(timezone.utc).strftime("%Y-%m-%d")
+                })
+
+        early_candidates = sorted(
+            early_candidates, 
+            key=lambda x: (x["has_poc"] or x["has_nuclei"], x["epss"]), 
+            reverse=True
+        )[:40]
+
+        logging.info(f"Enriching CVSS, vendor, and descriptions for top {len(early_candidates)} Exploit Radar CVEs...")
         for item in early_candidates:
+            enriched_desc, enriched_cvss, enriched_vendor, enriched_product = enrich_cve_details(item["cve_id"], session=session)
             if not item["description"]:
-                enriched = enrich_cve_description(item["cve_id"], session=session)
-                if enriched:
-                    item["description"] = enriched
-                else:
-                    item["description"] = f"Active exploit signal detected via {'PoC repository' if item['has_poc'] else 'Nuclei scanner'}. Exploit probability: {(item['epss']*100):.1f}%."
+                item["description"] = enriched_desc if enriched_desc else f"Active exploit signal detected via {'PoC repository' if item['has_poc'] else 'Nuclei scanner'}."
+            if item["cvss"] is None:
+                item["cvss"] = enriched_cvss
+            item["vendor"] = enriched_vendor
+            item["product"] = enriched_product
 
-    early_warning = early_candidates
+        early_warning = early_candidates
 
+        # --- 3. VENDOR FOCUS ---
+        vendor_feed = []
+        all_vulns_pool = {k["cve_id"]: {**k, "is_kev": True} for k in sorted_kev}
+        for cve_id, n in nvd_delta.items():
+            if cve_id not in all_vulns_pool:
+                all_vulns_pool[cve_id] = {
+                    "cve_id": cve_id,
+                    "vendor": "Unknown",
+                    "product": "Unknown",
+                    "description": n["description"],
+                    "date_added": n["published"][:10] if n.get("published") else "",
+                    "is_kev": False,
+                    "cvss": n.get("cvss")
+                }
+
+        for cve_id, item in all_vulns_pool.items():
+            search_blob = f"{item.get('vendor','')} {item.get('product','')} {item.get('description','')}".lower()
+            matched_vendor_key = None
+            for v_name, aliases in vendor_rules.items():
+                if any(a.lower() in search_blob for a in aliases):
+                    matched_vendor_key = v_name
+                    break
+
+            if matched_vendor_key:
+                epss_info = epss_data.get(cve_id, {"epss": 0.0, "percentile": 0.0})
+                v_cvss = item.get("cvss")
+                vendor_feed.append({
+                    "cve_id": cve_id,
+                    "vendor": matched_vendor_key,
+                    "product": item.get("product", "Unknown"),
+                    "description": item.get("description", ""),
+                    "date": item.get("date_added", ""),
+                    "is_kev": item.get("is_kev", False),
+                    "has_poc": cve_id in poc_cves,
+                    "has_nuclei": cve_id in nuclei_cves,
+                    "epss": epss_info["epss"],
+                    "cvss": v_cvss
+                })
+
+        vendor_feed = sorted(vendor_feed, key=lambda x: x.get("date", ""), reverse=True)
+
+        for v_item in vendor_feed[:40]:
+            if v_item["cvss"] is None or v_item["product"] == "Unknown":
+                _, v_cvss, _, v_product = enrich_cve_details(v_item["cve_id"], session=session)
+                if v_item["cvss"] is None:
+                    v_item["cvss"] = v_cvss
+                if v_item["product"] == "Unknown" and v_product != "Unknown":
+                    v_item["product"] = v_product
+
+    # Save output datasets
     save_json(os.path.join(DATA_DIR, "trending.json"), {
         "confirmed_in_wild": confirmed_kev,
         "early_warning": early_warning
     })
-
-    # --- 2. VENDOR FOCUS ---
-    vendor_feed = []
-    all_vulns_pool = {k["cve_id"]: {**k, "is_kev": True} for k in sorted_kev}
-    for cve_id, n in nvd_delta.items():
-        if cve_id not in all_vulns_pool:
-            all_vulns_pool[cve_id] = {
-                "cve_id": cve_id,
-                "vendor": "Unknown",
-                "product": "Unknown",
-                "description": n["description"],
-                "date_added": n["published"][:10] if n.get("published") else "",
-                "is_kev": False
-            }
-
-    for cve_id, item in all_vulns_pool.items():
-        search_blob = f"{item.get('vendor','')} {item.get('product','')} {item.get('description','')}".lower()
-        matched_vendor_key = None
-        for v_name, aliases in vendor_rules.items():
-            if any(a.lower() in search_blob for a in aliases):
-                matched_vendor_key = v_name
-                break
-
-        if matched_vendor_key:
-            epss_info = epss_data.get(cve_id, {"epss": 0.0, "percentile": 0.0})
-            vendor_feed.append({
-                "cve_id": cve_id,
-                "vendor": matched_vendor_key,
-                "product": item.get("product", "Unknown"),
-                "description": item.get("description", ""),
-                "date": item.get("date_added", ""),
-                "is_kev": item.get("is_kev", False),
-                "has_poc": cve_id in poc_cves,
-                "has_nuclei": cve_id in nuclei_cves,
-                "epss": epss_info["epss"]
-            })
-
-    vendor_feed = sorted(vendor_feed, key=lambda x: x.get("date", ""), reverse=True)
     save_json(os.path.join(DATA_DIR, "vendors.json"), vendor_feed)
-
-    # --- 3. CURATED NEWS FEED ---
     save_json(os.path.join(DATA_DIR, "news.json"), news_articles)
-
-    # --- 4. SYNC METADATA ---
     save_json(os.path.join(DATA_DIR, "sync_meta.json"), {
         "last_sync": get_ist_now_str(),
         "counts": {
@@ -416,12 +468,19 @@ def main():
         }
     })
 
-    # Ensure cwe_definitions is always available inside docs/data/
-    src_cwe = os.path.join(BASE_DIR, "data", "cwe_definitions.json")
-    dst_cwe = os.path.join(DATA_DIR, "cwe_definitions.json")
-    if os.path.exists(src_cwe):
-        shutil.copyfile(src_cwe, dst_cwe)
-    
+    # Ensure configs are mirrored to docs/data/ for dynamic frontend filters
+    for cfg in ["cwe_definitions.json"]:
+        src = os.path.join(BASE_DIR, "data", cfg)
+        dst = os.path.join(DATA_DIR, cfg)
+        if os.path.exists(src):
+            shutil.copyfile(src, dst)
+
+    for cfg in ["vendors.json", "feeds.json"]:
+        src = os.path.join(CONFIG_DIR, cfg)
+        dst = os.path.join(DATA_DIR, f"config_{cfg}")
+        if os.path.exists(src):
+            shutil.copyfile(src, dst)
+
     logging.info("Sync completed successfully.")
 
 if __name__ == "__main__":

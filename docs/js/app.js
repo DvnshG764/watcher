@@ -2,7 +2,10 @@
 let trendingData = { confirmed_in_wild: [], early_warning: [] };
 let vendorData = [];
 let newsData = [];
+let configuredVendors = [];
+let configuredNewsSources = [];
 let selectedVendor = 'All';
+let selectedNewsSource = 'All';
 
 // -------------------------------------------------------------
 // 1. THEME TOGGLE (Dark / Light)
@@ -66,7 +69,7 @@ function switchTab(tabName) {
 }
 
 // -------------------------------------------------------------
-// 3. READ MORE TOGGLE HELPER
+// 3. UI HELPERS (Read More, CVSS & Badges)
 // -------------------------------------------------------------
 function toggleReadMore(btn) {
   const parent = btn.parentElement;
@@ -98,6 +101,121 @@ function formatExpandableText(text, limit = 160) {
   `;
 }
 
+// CVSS link routes directly to NVD
+function formatCvssBadge(score, cveId) {
+  const nvdUrl = `https://nvd.nist.gov/vuln/detail/${cveId}`;
+  if (score === null || score === undefined || score === '') {
+    return `<a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-xs px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase text-gray-400 border border-gray-200 dark:border-darkBorder hover:underline" title="View CVSS on NVD">CVSS N/A</a>`;
+  }
+  const val = parseFloat(score);
+  let colorClasses = 'bg-gray-100 dark:bg-darkBase text-gray-700 dark:text-gray-300 border-gray-300 dark:border-darkBorder';
+  if (val >= 9.0) {
+    colorClasses = 'bg-red-100 dark:bg-red-950/80 text-red-700 dark:text-red-300 border-red-300 dark:border-red-900 font-bold';
+  } else if (val >= 7.0) {
+    colorClasses = 'bg-orange-100 dark:bg-orange-950/80 text-orange-700 dark:text-orange-300 border-orange-300 dark:border-orange-900 font-bold';
+  } else if (val >= 4.0) {
+    colorClasses = 'bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-900 font-semibold';
+  }
+  return `<a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-xs px-2 py-0.5 rounded border ${colorClasses} hover:underline" title="View CVSS Specification on NVD">CVSS ${val.toFixed(1)}</a>`;
+}
+
+// -------------------------------------------------------------
+// STANDARDIZED CARD BUILDER (RADAR, VENDOR, AND SEARCH)
+// -------------------------------------------------------------
+function buildStandardThreatCard(item, cardType = 'radar_kev') {
+  const vendorName = item.vendor || 'Unknown';
+  const productName = item.product && item.product !== 'Unknown' ? `- ${item.product}` : '';
+  const vendorProduct = `${vendorName} ${productName}`.trim();
+
+  const cveId = item.cve_id;
+  const nvdUrl = `https://nvd.nist.gov/vuln/detail/${cveId}`;
+
+  // Interactive Target URLs
+  const cisaUrl = `https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=${cveId}`;
+  const epssUrl = `https://api.first.org/epss?cve=${cveId}`;
+  const pocUrl = `https://github.com/nomi-sec/PoC-in-GitHub/search?q=${cveId}`;
+  const nucleiUrl = `https://github.com/projectdiscovery/nuclei-templates/search?q=${cveId}`;
+
+  // Date Section Layout
+  let dateMarkup = '';
+  if (cardType === 'radar_kev') {
+    dateMarkup = `
+      <div class="grid grid-cols-2 text-[11px] text-gray-500 dark:text-gray-400 py-1">
+        <div><span class="font-medium text-gray-700 dark:text-gray-300">Added Date:</span> ${item.date_added || '-'}</div>
+        <div class="text-right"><span class="font-medium text-gray-700 dark:text-gray-300">Due Date:</span> ${item.due_date || '-'}</div>
+      </div>
+    `;
+  } else {
+    // Exploit Radar & Vendor Focus: Detected Date only
+    dateMarkup = `
+      <div class="text-[11px] text-gray-500 dark:text-gray-400 py-1">
+        <span class="font-medium text-gray-700 dark:text-gray-300">Detected Date:</span> ${item.date_added || item.date || item.first_seen || '-'}
+      </div>
+    `;
+  }
+
+  // EPSS Badge: Disabled link if score is not present
+  const hasEpss = (item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0);
+  const epssBadge = hasEpss
+    ? `<a href="${epssUrl}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-darkBorder font-mono font-medium hover:border-indigo-500 transition-colors" title="Inspect EPSS Probability on FIRST.org">
+        EPSS: ${(parseFloat(item.epss) * 100).toFixed(2)}%
+       </a>`
+    : `<span class="px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase text-gray-400 border border-gray-200 dark:border-darkBorder font-mono">
+        EPSS: -
+       </span>`;
+
+  const pocStatus = item.has_poc
+    ? `<a href="${pocUrl}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 font-semibold hover:underline" title="View Exploit PoCs on GitHub">PoC: Available</a>`
+    : `<span class="px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-darkBorder">PoC: Not Available</span>`;
+
+  const nucleiStatus = item.has_nuclei
+    ? `<a href="${nucleiUrl}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-800 font-semibold hover:underline" title="View Nuclei Templates on GitHub">Nuclei Template: Ready</a>`
+    : `<span class="px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-darkBorder">Nuclei Template: Not Ready</span>`;
+
+  const kevBadge = (cardType === 'radar_kev' || item.is_kev)
+    ? `<a href="${cisaUrl}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400 border border-red-300 dark:border-red-900 font-bold hover:underline" title="View CISA KEV Catalog Listing">CISA KEV</a>`
+    : '';
+
+  return `
+    <div class="vuln-card p-4 rounded-xl border border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
+      <div>
+        <!-- Row 1: Enlarged CVE ID Button (NVD Link) & CVSS Score (NVD Link) -->
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-base font-bold font-mono text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 hover:underline tracking-wide" title="Inspect full NVD specification">
+            ${cveId}
+          </a>
+          ${formatCvssBadge(item.cvss, cveId)}
+        </div>
+
+        <!-- Row 2: Vendor - Product -->
+        <h3 class="text-xs font-semibold text-gray-800 dark:text-gray-200 mb-2">${vendorProduct}</h3>
+
+        <!-- Row 3: Description -->
+        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+          ${formatExpandableText(item.description || item.vuln_name, 160)}
+        </div>
+
+        <!-- Divider 1 -->
+        <div class="border-t border-gray-200 dark:border-darkBorder/60 my-2.5"></div>
+
+        <!-- Row 4: Dates -->
+        ${dateMarkup}
+
+        <!-- Divider 2 -->
+        <div class="border-t border-gray-200 dark:border-darkBorder/60 my-2.5"></div>
+
+        <!-- Row 5: Interactive Status Badges -->
+        <div class="flex flex-wrap items-center gap-1.5 text-[11px] pt-1">
+          ${kevBadge}
+          ${epssBadge}
+          ${pocStatus}
+          ${nucleiStatus}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 // -------------------------------------------------------------
 // 4. DATA LOADER
 // -------------------------------------------------------------
@@ -114,11 +232,13 @@ async function fetchWithFallback(filename) {
 
 async function loadData() {
   try {
-    const [trending, vendors, news, meta] = await Promise.all([
+    const [trending, vendors, news, meta, cfgVendors, cfgFeeds] = await Promise.all([
       fetchWithFallback('trending.json'),
       fetchWithFallback('vendors.json'),
       fetchWithFallback('news.json'),
-      fetchWithFallback('sync_meta.json')
+      fetchWithFallback('sync_meta.json'),
+      fetchWithFallback('config_vendors.json'),
+      fetchWithFallback('config_feeds.json')
     ]);
 
     if (trending) {
@@ -127,16 +247,32 @@ async function loadData() {
     }
     if (vendors) {
       vendorData = vendors;
-      renderVendorPills();
-      renderVendorView();
     }
     if (news) {
       newsData = news;
-      renderNews();
     }
     if (meta) {
       renderMeta(meta);
     }
+
+    // Ingest vendor config for dynamic UI pills
+    if (cfgVendors && typeof cfgVendors === 'object') {
+      configuredVendors = Object.keys(cfgVendors);
+    } else if (vendorData) {
+      configuredVendors = [...new Set(vendorData.map(v => v.vendor))];
+    }
+    renderVendorPills();
+    renderVendorView();
+
+    // Ingest feeds config for dynamic UI pills
+    if (cfgFeeds && Array.isArray(cfgFeeds)) {
+      configuredNewsSources = cfgFeeds.map(f => f.name);
+    } else if (newsData) {
+      configuredNewsSources = [...new Set(newsData.map(n => n.source))];
+    }
+    renderNewsSourcePills();
+    renderNews();
+
   } catch (err) {
     console.error('[Watcher] Render error:', err);
   }
@@ -144,18 +280,13 @@ async function loadData() {
 
 function renderMeta(meta) {
   const syncTimeEl = document.getElementById('meta-sync-time');
-  const countsEl = document.getElementById('meta-counts');
-  
   if (syncTimeEl && meta && meta.last_sync) {
     syncTimeEl.textContent = meta.last_sync;
-  }
-  if (countsEl && meta && meta.counts) {
-    countsEl.textContent = `KEV: ${meta.counts.cisa_kev} | Pre-KEV Radar: ${meta.counts.early_warning} | Vendor Alerts: ${meta.counts.vendor_alerts} | News: ${meta.counts.news_articles}`;
   }
 }
 
 // -------------------------------------------------------------
-// 5. RENDER EXPLOIT RADAR
+// 5. RENDER RADAR (CISA KEV & Exploit Radar)
 // -------------------------------------------------------------
 function renderRadar() {
   const kevContainer = document.getElementById('radar-kev-list');
@@ -164,73 +295,23 @@ function renderRadar() {
   document.getElementById('kev-count').textContent = `${trendingData.confirmed_in_wild.length} entries`;
   document.getElementById('early-count').textContent = `${trendingData.early_warning.length} alerts`;
 
-  // Render KEV Column
-  kevContainer.innerHTML = trendingData.confirmed_in_wild.map(item => `
-    <div class="vuln-card p-4 rounded-xl border border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard shadow-sm hover:border-red-500/50">
-      <div class="flex items-start justify-between gap-2 mb-1.5">
-        <div>
-          <span class="text-sm font-bold text-red-600 dark:text-red-400 tracking-wide">${item.cve_id}</span>
-          <h3 class="text-xs font-semibold text-gray-800 dark:text-gray-200">${item.vendor} / ${item.product}</h3>
-        </div>
-        <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400 border border-red-300 dark:border-red-900">
-          CISA KEV
-        </span>
-      </div>
+  // Render CISA KEV Column
+  kevContainer.innerHTML = trendingData.confirmed_in_wild
+    .map(item => buildStandardThreatCard(item, 'radar_kev'))
+    .join('');
 
-      <div class="text-xs text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
-        ${formatExpandableText(item.description || item.vuln_name, 150)}
-      </div>
-
-      <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-gray-100 dark:border-darkBorder/60 text-[11px]">
-        <span class="text-gray-500">Added: ${item.date_added}</span>
-        ${item.due_date ? `<span class="text-gray-400">• Due: ${item.due_date}</span>` : ''}
-        ${item.epss ? `<span class="ml-auto font-mono text-xs px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase font-semibold">EPSS ${(item.epss * 100).toFixed(1)}%</span>` : ''}
-      </div>
-
-      <div class="flex items-center gap-2 mt-2 pt-2 border-t border-gray-100 dark:border-darkBorder/40">
-        <a href="https://nvd.nist.gov/vuln/detail/${item.cve_id}" target="_blank" class="text-[11px] text-indigo-500 hover:underline">NVD Spec</a>
-        ${item.has_poc ? '<span class="text-[11px] text-amber-500 font-semibold">• PoC Available</span>' : ''}
-        ${item.has_nuclei ? '<span class="text-[11px] text-blue-500 font-semibold">• Nuclei Template</span>' : ''}
-      </div>
-    </div>
-  `).join('');
-
-  // Render Early Warning Column
-  earlyContainer.innerHTML = trendingData.early_warning.map(item => `
-    <div class="vuln-card p-4 rounded-xl border border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard shadow-sm hover:border-amber-500/50">
-      <div class="flex items-start justify-between gap-2 mb-1.5">
-        <div>
-          <span class="text-sm font-bold text-amber-600 dark:text-amber-400 tracking-wide">${item.cve_id}</span>
-          <span class="text-xs text-gray-400 block">${item.first_seen || 'Recently Flagged'}</span>
-        </div>
-        <div class="flex items-center gap-1">
-          ${item.cvss ? `<span class="text-xs font-bold px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase border border-gray-300 dark:border-darkBorder">${item.cvss}</span>` : ''}
-          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
-            EPSS ${(item.epss * 100).toFixed(1)}%
-          </span>
-        </div>
-      </div>
-
-      <div class="text-xs text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
-        ${formatExpandableText(item.description, 160)}
-      </div>
-
-      <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-gray-100 dark:border-darkBorder/60 text-[11px]">
-        ${item.has_poc ? '<span class="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-300 border border-amber-300 dark:border-amber-900 font-semibold">PoC in GitHub</span>' : ''}
-        ${item.has_nuclei ? '<span class="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-300 border border-blue-300 dark:border-blue-900 font-semibold">Nuclei Ready</span>' : ''}
-        ${item.in_news ? '<span class="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-300 border border-purple-300 dark:border-purple-900 font-semibold">In The News</span>' : ''}
-        <a href="https://nvd.nist.gov/vuln/detail/${item.cve_id}" target="_blank" class="ml-auto text-indigo-500 hover:underline">Inspect →</a>
-      </div>
-    </div>
-  `).join('');
+  // Render Exploit Radar Column
+  earlyContainer.innerHTML = trendingData.early_warning
+    .map(item => buildStandardThreatCard(item, 'radar_early'))
+    .join('');
 }
 
 // -------------------------------------------------------------
-// 6. RENDER VENDOR FOCUS
+// 6. RENDER VENDOR FOCUS (DYNAMIC FROM CONFIG)
 // -------------------------------------------------------------
 function renderVendorPills() {
   const container = document.getElementById('vendor-pills');
-  const vendors = ['All', ...new Set(vendorData.map(v => v.vendor))];
+  const vendors = ['All', ...configuredVendors];
 
   container.innerHTML = vendors.map(v => `
     <button 
@@ -254,90 +335,131 @@ function filterVendor(vendorName) {
 
 function renderVendorView() {
   const container = document.getElementById('vendor-grid');
-  const exploitOnly = document.getElementById('vendor-exploit-filter').value === 'exploited';
 
   let filtered = vendorData;
   if (selectedVendor !== 'All') {
-    filtered = filtered.filter(v => v.vendor === selectedVendor);
-  }
-  if (exploitOnly) {
-    filtered = filtered.filter(v => v.is_kev || v.has_poc || v.has_nuclei);
+    filtered = filtered.filter(v => v.vendor.toLowerCase() === selectedVendor.toLowerCase());
   }
 
   if (filtered.length === 0) {
-    container.innerHTML = `<div class="col-span-full py-12 text-center text-gray-400 text-sm">No vulnerabilities found for the selected filter criteria.</div>`;
+    container.innerHTML = `<div class="col-span-full py-12 text-center text-gray-400 text-sm">No vulnerabilities found for the selected vendor.</div>`;
     return;
   }
 
-  container.innerHTML = filtered.map(item => `
-    <div class="vuln-card p-4 rounded-xl border border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
-      <div>
-        <div class="flex items-start justify-between gap-2 mb-2">
-          <div>
-            <span class="text-sm font-bold text-indigo-600 dark:text-indigo-400">${item.cve_id}</span>
-            <h3 class="text-xs font-semibold text-gray-800 dark:text-gray-200">${item.vendor} ${item.product !== 'Unknown' ? '— ' + item.product : ''}</h3>
-          </div>
-          ${item.is_kev ? '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400 border border-red-300 dark:border-red-900">KEV</span>' : ''}
-        </div>
-        <div class="text-xs text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
-          ${formatExpandableText(item.description, 160)}
-        </div>
-      </div>
+  container.innerHTML = filtered
+    .map(item => buildStandardThreatCard(item, 'vendor'))
+    .join('');
+}
 
-      <div class="pt-2 border-t border-gray-100 dark:border-darkBorder/60 flex items-center justify-between text-[11px]">
-        <div class="flex items-center gap-1.5">
-          ${item.has_poc ? '<span class="text-amber-500 font-bold">PoC</span>' : ''}
-          ${item.has_nuclei ? '<span class="text-blue-500 font-bold">Nuclei</span>' : ''}
-          <span class="font-mono text-gray-400">EPSS ${(item.epss * 100).toFixed(1)}%</span>
-        </div>
-        <a href="https://nvd.nist.gov/vuln/detail/${item.cve_id}" target="_blank" class="text-indigo-500 hover:underline">Details →</a>
-      </div>
-    </div>
+// -------------------------------------------------------------
+// 7. RENDER NEWS FEED (DYNAMIC FROM CONFIG)
+// -------------------------------------------------------------
+function renderNewsSourcePills() {
+  const container = document.getElementById('news-source-pills');
+  const sources = ['All', ...configuredNewsSources];
+
+  container.innerHTML = sources.map(s => `
+    <button 
+      onclick="filterNewsSource('${s}')" 
+      class="news-btn px-3 py-1 rounded-full text-xs font-semibold transition-colors border ${
+        s === selectedNewsSource 
+          ? 'bg-indigo-600 text-white border-indigo-600' 
+          : 'bg-white dark:bg-darkCard text-gray-600 dark:text-gray-300 border-gray-300 dark:border-darkBorder hover:bg-gray-100 dark:hover:bg-gray-800'
+      }"
+    >
+      ${s}
+    </button>
   `).join('');
 }
 
-document.getElementById('vendor-exploit-filter').addEventListener('change', renderVendorView);
+function filterNewsSource(sourceName) {
+  selectedNewsSource = sourceName;
+  renderNewsSourcePills();
+  renderNews();
+}
 
-// -------------------------------------------------------------
-// 7. RENDER CURATED NEWS FEED
-// -------------------------------------------------------------
 function renderNews() {
   const container = document.getElementById('news-grid');
-  if (newsData.length === 0) {
-    container.innerHTML = `<div class="col-span-full py-12 text-center text-gray-400 text-sm">No curated news items loaded.</div>`;
+  
+  let filtered = newsData;
+  if (selectedNewsSource !== 'All') {
+    filtered = filtered.filter(n => n.source.toLowerCase() === selectedNewsSource.toLowerCase());
+  }
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="col-span-full py-12 text-center text-gray-400 text-sm">No news items found for the selected source.</div>`;
     return;
   }
 
-  container.innerHTML = newsData.map(article => `
+  container.innerHTML = filtered.map(article => `
     <div class="vuln-card p-4 rounded-xl border border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
       <div>
+        <!-- Row 1: Source & Published Timestamp Header -->
         <div class="flex items-center justify-between text-[11px] text-gray-400 mb-2">
           <span class="font-semibold text-indigo-500">${article.source}</span>
           <span>${article.published || ''}</span>
         </div>
-        <a href="${article.url}" target="_blank" class="text-sm font-bold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors block mb-2 leading-snug">
+
+        <!-- Row 2: Headline / Article Link -->
+        <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors block mb-2 leading-snug">
           ${article.title}
         </a>
-        <div class="text-xs text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+
+        <!-- Row 3: Description / Summary -->
+        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
           ${formatExpandableText(article.snippet, 180)}
         </div>
-      </div>
 
-      <div class="pt-2 border-t border-gray-100 dark:border-darkBorder/60 flex flex-wrap gap-1">
-        ${(article.matched_cves || []).map(cve => `
-          <button onclick="quickSearch('${cve}')" class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900 hover:bg-indigo-100">
-            ${cve}
-          </button>
-        `).join('')}
-        ${(article.matched_vendors || []).map(v => `
-          <span class="text-[10px] px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-darkBorder">
-            ${v}
-          </span>
-        `).join('')}
+        <!-- Divider 1 -->
+        <div class="border-t border-gray-200 dark:border-darkBorder/60 my-2.5"></div>
+
+        <!-- Row 4: Associated CVEs (Leading to NVD) & Vendors -->
+        <div class="flex flex-wrap items-center gap-1.5 pt-1 text-[11px]">
+          ${(article.matched_cves || []).map(cve => `
+            <a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank" rel="noopener noreferrer" class="font-mono font-semibold px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900 hover:underline" title="Inspect ${cve} on NVD">
+              ${cve}
+            </a>
+          `).join('')}
+          ${(article.matched_vendors || []).map(v => `
+            <span class="px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-darkBorder">
+              ${v}
+            </span>
+          `).join('')}
+        </div>
       </div>
     </div>
   `).join('');
 }
+
+// -------------------------------------------------------------
+// 8. DIRECT NVD SEARCH HANDLER
+// -------------------------------------------------------------
+function executeDirectNvdSearch() {
+  const inputEl = document.getElementById('nvd-direct-input');
+  let val = inputEl.value.trim().toUpperCase();
+  if (!val) return;
+
+  if (!val.startsWith('CVE-')) {
+    val = 'CVE-' + val;
+  }
+  
+  // Format validation: CVE-YYYY-NNNNN
+  const cvePattern = /^CVE-\d{4}-\d{4,7}$/;
+  if (!cvePattern.test(val)) {
+    alert("Please enter a valid format, e.g., CVE-2024-38077");
+    return;
+  }
+
+  window.open(`https://nvd.nist.gov/vuln/detail/${val}`, '_blank');
+  inputEl.value = '';
+}
+
+// Allow Enter key to trigger direct search
+document.getElementById('nvd-direct-input')?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    executeDirectNvdSearch();
+  }
+});
 
 // -------------------------------------------------------------
 // INITIALIZATION

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Watcher Exploit Radar</title>
+  <title>Watcher Threat Radar</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -25,14 +25,15 @@
 </head>
 <body class="bg-gray-50 dark:bg-darkBase text-gray-900 dark:text-gray-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
 
-<!-- ================= TOP STICKY NAVBAR ================= -->
+  <!-- ================= TOP STICKY NAVBAR ================= -->
   <header class="sticky top-0 z-50 bg-white/95 dark:bg-darkCard/95 backdrop-blur border-b border-gray-200 dark:border-darkBorder shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
       
-      <!-- Brand & Navigation Tabs -->
+      <!-- Brand & Subtitle -->
       <div class="flex items-center gap-6 flex-shrink-0">
-        <div class="flex items-center gap-2 cursor-pointer" onclick="switchTab('radar')">
-          <span class="text-xl font-black tracking-wider text-indigo-600 dark:text-indigo-400">WATCHER</span>
+        <div class="flex flex-col cursor-pointer select-none" onclick="switchTab('radar')">
+          <span class="text-xl font-black tracking-wider text-indigo-600 dark:text-indigo-400 leading-tight">WATCHER</span>
+          <span class="text-[10px] tracking-widest text-gray-500 dark:text-gray-400 font-semibold uppercase -mt-0.5">Threat Radar</span>
         </div>
 
         <nav class="hidden md:flex items-center gap-1">
@@ -48,19 +49,39 @@
         </nav>
       </div>
 
-      <!-- Global Search & Theme Toggle -->
-      <div class="flex items-center gap-3 flex-1 max-w-lg justify-end">
-        <div class="relative w-full max-w-md">
+      <!-- Dual Search Area & Theme Toggle -->
+      <div class="flex items-center gap-3 flex-1 max-w-2xl justify-end">
+        
+        <!-- 1. Global Watcher Feed Search -->
+        <div class="relative flex-1 max-w-xs">
           <svg class="w-4 h-4 absolute left-3 top-3 text-gray-400 pointer-events-none z-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
           </svg>
           <input 
             type="text" 
             id="global-search"
-            placeholder="Search CVE, CWE, CPE, Vendor, or News..."
+            placeholder="Search across Watcher..."
             autocomplete="off"
-            class="relative z-20 w-full pl-9 pr-4 py-1.5 text-sm rounded-lg border border-gray-300 dark:border-darkBorder bg-gray-100 dark:bg-darkBase text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400 pointer-events-auto cursor-text"
+            class="relative z-20 w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-gray-300 dark:border-darkBorder bg-gray-100 dark:bg-darkBase text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400 cursor-text"
           />
+        </div>
+
+        <!-- 2. Direct NVD Lookup Search Bar -->
+        <div class="hidden sm:flex items-center gap-1.5 flex-shrink-0">
+          <input 
+            type="text" 
+            id="nvd-direct-input"
+            placeholder="CVE-YYYY-NNNNN"
+            autocomplete="off"
+            class="w-36 px-2.5 py-1.5 text-xs rounded-lg border border-gray-300 dark:border-darkBorder bg-gray-100 dark:bg-darkBase text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono uppercase"
+          />
+          <button 
+            type="button"
+            onclick="executeDirectNvdSearch()"
+            class="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition-colors"
+          >
+            NVD Search
+          </button>
         </div>
 
         <!-- Light / Dark Mode Toggle -->
@@ -88,13 +109,13 @@
     </div>
   </header>
 
-<!-- ================= MAIN CONTENT AREA ================= -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-16">
+  <!-- ================= MAIN CONTENT AREA ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20">
 
-    <!-- SEARCH RESULTS CONTAINER (Triggered on search input) -->
+    <!-- SEARCH RESULTS CONTAINER -->
     <section id="search-view" class="hidden mb-8">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-xl font-bold flex items-center gap-2">
+      <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-200 dark:border-darkBorder">
+        <h2 class="text-lg font-bold flex items-center gap-2">
           <span>Search Results</span>
           <span id="search-count" class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-0.5 rounded-full font-normal">0 results</span>
         </h2>
@@ -103,30 +124,30 @@
       <div id="search-results-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </section>
 
-    <!-- 1. EXPLOIT RADAR VIEW (Landing Page) -->
+    <!-- 1. EXPLOIT RADAR VIEW -->
     <section id="view-radar" class="space-y-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
-        <!-- Column 1: Confirmed in the Wild (CISA KEV) -->
+        <!-- Column 1: CISA KEV (Exploited in the Wild) -->
         <div class="flex flex-col">
           <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-darkBorder mb-4">
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
-              <h2 class="text-lg font-bold">Confirmed In The Wild</h2>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/70 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900">CISA KEV</span>
+              <h2 class="text-lg font-bold">CISA KEV</h2>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/70 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900">Exploited in the Wild</span>
             </div>
             <span id="kev-count" class="text-xs text-gray-400">Loading...</span>
           </div>
           <div id="radar-kev-list" class="space-y-3 overflow-y-auto max-h-[78vh] pr-1"></div>
         </div>
 
-        <!-- Column 2: Early Warning Radar (Pre-KEV) -->
+        <!-- Column 2: Exploit Radar (Pre-KEV Signals) -->
         <div class="flex flex-col">
           <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-darkBorder mb-4">
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-              <h2 class="text-lg font-bold">Early Warning Radar</h2>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900">PoC / Nuclei / EPSS</span>
+              <h2 class="text-lg font-bold">Exploit Radar</h2>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900">Pre-KEV Signals</span>
             </div>
             <span id="early-count" class="text-xs text-gray-400">Loading...</span>
           </div>
@@ -138,21 +159,12 @@
 
     <!-- 2. VENDOR FOCUS VIEW -->
     <section id="view-vendor" class="hidden space-y-6">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-gray-200 dark:border-darkBorder">
-        <div>
-          <h2 class="text-lg font-bold">Vendor Focus</h2>
-          <p class="text-xs text-gray-500 dark:text-gray-400">Targeted tracking for priority infrastructure and software stacks</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <label class="text-xs text-gray-400">Exploit Filter:</label>
-          <select id="vendor-exploit-filter" class="text-xs rounded border border-gray-300 dark:border-darkBorder bg-white dark:bg-darkCard px-2 py-1">
-            <option value="all">All Vendor Vulnerabilities</option>
-            <option value="exploited">Exploited / PoC Only</option>
-          </select>
-        </div>
+      <div class="pb-4 border-b border-gray-200 dark:border-darkBorder">
+        <h2 class="text-lg font-bold">Vendor Focus</h2>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Filtered threat intelligence for tracked infrastructure components</p>
       </div>
 
-      <!-- Horizontal Vendor Badges Filter -->
+      <!-- Horizontal Vendor Badges Filter (Dynamic from config/vendors.json) -->
       <div id="vendor-pills" class="flex flex-wrap gap-2"></div>
 
       <!-- Vendor Cards Grid -->
@@ -166,12 +178,15 @@
         <p class="text-xs text-gray-500 dark:text-gray-400">Filtered security intelligence correlated with CVEs and tracked vendors</p>
       </div>
 
+      <!-- Horizontal News Source Badges Filter (Dynamic from config/feeds.json) -->
+      <div id="news-source-pills" class="flex flex-wrap gap-2"></div>
+
       <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </section>
 
   </main>
 
-<!-- ================= PERSISTENT BOTTOM SYNC BAR ================= -->
+  <!-- ================= PERSISTENT BOTTOM SYNC BAR ================= -->
   <footer class="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 dark:border-darkBorder bg-white/95 dark:bg-darkCard/95 backdrop-blur py-2.5 px-4 sm:px-6 lg:px-8 text-xs text-gray-500 dark:text-gray-400 shadow-md">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
       <div class="flex items-center gap-2">
@@ -179,9 +194,9 @@
         <span>Sync Engine: <span id="meta-sync-time" class="font-medium text-gray-700 dark:text-gray-300">Checking...</span></span>
       </div>
       <div class="flex items-center gap-4 text-[11px]">
-        <span id="meta-counts">Developed by Devansh Goel</span>
+        <span id="meta-counts" class="font-medium text-gray-700 dark:text-gray-300">Developed by Devansh Goel</span>
         <span>•</span>
-        <a href="https://github.com/DvnshG764/watcher" target="_blank" class="hover:text-indigo-500 transition-colors font-medium">DvnshG764</a>
+        <a href="https://github.com/DvnshG764/watcher" target="_blank" class="hover:text-indigo-500 transition-colors font-medium">GitHub Repository</a>
       </div>
     </div>
   </footer>
