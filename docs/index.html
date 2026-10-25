@@ -263,7 +263,16 @@
               </svg>
               <span id="sync-status-text">All Feeds Synced</span>
             </div>
-            <button id="sync-now-btn">Sync Now</button>
+            <button 
+              id="sync-now-btn"
+              title="Trigger Manual OSINT Sync"
+              class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 border border-indigo-500/25 transition-colors flex items-center gap-1"
+            >
+              <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              <span>Sync Now</span>
+            </button>            
           </div>
           <p class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
             Last Sync: <span id="meta-sync-time">Loading...</span>
