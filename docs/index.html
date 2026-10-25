@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Watcher</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
   <!-- Favicon Placeholder -->
   <link rel="icon" id="site-favicon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%234F46E5%22/><circle cx=%2250%22 cy=%2250%22 r=%2220%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%228%22/></svg>">
@@ -262,17 +261,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
               <span id="sync-status-text">All Feeds Synced</span>
-            </div>
-            <button 
-              id="sync-now-btn"
-              title="Trigger Manual OSINT Sync"
-              class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 border border-indigo-500/25 transition-colors flex items-center gap-1"
-            >
-              <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-              <span>Sync Now</span>
-            </button>            
+            </div>            
           </div>
           <p class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
             Last Sync: <span id="meta-sync-time">Loading...</span>
@@ -432,6 +421,5 @@
   <!-- Scripts -->
   <script src="js/app.js"></script>
   <script src="js/search.js"></script>
-  <script src="js/sync.js"></script>
 </body>
 </html>
