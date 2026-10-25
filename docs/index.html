@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Watcher Threat Radar</title>
+  <title>Watcher</title>
+
+  <!-- Favicon Placeholder -->
+  <link rel="icon" id="site-favicon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%234F46E5%22/><circle cx=%2250%22 cy=%2250%22 r=%2220%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%228%22/></svg>">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -11,195 +20,414 @@
       darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            brand: '#6366F1',
-            darkBase: '#0F1117',
-            darkCard: '#1A1D24',
-            darkBorder: '#282D37'
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
           }
         }
       }
     };
   </script>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="bg-gray-50 dark:bg-darkBase text-gray-900 dark:text-gray-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+<body class="min-h-screen flex antialiased selection:bg-indigo-500 selection:text-white">
 
-  <!-- ================= TOP STICKY NAVBAR ================= -->
-  <header class="sticky top-0 z-50 bg-white/95 dark:bg-darkCard/95 backdrop-blur border-b border-gray-200 dark:border-darkBorder shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+  <!-- ================= MINIMAL FUTURISTIC RADAR BACKGROUND ================= -->
+  <div class="radar-canvas" aria-hidden="true">
+    <div class="radar-sweep-cone"></div>
+    <svg class="w-full h-full" viewBox="0 0 960 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="480" cy="480" r="130" stroke="var(--radar-line)" stroke-width="1" stroke-dasharray="4 6" />
+      <circle cx="480" cy="480" r="260" stroke="var(--radar-line)" stroke-width="1" />
+      <circle cx="480" cy="480" r="390" stroke="var(--radar-line)" stroke-width="1" stroke-dasharray="8 8" />
+      <circle cx="480" cy="480" r="475" stroke="var(--radar-line)" stroke-width="1" />
+      <line x1="480" y1="0" x2="480" y2="960" stroke="var(--radar-line)" stroke-width="1" />
+      <line x1="0" y1="480" x2="960" y2="480" stroke="var(--radar-line)" stroke-width="1" />
+      <line x1="140" y1="140" x2="820" y2="820" stroke="var(--radar-line)" stroke-width="0.6" stroke-dasharray="3 6" />
+      <line x1="820" y1="140" x2="140" y2="820" stroke="var(--radar-line)" stroke-width="0.6" stroke-dasharray="3 6" />
+    </svg>
+  </div>
+
+  <!-- ================= LEFT VERTICAL SIDEBAR (EXPANDED & COLLAPSED) ================= -->
+  <aside id="sidebar" class="glass-sidebar w-[290px] shrink-0 sticky top-0 h-screen z-40 flex flex-col justify-between p-4 select-none overflow-y-auto overflow-x-hidden">
+    
+    <!-- TOP + MIDDLE STACK -->
+    <div class="space-y-4">
       
-      <!-- Brand & Subtitle -->
-      <div class="flex items-center gap-6 flex-shrink-0">
-        <div class="flex flex-col cursor-pointer select-none" onclick="switchTab('radar')">
-          <span class="text-xl font-black tracking-wider text-indigo-600 dark:text-indigo-400 leading-tight">WATCHER</span>
-          <span class="text-[10px] tracking-widest text-gray-500 dark:text-gray-400 font-semibold uppercase -mt-0.5">Threat Radar</span>
+      <!-- 1. Brand Header + Collapse/Expand Button -->
+      <div>
+        <div class="brand-header-row flex items-center justify-between gap-2">
+          <!-- Watcher Logo Placeholder + Title -->
+          <div class="flex items-center gap-3 cursor-pointer group" onclick="switchTab('radar')">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 via-indigo-500 to-purple-600 p-[1.5px] shadow-lg shadow-indigo-500/25 shrink-0 transition-transform group-hover:scale-105">
+              <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center relative overflow-hidden">
+                <!-- Placeholder Radar Logo SVG -->
+                <svg class="w-6 h-6 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="9" stroke-opacity="0.45"/>
+                  <circle cx="12" cy="12" r="5" stroke-dasharray="2 2" stroke-opacity="0.75"/>
+                  <circle cx="12" cy="12" r="1.5" fill="#818CF8"/>
+                  <path d="M12 12L18.5 5.5" stroke="#818CF8" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="expanded-only">
+              <span class="text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-500 dark:from-white dark:via-indigo-200 dark:to-indigo-400 block leading-none">
+                Watcher
+              </span>
+            </div>
+          </div>
+
+          <!-- Collapse / Expand Chevron Button -->
+          <button 
+            onclick="toggleSidebar()" 
+            title="Collapse / Expand Sidebar"
+            class="w-7 h-7 rounded-lg border border-slate-300/70 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 hover:bg-indigo-500/10 hover:border-indigo-500/40 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-all shrink-0"
+          >
+            <svg id="sidebar-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
         </div>
 
-        <nav class="hidden md:flex items-center gap-1">
-          <button id="tab-radar" onclick="switchTab('radar')" class="nav-tab px-3 py-1.5 rounded-lg text-sm font-medium transition-colors bg-indigo-600 text-white">
-            Exploit Radar
-          </button>
-          <button id="tab-vendor" onclick="switchTab('vendor')" class="nav-tab px-3 py-1.5 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            Vendor Focus
-          </button>
-          <button id="tab-news" onclick="switchTab('news')" class="nav-tab px-3 py-1.5 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            News Feed
-          </button>
-        </nav>
+        <!-- Subtitle below Logo (Expanded Mode) -->
+        <p class="expanded-only text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-2 pl-0.5 tracking-wide">
+          Centralised Vulnerability Monitor
+        </p>
       </div>
 
-      <!-- Dual Search Area & Theme Toggle -->
-      <div class="flex items-center gap-3 flex-1 max-w-2xl justify-end">
-        
-        <!-- 1. Global Watcher Feed Search -->
-        <div class="relative flex-1 max-w-xs">
-          <svg class="w-4 h-4 absolute left-3 top-3 text-gray-400 pointer-events-none z-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Thin line with faded ends -->
+      <div class="faded-line"></div>
+
+      <!-- 2. Dual Search Section -->
+      <!-- EXPANDED SEARCH INPUTS -->
+      <div class="expanded-only space-y-3">
+        <!-- Search 1: Global Watcher Search -->
+        <div>
+          <div class="neu-inset rounded-xl flex items-center px-3 py-2 gap-2">
+            <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+            </svg>
+            <input 
+              type="text" 
+              id="global-search" 
+              placeholder="Search across Watcher..." 
+              autocomplete="off"
+              class="w-full bg-transparent text-xs font-medium focus:outline-none placeholder-slate-400 dark:placeholder-slate-500 text-slate-800 dark:text-slate-100"
+            />
+            <button id="clear-search-btn" onclick="clearSearch()" class="hidden text-slate-400 hover:text-rose-400 text-xs font-bold" title="Clear">✕</button>
+          </div>
+        </div>
+
+        <!-- Search 2: Structured CVE-Year-ID NVD Lookup -->
+        <div>
+          <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-1 pl-1">
+            Direct NVD CVE Lookup
+          </label>
+          <div class="neu-inset rounded-xl p-1.5 flex items-center gap-1 min-w-0">
+            <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400 pl-1.5 shrink-0">CVE-</span>
+            <input 
+              type="text" 
+              id="nvd-year" 
+              placeholder="Year" 
+              maxlength="4"
+              inputmode="numeric"
+              class="w-12 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0"
+            />
+            <span class="font-mono text-slate-400 text-xs shrink-0">-</span>
+            <input 
+              type="text" 
+              id="nvd-id" 
+              placeholder="ID" 
+              maxlength="7"
+              inputmode="numeric"
+              class="w-16 flex-1 min-w-0 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1.5 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100"
+            />
+            <button 
+              onclick="triggerDirectNvdSearch()" 
+              title="Search CVE on NIST NVD"
+              class="p-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-500/20 transition-all shrink-0"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLLAPSED SEARCH ICONS -->
+      <div class="collapsed-only flex flex-col items-center gap-2.5">
+        <button 
+          onclick="expandAndFocus('global-search')" 
+          title="Search across Watcher"
+          class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
           </svg>
-          <input 
-            type="text" 
-            id="global-search"
-            placeholder="Search across Watcher..."
-            autocomplete="off"
-            class="relative z-20 w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-gray-300 dark:border-darkBorder bg-gray-100 dark:bg-darkBase text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400 cursor-text"
-          />
-        </div>
-
-        <!-- 2. Direct NVD Lookup Search Bar -->
-        <div class="hidden sm:flex items-center gap-1.5 flex-shrink-0">
-          <input 
-            type="text" 
-            id="nvd-direct-input"
-            placeholder="CVE-YYYY-NNNNN"
-            autocomplete="off"
-            class="w-36 px-2.5 py-1.5 text-xs rounded-lg border border-gray-300 dark:border-darkBorder bg-gray-100 dark:bg-darkBase text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono uppercase"
-          />
-          <button 
-            type="button"
-            onclick="executeDirectNvdSearch()"
-            class="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition-colors"
-          >
-            NVD Search
-          </button>
-        </div>
-
-        <!-- Light / Dark Mode Toggle -->
+        </button>
         <button 
-          id="theme-toggle" 
-          aria-label="Toggle Theme"
-          class="relative z-20 p-2 rounded-lg border border-gray-300 dark:border-darkBorder bg-gray-100 dark:bg-darkBase hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0"
+          onclick="expandAndFocus('nvd-year')" 
+          title="Direct CVE NVD Lookup"
+          class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors relative"
         >
-          <svg id="theme-icon-sun" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
-          </svg>
-          <svg id="theme-icon-moon" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
           </svg>
         </button>
       </div>
 
+      <!-- Thin line with faded ends -->
+      <div class="faded-line"></div>
+
+      <!-- 3. Primary Feed Navigation -->
+      <nav class="space-y-1.5">
+        <button id="nav-radar" onclick="switchTab('radar')" class="nav-item active w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" stroke-width="2"/>
+            <path stroke-linecap="round" stroke-width="2" d="M12 12l4.5-4.5M12 7v1"/>
+          </svg>
+          <span class="expanded-only">Exploit Radar</span>
+        </button>
+
+        <button id="nav-vendor" onclick="switchTab('vendor')" class="nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" stroke-width="2"/>
+            <path stroke-linecap="round" stroke-width="1.8" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/>
+          </svg>
+          <span class="expanded-only">Vendor Focus</span>
+        </button>
+
+        <button id="nav-news" onclick="switchTab('news')" class="nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+          </svg>
+          <span class="expanded-only">News Feed</span>
+        </button>
+      </nav>
+
+      <!-- Thin line with faded ends -->
+      <div class="faded-line"></div>
     </div>
 
-    <!-- Mobile Navigation Sub-bar -->
-    <div class="flex md:hidden border-t border-gray-200 dark:border-darkBorder px-4 py-2 gap-2 bg-gray-50 dark:bg-darkBase">
-      <button onclick="switchTab('radar')" class="flex-1 py-1 text-xs text-center font-medium rounded bg-indigo-600 text-white">Radar</button>
-      <button onclick="switchTab('vendor')" class="flex-1 py-1 text-xs text-center font-medium rounded text-gray-600 dark:text-gray-300">Vendors</button>
-      <button onclick="switchTab('news')" class="flex-1 py-1 text-xs text-center font-medium rounded text-gray-600 dark:text-gray-300">News</button>
-    </div>
-  </header>
+    <!-- BOTTOM STACK: Theme Switch, Sync Telemetry & Credits -->
+    <div class="space-y-3 pt-2">
+      
+      <!-- Theme Switch inside Navbar (Dark/Light Theme) -->
+      <div>
+        <button 
+          onclick="toggleTheme()" 
+          class="expanded-only w-full neu-inset rounded-xl px-3 py-2 flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-300 hover:border-indigo-500/40 transition-all"
+        >
+          <span class="flex items-center gap-2">
+            <svg id="theme-icon-sun" class="w-4 h-4 text-amber-400 hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+            </svg>
+            <svg id="theme-icon-moon" class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+            </svg>
+            <span>Dark/Light Theme</span>
+          </span>
+          <span id="theme-mode-badge" class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-indigo-500/10 text-indigo-500 dark:text-indigo-300 border border-indigo-500/20">
+            Dark
+          </span>
+        </button>
 
-  <!-- ================= MAIN CONTENT AREA ================= -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20">
-
-    <!-- SEARCH RESULTS CONTAINER -->
-    <section id="search-view" class="hidden mb-8">
-      <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-200 dark:border-darkBorder">
-        <h2 class="text-lg font-bold flex items-center gap-2">
-          <span>Search Results</span>
-          <span id="search-count" class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-0.5 rounded-full font-normal">0 results</span>
-        </h2>
-        <button onclick="clearSearch()" class="text-xs text-indigo-500 hover:underline">Clear Search</button>
+        <div class="collapsed-only flex justify-center">
+          <button 
+            onclick="toggleTheme()" 
+            title="Switch Dark/Light Theme"
+            class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 transition-all"
+          >
+            <svg id="theme-icon-sun-collapsed" class="w-4 h-4 text-amber-400 hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+            </svg>
+            <svg id="theme-icon-moon-collapsed" class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+            </svg>
+          </button>
+        </div>
       </div>
-      <div id="search-results-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-    </section>
 
-    <!-- 1. EXPLOIT RADAR VIEW -->
-    <section id="view-radar" class="space-y-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Thin line with faded ends -->
+      <div class="faded-line"></div>
+
+      <!-- Sync Status Block (OneDrive Rotating Arrows Icon) -->
+      <div>
+        <div class="expanded-only px-1 space-y-1.5">
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              <svg class="w-4 h-4 text-emerald-500 animate-spin shrink-0" style="animation-duration: 8s;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              <span>All Feeds Synced</span>
+            </div>
+            <!-- Placeholder Sync Now Button -->
+            <button 
+              onclick="alert('Sync Engine Placeholder: Remote frontend sync trigger will be configured in a future update.')" 
+              title="Trigger Manual OSINT Sync (Placeholder)"
+              class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 border border-indigo-500/25 transition-colors flex items-center gap-1"
+            >
+              <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              Sync Now
+            </button>
+          </div>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+            Last Sync: <span id="meta-sync-time">Loading...</span>
+          </p>
+        </div>
+
+        <!-- Collapsed OneDrive Sync Icon -->
+        <div class="collapsed-only flex justify-center py-1">
+          <button 
+            onclick="expandSidebar()"
+            title="All Feeds Synced" 
+            class="w-8 h-8 rounded-full bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-500 shadow-lg shadow-emerald-500/20 hover:scale-105 transition-transform"
+          >
+            <svg class="w-4 h-4 animate-spin" style="animation-duration: 8s;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Thin line with faded ends (Expanded Only) -->
+      <div class="faded-line expanded-only"></div>
+
+      <!-- Developer Credit (Expanded Only) -->
+      <div class="expanded-only px-1 space-y-1">
+        <p class="text-xs font-semibold text-slate-700 dark:text-slate-300">Developed by Devansh</p>
+        <a 
+          href="https://github.com/DvnshG764/watcher" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-1.5 text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+          <span>DvnshG764</span>
+        </a>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ================= MAIN CONTENT WORKSPACE ================= -->
+  <div class="flex-1 flex flex-col min-w-0 relative z-10">
+    
+    <!-- Top Workspace Header (Centered Theme-Matched Title) -->
+    <header class="sticky top-0 z-30 backdrop-blur-md bg-white/40 dark:bg-slate-950/40 border-b border-slate-300/50 dark:border-slate-800/60 px-6 lg:px-10 h-16 relative flex items-center justify-center">
+      <h1 id="workspace-title" class="text-xl sm:text-2xl font-black tracking-tight uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 dark:from-white dark:via-indigo-200 dark:to-indigo-400 text-center">
+        EXPLOIT RADAR
+      </h1>
+      <div class="absolute right-6 lg:right-10 flex items-center gap-2">
+        <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-500/25 font-semibold">
+          Live Threat Feed
+        </span>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 px-6 lg:px-10 py-7 max-w-[1600px] w-full mx-auto space-y-8">
+
+      <!-- ================= SEARCH RESULTS VIEW ================= -->
+      <section id="search-view" class="hidden space-y-5">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-300/60 dark:border-slate-800">
+          <div class="flex items-center gap-3">
+            <h2 class="text-lg font-extrabold tracking-tight text-indigo-700 dark:text-indigo-300">Watcher Search Results</h2>
+            <span id="search-count" class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30">
+              0 results
+            </span>
+          </div>
+          <button onclick="clearSearch()" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">
+            ← Return to Active Feed
+          </button>
+        </div>
+
+        <div id="search-results-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+      </section>
+
+      <!-- ================= 1. EXPLOIT RADAR VIEW ================= -->
+      <section id="view-radar">
         
-        <!-- Column 1: CISA KEV (Exploited in the Wild) -->
-        <div class="flex flex-col">
-          <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-darkBorder mb-4">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
-              <h2 class="text-lg font-bold">CISA KEV</h2>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/70 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900">Exploited in the Wild</span>
+        <!-- Two-Column Split with Vertical Separating Line -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left Column: CISA KEV (Exploited in the Wild) -->
+          <div class="lg:col-span-6 space-y-5">
+            <div class="neu-glass-card kev-card-glow rounded-2xl p-5 flex items-center justify-between">
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-2.5">
+                  <!-- Static Red Dot (No Flash) -->
+                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+                  <h2 class="text-xl font-black tracking-tight text-rose-700 dark:text-rose-100">CISA KEV</h2>
+                </div>
+                <span class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-600 dark:text-rose-300 border border-rose-500/30">
+                  Exploited in the Wild
+                </span>
+              </div>
+              <div class="text-right">
+                <span id="kpi-kev-count" class="text-4xl font-black font-mono text-rose-600 dark:text-rose-400 tracking-tight block leading-none">
+                  0
+                </span>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mt-1 block">Active Entries</span>
+              </div>
             </div>
-            <span id="kev-count" class="text-xs text-gray-400">Loading...</span>
-          </div>
-          <div id="radar-kev-list" class="space-y-3 overflow-y-auto max-h-[78vh] pr-1"></div>
-        </div>
 
-        <!-- Column 2: Exploit Radar (Pre-KEV Signals) -->
-        <div class="flex flex-col">
-          <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-darkBorder mb-4">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-              <h2 class="text-lg font-bold">Exploit Radar</h2>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-900">Pre-KEV Signals</span>
+            <!-- Vertical Feed Cards Stack (Individually Scrollable) -->
+            <div id="radar-kev-list" class="flex flex-col gap-5 overflow-y-auto max-h-[74vh] pr-1.5"></div>
+          </div>
+
+          <!-- Right Column: Exploit Radar (Early Warning) with Left Divider on Desktop -->
+          <div class="lg:col-span-6 lg:border-l lg:border-slate-300/70 dark:lg:border-slate-800/90 lg:pl-8 space-y-5">
+            <div class="neu-glass-card early-card-glow rounded-2xl p-5 flex items-center justify-between">
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+                  <h2 class="text-xl font-black tracking-tight text-amber-700 dark:text-amber-100">Exploit Radar</h2>
+                </div>
+                <span class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">
+                  Early Warning
+                </span>
+              </div>
+              <div class="text-right">
+                <span id="kpi-early-count" class="text-4xl font-black font-mono text-amber-600 dark:text-amber-400 tracking-tight block leading-none">
+                  0
+                </span>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mt-1 block">Pre-KEV Signals</span>
+              </div>
             </div>
-            <span id="early-count" class="text-xs text-gray-400">Loading...</span>
+
+            <!-- Vertical Feed Cards Stack (Individually Scrollable) -->
+            <div id="radar-early-list" class="flex flex-col gap-5 overflow-y-auto max-h-[74vh] pr-1.5"></div>
           </div>
-          <div id="radar-early-list" class="space-y-3 overflow-y-auto max-h-[78vh] pr-1"></div>
+
         </div>
+      </section>
 
-      </div>
-    </section>
+      <!-- ================= 2. VENDOR FOCUS VIEW (No Page Description) ================= -->
+      <section id="view-vendor" class="hidden space-y-6">
+        <!-- Dynamic Vendor Filter Pills (Centered) -->
+        <div id="vendor-pills" class="flex flex-wrap justify-center gap-2"></div>
 
-    <!-- 2. VENDOR FOCUS VIEW -->
-    <section id="view-vendor" class="hidden space-y-6">
-      <div class="pb-4 border-b border-gray-200 dark:border-darkBorder">
-        <h2 class="text-lg font-bold">Vendor Focus</h2>
-        <p class="text-xs text-gray-500 dark:text-gray-400">Filtered threat intelligence for tracked infrastructure components</p>
-      </div>
+        <!-- Vendor Cards Grid -->
+        <div id="vendor-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+      </section>
 
-      <!-- Horizontal Vendor Badges Filter (Dynamic from config/vendors.json) -->
-      <div id="vendor-pills" class="flex flex-wrap gap-2"></div>
+      <!-- ================= 3. CURATED NEWS FEED VIEW (No Page Description) ================= -->
+      <section id="view-news" class="hidden space-y-6">
+        <!-- Dynamic News Source Filter Pills (Centered) -->
+        <div id="news-source-pills" class="flex flex-wrap justify-center gap-2"></div>
 
-      <!-- Vendor Cards Grid -->
-      <div id="vendor-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-    </section>
+        <!-- News Cards Grid -->
+        <div id="news-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+      </section>
 
-    <!-- 3. CURATED NEWS FEED VIEW -->
-    <section id="view-news" class="hidden space-y-6">
-      <div class="pb-4 border-b border-gray-200 dark:border-darkBorder">
-        <h2 class="text-lg font-bold">Curated Threat News</h2>
-        <p class="text-xs text-gray-500 dark:text-gray-400">Filtered security intelligence correlated with CVEs and tracked vendors</p>
-      </div>
-
-      <!-- Horizontal News Source Badges Filter (Dynamic from config/feeds.json) -->
-      <div id="news-source-pills" class="flex flex-wrap gap-2"></div>
-
-      <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-    </section>
-
-  </main>
-
-  <!-- ================= PERSISTENT BOTTOM SYNC BAR ================= -->
-  <footer class="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 dark:border-darkBorder bg-white/95 dark:bg-darkCard/95 backdrop-blur py-2.5 px-4 sm:px-6 lg:px-8 text-xs text-gray-500 dark:text-gray-400 shadow-md">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>Sync Engine: <span id="meta-sync-time" class="font-medium text-gray-700 dark:text-gray-300">Checking...</span></span>
-      </div>
-      <div class="flex items-center gap-4 text-[11px]">
-        <span id="meta-counts" class="font-medium text-gray-700 dark:text-gray-300">Developed by Devansh Goel</span>
-        <span>•</span>
-        <a href="https://github.com/DvnshG764/watcher" target="_blank" class="hover:text-indigo-500 transition-colors font-medium">GitHub Repository</a>
-      </div>
-    </div>
-  </footer>
+    </main>
+  </div>
 
   <!-- Scripts -->
   <script src="js/app.js"></script>

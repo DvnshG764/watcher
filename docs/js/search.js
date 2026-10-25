@@ -1,137 +1,148 @@
-let cweMap = {};
-
-// Load static CWE definitions with path fallback
-async function loadCWE() {
-  const paths = ['data/cwe_definitions.json', './data/cwe_definitions.json', '../data/cwe_definitions.json', 'docs/data/cwe_definitions.json'];
-  for (const p of paths) {
-    try {
-      const res = await fetch(p);
-      if (res.ok) {
-        cweMap = await res.json();
-        break;
-      }
-    } catch (e) {}
-  }
-}
-loadCWE();
-
-const searchInput = document.getElementById('global-search');
+// =========================================================================
+// GLOBAL WATCHER SEARCH (Sidebar Search 1)
+// =========================================================================
+const globalSearchInput = document.getElementById('global-search');
+const clearSearchBtn = document.getElementById('clear-search-btn');
 const searchView = document.getElementById('search-view');
-const searchList = document.getElementById('search-results-list');
-const searchCount = document.getElementById('search-count');
+const searchResultsGrid = document.getElementById('search-results-grid');
+const searchCountBadge = document.getElementById('search-count');
 
-searchInput.addEventListener('input', (e) => {
-  const query = e.target.value.trim().toLowerCase();
-  if (query.length < 2) {
-    searchView.classList.add('hidden');
-    return;
-  }
-  executeSearch(query);
-});
+if (globalSearchInput) {
+  globalSearchInput.addEventListener('input', (e) => {
+    const q = (e.target.value || '').trim().toLowerCase();
+    if (q.length === 0) {
+      clearSearch();
+      return;
+    }
+    if (clearSearchBtn) clearSearchBtn.classList.remove('hidden');
+    executeWatcherSearch(q);
+  });
+}
 
 function clearSearch() {
-  searchInput.value = '';
-  searchView.classList.add('hidden');
+  if (globalSearchInput) globalSearchInput.value = '';
+  if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+  if (searchView) searchView.classList.add('hidden');
+  if (typeof switchTab === 'function') {
+    switchTab(typeof activeTab !== 'undefined' ? activeTab : 'radar');
+  }
 }
 
-function executeSearch(query) {
-  searchView.classList.remove('hidden');
-  const resultsHtml = [];
+function executeWatcherSearch(query) {
+  ['radar', 'vendor', 'news'].forEach(t => {
+    const el = document.getElementById(`view-${t}`);
+    if (el) el.classList.add('hidden');
+  });
+  if (searchView) searchView.classList.remove('hidden');
+
+  const cards = [];
+  const seenCves = new Set();
 
   // 1. Search CWEs
-  Object.keys(cweMap).forEach(cweId => {
-    const item = cweMap[cweId];
-    if (cweId.toLowerCase().includes(query) || item.name.toLowerCase().includes(query) || (item.description && item.description.toLowerCase().includes(query))) {
-      resultsHtml.push(`
-        <div class="vuln-card p-4 rounded-xl border border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
+  Object.keys(cweMap || {}).forEach(cweId => {
+    const item = cweMap[cweId] || {};
+    const blob = `${cweId} ${item.name || ''} ${item.description || ''}`.toLowerCase();
+    if (blob.includes(query)) {
+      cards.push(`
+        <article class="neu-glass-card vendor-card-glow rounded-2xl p-5 flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between gap-2 mb-1.5">
-              <span class="text-xs font-bold text-indigo-500 uppercase">CWE Weakness</span>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-gray-100 dark:bg-darkBase border border-gray-300 dark:border-darkBorder">CWE</span>
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <a href="https://cwe.mitre.org/data/definitions/${cweId.replace('CWE-', '')}.html" target="_blank" rel="noopener noreferrer" class="text-lg font-extrabold font-mono text-indigo-600 dark:text-indigo-400 hover:underline">
+                ${cweId}: ${item.name || ''}
+              </a>
+              <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30">${item.severity || 'CWE'}</span>
             </div>
-            <a href="https://cwe.mitre.org/data/definitions/${cweId.replace('CWE-', '')}.html" target="_blank" rel="noopener noreferrer" class="text-base font-bold font-mono text-indigo-600 dark:text-indigo-400 hover:underline">
-              ${cweId}: ${item.name}
-            </a>
-            <div class="text-xs font-medium text-gray-500 my-1">Severity: ${item.severity || 'UNKNOWN'}</div>
-            <p class="text-xs text-gray-600 dark:text-gray-400 line-clamp-3 leading-relaxed mb-3">${item.description}</p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mt-2">${item.description || ''}</p>
           </div>
-          <a href="https://cwe.mitre.org/data/definitions/${cweId.replace('CWE-', '')}.html" target="_blank" rel="noopener noreferrer" class="text-xs text-indigo-500 hover:underline pt-2 border-t border-gray-100 dark:border-darkBorder/60">
-            MITRE Definition →
-          </a>
-        </div>
+        </article>
       `);
     }
   });
 
-  // 2. Search KEV (Standardized Cards)
-  (trendingData.confirmed_in_wild || []).forEach(k => {
-    const blob = `${k.cve_id} ${k.vendor} ${k.product} ${k.description}`.toLowerCase();
+  // 2. Search CISA KEV
+  ((trendingData && trendingData.confirmed_in_wild) || []).forEach(k => {
+    const blob = `${k.cve_id || ''} ${k.vendor || ''} ${k.product || ''} ${k.description || ''} ${k.vuln_name || ''}`.toLowerCase();
     if (blob.includes(query)) {
-      resultsHtml.push(buildStandardThreatCard(k, 'radar_kev'));
+      seenCves.add(k.cve_id);
+      cards.push(buildStandardThreatCard(k, 'radar_kev'));
     }
   });
 
-  // 3. Search Exploit Radar (Standardized Cards)
-  (trendingData.early_warning || []).forEach(w => {
-    const blob = `${w.cve_id} ${w.vendor} ${w.product} ${w.description}`.toLowerCase();
-    if (blob.includes(query)) {
-      resultsHtml.push(buildStandardThreatCard(w, 'radar_early'));
+  // 3. Search Exploit Radar (Early Warning)
+  ((trendingData && trendingData.early_warning) || []).forEach(w => {
+    const blob = `${w.cve_id || ''} ${w.vendor || ''} ${w.product || ''} ${w.description || ''}`.toLowerCase();
+    if (blob.includes(query) && !seenCves.has(w.cve_id)) {
+      seenCves.add(w.cve_id);
+      cards.push(buildStandardThreatCard(w, 'radar_early'));
     }
   });
 
-  // 4. Search News Feed
+  // 4. Search Vendor Focus Advisories (Deduplicated against KEV & Radar)
+  (vendorData || []).forEach(v => {
+    const blob = `${v.cve_id || ''} ${v.vendor || ''} ${v.product || ''} ${v.description || ''}`.toLowerCase();
+    if (blob.includes(query) && !seenCves.has(v.cve_id)) {
+      seenCves.add(v.cve_id);
+      cards.push(buildStandardThreatCard(v, 'vendor'));
+    }
+  });
+
+  // 5. Search News Feed
   (newsData || []).forEach(n => {
-    const blob = `${n.title} ${n.snippet} ${(n.matched_cves || []).join(' ')} ${(n.matched_vendors || []).join(' ')}`.toLowerCase();
+    const blob = `${n.title || ''} ${n.source || ''} ${n.snippet || ''} ${(n.matched_cves || []).join(' ')} ${(n.matched_vendors || []).join(' ')}`.toLowerCase();
     if (blob.includes(query)) {
-      resultsHtml.push(`
-        <div class="vuln-card p-4 rounded-xl border border-gray-200 dark:border-darkBorder bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
+      cards.push(`
+        <article class="neu-glass-card vendor-card-glow rounded-2xl p-5 flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between text-[11px] text-gray-400 mb-2">
-              <span class="font-semibold text-indigo-500">${n.source}</span>
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
+              <span class="font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">${n.source || ''}</span>
               <span>${n.published || ''}</span>
             </div>
-            <a href="${n.url}" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors block mb-2 leading-snug">
-              ${n.title}
+            <a href="${n.url || '#'}" target="_blank" rel="noopener noreferrer" class="text-base font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 block mb-2 leading-snug">
+              ${n.title || ''}
             </a>
-            <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
-              ${formatExpandableText(n.snippet, 180)}
+            <div class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+              ${typeof formatExpandableText === 'function' ? formatExpandableText(n.snippet, 175) : (n.snippet || '')}
             </div>
           </div>
-        </div>
+          <div class="pt-3 border-t border-slate-200/70 dark:border-slate-800/80 flex flex-wrap items-center gap-2 text-[11px]">
+            ${(n.matched_cves || []).map(cve => `
+              <a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank" rel="noopener noreferrer" class="font-mono font-bold px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30 hover:underline">
+                ${cve}
+              </a>
+            `).join('')}
+            ${(n.matched_vendors || []).map(v => `
+              <span class="px-2.5 py-1 rounded-full bg-slate-500/10 text-slate-600 dark:text-slate-300 border border-slate-300/50 dark:border-slate-700 font-medium">
+                ${v}
+              </span>
+            `).join('')}
+          </div>
+        </article>
       `);
     }
   });
 
-  // 5. Fallback for CVEs not present in active datasets
-  const cveFormatMatch = query.match(/cve-\d{4}-\d{4,7}/i);
-  if (cveFormatMatch && resultsHtml.length === 0) {
-    const rawCve = cveFormatMatch[0].toUpperCase();
-    resultsHtml.push(`
-      <div class="vuln-card p-4 rounded-xl border border-indigo-300 dark:border-indigo-800 bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between col-span-full max-w-lg">
-        <div>
-          <span class="text-xs font-bold text-indigo-500 uppercase tracking-wide">External NVD Lookup</span>
-          <h4 class="text-base font-bold font-mono text-gray-900 dark:text-gray-100 my-1">${rawCve}</h4>
-          <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">
-            This CVE is not currently indexed in active Watcher threat feeds. You can query the National Vulnerability Database directly.
-          </p>
-        </div>
-        <a href="https://nvd.nist.gov/vuln/detail/${rawCve}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold transition-colors">
-          Open ${rawCve} on NVD →
-        </a>
-      </div>
-    `);
+  if (searchCountBadge) {
+    searchCountBadge.textContent = `${cards.length} result${cards.length === 1 ? '' : 's'}`;
   }
 
-  searchCount.textContent = `${resultsHtml.length} result${resultsHtml.length === 1 ? '' : 's'}`;
-
-  if (resultsHtml.length === 0) {
-    searchList.innerHTML = `
-      <div class="col-span-full py-8 text-center text-sm text-gray-400">
-        No matches found in active Watcher feeds. Use the <strong>CVE-YYYY-NNNNN</strong> box in the navbar for direct NVD lookups.
+  if (cards.length === 0) {
+    searchResultsGrid.innerHTML = `
+      <div class="col-span-full neu-glass-card rounded-2xl p-12 text-center space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center mx-auto text-indigo-400">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+          </svg>
+        </div>
+        <p class="text-sm font-bold text-slate-800 dark:text-slate-100">
+          No Results Found across Watcher. If you want to search up a particular CVE, try the CVE Search
+        </p>
+        <p class="text-xs text-slate-500 dark:text-slate-400">
+          Use the <span class="font-mono font-semibold text-indigo-500">CVE-[Year]-[ID]</span> box in the left sidebar to query NIST NVD directly.
+        </p>
       </div>
     `;
     return;
   }
 
-  searchList.innerHTML = resultsHtml.join('');
+  searchResultsGrid.innerHTML = cards.join('');
 }

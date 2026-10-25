@@ -1,4 +1,263 @@
-/* Custom Scrollbars */
+/* ==========================================================================
+   THEME-AGNOSTIC CSS VARIABLES (DARK & LIGHT GLASS + NEUMORPHISM)
+   ========================================================================== */
+:root {
+  /* Light Mode Defaults */
+  --bg-base: #EEF2F8;
+  --bg-gradient: radial-gradient(circle at 55% 30%, #F8FAFC 0%, #E2E8F4 70%, #DAE2F0 100%);
+  --glass-surface: rgba(255, 255, 255, 0.72);
+  --glass-card: rgba(255, 255, 255, 0.84);
+  --glass-border: rgba(255, 255, 255, 0.95);
+  --subtle-border: rgba(148, 163, 184, 0.25);
+
+  /* Neumorphic Dual Shadows (Light) */
+  --neu-card-shadow: 
+    10px 10px 24px rgba(163, 177, 198, 0.45),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 0 1px 1px rgba(255, 255, 255, 1);
+
+  --neu-inset-shadow: 
+    inset 3px 3px 7px rgba(163, 177, 198, 0.45),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.95);
+
+  --radar-line: rgba(99, 102, 241, 0.14);
+  --radar-sweep: conic-gradient(from 0deg, transparent 75%, rgba(99, 102, 241, 0.10) 96%, rgba(99, 102, 241, 0.28) 100%);
+
+  --text-main: #0F172A;
+  --text-muted: #475569;
+  --text-dim: #64748B;
+
+  --kev-glow: rgba(239, 68, 68, 0.16);
+  --kev-border: rgba(239, 68, 68, 0.45);
+  --early-glow: rgba(245, 158, 11, 0.16);
+  --early-border: rgba(245, 158, 11, 0.45);
+  --vendor-glow: rgba(99, 102, 241, 0.2);
+}
+
+html.dark {
+  /* Dark Mode Overrides */
+  --bg-base: #090B10;
+  --bg-gradient: radial-gradient(circle at 55% 30%, #131726 0%, #090B10 70%, #06070B 100%);
+  --glass-surface: rgba(17, 20, 29, 0.78);
+  --glass-card: rgba(22, 26, 38, 0.74);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --subtle-border: rgba(255, 255, 255, 0.07);
+
+  /* Neumorphic Dual Shadows (Dark) */
+  --neu-card-shadow: 
+    10px 12px 28px rgba(0, 0, 0, 0.65),
+    -4px -4px 14px rgba(255, 255, 255, 0.025),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+  --neu-inset-shadow: 
+    inset 4px 4px 9px rgba(0, 0, 0, 0.75),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.03);
+
+  --radar-line: rgba(99, 102, 241, 0.16);
+  --radar-sweep: conic-gradient(from 0deg, transparent 75%, rgba(99, 102, 241, 0.08) 95%, rgba(129, 140, 248, 0.25) 100%);
+
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+
+  --kev-glow: rgba(239, 68, 68, 0.20);
+  --kev-border: rgba(239, 68, 68, 0.45);
+  --early-glow: rgba(245, 158, 11, 0.18);
+  --early-border: rgba(245, 158, 11, 0.45);
+  --vendor-glow: rgba(99, 102, 241, 0.25);
+}
+
+body {
+  background: var(--bg-gradient);
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================================================
+   MINIMAL ANIMATED RADAR BACKGROUND
+   ========================================================================== */
+.radar-canvas {
+  position: fixed;
+  top: 50%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  width: 960px;
+  height: 960px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.radar-sweep-cone {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--radar-sweep);
+  animation: radarSpin 16s linear infinite;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 55%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 55%, transparent 70%);
+}
+
+@keyframes radarSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   GLASSMORPHISM & NEUMORPHISM SURFACES
+   ========================================================================== */
+.glass-sidebar {
+  background: var(--glass-surface);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-right: 1px solid var(--subtle-border);
+  box-shadow: 6px 0 30px rgba(0, 0, 0, 0.12);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neu-glass-card {
+  background: var(--glass-card);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--neu-card-shadow);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.neu-glass-card:hover {
+  transform: translateY(-3px);
+}
+
+/* KEV Card Neon Perimeter */
+.kev-card-glow {
+  border-color: var(--kev-border);
+  box-shadow: var(--neu-card-shadow), 0 0 24px -4px var(--kev-glow);
+}
+.kev-card-glow:hover {
+  box-shadow: var(--neu-card-shadow), 0 0 32px 0px var(--kev-glow);
+}
+
+/* Early Warning Card Neon Perimeter */
+.early-card-glow {
+  border-color: var(--early-border);
+  box-shadow: var(--neu-card-shadow), 0 0 24px -4px var(--early-glow);
+}
+.early-card-glow:hover {
+  box-shadow: var(--neu-card-shadow), 0 0 32px 0px var(--early-glow);
+}
+
+/* Vendor Card Neon Perimeter */
+.vendor-card-glow {
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: var(--neu-card-shadow), 0 0 22px -5px var(--vendor-glow);
+}
+
+/* Neumorphic Inset Input Well */
+.neu-inset {
+  background: var(--bg-base);
+  box-shadow: var(--neu-inset-shadow);
+  border: 1px solid var(--subtle-border);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.neu-inset:focus-within {
+  border-color: #6366F1;
+  box-shadow: var(--neu-inset-shadow), 0 0 0 2px rgba(99, 102, 241, 0.22);
+}
+
+/* Recessed Metadata Box inside Cards */
+.recessed-box {
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--subtle-border);
+  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.06);
+}
+html.dark .recessed-box {
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.65);
+}
+
+/* Faded Horizontal Divider Line */
+.faded-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(148, 163, 184, 0.45) 50%, transparent 100%);
+}
+html.dark .faded-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.14) 50%, transparent 100%);
+}
+
+/* Faded Vertical Column Separator Line */
+.faded-vline {
+  width: 1px;
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.35) 0%, rgba(148, 163, 184, 0.25) 50%, transparent 100%);
+}
+html.dark .faded-vline {
+  background: linear-gradient(180deg, rgba(129, 140, 248, 0.4) 0%, rgba(255, 255, 255, 0.12) 50%, transparent 100%);
+}
+
+/* Active Sidebar Tab Pill */
+.nav-item {
+  position: relative;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+}
+.nav-item:hover {
+  color: var(--text-main);
+  background: rgba(99, 102, 241, 0.07);
+}
+.nav-item.active {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0.34) 100%);
+  color: #4F46E5;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 16px -2px rgba(99, 102, 241, 0.25);
+}
+html.dark .nav-item.active {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.14) 0%, rgba(79, 70, 229, 0.42) 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(129, 140, 248, 0.32);
+  box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.4);
+}
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 18%;
+  height: 64%;
+  width: 3.5px;
+  border-radius: 4px 0 0 4px;
+  background: #818CF8;
+  box-shadow: 0 0 10px #6366F1;
+}
+
+/* ==========================================================================
+   SIDEBAR COLLAPSED / EXPANDED STATE ENGINE (PURE CSS DRIVEN)
+   ========================================================================== */
+#sidebar.collapsed {
+  width: 78px !important;
+  padding-left: 0.65rem;
+  padding-right: 0.65rem;
+}
+#sidebar.collapsed .brand-header-row {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+}
+#sidebar.collapsed .expanded-only {
+  display: none !important;
+}
+#sidebar:not(.collapsed) .collapsed-only {
+  display: none !important;
+}
+#sidebar.collapsed .nav-item {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Custom Sleek Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -7,17 +266,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.4);
-  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 163, 175, 0.7);
-}
-
-/* Card Transitions */
-.vuln-card {
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-}
-.vuln-card:hover {
-  transform: translateY(-2px);
+  background: rgba(99, 102, 241, 0.5);
 }
