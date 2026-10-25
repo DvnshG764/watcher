@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ADMIN_USERNAME = "dvnshg";
   
   
-  const ENCRYPTED_GITHUB_TOKEN = "U2FsdGVkX1/z7ieNuJ77T6SlA3LQukRBvBb/mlX80JluYVMer1+0P48bmz9VR9ie"; 
+  const ENCRYPTED_GITHUB_TOKEN = "U2FsdGVkX18pONW4Vrfm9KOxKbwDNmv6PRuOSKnS67UWGS6AxJg35JbPdaLp5OQcNXelVA9+wJySAhAapzcqd/bM30WFdUXmR+rNacJO/i2CcJqqBZz3nn5PL6ZRjHozMVmjEi8rObQjjvm5CegRIQ=="; 
 
   if (syncBtn && syncStatus) {
     syncBtn.addEventListener("click", async () => {
