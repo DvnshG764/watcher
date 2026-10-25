@@ -450,10 +450,6 @@ def main():
     news_articles = fetch_news(vendor_rules)
     nvd_delta = fetch_nvd_recent()
 
-cisa_kev = fetch_cisa_kev()
-    poc_cves, nuclei_cves = fetch_poc_and_nuclei()
-    news_articles = fetch_news(vendor_rules)
-    nvd_delta = fetch_nvd_recent()
 
     # Override cached CVSS scores with fresh NVD modifications from the last 5 days
     for cid, nvd_info in nvd_delta.items():
