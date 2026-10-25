@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ADMIN_USERNAME = "dvnshg";
   
   
-  const ENCRYPTED_GITHUB_TOKEN = "U2FsdGVkX1+bVCFTKFp4guqwt16vzPGO/FRGBj/GP+jEIYwDBE3LYboJHNg4fvMtMYjstgj/DYm77d//Gco2lwrVx1NKy6x3/vCHKP/qO+jljJAI9U77iYHOtfs8kEice8nnUBlH7NPP3UySds2ltA=="; 
+  const ENCRYPTED_GITHUB_TOKEN = "U2FsdGVkX1/z7ieNuJ77T6SlA3LQukRBvBb/mlX80JluYVMer1+0P48bmz9VR9ie"; 
 
   if (syncBtn && syncStatus) {
     syncBtn.addEventListener("click", async () => {
@@ -23,14 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const passwordInput = prompt("Enter Admin Password:");
       if (!passwordInput) return;
 
+passwordInput = passwordInput.trim(); // Protects against accidental invisible spaces
+
       // 2. Unscramble the GitHub Token
       let decryptedToken = "";
       try {
         const bytes = CryptoJS.AES.decrypt(ENCRYPTED_GITHUB_TOKEN, passwordInput);
         decryptedToken = bytes.toString(CryptoJS.enc.Utf8);
-      } catch (e) {}
+      } catch (e) {
+        console.error("Decryption failed.");
+      }
 
-      if (!decryptedToken.startsWith("ghp_")) {
+      // Check specifically for the fine-grained token prefix
+      if (!decryptedToken.startsWith("github_pat_")) {
         alert("Unauthorized: Incorrect password.");
         return;
       }
