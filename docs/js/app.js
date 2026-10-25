@@ -6,6 +6,7 @@ let cweMap = {};
 let configuredVendors = [];
 let configuredNewsSources = [];
 let selectedVendor = 'All';
+let selectedVendorSeverity = 'All';
 let selectedNewsSource = 'All';
 let activeTab = 'radar';
 
@@ -124,13 +125,26 @@ function formatExpandableText(text, limit = 155) {
   `;
 }
 
+function getCvssSeverity(score) {
+  if (score === null || score === undefined || score === '') return 'N/A';
+  const val = parseFloat(score);
+  if (isNaN(val)) return 'N/A';
+  if (val >= 9.0) return 'Critical';
+  if (val >= 7.0) return 'High';
+  if (val >= 4.0) return 'Medium';
+  if (val > 0) return 'Low';
+  return 'None';
+}
+
 function formatCvssBadge(score, cveId) {
   const nvdUrl = `https://nvd.nist.gov/vuln/detail/${cveId}`;
-  if (score === null || score === undefined || score === '') {
-    return `<a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-semibold px-2.5 py-1 rounded-full bg-slate-500/10 text-slate-400 border border-slate-400/20 hover:underline" title="Inspect on NVD">CVSS N/A</a>`;
+  if (score === null || score === undefined || score === '' || isNaN(parseFloat(score))) {
+    return `<a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-semibold px-2.5 py-1 rounded-full bg-slate-500/10 text-slate-400 border border-slate-400/20 hover:underline" title="Inspect on NVD">N/A</a>`;
   }
   const val = parseFloat(score);
-  let style = 'bg-slate-500/15 text-slate-300 border-slate-500/30';
+  const severity = getCvssSeverity(val);
+
+  let style = 'bg-slate-500/15 text-slate-600 dark:text-slate-300 border-slate-500/30';
   if (val >= 9.0) {
     style = 'bg-gradient-to-r from-amber-500/20 to-rose-500/25 text-amber-700 dark:text-amber-300 border-amber-500/45 shadow-sm shadow-amber-500/10';
   } else if (val >= 7.0) {
@@ -140,7 +154,7 @@ function formatCvssBadge(score, cveId) {
   }
   return `
     <a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-bold px-3 py-1 rounded-full border ${style} hover:scale-105 transition-transform" title="View CVSS Specification on NIST NVD">
-      CVSS ${val.toFixed(1)}
+      ${val.toFixed(1)} ${severity}
     </a>
   `;
 }
@@ -282,6 +296,47 @@ function renderRadar() {
   }
 }
 
+function renderVendorSeverityPills() {
+  const container = document.getElementById('vendor-severity-pills');
+  if (!container) return;
+
+  const severities = [
+    { label: 'All Severities', value: 'All' },
+    { label: 'Critical', value: 'Critical' },
+    { label: 'High', value: 'High' },
+    { label: 'Medium', value: 'Medium' },
+    { label: 'Low', value: 'Low' }
+  ];
+
+  container.innerHTML = severities.map(s => {
+    const isActive = s.value === selectedVendorSeverity;
+    let activeStyle = 'bg-indigo-600 text-white shadow-md shadow-indigo-500/30';
+    if (isActive && s.value === 'Critical') activeStyle = 'bg-rose-600 text-white shadow-md shadow-rose-500/30';
+    else if (isActive && s.value === 'High') activeStyle = 'bg-orange-600 text-white shadow-md shadow-orange-500/30';
+    else if (isActive && s.value === 'Medium') activeStyle = 'bg-amber-500 text-white shadow-md shadow-amber-500/30';
+    else if (isActive && s.value === 'Low') activeStyle = 'bg-slate-600 text-white shadow-md shadow-slate-500/30';
+
+    return `
+      <button 
+        onclick="filterVendorSeverity('${s.value}')" 
+        class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+          isActive 
+            ? activeStyle 
+            : 'neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40'
+        }"
+      >
+        ${s.label}
+      </button>
+    `;
+  }).join('');
+}
+
+function filterVendorSeverity(sevValue) {
+  selectedVendorSeverity = sevValue;
+  renderVendorSeverityPills();
+  renderVendorView();
+}
+
 function renderVendorPills() {
   const container = document.getElementById('vendor-pills');
   const vendors = ['All', ...configuredVendors];
@@ -309,14 +364,24 @@ function filterVendor(vName) {
 function renderVendorView() {
   const container = document.getElementById('vendor-grid');
   let filtered = vendorData || [];
+
   if (selectedVendor !== 'All') {
     filtered = filtered.filter(v => (v.vendor || '').toLowerCase() === selectedVendor.toLowerCase());
   }
 
+  if (selectedVendorSeverity !== 'All') {
+    filtered = filtered.filter(v => getCvssSeverity(v.cvss) === selectedVendorSeverity);
+  }
+
   if (filtered.length === 0) {
+    const filterDesc = [
+      selectedVendor !== 'All' ? selectedVendor : null,
+      selectedVendorSeverity !== 'All' ? `${selectedVendorSeverity} severity` : null
+    ].filter(Boolean).join(' • ') || 'All';
+
     container.innerHTML = `
       <div class="col-span-full neu-glass-card rounded-2xl p-10 text-center text-sm text-slate-400">
-        No advisories currently indexed for <strong class="text-slate-700 dark:text-slate-200">${selectedVendor}</strong>.
+        No advisories currently indexed for <strong class="text-slate-700 dark:text-slate-200">${filterDesc}</strong>.
       </div>
     `;
     return;
@@ -480,6 +545,7 @@ async function initDashboard() {
   }
 
   renderRadar();
+  renderVendorSeverityPills();
   renderVendorPills();
   renderVendorView();
   renderNewsSourcePills();
