@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const GITHUB_REPO = "DvnshG764/watcher";
   const WORKFLOW_FILE = "update_data.yml";
   const BRANCH = "v2";
-  const ADMIN_USERNAME = "admin"; // Change this to your preferred username
+  const ADMIN_USERNAME = "dvnshg";
   
-  // PASTE YOUR ENCRYPTED STRING HERE (Keep the quotes)
-  const ENCRYPTED_GITHUB_TOKEN = "U2FsdGVkX1...PASTE_YOURS_HERE"; 
+  
+  const ENCRYPTED_GITHUB_TOKEN = "U2FsdGVkX1+bVCFTKFp4guqwt16vzPGO/FRGBj/GP+jEIYwDBE3LYboJHNg4fvMtMYjstgj/DYm77d//Gco2lwrVx1NKy6x3/vCHKP/qO+jljJAI9U77iYHOtfs8kEice8nnUBlH7NPP3UySds2ltA=="; 
 
   if (syncBtn && syncStatus) {
     syncBtn.addEventListener("click", async () => {
