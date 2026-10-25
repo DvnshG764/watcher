@@ -6,8 +6,7 @@
   <title>Watcher</title>
 
   <!-- Favicon Placeholder -->
-  <link rel="icon" id="site-favicon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%234F46E5%22/><circle cx=%2250%22 cy=%2250%22 r=%2220%22 fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%228%22/></svg>">
-
+  <link rel="icon" id="site-favicon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22 fill=%22none%22 stroke=%22%236366F1%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M2 16C5 9 10 6 16 6s11 3 14 10c-3 7-8 10-14 10s-11-3-14-10z%22/><circle cx=%2216%22 cy=%2216%22 r=%225%22/><circle cx=%2216%22 cy=%2216%22 r=%229%22 stroke-dasharray=%222 3%22/><path d=%22M16 16l5-5%22 fill=%22%236366F1%22/></svg>">
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,12 +60,17 @@
           <div class="flex items-center gap-3 cursor-pointer group" onclick="switchTab('radar')">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 via-indigo-500 to-purple-600 p-[1.5px] shadow-lg shadow-indigo-500/25 shrink-0 transition-transform group-hover:scale-105">
               <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center relative overflow-hidden">
-                <!-- Placeholder Radar Logo SVG -->
-                <svg class="w-6 h-6 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <circle cx="12" cy="12" r="9" stroke-opacity="0.45"/>
-                  <circle cx="12" cy="12" r="5" stroke-dasharray="2 2" stroke-opacity="0.75"/>
-                  <circle cx="12" cy="12" r="1.5" fill="#818CF8"/>
-                  <path d="M12 12L18.5 5.5" stroke="#818CF8" stroke-width="2" stroke-linecap="round"/>
+                <!-- Eye + Radar Merged Logo SVG -->
+                <svg class="w-6 h-6 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Outer Eye Contour (The Iris/Sclera boundary) -->
+                  <path d="M2 12C4.5 7.5 8 5 12 5s7.5 2.5 10 7c-2.5 4.5-6 7-10 7s-7.5-2.5-10-7z" stroke-opacity="0.85"/>
+                  <!-- Concentric Radar Rings inside the Eye -->
+                  <circle cx="12" cy="12" r="3.5" stroke-opacity="0.65"/>
+                  <circle cx="12" cy="12" r="6.5" stroke-dasharray="2 3" stroke-opacity="0.45"/>
+                  <!-- Radar Sweep Beam (Acting as the Pupil/Gaze) -->
+                  <path d="M12 12L17.5 6.5" stroke="#818CF8" stroke-width="2"/>
+                  <!-- Center Core Dot -->
+                  <circle cx="12" cy="12" r="1.2" fill="#818CF8" stroke="none"/>
                 </svg>
               </div>
             </div>
