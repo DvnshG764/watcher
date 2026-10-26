@@ -82,7 +82,7 @@ function toggleTheme() {
 // =========================================================================
 function switchTab(tabName) {
   activeTab = tabName;
-  ['radar', 'vendor', 'news', 'brief'].forEach(t => {
+  ['radar', 'vendor', 'cve-search','news', 'brief'].forEach(t => {
     document.getElementById(`nav-${t}`)?.classList.toggle('active', t === tabName);
     document.getElementById(`view-${t}`)?.classList.toggle('hidden', t !== tabName);
   });
@@ -92,11 +92,16 @@ function switchTab(tabName) {
   const titles = {
     radar: 'EXPLOIT RADAR',
     vendor: 'VENDOR FOCUS',
+    'cve-search': 'CVE LOOKUP',
     news: 'CURATED THREAT NEWS',
     brief: 'THREAT BRIEF GENERATOR'
   };
   const titleEl = document.getElementById('workspace-title');
   if (titleEl) titleEl.textContent = titles[tabName] || 'EXPLOIT RADAR';
+
+  if (tabName === 'cve-search' && document.getElementById('search-cve-rows')?.children.length === 0) {
+    addSearchCveRow();
+  }
 
   if (tabName === 'brief' && currentBriefItems.length === 0) {
     generateThreatBrief();
@@ -1161,5 +1166,278 @@ async function sendBriefToTeams() {
     }
   }
 }
+
+// =========================================================================
+// 10. DEDICATED CVE SEARCH & TABLE GENERATOR
+// =========================================================================
+let currentCveTableItems = [];
+
+function addSearchCveRow(yearVal = '', idVal = '') {
+  const container = document.getElementById('search-cve-rows');
+  if (!container) return;
+
+  const row = document.createElement('div');
+  row.className = 'search-cve-row neu-inset rounded-xl p-1.5 flex items-center gap-1';
+
+  row.innerHTML = `
+    <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400 pl-1.5 shrink-0">CVE-</span>
+    <input 
+      type="text" 
+      placeholder="Year" 
+      maxlength="4" 
+      value="${yearVal}"
+      inputmode="numeric"
+      class="search-cve-year w-12 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0"
+    />
+    <span class="font-mono text-slate-400 text-xs shrink-0">-</span>
+    <input 
+      type="text" 
+      placeholder="ID" 
+      maxlength="7" 
+      value="${idVal}"
+      inputmode="numeric"
+      class="search-cve-id w-16 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1.5 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0"
+    />
+    <button 
+      type="button"
+      onclick="addSearchCveRow()" 
+      title="Add another CVE"
+      class="p-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm transition-all shrink-0 cursor-pointer"
+    >
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
+      </svg>
+    </button>
+    <button 
+      type="button"
+      onclick="removeSearchCveRow(this)" 
+      title="Remove row"
+      class="p-1.5 rounded-lg hover:bg-rose-500/15 text-slate-400 hover:text-rose-500 transition-all shrink-0 cursor-pointer"
+    >
+      ✕
+    </button>
+  `;
+
+  const yearInput = row.querySelector('.search-cve-year');
+  const idInput = row.querySelector('.search-cve-id');
+  yearInput.addEventListener('input', (e) => {
+    if (e.target.value.length === 4) idInput.focus();
+  });
+  idInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') executeCveSearchTable();
+  });
+
+  container.appendChild(row);
+  yearInput.focus();
+}
+
+function removeSearchCveRow(btn) {
+  const container = document.getElementById('search-cve-rows');
+  if (!container) return;
+  if (container.children.length > 1) {
+    btn.closest('.search-cve-row').remove();
+  } else {
+    const row = btn.closest('.search-cve-row');
+    row.querySelector('.search-cve-year').value = '';
+    row.querySelector('.search-cve-id').value = '';
+  }
+}
+
+async function executeCveSearchTable() {
+  const btnText = document.getElementById('btn-cve-search-text');
+  const invalidBanner = document.getElementById('cve-search-invalid-banner');
+  const tbodyEl = document.getElementById('cve-search-table-body');
+  const countBadge = document.getElementById('cve-search-count');
+
+  if (invalidBanner) invalidBanner.classList.add('hidden');
+  if (btnText) btnText.textContent = 'Searching...';
+
+  const rows = document.querySelectorAll('#search-cve-rows .search-cve-row');
+  const requestedIds = [];
+  const invalidCves = [];
+
+  rows.forEach(r => {
+    const y = (r.querySelector('.search-cve-year')?.value || '').trim();
+    const id = (r.querySelector('.search-cve-id')?.value || '').trim();
+    if (!y && !id) return;
+    const candidate = `CVE-${y}-${id}`.toUpperCase();
+    if (!/^CVE-\d{4}-\d{4,7}$/.test(candidate)) {
+      invalidCves.push(candidate);
+    } else if (!requestedIds.includes(candidate)) {
+      requestedIds.push(candidate);
+    }
+  });
+
+  if (requestedIds.length === 0) {
+    if (btnText) btnText.textContent = 'Generate Table';
+    alert('Please enter at least one valid CVE ID.');
+    return;
+  }
+
+  const localMap = getLocalCvePoolMap();
+  const resolvedItems = [];
+
+  for (const cid of requestedIds) {
+    const resolved = await fetchAndValidateCustomCve(cid, localMap);
+    if (resolved) {
+      resolvedItems.push(resolved);
+    } else {
+      invalidCves.push(cid);
+    }
+  }
+
+  if (btnText) btnText.textContent = 'Generate Table';
+
+  if (invalidCves.length > 0 && invalidBanner) {
+    invalidBanner.textContent = `Excluded invalid or unpublished CVE IDs: ${invalidCves.join(', ')}`;
+    invalidBanner.classList.remove('hidden');
+  }
+
+  currentCveTableItems = resolvedItems;
+  if (countBadge) countBadge.textContent = `${resolvedItems.length} entr${resolvedItems.length === 1 ? 'y' : 'ies'}`;
+
+  if (resolvedItems.length === 0) {
+    tbodyEl.innerHTML = `
+      <tr>
+        <td colspan="10" class="py-8 text-center text-slate-400">
+          No valid vulnerability records found for the requested CVE IDs.
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+  tbodyEl.innerHTML = resolvedItems.map(item => {
+    const cveId = item.cve_id;
+    const nvdUrl = `https://nvd.nist.gov/vuln/detail/${cveId}`;
+    const scoreVal = (item.cvss !== null && item.cvss !== undefined && !isNaN(parseFloat(item.cvss)))
+      ? parseFloat(item.cvss).toFixed(1)
+      : 'N/A';
+    const severity = getCvssSeverity(item.cvss);
+
+    let sevBadgeStyle = 'bg-slate-500/15 text-slate-600 dark:text-slate-300 border-slate-500/30';
+    if (severity === 'Critical') sevBadgeStyle = 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-500/40';
+    else if (severity === 'High') sevBadgeStyle = 'bg-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-500/40';
+    else if (severity === 'Medium') sevBadgeStyle = 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/40';
+
+    const affected = item.product && item.product !== 'Unknown'
+      ? `${item.vendor} - ${item.product}`
+      : (item.vendor || 'Unknown');
+
+    const epssText = (item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0)
+      ? `${(parseFloat(item.epss) * 100).toFixed(2)}%`
+      : '-';
+
+    return `
+      <tr class="hover:bg-indigo-500/5 transition-colors align-top">
+        <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap">
+          <a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">${cveId}</a>
+        </td>
+        <td class="py-3 px-3.5 font-mono whitespace-nowrap text-slate-600 dark:text-slate-300">${item.date_added || '-'}</td>
+        <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap">${scoreVal}</td>
+        <td class="py-3 px-3.5 whitespace-nowrap">
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${sevBadgeStyle}">${severity}</span>
+        </td>
+        <td class="py-3 px-3.5 text-slate-600 dark:text-slate-300 leading-relaxed min-w-[260px]">
+          ${formatExpandableText(item.description, 140)}
+        </td>
+        <td class="py-3 px-3.5 font-semibold text-slate-800 dark:text-slate-200">${affected}</td>
+        <td class="py-3 px-3.5 font-mono whitespace-nowrap">${epssText}</td>
+        <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.is_kev ? 'text-rose-600 dark:text-rose-400' : 'text-slate-400'}">
+          ${item.is_kev ? 'Yes (In KEV)' : 'No'}
+        </td>
+        <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_nuclei ? 'text-sky-600 dark:text-sky-400' : 'text-slate-400'}">
+          ${item.has_nuclei ? 'Ready' : 'Not Ready'}
+        </td>
+        <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_poc ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}">
+          ${item.has_poc ? 'Available' : 'Not Available'}
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+async function copyCveSearchTable() {
+  if (!currentCveTableItems || currentCveTableItems.length === 0) {
+    alert('No table data to copy. Generate a table first.');
+    return;
+  }
+
+  const copyBtnText = document.getElementById('btn-copy-cve-table-text');
+
+  const rowsHtml = currentCveTableItems.map(item => {
+    const scoreVal = (item.cvss !== null && item.cvss !== undefined && !isNaN(parseFloat(item.cvss))) ? parseFloat(item.cvss).toFixed(1) : 'N/A';
+    const severity = getCvssSeverity(item.cvss);
+    const affected = item.product && item.product !== 'Unknown' ? `${item.vendor} - ${item.product}` : (item.vendor || 'Unknown');
+    const epssText = (item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0) ? `${(parseFloat(item.epss) * 100).toFixed(2)}%` : '-';
+
+    return `
+      <tr>
+        <td style="border:1px solid #cbd5e1;padding:8px;font-family:monospace;font-weight:bold;"><a href="https://nvd.nist.gov/vuln/detail/${item.cve_id}">${item.cve_id}</a></td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${item.date_added || '-'}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;font-weight:bold;">${scoreVal}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;font-weight:bold;">${severity}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${item.description || ''}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${affected}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${epssText}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${item.is_kev ? 'Yes' : 'No'}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${item.has_nuclei ? 'Ready' : 'Not Ready'}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${item.has_poc ? 'Available' : 'Not Available'}</td>
+      </tr>
+    `;
+  }).join('');
+
+  const htmlContent = `
+    <table style="border-collapse:collapse;width:100%;font-size:12px;">
+      <thead>
+        <tr style="background-color:#1e293b;color:#ffffff;text-align:left;">
+          <th style="border:1px solid #cbd5e1;padding:8px;">Vulnerability (CVE ID)</th>
+          <th style="border:1px solid #cbd5e1;padding:8px;">Date Added</th>
+          <th style="border:1px solid #cbd5e1;padding:8px;">CVSS (v3.x) Score</th>
+          <th style="border:1px solid #cbd5e1;padding:8px;">Severity</th>
+          <th style="border:1px solid #cbd5e1;padding:8px;">Description</th>
+          <th style="border:1px solid #cbd5e1;padding:8px;">Affected Products</th>
+          <th style="border:1px solid #cbd5e1;padding:8px;">EPSS Score</th>
+          <th style="border:1px solid #cbd5e1;padding:8px;">CISA KEV</th>
+          <th style="border:1px solid #cbd5e1;padding:8px;">Nuclei Template</th>
+          <th style="border:1px solid #cbd5e1;padding:8px;">PoC in GitHub</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rowsHtml}
+      </tbody>
+    </table>
+  `;
+
+  const mdRows = currentCveTableItems.map(i => {
+    const scoreVal = (i.cvss !== null && i.cvss !== undefined && !isNaN(parseFloat(i.cvss))) ? parseFloat(i.cvss).toFixed(1) : 'N/A';
+    const sev = getCvssSeverity(i.cvss);
+    const aff = i.product && i.product !== 'Unknown' ? `${i.vendor} - ${i.product}` : (i.vendor || 'Unknown');
+    const epss = (i.epss !== null && i.epss !== undefined && parseFloat(i.epss) > 0) ? `${(parseFloat(i.epss) * 100).toFixed(2)}%` : '-';
+    return `| ${i.cve_id} | ${i.date_added || '-'} | ${scoreVal} | ${sev} | ${(i.description || '').replace(/\|/g, ' ')} | ${aff} | ${epss} | ${i.is_kev ? 'Yes' : 'No'} | ${i.has_nuclei ? 'Ready' : 'Not Ready'} | ${i.has_poc ? 'Available' : 'Not Available'} |`;
+  }).join('\n');
+
+  const plainContent = `| Vulnerability (CVE ID) | Date Added | CVSS (v3.x) Score | Severity | Description | Affected Products | EPSS Score | CISA KEV | Nuclei Template | PoC in GitHub |\n|---|---|---|---|---|---|---|---|---|---|\n${mdRows}`;
+
+  try {
+    if (window.ClipboardItem) {
+      const item = new ClipboardItem({
+        'text/html': new Blob([htmlContent], { type: 'text/html' }),
+        'text/plain': new Blob([plainContent], { type: 'text/plain' })
+      });
+      await navigator.clipboard.write([item]);
+    } else {
+      await navigator.clipboard.writeText(plainContent);
+    }
+    if (copyBtnText) {
+      copyBtnText.textContent = 'Copied!';
+      setTimeout(() => { copyBtnText.textContent = 'Copy Table'; }, 2000);
+    }
+  } catch (_) {
+    await navigator.clipboard.writeText(plainContent);
+  }
+}
+
+
 
 initDashboard();
