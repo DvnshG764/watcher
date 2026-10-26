@@ -260,7 +260,7 @@
     "is_kev": true,
     "has_poc": true,
     "has_nuclei": true,
-    "epss": 0.88472,
+    "epss": 0.0,
     "cvss": 10.0
   },
   {
@@ -852,162 +852,6 @@
     "cvss": 7.8
   },
   {
-    "cve_id": "CVE-2026-41064",
-    "vendor": "PHP",
-    "product": "AVideo",
-    "description": "WWBN AVideo is an open source video platform. In versions up to and including 29.0, an incomplete fix for AVideo's `test.php` adds `escapeshellarg` for wget but leaves the `file_get_contents` and `curl` code paths unsanitized, and the URL validation regex `/^http/` accepts strings like `httpevil[.]com`. Commit 78bccae74634ead68aa6528d631c9ec4fd7aa536 contains an updated fix.",
-    "date": "2026-04-22",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00335,
-    "cvss": 9.3
-  },
-  {
-    "cve_id": "CVE-2026-41144",
-    "vendor": "Cisco",
-    "product": "fprime",
-    "description": "F´ (F Prime) is a framework that enables development and deployment of spaceflight and other embedded software applications. Prior to version 4.2.0, the bounds check byteOffset + dataSize > fileSize uses U32 addition that wraps around on overflow. An attacker-crafted DataPacket with byteOffset=0xFFFFFF9C and dataSize=100 overflows to 0, bypassing the check entirely. The subsequent file write proceeds at the original ~4GB offset. Additionally, Svc/FileUplink/File.cpp:20-31 performs no sanitization on the destination file path. Combined, these allow writing arbitrary data to any file at any offset. The impact is arbitrary file write leading to remote code execution on embedded targets. Note that this is a logic bug. ASAN does not detect it because all memory accesses are within valid buffers — the corruption occurs in file I/O. Version 4.2.0 contains a patch. No known workarounds are available.",
-    "date": "2026-04-22",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00428,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2026-40542",
-    "vendor": "Apache",
-    "product": "Apache HttpClient",
-    "description": "Missing critical step in authentication in Apache HttpClient 5.6 allows an attacker to cause the client to accept SCRAM-SHA-256 authentication without proper mutual authentication verification. Users are recommended to upgrade to version 5.6.1, which fixes this issue.",
-    "date": "2026-04-22",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00536,
-    "cvss": 7.3
-  },
-  {
-    "cve_id": "CVE-2026-34415",
-    "vendor": "PHP",
-    "product": "xerteonlinetoolkits",
-    "description": "Xerte Online Toolkits versions 3.15 and earlier contain an incomplete input validation vulnerability in the elFinder connector endpoint that fails to block PHP-executable extensions .php4 due to an incorrect regex pattern. Unauthenticated attackers can exploit this flaw combined with authentication bypass and path traversal vulnerabilities to upload malicious PHP code, rename it with a .php4 extension, and execute arbitrary operating system commands on the server.",
-    "date": "2026-04-22",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.03575,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2026-39866",
-    "vendor": "F5",
-    "product": "lawnchair",
-    "description": "Lawnchair is a free, open-source home app for Android. Prior to commit fcba413f55dd47f8a3921445252849126c6266b2, command injection in release_update.yml workflow dispatch input allows arbitrary code execution. Commit fcba413f55dd47f8a3921445252849126c6266b2 patches the issue.",
-    "date": "2026-04-21",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.02349,
-    "cvss": 8.8
-  },
-  {
-    "cve_id": "CVE-2026-40908",
-    "vendor": "PHP",
-    "product": "AVideo",
-    "description": "WWBN AVideo is an open source video platform. In versions 29.0 and prior, the file `git.json.php` at the web root executes `git log -1` and returns the full output as JSON to any unauthenticated user. This exposes the exact deployed commit hash (enabling version fingerprinting against known CVEs), developer names and email addresses (PII), and commit messages which may contain references to internal systems or security fixes. As of time of publication, no known patched versions are available.",
-    "date": "2026-04-21",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0025,
-    "cvss": 5.3
-  },
-  {
-    "cve_id": "CVE-2026-40909",
-    "vendor": "PHP",
-    "product": "AVideo",
-    "description": "WWBN AVideo is an open source video platform. In versions 29.0 and prior, the locale save endpoint (`locale/save.php`) constructs a file path by directly concatenating `$_POST['flag']` into the path at line 30 without any sanitization. The `$_POST['code']` parameter is then written verbatim to that path via `fwrite()` at line 40. An admin attacker (or any user who can CSRF an admin, since no CSRF token is checked and cookies use `SameSite=None`) can traverse out of the `locale/` directory and write arbitrary `.php` files to any writable location on the filesystem, achieving Remote Code Execution. Commit 57f89ffbc27d37c9d9dd727212334846e78ac21a fixes the issue.",
-    "date": "2026-04-21",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00656,
-    "cvss": 6.5
-  },
-  {
-    "cve_id": "CVE-2026-34294",
-    "vendor": "Microsoft",
-    "product": "Oracle Identity Manager Connector",
-    "description": "Vulnerability in the Oracle Identity Manager Connector product of Oracle Fusion Middleware (component: Microsoft Active Directory).   The supported version that is affected is 12.2.1.4.0. Difficult to exploit vulnerability allows low privileged attacker with network access via LDAP to compromise Oracle Identity Manager Connector.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Identity Manager Connector accessible data as well as  unauthorized read access to a subset of Oracle Identity Manager Connector accessible data. CVSS 3.1 Base Score 5.9 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:N).",
-    "date": "2026-04-21",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00175,
-    "cvss": 5.9
-  },
-  {
-    "cve_id": "CVE-2026-40925",
-    "vendor": "PHP",
-    "product": "AVideo",
-    "description": "WWBN AVideo is an open source video platform. In versions 29.0 and prior, `objects/configurationUpdate.json.php` (also routed via `/updateConfig`) persists dozens of global site settings from `$_POST` but protects the endpoint only with `User::isAdmin()`. It does not call `forbidIfIsUntrustedRequest()`, does not verify a `globalToken`, and does not validate the Origin/Referer header. Because AVideo intentionally sets `session.cookie_samesite=None` to support cross-origin iframe embedding, a logged-in administrator who visits an attacker-controlled page will have the browser auto-submit a cross-origin POST that rewrites the site's encoder URL, SMTP credentials, site `<head>` HTML, logo, favicon, contact email, and more in a single request. Commit f9492f5e6123dff0292d5bb3164fde7665dc36b4 contains a fix.",
-    "date": "2026-04-21",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00173,
-    "cvss": 8.3
-  },
-  {
-    "cve_id": "CVE-2026-40928",
-    "vendor": "PHP",
-    "product": "AVideo",
-    "description": "WWBN AVideo is an open source video platform. In versions 29.0 and prior, multiple AVideo JSON endpoints under `objects/` accept state-changing requests via `$_REQUEST`/`$_GET` and persist changes tied to the caller's session user, without any anti-CSRF token, origin check, or referer check. A malicious page visited by a logged-in victim can silently cast/flip the victim's like/dislike on any comment (`objects/comments_like.json.php`), post a comment authored by the victim on any video, with attacker-chosen text (`objects/commentAddNew.json.php`), and/or delete assets from any category (`objects/categoryDeleteAssets.json.php`) when the victim has category management rights. Each endpoint is reachable from a browser via a simple `<img src=\"…\">` tag or form submission, so exploitation only requires the victim to load an attacker-controlled HTML resource. Commit 7aaad601bd9cd7b993ba0ee1b1bea6c32ee7b77c contains a fix.",
-    "date": "2026-04-21",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00115,
-    "cvss": 5.4
-  },
-  {
-    "cve_id": "CVE-2026-41056",
-    "vendor": "PHP",
-    "product": "AVideo",
-    "description": "WWBN AVideo is an open source video platform. In versions 29.0 and below, the `allowOrigin($allowAll=true)` function in `objects/functions.php` reflects any arbitrary `Origin` header back in `Access-Control-Allow-Origin` along with `Access-Control-Allow-Credentials: true`. This function is called by both `plugin/API/get.json.php` and `plugin/API/set.json.php` — the primary API endpoints that handle user data retrieval, authentication, livestream credentials, and state-changing operations. Combined with the application's `SameSite=None` session cookie policy, any website can make credentialed cross-origin requests and read authenticated API responses, enabling theft of user PII, livestream keys, and performing state changes on behalf of the victim. Commit caf705f38eae0ccfac4c3af1587781355d24495e contains a fix.",
-    "date": "2026-04-21",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00335,
-    "cvss": 8.1
-  },
-  {
-    "cve_id": "CVE-2026-41060",
-    "vendor": "PHP",
-    "product": "AVideo",
-    "description": "WWBN AVideo is an open source video platform. In versions 29.0 and below, the `isSSRFSafeURL()` function in `objects/functions.php` contains a same-domain shortcircuit (lines 4290-4296) that allows any URL whose hostname matches `webSiteRootURL` to bypass all SSRF protections. Because the check compares only the hostname and ignores the port, an attacker can reach arbitrary ports on the AVideo server by using the site's public hostname with a non-standard port. The response body is saved to a web-accessible path, enabling full exfiltration. Commit a0156a6398362086390d949190f9d52a823000ba fixes the issue.",
-    "date": "2026-04-21",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.003,
-    "cvss": 6.5
-  },
-  {
-    "cve_id": "CVE-2026-41061",
-    "vendor": "PHP",
-    "product": "AVideo",
-    "description": "WWBN AVideo is an open source video platform. In versions 29.0 and below, the `isValidDuration()` regex at `objects/video.php:918` uses `/^[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/` without a `$` end anchor, allowing arbitrary HTML/JavaScript to be appended after a valid duration prefix. The crafted duration is stored in the database and rendered without HTML escaping via `echo Video::getCleanDuration()` on trending pages, playlist pages, and video gallery thumbnails, resulting in stored cross-site scripting. Commit bcba324644df8b4ed1f891462455f1cd26822a45 contains a fix.",
-    "date": "2026-04-21",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00173,
-    "cvss": 5.4
-  },
-  {
     "cve_id": "CVE-2026-20122",
     "vendor": "Cisco",
     "product": "Catalyst SD-WAN Manger",
@@ -1044,234 +888,6 @@
     "cvss": 7.5
   },
   {
-    "cve_id": "CVE-2026-6602",
-    "vendor": "PHP",
-    "product": "Hospital Management System",
-    "description": "A vulnerability was found in rickxy Hospital Management System up to 88a4290d957dc5bdde8a56e5ad451ad14f7f90f4. Affected is an unknown function of the file /backend/admin/his_admin_account.php. The manipulation of the argument ad_dpic results in unrestricted upload. The attack can be executed remotely. The exploit has been made public and could be used. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable.",
-    "date": "2026-04-20",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00376,
-    "cvss": 7.3
-  },
-  {
-    "cve_id": "CVE-2026-6633",
-    "vendor": "PHP",
-    "product": "CMS",
-    "description": "A security flaw has been discovered in Yifang CMS up to 2.0.5. The impacted element is the function store of the file plugins/yifang_backend_account/logic/admin/L_rbac_admin.php of the component Extended Management Module. The manipulation of the argument Account results in cross site scripting. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-20",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00253,
-    "cvss": 3.5
-  },
-  {
-    "cve_id": "CVE-2026-33558",
-    "vendor": "Apache",
-    "product": "Apache Kafka",
-    "description": "Information exposure vulnerability has been identified in Apache Kafka.\n\nThe NetworkClient component will output entire requests and responses information in the DEBUG log level in the logs. By default, the log level is set to INFO level. If the DEBUG level is enabled, the sensitive information will be exposed via the requests and responses output log. The entire lists of impacted requests and responses are:\n\n\n  *  AlterConfigsRequest\n\n  *  AlterUserScramCredentialsRequest\n\n  *  ExpireDelegationTokenRequest\n\n  *  IncrementalAlterConfigsRequest\n\n  *  RenewDelegationTokenRequest\n\n  *  SaslAuthenticateRequest\n\n  *  createDelegationTokenResponse\n\n  *  describeDelegationTokenResponse\n\n  *  SaslAuthenticateResponse\n\n\nThis issue affects Apache Kafka: from any version supported the listed API above through v3.9.1, v4.0.0. We advise the Kafka users to upgrade to v3.9.2, v4.0.1, or later to avoid this vulnerability.",
-    "date": "2026-04-20",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0063,
-    "cvss": 5.3
-  },
-  {
-    "cve_id": "CVE-2026-39918",
-    "vendor": "PHP",
-    "product": "Vvveb",
-    "description": "Vvveb prior to 1.0.8.1 contains a code injection vulnerability in the installation endpoint where the subdir POST parameter is written unsanitized into the env.php configuration file without escaping or validation. Attackers can inject arbitrary PHP code by breaking out of the string context in the define statement to achieve unauthenticated remote code execution as the web server user.",
-    "date": "2026-04-20",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00665,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2026-6652",
-    "vendor": "PHP",
-    "product": "CMS",
-    "description": "A weakness has been identified in Pagekit CMS up to 1.0.18. This issue affects the function evaluate of the file app/modules/view/src/PhpEngine.php of the component StringStorage Template Handler. This manipulation causes improper neutralization of directives in dynamically evaluated code. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-20",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00244,
-    "cvss": 4.7
-  },
-  {
-    "cve_id": "CVE-2026-25524",
-    "vendor": "PHP",
-    "product": "magento-lts",
-    "description": "Magento Long Term Support (LTS) is an unofficial, community-driven project provides an alternative to the Magento Community Edition e-commerce platform with a high level of backward compatibility. Prior to version 20.17.0, PHP functions such as `getimagesize()`, `file_exists()`, and `is_readable()` can trigger deserialization when processing `phar://` stream wrapper paths. OpenMage LTS uses these functions with potentially controllable file paths during image validation and media handling. An attacker who can upload a malicious phar file (disguised as an image) and trigger one of these functions with a `phar://` path can achieve arbitrary code execution. Version 20.17.0 patches the issue.",
-    "date": "2026-04-20",
-    "is_kev": false,
-    "has_poc": true,
-    "has_nuclei": false,
-    "epss": 0.00635,
-    "cvss": 8.1
-  },
-  {
-    "cve_id": "CVE-2026-6249",
-    "vendor": "PHP",
-    "product": "Vvveb CMS",
-    "description": "Vvveb CMS 1.0.8.2 contains a remote code execution vulnerability in its media upload handler that allows authenticated attackers to execute arbitrary operating system commands by uploading a PHP webshell with a .phtml extension. Attackers can bypass the extension deny-list and upload malicious files to the publicly accessible media directory, then request the file over HTTP to achieve full server compromise.",
-    "date": "2026-04-20",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00624,
-    "cvss": 8.8
-  },
-  {
-    "cve_id": "CVE-2026-6568",
-    "vendor": "PHP",
-    "product": "KodExplorer",
-    "description": "A vulnerability was determined in kodcloud KodExplorer up to 4.52. This affects the function share.class.php::initShareOld of the file /app/controller/share.class.php of the component Public Share Handler. This manipulation of the argument path causes path traversal. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-19",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00513,
-    "cvss": 7.3
-  },
-  {
-    "cve_id": "CVE-2026-6569",
-    "vendor": "PHP",
-    "product": "KodExplorer",
-    "description": "A vulnerability was identified in kodcloud KodExplorer up to 4.52. This impacts the function fileGet of the file /app/controller/share.class.php of the component fileGet Endpoint. Such manipulation of the argument fileUrl leads to improper authentication. The attack can be launched remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-19",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00414,
-    "cvss": 7.3
-  },
-  {
-    "cve_id": "CVE-2026-6570",
-    "vendor": "PHP",
-    "product": "KodExplorer",
-    "description": "A security flaw has been discovered in kodcloud KodExplorer up to 4.52. Affected is the function initInstall of the file /app/controller/systemMember.class.php. Performing a manipulation of the argument path results in authorization bypass. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-19",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00301,
-    "cvss": 2.7
-  },
-  {
-    "cve_id": "CVE-2026-6571",
-    "vendor": "PHP",
-    "product": "KodExplorer",
-    "description": "A weakness has been identified in kodcloud KodExplorer up to 4.52. Affected by this vulnerability is the function roleGroupAction of the file /app/controller/systemRole.class.php. Executing a manipulation of the argument group_role can lead to authorization bypass. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-19",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0027,
-    "cvss": 6.3
-  },
-  {
-    "cve_id": "CVE-2026-6572",
-    "vendor": "PHP",
-    "product": "KodExplorer",
-    "description": "A security vulnerability has been detected in Collabora KodExplorer up to 4.52. Affected by this issue is some unknown functionality of the file /app/controller/share.class.php of the component fileUpload Endpoint. The manipulation of the argument fileUpload leads to improper authorization. Remote exploitation of the attack is possible. The attack's complexity is rated as high. The exploitation is known to be difficult. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-19",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00323,
-    "cvss": 5.6
-  },
-  {
-    "cve_id": "CVE-2026-40339",
-    "vendor": "F5",
-    "product": "libgphoto2",
-    "description": "libgphoto2 is a camera access and control library. Versions up to and including 2.5.33 have an out-of-bounds read in `ptp_unpack_Sony_DPD()` in `camlibs/ptp2/ptp-pack.c` (line 842). The function reads the FormFlag byte via `dtoh8o(data, *poffset)` without a prior bounds check. The standard `ptp_unpack_DPD()` at lines 686–687 correctly validates `*offset + sizeof(uint8_t) > dpdlen` before this same read, but the Sony variant omits this check entirely. Commit 09f8a940b1e418b5693f5c11e3016a1ad2cea62d fixes the issue.",
-    "date": "2026-04-18",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00198,
-    "cvss": 5.2
-  },
-  {
-    "cve_id": "CVE-2026-40340",
-    "vendor": "F5",
-    "product": "libgphoto2",
-    "description": "libgphoto2 is a camera access and control library. Versions up to and including 2.5.33 have an out-of-bounds read vulnerability in `ptp_unpack_OI()` in `camlibs/ptp2/ptp-pack.c` (lines 530–563). The function validates `len < PTP_oi_SequenceNumber` (i.e., len < 48) but subsequently accesses offsets 48–56, up to 9 bytes beyond the validated boundary, via the Samsung Galaxy 64-bit objectsize detection heuristic. Commit 7c7f515bc88c3d0c4098ac965d313518e0ccbe33 fixes the issue.",
-    "date": "2026-04-18",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00218,
-    "cvss": 6.1
-  },
-  {
-    "cve_id": "CVE-2026-40581",
-    "vendor": "PHP",
-    "product": "CRM",
-    "description": "ChurchCRM is an open-source church management system. In versions prior to 7.2.0, the family record deletion endpoint (SelectDelete.php) performs permanent, irreversible deletion of family records and all associated data via a plain GET request with no CSRF token validation. An attacker can craft a malicious page that, when visited by an authenticated administrator, silently triggers deletion of targeted family records including associated notes, pledges, persons, and property data without any user interaction. This issue has been fixed in version 7.2.0.",
-    "date": "2026-04-18",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00199,
-    "cvss": 8.1
-  },
-  {
-    "cve_id": "CVE-2026-40593",
-    "vendor": "PHP",
-    "product": "CRM",
-    "description": "ChurchCRM is an open-source church management system. In versions prior to 7.2.0, the User Editor (UserEditor.php) renders stored usernames directly into an HTML input value attribute without applying htmlspecialchars(). An administrator can save a username containing HTML attribute-breaking characters and event handlers, which execute in the browser of any administrator who subsequently views that user's editor page, resulting in stored XSS. This issue has been fixed in version 7.2.0.",
-    "date": "2026-04-18",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.002,
-    "cvss": 4.8
-  },
-  {
-    "cve_id": "CVE-2026-25917",
-    "vendor": "Apache",
-    "product": "Apache Airflow",
-    "description": "Dag Authors, who normally should not be able to execute code in the webserver context could craft XCom payload causing the webserver to execute arbitrary code. Since Dag Authors are already highly trusted, severity of this issue is Low.\n\nUsers are recommended to upgrade to Apache Airflow 3.2.0, which fixes the issue.",
-    "date": "2026-04-18",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00822,
-    "cvss": 7.2
-  },
-  {
-    "cve_id": "CVE-2026-30912",
-    "vendor": "Apache",
-    "product": "Apache Airflow",
-    "description": "In case of SQL errors, exception/stack trace of errors was exposed in API even if \"api/expose_stack_traces\" was set to false. That could lead to exposing additional information to potential attacker. Users are recommended to upgrade to Apache Airflow 3.2.0, which fixes the issue.",
-    "date": "2026-04-18",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00449,
-    "cvss": 7.5
-  },
-  {
-    "cve_id": "CVE-2026-40948",
-    "vendor": "Apache",
-    "product": "Apache Airflow Providers Keycloak",
-    "description": "The Keycloak authentication manager in `apache-airflow-providers-keycloak` did not generate or validate the OAuth 2.0 `state` parameter on the login / login-callback flow, and did not use PKCE. An attacker with a Keycloak account in the same realm could deliver a crafted callback URL to a victim's browser and cause the victim to be logged into the attacker's Airflow session (login-CSRF / session fixation), where any credentials the victim subsequently stored in Airflow Connections would be harvestable by the attacker. Users are advised to upgrade `apache-airflow-providers-keycloak` to 0.7.0 or later.",
-    "date": "2026-04-18",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00404,
-    "cvss": 5.4
-  },
-  {
     "cve_id": "CVE-2026-6487",
     "vendor": "PHP",
     "product": "jtbc5 CMS",
@@ -1282,6 +898,30 @@
     "has_nuclei": false,
     "epss": 0.00365,
     "cvss": 4.3
+  },
+  {
+    "cve_id": "CVE-2026-6488",
+    "vendor": "PHP",
+    "product": "sms",
+    "description": "A vulnerability was identified in QueryMine sms up to 7ab5a9ea196209611134525ffc18de25c57d9593. This vulnerability affects unknown code of the file admin/editcourse.php of the component GET Request Parameter Handler. The manipulation of the argument ID leads to sql injection. The attack can be initiated remotely. The exploit is publicly available and might be used. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "date": "2026-04-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00196,
+    "cvss": 6.3
+  },
+  {
+    "cve_id": "CVE-2026-6489",
+    "vendor": "PHP",
+    "product": "sms",
+    "description": "A security flaw has been discovered in QueryMine sms up to 7ab5a9ea196209611134525ffc18de25c57d9593. This issue affects some unknown processing of the file admin/addteacher.php of the component Background Management Page. The manipulation of the argument image results in unrestricted upload. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "date": "2026-04-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00257,
+    "cvss": 6.3
   },
   {
     "cve_id": "CVE-2026-6490",
@@ -1308,6 +948,18 @@
     "cvss": 5.4
   },
   {
+    "cve_id": "CVE-2026-6497",
+    "vendor": "PHP",
+    "product": "TinyFileManager",
+    "description": "A vulnerability was determined in prasathmani TinyFileManager up to 2.6. Affected by this vulnerability is an unknown functionality of the file /filemanager.php?p= ajax=true&type=upload of the component File Upload Handler. This manipulation of the argument uploadurl causes server-side request forgery. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "date": "2026-04-17",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00267,
+    "cvss": 6.3
+  },
+  {
     "cve_id": "CVE-2026-33516",
     "vendor": "Microsoft",
     "product": "xrdp",
@@ -1320,54 +972,6 @@
     "cvss": 9.1
   },
   {
-    "cve_id": "CVE-2026-40285",
-    "vendor": "PHP",
-    "product": "WeGIA",
-    "description": "WeGIA is a web manager for charitable institutions. Versions prior to 3.6.10 contain a SQL injection vulnerability in dao/memorando/UsuarioDAO.php. The cpf_usuario POST parameter overwrites the session-stored user identity via extract($_REQUEST) in DespachoControle::verificarDespacho(), and the attacker-controlled value is then interpolated directly into a raw SQL query, allowing any authenticated user to query the database under an arbitrary identity. Version 3.6.10 fixes the issue.",
-    "date": "2026-04-17",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00266,
-    "cvss": 8.8
-  },
-  {
-    "cve_id": "CVE-2026-40301",
-    "vendor": "PHP",
-    "product": "dom-sanitizer",
-    "description": "DOMSanitizer is a DOM/SVG/MathML Sanitizer for PHP 7.3+. Prior to version 1.0.10, DOMSanitizer::sanitize() allows <style> elements in SVG content but never inspects their text content. CSS url() references and @import rules pass through unfiltered, causing the browser to issue HTTP requests to attacker-controlled hosts when the sanitized SVG is rendered. Version 1.0.10 fixes the issue.",
-    "date": "2026-04-17",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00322,
-    "cvss": 4.7
-  },
-  {
-    "cve_id": "CVE-2026-40305",
-    "vendor": "Microsoft",
-    "product": "Dnn.Platform",
-    "description": "DNN (formerly DotNetNuke) is an open-source web content management platform (CMS) in the Microsoft ecosystem. Starting in version 6.0.0 and prior to version 10.2.2, in the friends feature, a user could craft a request that would force the acceptance of a friend request on another user. Version 10.2.2 patches the issue.",
-    "date": "2026-04-17",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00183,
-    "cvss": 4.3
-  },
-  {
-    "cve_id": "CVE-2026-40306",
-    "vendor": "Microsoft",
-    "product": "Dnn.Platform",
-    "description": "DNN (formerly DotNetNuke) is an open-source web content management platform (CMS) in the Microsoft ecosystem. All new installations of DNN 10.x.x - 10.2.1 have the same Host GUID. This does not affect upgrades from 9.x.x. Version 10.2.2 patches the issue.",
-    "date": "2026-04-17",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00175,
-    "cvss": 6.5
-  },
-  {
     "cve_id": "CVE-2026-34197",
     "vendor": "Apache",
     "product": "ActiveMQ",
@@ -1376,7 +980,7 @@
     "is_kev": true,
     "has_poc": false,
     "has_nuclei": true,
-    "epss": 0.98256,
+    "epss": 0.0,
     "cvss": 8.8
   },
   {
@@ -1390,6 +994,18 @@
     "has_nuclei": false,
     "epss": 0.00122,
     "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-31843",
+    "vendor": "PHP",
+    "product": "pay-uz",
+    "description": "The goodoneuz/pay-uz Laravel package (<= 2.2.24) contains a critical vulnerability in the /payment/api/editable/update endpoint that allows unauthenticated attackers to overwrite existing PHP payment hook files. The endpoint is exposed via Route::any without authentication middleware, enabling remote access without credentials.",
+    "date": "2026-04-16",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01383,
+    "cvss": 9.8
   },
   {
     "cve_id": "CVE-2026-6409",
@@ -1428,6 +1044,42 @@
     "cvss": 6.1
   },
   {
+    "cve_id": "CVE-2026-39963",
+    "vendor": "PHP",
+    "product": "Serendipity",
+    "description": "Serendipity is a PHP-powered weblog engine. In versions 2.6-beta2  and below, the serendipity_setCookie() function in include/functions_config.inc.php uses $_SERVER['HTTP_HOST'] without validation as the domain parameter of setcookie(). An attacker who can influence the Host header at login time, such as via MITM, reverse proxy misconfiguration, or load balancer manipulation, can force authentication cookies including session tokens and auto-login tokens to be scoped to an attacker-controlled domain. This enables session fixation, token leakage to attacker-controlled infrastructure, and privilege escalation if an admin logs in under a poisoned Host header. This issue has been fixed in version 2.6.0.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00224,
+    "cvss": 6.9
+  },
+  {
+    "cve_id": "CVE-2026-39971",
+    "vendor": "PHP",
+    "product": "Serendipity",
+    "description": "Serendipity is a PHP-powered weblog engine. In versions 2.6-beta2 and below, the email sending functionality in include/functions.inc.php inserts $_SERVER['HTTP_HOST'] directly into the Message-ID SMTP header without validation, and the existing sanitization function serendipity_isResponseClean() is not called on HTTP_HOST before embedding it. An attacker who can control the Host header during an email-triggering action such as comment notifications or subscription emails can inject arbitrary SMTP headers into outgoing emails. This enables identity spoofing, reply hijacking via manipulated Message-ID threading, and email reputation abuse through the attacker's domain being embedded in legitimate mail headers. This issue has been fixed in version 2.6.0.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00255,
+    "cvss": 7.2
+  },
+  {
+    "cve_id": "CVE-2026-5088",
+    "vendor": "Apache",
+    "product": "Apache::API::Password",
+    "description": "Apache::API::Password versions through 0.5.2 for Perl can generate insecure random values for salts.\n\nThe _make_salt and _make_salt_bcrypt methods will attept to load Crypt::URandom and then Bytes::Random::Secure to generate random bytes for the salt.  If those modules are unavailable, it will simply return 16 bytes generated with Perl's built-in rand function.\n\nThe rand function is unsuitable for cryptographic use.\n\nThese salts are used for password hashing.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00572,
+    "cvss": 7.5
+  },
+  {
     "cve_id": "CVE-2026-30778",
     "vendor": "Apache",
     "product": "Apache SkyWalking",
@@ -1462,6 +1114,18 @@
     "has_nuclei": false,
     "epss": 0.00301,
     "cvss": 8.7
+  },
+  {
+    "cve_id": "CVE-2026-20059",
+    "vendor": "Cisco",
+    "product": "Cisco Unity Connection",
+    "description": "A vulnerability in the web-based management interface of Cisco Unity Connection could allow an unauthenticated, remote attacker to conduct a reflected XSS attack against a user of the interface.\r\n\r\nThis vulnerability exists because the web-based management interface does not properly validate user-supplied input. An attacker could exploit this vulnerability by persuading a user to click a crafted link. A successful exploit could allow the attacker to execute arbitrary script code in the context of the affected interface or access sensitive, browser-based information.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00193,
+    "cvss": 6.1
   },
   {
     "cve_id": "CVE-2026-20060",
@@ -1512,6 +1176,42 @@
     "cvss": 6.5
   },
   {
+    "cve_id": "CVE-2026-20132",
+    "vendor": "Cisco",
+    "product": "Cisco Identity Services Engine Software",
+    "description": "Multiple vulnerabilities in the web-based management interface of Cisco Identity Services Engine (ISE) could allow an authenticated, remote attacker with administrative&nbsp;write privileges to conduct a stored cross-site scripting (XSS) attack or a reflected XSS attack against a user of the web-based management interface of an affected device.\r\n\r\nThese vulnerabilities are due to insufficient sanitization of user-supplied data that is stored in the web page. An attacker could exploit these vulnerabilities by convincing a user of the interface to click a specific link or view an affected web page. The injected script code may be executed in the context of the web-based management interface or allow the attacker to access sensitive browser-based information.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00173,
+    "cvss": 4.8
+  },
+  {
+    "cve_id": "CVE-2026-20136",
+    "vendor": "Cisco",
+    "product": "Cisco Identity Services Engine Software",
+    "description": "A vulnerability in the&nbsp;CLI of Cisco Identity Services Engine (ISE) and Cisco ISE Passive Identity Connector (ISE-PIC) could allow an authenticated, local attacker with administrative privileges to perform a command injection attack on the underlying operating system and elevate privileges to root.\r\n\r\nThis vulnerability is due to insufficient validation of user supplied input. An attacker could exploit this vulnerability by providing crafted input to a specific CLI command. A successful exploit could allow the attacker to elevate their privileges to root on the underlying operating system.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00499,
+    "cvss": 6.0
+  },
+  {
+    "cve_id": "CVE-2026-20147",
+    "vendor": "Cisco",
+    "product": "Cisco Identity Services Engine Software",
+    "description": "A vulnerability in Cisco ISE and Cisco ISE-PIC could allow an authenticated, remote attacker to execute arbitrary commands on the underlying operating system of an affected device. To exploit this vulnerability, the attacker must have valid administrative credentials.\r\n\r\nThis vulnerability is due to insufficient validation of user-supplied input. An attacker could exploit this vulnerability by sending a crafted HTTP request to an affected device. A successful exploit could allow the attacker to obtain user-level access to the underlying operating system and then elevate privileges to root. In single-node ISE deployments, successful exploitation of this vulnerability could cause the affected ISE node to become unavailable, resulting in a denial of service (DoS) condition. In that condition, endpoints that have not already authenticated would be unable to access the network until the node is restored.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.10381,
+    "cvss": 9.9
+  },
+  {
     "cve_id": "CVE-2026-20148",
     "vendor": "Cisco",
     "product": "Cisco Identity Services Engine Software",
@@ -1546,6 +1246,42 @@
     "has_nuclei": false,
     "epss": 0.00129,
     "cvss": 5.5
+  },
+  {
+    "cve_id": "CVE-2026-20170",
+    "vendor": "Cisco",
+    "product": "Cisco Webex Contact Center",
+    "description": "A vulnerability in the Desktop Agent functionality of Cisco Webex Contact Center could have allowed an unauthenticated, remote attacker to conduct cross-site scripting attacks. Cisco has addressed this vulnerability in the Cisco Webex Contact Center service, and no customer action is needed.\r\n\r This vulnerability existed because HTML and script content was not properly handled. Prior to this vulnerability being addressed, an attacker could have exploited this vulnerability by persuading a user to follow a malicious link. A successful exploit could have allowed the attacker to steal sensitive information from the browser, including authentication and session information.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00222,
+    "cvss": 6.1
+  },
+  {
+    "cve_id": "CVE-2026-20180",
+    "vendor": "Cisco",
+    "product": "Cisco Identity Services Engine Software",
+    "description": "A vulnerability in Cisco Identity Services Engine (ISE) could allow an authenticated, remote attacker to execute arbitrary commands on the underlying operating system of an affected device. To exploit this vulnerability, the attacker must have at least Read Only Admin credentials.\r\n\r\nThis vulnerability is due to insufficient validation of user-supplied input. An attacker could exploit this vulnerability by sending a crafted HTTP request to an affected device. A successful exploit could allow the attacker to obtain user-level access to the underlying operating system and then elevate privileges to&nbsp;root. In single-node ISE deployments, successful exploitation of these vulnerabilities could cause the affected ISE node to become unavailable, resulting in a denial of service (DoS) condition. In that condition, endpoints that have not already authenticated would be unable to access the network until the node is restored.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": true,
+    "has_nuclei": false,
+    "epss": 0.06024,
+    "cvss": 9.9
+  },
+  {
+    "cve_id": "CVE-2026-20184",
+    "vendor": "Cisco",
+    "product": "Cisco Webex Meetings",
+    "description": "A vulnerability in the integration of single sign-on (SSO) with Control Hub in Cisco Webex Services could have allowed an unauthenticated, remote attacker to impersonate any user within the service.\r\n\r\nThis vulnerability existed because of improper certificate validation. Prior to this vulnerability being addressed, an attacker could have exploited this vulnerability by connecting to a service endpoint and supplying a crafted token. A successful exploit could have allowed the attacker to gain unauthorized access to legitimate Cisco Webex services.",
+    "date": "2026-04-15",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0052,
+    "cvss": 9.8
   },
   {
     "cve_id": "CVE-2026-20186",
@@ -1616,8 +1352,20 @@
     "is_kev": true,
     "has_poc": false,
     "has_nuclei": false,
-    "epss": 0.0,
+    "epss": 0.43378,
     "cvss": 6.5
+  },
+  {
+    "cve_id": "CVE-2026-39424",
+    "vendor": "Microsoft",
+    "product": "MaxKB",
+    "description": "MaxKB is an open-source AI assistant for enterprise. In versions 2.7.1 and below, the chat export feature is vulnerable to Improper Neutralization of Formula Elements in a CSV File. When an administrator exports the application chat history to an Excel file (.xlsx) via the /admin/api/workspace/{workspace_id}/application/{application_id}/chat/export endpoint, strings starting with formula characters are written directly without proper sanitization. Opening this file in spreadsheet applications like Microsoft Excel can lead to Arbitrary Code Execution (RCE) on the administrator's workstation via Dynamic Data Exchange (DDE). The issue is a variant of CVE-2025-4546, which fixed the exact same pattern in apps/dataset/serializers/document_serializers.py but missed the application chat export sink. This issue has been fixed in version 2.8.0.",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00368,
+    "cvss": 4.7
   },
   {
     "cve_id": "CVE-2026-31908",
@@ -1654,6 +1402,18 @@
     "has_nuclei": false,
     "epss": 0.00238,
     "cvss": 5.3
+  },
+  {
+    "cve_id": "CVE-2026-33929",
+    "vendor": "Apache",
+    "product": "Apache PDFBox Examples",
+    "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Apache PDFBox Examples.\n\nThis issue affects the \nExtractEmbeddedFiles example in Apache PDFBox: from 2.0.24 through 2.0.36, from 3.0.0 through 3.0.7.\n\n\nUsers are recommended to update to version 2.0.37 or 3.0.8 once \navailable. Until then, they should apply the fix provided in GitHub PR \n427.\n\nThe ExtractEmbeddedFiles example contained a path traversal vulnerability (CWE-22) mentioned in CVE-2026-23907. However the change in the releases 2.0.36 and 3.0.7 is flawed because it doesn't consider the file path separator. Because of that, a user having writing rights on /home/ABC could be victim to a malicious PDF resulting in a write attempt to any path starting with /home/ABC, e.g. \"/home/ABCDEF\".\n\nUsers who have copied this example into their production code should apply the mentioned change. The example \nhas been changed accordingly and is available in the project repository.",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00711,
+    "cvss": 4.3
   },
   {
     "cve_id": "CVE-2026-30480",
@@ -1704,6 +1464,18 @@
     "cvss": 4.8
   },
   {
+    "cve_id": "CVE-2026-21742",
+    "vendor": "Fortinet",
+    "product": "FortiSOAR on-premise",
+    "description": "A cleartext transmission of sensitive information vulnerability in Fortinet FortiSOAR PaaS 7.6.0 through 7.6.3, FortiSOAR PaaS 7.5.0 through 7.5.2, FortiSOAR PaaS 7.4 all versions, FortiSOAR PaaS 7.3 all versions, FortiSOAR on-premise 7.6.0 through 7.6.2, FortiSOAR on-premise 7.5.0 through 7.5.1, FortiSOAR on-premise 7.4 all versions, FortiSOAR on-premise 7.3 all versions may allow an authenticated attacker to view cleartext password in response for Secure Message Exchange and Radius queries, if configured",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00148,
+    "cvss": 6.5
+  },
+  {
     "cve_id": "CVE-2026-22154",
     "vendor": "Fortinet",
     "product": "FortiSOAR PaaS",
@@ -1740,6 +1512,18 @@
     "cvss": 6.5
   },
   {
+    "cve_id": "CVE-2026-22574",
+    "vendor": "Fortinet",
+    "product": "FortiSOAR PaaS",
+    "description": "A storing passwords in a recoverable format vulnerability in Fortinet FortiSOAR PaaS 7.6.0 through 7.6.4, FortiSOAR PaaS 7.5.0 through 7.5.2, FortiSOAR PaaS 7.4 all versions, FortiSOAR PaaS 7.3 all versions, FortiSOAR on-premise 7.6.0 through 7.6.4, FortiSOAR on-premise 7.5.0 through 7.5.2, FortiSOAR on-premise 7.4 all versions, FortiSOAR on-premise 7.3 all versions may allow an authenticated remote attacker to retrieve Service account password via server address modification in LDAP configuration.",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00267,
+    "cvss": 6.5
+  },
+  {
     "cve_id": "CVE-2026-22576",
     "vendor": "Fortinet",
     "product": "FortiSOAR PaaS",
@@ -1752,6 +1536,18 @@
     "cvss": 6.5
   },
   {
+    "cve_id": "CVE-2026-22828",
+    "vendor": "Fortinet",
+    "product": "FortiAnalyzer Cloud",
+    "description": "A heap-based buffer overflow vulnerability in Fortinet FortiAnalyzer Cloud 7.6.2 through 7.6.4, FortiManager Cloud 7.6.2 through 7.6.4 may allow a remote unauthenticated attacker to execute arbitrary code or commands via specifically crafted requests. Successful exploitation would require a large amount of effort in preparation because of ASLR and network segmentation",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00901,
+    "cvss": 8.1
+  },
+  {
     "cve_id": "CVE-2026-23708",
     "vendor": "Fortinet",
     "product": "FortiSOAR PaaS",
@@ -1762,6 +1558,18 @@
     "has_nuclei": false,
     "epss": 0.00283,
     "cvss": 8.1
+  },
+  {
+    "cve_id": "CVE-2026-25691",
+    "vendor": "Fortinet",
+    "product": "FortiSandbox PaaS",
+    "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.5, FortiSandbox 4.4.0 through 4.4.8, FortiSandbox 4.2 all versions, FortiSandbox Cloud 5.0.4, FortiSandbox PaaS 5.0.4 may allow a privileged attacker with super-admin profile and CLI access to delete an arbitrary directory via HTTP crafted requests.",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00456,
+    "cvss": 6.7
   },
   {
     "cve_id": "CVE-2026-27316",
@@ -1812,6 +1620,18 @@
     "cvss": 4.9
   },
   {
+    "cve_id": "CVE-2026-39812",
+    "vendor": "Fortinet",
+    "product": "FortiSandbox",
+    "description": "A improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.5, FortiSandbox 4.4.0 through 4.4.8, FortiSandbox 4.2 all versions, FortiSandbox PaaS 5.0.0 through 5.0.5, FortiSandbox PaaS 4.4.0 through 4.4.8, FortiSandbox PaaS 4.2 all versions may allow attacker to execute unauthorized code or commands via <insert attack vector here>",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00193,
+    "cvss": 4.8
+  },
+  {
     "cve_id": "CVE-2026-39813",
     "vendor": "Fortinet",
     "product": "FortiSandbox",
@@ -1860,6 +1680,30 @@
     "cvss": 5.4
   },
   {
+    "cve_id": "CVE-2026-23657",
+    "vendor": "Microsoft",
+    "product": "Microsoft 365 Apps for Enterprise",
+    "description": "Use after free in Microsoft Office Word allows an unauthorized attacker to execute code locally.",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00411,
+    "cvss": 7.8
+  },
+  {
+    "cve_id": "CVE-2026-26143",
+    "vendor": "Microsoft",
+    "product": "PowerShell 7.4",
+    "description": "Improper input validation in Microsoft PowerShell allows an unauthorized attacker to bypass a security feature locally.",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00536,
+    "cvss": 7.8
+  },
+  {
     "cve_id": "CVE-2026-21643",
     "vendor": "Fortinet",
     "product": "FortiClient EMS",
@@ -1872,6 +1716,210 @@
     "cvss": 9.1
   },
   {
+    "cve_id": "CVE-2026-6141",
+    "vendor": "F5",
+    "product": "Personal_AI_Infrastructure",
+    "description": "A vulnerability was determined in danielmiessler Personal_AI_Infrastructure up to 2.3.0. Affected is an unknown function of the file Skills/Parser/Tools/parse_url.ts. Executing a manipulation can lead to os command injection. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized. This patch is called 14322e87e58bf585cf3c7b9295578a6eb7dc4945. It is advisable to implement a patch to correct this issue. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01221,
+    "cvss": 6.3
+  },
+  {
+    "cve_id": "CVE-2026-6142",
+    "vendor": "PHP",
+    "product": "Hotel Management System",
+    "description": "A vulnerability was identified in tushar-2223 Hotel Management System up to bb1f3b3666124b888f1e4bcf51b6fba9fbb01d15. Affected by this vulnerability is an unknown functionality of the file /admin/roomdelete.php. The manipulation of the argument ID leads to sql injection. Remote exploitation of the attack is possible. The exploit is publicly available and might be used. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The project was informed of the problem early through an issue report but has not responded yet.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00259,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6148",
+    "vendor": "PHP",
+    "product": "Vehicle Showroom Management System",
+    "description": "A vulnerability was detected in code-projects Vehicle Showroom Management System 1.0. Affected by this vulnerability is an unknown functionality of the file /util/MonthTotalReportUpdateFunction.php. Performing a manipulation of the argument BRANCH_ID results in sql injection. The attack is possible to be carried out remotely. The exploit is now public and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00379,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6149",
+    "vendor": "PHP",
+    "product": "Vehicle Showroom Management System",
+    "description": "A flaw has been found in code-projects Vehicle Showroom Management System 1.0. Affected by this issue is some unknown functionality of the file /util/BookVehicleFunction.php. Executing a manipulation of the argument BRANCH_ID can lead to sql injection. The attack may be performed from remote. The exploit has been published and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0035,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6150",
+    "vendor": "PHP",
+    "product": "Simple Laundry System",
+    "description": "A vulnerability has been found in code-projects Simple Laundry System 1.0. This affects an unknown part of the file /checkupdatestatus.php. The manipulation of the argument serviceId leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00263,
+    "cvss": 4.3
+  },
+  {
+    "cve_id": "CVE-2026-6151",
+    "vendor": "PHP",
+    "product": "Vehicle Showroom Management System",
+    "description": "A vulnerability was found in code-projects Vehicle Showroom Management System 1.0. This vulnerability affects unknown code of the file /util/PaymentStatusFunction.php. The manipulation of the argument CUSTOMER_ID results in sql injection. It is possible to launch the attack remotely. The exploit has been made public and could be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00254,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6152",
+    "vendor": "PHP",
+    "product": "Vehicle Showroom Management System",
+    "description": "A vulnerability was determined in code-projects Vehicle Showroom Management System 1.0. This issue affects some unknown processing of the file /util/StaffAddingFunction.php. This manipulation of the argument STAFF_ID causes sql injection. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00254,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6153",
+    "vendor": "PHP",
+    "product": "Vehicle Showroom Management System",
+    "description": "A vulnerability was identified in code-projects Vehicle Showroom Management System 1.0. Impacted is an unknown function of the file /util/StaffDetailsFunction.php. Such manipulation of the argument STAFF_ID leads to sql injection. The attack can be launched remotely. The exploit is publicly available and might be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00318,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6159",
+    "vendor": "PHP",
+    "product": "Simple ChatBox",
+    "description": "A vulnerability has been found in code-projects Simple ChatBox up to 1.0. Affected by this vulnerability is an unknown functionality of the file /chatbox/insert.php of the component Endpoint. Such manipulation of the argument msg leads to cross site scripting. The attack may be performed from remote. The exploit has been disclosed to the public and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00269,
+    "cvss": 4.3
+  },
+  {
+    "cve_id": "CVE-2026-6160",
+    "vendor": "PHP",
+    "product": "Simple ChatBox",
+    "description": "A vulnerability was found in code-projects Simple ChatBox 1.0. Affected by this issue is the function SimpleChatbox_PHP of the file chatbox.sql of the component Endpoint. Performing a manipulation results in file and directory information exposure. It is possible to initiate the attack remotely. The exploit has been made public and could be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00308,
+    "cvss": 5.3
+  },
+  {
+    "cve_id": "CVE-2026-6161",
+    "vendor": "PHP",
+    "product": "Simple ChatBox",
+    "description": "A vulnerability was determined in code-projects Simple ChatBox up to 1.0. This affects an unknown part of the file /chatbox/insert.php of the component Endpoint. Executing a manipulation of the argument msg can lead to sql injection. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00254,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6162",
+    "vendor": "PHP",
+    "product": "Company Visitor Management System",
+    "description": "A vulnerability has been found in PHPGurukul Company Visitor Management System 2.0. This impacts an unknown function of the file /bwdates-reports-details.php. The manipulation of the argument fromdate leads to cross site scripting. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00244,
+    "cvss": 3.5
+  },
+  {
+    "cve_id": "CVE-2026-6163",
+    "vendor": "PHP",
+    "product": "Lost and Found Thing Management",
+    "description": "A vulnerability was identified in code-projects Lost and Found Thing Management 1.0. Affected by this issue is some unknown functionality of the file /catageory.php. Such manipulation of the argument cat leads to sql injection. It is possible to launch the attack remotely. The exploit is publicly available and might be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00318,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6164",
+    "vendor": "PHP",
+    "product": "Lost and Found Thing Management",
+    "description": "A security flaw has been discovered in code-projects Lost and Found Thing Management 1.0. This affects an unknown part of the file /addcat.php. Performing a manipulation of the argument cata results in sql injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00254,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6165",
+    "vendor": "PHP",
+    "product": "Vehicle Showroom Management System",
+    "description": "A weakness has been identified in code-projects Vehicle Showroom Management System 1.0. This vulnerability affects unknown code of the file /util/Login_check.php. Executing a manipulation of the argument ID can lead to sql injection. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00254,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6166",
+    "vendor": "PHP",
+    "product": "Vehicle Showroom Management System",
+    "description": "A security vulnerability has been detected in code-projects Vehicle Showroom Management System 1.0. This issue affects some unknown processing of the file /util/UpdateVehicleFunction.php. The manipulation of the argument VEHICLE_ID leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00254,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6167",
+    "vendor": "PHP",
+    "product": "Faculty Management System",
+    "description": "A vulnerability was detected in code-projects Faculty Management System 1.0. Impacted is an unknown function of the file /subject-print.php. The manipulation of the argument ID results in sql injection. The attack may be launched remotely. The exploit is now public and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00254,
+    "cvss": 7.3
+  },
+  {
     "cve_id": "CVE-2026-0232",
     "vendor": "Palo Alto",
     "product": "Cortex XDR Agent",
@@ -1882,6 +1930,30 @@
     "has_nuclei": false,
     "epss": 0.00146,
     "cvss": 4.4
+  },
+  {
+    "cve_id": "CVE-2026-0233",
+    "vendor": "Palo Alto",
+    "product": "Autonomous Digital Experience Manager",
+    "description": "A certificate validation vulnerability in Palo Alto Networks Autonomous Digital Experience Manager on Windows allows an unauthenticated attacker with adjacent network access to execute arbitrary code with NT AUTHORITY\\SYSTEM  privileges.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00175,
+    "cvss": 8.8
+  },
+  {
+    "cve_id": "CVE-2026-35337",
+    "vendor": "Apache",
+    "product": "Apache Storm Client",
+    "description": "Deserialization of Untrusted Data vulnerability in Apache Storm.\n\nVersions Affected:\nbefore 2.8.6.\n\n\nDescription:\nWhen processing topology credentials submitted via the Nimbus Thrift API, Storm deserializes the base64-encoded TGT blob using ObjectInputStream.readObject() without any class filtering or validation. An authenticated user with topology submission rights could supply a crafted serialized object in the \"TGT\" credential field, leading to remote code execution in both the Nimbus and Worker JVMs.\n\n\nMitigation:\n2.x users should upgrade to 2.8.6.\n\n\nUsers who cannot upgrade immediately should monkey-patch an ObjectInputFilter allow-list to ClientAuthUtils.deserializeKerberosTicket() restricting deserialized classes to javax.security.auth.kerberos.KerberosTicket and its known dependencies. A guide on how to do this is available in the release notes of 2.8.6.\n\nCredit: This issue was discovered by K.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01011,
+    "cvss": 8.8
   },
   {
     "cve_id": "CVE-2026-35565",
@@ -1906,6 +1978,42 @@
     "has_nuclei": false,
     "epss": 0.00477,
     "cvss": 7.1
+  },
+  {
+    "cve_id": "CVE-2026-33858",
+    "vendor": "Apache",
+    "product": "Apache Airflow",
+    "description": "Dag Authors, who normally should not be able to execute code in the webserver context could craft XCom payload causing the webserver to execute arbitrary code. Since Dag Authors are already highly trusted, severity of this issue is Low.\n\n\nUsers are recommended to upgrade to Apache Airflow 3.2.0, which resolves this issue.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00592,
+    "cvss": 8.8
+  },
+  {
+    "cve_id": "CVE-2026-6182",
+    "vendor": "PHP",
+    "product": "Simple Content Management System",
+    "description": "A vulnerability was identified in code-projects Simple Content Management System 1.0. Affected by this vulnerability is an unknown functionality of the file /web/admin/login.php. Such manipulation of the argument User leads to sql injection. The attack may be launched remotely. The exploit is publicly available and might be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00313,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6183",
+    "vendor": "PHP",
+    "product": "Simple Content Management System",
+    "description": "A security flaw has been discovered in code-projects Simple Content Management System 1.0. Affected by this issue is some unknown functionality of the file /web/index.php. Performing a manipulation of the argument ID results in sql injection. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00313,
+    "cvss": 7.3
   },
   {
     "cve_id": "CVE-2026-39956",
@@ -1956,6 +2064,30 @@
     "cvss": 5.5
   },
   {
+    "cve_id": "CVE-2026-34477",
+    "vendor": "Apache",
+    "product": "Apache Log4j Core",
+    "description": "The fix for  CVE-2025-68161 https://logging.apache.org/security.html#CVE-2025-68161  was incomplete: it addressed hostname verification only when enabled via the  log4j2.sslVerifyHostName https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName  system property, but not when configured through the  verifyHostName https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName  attribute of the <Ssl> element.\n\nAlthough the verifyHostName configuration attribute was introduced in Log4j Core 2.12.0, it was silently ignored in all versions through 2.25.3, leaving TLS connections vulnerable to interception regardless of the configured value.\n\nA network-based attacker may be able to perform a man-in-the-middle attack when all of the following conditions are met:\n\n  *  An SMTP, Socket, or Syslog appender is in use.\n  *  TLS is configured via a nested <Ssl> element.\n  *  The attacker can present a certificate issued by a CA trusted by the appender's configured trust store, or by the default Java trust store if none is configured.\nThis issue does not affect users of the HTTP appender, which uses a separate  verifyHostname https://logging.apache.org/log4j/2.x/manual/appenders/network.html#HttpAppender-attr-verifyHostName  attribute that was not subject to this bug and verifies host names by default.\n\nUsers are advised to upgrade to Apache Log4j Core 2.25.4, which corrects this issue.",
+    "date": "2026-04-10",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0056,
+    "cvss": 5.9
+  },
+  {
+    "cve_id": "CVE-2026-34478",
+    "vendor": "Apache",
+    "product": "Apache Log4j Core",
+    "description": "Apache Log4j Core's  Rfc5424Layout https://logging.apache.org/log4j/2.x/manual/layouts.html#RFC5424Layout , in versions 2.21.0 through 2.25.3, is vulnerable to log injection via CRLF sequences due to undocumented renames of security-relevant configuration attributes.\n\nTwo distinct issues affect users of stream-based syslog services who configure Rfc5424Layout directly:\n\n  *  The newLineEscape attribute was silently renamed, causing newline escaping to stop working for users of TCP framing (RFC 6587), exposing them to CRLF injection in log output.\n  *  The useTlsMessageFormat attribute was silently renamed, causing users of TLS framing (RFC 5425) to be silently downgraded to unframed TCP (RFC 6587), without newline escaping.\n\n\nUsers of the SyslogAppender are not affected, as its configuration attributes were not modified.\n\nUsers are advised to upgrade to Apache Log4j Core 2.25.4, which corrects this issue.",
+    "date": "2026-04-10",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00972,
+    "cvss": 7.5
+  },
+  {
     "cve_id": "CVE-2026-34479",
     "vendor": "Apache",
     "product": "Apache Log4j 1 to Log4j 2 bridge",
@@ -1965,6 +2097,30 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.00535,
+    "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-34480",
+    "vendor": "Apache",
+    "product": "Apache Log4j Core",
+    "description": "Apache Log4j Core's  XmlLayout https://logging.apache.org/log4j/2.x/manual/layouts.html#XmlLayout , in versions up to and including 2.25.3, fails to sanitize characters forbidden by the  XML 1.0 specification https://www.w3.org/TR/xml/#charsets  producing invalid XML output whenever a log message or MDC value contains such characters.\n\nThe impact depends on the StAX implementation in use:\n\n  *  JRE built-in StAX: Forbidden characters are silently written to the output, producing malformed XML. Conforming parsers must reject such documents with a fatal error, which may cause downstream log-processing systems to drop the affected records.\n  *  Alternative StAX implementations (e.g.,  Woodstox https://github.com/FasterXML/woodstox , a transitive dependency of the Jackson XML Dataformat module): An exception is thrown during the logging call, and the log event is never delivered to its intended appender, only to Log4j's internal status logger.\n\n\nUsers are advised to upgrade to Apache Log4j Core 2.25.4, which corrects this issue by sanitizing forbidden characters before XML output.",
+    "date": "2026-04-10",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01046,
+    "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-34481",
+    "vendor": "Apache",
+    "product": "Apache Log4j JSON Template Layout",
+    "description": "Apache Log4j's  JsonTemplateLayout https://logging.apache.org/log4j/2.x/manual/json-template-layout.html , in versions up to and including 2.25.3, produces invalid JSON output when log events contain non-finite floating-point values (NaN, Infinity, or -Infinity), which are prohibited by RFC 8259. This may cause downstream log processing systems to reject or fail to index affected records.\n\nAn attacker can exploit this issue only if both of the following conditions are met:\n\n  *  The application uses JsonTemplateLayout.\n  *  The application logs a MapMessage, or logs an object directly (e.g., via Logger.info(Object), which wraps it in an ObjectMessage), where the message contains an attacker-controlled floating-point value.\n\n\nUsers are advised to upgrade to Apache Log4j JSON Template Layout 2.25.4, which corrects this issue.\n\nNote: The fix released in version 2.25.4 did not cover all affected code paths. CVE-2026-49844 was assigned to the remaining issue, which concerns the MapMessage.asJson() serialization in Apache Log4j API and is fixed in versions 2.25.5 and 2.26.1.",
+    "date": "2026-04-10",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00691,
     "cvss": 7.5
   },
   {
@@ -1989,6 +2145,30 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.00499,
+    "cvss": 5.3
+  },
+  {
+    "cve_id": "CVE-2026-35596",
+    "vendor": "Cisco",
+    "product": "vikunja",
+    "description": "Vikunja is an open-source self-hosted task management platform. Prior to 2.3.0, the hasAccessToLabel function contains a SQL operator precedence bug that allows any authenticated user to read any label that has at least one task association, regardless of project access. Label titles, descriptions, colors, and creator information are exposed. This vulnerability is fixed in 2.3.0.",
+    "date": "2026-04-10",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00272,
+    "cvss": 4.3
+  },
+  {
+    "cve_id": "CVE-2026-40086",
+    "vendor": "Apache",
+    "product": "rembg",
+    "description": "Rembg is a tool to remove images background. Prior to 2.0.75, a path traversal vulnerability in the rembg HTTP server allows unauthenticated remote attackers to read arbitrary files from the server's filesystem. By sending a crafted request with a malicious model_path parameter, an attacker can force the server to attempt loading any file as an ONNX model, revealing file existence, permissions, and potentially file contents through error messages. This vulnerability is fixed in 2.0.75.",
+    "date": "2026-04-10",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00592,
     "cvss": 5.3
   },
   {
@@ -2076,6 +2256,18 @@
     "cvss": 4.3
   },
   {
+    "cve_id": "CVE-2026-33266",
+    "vendor": "Apache",
+    "product": "Apache OpenMeetings",
+    "description": "Use of Hard-coded Cryptographic Key vulnerability in Apache OpenMeetings.\n\nThe remember-me cookie encryption key is set to default value in openmeetings.properties and not being auto-rotated. In case OM admin hasn't changed the default encryption key, an attacker who has stolen a cookie from a logged-in user can get full user credentials.\n\n\nThis issue affects Apache OpenMeetings: from 6.1.0 before 9.0.0.\n\nUsers are recommended to upgrade to version 9.0.0, which fixes the issue.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00297,
+    "cvss": 7.5
+  },
+  {
     "cve_id": "CVE-2026-34020",
     "vendor": "Apache",
     "product": "Apache OpenMeetings",
@@ -2112,6 +2304,18 @@
     "cvss": 7.5
   },
   {
+    "cve_id": "CVE-2026-25854",
+    "vendor": "Apache",
+    "product": "Apache Tomcat",
+    "description": "Occasional URL redirection to untrusted Site ('Open Redirect') vulnerability in Apache Tomcat via the LoadBalancerDrainingValve.\n\nThis issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.18, from 10.1.0-M1 through 10.1.52, from 9.0.0.M23 through 9.0.115, from 8.5.30 through 8.5.100.\nOther, unsupported versions may also be affected\n\nUsers are recommended to upgrade to version 11.0.20, 10.1.53 or 9.0.116, which fix the issue.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": true,
+    "has_nuclei": false,
+    "epss": 0.00526,
+    "cvss": 6.1
+  },
+  {
     "cve_id": "CVE-2026-29129",
     "vendor": "Apache",
     "product": "Apache Tomcat",
@@ -2122,66 +2326,6 @@
     "has_nuclei": false,
     "epss": 0.00259,
     "cvss": 7.5
-  },
-  {
-    "cve_id": "CVE-2026-29145",
-    "vendor": "Apache",
-    "product": "Apache Tomcat",
-    "description": "CLIENT_CERT authentication does not fail as expected for some scenarios when soft fail is disabled vulnerability in Apache Tomcat, Apache Tomcat Native.\n\nThis issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.18, from 10.1.0-M7 through 10.1.52, from 9.0.83 through 9.0.115; Apache Tomcat Native: from 1.1.23 through 1.1.34, from 1.2.0 through 1.2.39, from 1.3.0 through 1.3.6, from 2.0.0 through 2.0.13.\n\nUsers are recommended to upgrade to version Tomcat Native 1.3.7 or 2.0.14 and Tomcat 11.0.20, 10.1.53 and 9.0.116, which fix the issue.",
-    "date": "2026-04-09",
-    "is_kev": false,
-    "has_poc": true,
-    "has_nuclei": false,
-    "epss": 0.00715,
-    "cvss": 9.1
-  },
-  {
-    "cve_id": "CVE-2026-32990",
-    "vendor": "Apache",
-    "product": "Apache Tomcat",
-    "description": "Improper Input Validation vulnerability in Apache Tomcat due to an incomplete fix of CVE-2025-66614.\n\nThis issue affects Apache Tomcat: from 11.0.15 through 11.0.19, from 10.1.50 through 10.1.52, from 9.0.113 through 9.0.115.\n\nUsers are recommended to upgrade to version 11.0.20, 10.1.53 or 9.0.116, which fix the issue.",
-    "date": "2026-04-09",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00307,
-    "cvss": 5.3
-  },
-  {
-    "cve_id": "CVE-2026-34483",
-    "vendor": "Apache",
-    "product": "Apache Tomcat",
-    "description": "Improper Encoding or Escaping of Output vulnerability in the JsonAccessLogValve component of Apache Tomcat.\n\nThis issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.20, from 10.1.0-M1 through 10.1.53, from 9.0.40 through 9.0.116.\n\nUsers are recommended to upgrade to version 11.0.21, 10.1.54 or 9.0.117 , which fix the issue.",
-    "date": "2026-04-09",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00461,
-    "cvss": 7.5
-  },
-  {
-    "cve_id": "CVE-2026-34487",
-    "vendor": "Apache",
-    "product": "Apache Tomcat",
-    "description": "Insertion of Sensitive Information into Log File vulnerability in the cloud membership for clustering component of Apache Tomcat exposed the Kubernetes bearer token.\n\nThis issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.20, from 10.1.0-M1 through 10.1.53, from 9.0.13 through 9.0.116.\n\nUsers are recommended to upgrade to version 11.0.21, 10.1.54 or 9.0.117, which fix the issue.",
-    "date": "2026-04-09",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00447,
-    "cvss": 7.5
-  },
-  {
-    "cve_id": "CVE-2026-34500",
-    "vendor": "Apache",
-    "product": "Apache Tomcat",
-    "description": "CLIENT_CERT authentication does not fail as expected for some scenarios when soft fail is disabled and FFM is used in Apache Tomcat.\n\nThis issue affects Apache Tomcat: from 11.0.0-M14 through 11.0.20, from 10.1.22 through 10.1.53, from 9.0.92 through 9.0.116.\n\nUsers are recommended to upgrade to version 11.0.21, 10.1.54 or 9.0.117, which fixes the issue.",
-    "date": "2026-04-09",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0045,
-    "cvss": 6.5
   },
   {
     "cve_id": "CVE-2026-34734",
@@ -2268,6 +2412,18 @@
     "cvss": 8.1
   },
   {
+    "cve_id": "CVE-2026-33773",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "An Incorrect Initialization of Resource vulnerability in the packet forwarding engine (pfe) of Juniper Networks Junos OS on specific EX Series and QFX Series device allows an unauthenticated, network-based attacker to cause an integrity impact to downstream networks.\n\nWhen the same family inet or inet6 filter is applied on an IRB interface and on a physical interface as egress filter on EX4100, EX4400, EX4650 and QFX5120 devices, only one of the two filters will be applied, which can lead to traffic being sent out one of these interfaces which should have been blocked.\n\nThis issue affects Junos OS on EX Series and QFX Series:\n  *  23.4 version 23.4R2-S6,\n  *  24.2 version 24.2R2-S3.\n\n\nNo other Junos OS versions are affected.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00201,
+    "cvss": 5.8
+  },
+  {
     "cve_id": "CVE-2026-33774",
     "vendor": "Juniper",
     "product": "Junos OS",
@@ -2278,6 +2434,30 @@
     "has_nuclei": false,
     "epss": 0.00174,
     "cvss": 5.3
+  },
+  {
+    "cve_id": "CVE-2026-33775",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "A Missing Release of Memory after Effective Lifetime vulnerability in the BroadBand Edge subscriber management daemon (bbe-smgd) of Juniper Networks Junos OS on MX Series allows an adjacent, unauthenticated attacker to cause a Denial of Service (DoS).\n\nIf the authentication packet-type option is configured and a received packet does not match that packet type, the memory leak occurs. When all memory \n\navailable to bbe-smgd has been consumed, no new subscribers will be able to login.\n\nThe memory utilization of bbe-smgd can be monitored with the following show command:\n\nuser@host> show system processes extensive | match bbe-smgd\n\nThe below log message can be observed when this limit has been reached:\n\nbbesmgd[<PID>]: %DAEMON-3-SMD_DPROF_RSMON_ERROR: Resource unavailability, Reason: Daemon Heap Memory exhaustion\n\n\nThis issue affects Junos OS on MX Series:\n  *  all versions before 22.4R3-S8,\n  *  23.2 versions before 23.2R2-S5,\n  *  23.4 versions before 23.4R2-S6,\n  *  24.2 versions before 24.2R2-S2,\n  *  24.4 versions before 24.4R2,\n  *  25.2 versions before 25.2R2.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00195,
+    "cvss": 6.5
+  },
+  {
+    "cve_id": "CVE-2026-33776",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "A Missing Authorization vulnerability in the CLI of Juniper Networks Junos OS and Junos OS Evolved allows a local user with low privileges to read sensitive information.\n\nA local user with low privileges can execute the CLI command 'show mgd' with specific arguments which will expose sensitive information.\n\nThis issue affects\n\nJunos OS:\n  *  all versions before 22.4R3-S8,\n  *  23.2 versions before 23.2R2-S6,\n  *  23.4 versions before 23.4R2-S6,\n  *  24.2 versions before 24.2R2-S4,\n  *  24.4 versions before 24.4R2-S1,\n  *  25.2 version before 25.2R1-S2, 25.2R2;\n\n\n\nJunos OS Evolved:\n  *  all versions before 23.2R2-S6-EVO,\n  *  23.4 version before 23.4R2-S6-EVO,\n  *  24.2 version before 24.2R2-S4-EVO,\n  *  24.4 versions before 24.4R2-S1-EVO,\n  *  25.2 versions before 25.2R2-EVO.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00092,
+    "cvss": 5.5
   },
   {
     "cve_id": "CVE-2026-33778",
@@ -2292,6 +2472,66 @@
     "cvss": 7.5
   },
   {
+    "cve_id": "CVE-2026-33779",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "An Improper Following of a Certificate's Chain of Trust vulnerability in J-Web of Juniper Networks Junos OS on SRX Series allows a PITM to intercept the communication of the device and get access to confidential information and potentially modify it.\n\nWhen an SRX device is provisioned to connect to Security Director (SD) cloud, it doesn't perform sufficient verification of the received server certificate. This allows a PITM to intercept the communication between the SRX and SD cloud and access credentials and other sensitive information.\n\nThis issue affects Junos OS:\n  *  all versions before 22.4R3-S9,\n  *  23.2 versions before 23.2R2-S6,\n  *  23.4 versions before 23.4R2-S7,\n  *  24.2 versions before 24.2R2-S3,\n  *  24.4 versions before 24.4R2-S2,\n  *  25.2 versions before 25.2R1-S2, 25.2R2.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00121,
+    "cvss": 6.5
+  },
+  {
+    "cve_id": "CVE-2026-33780",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "A Missing Release of Memory after Effective Lifetime vulnerability in the Layer 2 Address Learning Daemon (l2ald) of Juniper Networks Junos OS and Junos OS Evolved allows an adjacent, unauthenticated attacker to cause a memory leak ultimately leading to a Denial of Service (DoS).\n\n\n\nIn an EVPN-MPLS scenario, routes learned from remote multi-homed Provider Edge (PE) devices are programmed as ESI routes. Due to a logic issue in the l2ald memory management, memory allocated for these routes is not released when there is churn for these routes. As a result, memory leaks in the l2ald process which will ultimately lead to a crash and restart of l2ald.\n\nUse the following command to monitor the memory consumption by l2ald:\n\nuser@device> show system process extensive | match \"PID|l2ald\" \n\n\n\nThis issue affects:\n\nJunos OS:\n\n\n\n  *  all versions before 22.4R3-S5,\n  *  23.2 versions before 23.2R2-S3,\n  *  23.4 versions before 23.4R2-S4,\n  *  24.2 versions before 24.2R2;\n\n\n\n\nJunos OS Evolved:\n\n\n\n  *  all versions before 22.4R3-S5-EVO,\n  *  23.2 versions before 23.2R2-S3-EVO,\n  *  23.4 versions before 23.4R2-S4-EVO,\n  *  24.2 versions before 24.2R2-EVO.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00173,
+    "cvss": 6.5
+  },
+  {
+    "cve_id": "CVE-2026-33781",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "An Improper Check for Unusual or Exceptional Conditions vulnerability in the packet forwarding engine (pfe) of Juniper Networks Junos OS on specific EX and QFX Series devices allow an unauthenticated, adjacent attacker to cause a complete Denial of Service (DoS).\n\nOn EX4k, and QFX5k platforms configured as service-provider edge devices, if L2PT is enabled on the UNI and VSTP is enabled on NNI in VXLAN scenarios, receiving VSTP BPDUs on UNI leads to packet buffer allocation failures, resulting in the device to not pass traffic anymore until it is manually recovered with a restart.This issue affects Junos OS:\n\n\n\n  *  24.4 releases before 24.4R2,\n  *  25.2 releases before 25.2R1-S1, 25.2R2.\n\n\n\n\nThis issue does not affect Junos OS releases before 24.4R1.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00165,
+    "cvss": 6.5
+  },
+  {
+    "cve_id": "CVE-2026-33782",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "A Missing Release of Memory after Effective Lifetime vulnerability in the DHCP daemon (jdhcpd) of Juniper Networks Junos OS on MX Series, allows an adjacent, unauthenticated attacker to cause a memory leak, that will eventually cause a complete Denial-of-Service (DoS).\n\nIn a DHCPv6 over PPPoE, or DHCPv6 over VLAN with Active lease query or Bulk lease query scenario, every subscriber logout will leak a small amount of memory. When all available memory has been exhausted, jdhcpd will crash and restart which causes a complete service impact until the process has recovered.\n\nThe memory usage of jdhcpd can be monitored with:\n\nuser@host> show system processes extensive | match jdhcpd\n\n\n\nThis issue affects Junos OS:\n\n  *  all versions before 22.4R3-S1,\n  *  23.2 versions before 23.2R2,\n  *  23.4 versions before 23.4R2.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00288,
+    "cvss": 6.5
+  },
+  {
+    "cve_id": "CVE-2026-33783",
+    "vendor": "Juniper",
+    "product": "Junos OS Evolved",
+    "description": "A Function Call With Incorrect Argument Type vulnerability in the sensor interface of Juniper Networks Junos OS Evolved on PTX Series allows a network-based, authenticated attacker with low privileges to cause a complete Denial of Service (DoS).\n\n\nIf colored SRTE policy tunnels are provisioned via PCEP, and gRPC is used to monitor traffic in these tunnels, evo-aftmand crashes and doesn't restart which leads to a complete and persistent service impact. The system has to be manually restarted to recover. The issue is seen only when the Originator ASN field in PCEP contains a value larger than 65,535 (32-bit ASN). The issue is not reproducible when SRTE policy tunnels are statically configured.\n\n\nThis issue affects Junos OS Evolved on PTX Series: \n\n\n\n  *  all versions before 22.4R3-S9-EVO,\n  *  23.2 versions before 23.2R2-S6-EVO,\n  *  23.4 versions before 23.4R2-S7-EVO,\n  *  24.2 versions before 24.2R2-S4-EVO,\n  *  24.4 versions before 24.4R2-S2-EVO,\n  *  25.2 versions before 25.2R1-S2-EVO, 25.2R2-EVO.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0024,
+    "cvss": 6.5
+  },
+  {
     "cve_id": "CVE-2026-33784",
     "vendor": "Juniper",
     "product": "JSI LWC",
@@ -2304,6 +2544,18 @@
     "cvss": 9.8
   },
   {
+    "cve_id": "CVE-2026-33785",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "A Missing Authorization vulnerability in the CLI of Juniper Networks Junos OS on MX Series allows a local, authenticated user with low privileges to execute specific commands which will lead to a complete compromise of managed devices.\n\nAny user logged in, without requiring specific privileges, can issue 'request csds' CLI operational commands. These commands are only meant to be executed by high privileged or users designated for Juniper Device Manager (JDM) / Connected Security Distributed Services (CSDS) operations as they will impact all aspects of the devices managed via the respective MX.\n\nThis issue affects Junos OS on MX Series:\n\n\n\n  *  24.4 releases before 24.4R2-S3, \n  *  25.2 releases before 25.2R2.\n\n\n\n\nThis issue does not affect Junos OS releases before 24.4.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00138,
+    "cvss": 8.8
+  },
+  {
     "cve_id": "CVE-2026-33786",
     "vendor": "Juniper",
     "product": "Junos OS",
@@ -2313,6 +2565,18 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.00095,
+    "cvss": 5.5
+  },
+  {
+    "cve_id": "CVE-2026-33787",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "An Improper Check for Unusual or Exceptional Conditions vulnerability in the chassis control daemon (chassisd) of Juniper Networks Junos OS on SRX1500, SRX4100, SRX4200 and SRX4600 allows a local attacker with low privileges to cause a complete Denial of Service (DoS).\n\nWhen a specific 'show chassis' CLI command is executed, chassisd crashes and restarts which causes a momentary impact to all traffic until all modules are online again.\n\n\n\nThis issue affects Junos OS on SRX1500, SRX4100, SRX4200 and SRX4600: \n\n\n\n  *  23.2 versions before 23.2R2-S6,\n  *  23.4 versions before 23.4R2-S7\n  *  24.2 versions before 24.2R2-S2,\n  *  24.4 versions before 24.4R2,\n  *  25.2 versions before 25.2R1-S1, 25.2R2.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00093,
     "cvss": 5.5
   },
   {
@@ -2328,6 +2592,54 @@
     "cvss": 7.8
   },
   {
+    "cve_id": "CVE-2026-33790",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "An Improper Check for Unusual or Exceptional Conditions vulnerability in the flow daemon (flowd) of Juniper Networks Junos OS on SRX Series allows an attacker sending a specific, malformed ICMPv6 packet to cause the srxpfe process to crash and restart. Continued receipt and processing of these packets will repeatedly crash the srxpfe process and sustain the Denial of Service (DoS) condition.\n\nDuring NAT64 translation, receipt of a specific, malformed ICMPv6 packet destined to the device will cause the srxpfe process to crash and restart.\n\nThis issue cannot be triggered using IPv4 nor other IPv6 traffic.\n\n\n\nThis issue affects Junos OS on SRX Series:\n  *  all versions before 21.2R3-S10,\n  *  all versions of 21.3,\n  *  from 21.4 before 21.4R3-S12,\n  *  all versions of 22.1,\n  *  from 22.2 before 22.2R3-S8,\n  *  all versions of 22.4,\n  *  from 22.4 before 22.4R3-S9,\n  *  from 23.2 before 23.2R2-S6,\n  *  from 23.4 before 23.4R2-S7,\n  *  from 24.2 before 24.2R2-S3,\n  *  from 24.4 before 24.4R2-S3,\n  *  from 25.2 before 25.2R1-S2, 25.2R2.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00324,
+    "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-33791",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "An OS Command Injection vulnerability in the CLI processing of Juniper Networks Junos OS and Junos OS Evolved allows a local, high-privileged attacker executing specific, crafted CLI commands to inject arbitrary shell commands as root, leading to a complete compromise of the system.\n\nCertain 'set system' commands, when executed with crafted arguments, are not properly sanitized, allowing for arbitrary shell injection. These shell commands are executed as root, potentially allowing for complete control of the vulnerable system.\nThis issue affects:\n\nJunos OS: \n\n\n\n  *  all versions before 22.4R3-S8, \n  *  from 23.2 before 23.2R2-S5, \n  *  from 23.4 before 23.4R2-S7, \n  *  from 24.2 before 24.2R2-S2, \n  *  from 24.4 before 24.4R2, \n  *  from 25.2 before 25.2R2; \n\n\n\n\nJunos OS Evolved: \n\n\n\n  *  all versions before 22.4R3-S8-EVO, \n  *  from 23.2 before 23.2R2-S5-EVO, \n  *  from 23.4 before 23.4R2-S7-EVO, \n  *  from 24.2 before 24.2R2-S2-EVO, \n  *  from 24.4 before 24.4R2-EVO, \n  *  from 25.2 before 25.2R1-S1-EVO, 25.2R2-EVO.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00692,
+    "cvss": 6.7
+  },
+  {
+    "cve_id": "CVE-2026-33793",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "An Execution with Unnecessary Privileges vulnerability in the User Interface (UI) of Juniper Networks Junos OS and Junos OS Evolved allows a local, low-privileged attacker to gain root privileges, thus compromising the system.\n\nWhen a configuration that allows unsigned Python op scripts is present on the device, a non-root user is able to execute malicious op scripts as a root-equivalent user, leading to privilege escalation. \n\nThis issue affects Junos OS: \n\n  *  All versions before 22.4R3-S7, \n  *  from 23.2 before 23.2R2-S4, \n  *  from 23.4 before 23.4R2-S6,\n  *  from 24.2 before 24.2R1-S2, 24.2R2, \n  *  from 24.4 before 24.4R1-S2, 24.4R2; \n\n\n\n\nJunos OS Evolved: \n\n\n\n  *  All versions before 22.4R3-S7-EVO, \n  *  from 23.2 before 23.2R2-S4-EVO, \n  *  from 23.4 before 23.4R2-S6-EVO,\n  *  from 24.2 before 24.2R2-EVO, \n  *  from 24.4 before 24.4R1-S1-EVO, 24.4R2-EVO.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00159,
+    "cvss": 7.8
+  },
+  {
+    "cve_id": "CVE-2026-33797",
+    "vendor": "Juniper",
+    "product": "Junos OS",
+    "description": "An Improper Input Validation vulnerability in Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated, adjacent attacker, sending a specific genuine BGP packet in an already established BGP session to reset only that session causing a Denial of Service (DoS).\n\nAn attacker repeatedly sending the packet will sustain the Denial of Service (DoS).This issue affects Junos OS:\n\n  *  25.2 versions before 25.2R2\n\n\nThis issue does not affect Junos OS versions before 25.2R1.\n\nThis issue affects Junos OS Evolved: \n  *  25.2-EVO versions before 25.2R2-EVO\n\n\nThis issue does not affect Junos OS Evolved versions before 25.2R1-EVO.\n\neBGP and iBGP are affected.\nIPv4 and IPv6 are affected.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00166,
+    "cvss": 7.4
+  },
+  {
     "cve_id": "CVE-2026-1340",
     "vendor": "Ivanti",
     "product": "Endpoint Manager Mobile (EPMM)",
@@ -2340,18 +2652,6 @@
     "cvss": 9.8
   },
   {
-    "cve_id": "CVE-2026-35554",
-    "vendor": "Apache",
-    "product": "Apache Kafka Clients",
-    "description": "A race condition in the Apache Kafka Java producer client’s buffer pool management can cause messages to be silently delivered to incorrect topics.\n\nWhen a produce batch expires due to delivery.timeout.ms while a network request containing that batch is still in flight, the batch’s ByteBuffer is prematurely deallocated and returned to the buffer pool. If a subsequent producer batch—potentially destined for a different topic—reuses this freed buffer before the original network request completes, the buffer contents may become corrupted. This can result in messages being delivered to unintended topics without any error being reported to the producer.\n\n\nData Confidentiality:\nMessages intended for one topic may be delivered to a different topic, potentially exposing sensitive data to consumers who have access to the destination topic but not the intended source topic.\n\nData Integrity:\nConsumers on the receiving topic may encounter unexpected or incompatible messages, leading to deserialization failures, processing errors, and corrupted downstream data.\n\nThis issue affects Apache Kafka versions ≤ 3.9.1, ≤ 4.0.1, and  ≤ 4.1.1.\n\nKafka users are advised to upgrade to 3.9.2, 4.0.2, 4.1.2, 4.2.0, or later to address this vulnerability.",
-    "date": "2026-04-07",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00437,
-    "cvss": 8.7
-  },
-  {
     "cve_id": "CVE-2026-35616",
     "vendor": "Fortinet",
     "product": "FortiClient EMS",
@@ -2362,6 +2662,18 @@
     "has_nuclei": true,
     "epss": 0.93983,
     "cvss": 9.1
+  },
+  {
+    "cve_id": "CVE-2026-5322",
+    "vendor": "F5",
+    "product": "mcp-data-vis",
+    "description": "A vulnerability has been found in AlejandroArciniegas mcp-data-vis bc597e391f184d2187062fd567599a3cb72adf51/de5a51525a69822290eaee569a1ab447b490746d. This affects the function Request of the file src/servers/database/server.js of the component MCP Handler. The manipulation leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "date": "2026-04-02",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00259,
+    "cvss": 7.3
   },
   {
     "cve_id": "CVE-2026-5328",
@@ -2388,100 +2700,16 @@
     "cvss": 6.1
   },
   {
-    "cve_id": "CVE-2026-20085",
+    "cve_id": "CVE-2026-20042",
     "vendor": "Cisco",
-    "product": "Cisco Enterprise NFV Infrastructure Software",
-    "description": "A vulnerability in the web-based management interface of Cisco IMC could allow an unauthenticated, remote attacker to conduct a reflected XSS attack against a user of the interface.\r\n\r\nThis vulnerability is due to insufficient validation of user input. An attacker could exploit this vulnerability by persuading a user of an affected interface to click a crafted link. A successful exploit could allow the attacker to execute arbitrary script code in the browser of the targeted user or access sensitive, browser-based information.",
+    "product": "Cisco Nexus Dashboard",
+    "description": "A vulnerability in the configuration backup feature of Cisco Nexus Dashboard could allow an attacker who has the encryption password and access to Full or Config-only backup files to access sensitive information.\r\n\r\nThis vulnerability exists because authentication details are included in the encrypted backup files. An attacker with a valid backup file and encryption password from an affected device could decrypt the backup file. The attacker could then use the authentication details in the backup file to access internal-only APIs on the affected device. A successful exploit could allow the attacker to execute arbitrary commands on the underlying operating system as the root user.",
     "date": "2026-04-01",
     "is_kev": false,
     "has_poc": false,
     "has_nuclei": false,
-    "epss": 0.00184,
-    "cvss": 6.1
-  },
-  {
-    "cve_id": "CVE-2026-20087",
-    "vendor": "Cisco",
-    "product": "Cisco Enterprise NFV Infrastructure Software",
-    "description": "A vulnerability in the web-based management interface of Cisco IMC could allow an authenticated, remote attacker with administrative privileges to conduct a stored XSS attack against a user of the interface.\r\n\r\nThis vulnerability is due to insufficient validation of user input. An attacker could exploit this vulnerability by persuading a user of an affected interface to click a crafted link. A successful exploit could allow the attacker to execute arbitrary script code in the browser of the targeted user or access sensitive, browser-based information.",
-    "date": "2026-04-01",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0017,
-    "cvss": 4.8
-  },
-  {
-    "cve_id": "CVE-2026-20089",
-    "vendor": "Cisco",
-    "product": "Cisco Enterprise NFV Infrastructure Software",
-    "description": "A vulnerability in the web-based management interface of Cisco IMC could allow an authenticated, remote attacker with administrative privileges to conduct a stored XSS attack against a user of the interface.\r\n\r\nThis vulnerability is due to insufficient validation of user input. An attacker could exploit this vulnerability by persuading a user of an affected interface to click a crafted link. A successful exploit could allow the attacker to execute arbitrary script code in the browser of the targeted user or access sensitive, browser-based information.",
-    "date": "2026-04-01",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00237,
-    "cvss": 4.8
-  },
-  {
-    "cve_id": "CVE-2026-20093",
-    "vendor": "Cisco",
-    "product": "Cisco Enterprise NFV Infrastructure Software",
-    "description": "A vulnerability in the change password functionality of Cisco Integrated Management Controller (IMC) could allow an unauthenticated, remote attacker to bypass authentication and gain access to the system as&nbsp;Admin.\r\n\r\nThis vulnerability is due to incorrect handling of password change requests. An attacker could exploit this vulnerability by sending a crafted HTTP request to an affected device. A successful exploit could allow the attacker to bypass authentication, alter the passwords of any user on the system, including an&nbsp;Admin user, and gain access to the system as that user.",
-    "date": "2026-04-01",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00991,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2026-20094",
-    "vendor": "Cisco",
-    "product": "Cisco Unified Computing System (Standalone)",
-    "description": "A vulnerability in the web-based management interface of Cisco IMC could allow an authenticated, remote attacker with read-only privileges to perform command injection attacks on an affected system and execute arbitrary commands as the root user.\r\n\r\nThis vulnerability is due to improper validation of user-supplied input. An attacker could exploit this vulnerability by sending crafted commands to the web-based management interface of the affected software. A successful exploit could allow the attacker to execute arbitrary commands on the underlying operating system as the root user.",
-    "date": "2026-04-01",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.01118,
-    "cvss": 8.8
-  },
-  {
-    "cve_id": "CVE-2026-20095",
-    "vendor": "Cisco",
-    "product": "Cisco Enterprise NFV Infrastructure Software",
-    "description": "A vulnerability in the web-based management interface of Cisco IMC could allow an authenticated, remote attacker with admin-level privileges to perform command injection attacks on an affected system and&nbsp;execute arbitrary commands as the root user.\r\n\r\nThis vulnerability is due to improper validation of user-supplied input. An attacker could exploit this vulnerability by sending crafted commands to the web-based management interface of the affected software. A successful exploit could allow the attacker to execute arbitrary commands on the underlying operating system as the root user. Cisco has assigned this vulnerability a Security Impact Rating (SIR) of High, rather than Medium as the score indicates, because additional security implications could occur once the attacker has become root.",
-    "date": "2026-04-01",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00929,
+    "epss": 0.00293,
     "cvss": 6.5
-  },
-  {
-    "cve_id": "CVE-2026-20097",
-    "vendor": "Cisco",
-    "product": "Cisco Unified Computing System (Standalone)",
-    "description": "A vulnerability in the web-based management interface of Cisco IMC could allow an authenticated, remote attacker with admin-level privileges to execute arbitrary code as the root user.&nbsp;This vulnerability is due to improper validation of user-supplied input to the web-based management interface. An attacker could exploit this vulnerability by sending crafted HTTP requests to an affected device. A successful exploit could allow the attacker to execute arbitrary code on the underlying operating system as the root user.\r\n\r\nCisco has assigned this vulnerability a SIR of High rather than Medium as the score indicates because additional security implications could occur when the attacker becomes root.",
-    "date": "2026-04-01",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00391,
-    "cvss": 6.5
-  },
-  {
-    "cve_id": "CVE-2026-20155",
-    "vendor": "Cisco",
-    "product": "Cisco Evolved Programmable Network Manager (EPNM)",
-    "description": "A vulnerability in the web-based management interface of Cisco Evolved Programmable Network Manager (EPNM) could allow an authenticated, remote attacker with low privileges to access sensitive information that they are not authorized to access.\r\n\r\nThis vulnerability is due to improper authorization checks on a REST API endpoint of an affected device.&nbsp;An attacker could exploit this vulnerability by querying the affected endpoint. A successful exploit could allow the attacker to view session information of active Cisco EPNM users, including users with administrative privileges, which could result in the affected device being compromised.",
-    "date": "2026-04-01",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0027,
-    "cvss": 8.0
   },
   {
     "cve_id": "CVE-2025-53521",
@@ -2796,18 +3024,6 @@
     "cvss": 9.0
   },
   {
-    "cve_id": "CVE-2025-24472",
-    "vendor": "Fortinet",
-    "product": "FortiOS and FortiProxy",
-    "description": " Fortinet FortiOS and FortiProxy contain an authentication bypass vulnerability that allows a remote attacker to gain super-admin privileges via crafted CSF proxy requests.",
-    "date": "2025-03-18",
-    "is_kev": true,
-    "has_poc": true,
-    "has_nuclei": false,
-    "epss": 0.07235,
-    "cvss": 8.1
-  },
-  {
     "cve_id": "CVE-2025-21590",
     "vendor": "Juniper",
     "product": "Junos OS",
@@ -2928,30 +3144,6 @@
     "cvss": 9.8
   },
   {
-    "cve_id": "CVE-2024-55591",
-    "vendor": "Fortinet",
-    "product": "FortiOS and FortiProxy",
-    "description": "Fortinet FortiOS and FortiProxy contain an authentication bypass vulnerability that may allow an unauthenticated, remote attacker to gain super-admin privileges via crafted requests to Node.js websocket module.",
-    "date": "2025-01-14",
-    "is_kev": true,
-    "has_poc": false,
-    "has_nuclei": true,
-    "epss": 0.9435,
-    "cvss": 9.6
-  },
-  {
-    "cve_id": "CVE-2024-48884",
-    "vendor": "Fortinet",
-    "product": "FortiOS",
-    "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiManager 7.6.0 through 7.6.1, FortiManager 7.4.1 through 7.4.3, FortiManager Cloud 7.4.1 through 7.4.3, FortiOS 7.6.0, FortiOS 7.4.0 through 7.4.4, FortiOS 7.2.0 through 7.2.9, FortiOS 7.0.0 through 7.0.15, FortiOS 6.4.0 through 6.4.15, FortiProxy 7.4.0 through 7.4.5, FortiProxy 7.2.0 through 7.2.11, FortiProxy 7.0.0 through 7.0.18, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions may allow a remote authenticated attacker with access to the security fabric interface and port to write arbitrary files or a remote unauthenticated attacker to delete an arbitrary folder",
-    "date": "2025-01-14",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.15212,
-    "cvss": 9.1
-  },
-  {
     "cve_id": "CVE-2025-0282",
     "vendor": "Ivanti",
     "product": "Connect Secure, Policy Secure, and ZTA Gateways",
@@ -3060,18 +3252,6 @@
     "cvss": 5.3
   },
   {
-    "cve_id": "CVE-2024-26011",
-    "vendor": "Fortinet",
-    "product": "FortiManager",
-    "description": "A missing authentication for critical function vulnerability in Fortinet FortiManager 7.4.0 through 7.4.2, FortiManager 7.2.0 through 7.2.4, FortiManager 7.0.0 through 7.0.11, FortiManager 6.4.0 through 6.4.14, FortiOS 7.4.0 through 7.4.3, FortiOS 7.2.0 through 7.2.7, FortiOS 7.0.0 through 7.0.14, FortiOS 6.4 all versions, FortiOS 6.2 all versions, FortiOS 6.0 all versions, FortiPAM 1.2 all versions, FortiPAM 1.1 all versions, FortiPAM 1.0 all versions, FortiPortal 6.0.0 through 6.0.14, FortiPortal 5.3 all versions, FortiProxy 7.4.0 through 7.4.3, FortiProxy 7.2.0 through 7.2.9, FortiProxy 7.0.0 through 7.0.16, FortiProxy 2.0 all versions, FortiProxy 01.02 all versions, FortiProxy 1.2 all versions, FortiProxy 01.01 all versions, FortiProxy 1.1 all versions, FortiProxy 01.00 all versions, FortiSwitchManager 7.2.0 through 7.2.3, FortiSwitchManager 7.0.0 through 7.0.3 allows attacker to execute unauthorized code or commands via specially crafted packets.",
-    "date": "2024-11-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00597,
-    "cvss": 9.8
-  },
-  {
     "cve_id": "CVE-2024-5910",
     "vendor": "Palo Alto",
     "product": "Expedition",
@@ -3082,18 +3262,6 @@
     "has_nuclei": true,
     "epss": 0.91684,
     "cvss": 9.3
-  },
-  {
-    "cve_id": "CVE-2024-47575",
-    "vendor": "Fortinet",
-    "product": "FortiManager",
-    "description": "Fortinet FortiManager contains a missing authentication vulnerability in the fgfmd daemon that allows a remote, unauthenticated attacker to execute arbitrary code or commands via specially crafted requests.",
-    "date": "2024-10-23",
-    "is_kev": true,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0,
-    "cvss": 9.8
   },
   {
     "cve_id": "CVE-2024-9380",
