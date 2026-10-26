@@ -636,114 +636,6 @@
     "cvss": 6.5
   },
   {
-    "cve_id": "CVE-2026-49875",
-    "vendor": "Apache",
-    "product": "Apache CXF",
-    "description": "Apache CXF's EndpointReferenceUtils and W3CMultiSchemaFactory classes construct a SAXParserFactory without the necessary JAXP hardening configurations, enabling out-of-band (OOB) \nexternal entity resolution. Users are recommended to upgrade to versions 4.2.2 or 4.1.7 or 3.6.12, which fix this issue.",
-    "date": "2026-06-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00516,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2026-50623",
-    "vendor": "Apache",
-    "product": "Apache CXF",
-    "description": "An authentication bypass vulnerability exists in the OAuth2 TokenIntrospectionService in Apache CXF. Due to a missing 'throw' keyword in the security context check, the introspection endpoint (/services/oauth2/introspect) can be accessed by any unauthenticated network attacker. However note that this is a safeguard only in the case that someone forgot to enable authentication on the service. Users are recommended to upgrade to version 4.2.2 or 4.1.7 or 3.6.12, which fixes this issue.",
-    "date": "2026-06-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00369,
-    "cvss": 4.8
-  },
-  {
-    "cve_id": "CVE-2026-50627",
-    "vendor": "Apache",
-    "product": "Apache CXF",
-    "description": "The JwtAccessTokenValidator class in Apache CXF fails to validate the 'aud' (Audience) claims of incoming JWT access tokens. This allows a JWT issued for one Resource Server to be successfully replayed against a completely different Resource Server, leading to Token Confusion/Routing attacks. Users are recommended to upgrade to versions 4.2.2 or 4.1.7 or 3.6.12, which fixes this issue.",
-    "date": "2026-06-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.04524,
-    "cvss": 9.1
-  },
-  {
-    "cve_id": "CVE-2026-50632",
-    "vendor": "Apache",
-    "product": "Apache CXF",
-    "description": "A further incomplete fix for a previous advisory CVE-2026-44417 (Untrusted JMS configuration can lead to RCE) for Apache CXF has been identified, which can allow code execution capabilities, if untrusted users are allowed to configure JMS for Apache CXF. Users are recommended to upgrade to versions 4.2.2 or 4.1.7 or 3.6.12, which fixes this issue.",
-    "date": "2026-06-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00669,
-    "cvss": 8.1
-  },
-  {
-    "cve_id": "CVE-2026-50633",
-    "vendor": "Apache",
-    "product": "Apache CXF",
-    "description": "A JNDI Injection vulnerability has been discovered in Apache CXF's JCA integration module, which can allow for code execution, if an attacker is able to manipulate the JCA deployment descriptor (ra.xml) or runtime activation parameters. Users are recommended to upgrade to versions 4.2.2 or 4.1.7 or 3.6.12, which fixes this issue.",
-    "date": "2026-06-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00888,
-    "cvss": 8.1
-  },
-  {
-    "cve_id": "CVE-2026-50634",
-    "vendor": "Apache",
-    "product": "Apache CXF",
-    "description": "A vulnerability in Apache CXF's JwsJsonContainerRequestFilter can be exploited to cause CXF to process metadata that was not authenticated by the accepted signature. This can bypass the application's assumption\n\nthat accepted `Content-Type` or protected HTTP-header metadata came from a verified signature entry, and may steer downstream JAX-RS entity parsing or signed-header consistency checks. Users are recommended to upgrade to versions 4.2.2 or 4.1.7 or 3.6.12, which fix this issue.",
-    "date": "2026-06-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00276,
-    "cvss": 6.5
-  },
-  {
-    "cve_id": "CVE-2026-50645",
-    "vendor": "Apache",
-    "product": "Apache CXF",
-    "description": "There is no restriction on the amount of attachment headers that a message can contain when being deserialized by Apache CXF, which can lead to uncontrolled resource consumption or a denial of service attack. Users are recommended to upgrade to versions 4.2.2 or 4.1.7 or 3.6.12, which fix this issue by imposing a maximum default of 500 attachments per message.",
-    "date": "2026-06-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00459,
-    "cvss": 7.5
-  },
-  {
-    "cve_id": "CVE-2026-53787",
-    "vendor": "PHP",
-    "product": "Order Attributes for Magento 2",
-    "description": "Amasty Order Attributes for Magento 2 before version 4.0.0 contains an unauthenticated arbitrary file upload vulnerability that allows unauthenticated attackers to write arbitrary files to the store's media directory by submitting files of any type or name to the upload endpoint without authentication, session validation, or cart context. Attackers can upload PHP files to achieve remote code execution on servers where the media directory permits PHP execution, or alternatively enable malware hosting, stored cross-site scripting via HTML or SVG uploads, and path traversal to write files outside the intended upload directory.",
-    "date": "2026-06-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": true,
-    "epss": 0.05638,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2026-54133",
-    "vendor": "PHP",
-    "product": "jmespath.php",
-    "description": "jmespath.php allows users to use JMESPath, software for declaratively specifying how to extract elements from a JSON document, in PHP applications with PHP data structures. Versions prior to 2.9.1 can generate and execute attacker-controlled PHP code when `JmesPath\\CompilerRuntime` is used with an attacker-controlled JMESPath expression. The compiler emits parsed JMESPath function names into generated PHP source without sufficient escaping. A crafted expression can cause the generated cache file to contain executable attacker-controlled PHP, which is then loaded by the compiler runtime. The issue is patched in `2.9.1` and later. As a workaround, disable `JP_PHP_COMPILE` and do not use `JmesPath\\CompilerRuntime` with attacker-controlled expressions. Use the default `AstRuntime` for untrusted expressions. Applications that must continue accepting untrusted JMESPath expressions before upgrading should ensure those expressions are never evaluated by the compiler runtime.",
-    "date": "2026-06-12",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00441,
-    "cvss": 9.8
-  },
-  {
     "cve_id": "CVE-2026-10520",
     "vendor": "Ivanti",
     "product": "Sentry",
@@ -814,30 +706,6 @@
     "has_nuclei": false,
     "epss": 0.00259,
     "cvss": 6.0
-  },
-  {
-    "cve_id": "CVE-2026-45060",
-    "vendor": "PHP",
-    "product": "clipbucket-v5",
-    "description": "ClipBucket v5 is an open source video sharing platform. Prior to version 5.5.3 - #129, the actions/progress_video.php endpoint is vulnerable to blind SQL injection. Any unauthenticated user can exploit the ids parameter to execute SQL queries and exfiltrate sensitive data. This issue has been patched in version 5.5.3 - #129.",
-    "date": "2026-06-11",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00364,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2026-45418",
-    "vendor": "PHP",
-    "product": "clipbucket-v5",
-    "description": "ClipBucket v5 is an open source video sharing platform. Prior to version 5.5.3 - #132, any authenticated user who can upload videos can add multiple subtitles from different files and change their title (English, Spanish...). The POST /actions/subtitle_edit.php request used to change their title includes a number parameter which is vulnerable to SQL Injection. A boolean-based blind SQL injection can be used to exfiltrate sensitive data. This issue has been patched in version 5.5.3 - #132.",
-    "date": "2026-06-11",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00368,
-    "cvss": 8.8
   },
   {
     "cve_id": "CVE-2026-25700",
@@ -1234,6 +1102,54 @@
     "has_nuclei": false,
     "epss": 0.0032,
     "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-40829",
+    "vendor": "PHP",
+    "product": "mbCONNECT24",
+    "description": "A high privileged remote attacker can exploit an unauthenticated SQL Injection vulnerability in the view.html.php files UpdateParam function due to improper neutralization of special elements in a SQL UPDATE command allowing for reading the whole database and changing values in a non critical table. This can result in a total loss of confidentiality and some loss of integrity.",
+    "date": "2026-05-27",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00295,
+    "cvss": 5.5
+  },
+  {
+    "cve_id": "CVE-2026-40830",
+    "vendor": "PHP",
+    "product": "mbCONNECT24",
+    "description": "A high privileged remote attacker can exploit an unauthenticated SQL Injection vulnerability in the admin.mbnetj.php files UpdateParam function due to improper neutralization of special elements in a SQL UPDATE command allowing for reading the whole database and changing values in a non critical table. This can result in a total loss of confidentiality and some loss of integrity.",
+    "date": "2026-05-27",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00295,
+    "cvss": 5.5
+  },
+  {
+    "cve_id": "CVE-2026-40833",
+    "vendor": "PHP",
+    "product": "mbCONNECT24",
+    "description": "An low privileged remote attacker can exploit an unauthenticated SQL Injection vulnerability in the dash.php files saveDashboardLayout function due to improper neutralization of special elements in a SQL INSERT command allowing for reading the whole database and inserting entries into a non critical table. This can result in a total loss of confidentiality and some loss of integrity.",
+    "date": "2026-05-27",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00223,
+    "cvss": 7.1
+  },
+  {
+    "cve_id": "CVE-2026-40834",
+    "vendor": "PHP",
+    "product": "mbCONNECT24",
+    "description": "An low privileged remote attacker can exploit an unauthenticated SQL Injection vulnerability in the dash_layout.php files saveDashboardLayout function due to improper neutralization of special elements in a SQL INSERT command allowing for reading the whole database and inserting entries into a non critical table. This can result in a total loss of confidentiality and some loss of integrity.",
+    "date": "2026-05-27",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00223,
+    "cvss": 7.1
   },
   {
     "cve_id": "CVE-2026-35087",
@@ -1656,6 +1572,138 @@
     "cvss": 7.5
   },
   {
+    "cve_id": "CVE-2026-39458",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "When a BIG-IP is configured with DNS caching  (Such as a DNS profile with caching enabled, SSL Orchestrator, Advanced WAF DoS protection), undisclosed traffic can cause the Traffic Management Microkernel (TMM) to terminate. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00263,
+    "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-40060",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "When a BIG-IP Advanced WAF or ASM security policy is configured on a virtual server, undisclosed requests can cause the bd process to terminate. \n\n \n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00324,
+    "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-40061",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "When BIG-IP DNS is provisioned, a vulnerability exists in an undisclosed iControl REST and BIG-IP TMOS Shell (tmsh) command that may allow an authenticated attacker with the Resource Administrator or Administrator role to execute arbitrary system commands with higher privileges. In Appliance mode deployments, a successful exploit can allow the attacker to cross a security boundary.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00235,
+    "cvss": 8.7
+  },
+  {
+    "cve_id": "CVE-2026-40067",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "When a BIG-IP APM access policy is configured on a virtual server, undisclosed traffic can cause the apmd process to terminate.\n\n Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00324,
+    "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-40618",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "When an SSL profile is configured on a virtual server on BIG-IP Virtual Edition (VE) without Intel QuickAssist Technology (QAT) or on BIG-IP hardware platforms with the database variable crypto.hwacceleration set to disabled, undisclosed traffic can cause the Traffic Management Microkernel (TMM) to terminate.  \n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00324,
+    "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-40698",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "A vulnerability exists in BIG-IP and BIG-IQ systems where a highly privileged, authenticated attacker with at least the Resource Administrator role can create SNMP configuration objects through iControl REST or the TMOS shell (tmsh) resulting in privilege escalation.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00235,
+    "cvss": 8.7
+  },
+  {
+    "cve_id": "CVE-2026-40703",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "A cross-site request forgery (CSRF) vulnerability exists in the dashboard of the BIG-IP Configuration utility.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00104,
+    "cvss": 5.4
+  },
+  {
+    "cve_id": "CVE-2026-41217",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "A vulnerability exists in an undisclosed BIG-IP TMOS Shell (tmsh) command that may allow an authenticated attacker with resource administrator or administrator role to execute arbitrary system commands with higher privileges. In Appliance mode deployments, a successful exploit can allow the attacker to cross a security boundary.\n\n Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00107,
+    "cvss": 7.9
+  },
+  {
+    "cve_id": "CVE-2026-41218",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "When BIG-IP PEM iRules are configured on a virtual server (iRules using commands starting with CLASSIFICATION::, CLASSIFY::, PEM::, PSC::, and the urlcatquery command), undisclosed traffic can cause the Traffic Management Microkernel (TMM) to terminate.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00263,
+    "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-41219",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "An improper sanitization vulnerability exists in the BIG-IP QKView utility that allows a low-privileged attacker to read sensitive information from a QKView file.  \n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00277,
+    "cvss": 6.5
+  },
+  {
+    "cve_id": "CVE-2026-41953",
+    "vendor": "F5",
+    "product": "BIG-IP",
+    "description": "A vulnerability exists in BIG-IP systems where a highly privileged, authenticated attacker with at least the Resource Administrator role can modify configuration objects resulting in privilege escalation.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00248,
+    "cvss": 8.7
+  },
+  {
     "cve_id": "CVE-2026-41957",
     "vendor": "F5",
     "product": "BIG-IP",
@@ -1762,6 +1810,54 @@
     "has_nuclei": false,
     "epss": 0.00203,
     "cvss": 6.5
+  },
+  {
+    "cve_id": "CVE-2026-0237",
+    "vendor": "Palo Alto",
+    "product": "Prisma Browser",
+    "description": "An improper protection of alternate path vulnerability in Palo Alto Networks Prisma® Browser on macOS fails to properly restrict access to an internal automation bridge. This allows a locally authenticated non-admin user to leverage an exposed communication channel to send unauthorized commands to the browser, bypassing security controls.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0015,
+    "cvss": 7.8
+  },
+  {
+    "cve_id": "CVE-2026-0263",
+    "vendor": "Palo Alto",
+    "product": "Cloud NGFW",
+    "description": "A buffer overflow vulnerability in the IKEv2 processing of Palo Alto Networks PAN-OS® software allows an unauthenticated network-based attacker to execute arbitrary code with elevated privileges on the firewall, or cause a denial of service (DoS) condition.\n\n\nPanorama, Cloud NGFW, and Prisma® Access are not impacted by these vulnerabilities.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00373,
+    "cvss": 9.8
+  },
+  {
+    "cve_id": "CVE-2026-0264",
+    "vendor": "Palo Alto",
+    "product": "Cloud NGFW",
+    "description": "A buffer overflow vulnerability in the DNS proxy and DNS Server features of Palo Alto Networks PAN-OS® Software allows an unauthenticated attacker with network access to cause a denial of service (DoS) condition (all PAN-OS platforms except Cloud NGFW and Prisma Access) or potentially execute arbitrary code by sending specially crafted network traffic (PA-Series hardware only).\n\n\n\n\nPanorama, Cloud NGFW, and Prisma® Access are not impacted by this vulnerability.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00474,
+    "cvss": 9.8
+  },
+  {
+    "cve_id": "CVE-2026-0265",
+    "vendor": "Palo Alto",
+    "product": "Cloud NGFW",
+    "description": "An authentication bypass vulnerability in Palo Alto Networks PAN-OS® software enables an unauthenticated attacker with network access to bypass authentication controls when Cloud Authentication Service (CAS) is enabled.\n\n\n\nThe risk is higher if CAS is enabled on the management interface and lower when any other login interfaces are used.\n\nThe risk of this issue is greatly reduced if you secure access to the management web interface by restricting access to only trusted internal IP addresses according to our recommended  best practice deployment guidelines https://live.paloaltonetworks.com/t5/community-blogs/tips-amp-tricks-how-to-secure-the-management-access-of-your-palo/ba-p/464431 .\n\nThis issue is applicable to PAN-OS software on PA-Series and VM-Series firewalls and on Panorama (virtual and M-Series).\n\nCloud NGFW and Prisma Access® are not impacted by this vulnerability.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": true,
+    "has_nuclei": false,
+    "epss": 0.01053,
+    "cvss": 8.1
   },
   {
     "cve_id": "CVE-2026-0235",
@@ -1882,6 +1978,42 @@
     "has_nuclei": false,
     "epss": 0.00328,
     "cvss": 9.1
+  },
+  {
+    "cve_id": "CVE-2026-0259",
+    "vendor": "Palo Alto",
+    "product": "WildFire WF-500 and WF-500-B",
+    "description": "An arbitrary File Read and Delete Vulnerability in Palo Alto Networks WildFire® WF-500 and WF-500-B appliances enables users to read sensitive information and delete arbitrary files. This vulnerability affects WF-500 and WF-500-B appliances running in the default non-FIPS configuration mode.\n\n\n\nThe WildFire Appliance (WF-500, WF-500-B) software update is now available to customers that use the WildFire Appliance (WF-500, WF-500-B) for on-premise sandboxing.\n\n\n\nPlease note that customers using the WildFire Public cloud service are NOT impacted by this vulnerability.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00336,
+    "cvss": 8.8
+  },
+  {
+    "cve_id": "CVE-2026-0261",
+    "vendor": "Palo Alto",
+    "product": "Cloud NGFW",
+    "description": "Multiple command injection vulnerabilities in Palo Alto Networks PAN-OS® software enable an authenticated administrator to bypass system restrictions and run arbitrary commands as a root user. To be able to exploit this issue, the user must have access to the PAN-OS CLI or Web UI.\n\n\n\nThe security risk posed by this issue is significantly minimized when CLI access is restricted to a limited group of administrators and by restricting access to the management web interface to only trusted internal IP addresses according to our recommended  best practice deployment guidelines https://live.paloaltonetworks.com/t5/community-blogs/tips-amp-tricks-how-to-secure-the-management-access-of-your-palo/ba-p/464431 .\n\n\n\nThis issue is applicable to PAN-OS software on PA-Series and VM-Series firewalls and on Panorama (virtual and M-Series).\n\n\n\nCloud NGFW and Prisma Access® are not impacted by these vulnerabilities.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01403,
+    "cvss": 7.2
+  },
+  {
+    "cve_id": "CVE-2026-0262",
+    "vendor": "Palo Alto",
+    "product": "Cloud NGFW",
+    "description": "Multiple denial of service vulnerabilities in Palo Alto Networks PAN-OS® software allow an unauthenticated attacker with network access to cause a denial of service (DoS) condition by sending specially crafted network traffic. \n\nPanorama and Cloud NGFW are not impacted by these vulnerabilities.",
+    "date": "2026-05-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00359,
+    "cvss": 7.5
   },
   {
     "cve_id": "CVE-2026-0243",
@@ -2616,6 +2748,18 @@
     "cvss": 9.9
   },
   {
+    "cve_id": "CVE-2025-10277",
+    "vendor": "F5",
+    "product": "yudao-cloud",
+    "description": "A vulnerability was detected in YunaiV yudao-cloud up to 2025.09. This issue affects some unknown processing of the file /crm/receivable/submit. The manipulation of the argument ID results in improper authorization. The attack can be executed remotely. The exploit is now public and may be used. The patch is identified as 0f573e1d8e1a895e1bcbb7740ef75306412c3f9d (master-jdk17). It is best practice to apply a patch to resolve this issue.",
+    "date": "2025-09-12",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00329,
+    "cvss": 8.8
+  },
+  {
     "cve_id": "CVE-2025-59042",
     "vendor": "F5",
     "product": "pyinstaller",
@@ -2892,6 +3036,18 @@
     "cvss": 9.3
   },
   {
+    "cve_id": "CVE-2017-3066",
+    "vendor": "Apache",
+    "product": "ColdFusion",
+    "description": "Adobe ColdFusion contains a deserialization vulnerability in the Apache BlazeDS library that allows for arbitrary code execution.",
+    "date": "2025-02-24",
+    "is_kev": true,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0,
+    "cvss": 9.8
+  },
+  {
     "cve_id": "CVE-2025-0111",
     "vendor": "Palo Alto",
     "product": "PAN-OS",
@@ -2914,6 +3070,18 @@
     "has_nuclei": true,
     "epss": 0.95314,
     "cvss": 8.2
+  },
+  {
+    "cve_id": "CVE-2024-45195",
+    "vendor": "Apache",
+    "product": "OFBiz",
+    "description": "Apache OFBiz contains a forced browsing vulnerability that allows a remote attacker to obtain unauthorized access.",
+    "date": "2025-02-04",
+    "is_kev": true,
+    "has_poc": false,
+    "has_nuclei": true,
+    "epss": 0.99983,
+    "cvss": 9.8
   },
   {
     "cve_id": "CVE-2025-23006",
@@ -3168,6 +3336,18 @@
     "cvss": 9.4
   },
   {
+    "cve_id": "CVE-2024-27348",
+    "vendor": "Apache",
+    "product": "HugeGraph-Server",
+    "description": "Apache HugeGraph-Server contains an improper access control vulnerability that could allow a remote attacker to execute arbitrary code.",
+    "date": "2024-09-18",
+    "is_kev": true,
+    "has_poc": false,
+    "has_nuclei": true,
+    "epss": 0.9921,
+    "cvss": 9.8
+  },
+  {
     "cve_id": "CVE-2024-8190",
     "vendor": "Ivanti",
     "product": "Cloud Services Appliance",
@@ -3204,6 +3384,30 @@
     "cvss": 9.3
   },
   {
+    "cve_id": "CVE-2024-38856",
+    "vendor": "Apache",
+    "product": "OFBiz",
+    "description": "Apache OFBiz contains an incorrect authorization vulnerability that could allow remote code execution via a Groovy payload in the context of the OFBiz user process by an unauthenticated attacker.",
+    "date": "2024-08-27",
+    "is_kev": true,
+    "has_poc": false,
+    "has_nuclei": true,
+    "epss": 0.99427,
+    "cvss": 8.1
+  },
+  {
+    "cve_id": "CVE-2024-32113",
+    "vendor": "Apache",
+    "product": "OFBiz",
+    "description": "Apache OFBiz contains a path traversal vulnerability that could allow for remote code execution.",
+    "date": "2024-08-07",
+    "is_kev": true,
+    "has_poc": false,
+    "has_nuclei": true,
+    "epss": 0.99916,
+    "cvss": 9.1
+  },
+  {
     "cve_id": "CVE-2022-22948",
     "vendor": "VMware",
     "product": "vCenter Server",
@@ -3238,6 +3442,18 @@
     "has_nuclei": true,
     "epss": 0.99978,
     "cvss": 8.6
+  },
+  {
+    "cve_id": "CVE-2020-17519",
+    "vendor": "Apache",
+    "product": "Flink",
+    "description": "Apache Flink contains an improper access control vulnerability that allows an attacker to read any file on the local filesystem of the JobManager through its REST interface.",
+    "date": "2024-05-23",
+    "is_kev": true,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0,
+    "cvss": 9.1
   },
   {
     "cve_id": "CVE-2023-36640",
@@ -3444,6 +3660,18 @@
     "cvss": 9.1
   },
   {
+    "cve_id": "CVE-2023-27524",
+    "vendor": "Apache",
+    "product": "Superset",
+    "description": "Apache Superset contains an insecure default initialization of a resource vulnerability that allows an attacker to authenticate and access unauthorized resources on installations that have not altered the default configured SECRET_KEY according to installation instructions.",
+    "date": "2024-01-08",
+    "is_kev": true,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0,
+    "cvss": 8.9
+  },
+  {
     "cve_id": "CVE-2023-36641",
     "vendor": "Fortinet",
     "product": "FortiOS",
@@ -3466,30 +3694,6 @@
     "has_nuclei": false,
     "epss": 0.0,
     "cvss": 10.0
-  },
-  {
-    "cve_id": "CVE-2023-46748",
-    "vendor": "F5",
-    "product": "BIG-IP Configuration Utility",
-    "description": "F5 BIG-IP Configuration utility contains an SQL injection vulnerability that may allow an authenticated attacker with network access through the BIG-IP management port and/or self IP addresses to execute system commands. This vulnerability can be used in conjunction with CVE-2023-46747.",
-    "date": "2023-10-31",
-    "is_kev": true,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0,
-    "cvss": 8.8
-  },
-  {
-    "cve_id": "CVE-2023-46747",
-    "vendor": "F5",
-    "product": "BIG-IP Configuration Utility",
-    "description": "F5 BIG-IP Configuration utility contains an authentication bypass using an alternate path or channel vulnerability due to undisclosed requests that may allow an unauthenticated attacker with network access to the BIG-IP system through the management port and/or self IP addresses to execute system commands. This vulnerability can be used in conjunction with CVE-2023-46748.",
-    "date": "2023-10-31",
-    "is_kev": true,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0,
-    "cvss": 9.8
   },
   {
     "cve_id": "CVE-2023-22515",
@@ -3670,18 +3874,6 @@
     "has_nuclei": false,
     "epss": 0.0,
     "cvss": 10.0
-  },
-  {
-    "cve_id": "CVE-2022-1388",
-    "vendor": "F5",
-    "product": "BIG-IP",
-    "description": "F5 BIG-IP contains a missing authentication in critical function vulnerability which can allow for remote code execution, creation or deletion of files, or disabling services.",
-    "date": "2022-05-10",
-    "is_kev": true,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0,
-    "cvss": 9.8
   },
   {
     "cve_id": "CVE-2022-22960",
@@ -3888,18 +4080,6 @@
     "cvss": 9.8
   },
   {
-    "cve_id": "CVE-2021-22991",
-    "vendor": "F5",
-    "product": "BIG-IP Traffic Management Microkernel",
-    "description": "The Traffic Management Microkernel of BIG-IP ASM Risk Engine has a buffer overflow vulnerability, leading to a bypassing of URL-based access controls.",
-    "date": "2022-01-18",
-    "is_kev": true,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0,
-    "cvss": 9.8
-  },
-  {
     "cve_id": "CVE-2021-22017",
     "vendor": "VMware",
     "product": "vCenter Server",
@@ -3976,30 +4156,6 @@
     "vendor": "Atlassian",
     "product": "Confluence Server and Data Server",
     "description": "Atlassian Confluence Server and Data Center contain a server-side template injection vulnerability that may allow an attacker to achieve path traversal and remote code execution.",
-    "date": "2021-11-03",
-    "is_kev": true,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2020-5902",
-    "vendor": "F5",
-    "product": "BIG-IP",
-    "description": "F5 BIG-IP Traffic Management User Interface (TMUI) contains a remote code execution vulnerability in undisclosed pages.",
-    "date": "2021-11-03",
-    "is_kev": true,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2021-22986",
-    "vendor": "F5",
-    "product": "BIG-IP and BIG-IQ Centralized Management",
-    "description": "F5 BIG-IP and BIG-IQ Centralized Management contain a remote code execution vulnerability in the iControl REST interface that allows unauthenticated attackers with network access to execute system commands, create or delete files, and disable services.",
     "date": "2021-11-03",
     "is_kev": true,
     "has_poc": false,
