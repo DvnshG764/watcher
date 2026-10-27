@@ -912,54 +912,6 @@
     "cvss": 7.5
   },
   {
-    "cve_id": "CVE-2026-6487",
-    "vendor": "PHP",
-    "product": "jtbc5 CMS",
-    "description": "A flaw has been found in Qihui jtbc5 CMS 5.0.3.6. Affected is an unknown function of the file /dev/code/common/diplomat/manage.php of the component Code Endpoint. This manipulation of the argument path causes path traversal. The attack is possible to be carried out remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-17",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00365,
-    "cvss": 4.3
-  },
-  {
-    "cve_id": "CVE-2026-6488",
-    "vendor": "PHP",
-    "product": "sms",
-    "description": "A vulnerability was identified in QueryMine sms up to 7ab5a9ea196209611134525ffc18de25c57d9593. This vulnerability affects unknown code of the file admin/editcourse.php of the component GET Request Parameter Handler. The manipulation of the argument ID leads to sql injection. The attack can be initiated remotely. The exploit is publicly available and might be used. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-17",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00196,
-    "cvss": 6.3
-  },
-  {
-    "cve_id": "CVE-2026-6489",
-    "vendor": "PHP",
-    "product": "sms",
-    "description": "A security flaw has been discovered in QueryMine sms up to 7ab5a9ea196209611134525ffc18de25c57d9593. This issue affects some unknown processing of the file admin/addteacher.php of the component Background Management Page. The manipulation of the argument image results in unrestricted upload. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-17",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00257,
-    "cvss": 6.3
-  },
-  {
-    "cve_id": "CVE-2026-6490",
-    "vendor": "PHP",
-    "product": "sms",
-    "description": "A weakness has been identified in QueryMine sms up to 7ab5a9ea196209611134525ffc18de25c57d9593. Impacted is an unknown function of the file admin/deletecourse.php of the component GET Request Parameter Handler. This manipulation of the argument ID causes sql injection. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "date": "2026-04-17",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00325,
-    "cvss": 7.3
-  },
-  {
     "cve_id": "CVE-2026-34197",
     "vendor": "Apache",
     "product": "ActiveMQ",
@@ -970,66 +922,6 @@
     "has_nuclei": true,
     "epss": 0.98256,
     "cvss": 8.8
-  },
-  {
-    "cve_id": "CVE-2026-23772",
-    "vendor": "Microsoft",
-    "product": "Storage Manager",
-    "description": "Dell Storage Manager - Replay Manager for Microsoft Servers, version(s) 8.0, contain(s) an Improper Privilege Management vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Elevation of privileges.",
-    "date": "2026-04-16",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00122,
-    "cvss": 7.3
-  },
-  {
-    "cve_id": "CVE-2026-31843",
-    "vendor": "PHP",
-    "product": "pay-uz",
-    "description": "The goodoneuz/pay-uz Laravel package (<= 2.2.24) contains a critical vulnerability in the /payment/api/editable/update endpoint that allows unauthenticated attackers to overwrite existing PHP payment hook files. The endpoint is exposed via Route::any without authentication middleware, enabling remote access without credentials.",
-    "date": "2026-04-16",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.01383,
-    "cvss": 9.8
-  },
-  {
-    "cve_id": "CVE-2026-6409",
-    "vendor": "PHP",
-    "product": "Protobuf-php (Pecl)",
-    "description": "A Denial of Service (DoS) vulnerability exists in the Protobuf PHP library during the parsing of untrusted input. Maliciously structured messages—specifically those containing negative varints or deep recursion—can be used to crash the application, impacting service availability.",
-    "date": "2026-04-16",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.0036,
-    "cvss": 7.1
-  },
-  {
-    "cve_id": "CVE-2026-39313",
-    "vendor": "Apache",
-    "product": "mcp-framework",
-    "description": "mcp-framework is a framework for building Model Context Protocol (MCP) servers. In versions 0.2.21 and below, the readRequestBody() function in the HTTP transport concatenates request body chunks into a string with no size limit. Although a maxMessageSize configuration value exists, it is never enforced in readRequestBody(). A remote unauthenticated attacker can crash any mcp-framework HTTP server by sending a single large POST request to /mcp, causing memory exhaustion and denial of service. This issue has been fixed in version 0.2.22.",
-    "date": "2026-04-16",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00495,
-    "cvss": 8.7
-  },
-  {
-    "cve_id": "CVE-2026-40255",
-    "vendor": "Apache",
-    "product": "http-server",
-    "description": "AdonisJS HTTP Server is a package for handling HTTP requests in the AdonisJS framework. In @adonisjs/http-server versions prior to 7.8.1 and 8.0.0-next.0 through 8.1.3, and @adonisjs/core versions prior to 7.4.0, the response.redirect().back() method reads the Referer header from the incoming HTTP request and redirects to that URL without validating the host.An attacker who can influence the Referer header can cause the application to redirect users to a malicious external site. This affects all AdonisJS applications that use response.redirect().back() or response.redirect('back'). This issue has been fixed in versions 7.8.1 and 8.2.0 and 7.4.0 of @adonisjs/core.",
-    "date": "2026-04-16",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00248,
-    "cvss": 6.1
   },
   {
     "cve_id": "CVE-2026-39963",
@@ -1716,6 +1608,18 @@
     "cvss": 9.0
   },
   {
+    "cve_id": "CVE-2026-26154",
+    "vendor": "Microsoft",
+    "product": "Windows Server 2012",
+    "description": "Improper input validation in Windows Server Update Service allows an unauthorized attacker to perform tampering over a network.",
+    "date": "2026-04-14",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01064,
+    "cvss": 7.5
+  },
+  {
     "cve_id": "CVE-2026-21643",
     "vendor": "Fortinet",
     "product": "FortiClient EMS",
@@ -2013,6 +1917,78 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.00313,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6183",
+    "vendor": "PHP",
+    "product": "Simple Content Management System",
+    "description": "A security flaw has been discovered in code-projects Simple Content Management System 1.0. Affected by this issue is some unknown functionality of the file /web/index.php. Performing a manipulation of the argument ID results in sql injection. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00313,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6184",
+    "vendor": "PHP",
+    "product": "Simple Content Management System",
+    "description": "A weakness has been identified in code-projects Simple Content Management System 1.0. This affects an unknown part of the file /web/admin/welcome.php. Executing a manipulation of the argument News Title can lead to cross site scripting. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00302,
+    "cvss": 2.4
+  },
+  {
+    "cve_id": "CVE-2026-6187",
+    "vendor": "PHP",
+    "product": "Pharmacy Sales and Inventory System",
+    "description": "A vulnerability was detected in SourceCodester Pharmacy Sales and Inventory System 1.0. This issue affects some unknown processing of the file /ajax.php?action=chk_prod_availability. The manipulation of the argument ID results in sql injection. The attack may be performed from remote. The exploit is now public and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00254,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-6188",
+    "vendor": "PHP",
+    "product": "Pharmacy Sales and Inventory System",
+    "description": "A flaw has been found in SourceCodester Pharmacy Sales and Inventory System 1.0. Impacted is an unknown function of the file /ajax.php?action=delete_sales. This manipulation of the argument ID causes sql injection. It is possible to initiate the attack remotely. The exploit has been published and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00254,
+    "cvss": 7.3
+  },
+  {
+    "cve_id": "CVE-2026-39940",
+    "vendor": "PHP",
+    "product": "CRM",
+    "description": "ChurchCRM is an open-source church management system. Prior to 7.0.0, it was possible in many places across the ChurchCRM application to create a link that, when visited by an authenticated user, would redirect them to any URL chosen by an attacker if they clicked 'Cancel' button on the page. For this write-up the DonatedItemEditor.php will be used as an example, however wherever all instances of 'linkBack' should be assessed. This vulnerability is fixed in 7.0.0.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00269,
+    "cvss": 5.3
+  },
+  {
+    "cve_id": "CVE-2026-6189",
+    "vendor": "PHP",
+    "product": "Pharmacy Sales and Inventory System",
+    "description": "A vulnerability has been found in SourceCodester Pharmacy Sales and Inventory System 1.0. The affected element is an unknown function of the file /ajax.php?action=login. Such manipulation of the argument Username leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.",
+    "date": "2026-04-13",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.00268,
     "cvss": 7.3
   },
   {
@@ -2325,6 +2301,30 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.00259,
+    "cvss": 7.5
+  },
+  {
+    "cve_id": "CVE-2026-29145",
+    "vendor": "Apache",
+    "product": "Apache Tomcat",
+    "description": "CLIENT_CERT authentication does not fail as expected for some scenarios when soft fail is disabled vulnerability in Apache Tomcat, Apache Tomcat Native.\n\nThis issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.18, from 10.1.0-M7 through 10.1.52, from 9.0.83 through 9.0.115; Apache Tomcat Native: from 1.1.23 through 1.1.34, from 1.2.0 through 1.2.39, from 1.3.0 through 1.3.6, from 2.0.0 through 2.0.13.\n\nUsers are recommended to upgrade to version Tomcat Native 1.3.7 or 2.0.14 and Tomcat 11.0.20, 10.1.53 and 9.0.116, which fix the issue.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": true,
+    "has_nuclei": false,
+    "epss": 0.00715,
+    "cvss": 9.1
+  },
+  {
+    "cve_id": "CVE-2026-29146",
+    "vendor": "Apache",
+    "product": "Apache Tomcat",
+    "description": "Padding Oracle vulnerability in Apache Tomcat's EncryptInterceptor with default configuration.\n\nThis issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.18, from 10.0.0-M1 through 10.1.52, from 9.0.13 through 9..115, from 8.5.38 through 8.5.100, from 7.0.100 through 7.0.109.\n\nUsers are recommended to upgrade to version 11.0.19, 10.1.53 and 9.0.116, which fixes the issue.",
+    "date": "2026-04-09",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0885,
     "cvss": 7.5
   },
   {
