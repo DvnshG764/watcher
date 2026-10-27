@@ -936,6 +936,30 @@
     "cvss": 7.3
   },
   {
+    "cve_id": "CVE-2026-31843",
+    "vendor": "PHP",
+    "product": "pay-uz",
+    "description": "The goodoneuz/pay-uz Laravel package (<= 2.2.24) contains a critical vulnerability in the /payment/api/editable/update endpoint that allows unauthenticated attackers to overwrite existing PHP payment hook files. The endpoint is exposed via Route::any without authentication middleware, enabling remote access without credentials.",
+    "date": "2026-04-16",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.01383,
+    "cvss": 9.8
+  },
+  {
+    "cve_id": "CVE-2026-6409",
+    "vendor": "PHP",
+    "product": "Protobuf-php (Pecl)",
+    "description": "A Denial of Service (DoS) vulnerability exists in the Protobuf PHP library during the parsing of untrusted input. Maliciously structured messages—specifically those containing negative varints or deep recursion—can be used to crash the application, impacting service availability.",
+    "date": "2026-04-16",
+    "is_kev": false,
+    "has_poc": false,
+    "has_nuclei": false,
+    "epss": 0.0036,
+    "cvss": 7.1
+  },
+  {
     "cve_id": "CVE-2026-39963",
     "vendor": "PHP",
     "product": "Serendipity",
@@ -1965,30 +1989,6 @@
     "has_poc": false,
     "has_nuclei": false,
     "epss": 0.00254,
-    "cvss": 7.3
-  },
-  {
-    "cve_id": "CVE-2026-39940",
-    "vendor": "PHP",
-    "product": "CRM",
-    "description": "ChurchCRM is an open-source church management system. Prior to 7.0.0, it was possible in many places across the ChurchCRM application to create a link that, when visited by an authenticated user, would redirect them to any URL chosen by an attacker if they clicked 'Cancel' button on the page. For this write-up the DonatedItemEditor.php will be used as an example, however wherever all instances of 'linkBack' should be assessed. This vulnerability is fixed in 7.0.0.",
-    "date": "2026-04-13",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00269,
-    "cvss": 5.3
-  },
-  {
-    "cve_id": "CVE-2026-6189",
-    "vendor": "PHP",
-    "product": "Pharmacy Sales and Inventory System",
-    "description": "A vulnerability has been found in SourceCodester Pharmacy Sales and Inventory System 1.0. The affected element is an unknown function of the file /ajax.php?action=login. Such manipulation of the argument Username leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.",
-    "date": "2026-04-13",
-    "is_kev": false,
-    "has_poc": false,
-    "has_nuclei": false,
-    "epss": 0.00268,
     "cvss": 7.3
   },
   {
