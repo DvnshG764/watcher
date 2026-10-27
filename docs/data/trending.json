@@ -1,6 +1,38 @@
 {
   "confirmed_in_wild": [
     {
+      "cve_id": "CVE-2026-109618",
+      "vendor": "PHP Group",
+      "product": "PHP",
+      "vuln_name": "PHP Memory Corruption Vulnerability",
+      "date_added": "2026-10-26",
+      "description": "PHP contains an out-of-memory corruption vulnerability that allows for unauthenticated remote code execution.",
+      "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "due_date": "2026-10-29",
+      "ransomware_use": "Unknown",
+      "notes": "This vulnerability affects an open-source component, third-party library, protocol, or proprietary implementation that could be used by different products. For more information, please see: https://www.php.net/ ; https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ;  https://nvd.nist.gov/vuln/detail/CVE-2026-109618",
+      "cvss": 9.2,
+      "epss": 0.99981,
+      "has_poc": true,
+      "has_nuclei": true
+    },
+    {
+      "cve_id": "CVE-2026-109619",
+      "vendor": "PHP Group",
+      "product": "PHP",
+      "vuln_name": "PHP Stale Internal Request-State Vulnerability",
+      "date_added": "2026-10-26",
+      "description": "PHP contains a stale internal request-state vulnerability that allows for unauthenticated remote code execution.",
+      "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "due_date": "2026-10-29",
+      "ransomware_use": "Unknown",
+      "notes": "This vulnerability affects an open-source component, third-party library, protocol, or proprietary implementation that could be used by different products. For more information, please see: https://www.php.net/ ; https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ;  https://nvd.nist.gov/vuln/detail/CVE-2026-109619",
+      "cvss": 9.2,
+      "epss": 0.99997,
+      "has_poc": true,
+      "has_nuclei": false
+    },
+    {
       "cve_id": "CVE-2026-114625",
       "vendor": "Arista",
       "product": "VeloCloud Orchestrator",
@@ -28,7 +60,7 @@
       "ransomware_use": "Unknown",
       "notes": "https://help.nextcloud.com/t/to-collabora-built-in-user-update-asap/250516 ; https://github.com/CollaboraOnline/online/security/advisories/GHSA-g3vx-3m76-fghh ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-110447",
       "cvss": 9.2,
-      "epss": 0.0,
+      "epss": 0.12328,
       "has_poc": true,
       "has_nuclei": false
     },
@@ -607,67 +639,9 @@
       "epss": 0.91605,
       "has_poc": false,
       "has_nuclei": true
-    },
-    {
-      "cve_id": "CVE-2026-85102",
-      "vendor": "Check Point",
-      "product": "Multiple Products",
-      "vuln_name": "Check Point Multiple Products Improper Certificate Validation Vulnerability",
-      "date_added": "2026-09-22",
-      "description": "Check Point Security Gateway and Check Point Spark Firewall using Site to Site VPN or Remote Access VPN contain an improper certificate validation vulnerability which could allow an unauthenticated remote attacker to execute arbitrary code on the Gateway.",
-      "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-      "due_date": "2026-09-25",
-      "ransomware_use": "Unknown",
-      "notes": "https://support.checkpoint.com/results/sk/sk1000117 ; ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-85102",
-      "cvss": 9.8,
-      "epss": 0.5414,
-      "has_poc": false,
-      "has_nuclei": false
-    },
-    {
-      "cve_id": "CVE-2026-7273",
-      "vendor": "Zyxel",
-      "product": "GS1900 Series Switches",
-      "vuln_name": "Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability",
-      "date_added": "2026-09-21",
-      "description": "Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.",
-      "required_action": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-      "due_date": "2026-09-24",
-      "ransomware_use": "Unknown",
-      "notes": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-stack-based-buffer-overflow-vulnerability-in-gs1900-series-switches-06-16-2026 ; ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-7273",
-      "cvss": 8.8,
-      "epss": 0.02778,
-      "has_poc": false,
-      "has_nuclei": false
     }
   ],
   "early_warning": [
-    {
-      "cve_id": "CVE-2026-109619",
-      "vendor": "PHP Group",
-      "product": "PHP",
-      "cvss": 9.2,
-      "description": "PHP has various global state that temporarily points into request memory. In some scenarios, global state may not be correctly reset, or may be repopulated after being reset. The global state may then refer to request memory even after it has been freed. Subsequent requests may read or branch on this stale state before it is fully initialized. Multiple strategies can trigger this condition and produce remote code execution (RCE).",
-      "epss": 0.99997,
-      "epss_percentile": 0.99989,
-      "has_poc": true,
-      "has_nuclei": false,
-      "in_news": true,
-      "first_seen": "2026-10-26"
-    },
-    {
-      "cve_id": "CVE-2026-109618",
-      "vendor": "PHP Group",
-      "product": "PHP",
-      "cvss": 9.2,
-      "description": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).",
-      "epss": 0.99981,
-      "epss_percentile": 0.99981,
-      "has_poc": true,
-      "has_nuclei": true,
-      "in_news": true,
-      "first_seen": "2026-10-26"
-    },
     {
       "cve_id": "CVE-2025-53771",
       "vendor": "Microsoft",
@@ -679,7 +653,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-1974",
@@ -692,7 +666,7 @@
       "has_poc": true,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-29927",
@@ -705,7 +679,7 @@
       "has_poc": true,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-29895",
@@ -718,7 +692,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-9264",
@@ -731,7 +705,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-10914",
@@ -744,7 +718,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-4123",
@@ -757,7 +731,7 @@
       "has_poc": true,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-27636",
@@ -770,7 +744,7 @@
       "has_poc": true,
       "has_nuclei": false,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-45507",
@@ -783,7 +757,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-34037",
@@ -796,7 +770,7 @@
       "has_poc": true,
       "has_nuclei": false,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-0204",
@@ -809,7 +783,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-22024",
@@ -822,7 +796,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-8517",
@@ -835,7 +809,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-8856",
@@ -848,7 +822,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-27956",
@@ -861,7 +835,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-21650",
@@ -874,7 +848,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-7120",
@@ -887,7 +861,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-9047",
@@ -900,7 +874,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-2389",
@@ -913,7 +887,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-45216",
@@ -926,7 +900,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-0692",
@@ -939,7 +913,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-38653",
@@ -952,7 +926,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-11320",
@@ -965,7 +939,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-25600",
@@ -978,7 +952,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-29972",
@@ -991,7 +965,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-5276",
@@ -1004,7 +978,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-7954",
@@ -1017,7 +991,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-1094",
@@ -1030,7 +1004,7 @@
       "has_poc": true,
       "has_nuclei": false,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-37032",
@@ -1043,7 +1017,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-1071",
@@ -1056,7 +1030,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-66516",
@@ -1069,7 +1043,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-21683",
@@ -1082,7 +1056,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-36104",
@@ -1095,7 +1069,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-43425",
@@ -1108,7 +1082,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-34152",
@@ -1121,7 +1095,7 @@
       "has_poc": true,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-24799",
@@ -1134,7 +1108,7 @@
       "has_poc": true,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2025-59528",
@@ -1147,7 +1121,7 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
     },
     {
       "cve_id": "CVE-2024-29973",
@@ -1160,7 +1134,33 @@
       "has_poc": false,
       "has_nuclei": true,
       "in_news": false,
-      "first_seen": "2026-10-26"
+      "first_seen": "2026-10-27"
+    },
+    {
+      "cve_id": "CVE-2025-1098",
+      "vendor": "kubernetes",
+      "product": "ingress-nginx",
+      "cvss": 8.8,
+      "description": "A security issue was discovered in  ingress-nginx https://github.com/kubernetes/ingress-nginx  where the `mirror-target` and `mirror-host` Ingress annotations can be used to inject arbitrary configuration into nginx. This can lead to arbitrary code execution in the context of the ingress-nginx controller, and disclosure of Secrets accessible to the controller. (Note that in the default installation, the controller can access all Secrets cluster-wide.)",
+      "epss": 0.86146,
+      "epss_percentile": 0.99728,
+      "has_poc": false,
+      "has_nuclei": true,
+      "in_news": false,
+      "first_seen": "2026-10-27"
+    },
+    {
+      "cve_id": "CVE-2025-32429",
+      "vendor": "xwiki",
+      "product": "xwiki-platform",
+      "cvss": 9.3,
+      "description": "XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In versions 9.4-rc-1 through 16.10.5 and 17.0.0-rc-1 through 17.2.2, it's possible for anyone to inject SQL using the parameter sort of the getdeleteddocuments.vm. It's injected as is as an ORDER BY value. This is fixed in versions 16.10.6 and 17.3.0-rc-1.",
+      "epss": 0.85496,
+      "epss_percentile": 0.9972,
+      "has_poc": true,
+      "has_nuclei": true,
+      "in_news": false,
+      "first_seen": "2026-10-27"
     }
   ]
 }
