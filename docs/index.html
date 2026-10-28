@@ -47,28 +47,23 @@
     </svg>
   </div>
 
-  <!-- ================= LEFT VERTICAL SIDEBAR (EXPANDED & COLLAPSED) ================= -->
+  <!-- ================= LEFT VERTICAL SIDEBAR ================= -->
   <aside id="sidebar" class="glass-sidebar w-[290px] shrink-0 sticky top-0 h-screen z-40 flex flex-col justify-between p-4 select-none overflow-y-auto overflow-x-hidden">
     
-    <!-- TOP + MIDDLE STACK -->
     <div class="space-y-4">
       
-      <!-- 1. Brand Header + Collapse/Expand Button -->
+      <!-- 1. Brand Header -->
       <div>
         <div class="brand-header-row flex items-center justify-between gap-2">
-          <!-- Watcher Logo Placeholder + Title -->
           <div class="flex items-center gap-3 cursor-pointer group" onclick="switchTab('radar')">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 via-indigo-500 to-purple-600 p-[1.5px] shadow-lg shadow-indigo-500/25 shrink-0 transition-transform group-hover:scale-105">
-              <div class="w-full h-full bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-transparent rounded-[10px] flex items-center justify-center relative overflow-hidden shadow-sm">                <!-- Eye + Radar Merged Logo SVG -->
+              <div class="w-full h-full bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-transparent rounded-[10px] flex items-center justify-center relative overflow-hidden shadow-sm">
+                <!-- Eye + Radar Merged Logo -->
                 <svg class="w-6 h-6 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <!-- Outer Eye Contour (The Iris/Sclera boundary) -->
                   <path d="M2 12C4.5 7.5 8 5 12 5s7.5 2.5 10 7c-2.5 4.5-6 7-10 7s-7.5-2.5-10-7z" stroke-opacity="0.85"/>
-                  <!-- Concentric Radar Rings inside the Eye -->
                   <circle cx="12" cy="12" r="3.5" stroke-opacity="0.65"/>
                   <circle cx="12" cy="12" r="6.5" stroke-dasharray="2 3" stroke-opacity="0.45"/>
-                  <!-- Radar Sweep Beam (Acting as the Pupil/Gaze) -->
                   <path d="M12 12L17.5 6.5" stroke="#818CF8" stroke-width="2"/>
-                  <!-- Center Core Dot -->
                   <circle cx="12" cy="12" r="1.2" fill="#818CF8" stroke="none"/>
                 </svg>
               </div>
@@ -80,203 +75,97 @@
             </div>
           </div>
 
-          <!-- Collapse / Expand Chevron Button -->
-          <button 
-            onclick="toggleSidebar()" 
-            title="Collapse / Expand Sidebar"
-            class="w-7 h-7 rounded-lg border border-slate-300/70 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 hover:bg-indigo-500/10 hover:border-indigo-500/40 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-all shrink-0"
-          >
+          <button onclick="toggleSidebar()" title="Collapse / Expand Sidebar" class="w-7 h-7 rounded-lg border border-slate-300/70 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 hover:bg-indigo-500/10 hover:border-indigo-500/40 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-all shrink-0">
             <svg id="sidebar-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
         </div>
-
-        <!-- Subtitle below Logo (Expanded Mode) -->
         <p class="expanded-only text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-2 pl-0.5 tracking-wide">
           Centralised Vulnerability Monitor
         </p>
       </div>
 
-      <!-- Thin line with faded ends -->
       <div class="faded-line"></div>
 
-      <!-- 2. Dual Search Section -->
-      <!-- EXPANDED SEARCH INPUTS -->
+      <!-- 2. Global Search -->
       <div class="expanded-only space-y-3">
-        <!-- Search 1: Global Watcher Search -->
         <div>
           <div class="neu-inset rounded-xl flex items-center px-3 py-2 gap-2">
             <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
             </svg>
-            <input 
-              type="text" 
-              id="global-search" 
-              placeholder="Search across Watcher..." 
-              autocomplete="off"
-              class="w-full bg-transparent text-xs font-medium focus:outline-none placeholder-slate-400 dark:placeholder-slate-500 text-slate-800 dark:text-slate-100"
-            />
+            <input type="text" id="global-search" placeholder="Search across Watcher..." autocomplete="off" class="w-full bg-transparent text-xs font-medium focus:outline-none placeholder-slate-400 dark:placeholder-slate-500 text-slate-800 dark:text-slate-100" />
             <button id="clear-search-btn" onclick="clearSearch()" class="hidden text-slate-400 hover:text-rose-400 text-xs font-bold" title="Clear">✕</button>
           </div>
         </div>
-
-        <!-- Search 2: Structured CVE-Year-ID NVD Lookup -->
-        <!-- <div>
-          <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-1 pl-1">
-            Direct NVD CVE Lookup
-          </label>
-          <div class="neu-inset rounded-xl p-1.5 flex items-center gap-1 min-w-0">
-            <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400 pl-1.5 shrink-0">CVE-</span>
-            <input 
-              type="text" 
-              id="nvd-year" 
-              placeholder="Year" 
-              maxlength="4"
-              inputmode="numeric"
-              class="w-12 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0"
-            />
-            <span class="font-mono text-slate-400 text-xs shrink-0">-</span>
-            <input 
-              type="text" 
-              id="nvd-id" 
-              placeholder="ID" 
-              maxlength="7"
-              inputmode="numeric"
-              class="w-16 flex-1 min-w-0 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1.5 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100"
-            />
-            <button 
-              onclick="triggerDirectNvdSearch()" 
-              title="Search CVE on NIST NVD"
-              class="p-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-500/20 transition-all shrink-0"
-            >
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
-              </svg>
-            </button>
-          </div>
-        </div> -->
       </div>
 
-      <!-- COLLAPSED SEARCH ICONS -->
       <div class="collapsed-only flex flex-col items-center gap-2.5">
-        <button 
-          onclick="expandAndFocus('global-search')" 
-          title="Search across Watcher"
-          class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors"
-        >
+        <button onclick="expandAndFocus('global-search')" title="Search across Watcher" class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
           </svg>
         </button>
-        <!-- <button 
-          onclick="expandAndFocus('nvd-year')" 
-          title="Direct CVE NVD Lookup"
-          class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors relative"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
-          </svg>
-        </button> -->
       </div>
 
-      <!-- Thin line with faded ends -->
       <div class="faded-line"></div>
 
       <!-- 3. Primary Feed Navigation -->
       <nav class="space-y-1.5">
         <button id="nav-radar" onclick="switchTab('radar')" class="nav-item active w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="9" stroke-width="2"/>
-            <path stroke-linecap="round" stroke-width="2" d="M12 12l4.5-4.5M12 7v1"/>
-          </svg>
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><path stroke-linecap="round" stroke-width="2" d="M12 12l4.5-4.5M12 7v1"/></svg>
           <span class="expanded-only">Exploit Radar</span>
         </button>
-
         <button id="nav-vendor" onclick="switchTab('vendor')" class="nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="9" stroke-width="2"/>
-            <path stroke-linecap="round" stroke-width="1.8" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/>
-          </svg>
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><path stroke-linecap="round" stroke-width="1.8" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
           <span class="expanded-only">Vendor Focus</span>
         </button>
-
         <button id="nav-cve-search" onclick="switchTab('cve-search')" class="nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
-          </svg>
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" /></svg>
           <span class="expanded-only">CVE Search</span>
         </button>
-
         <button id="nav-news" onclick="switchTab('news')" class="nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-          </svg>
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>
           <span class="expanded-only">News Feed</span>
         </button>
-
         <button id="nav-brief" onclick="switchTab('brief')" class="nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
           <span class="expanded-only">Threat Brief</span>
         </button>
       </nav>
 
-      <!-- Thin line with faded ends -->
       <div class="faded-line"></div>
     </div>
 
-    <!-- BOTTOM STACK: Theme Switch, Sync Telemetry & Credits -->
+    <!-- BOTTOM STACK -->
     <div class="space-y-3 pt-2">
-      
-      <!-- Theme Switch inside Navbar (Dark/Light Theme) -->
+      <!-- Theme Switch -->
       <div>
-        <button 
-          onclick="toggleTheme()" 
-          class="expanded-only w-full neu-inset rounded-xl px-3 py-2 flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-300 hover:border-indigo-500/40 transition-all"
-        >
+        <button onclick="toggleTheme()" class="expanded-only w-full neu-inset rounded-xl px-3 py-2 flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-300 hover:border-indigo-500/40 transition-all">
           <span class="flex items-center gap-2">
-            <svg id="theme-icon-sun" class="w-4 h-4 text-amber-400 hidden" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
-            </svg>
-            <svg id="theme-icon-moon" class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
-            </svg>
+            <svg id="theme-icon-sun" class="w-4 h-4 text-amber-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <svg id="theme-icon-moon" class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
             <span>Dark/Light Theme</span>
           </span>
-          <span id="theme-mode-badge" class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-indigo-500/10 text-indigo-500 dark:text-indigo-300 border border-indigo-500/20">
-            Dark
-          </span>
+          <span id="theme-mode-badge" class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-indigo-500/10 text-indigo-500 dark:text-indigo-300 border border-indigo-500/20">Dark</span>
         </button>
-
         <div class="collapsed-only flex justify-center">
-          <button 
-            onclick="toggleTheme()" 
-            title="Switch Dark/Light Theme"
-            class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 transition-all"
-          >
-            <svg id="theme-icon-sun-collapsed" class="w-4 h-4 text-amber-400 hidden" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
-            </svg>
-            <svg id="theme-icon-moon-collapsed" class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
-            </svg>
+          <button onclick="toggleTheme()" title="Switch Dark/Light Theme" class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 transition-all">
+            <svg id="theme-icon-sun-collapsed" class="w-4 h-4 text-amber-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <svg id="theme-icon-moon-collapsed" class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
           </button>
         </div>
       </div>
 
-      <!-- Thin line with faded ends -->
       <div class="faded-line"></div>
 
-      <!-- Sync Status Block (OneDrive Rotating Arrows Icon) -->
+      <!-- Sync Status -->
       <div>
         <div class="expanded-only px-1 space-y-1.5">
           <div class="flex items-center justify-between gap-2">
             <div class="flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              <svg class="w-4 h-4 text-emerald-500 animate-spin shrink-0" style="animation-duration: 8s;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
+              <svg class="w-4 h-4 text-emerald-500 animate-spin shrink-0" style="animation-duration: 8s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
               <span id="sync-status-text">All Feeds Synced</span>
             </div>            
           </div>
@@ -284,47 +173,29 @@
             Last Sync: <span id="meta-sync-time">Loading...</span>
           </p>
         </div>
-
-        <!-- Collapsed OneDrive Sync Icon -->
         <div class="collapsed-only flex justify-center py-1">
-          <button 
-            onclick="expandSidebar()"
-            title="All Feeds Synced" 
-            class="w-8 h-8 rounded-full bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-500 shadow-lg shadow-emerald-500/20 hover:scale-105 transition-transform"
-          >
-            <svg class="w-4 h-4 animate-spin" style="animation-duration: 8s;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
+          <button onclick="expandSidebar()" title="All Feeds Synced" class="w-8 h-8 rounded-full bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-500 shadow-lg shadow-emerald-500/20 hover:scale-105 transition-transform">
+            <svg class="w-4 h-4 animate-spin" style="animation-duration: 8s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
           </button>
         </div>
       </div>
 
-      <!-- Thin line with faded ends (Expanded Only) -->
       <div class="faded-line expanded-only"></div>
 
-      <!-- Developer Credit (Expanded Only) -->
+      <!-- Credits -->
       <div class="expanded-only px-1 space-y-1">
         <p class="text-xs font-semibold text-slate-700 dark:text-slate-300">Developed by Devansh</p>
-        <a 
-          href="https://github.com/DvnshG764/watcher" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1.5 text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
-        >
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-          </svg>
+        <a href="https://github.com/DvnshG764/watcher" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
           <span>DvnshG764</span>
         </a>
       </div>
-
     </div>
   </aside>
 
   <!-- ================= MAIN CONTENT WORKSPACE ================= -->
   <div class="flex-1 flex flex-col min-w-0 relative z-10">
     
-    <!-- Top Workspace Header (Centered Theme-Matched Title) -->
     <header class="sticky top-0 z-30 backdrop-blur-md bg-white/40 dark:bg-slate-950/40 border-b border-slate-300/50 dark:border-slate-800/60 px-6 lg:px-10 h-16 relative flex items-center justify-center">
       <h1 id="workspace-title" class="text-xl sm:text-2xl font-black tracking-tight uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 dark:from-white dark:via-indigo-200 dark:to-indigo-400 text-center">
         EXPLOIT RADAR
@@ -336,7 +207,6 @@
       </div>
     </header>
 
-    <!-- Main Container -->
     <main class="flex-1 px-6 lg:px-10 py-7 max-w-[1600px] w-full mx-auto space-y-8">
 
       <!-- ================= SEARCH RESULTS VIEW ================= -->
@@ -344,50 +214,54 @@
         <div class="flex items-center justify-between pb-3 border-b border-slate-300/60 dark:border-slate-800">
           <div class="flex items-center gap-3">
             <h2 class="text-lg font-extrabold tracking-tight text-indigo-700 dark:text-indigo-300">Watcher Search Results</h2>
-            <span id="search-count" class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30">
-              0 results
-            </span>
+            <span id="search-count" class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30">0 results</span>
           </div>
-          <button onclick="clearSearch()" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">
-            ← Return to Active Feed
-          </button>
+          <button onclick="clearSearch()" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">← Return to Active Feed</button>
         </div>
-
         <div id="search-results-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
       </section>
 
       <!-- ================= 1. EXPLOIT RADAR VIEW ================= -->
-      <section id="view-radar">
+      <section id="view-radar" class="space-y-6">
+        <!-- Filter & Sort Toolbar -->
+        <div class="neu-glass-card vendor-card-glow rounded-2xl p-4 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+          <div class="flex items-center gap-3">
+            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Sort By</label>
+            <select id="radar-sort" onchange="updateRadarFilters()" class="bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 cursor-pointer">
+              <option value="priority">Threat Priority (Default)</option>
+              <option value="epss">EPSS Score (Desc)</option>
+              <option value="severity">Severity (Desc)</option>
+              <option value="newest">Newest Added</option>
+            </select>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Filters</label>
+            <button id="btn-radar-sev-critical" onclick="toggleRadarFilter('severity', 'Critical')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-rose-500/50 transition-all">Critical</button>
+            <button id="btn-radar-sev-high" onclick="toggleRadarFilter('severity', 'High')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-orange-500/50 transition-all">High</button>
+            <div class="w-px h-4 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+            <button id="btn-radar-poc" onclick="toggleRadarFilter('flag', 'poc')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-emerald-500/50 transition-all">Has PoC</button>
+            <button id="btn-radar-nuclei" onclick="toggleRadarFilter('flag', 'nuclei')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-sky-500/50 transition-all">Has Nuclei</button>
+          </div>
+        </div>
         
-        <!-- Two-Column Split with Vertical Separating Line -->
+        <!-- Two-Column Split (KEV / Pre-KEV) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          <!-- Left Column: CISA KEV (Exploited in the Wild) -->
           <div class="lg:col-span-6 space-y-5">
             <div class="neu-glass-card kev-card-glow rounded-2xl p-5 flex items-center justify-between">
               <div class="space-y-1.5">
                 <div class="flex items-center gap-2.5">
-                  <!-- Static Red Dot (No Flash) -->
                   <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
                   <h2 class="text-xl font-black tracking-tight text-rose-700 dark:text-rose-100">CISA KEV</h2>
                 </div>
-                <span class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-600 dark:text-rose-300 border border-rose-500/30">
-                  Exploited in the Wild
-                </span>
+                <span class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-600 dark:text-rose-300 border border-rose-500/30">Exploited in the Wild</span>
               </div>
               <div class="text-right">
-                <span id="kpi-kev-count" class="text-4xl font-black font-mono text-rose-600 dark:text-rose-400 tracking-tight block leading-none">
-                  0
-                </span>
-                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mt-1 block">Active Entries</span>
+                <span id="kpi-kev-count" class="text-4xl font-black font-mono text-rose-600 dark:text-rose-400 tracking-tight block leading-none">0</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mt-1 block">Filtered Entries</span>
               </div>
             </div>
-
-            <!-- Vertical Feed Cards Stack (Individually Scrollable) -->
             <div id="radar-kev-list" class="flex flex-col gap-5 overflow-y-auto max-h-[74vh] pr-1.5"></div>
           </div>
-
-          <!-- Right Column: Exploit Radar (Early Warning) with Left Divider on Desktop -->
           <div class="lg:col-span-6 lg:border-l lg:border-slate-300/70 dark:lg:border-slate-800/90 lg:pl-8 space-y-5">
             <div class="neu-glass-card early-card-glow rounded-2xl p-5 flex items-center justify-between">
               <div class="space-y-1.5">
@@ -395,166 +269,123 @@
                   <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
                   <h2 class="text-xl font-black tracking-tight text-amber-700 dark:text-amber-100">Exploit Radar</h2>
                 </div>
-                <span class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">
-                  Early Warning
-                </span>
+                <span class="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">Early Warning</span>
               </div>
               <div class="text-right">
-                <span id="kpi-early-count" class="text-4xl font-black font-mono text-amber-600 dark:text-amber-400 tracking-tight block leading-none">
-                  0
-                </span>
-                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mt-1 block">Pre-KEV Signals</span>
+                <span id="kpi-early-count" class="text-4xl font-black font-mono text-amber-600 dark:text-amber-400 tracking-tight block leading-none">0</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mt-1 block">Filtered Signals</span>
               </div>
             </div>
-
-            <!-- Vertical Feed Cards Stack (Individually Scrollable) -->
             <div id="radar-early-list" class="flex flex-col gap-5 overflow-y-auto max-h-[74vh] pr-1.5"></div>
           </div>
-
         </div>
       </section>
 
-<!-- ================= 2. VENDOR FOCUS VIEW ================= -->
+      <!-- ================= 2. VENDOR FOCUS VIEW ================= -->
       <section id="view-vendor" class="hidden space-y-6">
-        <div class="space-y-3">
-          <!-- Stacked Severity Filter Pills (Centered) -->
-          <div id="vendor-severity-pills" class="flex flex-wrap justify-center items-center gap-2"></div>
-
-          <!-- Dynamic Vendor Filter Pills (Centered) -->
-          <div id="vendor-pills" class="flex flex-wrap justify-center items-center gap-2"></div>
+        <!-- Filter & Sort Toolbar -->
+        <div class="neu-glass-card vendor-card-glow rounded-2xl p-4 flex flex-col gap-4">
+          <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+            <div class="flex items-center gap-3">
+              <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Sort By</label>
+              <select id="vendor-sort" onchange="updateVendorFilters()" class="bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 cursor-pointer">
+                <option value="newest">Newest Added (Default)</option>
+                <option value="priority">Threat Priority</option>
+                <option value="severity">Severity (Desc)</option>
+              </select>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Severity</label>
+              <button id="btn-vendor-sev-critical" onclick="toggleVendorFilter('severity', 'Critical')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-rose-500/50 transition-all">Critical</button>
+              <button id="btn-vendor-sev-high" onclick="toggleVendorFilter('severity', 'High')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-orange-500/50 transition-all">High</button>
+              <button id="btn-vendor-sev-medium" onclick="toggleVendorFilter('severity', 'Medium')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-amber-500/50 transition-all">Medium</button>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-200/70 dark:border-slate-700/50">
+            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Vendors</label>
+            <button onclick="toggleVendorFilter('vendor', 'Cisco')" id="btn-vendor-cisco" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Cisco</button>
+            <button onclick="toggleVendorFilter('vendor', 'Fortinet')" id="btn-vendor-fortinet" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Fortinet</button>
+            <button onclick="toggleVendorFilter('vendor', 'Palo Alto')" id="btn-vendor-paloalto" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Palo Alto</button>
+            <button onclick="toggleVendorFilter('vendor', 'Check Point')" id="btn-vendor-checkpoint" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Check Point</button>
+            <button onclick="toggleVendorFilter('vendor', 'Ivanti')" id="btn-vendor-ivanti" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Ivanti</button>
+            <button onclick="toggleVendorFilter('vendor', 'NetScaler')" id="btn-vendor-netscaler" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">NetScaler</button>
+            <button onclick="toggleVendorFilter('vendor', 'PHP')" id="btn-vendor-php" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">PHP</button>
+          </div>
         </div>
 
         <!-- Vendor Cards Grid -->
         <div id="vendor-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
       </section>
 
-      <!-- ================= 3. CURATED NEWS FEED VIEW (No Page Description) ================= -->
+      <!-- ================= 3. CURATED NEWS FEED VIEW ================= -->
       <section id="view-news" class="hidden space-y-6">
-        <!-- Dynamic News Source Filter Pills (Centered) -->
         <div id="news-source-pills" class="flex flex-wrap justify-center gap-2"></div>
-
-        <!-- News Cards Grid -->
         <div id="news-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
       </section>
 
       <!-- ================= 4. THREAT BRIEF VIEW ================= -->
       <section id="view-brief" class="hidden space-y-6">
         
-        <!-- Control Panel Card -->
         <div class="neu-glass-card vendor-card-glow rounded-2xl p-6 space-y-5">
-          
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <!-- Mode Selector Pills: Auto Top 5 | Auto Top 10 | Custom -->
             <div class="space-y-1.5">
               <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
                 1. Select Brief Scope
               </label>
               <div class="flex flex-wrap items-center gap-2">
-                <button id="brief-mode-top5" onclick="setBriefMode('top5')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-500/30">
-                  Auto Top 5
-                </button>
-                <button id="brief-mode-top10" onclick="setBriefMode('top10')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40">
-                  Auto Top 10
-                </button>
-                <button id="brief-mode-custom" onclick="setBriefMode('custom')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40">
-                  Custom
-                </button>
+                <button id="brief-mode-top5" onclick="setBriefMode('top5')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-500/30">Auto Top 5</button>
+                <button id="brief-mode-top10" onclick="setBriefMode('top10')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40">Auto Top 10</button>
+                <button id="brief-mode-custom" onclick="setBriefMode('custom')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40">Custom</button>
               </div>
             </div>
 
-            <!-- Action Buttons: Generate Brief | Copy Brief | Send to Teams -->
             <div class="flex flex-wrap items-center gap-2.5">
-              <button 
-                id="btn-generate-brief"
-                onclick="generateThreatBrief()" 
-                class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-all cursor-pointer"
-              >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+              <button id="btn-generate-brief" onclick="generateThreatBrief()" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-all cursor-pointer">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 <span id="btn-generate-text">Generate Brief</span>
               </button>
-
-              <button 
-                id="btn-copy-brief"
-                onclick="copyThreatBrief()" 
-                class="px-4 py-2.5 rounded-xl neu-glass-card text-slate-700 dark:text-slate-200 hover:border-indigo-500/50 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer"
-              >
-                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
+              <button id="btn-copy-brief" onclick="copyThreatBrief()" class="px-4 py-2.5 rounded-xl neu-glass-card text-slate-700 dark:text-slate-200 hover:border-indigo-500/50 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer">
+                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
                 <span id="btn-copy-text">Copy Brief</span>
               </button>
-
-              <button 
-                onclick="toggleTeamsWebhookBox()" 
-                class="px-4 py-2.5 rounded-xl neu-glass-card text-slate-700 dark:text-slate-200 hover:border-indigo-500/50 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer"
-              >
-                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
+              <button onclick="toggleTeamsWebhookBox()" class="px-4 py-2.5 rounded-xl neu-glass-card text-slate-700 dark:text-slate-200 hover:border-indigo-500/50 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer">
+                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
                 <span>Send to Teams</span>
               </button>
             </div>
           </div>
 
-          <!-- Custom CVE Input Builder (Shown only when 'Custom' mode is selected) -->
           <div id="brief-custom-builder" class="hidden pt-4 border-t border-slate-200/70 dark:border-slate-800/80 space-y-3">
             <div class="flex items-center justify-between">
               <label class="text-[11px] font-semibold text-slate-600 dark:text-slate-300">
-                Enter Custom CVEs to Include <span class="text-slate-400 font-normal">(Invalid or unpublished CVE IDs are automatically excluded)</span>
+                Enter Custom CVEs to Include <span class="text-slate-400 font-normal">(Invalid IDs excluded)</span>
               </label>
             </div>
-
-            <!-- Dynamic Stack of CVE-[Year]-[ID] Rows -->
             <div id="custom-cve-rows" class="flex flex-wrap items-center gap-3"></div>
           </div>
 
-          <!-- Collapsible MS Teams Webhook Sender Bar -->
           <div id="teams-webhook-panel" class="hidden pt-4 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2.5">
-            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
-              Microsoft Teams Incoming Webhook URL
-            </label>
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">Microsoft Teams Incoming Webhook URL</label>
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
               <div class="neu-inset rounded-xl flex-1 flex items-center px-3 py-2">
-                <input 
-                  type="url" 
-                  id="teams-webhook-url" 
-                  placeholder="https://your-tenant.webhook.office.com/webhookb2/..." 
-                  class="w-full bg-transparent text-xs font-mono focus:outline-none text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
-                />
+                <input type="url" id="teams-webhook-url" placeholder="https://your-tenant.webhook.office.com/webhookb2/..." class="w-full bg-transparent text-xs font-mono focus:outline-none text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500" />
               </div>
-              <button 
-                id="btn-dispatch-teams"
-                onclick="sendBriefToTeams()" 
-                class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-500/20 shrink-0 cursor-pointer transition-all"
-              >
-                Dispatch to Channel
-              </button>
+              <button id="btn-dispatch-teams" onclick="sendBriefToTeams()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-500/20 shrink-0 cursor-pointer transition-all">Dispatch to Channel</button>
             </div>
             <p id="teams-status-msg" class="text-[11px] font-medium hidden"></p>
           </div>
 
-          <!-- Invalid CVE Warning Banner -->
           <div id="brief-invalid-banner" class="hidden rounded-xl px-4 py-2.5 bg-rose-500/10 border border-rose-500/30 text-xs text-rose-600 dark:text-rose-300 font-medium"></div>
         </div>
 
-        <!-- Generated Vulnerability Brief Output Card -->
         <div id="brief-report-container" class="neu-glass-card vendor-card-glow rounded-2xl p-6 lg:p-8 space-y-6">
-          
-          <!-- Report Header & Threat Overview -->
           <div class="space-y-3 border-b border-slate-200/80 dark:border-slate-800 pb-5">
             <div class="flex flex-wrap items-center justify-between gap-2">
-              <h2 id="brief-report-title" class="text-lg sm:text-xl font-black tracking-tight text-slate-900 dark:text-white">
-                Watcher Vulnerability Intelligence Brief
-              </h2>
+              <h2 id="brief-report-title" class="text-lg sm:text-xl font-black tracking-tight text-slate-900 dark:text-white">Watcher Vulnerability Intelligence Brief</h2>
               <span id="brief-report-timestamp" class="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-semibold"></span>
             </div>
-
             <div id="brief-overview-text" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-2"></div>
           </div>
-
-          <!-- 10-Column Vulnerability Table -->
           <div class="overflow-x-auto rounded-xl border border-slate-300/70 dark:border-slate-800">
             <table id="brief-table" class="w-full text-left border-collapse text-xs">
               <thead>
@@ -574,7 +405,6 @@
               <tbody id="brief-table-body" class="divide-y divide-slate-200/70 dark:divide-slate-800/80"></tbody>
             </table>
           </div>
-
         </div>
 
       </section>
@@ -582,59 +412,37 @@
       <!-- ================= 5. CVE SEARCH VIEW ================= -->
       <section id="view-cve-search" class="hidden space-y-6">
         
-        <!-- Control Panel Card -->
         <div class="neu-glass-card vendor-card-glow rounded-2xl p-6 space-y-5">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <h2 class="text-base font-black tracking-tight text-slate-900 dark:text-white">Multi-CVE Vulnerability Lookup</h2>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Enter one or more CVE IDs to generate a standardized intelligence table.</p>
             </div>
-
-            <!-- Action Buttons -->
             <div class="flex flex-wrap items-center gap-2.5">
-              <button 
-                id="btn-run-cve-search"
-                onclick="executeCveSearchTable()" 
-                class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-all cursor-pointer"
-              >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
-                </svg>
+              <button id="btn-run-cve-search" onclick="executeCveSearchTable()" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-all cursor-pointer">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" /></svg>
                 <span id="btn-cve-search-text">Generate Table</span>
               </button>
-
-              <button 
-                id="btn-copy-cve-table"
-                onclick="copyCveSearchTable()" 
-                class="px-4 py-2.5 rounded-xl neu-glass-card text-slate-700 dark:text-slate-200 hover:border-indigo-500/50 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer"
-              >
-                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
+              <button id="btn-copy-cve-table" onclick="copyCveSearchTable()" class="px-4 py-2.5 rounded-xl neu-glass-card text-slate-700 dark:text-slate-200 hover:border-indigo-500/50 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer">
+                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
                 <span id="btn-copy-cve-table-text">Copy Table</span>
               </button>
             </div>
           </div>
-
-          <!-- Dynamic CVE Input Builder Rows -->
           <div class="pt-4 border-t border-slate-200/70 dark:border-slate-800/80 space-y-3">
             <label class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 block">
               Target CVE IDs <span class="text-slate-400 font-normal">(Invalid or unpublished IDs are automatically excluded)</span>
             </label>
             <div id="search-cve-rows" class="flex flex-wrap items-center gap-3"></div>
           </div>
-
-          <!-- Invalid CVE Warning Banner -->
           <div id="cve-search-invalid-banner" class="hidden rounded-xl px-4 py-2.5 bg-rose-500/10 border border-rose-500/30 text-xs text-rose-600 dark:text-rose-300 font-medium"></div>
         </div>
 
-        <!-- Output Table Card -->
         <div class="neu-glass-card vendor-card-glow rounded-2xl p-6 lg:p-8 space-y-4">
           <div class="flex items-center justify-between pb-3 border-b border-slate-200/80 dark:border-slate-800">
             <h3 class="text-sm font-black tracking-tight text-slate-900 dark:text-white uppercase">Vulnerability Results Table</h3>
             <span id="cve-search-count" class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30">0 entries</span>
           </div>
-
           <div class="overflow-x-auto rounded-xl border border-slate-300/70 dark:border-slate-800">
             <table class="w-full text-left border-collapse text-xs">
               <thead>

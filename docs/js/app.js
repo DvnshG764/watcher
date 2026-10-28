@@ -1,17 +1,185 @@
-// Live State Containers (Populated strictly from backend JSON feeds)
-let trendingData = { confirmed_in_wild: [], early_warning: [] };
-let vendorData = [];
-let newsData = [];
-let cweMap = {};
-let configuredVendors = [];
-let configuredNewsSources = [];
-let selectedVendor = 'All';
-let selectedVendorSeverity = 'All';
-let selectedNewsSource = 'All';
+// =========================================================================
+// 1. GLOBAL STATE & INITIALIZATION
+// =========================================================================
 let activeTab = 'radar';
+let masterCveData = []; 
+let newsData = [];
+let metadata = {};
+let cweMap = {};
+let configuredNewsSources = [];
+let selectedNewsSource = 'All';
+
+// Filter States
+let radarState = {
+  sort: 'priority', // priority, epss, severity, newest
+  severities: new Set(),
+  hasPoc: false,
+  hasNuclei: false
+};
+
+let vendorState = {
+  sort: 'newest', // newest, priority, severity
+  severities: new Set(),
+  vendors: new Set()
+};
+
+async function fetchJsonFile(possiblePaths) {
+  for (const p of possiblePaths) {
+    try {
+      const res = await fetch(p, { cache: 'no-store' });
+      if (res.ok) return await res.json();
+    } catch (_) {}
+  }
+  return null;
+}
+
+// 100-Point Composite Threat Priority Score (Hoisted)
+function computeThreatPriorityScore(item) {
+  const isKev = item.is_kev ? 35 : 0;
+  const hasPoc = item.has_poc ? 20 : 0;
+  const hasNuclei = item.has_nuclei ? 15 : 0;
+  const epssVal = Math.min(1, Math.max(0, parseFloat(item.epss) || 0));
+  const epssPts = epssVal * 15;
+  const cvssVal = Math.min(10, Math.max(0, parseFloat(item.cvss) || 0));
+  const cvssPts = (cvssVal / 10) * 15;
+  return isKev + hasPoc + hasNuclei + epssPts + cvssPts;
+}
+
+async function initDashboard() {
+  initTheme();
+  // setupGlobalSearchListener(); // Make sure search.js has this defined
+
+  const [master, news, meta, cwes] = await Promise.all([
+    fetchJsonFile(['data/cve_master.json', './data/cve_master.json', '../docs/data/cve_master.json']),
+    fetchJsonFile(['data/news.json', './data/news.json', '../docs/data/news.json']),
+    fetchJsonFile(['data/sync_meta.json', './data/sync_meta.json', '../docs/data/sync_meta.json']),
+    fetchJsonFile(['data/cwe_definitions.json', './data/cwe_definitions.json', '../data/cwe_definitions.json'])
+  ]);
+
+  if (cwes) cweMap = cwes;
+
+  if (master) {
+    masterCveData = master;
+    masterCveData.forEach(item => {
+      item.priorityScore = computeThreatPriorityScore(item);
+      item.severityStr = getCvssSeverity(item.cvss);
+    });
+  }
+
+  if (news) {
+    newsData = news;
+    configuredNewsSources = [...new Set(newsData.map(n => n.source).filter(Boolean))];
+  }
+
+  if (meta) {
+    metadata = meta;
+    const syncEl = document.getElementById('meta-sync-time');
+    if (syncEl) syncEl.textContent = meta.last_sync || 'Unavailable';
+  }
+
+  updateRadarFilters();
+  updateVendorFilters();
+  renderNewsSourcePills();
+  renderNewsView();
+}
 
 // =========================================================================
-// 1. SIDEBAR COLLAPSE / EXPAND LOGIC (Pure CSS Class Driven)
+// 2. FILTERING & SORTING LOGIC (RADAR & VENDOR)
+// =========================================================================
+function toggleRadarFilter(type, value) {
+  const btn = document.getElementById(
+    type === 'severity' ? `btn-radar-sev-${value.toLowerCase()}` : `btn-radar-${value}`
+  );
+  
+  if (type === 'severity') {
+    if (radarState.severities.has(value)) radarState.severities.delete(value);
+    else radarState.severities.add(value);
+  } else if (type === 'flag') {
+    if (value === 'poc') radarState.hasPoc = !radarState.hasPoc;
+    if (value === 'nuclei') radarState.hasNuclei = !radarState.hasNuclei;
+  }
+  
+  btn.classList.toggle('bg-indigo-600');
+  btn.classList.toggle('text-white');
+  btn.classList.toggle('border-transparent');
+  btn.classList.toggle('bg-white/50');
+  btn.classList.toggle('text-slate-600');
+  
+  updateRadarFilters();
+}
+
+function updateRadarFilters() {
+  radarState.sort = document.getElementById('radar-sort').value;
+  
+  let filtered = masterCveData.filter(item => {
+    // Only show active threats in radar by default
+    const isRadarWorthy = item.is_kev || item.has_poc || item.has_nuclei || item.epss >= 0.05;
+    if (!isRadarWorthy) return false;
+
+    if (radarState.severities.size > 0 && !radarState.severities.has(item.severityStr)) return false;
+    if (radarState.hasPoc && !item.has_poc) return false;
+    if (radarState.hasNuclei && !item.has_nuclei) return false;
+    
+    return true;
+  });
+
+  filtered.sort((a, b) => {
+    if (radarState.sort === 'priority') return b.priorityScore - a.priorityScore;
+    if (radarState.sort === 'epss') return (b.epss || 0) - (a.epss || 0);
+    if (radarState.sort === 'newest') return (b.date_added || '').localeCompare(a.date_added || '');
+    if (radarState.sort === 'severity') return (b.cvss || 0) - (a.cvss || 0);
+    return 0;
+  });
+
+  renderExploitRadar(filtered.slice(0, 100));
+}
+
+function toggleVendorFilter(type, value) {
+  const safeId = value.toLowerCase().replace(/\s+/g, '');
+  const btn = document.getElementById(`btn-vendor-${type === 'severity' ? 'sev-' : ''}${safeId}`);
+  
+  if (type === 'severity') {
+    if (vendorState.severities.has(value)) vendorState.severities.delete(value);
+    else vendorState.severities.add(value);
+  } else if (type === 'vendor') {
+    if (vendorState.vendors.has(value)) vendorState.vendors.delete(value);
+    else vendorState.vendors.add(value);
+  }
+  
+  btn.classList.toggle('bg-indigo-600');
+  btn.classList.toggle('text-white');
+  btn.classList.toggle('border-transparent');
+  btn.classList.toggle('bg-white/50');
+  btn.classList.toggle('text-slate-600');
+  
+  updateVendorFilters();
+}
+
+function updateVendorFilters() {
+  vendorState.sort = document.getElementById('vendor-sort').value;
+  
+  let filtered = masterCveData.filter(item => {
+    if (!item.vendors || item.vendors.length === 0) return false;
+    if (vendorState.severities.size > 0 && !vendorState.severities.has(item.severityStr)) return false;
+    if (vendorState.vendors.size > 0) {
+      const hasMatch = item.vendors.some(v => vendorState.vendors.has(v));
+      if (!hasMatch) return false;
+    }
+    return true;
+  });
+
+  filtered.sort((a, b) => {
+    if (vendorState.sort === 'newest') return (b.date_added || '').localeCompare(a.date_added || '');
+    if (vendorState.sort === 'priority') return b.priorityScore - a.priorityScore;
+    if (vendorState.sort === 'severity') return (b.cvss || 0) - (a.cvss || 0);
+    return 0;
+  });
+
+  renderVendorFocus(filtered.slice(0, 100));
+}
+
+// =========================================================================
+// 3. SIDEBAR COLLAPSE / EXPAND LOGIC
 // =========================================================================
 const sidebarEl = document.getElementById('sidebar');
 const chevronEl = document.getElementById('sidebar-chevron');
@@ -39,7 +207,7 @@ function expandAndFocus(inputId) {
 }
 
 // =========================================================================
-// 2. THEME SWITCHER (DARK / LIGHT)
+// 4. THEME SWITCHER
 // =========================================================================
 const sunIcon = document.getElementById('theme-icon-sun');
 const moonIcon = document.getElementById('theme-icon-moon');
@@ -78,7 +246,7 @@ function toggleTheme() {
 }
 
 // =========================================================================
-// 3. TAB NAVIGATION
+// 5. TAB NAVIGATION
 // =========================================================================
 function switchTab(tabName) {
   activeTab = tabName;
@@ -109,7 +277,7 @@ function switchTab(tabName) {
 }
 
 // =========================================================================
-// 4. EXPANDABLE DESCRIPTION & CVSS BADGE HELPERS
+// 6. EXPANDABLE DESCRIPTION & CVSS BADGE HELPERS
 // =========================================================================
 function toggleReadMore(btn) {
   const wrapper = btn.parentElement;
@@ -170,12 +338,14 @@ function formatCvssBadge(score, cveId) {
 }
 
 // =========================================================================
-// 5. STANDARDIZED GLASSMORPHIC CARD BUILDER
+// 7. STANDARDIZED GLASSMORPHIC CARD BUILDER
 // =========================================================================
 function buildStandardThreatCard(item, cardType = 'radar_kev') {
   const cveId = item.cve_id;
-  const vendorName = item.vendor || 'Unknown';
-  const productName = item.product && item.product !== 'Unknown' ? `- ${item.product}` : '';
+  
+  // Use robust Master array logic
+  const vendorName = (item.vendors && item.vendors.length > 0) ? item.vendors.join(', ') : (item.vendor || 'Unknown');
+  const productName = (item.products && item.products.length > 0) ? `- ${item.products.join(', ')}` : (item.product && item.product !== 'Unknown' ? `- ${item.product}` : '');
   const vendorProduct = `${vendorName} ${productName}`.trim();
 
   const nvdUrl = `https://nvd.nist.gov/vuln/detail/${cveId}`;
@@ -183,93 +353,52 @@ function buildStandardThreatCard(item, cardType = 'radar_kev') {
   const pocUrl = `https://github.com/nomi-sec/PoC-in-GitHub/search?q=${cveId}`;
   const nucleiUrl = `https://github.com/projectdiscovery/nuclei-templates/search?q=${cveId}`;
 
-  // Glow Perimeter Class
   let glowClass = 'vendor-card-glow';
   if (cardType === 'radar_kev' || item.is_kev) glowClass = 'kev-card-glow';
   else if (cardType === 'radar_early') glowClass = 'early-card-glow';
 
-  // Date Well Markup
-  let dateWellMarkup = '';
-  if (cardType === 'radar_kev') {
-    dateWellMarkup = `
-      <div class="recessed-box rounded-xl px-3.5 py-2 my-3 grid grid-cols-2 items-center text-[11px] font-mono">
-        <div class="text-slate-500 dark:text-slate-400">
-          Added Date: <span class="font-semibold text-slate-800 dark:text-slate-200">${item.date_added || '-'}</span>
-        </div>
-        <div class="text-right text-slate-500 dark:text-slate-400 border-l border-slate-300/50 dark:border-slate-700/60 pl-3">
-          Due Date: <span class="font-semibold text-rose-600 dark:text-rose-400">${item.due_date || '-'}</span>
-        </div>
-      </div>
-    `;
-  } else {
-    dateWellMarkup = `
-      <div class="recessed-box rounded-xl px-3.5 py-2 my-3 text-[11px] font-mono text-slate-500 dark:text-slate-400">
-        Detected Date: <span class="font-semibold text-slate-800 dark:text-slate-200">${item.date_added || item.date || item.first_seen || '-'}</span>
-      </div>
-    `;
-  }
+  let dateWellMarkup = `
+    <div class="recessed-box rounded-xl px-3.5 py-2 my-3 text-[11px] font-mono text-slate-500 dark:text-slate-400">
+      Detected Date: <span class="font-semibold text-slate-800 dark:text-slate-200">${item.date_added || item.date || item.first_seen || '-'}</span>
+    </div>
+  `;
 
-  // Static EPSS Pill (No Link)
   const hasEpss = item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0;
   const epssBadge = hasEpss
     ? `<span class="px-3 py-1 rounded-full bg-slate-500/10 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-slate-300/80 dark:border-slate-700 font-mono font-semibold">
         EPSS: ${(parseFloat(item.epss) * 100).toFixed(2)}%
        </span>`
-    : `<span class="px-3 py-1 rounded-full bg-slate-500/5 text-slate-400 border border-slate-300/40 dark:border-slate-800 font-mono">
-        EPSS: -
-       </span>`;
+    : `<span class="px-3 py-1 rounded-full bg-slate-500/5 text-slate-400 border border-slate-300/40 dark:border-slate-800 font-mono">EPSS: -</span>`;
 
-  // PoC Pill
   const pocBadge = item.has_poc
-    ? `<a href="${pocUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 font-semibold hover:bg-emerald-500/25 transition-colors" title="Search Exploit PoC on GitHub">
-        PoC: Available
-       </a>`
-    : `<span class="px-3 py-1 rounded-full bg-slate-500/10 text-slate-500 dark:text-slate-400 border border-slate-300/50 dark:border-slate-800">
-        PoC: Not Available
-       </span>`;
+    ? `<a href="${pocUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 font-semibold hover:bg-emerald-500/25 transition-colors">PoC: Available</a>`
+    : `<span class="px-3 py-1 rounded-full bg-slate-500/10 text-slate-500 dark:text-slate-400 border border-slate-300/50 dark:border-slate-800">PoC: Not Available</span>`;
 
-  // Nuclei Pill
   const nucleiBadge = item.has_nuclei
-    ? `<a href="${nucleiUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-500/40 font-semibold hover:bg-sky-500/25 transition-colors" title="View Nuclei Template on GitHub">
-        Nuclei Template: Ready
-       </a>`
-    : `<span class="px-3 py-1 rounded-full bg-slate-500/10 text-slate-500 dark:text-slate-400 border border-slate-300/50 dark:border-slate-800">
-        Nuclei Template: Not Ready
-       </span>`;
+    ? `<a href="${nucleiUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-500/40 font-semibold hover:bg-sky-500/25 transition-colors">Nuclei Template: Ready</a>`
+    : `<span class="px-3 py-1 rounded-full bg-slate-500/10 text-slate-500 dark:text-slate-400 border border-slate-300/50 dark:border-slate-800">Nuclei Template: Not Ready</span>`;
 
-  // CISA KEV Pill
   const kevBadge = (cardType === 'radar_kev' || item.is_kev)
-    ? `<a href="${cisaUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/45 font-bold hover:bg-rose-500/30 transition-colors" title="View in CISA KEV Catalog">
-        CISA KEV
-       </a>`
+    ? `<a href="${cisaUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/45 font-bold hover:bg-rose-500/30 transition-colors">CISA KEV</a>`
     : '';
 
   return `
     <article class="neu-glass-card ${glowClass} rounded-2xl p-5 flex flex-col justify-between">
       <div>
-        <!-- Row 1: Enlarged Clickable CVE ID + CVSS Pill -->
         <div class="flex items-center justify-between gap-2 mb-1">
-          <a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-lg font-extrabold font-mono tracking-tight text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Open Official NIST NVD Specification">
+          <a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-lg font-extrabold font-mono tracking-tight text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
             ${cveId}
           </a>
           ${formatCvssBadge(item.cvss, cveId)}
         </div>
-
-        <!-- Row 2: Vendor - Product -->
         <h3 class="text-xs font-semibold text-indigo-600 dark:text-indigo-300 mb-2.5">
           ${vendorProduct}
         </h3>
-
-        <!-- Row 3: Expandable Description -->
         <div class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
           ${formatExpandableText(item.description || item.vuln_name, 160)}
         </div>
-
-        <!-- Row 4: Recessed Date Box -->
         ${dateWellMarkup}
       </div>
-
-      <!-- Row 5: Stacked Intelligence Pills -->
       <div class="pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex flex-wrap items-center gap-2 text-[11px]">
         ${kevBadge}
         ${epssBadge}
@@ -281,11 +410,11 @@ function buildStandardThreatCard(item, cardType = 'radar_kev') {
 }
 
 // =========================================================================
-// 6. RENDER VIEWS (RADAR, VENDORS, NEWS)
+// 8. RENDERING VIEWS (RADAR, VENDORS, NEWS)
 // =========================================================================
-function renderRadar() {
-  const kevList = trendingData.confirmed_in_wild || [];
-  const earlyList = trendingData.early_warning || [];
+function renderExploitRadar(filteredItems) {
+  const kevList = filteredItems.filter(i => i.is_kev);
+  const earlyList = filteredItems.filter(i => !i.is_kev);
 
   document.getElementById('kpi-kev-count').textContent = kevList.length;
   document.getElementById('kpi-early-count').textContent = earlyList.length;
@@ -294,110 +423,31 @@ function renderRadar() {
   const earlyContainer = document.getElementById('radar-early-list');
 
   if (kevList.length === 0) {
-    kevContainer.innerHTML = `<div class="neu-glass-card rounded-2xl p-8 text-center text-xs text-slate-400">No CISA KEV entries loaded.</div>`;
+    kevContainer.innerHTML = `<div class="neu-glass-card rounded-2xl p-8 text-center text-xs text-slate-400">No CISA KEV entries found.</div>`;
   } else {
     kevContainer.innerHTML = kevList.map(item => buildStandardThreatCard(item, 'radar_kev')).join('');
   }
 
   if (earlyList.length === 0) {
-    earlyContainer.innerHTML = `<div class="neu-glass-card rounded-2xl p-8 text-center text-xs text-slate-400">No Early Warning entries loaded.</div>`;
+    earlyContainer.innerHTML = `<div class="neu-glass-card rounded-2xl p-8 text-center text-xs text-slate-400">No Early Warning entries found.</div>`;
   } else {
     earlyContainer.innerHTML = earlyList.map(item => buildStandardThreatCard(item, 'radar_early')).join('');
   }
 }
 
-function renderVendorSeverityPills() {
-  const container = document.getElementById('vendor-severity-pills');
-  if (!container) return;
-
-  const severities = [
-    { label: 'All Severities', value: 'All' },
-    { label: 'Critical', value: 'Critical' },
-    { label: 'High', value: 'High' },
-    { label: 'Medium', value: 'Medium' },
-    { label: 'Low', value: 'Low' }
-  ];
-
-  container.innerHTML = severities.map(s => {
-    const isActive = s.value === selectedVendorSeverity;
-    let activeStyle = 'bg-indigo-600 text-white shadow-md shadow-indigo-500/30';
-    if (isActive && s.value === 'Critical') activeStyle = 'bg-rose-600 text-white shadow-md shadow-rose-500/30';
-    else if (isActive && s.value === 'High') activeStyle = 'bg-orange-600 text-white shadow-md shadow-orange-500/30';
-    else if (isActive && s.value === 'Medium') activeStyle = 'bg-amber-500 text-white shadow-md shadow-amber-500/30';
-    else if (isActive && s.value === 'Low') activeStyle = 'bg-slate-600 text-white shadow-md shadow-slate-500/30';
-
-    return `
-      <button 
-        onclick="filterVendorSeverity('${s.value}')" 
-        class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-          isActive 
-            ? activeStyle 
-            : 'neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40'
-        }"
-      >
-        ${s.label}
-      </button>
-    `;
-  }).join('');
-}
-
-function filterVendorSeverity(sevValue) {
-  selectedVendorSeverity = sevValue;
-  renderVendorSeverityPills();
-  renderVendorView();
-}
-
-function renderVendorPills() {
-  const container = document.getElementById('vendor-pills');
-  const vendors = ['All', ...configuredVendors];
-
-  container.innerHTML = vendors.map(v => `
-    <button 
-      onclick="filterVendor('${v}')" 
-      class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-        v === selectedVendor 
-          ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/30' 
-          : 'neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40'
-      }"
-    >
-      ${v}
-    </button>
-  `).join('');
-}
-
-function filterVendor(vName) {
-  selectedVendor = vName;
-  renderVendorPills();
-  renderVendorView();
-}
-
-function renderVendorView() {
+function renderVendorFocus(filteredItems) {
   const container = document.getElementById('vendor-grid');
-  let filtered = vendorData || [];
-
-  if (selectedVendor !== 'All') {
-    filtered = filtered.filter(v => (v.vendor || '').toLowerCase() === selectedVendor.toLowerCase());
-  }
-
-  if (selectedVendorSeverity !== 'All') {
-    filtered = filtered.filter(v => getCvssSeverity(v.cvss) === selectedVendorSeverity);
-  }
-
-  if (filtered.length === 0) {
-    const filterDesc = [
-      selectedVendor !== 'All' ? selectedVendor : null,
-      selectedVendorSeverity !== 'All' ? `${selectedVendorSeverity} severity` : null
-    ].filter(Boolean).join(' • ') || 'All';
-
+  
+  if (filteredItems.length === 0) {
     container.innerHTML = `
       <div class="col-span-full neu-glass-card rounded-2xl p-10 text-center text-sm text-slate-400">
-        No advisories currently indexed for <strong class="text-slate-700 dark:text-slate-200">${filterDesc}</strong>.
+        No advisories matched the current vendor & severity filters.
       </div>
     `;
     return;
   }
 
-  container.innerHTML = filtered
+  container.innerHTML = filteredItems
     .map(item => buildStandardThreatCard(item, 'vendor'))
     .join('');
 }
@@ -465,7 +515,7 @@ function renderNewsView() {
             ${cve}
           </a>
         `).join('')}
-        ${(article.matched_vendors || []).map(v => `
+        ${(article.matched_vendors || article.vendors || []).map(v => `
           <span class="px-2.5 py-1 rounded-full bg-slate-500/10 text-slate-600 dark:text-slate-300 border border-slate-300/50 dark:border-slate-700 font-medium">
             ${v}
           </span>
@@ -473,93 +523,6 @@ function renderNewsView() {
       </div>
     </article>
   `).join('');
-}
-
-// =========================================================================
-// 7. STRUCTURED CVE-YYYY-NNNNN NVD LOOKUP (Sidebar Search 2)
-// =========================================================================
-function triggerDirectNvdSearch() {
-  const yearEl = document.getElementById('nvd-year');
-  const idEl = document.getElementById('nvd-id');
-  const year = yearEl.value.trim();
-  const id = idEl.value.trim();
-
-  if (!/^\d{4}$/.test(year) || !/^\d{4,7}$/.test(id)) {
-    alert('Please enter a valid 4-digit Year (e.g., 2026) and 4-to-7 digit CVE ID (e.g., 38077).');
-    return;
-  }
-
-  const fullCve = `CVE-${year}-${id}`;
-  window.open(`https://nvd.nist.gov/vuln/detail/${fullCve}`, '_blank');
-}
-
-document.getElementById('nvd-year')?.addEventListener('input', (e) => {
-  if (e.target.value.length === 4) {
-    document.getElementById('nvd-id')?.focus();
-  }
-});
-document.getElementById('nvd-id')?.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') triggerDirectNvdSearch();
-});
-
-// =========================================================================
-// 8. LIVE DATA & CONFIG LOADER (Strictly from Backend & Config JSONs)
-// =========================================================================
-async function fetchJsonFile(possiblePaths) {
-  for (const p of possiblePaths) {
-    try {
-      const res = await fetch(p, { cache: 'no-store' });
-      if (res.ok) return await res.json();
-    } catch (_) {}
-  }
-  return null;
-}
-
-async function initDashboard() {
-  initTheme();
-
-  const [trending, vendors, news, meta, cfgVendors, cfgFeeds, cwes] = await Promise.all([
-    fetchJsonFile(['data/trending.json', './data/trending.json', '../docs/data/trending.json']),
-    fetchJsonFile(['data/vendors.json', './data/vendors.json', '../docs/data/vendors.json']),
-    fetchJsonFile(['data/news.json', './data/news.json', '../docs/data/news.json']),
-    fetchJsonFile(['data/sync_meta.json', './data/sync_meta.json', '../docs/data/sync_meta.json']),
-    // Dynamically fetch from synced config_vendors.json or directly from ../config/vendors.json
-    fetchJsonFile(['data/config_vendors.json', './data/config_vendors.json', '../config/vendors.json']),
-    // Dynamically fetch from synced config_feeds.json or directly from ../config/feeds.json
-    fetchJsonFile(['data/config_feeds.json', './data/config_feeds.json', '../config/feeds.json']),
-    fetchJsonFile(['data/cwe_definitions.json', './data/cwe_definitions.json', '../data/cwe_definitions.json'])
-  ]);
-
-  if (trending) trendingData = trending;
-  if (vendors) vendorData = vendors;
-  if (news) newsData = news;
-  if (cwes) cweMap = cwes;
-
-  // Populate Vendor Filter Pills dynamically from config/vendors.json
-  if (cfgVendors && typeof cfgVendors === 'object' && !Array.isArray(cfgVendors)) {
-    configuredVendors = Object.keys(cfgVendors);
-  } else if (Array.isArray(vendorData)) {
-    configuredVendors = [...new Set(vendorData.map(v => v.vendor).filter(Boolean))];
-  }
-
-  // Populate News Source Filter Pills dynamically from config/feeds.json
-  if (cfgFeeds && Array.isArray(cfgFeeds)) {
-    configuredNewsSources = cfgFeeds.map(f => f.name).filter(Boolean);
-  } else if (Array.isArray(newsData)) {
-    configuredNewsSources = [...new Set(newsData.map(n => n.source).filter(Boolean))];
-  }
-
-  const syncEl = document.getElementById('meta-sync-time');
-  if (syncEl) {
-    syncEl.textContent = (meta && meta.last_sync) ? meta.last_sync : 'Unavailable';
-  }
-
-  renderRadar();
-  renderVendorSeverityPills();
-  renderVendorPills();
-  renderVendorView();
-  renderNewsSourcePills();
-  renderNewsView();
 }
 
 // =========================================================================
@@ -591,7 +554,6 @@ function setBriefMode(mode) {
   }
 }
 
-// Structured CVE-[Year]-[ID] input row matching Sidebar Search 2
 function addCustomCveRow(yearVal = '', idVal = '') {
   const container = document.getElementById('custom-cve-rows');
   if (!container) return;
@@ -601,44 +563,15 @@ function addCustomCveRow(yearVal = '', idVal = '') {
 
   row.innerHTML = `
     <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400 pl-1.5 shrink-0">CVE-</span>
-    <input 
-      type="text" 
-      placeholder="Year" 
-      maxlength="4" 
-      value="${yearVal}"
-      inputmode="numeric"
-      class="custom-cve-year w-12 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0"
-    />
+    <input type="text" placeholder="Year" maxlength="4" value="${yearVal}" inputmode="numeric" class="custom-cve-year w-12 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0" />
     <span class="font-mono text-slate-400 text-xs shrink-0">-</span>
-    <input 
-      type="text" 
-      placeholder="ID" 
-      maxlength="7" 
-      value="${idVal}"
-      inputmode="numeric"
-      class="custom-cve-id w-16 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1.5 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0"
-    />
-    <button 
-      type="button"
-      onclick="addCustomCveRow()" 
-      title="Add another CVE"
-      class="p-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm transition-all shrink-0 cursor-pointer"
-    >
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
-      </svg>
+    <input type="text" placeholder="ID" maxlength="7" value="${idVal}" inputmode="numeric" class="custom-cve-id w-16 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1.5 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0" />
+    <button type="button" onclick="addCustomCveRow()" title="Add another CVE" class="p-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm transition-all shrink-0 cursor-pointer">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
     </button>
-    <button 
-      type="button"
-      onclick="removeCustomCveRow(this)" 
-      title="Remove row"
-      class="p-1.5 rounded-lg hover:bg-rose-500/15 text-slate-400 hover:text-rose-500 transition-all shrink-0 cursor-pointer"
-    >
-      ✕
-    </button>
+    <button type="button" onclick="removeCustomCveRow(this)" title="Remove row" class="p-1.5 rounded-lg hover:bg-rose-500/15 text-slate-400 hover:text-rose-500 transition-all shrink-0 cursor-pointer">✕</button>
   `;
 
-  // Auto-advance from 4-digit Year to ID input
   const yearInput = row.querySelector('.custom-cve-year');
   const idInput = row.querySelector('.custom-cve-id');
   yearInput.addEventListener('input', (e) => {
@@ -661,77 +594,27 @@ function removeCustomCveRow(btn) {
   }
 }
 
-// 100-Point Composite Threat Priority Score
-function computeThreatPriorityScore(item) {
-  const isKev = item.is_kev ? 35 : 0;
-  const hasPoc = item.has_poc ? 20 : 0;
-  const hasNuclei = item.has_nuclei ? 15 : 0;
-  const epssVal = Math.min(1, Math.max(0, parseFloat(item.epss) || 0));
-  const epssPts = epssVal * 15;
-  const cvssVal = Math.min(10, Math.max(0, parseFloat(item.cvss) || 0));
-  const cvssPts = (cvssVal / 10) * 15;
-  return isKev + hasPoc + hasNuclei + epssPts + cvssPts;
-}
-
-// Build unified lookup pool of all synced CVEs
+// Build unified lookup pool of all synced CVEs directly from master data
 function getLocalCvePoolMap() {
   const map = new Map();
-
-  ((trendingData && trendingData.confirmed_in_wild) || []).forEach(k => {
-    map.set(k.cve_id.toUpperCase(), {
-      cve_id: k.cve_id.toUpperCase(),
-      date_added: k.date_added || '-',
-      cvss: k.cvss,
-      description: k.description || k.vuln_name || '',
-      vendor: k.vendor || 'Unknown',
-      product: k.product || 'Unknown',
-      epss: k.epss,
-      is_kev: true,
-      has_nuclei: Boolean(k.has_nuclei),
-      has_poc: Boolean(k.has_poc)
+  masterCveData.forEach(item => {
+    const cid = item.cve_id.toUpperCase();
+    map.set(cid, {
+      cve_id: cid,
+      date_added: item.date_added || '-',
+      cvss: item.cvss,
+      description: item.description || '',
+      vendor: (item.vendors && item.vendors.length > 0) ? item.vendors.join(', ') : 'Unknown',
+      product: (item.products && item.products.length > 0) ? item.products.join(', ') : 'Unknown',
+      epss: item.epss,
+      is_kev: item.is_kev,
+      has_nuclei: item.has_nuclei,
+      has_poc: item.has_poc
     });
   });
-
-  ((trendingData && trendingData.early_warning) || []).forEach(w => {
-    const cid = w.cve_id.toUpperCase();
-    if (!map.has(cid)) {
-      map.set(cid, {
-        cve_id: cid,
-        date_added: w.first_seen || w.date_added || '-',
-        cvss: w.cvss,
-        description: w.description || '',
-        vendor: w.vendor || 'Unknown',
-        product: w.product || 'Unknown',
-        epss: w.epss,
-        is_kev: false,
-        has_nuclei: Boolean(w.has_nuclei),
-        has_poc: Boolean(w.has_poc)
-      });
-    }
-  });
-
-  (vendorData || []).forEach(v => {
-    const cid = v.cve_id.toUpperCase();
-    if (!map.has(cid)) {
-      map.set(cid, {
-        cve_id: cid,
-        date_added: v.date || v.date_added || '-',
-        cvss: v.cvss,
-        description: v.description || '',
-        vendor: v.vendor || 'Unknown',
-        product: v.product || 'Unknown',
-        epss: v.epss,
-        is_kev: Boolean(v.is_kev),
-        has_nuclei: Boolean(v.has_nuclei),
-        has_poc: Boolean(v.has_poc)
-      });
-    }
-  });
-
   return map;
 }
 
-// Live fetch & validate a Custom CVE if not in local JSON files
 async function fetchAndValidateCustomCve(cveId, localMap) {
   const upperId = cveId.toUpperCase();
   if (localMap.has(upperId)) {
@@ -748,17 +631,15 @@ async function fetchAndValidateCustomCve(cveId, localMap) {
 
   try {
     const res = await fetch(cveListUrl);
-    if (!res.ok) return null; // Invalid / unpublished CVE ID
+    if (!res.ok) return null;
     const data = await res.json();
 
-    // Reject REJECTED CVEs
     const state = data?.cveMetadata?.state || '';
     if (state.toUpperCase() === 'REJECTED') return null;
 
     const containers = data.containers || {};
     const cna = containers.cna || {};
 
-    // Description
     let desc = '';
     for (const d of (cna.descriptions || [])) {
       if ((d.lang || 'en').startsWith('en')) {
@@ -767,7 +648,6 @@ async function fetchAndValidateCustomCve(cveId, localMap) {
       }
     }
 
-    // Vendor & Product
     let vendor = 'Unknown';
     let product = 'Unknown';
     const affList = [...(cna.affected || [])];
@@ -775,15 +655,10 @@ async function fetchAndValidateCustomCve(cveId, localMap) {
       if (Array.isArray(adp.affected)) affList.push(...adp.affected);
     }
     for (const aff of affList) {
-      if (vendor === 'Unknown' && aff.vendor && !['n/a', 'unknown'].includes(aff.vendor.toLowerCase())) {
-        vendor = aff.vendor;
-      }
-      if (product === 'Unknown' && aff.product && !['n/a', 'unknown'].includes(aff.product.toLowerCase())) {
-        product = aff.product;
-      }
+      if (vendor === 'Unknown' && aff.vendor && !['n/a', 'unknown'].includes(aff.vendor.toLowerCase())) vendor = aff.vendor;
+      if (product === 'Unknown' && aff.product && !['n/a', 'unknown'].includes(aff.product.toLowerCase())) product = aff.product;
     }
 
-    // CVSS (Strict v3.1 -> v3.0 -> v4.0 fallback across CNA + ADP)
     let cvss = null;
     const allMetrics = [...(cna.metrics || [])];
     for (const adp of (containers.adp || [])) {
@@ -802,19 +677,15 @@ async function fetchAndValidateCustomCve(cveId, localMap) {
       if (cvss !== null) break;
     }
 
-    // Published Date
     const pubRaw = data?.cveMetadata?.datePublished || '';
     const dateAdded = pubRaw ? pubRaw.slice(0, 10) : '-';
 
-    // Fetch live EPSS score
     let epss = null;
     try {
       const epssRes = await fetch(`https://api.first.org/data/v1/epss?cve=${upperId}`);
       if (epssRes.ok) {
         const epssJson = await epssRes.json();
-        if (epssJson.data && epssJson.data.length > 0) {
-          epss = parseFloat(epssJson.data[0].epss);
-        }
+        if (epssJson.data && epssJson.data.length > 0) epss = parseFloat(epssJson.data[0].epss);
       }
     } catch (_) {}
 
@@ -849,7 +720,6 @@ async function generateThreatBrief() {
     const limit = briefMode === 'top5' ? 5 : 10;
     const allItems = Array.from(localMap.values());
 
-    // Prefer recent vulnerabilities (last 45 days) so trending brief stays fresh
     const cutoff = new Date();
     cutoff.setDate(cutoff.getDate() - 45);
     const cutoffStr = cutoff.toISOString().slice(0, 10);
@@ -865,7 +735,6 @@ async function generateThreatBrief() {
       })
       .slice(0, limit);
   } else {
-    // Custom Mode: Read all CVE-[Year]-[ID] input rows
     const rows = document.querySelectorAll('#custom-cve-rows .custom-cve-row');
     const requestedIds = [];
 
@@ -924,18 +793,11 @@ function renderBriefReport(items) {
     currentBriefOverviewPlain = 'No valid vulnerabilities selected for this brief.';
     if (overviewEl) overviewEl.innerHTML = currentBriefOverviewHtml;
     if (tbodyEl) {
-      tbodyEl.innerHTML = `
-        <tr>
-          <td colspan="10" class="py-8 text-center text-slate-400">
-            No valid CVEs to display. Add valid CVE IDs or switch to Auto Top 5 / Top 10.
-          </td>
-        </tr>
-      `;
+      tbodyEl.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-400">No valid CVEs to display. Add valid CVE IDs or switch to Auto Top 5 / Top 10.</td></tr>`;
     }
     return;
   }
 
-  // Compute Executive Threat Overview Insights
   const total = items.length;
   const critCount = items.filter(i => getCvssSeverity(i.cvss) === 'Critical').length;
   const highCount = items.filter(i => getCvssSeverity(i.cvss) === 'High').length;
@@ -964,14 +826,11 @@ function renderBriefReport(items) {
 
   if (overviewEl) overviewEl.innerHTML = currentBriefOverviewHtml;
 
-  // Render 10-Column Table Rows
   if (tbodyEl) {
     tbodyEl.innerHTML = items.map(item => {
       const cveId = item.cve_id;
       const nvdUrl = `https://nvd.nist.gov/vuln/detail/${cveId}`;
-      const scoreVal = (item.cvss !== null && item.cvss !== undefined && !isNaN(parseFloat(item.cvss)))
-        ? parseFloat(item.cvss).toFixed(1)
-        : 'N/A';
+      const scoreVal = (item.cvss !== null && item.cvss !== undefined && !isNaN(parseFloat(item.cvss))) ? parseFloat(item.cvss).toFixed(1) : 'N/A';
       const severity = getCvssSeverity(item.cvss);
 
       let sevBadgeStyle = 'bg-slate-500/15 text-slate-600 dark:text-slate-300 border-slate-500/30';
@@ -979,58 +838,34 @@ function renderBriefReport(items) {
       else if (severity === 'High') sevBadgeStyle = 'bg-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-500/40';
       else if (severity === 'Medium') sevBadgeStyle = 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/40';
 
-      const affected = item.product && item.product !== 'Unknown'
-        ? `${item.vendor} - ${item.product}`
-        : (item.vendor || 'Unknown');
-
-      const epssText = (item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0)
-        ? `${(parseFloat(item.epss) * 100).toFixed(2)}%`
-        : '-';
+      const affected = item.product && item.product !== 'Unknown' ? `${item.vendor} - ${item.product}` : (item.vendor || 'Unknown');
+      const epssText = (item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0) ? `${(parseFloat(item.epss) * 100).toFixed(2)}%` : '-';
 
       return `
         <tr class="hover:bg-indigo-500/5 transition-colors align-top">
-          <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap">
-            <a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">${cveId}</a>
-          </td>
+          <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap"><a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">${cveId}</a></td>
           <td class="py-3 px-3.5 font-mono whitespace-nowrap text-slate-600 dark:text-slate-300">${item.date_added || '-'}</td>
           <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap">${scoreVal}</td>
-          <td class="py-3 px-3.5 whitespace-nowrap">
-            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${sevBadgeStyle}">${severity}</span>
-          </td>
-          <td class="py-3 px-3.5 text-slate-600 dark:text-slate-300 leading-relaxed min-w-[260px]">
-            ${formatExpandableText(item.description, 140)}
-          </td>
+          <td class="py-3 px-3.5 whitespace-nowrap"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${sevBadgeStyle}">${severity}</span></td>
+          <td class="py-3 px-3.5 text-slate-600 dark:text-slate-300 leading-relaxed min-w-[260px]">${formatExpandableText(item.description, 140)}</td>
           <td class="py-3 px-3.5 font-semibold text-slate-800 dark:text-slate-200">${affected}</td>
           <td class="py-3 px-3.5 font-mono whitespace-nowrap">${epssText}</td>
-          <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.is_kev ? 'text-rose-600 dark:text-rose-400' : 'text-slate-400'}">
-            ${item.is_kev ? 'Yes (In KEV)' : 'No'}
-          </td>
-          <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_nuclei ? 'text-sky-600 dark:text-sky-400' : 'text-slate-400'}">
-            ${item.has_nuclei ? 'Ready' : 'Not Ready'}
-          </td>
-          <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_poc ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}">
-            ${item.has_poc ? 'Available' : 'Not Available'}
-          </td>
+          <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.is_kev ? 'text-rose-600 dark:text-rose-400' : 'text-slate-400'}">${item.is_kev ? 'Yes (In KEV)' : 'No'}</td>
+          <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_nuclei ? 'text-sky-600 dark:text-sky-400' : 'text-slate-400'}">${item.has_nuclei ? 'Ready' : 'Not Ready'}</td>
+          <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_poc ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}">${item.has_poc ? 'Available' : 'Not Available'}</td>
         </tr>
       `;
     }).join('');
   }
 }
 
-// Build Clean Standalone HTML Report (Used for both Rich Clipboard Copy & MS Teams Message)
 function buildExportableHtmlBrief() {
   const rowsHtml = currentBriefItems.map(item => {
     const cveId = item.cve_id;
-    const scoreVal = (item.cvss !== null && item.cvss !== undefined && !isNaN(parseFloat(item.cvss)))
-      ? parseFloat(item.cvss).toFixed(1)
-      : 'N/A';
+    const scoreVal = (item.cvss !== null && item.cvss !== undefined && !isNaN(parseFloat(item.cvss))) ? parseFloat(item.cvss).toFixed(1) : 'N/A';
     const severity = getCvssSeverity(item.cvss);
-    const affected = item.product && item.product !== 'Unknown'
-      ? `${item.vendor} - ${item.product}`
-      : (item.vendor || 'Unknown');
-    const epssText = (item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0)
-      ? `${(parseFloat(item.epss) * 100).toFixed(2)}%`
-      : '-';
+    const affected = item.product && item.product !== 'Unknown' ? `${item.vendor} - ${item.product}` : (item.vendor || 'Unknown');
+    const epssText = (item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0) ? `${(parseFloat(item.epss) * 100).toFixed(2)}%` : '-';
 
     return `
       <tr>
@@ -1077,11 +912,9 @@ function buildExportableHtmlBrief() {
 
 async function copyThreatBrief() {
   if (!currentBriefItems || currentBriefItems.length === 0) return;
-
   const htmlContent = buildExportableHtmlBrief();
   const copyBtnText = document.getElementById('btn-copy-text');
 
-  // Plain-text / Markdown fallback
   const mdRows = currentBriefItems.map(i => {
     const scoreVal = (i.cvss !== null && i.cvss !== undefined && !isNaN(parseFloat(i.cvss))) ? parseFloat(i.cvss).toFixed(1) : 'N/A';
     const sev = getCvssSeverity(i.cvss);
@@ -1131,12 +964,9 @@ async function sendBriefToTeams() {
     alert('Please paste a valid Microsoft Teams Webhook URL.');
     return;
   }
-
   localStorage.setItem('watcher_teams_webhook', webhookUrl);
-
   const htmlReport = buildExportableHtmlBrief();
 
-  // Standard Teams HTML message payload (No Adaptive Cards - sends the exact HTML brief & table)
   const payload = {
     title: 'Watcher Vulnerability Intelligence Brief',
     text: htmlReport
@@ -1154,7 +984,6 @@ async function sendBriefToTeams() {
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify(payload)
     });
-
     if (statusEl) {
       statusEl.textContent = 'Brief dispatched to Microsoft Teams channel!';
       statusEl.className = 'text-[11px] font-semibold text-emerald-500 block';
@@ -1181,41 +1010,13 @@ function addSearchCveRow(yearVal = '', idVal = '') {
 
   row.innerHTML = `
     <span class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400 pl-1.5 shrink-0">CVE-</span>
-    <input 
-      type="text" 
-      placeholder="Year" 
-      maxlength="4" 
-      value="${yearVal}"
-      inputmode="numeric"
-      class="search-cve-year w-12 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0"
-    />
+    <input type="text" placeholder="Year" maxlength="4" value="${yearVal}" inputmode="numeric" class="search-cve-year w-12 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0" />
     <span class="font-mono text-slate-400 text-xs shrink-0">-</span>
-    <input 
-      type="text" 
-      placeholder="ID" 
-      maxlength="7" 
-      value="${idVal}"
-      inputmode="numeric"
-      class="search-cve-id w-16 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1.5 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0"
-    />
-    <button 
-      type="button"
-      onclick="addSearchCveRow()" 
-      title="Add another CVE"
-      class="p-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm transition-all shrink-0 cursor-pointer"
-    >
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
-      </svg>
+    <input type="text" placeholder="ID" maxlength="7" value="${idVal}" inputmode="numeric" class="search-cve-id w-16 bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-1.5 py-1 text-center font-mono text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 shrink-0" />
+    <button type="button" onclick="addSearchCveRow()" title="Add another CVE" class="p-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm transition-all shrink-0 cursor-pointer">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
     </button>
-    <button 
-      type="button"
-      onclick="removeSearchCveRow(this)" 
-      title="Remove row"
-      class="p-1.5 rounded-lg hover:bg-rose-500/15 text-slate-400 hover:text-rose-500 transition-all shrink-0 cursor-pointer"
-    >
-      ✕
-    </button>
+    <button type="button" onclick="removeSearchCveRow(this)" title="Remove row" class="p-1.5 rounded-lg hover:bg-rose-500/15 text-slate-400 hover:text-rose-500 transition-all shrink-0 cursor-pointer">✕</button>
   `;
 
   const yearInput = row.querySelector('.search-cve-year');
@@ -1297,22 +1098,14 @@ async function executeCveSearchTable() {
   if (countBadge) countBadge.textContent = `${resolvedItems.length} entr${resolvedItems.length === 1 ? 'y' : 'ies'}`;
 
   if (resolvedItems.length === 0) {
-    tbodyEl.innerHTML = `
-      <tr>
-        <td colspan="10" class="py-8 text-center text-slate-400">
-          No valid vulnerability records found for the requested CVE IDs.
-        </td>
-      </tr>
-    `;
+    tbodyEl.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-400">No valid vulnerability records found for the requested CVE IDs.</td></tr>`;
     return;
   }
 
   tbodyEl.innerHTML = resolvedItems.map(item => {
     const cveId = item.cve_id;
     const nvdUrl = `https://nvd.nist.gov/vuln/detail/${cveId}`;
-    const scoreVal = (item.cvss !== null && item.cvss !== undefined && !isNaN(parseFloat(item.cvss)))
-      ? parseFloat(item.cvss).toFixed(1)
-      : 'N/A';
+    const scoreVal = (item.cvss !== null && item.cvss !== undefined && !isNaN(parseFloat(item.cvss))) ? parseFloat(item.cvss).toFixed(1) : 'N/A';
     const severity = getCvssSeverity(item.cvss);
 
     let sevBadgeStyle = 'bg-slate-500/15 text-slate-600 dark:text-slate-300 border-slate-500/30';
@@ -1320,38 +1113,21 @@ async function executeCveSearchTable() {
     else if (severity === 'High') sevBadgeStyle = 'bg-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-500/40';
     else if (severity === 'Medium') sevBadgeStyle = 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/40';
 
-    const affected = item.product && item.product !== 'Unknown'
-      ? `${item.vendor} - ${item.product}`
-      : (item.vendor || 'Unknown');
-
-    const epssText = (item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0)
-      ? `${(parseFloat(item.epss) * 100).toFixed(2)}%`
-      : '-';
+    const affected = item.product && item.product !== 'Unknown' ? `${item.vendor} - ${item.product}` : (item.vendor || 'Unknown');
+    const epssText = (item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0) ? `${(parseFloat(item.epss) * 100).toFixed(2)}%` : '-';
 
     return `
       <tr class="hover:bg-indigo-500/5 transition-colors align-top">
-        <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap">
-          <a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">${cveId}</a>
-        </td>
+        <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap"><a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">${cveId}</a></td>
         <td class="py-3 px-3.5 font-mono whitespace-nowrap text-slate-600 dark:text-slate-300">${item.date_added || '-'}</td>
         <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap">${scoreVal}</td>
-        <td class="py-3 px-3.5 whitespace-nowrap">
-          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${sevBadgeStyle}">${severity}</span>
-        </td>
-        <td class="py-3 px-3.5 text-slate-600 dark:text-slate-300 leading-relaxed min-w-[260px]">
-          ${formatExpandableText(item.description, 140)}
-        </td>
+        <td class="py-3 px-3.5 whitespace-nowrap"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${sevBadgeStyle}">${severity}</span></td>
+        <td class="py-3 px-3.5 text-slate-600 dark:text-slate-300 leading-relaxed min-w-[260px]">${formatExpandableText(item.description, 140)}</td>
         <td class="py-3 px-3.5 font-semibold text-slate-800 dark:text-slate-200">${affected}</td>
         <td class="py-3 px-3.5 font-mono whitespace-nowrap">${epssText}</td>
-        <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.is_kev ? 'text-rose-600 dark:text-rose-400' : 'text-slate-400'}">
-          ${item.is_kev ? 'Yes (In KEV)' : 'No'}
-        </td>
-        <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_nuclei ? 'text-sky-600 dark:text-sky-400' : 'text-slate-400'}">
-          ${item.has_nuclei ? 'Ready' : 'Not Ready'}
-        </td>
-        <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_poc ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}">
-          ${item.has_poc ? 'Available' : 'Not Available'}
-        </td>
+        <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.is_kev ? 'text-rose-600 dark:text-rose-400' : 'text-slate-400'}">${item.is_kev ? 'Yes (In KEV)' : 'No'}</td>
+        <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_nuclei ? 'text-sky-600 dark:text-sky-400' : 'text-slate-400'}">${item.has_nuclei ? 'Ready' : 'Not Ready'}</td>
+        <td class="py-3 px-3.5 whitespace-nowrap font-semibold ${item.has_poc ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}">${item.has_poc ? 'Available' : 'Not Available'}</td>
       </tr>
     `;
   }).join('');
@@ -1364,7 +1140,6 @@ async function copyCveSearchTable() {
   }
 
   const copyBtnText = document.getElementById('btn-copy-cve-table-text');
-
   const rowsHtml = currentCveTableItems.map(item => {
     const scoreVal = (item.cvss !== null && item.cvss !== undefined && !isNaN(parseFloat(item.cvss))) ? parseFloat(item.cvss).toFixed(1) : 'N/A';
     const severity = getCvssSeverity(item.cvss);
@@ -1438,6 +1213,5 @@ async function copyCveSearchTable() {
   }
 }
 
-
-
+// Trigger initial load
 initDashboard();
