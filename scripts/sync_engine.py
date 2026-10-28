@@ -365,46 +365,61 @@ def fetch_news(vendor_rules):
     articles = []
     cve_pattern = re.compile(r"CVE-\d{4}-\d{4,7}", re.IGNORECASE)
 
-    # Ensure CISA Cybersecurity Advisories feed is always polled even if missing or differently named
-    has_cisa = any("cisa" in (f.get("name", "") + f.get("url", "")).lower() for f in news_feeds)
-    if not has_cisa:
-        news_feeds.append({
-            "name": "CISA Advisories",
-            "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml"
-        })
+    # Force inject the most up-to-date CISA RSS feed endpoints
+    cisa_feeds = [
+        {"name": "CISA Advisories", "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml"},
+        {"name": "CISA ICS Advisories", "url": "https://www.cisa.gov/news-events/ics-advisories/all.xml"}
+    ]
+    
+    if not any("cisa" in (f.get("name", "") + f.get("url", "")).lower() for f in news_feeds):
+        news_feeds.extend(cisa_feeds)
+
+    # Use a persistent requests session with browser-like headers to bypass Cloudflare
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+        "Accept-Language": "en-US,en;q=0.5"
+    })
 
     for feed_info in news_feeds:
         source_name = feed_info.get("name", "Unknown")
         url = feed_info.get("url", "")
-        if not url:
+        if not url: 
             continue
+            
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=15)
-            feed = feedparser.parse(resp.content if resp.status_code == 200 else url)
-            for entry in feed.entries[:10]:
+            resp = session.get(url, timeout=15)
+            
+            # Fallback to urllib only if requests gets completely blocked
+            if resp.status_code != 200:
+                req = urllib.request.Request(url, headers=session.headers)
+                xml_data = urllib.request.urlopen(req, timeout=15).read()
+            else:
+                xml_data = resp.content
+
+            feed = feedparser.parse(xml_data)
+            
+            for entry in feed.entries[:12]:
                 title = clean_html_text(entry.get("title", "No Title"))
                 link = entry.get("link", "")
-                if not link and entry.get("links"):
+                if not link and entry.get("links"): 
                     link = entry.links[0].get("href", "")
 
-                raw_summary = ""
-                if entry.get("summary"):
-                    raw_summary = entry.get("summary", "")
-                elif entry.get("description"):
-                    raw_summary = entry.get("description", "")
-                elif entry.get("content") and isinstance(entry.get("content"), list):
-                    raw_summary = entry.get("content")[0].get("value", "")
-
+                raw_summary = entry.get("summary", "") or entry.get("description", "")
+                if not raw_summary and entry.get("content"):
+                    raw_summary = str(entry.get("content")[0].get("value", ""))
+                
                 clean_snippet = clean_html_text(raw_summary)
-                if not clean_snippet:
+                if not clean_snippet: 
                     clean_snippet = title
 
                 text_blob = f"{title} {clean_snippet}"
                 found_cves = sorted(list(set(c.upper() for c in cve_pattern.findall(text_blob))))
 
+                # Safely handle CISA omitting the pubDate (defaults to 'Today' via parse_date_to_ist)
                 raw_date = entry.get("published") or entry.get("updated") or entry.get("dc_date") or ""
-                parsed_t = entry.get("published_parsed") or entry.get("updated_parsed")
-                iso_date, ist_display, epoch_ts = parse_date_to_ist(raw_date, parsed_t)
+                iso_date, ist_display, epoch_ts = parse_date_to_ist(raw_date, entry.get("published_parsed"))
 
                 matched_vendors = []
                 lower_blob = text_blob.lower()
@@ -415,20 +430,19 @@ def fetch_news(vendor_rules):
                 articles.append({
                     "title": title,
                     "url": link,
-                    "link": link,
-                    "snippet": clean_snippet[:500],
+                    "snippet": clean_snippet[:400],
                     "published": ist_display,
                     "date_iso": iso_date,
                     "epoch": epoch_ts,
                     "source": source_name,
                     "matched_cves": found_cves,
-                    "matched_vendors": matched_vendors,
                     "vendors": matched_vendors
                 })
         except Exception as e:
-            logging.error(f"Failed to fetch news from {source_name}: {e}")
+            logging.error(f"Failed to fetch news from {source_name} at {url}: {e}")
 
-    articles = sorted(articles, key=lambda x: x.get("epoch", 0), reverse=True)[:60]
+    # Sort ALL articles safely by epoch time so CISA (defaulted to today) appears at the top
+    articles = sorted(articles, key=lambda x: x.get("epoch", 0), reverse=True)[:80]
     return articles
 # -------------------------------------------------------------
 # 5. FETCH RECENT NVD DELTA (PRIORITIZING CVSS v3.1 / v3.0)
