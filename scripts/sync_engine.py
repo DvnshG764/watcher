@@ -10,6 +10,7 @@ import requests
 import feedparser
 from bs4 import BeautifulSoup
 import re
+from email.utils import parsedate_to_datetime
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
@@ -243,6 +244,59 @@ def fetch_epss(cve_list):
     return epss_map
 
 #Fetch vendor RSS and Web Scraper
+def clean_html_text(raw_html):
+    """Strips HTML tags, collapses whitespace, and removes boilerplate advisory footers."""
+    if not raw_html:
+        return ""
+    soup = BeautifulSoup(str(raw_html), "html.parser")
+    text = soup.get_text(separator=" ")
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+def parse_date_to_ist(raw_date_str, parsed_struct=None):
+    """Converts any RSS/ISO date into (YYYY-MM-DD, 'DD Mon YYYY, HH:MM AM/PM IST', epoch)."""
+    ist_tz = timezone(timedelta(hours=5, minutes=30))
+    dt = None
+    if parsed_struct:
+        try:
+            dt = datetime(*parsed_struct[:6], tzinfo=timezone.utc)
+        except Exception:
+            dt = None
+    if not dt and raw_date_str:
+        s = str(raw_date_str).strip()
+        try:
+            dt = parsedate_to_datetime(s)
+        except Exception:
+            try:
+                dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+            except Exception:
+                try:
+                    dt = datetime.strptime(s[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+                except Exception:
+                    dt = None
+    if not dt:
+        dt = datetime.now(timezone.utc)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    dt_ist = dt.astimezone(ist_tz)
+    return (
+        dt_ist.strftime("%Y-%m-%d"),
+        dt_ist.strftime("%d %b %Y, %I:%M %p IST"),
+        int(dt_ist.timestamp())
+    )
+
+def extract_cve_sentence_from_advisory(cve_id, raw_text):
+    """Extracts the specific sentence/line for a CVE from a multi-CVE vendor advisory."""
+    cleaned = clean_html_text(raw_text)
+    if not cleaned:
+        return ""
+    # Match Fortinet / Cisco bullet pattern for this specific CVE
+    pattern = re.compile(rf"{re.escape(cve_id)}\s*[-:]\s*(?:\([a-zA-Z]+\)\s*)?(.+?)(?=CVE-\d{{4}}-\d{{4,7}}|$)", re.IGNORECASE)
+    m = pattern.search(cleaned)
+    if m and len(m.group(1).strip()) > 20:
+        return m.group(1).strip()
+    return cleaned[:450]
+
 def fetch_vendor_advisories():
     """Fetches advisories from Cisco, Fortinet, Palo Alto (RSS) and Check Point (Web)."""
     logging.info("Fetching Vendor RSS and Web Advisories...")
@@ -255,94 +309,127 @@ def fetch_vendor_advisories():
         "Palo Alto": "https://security.paloaltonetworks.com/rss.xml"
     }
 
-    # 1. Parse RSS Feeds
     for vendor, url in rss_feeds.items():
         try:
-            feed = feedparser.parse(url)
+            r = requests.get(url, headers=HEADERS, timeout=15)
+            feed = feedparser.parse(r.content if r.status_code == 200 else url)
             for entry in feed.entries:
-                desc = entry.get("description", entry.get("title", ""))
-                date_pub = entry.get("published", entry.get("updated", ""))
-                # Format date to YYYY-MM-DD
-                try:
-                    if entry.get("published_parsed"):
-                        date_pub = time.strftime("%Y-%m-%d", entry.published_parsed)
-                except:
-                    pass
-                
-                # Extract all CVEs in this entry
-                text_blob = f"{entry.get('title', '')} {desc}"
+                raw_desc = entry.get("description", "") or entry.get("summary", "") or entry.get("title", "")
+                raw_date = entry.get("published", "") or entry.get("updated", "")
+                parsed_t = entry.get("published_parsed") or entry.get("updated_parsed")
+                iso_date, _, _ = parse_date_to_ist(raw_date, parsed_t)
+
+                text_blob = f"{entry.get('title', '')} {clean_html_text(raw_desc)}"
                 found_cves = set(c.upper() for c in cve_pattern.findall(text_blob))
-                
+
                 for cve in found_cves:
+                    specific_desc = extract_cve_sentence_from_advisory(cve, raw_desc)
                     if cve not in vendor_data:
-                        vendor_data[cve] = {"vendors": set(), "description": desc, "date_added": date_pub}
+                        vendor_data[cve] = {
+                            "vendors": set(),
+                            "fallback_description": specific_desc,
+                            "date_added": iso_date
+                        }
                     vendor_data[cve]["vendors"].add(vendor)
-                    # If this description is longer/better, replace it
-                    if len(desc) > len(vendor_data[cve]["description"]):
-                        vendor_data[cve]["description"] = desc
         except Exception as e:
             logging.error(f"Failed to fetch {vendor} RSS: {e}")
 
-    # 2. Scrape Check Point (Web HTML)
+    # Scrape Check Point Advisories (extract row context instead of generic placeholder)
     try:
-        r = requests.get("https://advisories.checkpoint.com/advisories/", headers=HEADERS, timeout=10)
+        r = requests.get("https://advisories.checkpoint.com/advisories/", headers=HEADERS, timeout=15)
         if r.status_code == 200:
-            soup = BeautifulSoup(r.text, 'html.parser')
-            # Extract text from main containers to avoid header/footer junk
-            main_content = soup.get_text(separator=" ")
-            found_cves = set(c.upper() for c in cve_pattern.findall(main_content))
-            
-            for cve in found_cves:
-                if cve not in vendor_data:
-                    vendor_data[cve] = {"vendors": set(), "description": "Check Point Security Advisory", "date_added": datetime.now(timezone.utc).strftime("%Y-%m-%d")}
-                vendor_data[cve]["vendors"].add("Check Point")
+            soup = BeautifulSoup(r.text, "html.parser")
+            today_iso = datetime.now(timezone(timedelta(hours=5, minutes=30))).strftime("%Y-%m-%d")
+            for row in soup.find_all(["tr", "li", "div", "article"]):
+                row_text = clean_html_text(row.get_text(separator=" "))
+                if len(row_text) > 400:
+                    continue
+                found_cves = set(c.upper() for c in cve_pattern.findall(row_text))
+                for cve in found_cves:
+                    if cve not in vendor_data:
+                        vendor_data[cve] = {
+                            "vendors": set(),
+                            "fallback_description": row_text if len(row_text) > 35 else "",
+                            "date_added": today_iso
+                        }
+                    vendor_data[cve]["vendors"].add("Check Point")
     except Exception as e:
         logging.error(f"Failed to scrape Check Point: {e}")
 
     return vendor_data
 
 
-
-# -------------------------------------------------------------
-# 4. FETCH AND NORMALIZE NEWS FEEDS
-# -------------------------------------------------------------
 def fetch_news(vendor_rules):
     logging.info("Fetching curated threat news...")
     news_feeds = load_json(os.path.join(CONFIG_DIR, "feeds.json"), [])
     articles = []
     cve_pattern = re.compile(r"CVE-\d{4}-\d{4,7}", re.IGNORECASE)
 
+    # Ensure CISA Cybersecurity Advisories feed is always polled even if missing or differently named
+    has_cisa = any("cisa" in (f.get("name", "") + f.get("url", "")).lower() for f in news_feeds)
+    if not has_cisa:
+        news_feeds.append({
+            "name": "CISA Advisories",
+            "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml"
+        })
+
     for feed_info in news_feeds:
+        source_name = feed_info.get("name", "Unknown")
+        url = feed_info.get("url", "")
+        if not url:
+            continue
         try:
-            feed = feedparser.parse(feed_info["url"])
-            for entry in feed.entries[:8]:
-                text_blob = f"{entry.get('title','')} {entry.get('description','')} {entry.get('summary','')}"
-                found_cves = list(set(c.upper() for c in cve_pattern.findall(text_blob)))
-                
-                # Fix for CISA ATOM feeds: check updated if published doesn't exist
-                pub_date = entry.get("published", entry.get("updated", ""))
-                
-                # Vendor matching for News
+            resp = requests.get(url, headers=HEADERS, timeout=15)
+            feed = feedparser.parse(resp.content if resp.status_code == 200 else url)
+            for entry in feed.entries[:10]:
+                title = clean_html_text(entry.get("title", "No Title"))
+                link = entry.get("link", "")
+                if not link and entry.get("links"):
+                    link = entry.links[0].get("href", "")
+
+                raw_summary = ""
+                if entry.get("summary"):
+                    raw_summary = entry.get("summary", "")
+                elif entry.get("description"):
+                    raw_summary = entry.get("description", "")
+                elif entry.get("content") and isinstance(entry.get("content"), list):
+                    raw_summary = entry.get("content")[0].get("value", "")
+
+                clean_snippet = clean_html_text(raw_summary)
+                if not clean_snippet:
+                    clean_snippet = title
+
+                text_blob = f"{title} {clean_snippet}"
+                found_cves = sorted(list(set(c.upper() for c in cve_pattern.findall(text_blob))))
+
+                raw_date = entry.get("published") or entry.get("updated") or entry.get("dc_date") or ""
+                parsed_t = entry.get("published_parsed") or entry.get("updated_parsed")
+                iso_date, ist_display, epoch_ts = parse_date_to_ist(raw_date, parsed_t)
+
                 matched_vendors = []
                 lower_blob = text_blob.lower()
                 for v_name, aliases in vendor_rules.items():
                     if any(a.lower() in lower_blob for a in aliases):
                         matched_vendors.append(v_name)
-                
+
                 articles.append({
-                    "title": entry.get("title", "No Title"),
-                    "link": entry.get("link", ""),
-                    "published": pub_date,
-                    "source": feed_info.get("name", "Unknown"),
+                    "title": title,
+                    "url": link,
+                    "link": link,
+                    "snippet": clean_snippet[:500],
+                    "published": ist_display,
+                    "date_iso": iso_date,
+                    "epoch": epoch_ts,
+                    "source": source_name,
                     "matched_cves": found_cves,
+                    "matched_vendors": matched_vendors,
                     "vendors": matched_vendors
                 })
         except Exception as e:
-            logging.error(f"Failed to fetch news from {feed_info.get('name')}: {e}")
+            logging.error(f"Failed to fetch news from {source_name}: {e}")
 
-    articles = sorted(articles, key=lambda x: x["published"], reverse=True)[:40]
+    articles = sorted(articles, key=lambda x: x.get("epoch", 0), reverse=True)[:60]
     return articles
-
 # -------------------------------------------------------------
 # 5. FETCH RECENT NVD DELTA (PRIORITIZING CVSS v3.1 / v3.0)
 # -------------------------------------------------------------
@@ -490,15 +577,13 @@ def enrich_cve_details(cve_id, session=None, local_cache=None, allow_nvd_fallbac
 def main():
     vendor_rules = load_json(os.path.join(CONFIG_DIR, "vendors.json"), {})
     local_cache = load_existing_cve_cache()
-    
-    # 1. Fetch all intelligence sources
+
     cisa_kev = fetch_cisa_kev()
     poc_cves, nuclei_cves = fetch_poc_and_nuclei()
     news_articles = fetch_news(vendor_rules)
     nvd_delta = fetch_nvd_recent()
     vendor_advisories = fetch_vendor_advisories()
 
-    # 2. Build the Global Candidate Pool
     master_cves = {}
 
     def init_cve(cid):
@@ -506,7 +591,9 @@ def main():
             master_cves[cid] = {
                 "cve_id": cid,
                 "date_added": "",
+                "due_date": "",
                 "description": "",
+                "adv_fallback_desc": "",
                 "vendors": set(),
                 "products": set(),
                 "is_kev": False,
@@ -517,38 +604,39 @@ def main():
                 "epss": 0.0
             }
 
-    # Inject CISA KEV
+    # 1. Inject CISA KEV
     for k in cisa_kev.values():
         cid = k["cve_id"]
         init_cve(cid)
         master_cves[cid]["is_kev"] = True
-        master_cves[cid]["date_added"] = k.get("date_added", "")
-        master_cves[cid]["description"] = k.get("description", "")
+        master_cves[cid]["date_added"] = (k.get("date_added") or "")[:10]
+        master_cves[cid]["due_date"] = (k.get("due_date") or "")[:10]
+        master_cves[cid]["description"] = clean_html_text(k.get("description", ""))
         if k.get("vendor") and k.get("vendor") != "Unknown":
             master_cves[cid]["vendors"].add(k.get("vendor"))
         if k.get("product") and k.get("product") != "Unknown":
             master_cves[cid]["products"].add(k.get("product"))
 
-    # Inject NVD Delta
+    # 2. Inject NVD Delta (Official per-CVE descriptions)
     for cid, nvd in nvd_delta.items():
         init_cve(cid)
         if not master_cves[cid]["date_added"]:
-            master_cves[cid]["date_added"] = nvd.get("published", "")[:10]
+            master_cves[cid]["date_added"] = (nvd.get("published") or "")[:10]
         if not master_cves[cid]["description"]:
-            master_cves[cid]["description"] = nvd.get("description", "")
+            master_cves[cid]["description"] = clean_html_text(nvd.get("description", ""))
         if master_cves[cid]["cvss"] is None:
             master_cves[cid]["cvss"] = nvd.get("cvss")
 
-    # Inject Vendor Advisories (Cisco, Fortinet, PA, Check Point)
+    # 3. Inject Vendor Advisories (Keep advisory text as fallback so CVEListV5/NVD per-CVE description wins!)
     for cid, adv in vendor_advisories.items():
         init_cve(cid)
         master_cves[cid]["vendors"].update(adv["vendors"])
         if not master_cves[cid]["date_added"]:
-            master_cves[cid]["date_added"] = adv["date_added"]
-        if not master_cves[cid]["description"]:
-            master_cves[cid]["description"] = adv["description"]
+            master_cves[cid]["date_added"] = (adv.get("date_added") or "")[:10]
+        if adv.get("fallback_description"):
+            master_cves[cid]["adv_fallback_desc"] = adv["fallback_description"]
 
-    # Inject Flags
+    # 4. Inject Exploit & News Flags
     for cid in poc_cves:
         init_cve(cid)
         master_cves[cid]["has_poc"] = True
@@ -560,63 +648,65 @@ def main():
             init_cve(cid)
             master_cves[cid]["in_news"] = True
 
-    # 3. EPSS Enrichment
+    # 5. EPSS Enrichment
     logging.info("Fetching EPSS for all candidates...")
     epss_data = fetch_epss(list(master_cves.keys()))
     for cid, info in epss_data.items():
         master_cves[cid]["epss"] = info.get("epss", 0.0)
 
-    # 4. Text-Based Vendor Matching (For NVD/KEV descriptions)
+    # 6. Core Data Enrichment (Always fetch official CVEListV5 / NVD description & CVSS for Vendor/KEV/Signal CVEs)
+    enrich_targets = [
+        cid for cid, c in master_cves.items()
+        if (c["is_kev"] or c["has_poc"] or c["has_nuclei"] or c["in_news"] or len(c["vendors"]) > 0 or c["epss"] >= 0.05)
+    ]
+
+    logging.info(f"Enriching API data for {len(enrich_targets)} high-value CVEs...")
+    with requests.Session() as session:
+        session.headers.update(HEADERS)
+        for idx, cid in enumerate(enrich_targets):
+            allow_nvd = (idx < 120)
+            if master_cves[cid]["cvss"] is None or not master_cves[cid]["description"]:
+                en_desc, en_cvss, en_ven, en_prod = enrich_cve_details(
+                    cid, session=session, local_cache=local_cache, allow_nvd_fallback=allow_nvd
+                )
+                if not master_cves[cid]["description"] and en_desc:
+                    master_cves[cid]["description"] = clean_html_text(en_desc)
+                if master_cves[cid]["cvss"] is None and en_cvss is not None:
+                    master_cves[cid]["cvss"] = en_cvss
+                if en_ven and en_ven != "Unknown":
+                    master_cves[cid]["vendors"].add(en_ven)
+                if en_prod and en_prod != "Unknown":
+                    master_cves[cid]["products"].add(en_prod)
+
+            # Fallback to cleaned vendor advisory excerpt ONLY if official CVEListV5/NVD has no description yet
+            if not master_cves[cid]["description"] and master_cves[cid]["adv_fallback_desc"]:
+                master_cves[cid]["description"] = master_cves[cid]["adv_fallback_desc"]
+
+            local_cache[cid] = {
+                "cvss": master_cves[cid]["cvss"],
+                "description": master_cves[cid]["description"]
+            }
+
+    # 7. Text-Based Vendor Matching across enriched descriptions
     for cid, cve_obj in master_cves.items():
         search_blob = f"{' '.join(cve_obj['vendors'])} {' '.join(cve_obj['products'])} {cve_obj['description']}".lower()
         for v_name, aliases in vendor_rules.items():
             if any(a.lower() in search_blob for a in aliases):
                 cve_obj["vendors"].add(v_name)
 
-    # 5. Core Data Enrichment (CVSS, Product mapping for unknowns)
-    # We only enrich high-value targets to save API time (KEV, PoC, Nuclei, News, or Vendor specific)
-    enrich_targets = [
-        cid for cid, c in master_cves.items() 
-        if (c["is_kev"] or c["has_poc"] or c["has_nuclei"] or c["in_news"] or len(c["vendors"]) > 0 or c["epss"] > 0.05)
-    ]
-    
-    logging.info(f"Enriching API data for {len(enrich_targets)} high-value CVEs...")
-    with requests.Session() as session:
-        session.headers.update(HEADERS)
-        for idx, cid in enumerate(enrich_targets):
-            # Only do deep NVD fallback for the most critical/recent 100 to save time
-            allow_nvd = (idx < 100)
-            if master_cves[cid]["cvss"] is None or not master_cves[cid]["description"]:
-                en_desc, en_cvss, en_ven, en_prod = enrich_cve_details(
-                    cid, session=session, local_cache=local_cache, allow_nvd_fallback=allow_nvd
-                )
-                if not master_cves[cid]["description"] and en_desc:
-                    master_cves[cid]["description"] = en_desc
-                if master_cves[cid]["cvss"] is None:
-                    master_cves[cid]["cvss"] = en_cvss
-                if en_ven != "Unknown":
-                    master_cves[cid]["vendors"].add(en_ven)
-                if en_prod != "Unknown":
-                    master_cves[cid]["products"].add(en_prod)
-
-            # Update cache
-            local_cache[cid] = {
-                "cvss": master_cves[cid]["cvss"],
-                "description": master_cves[cid]["description"]
-            }
-
-    # 6. Format Master JSON for Output
+    # 8. Finalize Master JSON Output
     final_master_list = []
     for cid, c in master_cves.items():
-        # Convert Sets to Lists for JSON serialization
-        c["vendors"] = list(c["vendors"])
-        c["products"] = list(c["products"])
+        c.pop("adv_fallback_desc", None)
+        c["description"] = clean_html_text(c["description"])
+        c["vendors"] = sorted(list(c["vendors"]))
+        c["products"] = sorted(list(c["products"]))
+        if not c["date_added"]:
+            c["date_added"] = f"{cid.split('-')[1]}-01-01" if len(cid.split("-")) == 3 else "2026-01-01"
         final_master_list.append(c)
 
-    # Sort by date added (newest first)
     final_master_list = sorted(final_master_list, key=lambda x: x.get("date_added", ""), reverse=True)
 
-    # Save to disk
     save_json(os.path.join(DATA_DIR, "cve_master.json"), final_master_list)
     save_json(os.path.join(DATA_DIR, "news.json"), news_articles)
     save_json(os.path.join(DATA_DIR, "sync_meta.json"), {
@@ -627,7 +717,6 @@ def main():
         }
     })
 
-    # Copy configs
     for cfg in ["cwe_definitions.json"]:
         src = os.path.join(BASE_DIR, "data", cfg)
         dst = os.path.join(DATA_DIR, cfg)

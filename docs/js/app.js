@@ -2,23 +2,30 @@
 // 1. GLOBAL STATE & INITIALIZATION
 // =========================================================================
 let activeTab = 'radar';
-let masterCveData = []; 
+let masterCveData = [];
 let newsData = [];
 let metadata = {};
 let cweMap = {};
 let configuredNewsSources = [];
 let selectedNewsSource = 'All';
+let selectedNewsVendors = new Set();
 
 // Filter States
 let radarState = {
-  sort: 'priority', // priority, epss, severity, newest
+  sort: 'newest', // newest, severity, epss, priority
   severities: new Set(),
   hasPoc: false,
   hasNuclei: false
 };
 
 let vendorState = {
-  sort: 'newest', // newest, priority, severity
+  sort: 'newest', // newest, severity, epss, priority
+  severities: new Set(),
+  vendors: new Set()
+};
+
+let briefFilterState = {
+  timeRange: 30, // 1 | 7 | 30 | 'all'
   severities: new Set(),
   vendors: new Set()
 };
@@ -33,7 +40,7 @@ async function fetchJsonFile(possiblePaths) {
   return null;
 }
 
-// 100-Point Composite Threat Priority Score (Hoisted)
+// 100-Point Composite Threat Priority Score
 function computeThreatPriorityScore(item) {
   const isKev = item.is_kev ? 35 : 0;
   const hasPoc = item.has_poc ? 20 : 0;
@@ -45,14 +52,89 @@ function computeThreatPriorityScore(item) {
   return isKev + hasPoc + hasNuclei + epssPts + cvssPts;
 }
 
+// Standardize any date string to IST display
+function formatToIstDate(dateStr, includeTime = false) {
+  if (!dateStr || dateStr === '-') return '-';
+  const s = String(dateStr).trim();
+  if (s.endsWith('IST')) return s;
+  // If YYYY-MM-DD only, format cleanly as DD Mon YYYY IST
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
+    const [y, m, d] = s.split('-').map(Number);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${String(d).padStart(2, '0')} ${months[m - 1] || ''} ${y} (IST)`;
+  }
+  const parsed = new Date(s);
+  if (isNaN(parsed.getTime())) return s;
+  if (includeTime) {
+    return parsed.toLocaleString('en-IN', {
+      timeZone: 'Asia/Kolkata',
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }) + ' IST';
+  }
+  return parsed.toLocaleDateString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  }) + ' (IST)';
+}
+
+// Strip raw HTML tags & escape safely so Read More never breaks DOM
+function stripAndEscapeHtml(raw) {
+  if (!raw) return '';
+  const tmp = document.createElement('div');
+  tmp.innerHTML = String(raw);
+  const plain = (tmp.textContent || tmp.innerText || '').replace(/\s+/g, ' ').trim();
+  return plain
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// High-visibility Filter Pill Visual State (Works in BOTH Dark and Light mode)
+function setFilterPillVisual(btn, isActive, category = 'default') {
+  if (!btn) return;
+  const base = 'px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ';
+  const inactive = 'border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-indigo-500/50';
+
+  if (!isActive) {
+    btn.className = base + inactive;
+    return;
+  }
+
+  let activeColor = 'bg-indigo-600 dark:bg-indigo-600 text-white dark:text-white border border-indigo-400 shadow-md shadow-indigo-500/30 ring-2 ring-indigo-400/40';
+  if (category === 'Critical') {
+    activeColor = 'bg-rose-600 dark:bg-rose-600 text-white dark:text-white border border-rose-400 shadow-md shadow-rose-500/30 ring-2 ring-rose-400/40';
+  } else if (category === 'High') {
+    activeColor = 'bg-orange-600 dark:bg-orange-600 text-white dark:text-white border border-orange-400 shadow-md shadow-orange-500/30 ring-2 ring-orange-400/40';
+  } else if (category === 'Medium') {
+    activeColor = 'bg-amber-500 dark:bg-amber-500 text-white dark:text-white border border-amber-300 shadow-md shadow-amber-500/30 ring-2 ring-amber-400/40';
+  } else if (category === 'Low') {
+    activeColor = 'bg-slate-600 dark:bg-slate-600 text-white dark:text-white border border-slate-400 shadow-md shadow-slate-500/30 ring-2 ring-slate-400/40';
+  } else if (category === 'poc') {
+    activeColor = 'bg-emerald-600 dark:bg-emerald-600 text-white dark:text-white border border-emerald-400 shadow-md shadow-emerald-500/30 ring-2 ring-emerald-400/40';
+  } else if (category === 'nuclei') {
+    activeColor = 'bg-sky-600 dark:bg-sky-600 text-white dark:text-white border border-sky-400 shadow-md shadow-sky-500/30 ring-2 ring-sky-400/40';
+  }
+
+  btn.className = base + activeColor;
+}
+
 async function initDashboard() {
   initTheme();
-  // setupGlobalSearchListener(); // Make sure search.js has this defined
 
-  const [master, news, meta, cwes] = await Promise.all([
+  const [master, news, meta, cfgFeeds, cwes] = await Promise.all([
     fetchJsonFile(['data/cve_master.json', './data/cve_master.json', '../docs/data/cve_master.json']),
     fetchJsonFile(['data/news.json', './data/news.json', '../docs/data/news.json']),
     fetchJsonFile(['data/sync_meta.json', './data/sync_meta.json', '../docs/data/sync_meta.json']),
+    fetchJsonFile(['data/config_feeds.json', './data/config_feeds.json', '../config/feeds.json']),
     fetchJsonFile(['data/cwe_definitions.json', './data/cwe_definitions.json', '../data/cwe_definitions.json'])
   ]);
 
@@ -68,7 +150,9 @@ async function initDashboard() {
 
   if (news) {
     newsData = news;
-    configuredNewsSources = [...new Set(newsData.map(n => n.source).filter(Boolean))];
+    const fromNews = newsData.map(n => n.source).filter(Boolean);
+    const fromCfg = Array.isArray(cfgFeeds) ? cfgFeeds.map(f => f.name).filter(Boolean) : [];
+    configuredNewsSources = [...new Set([...fromCfg, ...fromNews])];
   }
 
   if (meta) {
@@ -86,78 +170,97 @@ async function initDashboard() {
 // =========================================================================
 // 2. FILTERING & SORTING LOGIC (RADAR & VENDOR)
 // =========================================================================
+function sortCveArray(arr, sortMode) {
+  return arr.sort((a, b) => {
+    if (sortMode === 'severity') {
+      const diff = (parseFloat(b.cvss) || -1) - (parseFloat(a.cvss) || -1);
+      if (diff !== 0) return diff;
+    } else if (sortMode === 'epss') {
+      const diff = (parseFloat(b.epss) || -1) - (parseFloat(a.epss) || -1);
+      if (diff !== 0) return diff;
+    } else if (sortMode === 'priority') {
+      const diff = (b.priorityScore || 0) - (a.priorityScore || 0);
+      if (diff !== 0) return diff;
+    }
+    return (b.date_added || '').localeCompare(a.date_added || '');
+  });
+}
+
 function toggleRadarFilter(type, value) {
   const btn = document.getElementById(
     type === 'severity' ? `btn-radar-sev-${value.toLowerCase()}` : `btn-radar-${value}`
   );
-  
+  let isActive = false;
+
   if (type === 'severity') {
     if (radarState.severities.has(value)) radarState.severities.delete(value);
     else radarState.severities.add(value);
+    isActive = radarState.severities.has(value);
+    setFilterPillVisual(btn, isActive, value);
   } else if (type === 'flag') {
-    if (value === 'poc') radarState.hasPoc = !radarState.hasPoc;
-    if (value === 'nuclei') radarState.hasNuclei = !radarState.hasNuclei;
+    if (value === 'poc') {
+      radarState.hasPoc = !radarState.hasPoc;
+      isActive = radarState.hasPoc;
+    }
+    if (value === 'nuclei') {
+      radarState.hasNuclei = !radarState.hasNuclei;
+      isActive = radarState.hasNuclei;
+    }
+    setFilterPillVisual(btn, isActive, value);
   }
-  
-  btn.classList.toggle('bg-indigo-600');
-  btn.classList.toggle('text-white');
-  btn.classList.toggle('border-transparent');
-  btn.classList.toggle('bg-white/50');
-  btn.classList.toggle('text-slate-600');
-  
+
   updateRadarFilters();
 }
 
 function updateRadarFilters() {
-  radarState.sort = document.getElementById('radar-sort').value;
-  
-  let filtered = masterCveData.filter(item => {
-    // Only show active threats in radar by default
-    const isRadarWorthy = item.is_kev || item.has_poc || item.has_nuclei || item.epss >= 0.05;
-    if (!isRadarWorthy) return false;
+  const sortEl = document.getElementById('radar-sort');
+  if (sortEl) radarState.sort = sortEl.value;
 
+  const matchesActiveFilters = (item) => {
     if (radarState.severities.size > 0 && !radarState.severities.has(item.severityStr)) return false;
     if (radarState.hasPoc && !item.has_poc) return false;
     if (radarState.hasNuclei && !item.has_nuclei) return false;
-    
     return true;
+  };
+
+  // Separate CISA KEV and Pre-KEV Early Warning pools FIRST so neither starves the other!
+  const kevPool = masterCveData.filter(item => item.is_kev && matchesActiveFilters(item));
+  const earlyPool = masterCveData.filter(item => {
+    if (item.is_kev) return false;
+    const hasPreKevSignal = item.has_poc || item.has_nuclei || item.in_news || (parseFloat(item.epss) || 0) >= 0.05;
+    return hasPreKevSignal && matchesActiveFilters(item);
   });
 
-  filtered.sort((a, b) => {
-    if (radarState.sort === 'priority') return b.priorityScore - a.priorityScore;
-    if (radarState.sort === 'epss') return (b.epss || 0) - (a.epss || 0);
-    if (radarState.sort === 'newest') return (b.date_added || '').localeCompare(a.date_added || '');
-    if (radarState.sort === 'severity') return (b.cvss || 0) - (a.cvss || 0);
-    return 0;
-  });
+  sortCveArray(kevPool, radarState.sort);
+  sortCveArray(earlyPool, radarState.sort);
 
-  renderExploitRadar(filtered.slice(0, 100));
+  renderExploitRadar(kevPool.slice(0, 50), earlyPool.slice(0, 50), kevPool.length, earlyPool.length);
 }
 
 function toggleVendorFilter(type, value) {
   const safeId = value.toLowerCase().replace(/\s+/g, '');
   const btn = document.getElementById(`btn-vendor-${type === 'severity' ? 'sev-' : ''}${safeId}`);
-  
+  let isActive = false;
+
   if (type === 'severity') {
     if (vendorState.severities.has(value)) vendorState.severities.delete(value);
     else vendorState.severities.add(value);
+    isActive = vendorState.severities.has(value);
+    setFilterPillVisual(btn, isActive, value);
   } else if (type === 'vendor') {
     if (vendorState.vendors.has(value)) vendorState.vendors.delete(value);
     else vendorState.vendors.add(value);
+    isActive = vendorState.vendors.has(value);
+    setFilterPillVisual(btn, isActive, 'default');
   }
-  
-  btn.classList.toggle('bg-indigo-600');
-  btn.classList.toggle('text-white');
-  btn.classList.toggle('border-transparent');
-  btn.classList.toggle('bg-white/50');
-  btn.classList.toggle('text-slate-600');
-  
+
   updateVendorFilters();
 }
 
 function updateVendorFilters() {
-  vendorState.sort = document.getElementById('vendor-sort').value;
-  
+  const sortEl = document.getElementById('vendor-sort');
+  if (sortEl) vendorState.sort = sortEl.value;
+
   let filtered = masterCveData.filter(item => {
     if (!item.vendors || item.vendors.length === 0) return false;
     if (vendorState.severities.size > 0 && !vendorState.severities.has(item.severityStr)) return false;
@@ -168,13 +271,7 @@ function updateVendorFilters() {
     return true;
   });
 
-  filtered.sort((a, b) => {
-    if (vendorState.sort === 'newest') return (b.date_added || '').localeCompare(a.date_added || '');
-    if (vendorState.sort === 'priority') return b.priorityScore - a.priorityScore;
-    if (vendorState.sort === 'severity') return (b.cvss || 0) - (a.cvss || 0);
-    return 0;
-  });
-
+  sortCveArray(filtered, vendorState.sort);
   renderVendorFocus(filtered.slice(0, 100));
 }
 
@@ -250,7 +347,7 @@ function toggleTheme() {
 // =========================================================================
 function switchTab(tabName) {
   activeTab = tabName;
-  ['radar', 'vendor', 'cve-search','news', 'brief'].forEach(t => {
+  ['radar', 'vendor', 'cve-search', 'news', 'brief'].forEach(t => {
     document.getElementById(`nav-${t}`)?.classList.toggle('active', t === tabName);
     document.getElementById(`view-${t}`)?.classList.toggle('hidden', t !== tabName);
   });
@@ -277,28 +374,30 @@ function switchTab(tabName) {
 }
 
 // =========================================================================
-// 6. EXPANDABLE DESCRIPTION & CVSS BADGE HELPERS
+// 6. SAFE EXPANDABLE DESCRIPTION & CVSS BADGE HELPERS
 // =========================================================================
 function toggleReadMore(btn) {
   const wrapper = btn.parentElement;
   const shortEl = wrapper.querySelector('.short-text');
   const fullEl = wrapper.querySelector('.full-text');
-  const isHidden = fullEl.classList.contains('hidden');
+  if (!shortEl || !fullEl) return;
 
-  fullEl.classList.toggle('hidden', !isHidden);
-  shortEl.classList.toggle('hidden', isHidden);
-  btn.textContent = isHidden ? 'Show less' : 'Read more';
+  const isExpanding = fullEl.classList.contains('hidden');
+  fullEl.classList.toggle('hidden', !isExpanding);
+  shortEl.classList.toggle('hidden', isExpanding);
+  btn.textContent = isExpanding ? 'Show less' : 'Read more';
 }
 
-function formatExpandableText(text, limit = 155) {
-  if (!text) return '<span class="italic text-slate-400">No description available.</span>';
-  if (text.length <= limit) return `<span>${text}</span>`;
-  const truncated = text.substring(0, limit).trim() + '...';
+function formatExpandableText(text, limit = 160) {
+  const safeText = stripAndEscapeHtml(text);
+  if (!safeText) return '<span class="italic text-slate-400">No description available.</span>';
+  if (safeText.length <= limit) return `<span>${safeText}</span>`;
+  const truncated = safeText.substring(0, limit).trim() + '...';
   return `
     <span>
       <span class="short-text">${truncated}</span>
-      <span class="full-text hidden">${text}</span>
-      <button onclick="toggleReadMore(this)" class="ml-1 text-indigo-500 dark:text-indigo-400 hover:underline font-semibold text-[11px] cursor-pointer">Read more</button>
+      <span class="full-text hidden">${safeText}</span>
+      <button type="button" onclick="toggleReadMore(this)" class="ml-1 text-indigo-500 dark:text-indigo-400 hover:underline font-semibold text-[11px] cursor-pointer">Read more</button>
     </span>
   `;
 }
@@ -342,8 +441,7 @@ function formatCvssBadge(score, cveId) {
 // =========================================================================
 function buildStandardThreatCard(item, cardType = 'radar_kev') {
   const cveId = item.cve_id;
-  
-  // Use robust Master array logic
+
   const vendorName = (item.vendors && item.vendors.length > 0) ? item.vendors.join(', ') : (item.vendor || 'Unknown');
   const productName = (item.products && item.products.length > 0) ? `- ${item.products.join(', ')}` : (item.product && item.product !== 'Unknown' ? `- ${item.product}` : '');
   const vendorProduct = `${vendorName} ${productName}`.trim();
@@ -357,11 +455,26 @@ function buildStandardThreatCard(item, cardType = 'radar_kev') {
   if (cardType === 'radar_kev' || item.is_kev) glowClass = 'kev-card-glow';
   else if (cardType === 'radar_early') glowClass = 'early-card-glow';
 
-  let dateWellMarkup = `
-    <div class="recessed-box rounded-xl px-3.5 py-2 my-3 text-[11px] font-mono text-slate-500 dark:text-slate-400">
-      Detected Date: <span class="font-semibold text-slate-800 dark:text-slate-200">${item.date_added || item.date || item.first_seen || '-'}</span>
-    </div>
-  `;
+  const formattedDate = formatToIstDate(item.date_added || item.date || item.first_seen || '-');
+  let dateWellMarkup = '';
+  if ((cardType === 'radar_kev' || item.is_kev) && item.due_date) {
+    dateWellMarkup = `
+      <div class="recessed-box rounded-xl px-3.5 py-2 my-3 grid grid-cols-2 items-center text-[11px] font-mono">
+        <div class="text-slate-500 dark:text-slate-400">
+          Added: <span class="font-semibold text-slate-800 dark:text-slate-200">${formattedDate}</span>
+        </div>
+        <div class="text-right text-slate-500 dark:text-slate-400 border-l border-slate-300/50 dark:border-slate-700/60 pl-3">
+          Due: <span class="font-semibold text-rose-600 dark:text-rose-400">${formatToIstDate(item.due_date)}</span>
+        </div>
+      </div>
+    `;
+  } else {
+    dateWellMarkup = `
+      <div class="recessed-box rounded-xl px-3.5 py-2 my-3 text-[11px] font-mono text-slate-500 dark:text-slate-400">
+        Detected Date: <span class="font-semibold text-slate-800 dark:text-slate-200">${formattedDate}</span>
+      </div>
+    `;
+  }
 
   const hasEpss = item.epss !== null && item.epss !== undefined && parseFloat(item.epss) > 0;
   const epssBadge = hasEpss
@@ -412,24 +525,21 @@ function buildStandardThreatCard(item, cardType = 'radar_kev') {
 // =========================================================================
 // 8. RENDERING VIEWS (RADAR, VENDORS, NEWS)
 // =========================================================================
-function renderExploitRadar(filteredItems) {
-  const kevList = filteredItems.filter(i => i.is_kev);
-  const earlyList = filteredItems.filter(i => !i.is_kev);
-
-  document.getElementById('kpi-kev-count').textContent = kevList.length;
-  document.getElementById('kpi-early-count').textContent = earlyList.length;
+function renderExploitRadar(kevList, earlyList, totalKevCount, totalEarlyCount) {
+  document.getElementById('kpi-kev-count').textContent = totalKevCount ?? kevList.length;
+  document.getElementById('kpi-early-count').textContent = totalEarlyCount ?? earlyList.length;
 
   const kevContainer = document.getElementById('radar-kev-list');
   const earlyContainer = document.getElementById('radar-early-list');
 
   if (kevList.length === 0) {
-    kevContainer.innerHTML = `<div class="neu-glass-card rounded-2xl p-8 text-center text-xs text-slate-400">No CISA KEV entries found.</div>`;
+    kevContainer.innerHTML = `<div class="neu-glass-card rounded-2xl p-8 text-center text-xs text-slate-400">No CISA KEV entries match your active filters.</div>`;
   } else {
     kevContainer.innerHTML = kevList.map(item => buildStandardThreatCard(item, 'radar_kev')).join('');
   }
 
   if (earlyList.length === 0) {
-    earlyContainer.innerHTML = `<div class="neu-glass-card rounded-2xl p-8 text-center text-xs text-slate-400">No Early Warning entries found.</div>`;
+    earlyContainer.innerHTML = `<div class="neu-glass-card rounded-2xl p-8 text-center text-xs text-slate-400">No Pre-KEV Early Warning signals match your active filters.</div>`;
   } else {
     earlyContainer.innerHTML = earlyList.map(item => buildStandardThreatCard(item, 'radar_early')).join('');
   }
@@ -437,7 +547,6 @@ function renderExploitRadar(filteredItems) {
 
 function renderVendorFocus(filteredItems) {
   const container = document.getElementById('vendor-grid');
-  
   if (filteredItems.length === 0) {
     container.innerHTML = `
       <div class="col-span-full neu-glass-card rounded-2xl p-10 text-center text-sm text-slate-400">
@@ -446,28 +555,29 @@ function renderVendorFocus(filteredItems) {
     `;
     return;
   }
-
-  container.innerHTML = filteredItems
-    .map(item => buildStandardThreatCard(item, 'vendor'))
-    .join('');
+  container.innerHTML = filteredItems.map(item => buildStandardThreatCard(item, 'vendor')).join('');
 }
 
 function renderNewsSourcePills() {
   const container = document.getElementById('news-source-pills');
+  if (!container) return;
   const sources = ['All', ...configuredNewsSources];
 
-  container.innerHTML = sources.map(s => `
-    <button 
-      onclick="filterNewsSource('${s}')" 
-      class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-        s === selectedNewsSource 
-          ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/30' 
-          : 'neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40'
-      }"
-    >
-      ${s}
-    </button>
-  `).join('');
+  container.innerHTML = sources.map(s => {
+    const isActive = s === selectedNewsSource;
+    return `
+      <button 
+        onclick="filterNewsSource('${s.replace(/'/g, "\\'")}')" 
+        class="px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+          isActive
+            ? 'bg-indigo-600 dark:bg-indigo-600 text-white dark:text-white border border-indigo-400 shadow-md shadow-indigo-500/30 ring-2 ring-indigo-400/40'
+            : 'border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-indigo-500/40'
+        }"
+      >
+        ${s}
+      </button>
+    `;
+  }).join('');
 }
 
 function filterNewsSource(sName) {
@@ -476,57 +586,83 @@ function filterNewsSource(sName) {
   renderNewsView();
 }
 
+function toggleNewsVendorFilter(vendorName) {
+  const safeId = vendorName.toLowerCase().replace(/\s+/g, '');
+  const btn = document.getElementById(`btn-news-vendor-${safeId}`);
+  if (selectedNewsVendors.has(vendorName)) selectedNewsVendors.delete(vendorName);
+  else selectedNewsVendors.add(vendorName);
+
+  setFilterPillVisual(btn, selectedNewsVendors.has(vendorName), 'default');
+  renderNewsView();
+}
+
 function renderNewsView() {
   const container = document.getElementById('news-grid');
+  if (!container) return;
+
   let filtered = newsData || [];
   if (selectedNewsSource !== 'All') {
     filtered = filtered.filter(n => (n.source || '').toLowerCase() === selectedNewsSource.toLowerCase());
   }
 
+  if (selectedNewsVendors.size > 0) {
+    filtered = filtered.filter(n => {
+      const artVendors = n.vendors || n.matched_vendors || [];
+      return artVendors.some(v => selectedNewsVendors.has(v));
+    });
+  }
+
   if (filtered.length === 0) {
     container.innerHTML = `
       <div class="col-span-full neu-glass-card rounded-2xl p-10 text-center text-sm text-slate-400">
-        No curated articles found for <strong class="text-slate-700 dark:text-slate-200">${selectedNewsSource}</strong>.
+        No curated articles found for the selected source and vendor filters.
       </div>
     `;
     return;
   }
 
-  container.innerHTML = filtered.map(article => `
-    <article class="neu-glass-card vendor-card-glow rounded-2xl p-5 flex flex-col justify-between">
-      <div>
-        <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
-          <span class="font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">${article.source}</span>
-          <span>${article.published || ''}</span>
-        </div>
+  container.innerHTML = filtered.map(article => {
+    const articleUrl = article.url || article.link || '#';
+    const snippetText = article.snippet || article.description || article.summary || article.title || '';
+    const pubIst = formatToIstDate(article.published, true);
+    const vendorsList = article.vendors || article.matched_vendors || [];
 
-        <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="text-base font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors block mb-2.5 leading-snug">
-          ${article.title}
-        </a>
+    return `
+      <article class="neu-glass-card vendor-card-glow rounded-2xl p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
+            <span class="font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">${article.source}</span>
+            <span>${pubIst}</span>
+          </div>
 
-        <div class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-          ${formatExpandableText(article.snippet, 175)}
-        </div>
-      </div>
-
-      <div class="pt-3 border-t border-slate-200/70 dark:border-slate-800/80 flex flex-wrap items-center gap-2 text-[11px]">
-        ${(article.matched_cves || []).map(cve => `
-          <a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank" rel="noopener noreferrer" class="font-mono font-bold px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30 hover:underline">
-            ${cve}
+          <a href="${articleUrl}" target="_blank" rel="noopener noreferrer" class="text-base font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors block mb-2.5 leading-snug">
+            ${stripAndEscapeHtml(article.title)}
           </a>
-        `).join('')}
-        ${(article.matched_vendors || article.vendors || []).map(v => `
-          <span class="px-2.5 py-1 rounded-full bg-slate-500/10 text-slate-600 dark:text-slate-300 border border-slate-300/50 dark:border-slate-700 font-medium">
-            ${v}
-          </span>
-        `).join('')}
-      </div>
-    </article>
-  `).join('');
+
+          <div class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+            ${formatExpandableText(snippetText, 180)}
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-200/70 dark:border-slate-800/80 flex flex-wrap items-center gap-2 text-[11px]">
+          ${(article.matched_cves || []).map(cve => `
+            <a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank" rel="noopener noreferrer" class="font-mono font-bold px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30 hover:underline">
+              ${cve}
+            </a>
+          `).join('')}
+          ${vendorsList.map(v => `
+            <span class="px-2.5 py-1 rounded-full bg-slate-500/10 text-slate-600 dark:text-slate-300 border border-slate-300/50 dark:border-slate-700 font-medium">
+              ${v}
+            </span>
+          `).join('')}
+        </div>
+      </article>
+    `;
+  }).join('');
 }
 
 // =========================================================================
-// 9. THREAT BRIEF GENERATOR (TOP 5 / TOP 10 / CUSTOM + TEAMS WEBHOOK)
+// 9. THREAT BRIEF GENERATOR (GLOBAL + TIME RANGE + MULTI-FILTER + SMART BRIEF)
 // =========================================================================
 let briefMode = 'top5'; // 'top5' | 'top10' | 'custom'
 let currentBriefItems = [];
@@ -539,12 +675,13 @@ function setBriefMode(mode) {
     const btn = document.getElementById(`brief-mode-${m}`);
     if (!btn) return;
     if (m === mode) {
-      btn.className = 'px-4 py-2 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-500/30';
+      btn.className = 'px-4 py-2 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-500/30 cursor-pointer';
     } else {
-      btn.className = 'px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40';
+      btn.className = 'px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40 cursor-pointer';
     }
   });
 
+  document.getElementById('brief-auto-filters')?.classList.toggle('hidden', mode === 'custom');
   const customBuilder = document.getElementById('brief-custom-builder');
   if (customBuilder) {
     customBuilder.classList.toggle('hidden', mode !== 'custom');
@@ -552,6 +689,31 @@ function setBriefMode(mode) {
       addCustomCveRow();
     }
   }
+}
+
+function setBriefTimeRange(days) {
+  briefFilterState.timeRange = days;
+  [1, 7, 30, 'all'].forEach(d => {
+    const btn = document.getElementById(`btn-brief-time-${d}`);
+    setFilterPillVisual(btn, d === days, 'default');
+  });
+  generateThreatBrief();
+}
+
+function toggleBriefFilter(type, value) {
+  const safeId = value.toLowerCase().replace(/\s+/g, '');
+  const btn = document.getElementById(`btn-brief-${type === 'severity' ? 'sev' : 'vendor'}-${safeId}`);
+
+  if (type === 'severity') {
+    if (briefFilterState.severities.has(value)) briefFilterState.severities.delete(value);
+    else briefFilterState.severities.add(value);
+    setFilterPillVisual(btn, briefFilterState.severities.has(value), value);
+  } else if (type === 'vendor') {
+    if (briefFilterState.vendors.has(value)) briefFilterState.vendors.delete(value);
+    else briefFilterState.vendors.add(value);
+    setFilterPillVisual(btn, briefFilterState.vendors.has(value), 'default');
+  }
+  generateThreatBrief();
 }
 
 function addCustomCveRow(yearVal = '', idVal = '') {
@@ -594,7 +756,6 @@ function removeCustomCveRow(btn) {
   }
 }
 
-// Build unified lookup pool of all synced CVEs directly from master data
 function getLocalCvePoolMap() {
   const map = new Map();
   masterCveData.forEach(item => {
@@ -604,12 +765,13 @@ function getLocalCvePoolMap() {
       date_added: item.date_added || '-',
       cvss: item.cvss,
       description: item.description || '',
+      vendors: item.vendors || [],
       vendor: (item.vendors && item.vendors.length > 0) ? item.vendors.join(', ') : 'Unknown',
       product: (item.products && item.products.length > 0) ? item.products.join(', ') : 'Unknown',
       epss: item.epss,
-      is_kev: item.is_kev,
-      has_nuclei: item.has_nuclei,
-      has_poc: item.has_poc
+      is_kev: Boolean(item.is_kev),
+      has_nuclei: Boolean(item.has_nuclei),
+      has_poc: Boolean(item.has_poc)
     });
   });
   return map;
@@ -694,6 +856,7 @@ async function fetchAndValidateCustomCve(cveId, localMap) {
       date_added: dateAdded,
       cvss,
       description: desc || 'No description provided.',
+      vendors: vendor !== 'Unknown' ? [vendor] : [],
       vendor,
       product,
       epss,
@@ -718,16 +881,28 @@ async function generateThreatBrief() {
 
   if (briefMode === 'top5' || briefMode === 'top10') {
     const limit = briefMode === 'top5' ? 5 : 10;
-    const allItems = Array.from(localMap.values());
+    let pool = Array.from(localMap.values());
 
-    const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - 45);
-    const cutoffStr = cutoff.toISOString().slice(0, 10);
+    // 1. Apply Stackable Severity Filter
+    if (briefFilterState.severities.size > 0) {
+      pool = pool.filter(i => briefFilterState.severities.has(getCvssSeverity(i.cvss)));
+    }
 
-    const recentPool = allItems.filter(i => (i.date_added || '') >= cutoffStr);
-    const candidatePool = recentPool.length >= limit ? recentPool : allItems;
+    // 2. Apply Stackable Vendor Filter
+    if (briefFilterState.vendors.size > 0) {
+      pool = pool.filter(i => (i.vendors || []).some(v => briefFilterState.vendors.has(v)));
+    }
 
-    selectedItems = candidatePool
+    // 3. Apply Time Range Filter (Last 24h / 7d / 30d / All)
+    if (briefFilterState.timeRange !== 'all') {
+      const cutoff = new Date();
+      cutoff.setDate(cutoff.getDate() - Number(briefFilterState.timeRange));
+      const cutoffStr = cutoff.toISOString().slice(0, 10);
+      pool = pool.filter(i => (i.date_added || '') >= cutoffStr);
+    }
+
+    // Global Threat Priority Ranking across KEV + Vendor Feeds + Pre-KEV
+    selectedItems = pool
       .map(item => ({ ...item, priorityScore: computeThreatPriorityScore(item) }))
       .sort((a, b) => {
         if (b.priorityScore !== a.priorityScore) return b.priorityScore - a.priorityScore;
@@ -771,59 +946,114 @@ async function generateThreatBrief() {
   renderBriefReport(selectedItems);
 }
 
+// Context-Aware Smart Executive Narrative Generator
+function buildSmartNarrative(items) {
+  const total = items.length;
+
+  // Case 1: Single CVE Selected (Tailored Deep-Dive Summary)
+  if (total === 1) {
+    const c = items[0];
+    const sev = getCvssSeverity(c.cvss);
+    const scoreStr = c.cvss ? `${parseFloat(c.cvss).toFixed(1)} (${sev})` : 'Unscored';
+    const epssPct = c.epss ? `${(parseFloat(c.epss) * 100).toFixed(2)}%` : 'low/unrated';
+    const targetName = c.product && c.product !== 'Unknown' ? `${c.vendor} (${c.product})` : c.vendor;
+
+    const signalParts = [];
+    if (c.is_kev) signalParts.push('confirmed active exploitation in the wild (<strong>CISA KEV</strong>)');
+    if (c.has_poc) signalParts.push('publicly available Proof-of-Concept (PoC) exploit code on GitHub');
+    if (c.has_nuclei) signalParts.push('an automated Nuclei detection template');
+
+    const telemetryHtml = signalParts.length > 0
+      ? `Active threat telemetry flags ${signalParts.join(', ')}, alongside a 30-day exploitation probability (EPSS) of <strong>${epssPct}</strong>.`
+      : `Current threat telemetry indicates <strong>no confirmed active exploitation</strong> in the CISA KEV catalog and no public weaponized PoC code or Nuclei templates at this time (EPSS probability: <strong>${epssPct}</strong>).`;
+
+    let actionHtml = '';
+    if (c.is_kev || c.has_poc || sev === 'Critical') {
+      actionHtml = `<strong>Recommended Action:</strong> Prioritize emergency patching or compensating controls for <strong>${c.cve_id}</strong> immediately due to elevated exploitation risk.`;
+    } else if (sev === 'High') {
+      actionHtml = `<strong>Recommended Action:</strong> Schedule expedited patching for <strong>${c.cve_id}</strong> within your upcoming maintenance window and monitor vendor advisories for emerging exploit activity.`;
+    } else {
+      actionHtml = `<strong>Recommended Action:</strong> Address <strong>${c.cve_id}</strong> during standard scheduled patch management cycles, as there is currently no evidence of active weaponization in the wild.`;
+    }
+
+    const html = `
+      <p><strong>Vulnerability Assessment:</strong> This brief evaluates <strong>${c.cve_id}</strong>, a <strong>${sev}</strong> severity advisory (CVSS ${scoreStr}) impacting <strong>${targetName}</strong>. ${telemetryHtml}</p>
+      <p>${actionHtml}</p>
+    `;
+    const plain = tmpStripHtml(html);
+    return { html, plain };
+  }
+
+  // Case 2: Multi-CVE Cohort Analysis (Dynamic based on actual severity & exploit signals)
+  const critCount = items.filter(i => getCvssSeverity(i.cvss) === 'Critical').length;
+  const highCount = items.filter(i => getCvssSeverity(i.cvss) === 'High').length;
+  const medCount = items.filter(i => getCvssSeverity(i.cvss) === 'Medium').length;
+  const lowCount = items.filter(i => getCvssSeverity(i.cvss) === 'Low').length;
+  const kevCount = items.filter(i => i.is_kev).length;
+  const pocCount = items.filter(i => i.has_poc).length;
+  const nucleiCount = items.filter(i => i.has_nuclei).length;
+
+  const vendors = [...new Set(items.flatMap(i => (i.vendors && i.vendors.length ? i.vendors : [i.vendor])).filter(v => v && v !== 'Unknown'))];
+  const vendorSummary = vendors.length > 0 ? vendors.slice(0, 6).join(', ') : 'tracked enterprise ecosystems';
+
+  const sevBreakdown = [];
+  if (critCount > 0) sevBreakdown.push(`<strong>${critCount} Critical</strong>`);
+  if (highCount > 0) sevBreakdown.push(`<strong>${highCount} High</strong>`);
+  if (medCount > 0) sevBreakdown.push(`<strong>${medCount} Medium</strong>`);
+  if (lowCount > 0) sevBreakdown.push(`<strong>${lowCount} Low</strong>`);
+  const sevText = sevBreakdown.length > 0 ? sevBreakdown.join(', ') : 'unscored advisories';
+
+  const signalBreakdown = [];
+  if (kevCount > 0) signalBreakdown.push(`<strong>${kevCount}</strong> confirmed exploited in the wild (<strong>CISA KEV</strong>)`);
+  if (pocCount > 0) signalBreakdown.push(`<strong>${pocCount}</strong> with public GitHub PoC exploits`);
+  if (nucleiCount > 0) signalBreakdown.push(`<strong>${nucleiCount}</strong> with automated Nuclei templates`);
+
+  const telemetrySentence = signalBreakdown.length > 0
+    ? `Active threat intelligence identifies ${signalBreakdown.join(', ')}.`
+    : `None of the selected advisories currently exhibit confirmed in-the-wild exploitation (CISA KEV) or public weaponized PoC repositories.`;
+
+  const topCve = items[0];
+  const topScore = topCve.cvss ? `${parseFloat(topCve.cvss).toFixed(1)} (${getCvssSeverity(topCve.cvss)})` : 'N/A';
+
+  const prioritySentence = (kevCount > 0 || pocCount > 0 || critCount > 0)
+    ? `<strong>Key Prioritization Insight:</strong> Remediation teams should prioritize <strong>${topCve.cve_id}</strong> (${topCve.vendor}, CVSS ${topScore})${kevCount > 0 ? ' alongside all CISA KEV cataloged vulnerabilities' : ''}, where active exploitation signals or critical impact scores pose immediate operational risk.`
+    : `<strong>Key Prioritization Insight:</strong> With no active exploitation or public PoCs detected across this group, remediation can proceed in order of CVSS severity starting with <strong>${topCve.cve_id}</strong> (${topCve.vendor}, CVSS ${topScore}) under standard patching SLAs.`;
+
+  const html = `
+    <p><strong>Executive Threat Overview:</strong> This brief analyzes <strong>${total}</strong> vulnerabilities impacting <strong>${vendorSummary}</strong>, comprising ${sevText} severity ratings. ${telemetrySentence}</p>
+    <p>${prioritySentence}</p>
+  `;
+  const plain = tmpStripHtml(html);
+  return { html, plain };
+}
+
+function tmpStripHtml(htmlStr) {
+  const d = document.createElement('div');
+  d.innerHTML = htmlStr;
+  return (d.textContent || d.innerText || '').replace(/\s+/g, ' ').trim();
+}
+
 function renderBriefReport(items) {
   const tsEl = document.getElementById('brief-report-timestamp');
   const overviewEl = document.getElementById('brief-overview-text');
   const tbodyEl = document.getElementById('brief-table-body');
 
-  const nowStr = new Date().toLocaleString('en-IN', {
-    timeZone: 'Asia/Kolkata',
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true
-  }) + ' IST';
-
+  const nowStr = formatToIstDate(new Date().toISOString(), true);
   if (tsEl) tsEl.textContent = `Generated: ${nowStr}`;
 
   if (!items || items.length === 0) {
-    currentBriefOverviewHtml = '<p>No valid vulnerabilities selected for this brief.</p>';
-    currentBriefOverviewPlain = 'No valid vulnerabilities selected for this brief.';
+    currentBriefOverviewHtml = '<p>No vulnerabilities matched the selected scope, time range, and filter criteria.</p>';
+    currentBriefOverviewPlain = 'No vulnerabilities matched the selected scope, time range, and filter criteria.';
     if (overviewEl) overviewEl.innerHTML = currentBriefOverviewHtml;
     if (tbodyEl) {
-      tbodyEl.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-400">No valid CVEs to display. Add valid CVE IDs or switch to Auto Top 5 / Top 10.</td></tr>`;
+      tbodyEl.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-400">No CVEs matched your filters. Try expanding the Time Range (e.g., Last 30 Days or All Time) or clearing vendor/severity filters.</td></tr>`;
     }
     return;
   }
 
-  const total = items.length;
-  const critCount = items.filter(i => getCvssSeverity(i.cvss) === 'Critical').length;
-  const highCount = items.filter(i => getCvssSeverity(i.cvss) === 'High').length;
-  const kevCount = items.filter(i => i.is_kev).length;
-  const pocCount = items.filter(i => i.has_poc).length;
-  const nucleiCount = items.filter(i => i.has_nuclei).length;
-  const vendors = [...new Set(items.map(i => i.vendor).filter(v => v && v !== 'Unknown'))];
-  const vendorSummary = vendors.length > 0 ? vendors.slice(0, 6).join(', ') : 'multiple enterprise vendors';
-
-  const topCve = items[0];
-  const topCveScore = topCve.cvss ? `${parseFloat(topCve.cvss).toFixed(1)} (${getCvssSeverity(topCve.cvss)})` : 'N/A';
-
-  currentBriefOverviewHtml = `
-    <p>
-      <strong>Executive Threat Overview:</strong> This brief analyzes <strong>${total}</strong> high-priority vulnerabilities impacting <strong>${vendorSummary}</strong>. 
-      Of the tracked advisories, <strong>${critCount}</strong> are rated <strong>Critical</strong> and <strong>${highCount}</strong> are rated <strong>High</strong> severity under CVSS v3.x scoring.
-      Active threat telemetry indicates that <strong>${kevCount}</strong> ${kevCount === 1 ? 'vulnerability is' : 'vulnerabilities are'} confirmed exploited in the wild (<strong>CISA KEV</strong>), 
-      <strong>${pocCount}</strong> have public Proof-of-Concept (PoC) exploit code on GitHub, and <strong>${nucleiCount}</strong> have automated Nuclei detection templates ready.
-    </p>
-    <p>
-      <strong>Key Prioritization Insight:</strong> Immediate remediation should focus on <strong>${topCve.cve_id}</strong> (${topCve.vendor} ${topCve.product !== 'Unknown' ? topCve.product : ''}, CVSS ${topCveScore})${kevCount > 0 ? ' alongside all CISA KEV cataloged entries' : ''}, as active exploitation signals and public weaponization significantly elevate near-term breach probability.
-    </p>
-  `;
-
-  currentBriefOverviewPlain = `Executive Threat Overview: This brief analyzes ${total} high-priority vulnerabilities impacting ${vendorSummary}. Of the tracked advisories, ${critCount} are rated Critical and ${highCount} are rated High severity under CVSS v3.x scoring. Active threat telemetry indicates that ${kevCount} are confirmed exploited in the wild (CISA KEV), ${pocCount} have public PoC exploit code on GitHub, and ${nucleiCount} have automated Nuclei detection templates ready.\n\nKey Prioritization Insight: Immediate remediation should focus on ${topCve.cve_id} (${topCve.vendor}, CVSS ${topCveScore}), as active exploitation signals and public weaponization significantly elevate near-term breach probability.`;
-
+  const narrative = buildSmartNarrative(items);
+  currentBriefOverviewHtml = narrative.html;
+  currentBriefOverviewPlain = narrative.plain;
   if (overviewEl) overviewEl.innerHTML = currentBriefOverviewHtml;
 
   if (tbodyEl) {
@@ -844,7 +1074,7 @@ function renderBriefReport(items) {
       return `
         <tr class="hover:bg-indigo-500/5 transition-colors align-top">
           <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap"><a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">${cveId}</a></td>
-          <td class="py-3 px-3.5 font-mono whitespace-nowrap text-slate-600 dark:text-slate-300">${item.date_added || '-'}</td>
+          <td class="py-3 px-3.5 font-mono whitespace-nowrap text-slate-600 dark:text-slate-300">${formatToIstDate(item.date_added)}</td>
           <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap">${scoreVal}</td>
           <td class="py-3 px-3.5 whitespace-nowrap"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${sevBadgeStyle}">${severity}</span></td>
           <td class="py-3 px-3.5 text-slate-600 dark:text-slate-300 leading-relaxed min-w-[260px]">${formatExpandableText(item.description, 140)}</td>
@@ -870,10 +1100,10 @@ function buildExportableHtmlBrief() {
     return `
       <tr>
         <td style="border:1px solid #cbd5e1;padding:8px;font-family:monospace;font-weight:bold;"><a href="https://nvd.nist.gov/vuln/detail/${cveId}">${cveId}</a></td>
-        <td style="border:1px solid #cbd5e1;padding:8px;">${item.date_added || '-'}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${formatToIstDate(item.date_added)}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;font-weight:bold;">${scoreVal}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;font-weight:bold;">${severity}</td>
-        <td style="border:1px solid #cbd5e1;padding:8px;">${item.description || ''}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${stripAndEscapeHtml(item.description)}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;">${affected}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;">${epssText}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;">${item.is_kev ? 'Yes' : 'No'}</td>
@@ -920,7 +1150,7 @@ async function copyThreatBrief() {
     const sev = getCvssSeverity(i.cvss);
     const aff = i.product && i.product !== 'Unknown' ? `${i.vendor} - ${i.product}` : (i.vendor || 'Unknown');
     const epss = (i.epss !== null && i.epss !== undefined && parseFloat(i.epss) > 0) ? `${(parseFloat(i.epss) * 100).toFixed(2)}%` : '-';
-    return `| ${i.cve_id} | ${i.date_added || '-'} | ${scoreVal} | ${sev} | ${(i.description || '').replace(/\|/g, ' ')} | ${aff} | ${epss} | ${i.is_kev ? 'Yes' : 'No'} | ${i.has_nuclei ? 'Ready' : 'Not Ready'} | ${i.has_poc ? 'Available' : 'Not Available'} |`;
+    return `| ${i.cve_id} | ${formatToIstDate(i.date_added)} | ${scoreVal} | ${sev} | ${stripAndEscapeHtml(i.description).replace(/\|/g, ' ')} | ${aff} | ${epss} | ${i.is_kev ? 'Yes' : 'No'} | ${i.has_nuclei ? 'Ready' : 'Not Ready'} | ${i.has_poc ? 'Available' : 'Not Available'} |`;
   }).join('\n');
 
   const plainContent = `Watcher Vulnerability Intelligence Brief\n\n${currentBriefOverviewPlain}\n\n| Vulnerability (CVE ID) | Date Added | CVSS (v3.x) Score | Severity | Description | Affected Products | EPSS Score | CISA KEV | Nuclei Template | PoC in GitHub |\n|---|---|---|---|---|---|---|---|---|---|\n${mdRows}`;
@@ -1119,7 +1349,7 @@ async function executeCveSearchTable() {
     return `
       <tr class="hover:bg-indigo-500/5 transition-colors align-top">
         <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap"><a href="${nvdUrl}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">${cveId}</a></td>
-        <td class="py-3 px-3.5 font-mono whitespace-nowrap text-slate-600 dark:text-slate-300">${item.date_added || '-'}</td>
+        <td class="py-3 px-3.5 font-mono whitespace-nowrap text-slate-600 dark:text-slate-300">${formatToIstDate(item.date_added)}</td>
         <td class="py-3 px-3.5 font-mono font-bold whitespace-nowrap">${scoreVal}</td>
         <td class="py-3 px-3.5 whitespace-nowrap"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${sevBadgeStyle}">${severity}</span></td>
         <td class="py-3 px-3.5 text-slate-600 dark:text-slate-300 leading-relaxed min-w-[260px]">${formatExpandableText(item.description, 140)}</td>
@@ -1149,10 +1379,10 @@ async function copyCveSearchTable() {
     return `
       <tr>
         <td style="border:1px solid #cbd5e1;padding:8px;font-family:monospace;font-weight:bold;"><a href="https://nvd.nist.gov/vuln/detail/${item.cve_id}">${item.cve_id}</a></td>
-        <td style="border:1px solid #cbd5e1;padding:8px;">${item.date_added || '-'}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${formatToIstDate(item.date_added)}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;font-weight:bold;">${scoreVal}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;font-weight:bold;">${severity}</td>
-        <td style="border:1px solid #cbd5e1;padding:8px;">${item.description || ''}</td>
+        <td style="border:1px solid #cbd5e1;padding:8px;">${stripAndEscapeHtml(item.description)}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;">${affected}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;">${epssText}</td>
         <td style="border:1px solid #cbd5e1;padding:8px;">${item.is_kev ? 'Yes' : 'No'}</td>
@@ -1189,7 +1419,7 @@ async function copyCveSearchTable() {
     const sev = getCvssSeverity(i.cvss);
     const aff = i.product && i.product !== 'Unknown' ? `${i.vendor} - ${i.product}` : (i.vendor || 'Unknown');
     const epss = (i.epss !== null && i.epss !== undefined && parseFloat(i.epss) > 0) ? `${(parseFloat(i.epss) * 100).toFixed(2)}%` : '-';
-    return `| ${i.cve_id} | ${i.date_added || '-'} | ${scoreVal} | ${sev} | ${(i.description || '').replace(/\|/g, ' ')} | ${aff} | ${epss} | ${i.is_kev ? 'Yes' : 'No'} | ${i.has_nuclei ? 'Ready' : 'Not Ready'} | ${i.has_poc ? 'Available' : 'Not Available'} |`;
+    return `| ${i.cve_id} | ${formatToIstDate(i.date_added)} | ${scoreVal} | ${sev} | ${stripAndEscapeHtml(i.description).replace(/\|/g, ' ')} | ${aff} | ${epss} | ${i.is_kev ? 'Yes' : 'No'} | ${i.has_nuclei ? 'Ready' : 'Not Ready'} | ${i.has_poc ? 'Available' : 'Not Available'} |`;
   }).join('\n');
 
   const plainContent = `| Vulnerability (CVE ID) | Date Added | CVSS (v3.x) Score | Severity | Description | Affected Products | EPSS Score | CISA KEV | Nuclei Template | PoC in GitHub |\n|---|---|---|---|---|---|---|---|---|---|\n${mdRows}`;
@@ -1213,5 +1443,4 @@ async function copyCveSearchTable() {
   }
 }
 
-// Trigger initial load
 initDashboard();

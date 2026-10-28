@@ -5,14 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Watcher</title>
 
-  <!-- Favicon Placeholder -->
   <link rel="icon" id="site-favicon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22 fill=%22none%22 stroke=%22%236366F1%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M2 16C5 9 10 6 16 6s11 3 14 10c-3 7-8 10-14 10s-11-3-14-10z%22/><circle cx=%2216%22 cy=%2216%22 r=%225%22/><circle cx=%2216%22 cy=%2216%22 r=%229%22 stroke-dasharray=%222 3%22/><path d=%22M16 16l5-5%22 fill=%22%236366F1%22/></svg>">
-  <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -51,14 +48,12 @@
   <aside id="sidebar" class="glass-sidebar w-[290px] shrink-0 sticky top-0 h-screen z-40 flex flex-col justify-between p-4 select-none overflow-y-auto overflow-x-hidden">
     
     <div class="space-y-4">
-      
       <!-- 1. Brand Header -->
       <div>
         <div class="brand-header-row flex items-center justify-between gap-2">
           <div class="flex items-center gap-3 cursor-pointer group" onclick="switchTab('radar')">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 via-indigo-500 to-purple-600 p-[1.5px] shadow-lg shadow-indigo-500/25 shrink-0 transition-transform group-hover:scale-105">
               <div class="w-full h-full bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-transparent rounded-[10px] flex items-center justify-center relative overflow-hidden shadow-sm">
-                <!-- Eye + Radar Merged Logo -->
                 <svg class="w-6 h-6 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M2 12C4.5 7.5 8 5 12 5s7.5 2.5 10 7c-2.5 4.5-6 7-10 7s-7.5-2.5-10-7z" stroke-opacity="0.85"/>
                   <circle cx="12" cy="12" r="3.5" stroke-opacity="0.65"/>
@@ -96,7 +91,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
             </svg>
             <input type="text" id="global-search" placeholder="Search across Watcher..." autocomplete="off" class="w-full bg-transparent text-xs font-medium focus:outline-none placeholder-slate-400 dark:placeholder-slate-500 text-slate-800 dark:text-slate-100" />
-            <button id="clear-search-btn" onclick="clearSearch()" class="hidden text-slate-400 hover:text-rose-400 text-xs font-bold" title="Clear">✕</button>
+            <button id="clear-search-btn" onclick="clearSearch()" class="hidden text-slate-400 hover:text-rose-400 text-xs font-bold cursor-pointer" title="Clear">✕</button>
           </div>
         </div>
       </div>
@@ -140,7 +135,6 @@
 
     <!-- BOTTOM STACK -->
     <div class="space-y-3 pt-2">
-      <!-- Theme Switch -->
       <div>
         <button onclick="toggleTheme()" class="expanded-only w-full neu-inset rounded-xl px-3 py-2 flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-300 hover:border-indigo-500/40 transition-all">
           <span class="flex items-center gap-2">
@@ -160,7 +154,6 @@
 
       <div class="faded-line"></div>
 
-      <!-- Sync Status -->
       <div>
         <div class="expanded-only px-1 space-y-1.5">
           <div class="flex items-center justify-between gap-2">
@@ -182,7 +175,6 @@
 
       <div class="faded-line expanded-only"></div>
 
-      <!-- Credits -->
       <div class="expanded-only px-1 space-y-1">
         <p class="text-xs font-semibold text-slate-700 dark:text-slate-300">Developed by Devansh</p>
         <a href="https://github.com/DvnshG764/watcher" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
@@ -209,14 +201,14 @@
 
     <main class="flex-1 px-6 lg:px-10 py-7 max-w-[1600px] w-full mx-auto space-y-8">
 
-      <!-- ================= SEARCH RESULTS VIEW ================= -->
+      <!-- ================= GLOBAL SEARCH RESULTS VIEW ================= -->
       <section id="search-view" class="hidden space-y-5">
         <div class="flex items-center justify-between pb-3 border-b border-slate-300/60 dark:border-slate-800">
           <div class="flex items-center gap-3">
             <h2 class="text-lg font-extrabold tracking-tight text-indigo-700 dark:text-indigo-300">Watcher Search Results</h2>
             <span id="search-count" class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30">0 results</span>
           </div>
-          <button onclick="clearSearch()" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">← Return to Active Feed</button>
+          <button onclick="clearSearch()" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline cursor-pointer">← Return to Active Feed</button>
         </div>
         <div id="search-results-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
       </section>
@@ -224,23 +216,27 @@
       <!-- ================= 1. EXPLOIT RADAR VIEW ================= -->
       <section id="view-radar" class="space-y-6">
         <!-- Filter & Sort Toolbar -->
-        <div class="neu-glass-card vendor-card-glow rounded-2xl p-4 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+        <div class="neu-glass-card vendor-card-glow rounded-2xl p-4 flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
           <div class="flex items-center gap-3">
             <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Sort By</label>
             <select id="radar-sort" onchange="updateRadarFilters()" class="bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 cursor-pointer">
-              <option value="priority">Threat Priority (Default)</option>
-              <option value="epss">EPSS Score (Desc)</option>
+              <option value="newest">Newest Added (Default)</option>
               <option value="severity">Severity (Desc)</option>
-              <option value="newest">Newest Added</option>
+              <option value="epss">EPSS Score (Desc)</option>
+              <option value="priority">Threat Priority</option>
             </select>
           </div>
+
           <div class="flex flex-wrap items-center gap-2">
-            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Filters</label>
-            <button id="btn-radar-sev-critical" onclick="toggleRadarFilter('severity', 'Critical')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-rose-500/50 transition-all">Critical</button>
-            <button id="btn-radar-sev-high" onclick="toggleRadarFilter('severity', 'High')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-orange-500/50 transition-all">High</button>
-            <div class="w-px h-4 bg-slate-300 dark:bg-slate-700 mx-1"></div>
-            <button id="btn-radar-poc" onclick="toggleRadarFilter('flag', 'poc')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-emerald-500/50 transition-all">Has PoC</button>
-            <button id="btn-radar-nuclei" onclick="toggleRadarFilter('flag', 'nuclei')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-sky-500/50 transition-all">Has Nuclei</button>
+            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Severity</label>
+            <button id="btn-radar-sev-critical" onclick="toggleRadarFilter('severity', 'Critical')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Critical</button>
+            <button id="btn-radar-sev-high" onclick="toggleRadarFilter('severity', 'High')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">High</button>
+            <button id="btn-radar-sev-medium" onclick="toggleRadarFilter('severity', 'Medium')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Medium</button>
+            <button id="btn-radar-sev-low" onclick="toggleRadarFilter('severity', 'Low')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Low</button>
+            <div class="w-px h-5 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Signals</label>
+            <button id="btn-radar-poc" onclick="toggleRadarFilter('flag', 'poc')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Has PoC</button>
+            <button id="btn-radar-nuclei" onclick="toggleRadarFilter('flag', 'nuclei')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Has Nuclei</button>
           </div>
         </div>
         
@@ -262,6 +258,7 @@
             </div>
             <div id="radar-kev-list" class="flex flex-col gap-5 overflow-y-auto max-h-[74vh] pr-1.5"></div>
           </div>
+
           <div class="lg:col-span-6 lg:border-l lg:border-slate-300/70 dark:lg:border-slate-800/90 lg:pl-8 space-y-5">
             <div class="neu-glass-card early-card-glow rounded-2xl p-5 flex items-center justify-between">
               <div class="space-y-1.5">
@@ -273,7 +270,7 @@
               </div>
               <div class="text-right">
                 <span id="kpi-early-count" class="text-4xl font-black font-mono text-amber-600 dark:text-amber-400 tracking-tight block leading-none">0</span>
-                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mt-1 block">Filtered Signals</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mt-1 block">Pre-KEV Signals</span>
               </div>
             </div>
             <div id="radar-early-list" class="flex flex-col gap-5 overflow-y-auto max-h-[74vh] pr-1.5"></div>
@@ -283,43 +280,61 @@
 
       <!-- ================= 2. VENDOR FOCUS VIEW ================= -->
       <section id="view-vendor" class="hidden space-y-6">
-        <!-- Filter & Sort Toolbar -->
         <div class="neu-glass-card vendor-card-glow rounded-2xl p-4 flex flex-col gap-4">
           <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             <div class="flex items-center gap-3">
               <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Sort By</label>
               <select id="vendor-sort" onchange="updateVendorFilters()" class="bg-white/70 dark:bg-slate-900/80 border border-slate-300/60 dark:border-slate-700/70 rounded-lg px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 cursor-pointer">
                 <option value="newest">Newest Added (Default)</option>
-                <option value="priority">Threat Priority</option>
                 <option value="severity">Severity (Desc)</option>
+                <option value="epss">EPSS Score (Desc)</option>
+                <option value="priority">Threat Priority</option>
               </select>
             </div>
             <div class="flex flex-wrap items-center gap-2">
               <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Severity</label>
-              <button id="btn-vendor-sev-critical" onclick="toggleVendorFilter('severity', 'Critical')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-rose-500/50 transition-all">Critical</button>
-              <button id="btn-vendor-sev-high" onclick="toggleVendorFilter('severity', 'High')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-orange-500/50 transition-all">High</button>
-              <button id="btn-vendor-sev-medium" onclick="toggleVendorFilter('severity', 'Medium')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-amber-500/50 transition-all">Medium</button>
+              <button id="btn-vendor-sev-critical" onclick="toggleVendorFilter('severity', 'Critical')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Critical</button>
+              <button id="btn-vendor-sev-high" onclick="toggleVendorFilter('severity', 'High')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">High</button>
+              <button id="btn-vendor-sev-medium" onclick="toggleVendorFilter('severity', 'Medium')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Medium</button>
+              <button id="btn-vendor-sev-low" onclick="toggleVendorFilter('severity', 'Low')" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Low</button>
             </div>
           </div>
+
           <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-200/70 dark:border-slate-700/50">
-            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Vendors</label>
-            <button onclick="toggleVendorFilter('vendor', 'Cisco')" id="btn-vendor-cisco" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Cisco</button>
-            <button onclick="toggleVendorFilter('vendor', 'Fortinet')" id="btn-vendor-fortinet" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Fortinet</button>
-            <button onclick="toggleVendorFilter('vendor', 'Palo Alto')" id="btn-vendor-paloalto" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Palo Alto</button>
-            <button onclick="toggleVendorFilter('vendor', 'Check Point')" id="btn-vendor-checkpoint" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Check Point</button>
-            <button onclick="toggleVendorFilter('vendor', 'Ivanti')" id="btn-vendor-ivanti" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">Ivanti</button>
-            <button onclick="toggleVendorFilter('vendor', 'NetScaler')" id="btn-vendor-netscaler" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">NetScaler</button>
-            <button onclick="toggleVendorFilter('vendor', 'PHP')" id="btn-vendor-php" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all">PHP</button>
+            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Vendors (Multi-Select)</label>
+            <button onclick="toggleVendorFilter('vendor', 'Cisco')" id="btn-vendor-cisco" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Cisco</button>
+            <button onclick="toggleVendorFilter('vendor', 'Fortinet')" id="btn-vendor-fortinet" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Fortinet</button>
+            <button onclick="toggleVendorFilter('vendor', 'Palo Alto')" id="btn-vendor-paloalto" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Palo Alto</button>
+            <button onclick="toggleVendorFilter('vendor', 'Check Point')" id="btn-vendor-checkpoint" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Check Point</button>
+            <button onclick="toggleVendorFilter('vendor', 'Ivanti')" id="btn-vendor-ivanti" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Ivanti</button>
+            <button onclick="toggleVendorFilter('vendor', 'NetScaler')" id="btn-vendor-netscaler" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">NetScaler</button>
+            <button onclick="toggleVendorFilter('vendor', 'PHP')" id="btn-vendor-php" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">PHP</button>
           </div>
         </div>
 
-        <!-- Vendor Cards Grid -->
         <div id="vendor-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
       </section>
 
       <!-- ================= 3. CURATED NEWS FEED VIEW ================= -->
       <section id="view-news" class="hidden space-y-6">
-        <div id="news-source-pills" class="flex flex-wrap justify-center gap-2"></div>
+        <div class="neu-glass-card vendor-card-glow rounded-2xl p-4 space-y-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">News Sources</label>
+            <div id="news-source-pills" class="flex flex-wrap items-center gap-2"></div>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-200/70 dark:border-slate-700/50">
+            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Filter by Vendor</label>
+            <div id="news-vendor-pills" class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleNewsVendorFilter('Cisco')" id="btn-news-vendor-cisco" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Cisco</button>
+              <button onclick="toggleNewsVendorFilter('Fortinet')" id="btn-news-vendor-fortinet" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Fortinet</button>
+              <button onclick="toggleNewsVendorFilter('Palo Alto')" id="btn-news-vendor-paloalto" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Palo Alto</button>
+              <button onclick="toggleNewsVendorFilter('Check Point')" id="btn-news-vendor-checkpoint" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Check Point</button>
+              <button onclick="toggleNewsVendorFilter('Ivanti')" id="btn-news-vendor-ivanti" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Ivanti</button>
+              <button onclick="toggleNewsVendorFilter('NetScaler')" id="btn-news-vendor-netscaler" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">NetScaler</button>
+              <button onclick="toggleNewsVendorFilter('PHP')" id="btn-news-vendor-php" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">PHP</button>
+            </div>
+          </div>
+        </div>
         <div id="news-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
       </section>
 
@@ -333,9 +348,9 @@
                 1. Select Brief Scope
               </label>
               <div class="flex flex-wrap items-center gap-2">
-                <button id="brief-mode-top5" onclick="setBriefMode('top5')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-500/30">Auto Top 5</button>
-                <button id="brief-mode-top10" onclick="setBriefMode('top10')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40">Auto Top 10</button>
-                <button id="brief-mode-custom" onclick="setBriefMode('custom')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40">Custom</button>
+                <button id="brief-mode-top5" onclick="setBriefMode('top5')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-500/30 cursor-pointer">Auto Top 5</button>
+                <button id="brief-mode-top10" onclick="setBriefMode('top10')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40 cursor-pointer">Auto Top 10</button>
+                <button id="brief-mode-custom" onclick="setBriefMode('custom')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all neu-glass-card text-slate-600 dark:text-slate-300 hover:border-indigo-500/40 cursor-pointer">Custom</button>
               </div>
             </div>
 
@@ -355,6 +370,39 @@
             </div>
           </div>
 
+          <!-- Auto Mode Stackable Filters: Time Range, Severity, Vendor -->
+          <div id="brief-auto-filters" class="pt-4 border-t border-slate-200/70 dark:border-slate-800/80 space-y-3">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <div class="flex flex-wrap items-center gap-2">
+                <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Time Range</label>
+                <button id="btn-brief-time-1" onclick="setBriefTimeRange(1)" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Last 24 Hours</button>
+                <button id="btn-brief-time-7" onclick="setBriefTimeRange(7)" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Last 7 Days</button>
+                <button id="btn-brief-time-30" onclick="setBriefTimeRange(30)" class="px-3 py-1 rounded-xl text-xs font-bold bg-indigo-600 text-white border border-indigo-400 shadow-md shadow-indigo-500/30 transition-all cursor-pointer">Last 30 Days</button>
+                <button id="btn-brief-time-all" onclick="setBriefTimeRange('all')" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">All Time</button>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2">
+                <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Severity</label>
+                <button id="btn-brief-sev-critical" onclick="toggleBriefFilter('severity', 'Critical')" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Critical</button>
+                <button id="btn-brief-sev-high" onclick="toggleBriefFilter('severity', 'High')" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">High</button>
+                <button id="btn-brief-sev-medium" onclick="toggleBriefFilter('severity', 'Medium')" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Medium</button>
+                <button id="btn-brief-sev-low" onclick="toggleBriefFilter('severity', 'Low')" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Low</button>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200/40 dark:border-slate-800/60">
+              <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Vendors</label>
+              <button onclick="toggleBriefFilter('vendor', 'Cisco')" id="btn-brief-vendor-cisco" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Cisco</button>
+              <button onclick="toggleBriefFilter('vendor', 'Fortinet')" id="btn-brief-vendor-fortinet" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Fortinet</button>
+              <button onclick="toggleBriefFilter('vendor', 'Palo Alto')" id="btn-brief-vendor-paloalto" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Palo Alto</button>
+              <button onclick="toggleBriefFilter('vendor', 'Check Point')" id="btn-brief-vendor-checkpoint" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Check Point</button>
+              <button onclick="toggleBriefFilter('vendor', 'Ivanti')" id="btn-brief-vendor-ivanti" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Ivanti</button>
+              <button onclick="toggleBriefFilter('vendor', 'NetScaler')" id="btn-brief-vendor-netscaler" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">NetScaler</button>
+              <button onclick="toggleBriefFilter('vendor', 'PHP')" id="btn-brief-vendor-php" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">PHP</button>
+            </div>
+          </div>
+
+          <!-- Custom CVE Input Builder -->
           <div id="brief-custom-builder" class="hidden pt-4 border-t border-slate-200/70 dark:border-slate-800/80 space-y-3">
             <div class="flex items-center justify-between">
               <label class="text-[11px] font-semibold text-slate-600 dark:text-slate-300">
@@ -364,6 +412,7 @@
             <div id="custom-cve-rows" class="flex flex-wrap items-center gap-3"></div>
           </div>
 
+          <!-- Teams Webhook Bar -->
           <div id="teams-webhook-panel" class="hidden pt-4 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2.5">
             <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">Microsoft Teams Incoming Webhook URL</label>
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
