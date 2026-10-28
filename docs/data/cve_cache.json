@@ -41986,5 +41986,47 @@
     "description": "GeoNetwork is a catalog application to manage spatially referenced resources. Prior to 4.2.17 and 4.4.12, POST /api/tools/ogc/sld accepted a caller-supplied WMS server URL and performed a server-side HTTP GET without destination validation. An anonymous attacker could make the GeoNetwork server send requests to internal hosts that are not publicly reachable. When the outbound response was XML, the endpoint could store and return the fetched body, making the request forgery non-blind and enabling internal data disclosure, authorization bypass, and network reconnaissance. This issue is fixed in versions 4.2.17 and 4.4.12.",
     "vendor": "geonetwork",
     "product": "core-geonetwork"
+  },
+  "CVE-2024-52615": {
+    "cvss": 5.3,
+    "description": "A flaw was found in Avahi-daemon, which relies on fixed source ports for wide-area DNS queries. This issue simplifies attacks where malicious DNS responses are injected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-52616": {
+    "cvss": 5.3,
+    "description": "A flaw was found in the Avahi-daemon, where it initializes DNS transaction IDs randomly only once at startup, incrementing them sequentially after that. This predictable behavior facilitates DNS spoofing attacks, allowing attackers to guess transaction IDs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38469": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in Avahi, where a reachable assertion exists in avahi_dns_packet_append_record.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38470": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in Avahi. A reachable assertion exists in the avahi_escape_label() function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38471": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in Avahi. A reachable assertion exists in the dbus_set_host_name function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38472": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in Avahi. A reachable assertion exists in the avahi_rdata_parse() function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38473": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in Avahi. A reachable assertion exists in the avahi_alternative_host_name() function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
