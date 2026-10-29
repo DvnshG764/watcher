@@ -12582,10 +12582,10 @@
     "product": "pardus-software"
   },
   "CVE-2026-114148": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 7.8,
+    "description": "Incorrect default permissions in ASP.NET Core allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Microsoft",
+    "product": ".NET 10.0 installed on Linux"
   },
   "CVE-2026-25940": {
     "cvss": 8.1,
@@ -13578,10 +13578,10 @@
     "product": "Mail Mint – Email Marketing, Newsletter, Email Automation & WooCommerce Emails"
   },
   "CVE-2026-107328": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 9.9,
+    "description": "IBM Langflow OSS 1.0.0 through 1.12.4 could allow a remote authenticated attacker to execute arbitrary code due to improper neutralization of code in eval/exec.",
+    "vendor": "IBM",
+    "product": "Langflow OSS"
   },
   "CVE-2026-23010": {
     "cvss": 7.8,
@@ -15294,10 +15294,10 @@
     "product": "pyjwt"
   },
   "CVE-2026-107327": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 9.9,
+    "description": "IBM Langflow OSS 1.0.0 through 1.12.4 could allow a remote authenticated attacker to execute arbitrary code due to missing authorization.",
+    "vendor": "IBM",
+    "product": "Langflow OSS"
   },
   "CVE-2026-18322": {
     "cvss": 8.8,
@@ -15840,10 +15840,10 @@
     "product": "zip2"
   },
   "CVE-2026-110200": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 6.5,
+    "description": "IBM Langflow OSS 1.0.0 through 1.12.4 could allow a remote authenticated attacker to obtain sensitive information due to cleartext storage of sensitive information.",
+    "vendor": "IBM",
+    "product": "Langflow OSS"
   },
   "CVE-2026-20660": {
     "cvss": 5.5,
@@ -16884,10 +16884,10 @@
     "product": "Unknown"
   },
   "CVE-2026-107329": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 9.9,
+    "description": "IBM Langflow OSS 1.0.0 through 1.12.4 could allow a remote authenticated attacker to execute arbitrary code due to improper control of code generation.",
+    "vendor": "IBM",
+    "product": "Langflow OSS"
   },
   "CVE-2026-12277": {
     "cvss": 8.7,
@@ -45046,5 +45046,47 @@
     "description": "TRO600 contains a vulnerability that allows an authenticated attacker to bypass network access restrictions and access services intended to be reachable only from localhost. By leveraging port forwarding, an attacker can interact with locally bound ports and services, resulting in unauthorized access to sensitive functionality and confidential information, and causing availability impact.",
     "vendor": "Hitachi Energy",
     "product": "TRO600 Series Firmware"
+  },
+  "CVE-2026-2100": {
+    "cvss": 7.5,
+    "description": "A flaw was found in p11-kit. A remote attacker could exploit this vulnerability by calling the C_DeriveKey function on a remote token with specific IBM kyber or IBM btc derive mechanism parameters set to NULL. This could lead to the RPC-client attempting to return an uninitialized value, potentially resulting in a NULL dereference or undefined behavior. This issue may cause an application level denial of service or other unpredictable system states.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-42360": {
+    "cvss": 9.8,
+    "description": "SequenceServer lets you rapidly set up a BLAST+ server with an intuitive user interface for personal or group use. Several HTTP endpoints did not properly sanitize user input and/or query parameters. This could be exploited to inject and run unwanted shell commands. This vulnerability has been fixed in 3.1.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101259": {
+    "cvss": 5.3,
+    "description": "Generation of Error Message Containing Sensitive Information vulnerability in Apache Camel CoAP component. This issue affects Apache Camel: from 4.0.0 before 4.18.5, from 4.19.0 before 4.22.2. When the CoAP consumer could not build its response once the route had completed, CamelCoapResource caught the resulting exception and sent its message back to the CoAP client as the payload of a 5.00 Internal Server Error response. The typical case is a type conversion failure: the consumer converts the final message body to the byte[] payload, and the CamelCoapMaxAge and CamelCoapETag headers to their types, after the route has returned, and therefore outside the route's error handler. On the affected releases the message of such a failure names the class of the value being converted, carries the value's string form, and ends with the class name and message of the underlying cause, so a remote CoAP client could read internal detail about the deployment: class and package names, the string form of the value, such as the path of a file body, and whatever the cause carries, which in practice can include paths, host names and connection detail of a backend. The consumer had no option to suppress this, unlike the HTTP consumers, which offer a muteException option for that purpose. The exception raised by a failing route was not sent: the consumer did not check whether the exchange had failed, and answered a route failure with 2.05 Content and whatever body the message held at that point. Reaching the disclosure therefore requires a route whose completed response a remote client can make unconvertible, which depends on how the route is written. Users are recommended to upgrade to version 4.23.0, which fixes the issue. If users are on the 4.22.x releases stream, then they are suggested to upgrade to 4.22.2. If users are on the 4.18.x releases stream, then they are suggested to upgrade to 4.18.5. The 4.14.x releases stream and earlier, and the 4.15.x to 4.17.x and 4.19.x to 4.21.x release lines, reached end of life before this issue was resolved and will not receive a fix, so deployments on them must move to a supported release. The upgrade is enough on its own: the new muteException consumer option defaults to true on all three fixed release lines, so the error response carries no payload without any configuration change. For deployments that cannot upgrade immediately, make sure the response can always be built once the route has completed: convert the body to byte[] or String as the last step of each route that consumes from a coap endpoint, for example with convertBodyTo, give the CamelCoapMaxAge and CamelCoapETag headers only values of their own types, and add an onException handler that marks the failure as handled and sets the response body explicitly, so that a conversion failure is raised and replaced inside the route rather than in the consumer.",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache Camel"
+  },
+  "CVE-2026-112621": {
+    "cvss": null,
+    "description": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, visionOS 27.2. Processing a maliciously crafted image may result in memory corruption.",
+    "vendor": "Apple",
+    "product": "Safari"
+  },
+  "CVE-2025-0098": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-4960": {
+    "cvss": 7.8,
+    "description": "The com.epson.InstallNavi.helper tool, deployed with the EPSON printer driver installer, contains a local privilege escalation vulnerability due to multiple flaws in its implementation. It fails to properly authenticate clients over the XPC protocol and does not correctly enforce macOS’s authorization model, exposing privileged functionality to untrusted users. Although it invokes the AuthorizationCopyRights API, it does so using overly permissive custom rights that it registers in the system’s authorization database (/var/db/auth.db). These rights can be requested and granted by the authorization daemon to any local user, regardless of privilege level. As a result, an attacker can exploit the vulnerable service to perform privileged operations such as executing arbitrary commands or installing system components without requiring administrative credentials.",
+    "vendor": "EPSON",
+    "product": "EPSON Printer Controller Installer"
+  },
+  "CVE-2026-110311": {
+    "cvss": 4.3,
+    "description": "Creating a draft release through the API returned an `assets` list that was built from a release without an ID, which matched every attachment that was not linked to a release. A user who could create a draft release in a repository therefore received the metadata (file name, UUID, upload time, size and download count) of issue and comment attachments of repositories they could not read, and of abandoned uploads.",
+    "vendor": "Gitea",
+    "product": "Gitea"
   }
 }
