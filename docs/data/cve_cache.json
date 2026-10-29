@@ -43960,5 +43960,29 @@
     "description": "XWiki Platform is a generic wiki platform. Prior to 17.10.5 and 18.2.0, the /skin/ action in com.xpn.xwiki.web.SkinAction can resolve double-encoded parent-directory segments outside the intended skin or web-application resource prefix when Jetty 12 or later decodes the request path. The affected lookup is replaced with Environment.getResourceAsStream(String, String), which constrains a resource to its expected prefix. An unauthenticated remote attacker can use the vulnerable behavior to read arbitrary resources permitted to the Jetty process, including WEB-INF/xwiki.cfg and, depending on deployment depth and operating-system permissions, host files. Tomcat and Jetty versions before 12 do not appear affected. This issue is fixed in versions 17.10.5 and 18.2.0.",
     "vendor": "xwiki",
     "product": "xwiki-platform"
+  },
+  "CVE-2024-0340": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in vhost_new_msg in drivers/vhost/vhost.c in the Linux kernel, which does not properly initialize memory in messages passed between virtual guests and the host operating system in the vhost/vhost.c:vhost_new_msg() function. This issue can allow local privileged users to read some kernel memory contents when reading from the /dev/vhost-net device file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112445": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-54110": {
+    "cvss": 8.8,
+    "description": "Integer overflow or wraparound in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Microsoft",
+    "product": "Windows 10 Version 1507"
+  },
+  "CVE-2026-109722": {
+    "cvss": 8.1,
+    "description": "JIT miscompilation in the JavaScript Engine: JIT component. This vulnerability was fixed in Firefox 158, Firefox ESR 115.43, Firefox ESR 153.5, Thunderbird 158, and Thunderbird 153.5.",
+    "vendor": "Mozilla",
+    "product": "Firefox"
   }
 }
