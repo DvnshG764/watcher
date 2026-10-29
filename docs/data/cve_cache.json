@@ -43930,5 +43930,35 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2024-3056": {
+    "cvss": 7.7,
+    "description": "A flaw was found in Podman. This issue may allow an attacker to create a specially crafted container that, when configured to share the same IPC with at least one other container, can create a large number of IPC resources in /dev/shm. The malicious container will continue to exhaust resources until it is out-of-memory (OOM) killed. While the malicious container's cgroup will be removed, the IPC resources it created are not. Those resources are tied to the IPC namespace that will not be removed until all containers using it are stopped, and one non-malicious container is holding the namespace open. The malicious container is restarted, either automatically or by attacker control, repeating the process and increasing the amount of memory consumed. With a container configured to restart always, such as `podman run --restart=always`, this can result in a memory-based denial of service of the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-3727": {
+    "cvss": 8.3,
+    "description": "A flaw was found in the github.com/containers/image library. This flaw allows attackers to trigger unexpected authenticated registry accesses on behalf of a victim user, causing resource exhaustion, local path traversal, and other attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1394": {
+    "cvss": 7.5,
+    "description": "A memory leak flaw was found in Golang in the RSA encrypting/decrypting code, which might lead to a resource exhaustion vulnerability using attacker-controlled inputs​. The memory leak happens in github.com/golang-fips/openssl/openssl/rsa.go#L113. The objects leaked are pkey​ and ctx​. That function uses named return parameters to free pkey​ and ctx​ if there is an error initializing the context or setting the different properties. All return statements related to error cases follow the \"return nil, nil, fail(...)\" pattern, meaning that pkey​ and ctx​ will be nil inside the deferred function that should free them.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-14554": {
+    "cvss": 6.5,
+    "description": "The Check & Log Email WordPress plugin before 2.0.15 does not properly sanitize and escape parameters before using them in SQL queries, allowing users with administrator privileges to perform SQL injection attacks.",
+    "vendor": "Unknown",
+    "product": "Check & Log Email"
+  },
+  "CVE-2026-34151": {
+    "cvss": 8.2,
+    "description": "XWiki Platform is a generic wiki platform. Prior to 17.10.5 and 18.2.0, the /skin/ action in com.xpn.xwiki.web.SkinAction can resolve double-encoded parent-directory segments outside the intended skin or web-application resource prefix when Jetty 12 or later decodes the request path. The affected lookup is replaced with Environment.getResourceAsStream(String, String), which constrains a resource to its expected prefix. An unauthenticated remote attacker can use the vulnerable behavior to read arbitrary resources permitted to the Jetty process, including WEB-INF/xwiki.cfg and, depending on deployment depth and operating-system permissions, host files. Tomcat and Jetty versions before 12 do not appear affected. This issue is fixed in versions 17.10.5 and 18.2.0.",
+    "vendor": "xwiki",
+    "product": "xwiki-platform"
   }
 }
