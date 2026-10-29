@@ -45226,5 +45226,107 @@
     "description": "Ivanti Connect Secure 22.8R2.4 mishandles the manner in which the dsinvoked broker trusts DSCache configuration data, leading to privilege escalation to root, as exploited in the wild in October 2026.",
     "vendor": "Ivanti",
     "product": "Connect Secure"
+  },
+  "CVE-2026-35632": {
+    "cvss": 7.8,
+    "description": "OpenClaw before 2026.3.24 contains a symlink traversal vulnerability in agents.create and agents.update handlers that use fs.appendFile on IDENTITY.md without symlink containment checks. Attackers with workspace access can plant symlinks to append attacker-controlled content to arbitrary files, enabling remote code execution via crontab injection or unauthorized access via SSH key manipulation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40037": {
+    "cvss": 6.5,
+    "description": "OpenClaw before 2026.4.8 contains a request body replay vulnerability in fetchWithSsrFGuard that allows unsafe request bodies to be resent across cross-origin redirects. Attackers can exploit this by triggering redirects to exfiltrate sensitive request data or headers to unintended origins.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2017-20238": {
+    "cvss": 7.1,
+    "description": "Hirschmann Industrial HiVision versions 06.0.00 and 07.0.00 prior to 06.0.06 and 07.0.01 contains an improper authorization vulnerability that allows read-only users to gain write access to managed devices by bypassing access control mechanisms. Attackers can exploit alternative interfaces such as the web interface or SNMP browser to modify device configurations despite having restricted permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-15620": {
+    "cvss": 8.6,
+    "description": "HiOS Switch Platform versions 09.1.00 through 09.4.04 and 10.0.00 through 10.3.00 contain a denial-of-service vulnerability in the web interface that allows remote attackers to reboot the affected device by sending a malicious HTTP GET request to a specific endpoint. Attackers can trigger an uncontrolled reboot condition through crafted HTTP requests to cause service disruption and unavailability of the switch.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-22185": {
+    "cvss": 4.6,
+    "description": "OpenLDAP Lightning Memory-Mapped Database (LMDB) versions 0.9.14 before 0.9.34, prior to commit 8e1fda8, contain a heap buffer underflow in the readline() function of mdb_load. When processing malformed input containing an embedded NUL byte, an unsigned offset calculation can underflow and cause an out-of-bounds read of one byte before the allocated heap buffer. This can cause mdb_load to crash, leading to a limited denial-of-service condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-53982": {
+    "cvss": 7.5,
+    "description": "PMB 7.4.6 contains a SQL injection vulnerability in the id parameter of the storage module (categ=storage) of the opac_css/ajax.php endpoint that allows remote attackers to manipulate database queries. Attackers can exploit the unsanitized 'id' parameter by injecting conditional sleep statements to extract information or perform time-based blind SQL injection attacks.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-34457": {
+    "cvss": 8.7,
+    "description": "wb2osz/direwolf (Dire Wolf) versions up to and including 1.8.1, prior to commit 694c954, contain a stack-based buffer overflow vulnerability in the function kiss_rec_byte() located in src/kiss_frame.c. When processing crafted KISS frames that reach the maximum allowed frame length (MAX_KISS_LEN), the function appends a terminating FEND byte without reserving sufficient space in the stack buffer. This results in an out-of-bounds write followed by an out-of-bounds read during the subsequent call to kiss_unwrap(), leading to stack memory corruption or application crashes. This vulnerability may allow remote unauthenticated attackers to trigger a denial-of-service condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34458": {
+    "cvss": 8.7,
+    "description": "wb2osz/direwolf (Dire Wolf) versions up to and including 1.8.1, prior to commit 3658a87, contain a reachable assertion vulnerability in the APRS MIC-E decoder function aprs_mic_e() located in src/decode_aprs.c. When processing a specially crafted AX.25 frame containing a MIC-E message with an empty or truncated comment field, the application triggers an unhandled assertion checking for a non-empty comment. This assertion failure causes immediate process termination, allowing a remote, unauthenticated attacker to cause a denial of service by sending malformed APRS traffic.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-53937": {
+    "cvss": 7.8,
+    "description": "Hubstaff 1.6.13 and 1.6.14 contain a DLL search order hijacking vulnerability that allows attackers to replace a missing system32 wow64log.dll with a malicious library. Attackers can generate a custom DLL using Metasploit and place it in the system32 directory to obtain a reverse shell during application startup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-53907": {
+    "cvss": 6.5,
+    "description": "Bludit versions before 3.13.0 contain an authenticated file download vulnerability in the Backup Plugin that allows logged-in users to access arbitrary files. Attackers can exploit the plugin's download functionality by manipulating file path parameters to read sensitive system files through directory traversal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58296": {
+    "cvss": 5.3,
+    "description": "CE Phoenix v1.0.8.20 contains a stored cross-site scripting vulnerability in the currencies administration panel that allows attackers to inject malicious scripts. Attackers can insert XSS payloads in the title field to execute arbitrary JavaScript when administrators view the currencies page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58300": {
+    "cvss": 8.7,
+    "description": "Siklu MultiHaul TG series devices through version 2.0.0 contain an unauthenticated vulnerability that allows remote attackers to retrieve randomly generated credentials via a network request. Attackers can send a specific hex-encoded command to port 12777 to obtain username and password, enabling direct SSH access to the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34506": {
+    "cvss": 8.8,
+    "description": "WBCE CMS version 1.6.3 and prior contains an authenticated remote code execution vulnerability that allows administrators to upload malicious modules. Attackers can craft a specially designed ZIP module with embedded PHP reverse shell code to gain remote system access when the module is installed.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-34253": {
+    "cvss": 5.4,
+    "description": "D-Link Nuclias Connect firmware versions <= 1.3.1.4 contain a stored cross-site scripting (XSS) vulnerability due to improper sanitization of the 'Network' field when editing the configuration, creating a profile, and adding a network. An authenticated attacker can inject arbitrary JavaScript to be executed in the context of other users viewing the profile entry. NOTE: D-Link fixed this issue in version 1.3.1.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34108": {
+    "cvss": 8.6,
+    "description": "A stack-based buffer overflow vulnerability exists in the login functionality of Disk Pulse Enterprise version 9.0.34. An attacker can send a specially crafted HTTP POST request to the /login endpoint with an overly long username parameter, causing a buffer overflow in the libspp.dll component. Successful exploitation allows arbitrary code execution with SYSTEM privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-30006": {
+    "cvss": 6.1,
+    "description": "Xorcom CompletePBX is vulnerable to a reflected cross-site scripting (XSS) in the administrative control panel. This issue affects CompletePBX: all versions up to and including 5.2.35",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-22047": {
+    "cvss": 3.1,
+    "description": "A race condition exists in Audited 4.0.0 before 5.3.3 that can result in an authenticated user to cause audit log entries to be attributed to another user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
