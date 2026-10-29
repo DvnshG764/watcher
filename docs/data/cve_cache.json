@@ -45202,5 +45202,29 @@
     "description": "In the Linux kernel, the following vulnerability has been resolved: xfrm: ah6: validate routing header segments_left AH6 rearranges routing-header addresses before computing or verifying the ICV. ipv6_rearrange_rthdr() assumes that segments_left is not larger than the number of addresses described by the routing header's hdrlen field. That assumption does not hold for raw IPv6 HDRINCL packets. A packet with hdrlen equal to 2 describes one address, but can carry an arbitrary segments_left value. With segments_left equal to 255, the function moves its address pointer 4,064 bytes backwards and passes a 4,064-byte length to memmove(), resulting in an out-of-bounds access. Validate the invariant locally before modifying the routing header or performing any address-pointer arithmetic, and propagate malformed-header errors to the existing AH6 input and output error paths.",
     "vendor": "Linux",
     "product": "Linux"
+  },
+  "CVE-2026-40098": {
+    "cvss": 5.4,
+    "description": "Magento Long Term Support (LTS) is an unofficial, community-driven project provides an alternative to the Magento Community Edition e-commerce platform with a high level of backward compatibility. Prior to version 20.17.0, the shared wishlist add-to-cart endpoint authorizes access with a public `sharing_code`, but loads the acted-on wishlist item by a separate global `wishlist_item_id` and never verifies that the item belongs to the shared wishlist referenced by that code. This lets an attacker use a valid shared wishlist code for wishlist A and a wishlist item ID belonging to victim wishlist B to import victim item B into the attacker's cart through the shared wishlist flow for wishlist A. Because the victim item's stored `buyRequest` is reused during cart import, the victim's private custom-option data is copied into the attacker's quote. If the product uses a file custom option, this can be elevated to cross-user file disclosure because the imported file metadata is preserved and the download endpoint is not ownership-bound. Version 20.17.0 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40488": {
+    "cvss": 8.8,
+    "description": "Magento Long Term Support (LTS) is an unofficial, community-driven project provides an alternative to the Magento Community Edition e-commerce platform with a high level of backward compatibility. Prior to version 20.17.0, the product custom option file upload in OpenMage LTS uses an incomplete blocklist (`forbidden_extensions = php,exe`) to prevent dangerous file uploads. This blocklist can be trivially bypassed by using alternative PHP-executable extensions such as `.phtml`, `.phar`, `.php3`, `.php4`, `.php5`, `.php7`, and `.pht`. Files are stored in the publicly accessible `media/custom_options/quote/` directory, which lacks server-side execution restrictions for some configurations, enabling Remote Code Execution if this directory is not explicitly denied script execution. Version 20.17.0 patches the issue.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-41445": {
+    "cvss": 8.8,
+    "description": "KissFFT before commit 8a8e66e contains an integer overflow vulnerability in the kiss_fftndr_alloc() function in kiss_fftndr.c where the allocation size calculation dimOther*(dimReal+2)*sizeof(kiss_fft_scalar) overflows signed 32-bit integer arithmetic before being widened to size_t, causing malloc() to allocate an undersized buffer. Attackers can trigger heap buffer overflow by providing crafted dimensions that cause the multiplication to exceed INT_MAX, allowing writes beyond the allocated buffer region when kiss_fftndr() processes the data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111357": {
+    "cvss": 7.0,
+    "description": "Ivanti Connect Secure 22.8R2.4 mishandles the manner in which the dsinvoked broker trusts DSCache configuration data, leading to privilege escalation to root, as exploited in the wild in October 2026.",
+    "vendor": "Ivanti",
+    "product": "Connect Secure"
   }
 }
