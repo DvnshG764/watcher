@@ -43066,5 +43066,857 @@
     "description": "XWiki Platform is a generic wiki platform. XWiki discovered that the patch for GHSA-5cf8-vrr8-8hjm was insufficient. Starting with version 6.2.1 and prior to versions 18.0.0RC1, 17.10.13, 17.4.9 and 16.10.17, with slightly modified parameters to the `LiveTableResults`, it is still possible to discover password hashes one bit at a time, so with 768 requests, the full password salt and hash can be retrieved of a user. The check for password (and email properties) has been adjusted in XWiki 18.0.0RC1, 17.10.13, 17.4.9 and 16.10.17. As a workaround, the patch can be applied manually to the wiki page `XWiki.LiveTableResultsMacros`.",
     "vendor": "xwiki",
     "product": "xwiki-platform"
+  },
+  "CVE-2026-40323": {
+    "cvss": 7.5,
+    "description": "SP1 is a zero‑knowledge virtual machine that proves the correct execution of programs compiled for the RISC-V architecture. In versions 6.0.0 through 6.0.2, a soundness vulnerability in the SP1 V6 recursive shard verifier allows a malicious prover to construct a recursive proof from a shard proof that the native verifier would reject. Version 6.1.0 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40324": {
+    "cvss": 9.1,
+    "description": "Hot Chocolate is an open-source GraphQL server. Prior to versions 12.22.7, 13.9.16, 14.3.1, and 15.1.14, Hot Chocolate's recursive descent parser `Utf8GraphQLParser` has no recursion depth limit. A crafted GraphQL document with deeply nested selection sets, object values, list values, or list types can trigger a `StackOverflowException` on payloads as small as 40 KB. Because `StackOverflowException` is uncatchable in .NET (since .NET 2.0), the entire worker process is terminated immediately. All in-flight HTTP requests, background `IHostedService` tasks, and open WebSocket subscriptions on that worker are dropped. The orchestrator (Kubernetes, IIS, etc.) must restart the process. This occurs before any validation rules run — `MaxExecutionDepth`, complexity analyzers, persisted query allow-lists, and custom `IDocumentValidatorRule` implementations cannot intercept the crash because `Utf8GraphQLParser.Parse` is invoked before validation. The `MaxAllowedFields=2048` limit does not help because the crashing payloads contain very few fields. The fix in versions 12.22.7, 13.9.16, 14.3.1, and 15.1.14 adds a `MaxAllowedRecursionDepth` option to `ParserOptions` with a safe default, and enforces it across all recursive parser methods (`ParseSelectionSet`, `ParseValueLiteral`, `ParseObject`, `ParseList`, `ParseTypeReference`, etc.). When the limit is exceeded, a catchable `SyntaxException` is thrown instead of overflowing the stack. There is no application-level workaround. `StackOverflowException` cannot be caught in .NET. The only mitigation is to upgrade to a patched version. Operators can reduce (but not eliminate) risk by limiting HTTP request body size at the reverse proxy or load balancer layer, though the smallest crashing payload (40 KB) is well below most default body size limits and is highly compressible (~few hundred bytes via gzip).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40333": {
+    "cvss": 6.1,
+    "description": "libgphoto2 is a camera access and control library. In versions up to and including 2.5.33, two functions in camlibs/ptp2/ptp-pack.c accept a data pointer but no length parameter, performing unbounded reads. Their callers in ptp_unpack_EOS_events() have xsize available but never pass it, leaving both functions unable to validate reads against the actual buffer boundary. Commit 1817ecead20c2aafa7549dac9619fe38f47b2f53 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40334": {
+    "cvss": 3.5,
+    "description": "libgphoto2 is a camera access and control library. In versions up to and including 2.5.33, a missing null terminator exists in ptp_unpack_Canon_FE() in camlibs/ptp2/ptp-pack.c (line 1377). The function copies a filename into a 13-byte buffer using strncpy without explicitly null-terminating the result. If the source data is exactly 13 bytes with no null terminator, the buffer is left unterminated, leading to out-of-bounds reads in any subsequent string operation. Commit 259fc7d3bfe534ce4b114c464f55b448670ab873 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40335": {
+    "cvss": 5.2,
+    "description": "libgphoto2 is a camera access and control library. Versions up to and including 2.5.33 have an out-of-bounds read in `ptp_unpack_DPV()` in `camlibs/ptp2/ptp-pack.c` (lines 622–629). The UINT128 and INT128 cases advance `*offset += 16` without verifying that 16 bytes remain in the buffer. The entry check at line 609 only guarantees `*offset < total` (at least 1 byte available), leaving up to 15 bytes unvalidated. Commit 433bde9888d70aa726e32744cd751d7dbe94379a patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40336": {
+    "cvss": 2.4,
+    "description": "libgphoto2 is a camera access and control library. Versions up to and including 2.5.33 have a memory leak in `ptp_unpack_Sony_DPD()` in `camlibs/ptp2/ptp-pack.c` (lines 884–885). When processing a secondary enumeration list (introduced in 2024+ Sony cameras), the function overwrites dpd->FORM.Enum.SupportedValue with a new calloc() without freeing the previous allocation from line 857. The original array and any string values it contains are leaked on every property descriptor parse. Commit 404ff02c75f3cb280196fc260a63c4d26cf1a8f6 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40337": {
+    "cvss": 5.1,
+    "description": "The Sentry kernel is a high security level micro-kernel implementation made for high security embedded systems. A given task with one of the DEV or IO capability is able to interact with another task's IRQ line through the __sys_int_* syscall familly. Prior to version 0.4.7, this can lead to DoS and covert-channels between this task and the outer world. A patch is available in version 0.4.7. As a workaround, reduce tasks that have the DEV and IO capability to a single one.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40338": {
+    "cvss": 5.2,
+    "description": "libgphoto2 is a camera access and control library. Versions up to and including 2.5.33 have an out-of-bounds read in the PTP_DPFF_Enumeration case of `ptp_unpack_Sony_DPD()` in `camlibs/ptp2/ptp-pack.c` (line 856). The function reads a 2-byte enumeration count N via `dtoh16o(data, *poffset)` without verifying that 2 bytes remain in the buffer. The standard `ptp_unpack_DPD()` at line 704 has this exact check, confirming the Sony variant omitted it by oversight. Commit 3b9f9696be76ae51dca983d9dd8ce586a2561845 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40339": {
+    "cvss": 5.2,
+    "description": "libgphoto2 is a camera access and control library. Versions up to and including 2.5.33 have an out-of-bounds read in `ptp_unpack_Sony_DPD()` in `camlibs/ptp2/ptp-pack.c` (line 842). The function reads the FormFlag byte via `dtoh8o(data, *poffset)` without a prior bounds check. The standard `ptp_unpack_DPD()` at lines 686–687 correctly validates `*offset + sizeof(uint8_t) > dpdlen` before this same read, but the Sony variant omits this check entirely. Commit 09f8a940b1e418b5693f5c11e3016a1ad2cea62d fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40340": {
+    "cvss": 6.1,
+    "description": "libgphoto2 is a camera access and control library. Versions up to and including 2.5.33 have an out-of-bounds read vulnerability in `ptp_unpack_OI()` in `camlibs/ptp2/ptp-pack.c` (lines 530–563). The function validates `len < PTP_oi_SequenceNumber` (i.e., len < 48) but subsequently accesses offsets 48–56, up to 9 bytes beyond the validated boundary, via the Samsung Galaxy 64-bit objectsize detection heuristic. Commit 7c7f515bc88c3d0c4098ac965d313518e0ccbe33 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40341": {
+    "cvss": 3.5,
+    "description": "libgphoto2 is a camera access and control library. In versions up to and including 2.5.33, an out of bound read in ptp_unpack_EOS_FocusInfoEx could be used to crash libgphoto2 when processing input from untrusted USB devices. Commit c385b34af260595dfbb5f9329526be5158985987 contains a patch. No known workarounds are available.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40346": {
+    "cvss": 6.5,
+    "description": "NocoBase is an AI-powered no-code/low-code platform for building business applications and enterprise solutions. Prior to version 2.0.37, NocoBase's workflow HTTP request plugin and custom request action plugin make server-side HTTP requests to user-provided URLs without any SSRF protection. An authenticated user can access internal network services, cloud metadata endpoints, and localhost. Version 2.0.37 contains a patch.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40347": {
+    "cvss": 5.3,
+    "description": "Python-Multipart is a streaming multipart parser for Python. Versions prior to 0.0.26 have a denial of service vulnerability when parsing crafted `multipart/form-data` requests with large preamble or epilogue sections. Upgrade to version 0.0.26 or later, which skips ahead to the next boundary candidate when processing leading CR/LF data and immediately discards epilogue data after the closing boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40348": {
+    "cvss": 7.7,
+    "description": "Movary is a self hosted web app to track and rate a user's watched movies. Prior to version 0.71.1, an ordinary authenticated user can trigger server-side requests to arbitrary internal targets through `POST /settings/jellyfin/server-url-verify`. The endpoint accepts a user-controlled URL, appends `/system/info/public`, and sends a server-side HTTP request with Guzzle. Because there is no restriction on internal hosts, loopback addresses, or private network ranges, this can be abused for SSRF and internal network probing. Any ordinary authenticated user can use this endpoint to make the server connect to arbitrary internal targets and distinguish between different network states. This enables SSRF-based internal reconnaissance, including host discovery, port-state probing, and service fingerprinting. In certain deployments, it may also be usable to reach internal administrative services or cloud metadata endpoints that are not directly accessible from the outside. Version 0.71.1 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40349": {
+    "cvss": 8.8,
+    "description": "Movary is a self hosted web app to track and rate a user's watched movies. Prior to version 0.71.1, an ordinary authenticated user can escalate their own account to administrator by sending `isAdmin=true` to `PUT /settings/users/{userId}` for their own user ID. The endpoint is intended to let a user edit their own profile, but it updates the sensitive `isAdmin` field without any admin-only authorization check. Version 0.71.1 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40480": {
+    "cvss": 7.1,
+    "description": "ChurchCRM is an open-source church management system. In versions prior to 7.2.0, the GET /api/person/{personId} endpoint loads and returns person records without performing object-level authorization checks. Although the legacy PersonView.php page enforces canEditPerson() restrictions, the API layer omits this check. Any authenticated user with only EditSelf privileges can enumerate and read other members' records, exposing sensitive PII including names, addresses, phone numbers, and email addresses. This issue has been fixed in version 7.2.0.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-40482": {
+    "cvss": 7.1,
+    "description": "ChurchCRM is an open-source church management system. Versions prior to 7.2.0 have SQL injection in FinancialService::getMemberByScanString() via unsanitized $routeAndAccount concatenated into raw SQL. This issue has been fixed in version 7.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40483": {
+    "cvss": 5.4,
+    "description": "ChurchCRM is an open-source church management system. In versions prior to 7.2.0, the Pledge Editor renders donation comment values directly into HTML input value attributes without escaping via htmlspecialchars(). An authenticated user with Finance permissions can inject HTML attribute-breaking characters and event handlers into the comment field, which are stored in the database and execute in the browser of any user who subsequently opens the pledge record for editing, resulting in stored XSS. This issue has been fixed in version 7.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40484": {
+    "cvss": 9.1,
+    "description": "ChurchCRM is an open-source church management system. In versions prior to 7.2.0, the database backup restore functionality extracts uploaded archive contents and copies files from the Images/ directory into the web-accessible document root using recursiveCopyDirectory(), which performs no file extension filtering. An authenticated administrator can upload a crafted backup archive containing a PHP webshell inside the Images/ directory, which is then written to a publicly accessible path and executable via HTTP requests, resulting in remote code execution as the web server user. The restore endpoint also lacks CSRF token validation, enabling exploitation through cross-site request forgery targeting an authenticated administrator. This issue has been fixed in version 7.2.0.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-40485": {
+    "cvss": 5.3,
+    "description": "ChurchCRM is an open-source church management system. In versions prior to 7.2.0, the public API login endpoint (/api/public/user/login) returns distinguishable HTTP response codes based on whether a username exists: 404 for non-existent users and 401 for valid users with incorrect passwords. An unauthenticated attacker can exploit this difference to enumerate valid usernames, with no rate limiting or account lockout to impede the process. This issue has been fixed in version 7.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40581": {
+    "cvss": 8.1,
+    "description": "ChurchCRM is an open-source church management system. In versions prior to 7.2.0, the family record deletion endpoint (SelectDelete.php) performs permanent, irreversible deletion of family records and all associated data via a plain GET request with no CSRF token validation. An attacker can craft a malicious page that, when visited by an authenticated administrator, silently triggers deletion of targeted family records including associated notes, pledges, persons, and property data without any user interaction. This issue has been fixed in version 7.2.0.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-40582": {
+    "cvss": 9.1,
+    "description": "ChurchCRM is an open-source church management system. In versions prior to 7.2.0, the /api/public/user/login endpoint validates only the username and password before returning the user's API key, bypassing the normal authentication flow that enforces account lockout and two-factor authentication checks. An attacker with knowledge of a user's password can obtain API access even when the account is locked or has 2FA enabled, granting direct access to all protected API endpoints with that user's privileges. This issue has been fixed in version 7.2.0. Note: this issue had a duplicate, GHSA-472m-p3gf-46xp, which has been closed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40593": {
+    "cvss": 4.8,
+    "description": "ChurchCRM is an open-source church management system. In versions prior to 7.2.0, the User Editor (UserEditor.php) renders stored usernames directly into an HTML input value attribute without applying htmlspecialchars(). An administrator can save a username containing HTML attribute-breaking characters and event handlers, which execute in the browser of any administrator who subsequently views that user's editor page, resulting in stored XSS. This issue has been fixed in version 7.2.0.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-35465": {
+    "cvss": 7.5,
+    "description": "SecureDrop Client is a desktop app for journalists to securely communicate with sources and handle submissions on the SecureDrop Workstation. In versions 0.17.4 and below, a compromised SecureDrop Server can achieve code execution on the Client's virtual machine (sd-app) by exploiting improper filename validation in gzip archive extraction, which permits absolute paths and enables overwriting critical files like the SQLite database. Exploitation requires prior compromise of the dedicated SecureDrop Server, which itself is hardened and only accessible via Tor hidden services. Despite the high attack complexity, the vulnerability is rated High severity due to its significant impact on confidentiality, integrity, and availability of decrypted source submissions. This issue is similar to CVE-2025-24888 but occurs through a different code path, and a more robust fix has been implemented in the replacement SecureDrop Inbox codebase. The issue has been fixed in version 0.17.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40317": {
+    "cvss": 9.3,
+    "description": "NovumOS is a custom 32-bit operating system written in Zig and x86 Assembly. In versions prior to 0.24, Syscall 12 (JumpToUser) accepts an arbitrary entry point address from user-space registers without validation, allowing any Ring 3 user-mode process to jump to kernel addresses and execute arbitrary code in Ring 0 context, resulting in local privilege escalation. This issue has been fixed in version 0.24. If developers are unable to immediately update, they should restrict syscall access by running the system in single-user mode without Ring 3, and disable user-mode processes by only running kernel shell with no user processes. This issue has been fixed in version 0.24.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40350": {
+    "cvss": 8.8,
+    "description": "Movary is a self hosted web app to track and rate a user's watched movies. Prior to version 0.71.1, an ordinary authenticated user can access the user-management endpoints `/settings/users` and use them to enumerate all users and create a new administrator account. This happens because the route definitions do not enforce admin-only middleware, and the controller-level authorization check uses a broken boolean condition. As a result, any user with a valid web session cookie can reach functionality that should be restricted to administrators. Version 0.71.1 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40572": {
+    "cvss": 9.0,
+    "description": "NovumOS is a custom 32-bit operating system written in Zig and x86 Assembly. In versions prior to 0.24, Syscall 15 (MemoryMapRange) allows Ring 3 user-mode processes to map arbitrary virtual address ranges into their address space without validating against forbidden regions, including critical kernel structures such as the IDT, GDT, TSS, and page tables. A local attacker can exploit this to modify kernel interrupt handlers, resulting in privilege escalation from user mode to kernel context. This issue has been fixed in version 0.24.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35582": {
+    "cvss": 8.8,
+    "description": "Emissary is a P2P based data-driven workflow engine. In versions 8.42.0 and below, Executrix.getCommand() is vulnerable to OS command injection because it interpolates temporary file paths into a /bin/sh -c shell command string without any escaping or input validation. The IN_FILE_ENDING and OUT_FILE_ENDING configuration keys flow directly into these paths, allowing a place author who can write or modify a .cfg file to inject arbitrary shell metacharacters that execute OS commands in the JVM process's security context. The framework already sanitizes placeName via an allowlist before embedding it in the same shell string, but applies no equivalent sanitization to file ending values. No runtime privileges beyond place configuration authorship, and no API or network access, are required to exploit this vulnerability. This is a framework-level defect with no safe mitigation available to downstream implementors, as Executrix provides neither escaping nor documented preconditions against metacharacters in file ending inputs. This issue has been fixed in version 8.43.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40487": {
+    "cvss": 9.0,
+    "description": "Postiz is an AI social media scheduling tool. Prior to version 2.21.6, a file upload validation bypass allows any authenticated user to upload arbitrary HTML, SVG, or other executable file types to the server by spoofing the `Content-Type` header. The uploaded files are then served by nginx with a Content-Type derived from their original extension (`text/html`, `image/svg+xml`), enabling Stored Cross-Site Scripting (XSS) in the context of the application's origin. This can lead to session riding, account takeover, and full compromise of other users' accounts. Version 2.21.6 contains a fix.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40489": {
+    "cvss": 8.6,
+    "description": "editorconfig-core-c is an EditorConfig core library for use by plugins supporting EditorConfig parsing. Versions up to and including 0.12.10 have a stack-based buffer overflow in ec_glob() that allows an attacker to crash any application using libeditorconfig by providing a specially crafted directory structure and .editorconfig file. This is an incomplete fix for CVE-2023-0341. The pcre_str buffer was protected in 0.12.6 but the adjacent l_pattern[8194] stack buffer received no equivalent protection. On Ubuntu 24.04, FORTIFY_SOURCE converts the overflow to SIGABRT (DoS). Version 0.12.11 contains an updated fix.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40491": {
+    "cvss": 7.8,
+    "description": "gdown is a Google Drive public file/folder downloader. Versions prior to 5.2.2 are vulnerable to a Path Traversal attack within the extractall functionality. When extracting a maliciously crafted ZIP or TAR archive, the library fails to sanitize or validate the filenames of the archive members. This allow files to be written outside the intended destination directory, potentially leading to arbitrary file overwrite and Remote Code Execution (RCE). Version 5.2.2 contains a fix.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40492": {
+    "cvss": 9.8,
+    "description": "SAIL is a cross-platform library for loading and saving images with support for animation, metadata, and ICC profiles. Prior to commit 36aa5c7ec8a2bb35f6fb867a1177a6f141156b02, the XWD codec resolves pixel format based on `pixmap_depth` but the byte-swap code uses `bits_per_pixel` independently. When `pixmap_depth=8` (BPP8_INDEXED, 1 byte/pixel buffer) but `bits_per_pixel=32`, the byte-swap loop accesses memory as `uint32_t*`, reading/writing 4x the allocated buffer size. This is a different vulnerability from the previously reported GHSA-3g38-x2pj-mv55 (CVE-2026-27168), which addressed `bytes_per_line` validation. Commit 36aa5c7ec8a2bb35f6fb867a1177a6f141156b02 contains a patch.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40493": {
+    "cvss": 9.8,
+    "description": "SAIL is a cross-platform library for loading and saving images with support for animation, metadata, and ICC profiles. Prior to commit c930284445ea3ff94451ccd7a57c999eca3bc979, the PSD codec computes bytes-per-pixel (`bpp`) from raw header fields `channels * depth`, but the pixel buffer is allocated based on the resolved pixel format. For LAB mode with `channels=3, depth=16`, `bpp = (3*16+7)/8 = 6`, but the format `BPP40_CIE_LAB` allocates only 5 bytes per pixel. Every pixel write overshoots, causing a deterministic heap buffer overflow on every row. Commit c930284445ea3ff94451ccd7a57c999eca3bc979 contains a patch.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-22734": {
+    "cvss": 8.6,
+    "description": "Cloud Foundry UUA is vulnerable to a bypass that allows an attacker to obtain a token for any user and gain access to UAA-protected systems. This vulnerability exists when SAML 2.0 bearer assertions are enabled for a client, as the UAA accepts SAML 2.0 bearer assertions that are neither signed nor encrypted. This issue affects UUA from v77.30.0 to v78.7.0 (inclusive) and it affects CF Deployment from v48.7.0 to v54.14.0 (inclusive).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40262": {
+    "cvss": 8.7,
+    "description": "Note Mark is an open-source note-taking application. In versions 0.19.1 and prior, the asset delivery handler serves uploaded files inline and relies on magic-byte detection for content type, which does not identify text-based formats such as HTML, SVG, or XHTML. These files are served with an empty Content-Type, no X-Content-Type-Options: nosniff header, and inline disposition, allowing browsers to sniff and render active content. An authenticated user can upload an HTML or SVG file containing JavaScript as a note asset, and when a victim navigates to the asset URL, the script executes under the application's origin with access to the victim's authenticated session and API actions. This issue has been fixed in version 0.19.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40263": {
+    "cvss": 3.7,
+    "description": "Note Mark is an open-source note-taking application. In versions 0.19.1 and prior, the login endpoint performs bcrypt password verification only when the supplied username exists, returning immediately for nonexistent usernames. This timing discrepancy allows unauthenticated attackers to enumerate valid usernames by measuring response times, enabling targeted credential attacks. This issue has been fixed in version 0.19.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40265": {
+    "cvss": 5.9,
+    "description": "Note Mark is an open-source note-taking application. In versions 0.19.1 and prior, the asset download endpoint at /api/notes/{noteID}/assets/{assetID} is registered without authentication middleware, and the backend query does not verify ownership or book visibility. An unauthenticated user who knows a valid note ID and asset ID can retrieve the full contents of private note assets without authentication, regardless of whether the associated book is public or private. This issue has been fixed in version 0.19.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-3605": {
+    "cvss": 8.1,
+    "description": "An authenticated user with access to a kvv2 path through a policy containing a glob may be able to delete secrets they were not authorized to read or write, resulting in denial-of-service. This vulnerability did not allow a malicious user to delete secrets across namespaces, nor read any secret data. Fxed in Vault Community Edition 2.0.0 and Vault Enterprise 2.0.0, 1.21.5, 1.20.10, and 1.19.16.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4525": {
+    "cvss": 8.8,
+    "description": "If a Vault auth mount is configured to pass through the \"Authorization\" header, and the \"Authorization\" header is used to authenticate to Vault, Vault forwarded the Vault token to the auth plugin backend. Fixed in 2.0.0, 1.21.5, 1.20.10, and 1.19.16.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-5052": {
+    "cvss": 8.6,
+    "description": "Vault’s PKI engine’s ACME validation did not reject local targets when issuing http-01 and tls-alpn-01 challenges. This may lead to these requests being sent to local network targets, potentially leading to information disclosure. Fixed in Vault Community Edition 2.0.0 and Vault Enterprise 2.0.0, 1.21.5, 1.20.10, and 1.19.16.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-5807": {
+    "cvss": 7.5,
+    "description": "Vault is vulnerable to a denial-of-service condition where an unauthenticated attacker can repeatedly initiate or cancel root token generation or rekey operations, occupying the single in-progress operation slot. This prevents legitimate operators from completing these workflows. This vulnerability, CVE-2026-5807, is fixed in Vault Community Edition 2.0.0 and Vault Enterprise 2.0.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21719": {
+    "cvss": 7.2,
+    "description": "An OS command injection vulnerability exists in CubeCart prior to 6.6.0, which may allow a user with an administrative privilege to execute an arbitrary OS command.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6421": {
+    "cvss": 7.0,
+    "description": "A vulnerability has been found in Mobatek MobaXterm Home Edition up to 26.1. This affects an unknown part in the library msimg32.dll. The manipulation leads to uncontrolled search path. An attack has to be approached locally. The attack is considered to have high complexity. It is indicated that the exploitability is difficult. The exploit has been disclosed to the public and may be used. Upgrading to version 26.2 is able to mitigate this issue. It is suggested to upgrade the affected component. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6482": {
+    "cvss": 7.8,
+    "description": "The Rapid7 Insight Agent (versions > 4.1.0.2) is vulnerable to a local privilege escalation attack that allows users to gain SYSTEM level control of a Windows host. Upon startup the agent service attempts to load an OpenSSL configuration file from a non-existent directory that is writable by standard users. By planting a crafted openssl.cnf file an attacker can trick the high-privilege service into executing arbitrary commands. This effectively permits an unprivileged user to bypass security controls and achieve a full host compromise under the agent’s SYSTEM level access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6443": {
+    "cvss": 9.8,
+    "description": "All plugins by Essentialplugin for WordPress are vulnerable to an injected backdoor in various versions. This is due to the plugin being sold to a malicious threat actor that embedded a backdoor in all of the plugin's they acquired. This makes it possible for the threat actor to maintain a persistent backdoor and inject spam into the affected sites.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-23853": {
+    "cvss": 8.4,
+    "description": "Dell PowerProtect Data Domain with Data Domain Operating System (DD OS) of Feature Release versions 7.7.1.0 through 8.5, LTS2025 release version 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.50, contain a use of weak credentials vulnerability. An unauthenticated attacker with local access could potentially exploit this vulnerability, leading to unauthorized access to the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33392": {
+    "cvss": 7.2,
+    "description": "In JetBrains YouTrack before 2025.3.131383 high privileged user can achieve RCE via sandbox bypass",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40002": {
+    "cvss": 8.8,
+    "description": "Red Magic 11 Pro (NX809J) contains a vulnerability that allows non-privileged applications to trigger sensitive operations. The vulnerability stems from the lack of validation for applications accessing the service interface. Exploiting this vulnerability, an attacker can write files to specific partitions and set writable system properties.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-23775": {
+    "cvss": 5.7,
+    "description": "Dell PowerProtect Data Domain appliances with Data Domain Operating System (DD OS) of Feature Release versions 8.0 through 8.5, LTS2025 release version 8.3.1.0 through 8.3.1.10 contain an insertion of sensitive information into log file vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to credential exposures. Authentication attempts as the compromised user would need to be authorized by a high privileged DD user. This vulnerability only affects systems with retention lock enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-23778": {
+    "cvss": 7.2,
+    "description": "Dell PowerProtect Data Domain with Data Domain Operating System (DD OS) of Feature Release versions 7.7.1.0 through 8.5, LTS2025 release version 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.50, contain a command injection vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability to gain root-level access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6494": {
+    "cvss": 5.3,
+    "description": "A flaw was found in the AAP MCP server. An unauthenticated remote attacker can exploit a log injection vulnerability by sending specially crafted input to the `toolsetroute` parameter. This parameter is not properly sanitized before being written to logs, allowing the attacker to inject control characters such as newlines and ANSI escape sequences. This enables the attacker to obscure legitimate log entries and insert forged ones, which could facilitate social engineering attacks, potentially leading to an operator executing dangerous commands or visiting malicious URLs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-23776": {
+    "cvss": 8.8,
+    "description": "Dell PowerProtect Data Domain with Data Domain Operating System (DD OS) of Feature Release versions 7.7.1.0 through 8.5, LTS2025 release version 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.60, contain(s) an Improper Certificate Validation vulnerability in certificate-based login. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Elevation of privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-23779": {
+    "cvss": 6.7,
+    "description": "Dell PowerProtect Data Domain with Data Domain Operating System (DD OS) of Feature Release versions 7.7.1.0 through 8.5, LTS2025 release version 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.50, contain a command injection vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability to gain root-level access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35072": {
+    "cvss": 6.7,
+    "description": "Dell PowerProtect Data Domain, versions 7.7.1.0 through 8.6.0.0 and version 8.7.0.0, LTS2025 release versions 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.60 contain an improper neutralization of special elements used in an OS command ('OS command injection') vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to arbitrary command execution with root privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35073": {
+    "cvss": 6.7,
+    "description": "Dell PowerProtect Data Domain, versions 7.7.1.0 through 8.6.0.0 and version 8.7.0.0, LTS2025 release versions 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.60 contain an improper neutralization of special elements used in an OS command injection vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to arbitrary command execution with root privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35074": {
+    "cvss": 6.7,
+    "description": "Dell PowerProtect Data Domain, versions 7.7.1.0 through 8.6.0.0 and version 8.7.0.0, LTS2025 release versions 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.60 contain an improper neutralization of special elements used in an OS Command Injection vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to arbitrary command execution with root privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35153": {
+    "cvss": 6.7,
+    "description": "Dell PowerProtect Data Domain, versions 7.7.1.0 through 8.6.0.0 and version 8.7.0.0, LTS2025 release versions 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.60 contain an improper neutralization of argument delimiters in a command ('argument injection') vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to arbitrary command execution with root privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-5131": {
+    "cvss": 6.9,
+    "description": "GREENmod uses named pipes for communication between plugins, the web portal, and the system service, but the access control lists for these pipes are configured incorrectly. This allows an attacker to communicate with the stream and upload any XML or JSON file, which will be processed by the named pipe with the privileges of the user under whose context the service is running. This allows for Server-Side Request Forgery to any Windows system on which the agent is installed and which provides communication via SMB or WebDav. This issue was fixed in version 2.8.33.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-23777": {
+    "cvss": 6.5,
+    "description": "Dell PowerProtect Data Domain with Data Domain Operating System (DD OS) of Feature Release versions 7.7.1.0 through 8.5, LTS2025 release version 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.50, contain an exposure of sensitive information to an unauthorized actor vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to information exposure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28263": {
+    "cvss": 4.8,
+    "description": "Dell PowerProtect Data Domain with Data Domain Operating System (DD OS) of Feature Release versions 7.7.1.0 through 8.5, LTS2025 release version 8.3.1.0 through 8.3.1.20, LTS2024 release versions 7.13.1.0 through 7.13.1.50, contain a cross-site Scripting vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Script injection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6487": {
+    "cvss": 4.3,
+    "description": "A flaw has been found in Qihui jtbc5 CMS 5.0.3.6. Affected is an unknown function of the file /dev/code/common/diplomat/manage.php of the component Code Endpoint. This manipulation of the argument path causes path traversal. The attack is possible to be carried out remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-6488": {
+    "cvss": 6.3,
+    "description": "A vulnerability was identified in QueryMine sms up to 7ab5a9ea196209611134525ffc18de25c57d9593. This vulnerability affects unknown code of the file admin/editcourse.php of the component GET Request Parameter Handler. The manipulation of the argument ID leads to sql injection. The attack can be initiated remotely. The exploit is publicly available and might be used. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-6489": {
+    "cvss": 6.3,
+    "description": "A security flaw has been discovered in QueryMine sms up to 7ab5a9ea196209611134525ffc18de25c57d9593. This issue affects some unknown processing of the file admin/addteacher.php of the component Background Management Page. The manipulation of the argument image results in unrestricted upload. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-6507": {
+    "cvss": 7.5,
+    "description": "A flaw was found in dnsmasq. A remote attacker could exploit an out-of-bounds write vulnerability by sending a specially crafted BOOTREPLY (Bootstrap Protocol Reply) packet to a dnsmasq server configured with the `--dhcp-split-relay` option. This can lead to memory corruption, causing the dnsmasq daemon to crash and resulting in a denial of service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6490": {
+    "cvss": 7.3,
+    "description": "A weakness has been identified in QueryMine sms up to 7ab5a9ea196209611134525ffc18de25c57d9593. Impacted is an unknown function of the file admin/deletecourse.php of the component GET Request Parameter Handler. This manipulation of the argument ID causes sql injection. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-6492": {
+    "cvss": 5.3,
+    "description": "A vulnerability was detected in arnobt78 Hotel Booking Management System up to f8922d0e0f6ac1cc761974c7616f44c2bbc04bea. The impacted element is an unknown function of the file /api/health/detailed of the component Health Check Endpoint. Performing a manipulation results in information disclosure. Remote exploitation of the attack is possible. The exploit is now public and may be used. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The patch is named d47ae0e27c700b64dc417f7f01b84a6b1b0b6bd3. To fix this issue, it is recommended to deploy a patch.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41153": {
+    "cvss": 9.8,
+    "description": "In JetBrains Junie before 252.549.29 command execution was possible via malicious project file",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6493": {
+    "cvss": 3.5,
+    "description": "A flaw has been found in lukevella rallly up to 4.7.4. This affects an unknown function of the file apps/web/src/app/[locale]/(auth)/reset-password/components/reset-password-form.tsx of the component Reset Password Handler. Executing a manipulation of the argument redirectTo can lead to cross site scripting. The attack can be executed remotely. The exploit has been published and may be used. Upgrading to version 4.8.0 mitigates this issue. Upgrading the affected component is advised. The vendor was contacted early about this disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6496": {
+    "cvss": 5.4,
+    "description": "A vulnerability was found in prasathmani TinyFileManager up to 2.6. Affected is an unknown function of the file /filemanager.php of the component POST Parameter Handler. The manipulation of the argument file[] results in path traversal. The attack may be performed from remote. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-21709": {
+    "cvss": 6.7,
+    "description": "A vulnerability allowing a local attacker with administrator privileges to bypass Windows Driver Signature Enforcement.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6284": {
+    "cvss": 9.1,
+    "description": "An attacker with network access to the PLC is able to brute force discover passwords to gain unauthorized access to systems and services. The limited password complexity and no password input limiters makes brute force password enumeration possible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6497": {
+    "cvss": 6.3,
+    "description": "A vulnerability was determined in prasathmani TinyFileManager up to 2.6. Affected by this vulnerability is an unknown functionality of the file /filemanager.php?p= ajax=true&type=upload of the component File Upload Handler. This manipulation of the argument uploadurl causes server-side request forgery. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-21733": {
+    "cvss": 7.3,
+    "description": "Software installed and run as a non-privileged user may conduct improper GPU system calls to gain write permission to read-only wrapped user-mode memory and files. This is caused by improper handling of GPU memory reservation protections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40515": {
+    "cvss": 5.5,
+    "description": "OpenHarness before commit bd4df81 contains a permission bypass vulnerability that allows attackers to read sensitive files by exploiting incomplete path normalization in the permission checker. Attackers can invoke the built-in grep and glob tools with sensitive root directories that are not properly evaluated against configured path rules, allowing disclosure of sensitive local file content, key material, configuration files, or directory contents despite configured path restrictions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40516": {
+    "cvss": 6.3,
+    "description": "OpenHarness before commit bd4df81 contains a server-side request forgery vulnerability in the web_fetch and web_search tools that allows attackers to access private and localhost HTTP services by manipulating tool parameters without proper validation of target addresses. Attackers can influence an agent session to invoke these tools against loopback, RFC1918, link-local, or other non-public addresses to read response bodies from local development services, cloud metadata endpoints, admin panels, or other private HTTP services reachable from the victim host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40518": {
+    "cvss": 9.1,
+    "description": "ByteDance DeerFlow before commit 2176b2b contains a path traversal and arbitrary file write vulnerability in bootstrap-mode custom-agent creation where the agent name validation is bypassed. Attackers can supply traversal-style values or absolute paths as the agent name to influence directory creation and write files outside the intended custom-agent directory, potentially achieving arbitrary file write on the system subject to filesystem permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40319": {
+    "cvss": 5.5,
+    "description": "Giskard is an open-source testing framework for AI models. In versions prior to 1.0.2b1, the RegexMatching check passes a user-supplied regular expression pattern directly to Python's re.search() without any timeout or complexity guard. A crafted regex pattern can trigger catastrophic backtracking, causing the process to hang indefinitely. Exploitation requires write access to a check definition and subsequent execution of the test suite. This issue has been fixed in giskard-checks version 1.0.2b1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40320": {
+    "cvss": 7.8,
+    "description": "Giskard is an open-source testing framework for AI models. In versions prior to 1.0.2b1, the ConformityCheck class rendered the rule parameter through Jinja2's default Template() constructor, silently interpreting template expressions at runtime. If check definitions are loaded from an untrusted source, a crafted rule string could achieve arbitrary code execution. Exploitation requires write access to a check definition and subsequent execution of the test suite. This issue has been fixed in giskard-checks version 1.0.2b1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-27890": {
+    "cvss": 8.2,
+    "description": "Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, when processing CNCT_specific_data segments during authentication, the server assumes segments arrive in strictly ascending order. If segments arrive out of order, the Array class's grow() method computes a negative size value, causing a SIGSEGV crash. An unauthenticated attacker who knows only the server's IP and port can exploit this to crash the server. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28212": {
+    "cvss": 7.5,
+    "description": "Firebird is an open-source relational database management system. In versions prior to 6.0.0, 5.0.4, 4.0.7 and 3.0.14, when processing an op_slice network packet, the server passes an unprepared structure containing a null pointer to the SDL_info() function, resulting in a null pointer dereference and server crash. An unauthenticated attacker can trigger this by sending a crafted packet to the server port. This issue has been fixed in versions 6.0.0, 5.0.4, 4.0.7 and 3.0.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28214": {
+    "cvss": 6.5,
+    "description": "Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, the ClumpletReader::getClumpletSize() function can overflow the totalLength value when parsing a Wide type clumplet, causing an infinite loop. An authenticated user with INSERT privileges on any table can exploit this via a crafted Batch Parameter Block to cause a denial of service against the server. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28224": {
+    "cvss": 8.2,
+    "description": "Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, when the server receives an op_crypt_key_callback packet without prior authentication, the port_server_crypt_callback handler is not initialized, resulting in a null pointer dereference and server crash. An unauthenticated attacker who knows only the server's IP and port can exploit this to crash the server. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33337": {
+    "cvss": 7.5,
+    "description": "Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, when deserializing a slice packet, the xdr_datum() function does not validate that a cstring length conforms to the slice descriptor bounds, allowing a cstring longer than the allocated buffer to overflow it. An unauthenticated attacker can exploit this by sending a crafted packet to the server, potentially causing a crash or other security impact. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40525": {
+    "cvss": 9.1,
+    "description": "OpenViking prior to version 0.3.9 contains an authentication bypass vulnerability in the VikingBot OpenAPI HTTP route surface where the authentication check fails open when the api_key configuration value is unset or empty. Remote attackers with network access to the exposed service can invoke privileged bot-control functionality without providing a valid X-API-Key header, including submitting attacker-controlled prompts, creating or using bot sessions, and accessing downstream tools, integrations, secrets, or data accessible to the bot.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6437": {
+    "cvss": 6.5,
+    "description": "Improper neutralization of argument delimiters in the volume handling component in AWS EFS CSI Driver (aws-efs-csi-driver) before v3.0.1 allows remote authenticated users with PersistentVolume creation permissions to inject arbitrary mount options via comma injection. To remediate this issue, users should upgrade to version v3.0.1",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31927": {
+    "cvss": 4.9,
+    "description": "Anviz CX7 Firmware is vulnerable to an authenticated CSV upload which allows path traversal to overwrite arbitrary files (e.g., /etc/shadow), enabling unauthorized SSH access when combined with debug‑setting changes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32105": {
+    "cvss": 7.7,
+    "description": "xrdp is an open source RDP server. In versions through 0.10.5, xrdp does not implement verification for the Message Authentication Code (MAC) signature of encrypted RDP packets when using the \"Classic RDP Security\" layer. While the sender correctly generates signatures, the receiving logic lacks the necessary implementation to validate the 8-byte integrity signature, causing it to be silently ignored. An unauthenticated attacker with man-in-the-middle (MITM) capabilities can exploit this missing check to modify encrypted traffic in transit without detection. It does not affect connections where the TLS security layer is enforced. This issue has been fixed in version 0.10.6. If users are unable to immediately upgrade, they should configure xrdp.ini to enforce TLS security (security_layer=tls) to ensure end-to-end integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32107": {
+    "cvss": 8.8,
+    "description": "xrdp is an open source RDP server. In versions through 0.10.5, the session execution component did not properly handle an error during the privilege drop process. This improper privilege management could allow an authenticated local attacker to escalate privileges to root and execute arbitrary code on the system. An additional exploit would be needed to facilitate this. This issue has been fixed in version 0.10.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32324": {
+    "cvss": 7.7,
+    "description": "Anviz CX7 Firmware is vulnerable because the application embeds reusable certificate/key material, enabling decryption of MQTT traffic and potential interaction with device messaging channels at scale.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32623": {
+    "cvss": 8.1,
+    "description": "xrdp is an open source RDP server. Versions through 0.10.5 contain a heap-based buffer overflow vulnerability in the NeutrinoRDP module. When proxying RDP sessions from xrdp to another server, the module fails to properly validate the size of reassembled fragmented virtual channel data against its allocated memory buffer. A malicious downstream RDP server (or an attacker capable of performing a Man-in-the-Middle attack) could exploit this flaw to cause memory corruption, potentially leading to a Denial of Service (DoS) or Remote Code Execution (RCE). The NeutrinoRDP module is not built by default. This vulnerability only affects environments where the module has been explicitly compiled and enabled. Users can verify if the module is built by checking for --enable-neutrinordp in the output of the xrdp -v command. This issue has been fixed in version 0.10.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32624": {
+    "cvss": 6.5,
+    "description": "xrdp is an open source RDP server. Versions through 0.10.5 contain a heap-based buffer overflow vulnerability in its logon processing. In environments where domain_user_separator is configured in xrdp.ini, an unauthenticated remote attacker can send a crafted, excessively long username and domain name to overflow the internal buffer. This can corrupt adjacent memory regions, potentially leading to a Denial of Service (DoS) or unexpected behavior. The domain_name_separator directive is commented out by default, systems are not affected by this vulnerability unless it is intentionally configured. This issue has been fixed in version 0.10.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32648": {
+    "cvss": 5.3,
+    "description": "Anviz CX2 Lite and CX7 are vulnerable to unauthenticated access that discloses debug configuration details (e.g., SSH/RTTY status), assisting attackers in reconnaissance against the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32650": {
+    "cvss": 7.5,
+    "description": "Anviz CrossChex Standard is vulnerable when an attacker manipulates the TDS7 PreLogin to disable encryption, causing database credentials to be sent in plaintext and enabling unauthorized database access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33093": {
+    "cvss": 5.3,
+    "description": "Anviz CX7 Firmware is vulnerable to an unauthenticated POST to the device that captures a photo with the front facing camera, exposing visual information about the deployment environment.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33516": {
+    "cvss": 9.1,
+    "description": "xrdp is an open source RDP server. Versions through 0.10.5 contain an out-of-bounds read vulnerability during the RDP capability exchange phase. The issue occurs when memory is accessed before validating the remaining buffer length. A remote, unauthenticated attacker can trigger this vulnerability by sending a specially crafted Confirm Active PDU. Successful exploitation could lead to a denial of service (process crash) or potential disclosure of sensitive information from the process memory. This issue has been fixed in version 0.10.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33569": {
+    "cvss": 6.5,
+    "description": "Anviz CX2 Lite and CX7 administrative sessions occur over HTTP, enabling on‑path attackers to sniff credentials and session data, which can be used to compromise the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-34232": {
+    "cvss": 7.5,
+    "description": "Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, the xdr_status_vector() function does not handle the isc_arg_cstring type when decoding an op_response packet, causing a server crash when one is encountered in the status vector. An unauthenticated attacker can exploit this by sending a crafted op_response packet to the server. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35061": {
+    "cvss": 5.3,
+    "description": "Anviz CX7 Firmware is vulnerable to the most recently captured test photo that can be retrieved without authentication, revealing sensitive operational imagery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35215": {
+    "cvss": 7.5,
+    "description": "Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, the sdl_desc() function does not validate the length of a decoded SDL descriptor from a slice packet. A zero-length descriptor is later used to calculate the number of slice items, causing a division by zero. An unauthenticated attacker can exploit this by sending a crafted slice packet to crash the server. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35546": {
+    "cvss": 9.8,
+    "description": "Anviz CX2 Lite and CX7 are vulnerable to unauthenticated firmware uploads. This causes crafted archives to be accepted, enabling attackers to plant and execute code and obtain a reverse shell.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35682": {
+    "cvss": 8.8,
+    "description": "Anviz CX2 Lite is vulnerable to an authenticated command injection via a filename parameter that enables arbitrary command execution (e.g., starting telnetd), resulting in root‑level access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40066": {
+    "cvss": 8.8,
+    "description": "Anviz CX2 Lite and CX7 are vulnerable to unverified update packages that can be uploaded. The device unpacks and executes a script resulting in unauthenticated remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40283": {
+    "cvss": 7.6,
+    "description": "WeGIA is a web manager for charitable institutions. In versions prior to 3.6.10, a Stored Cross-Site Scripting (XSS) vulnerability allows an authenticated user to inject malicious JavaScript via the \"Nome\" field in the \"Informações Pacientes\" page. The payload is stored and executed when the patient information is viewed. Version 3.6.10 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40342": {
+    "cvss": 9.9,
+    "description": "Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, the external engine plugin loader concatenates a user-supplied engine name into a filesystem path without filtering path separators or .. components. An authenticated user with CREATE FUNCTION privileges can use a crafted ENGINE name to load an arbitrary shared library from anywhere on the filesystem via path traversal. The library's initialization code executes immediately during loading, before Firebird validates the module, achieving code execution as the server's OS account. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40434": {
+    "cvss": 8.1,
+    "description": "Anviz CrossChex Standard lacks source verification in the client/server channel, enabling TCP packet injection by an attacker on the same network to alter or disrupt application traffic.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40461": {
+    "cvss": 7.5,
+    "description": "Anviz CX2 Lite and CX7 are vulnerable to unauthenticated POST requests that modify debug settings (e.g., enabling SSH), allowing unauthorized state changes that can facilitate later compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33145": {
+    "cvss": 6.3,
+    "description": "xrdp is an open source RDP server. Versions through 0.10.5 allow an authenticated remote user to execute arbitrary commands on the server due to unsafe handling of the AlternateShell parameter in xrdp-sesman. When the AllowAlternateShell setting is enabled (which is the default when not explicitly configured), xrdp accepts a client-supplied AlternateShell value and executes it via /bin/sh -c during session initialization. This results in shell-interpreted execution of unsanitized, user-controlled input. This behavior effectively provides a scriptable remote command execution primitive over RDP within the security context of the authenticated user, occurring prior to normal window manager startup. This can bypass expected session initialization flows and operational assumptions that restrict execution to interactive desktop environments. This issue has been fixed in version 0.10.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33436": {
+    "cvss": 6.1,
+    "description": "Stirling-PDF is a locally hosted web application that facilitates various operations on PDF files. In versions prior to 2.0.0, file upload endpoints render user-supplied filenames directly into HTML using unsafe methods like innerHTML without sanitization. An attacker can craft a file with a malicious filename containing JavaScript that executes in the uploading user's browser context, resulting in reflected XSS. The issue affects numerous upload endpoints across the application. The issue has been fixed in version 2.0.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33689": {
+    "cvss": 9.1,
+    "description": "xrdp is an open source RDP server. Versions through 0.10.5 have an out-of-bounds read vulnerability in the pre-authentication RDP message parsing logic. A remote, unauthenticated attacker can trigger this flaw by sending a specially crafted sequence of packets during the initial connection phase. This vulnerability results from insufficient validation of input buffer lengths before processing dynamic channel communication. Successful exploitation can lead to a denial-of-service (DoS) condition via a process crash or potential disclosure of sensitive information from the service's memory space. This issue has been fixed in version 0.10.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35512": {
+    "cvss": 8.8,
+    "description": "xrdp is an open source RDP server. Versions through 0.10.5 have a heap-based buffer overflow in the EGFX (graphics dynamic virtual channel) implementation due to insufficient validation of client-controlled size parameters, allowing an out-of-bounds write via crafted PDUs. Pre-authentication exploitation can crash the process, while post-authentication exploitation may achieve remote code execution. This issue has been fixed in version 0.10.6. If users are unable to immediately update, they should run xrdp as a non-privileged user (default since 0.10.2) to limit the impact of successful exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35603": {
+    "cvss": 7.3,
+    "description": "Claude Code is an agentic coding tool. In versions prior to 2.1.75 on Windows, Claude Code loaded the system-wide default configuration from C:\\ProgramData\\ClaudeCode\\managed-settings.json without validating directory ownership or access permissions. Because the ProgramData directory is writable by non-administrative users by default and the ClaudeCode subdirectory was not pre-created or access-restricted, a low-privileged local user could create this directory and place a malicious configuration file that would be automatically loaded for any user launching Claude Code on the same machine. Exploiting this would have required a shared multi-user Windows system and a victim user to launch Claude Code after the malicious configuration was placed. This issue has been fixed on version 2.1.75.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40196": {
+    "cvss": 8.1,
+    "description": "HomeBox is a home inventory and organization system. Versions prior to 0.25.0 contain a vulnerability where the defaultGroup ID remained permanently assigned to a user after being invited to a group, even after their access to that group was revoked. While the web interface correctly enforced the access revocation and prevented the user from viewing or modifying the group's contents, the API did not. Because the original group ID persisted as the user's defaultGroup, and this value was not properly validated when the X-Tenant header was omitted, the user could still perform full CRUD operations on the group's collections through the API, bypassing the intended access controls. This issue has been fixed in version 0.25.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40282": {
+    "cvss": 6.4,
+    "description": "WeGIA is a web manager for charitable institutions. In versions prior to 3.6.10, a Stored Cross-Site Scripting (XSS) vulnerability allows an authenticated user to inject malicious JavaScript into the Intercorrências notification page, which is executed when user access the the page, enabling session hijacking and account takeover. Version 3.6.10 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40284": {
+    "cvss": 6.8,
+    "description": "WeGIA is a web manager for charitable institutions. In versions prior to 3.6.10, a Stored Cross-Site Scripting (XSS) vulnerability allows an authenticated user to inject malicious JavaScript via the \"Destinatário\" field. The payload is stored and later executed when viewing the dispatch page, impacting other users. Version 3.6.10 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40285": {
+    "cvss": 8.8,
+    "description": "WeGIA is a web manager for charitable institutions. Versions prior to 3.6.10 contain a SQL injection vulnerability in dao/memorando/UsuarioDAO.php. The cpf_usuario POST parameter overwrites the session-stored user identity via extract($_REQUEST) in DespachoControle::verificarDespacho(), and the attacker-controlled value is then interpolated directly into a raw SQL query, allowing any authenticated user to query the database under an arbitrary identity. Version 3.6.10 fixes the issue.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-40286": {
+    "cvss": 7.5,
+    "description": "WeGIA is a web manager for charitable institutions. In versions prior to 3.6.10, a Stored Cross-Site Scripting (XSS) vulnerability was identified in the 'Member Registration' (Cadastrar Sócio) function. By injecting a payload into the 'Member Name' (Nome Sócio) field, the script is persistently stored in the database. Consequently, the payload is executed whenever a user navigates to certain URL. Version 3.6.10 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40299": {
+    "cvss": 6.9,
+    "description": "next-intl provides internationalization for Next.js. Applications using the `next-intl` middleware prior to version 4.9.1with `localePrefix: 'as-needed'` could construct URLs where path handling and the WHATWG URL parser resolved a relative redirect target to another host (e.g. scheme-relative `//` or control characters stripped by the URL parser), so the middleware could redirect the browser off-site while the user still started from a trusted app URL. The problem has been patchedin `next-intl@4.9.1`.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40301": {
+    "cvss": 4.7,
+    "description": "DOMSanitizer is a DOM/SVG/MathML Sanitizer for PHP 7.3+. Prior to version 1.0.10, DOMSanitizer::sanitize() allows",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-40302": {
+    "cvss": 6.1,
+    "description": "zrok is software for sharing web services, files, and network resources. Prior to version 2.0.1, the proxyUi template engine uses Go's text/template (which performs no HTML escaping) instead of html/template. The GitHub OAuth callback handlers in both publicProxy and dynamicProxy embed the attacker-controlled refreshInterval query parameter verbatim into an error message when time.ParseDuration fails, and render that error unescaped into HTML. An attacker can deliver a crafted login URL to a victim; after the victim completes the GitHub OAuth flow, the callback page executes arbitrary JavaScript in the OAuth server's origin. Version 2.0.1 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40303": {
+    "cvss": 7.5,
+    "description": "zrok is software for sharing web services, files, and network resources. Prior to version 2.0.1, endpoints.GetSessionCookie parses an attacker-supplied cookie chunk count and calls make([]string, count) with no upper bound before any token validation occurs. The function is reached on every request to an OAuth-protected proxy share, allowing an unauthenticated remote attacker to trigger gigabyte-scale heap allocations per request, leading to process-level OOM termination or repeated goroutine panics. Both publicProxy and dynamicProxy are affected. Version 2.0.1 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40527": {
+    "cvss": 7.8,
+    "description": "radare2 prior to commit bc5a890 contains a command injection vulnerability in the afsv/afsvj command path where crafted ELF binaries can embed malicious r2 command sequences as DWARF DW_TAG_formal_parameter names. Attackers can craft a binary with shell commands in DWARF parameter names that execute when radare2 analyzes the binary with aaa and subsequently runs afsvj, allowing arbitrary shell command execution through the unsanitized parameter interpolation in the pfq command string.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40258": {
+    "cvss": 9.1,
+    "description": "The Gramps Web API is a Python REST API for the genealogical research software Gramps. Versions 1.6.0 through 3.11.0 have a path traversal vulnerability (Zip Slip) in the media archive import feature. An authenticated user with owner-level privileges can craft a malicious ZIP file with directory-traversal filenames to write arbitrary files outside the intended temporary extraction directory on the server's local filesystem. Startig in version 3.11.1, ZIP entry names are now validated against the resolved real path of the temporary directory before extraction. Any entry whose resolved path falls outside the temporary directory raises an error and aborts the import.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40304": {
+    "cvss": 5.3,
+    "description": "zrok is software for sharing web services, files, and network resources. Prior to version 2.0.1, the unaccess handler (controller/unaccess.go) contains a logical error in its ownership guard: when a frontend record has environment_id = NULL (the marker for admin-created global frontends), the condition short-circuits to false and allows the deletion to proceed without any ownership verification. A non-admin user who knows a global frontend token can call DELETE /api/v2/unaccess with any of their own environment IDs and permanently delete the global frontend, taking down all public shares routed through it. Version 2.0.1 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40305": {
+    "cvss": 4.3,
+    "description": "DNN (formerly DotNetNuke) is an open-source web content management platform (CMS) in the Microsoft ecosystem. Starting in version 6.0.0 and prior to version 10.2.2, in the friends feature, a user could craft a request that would force the acceptance of a friend request on another user. Version 10.2.2 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40306": {
+    "cvss": 6.5,
+    "description": "DNN (formerly DotNetNuke) is an open-source web content management platform (CMS) in the Microsoft ecosystem. All new installations of DNN 10.x.x - 10.2.1 have the same Host GUID. This does not affect upgrades from 9.x.x. Version 10.2.2 patches the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40351": {
+    "cvss": 9.8,
+    "description": "FastGPT is an AI Agent building platform. In versions prior to 4.14.9.5, the password-based login endpoint uses TypeScript type assertion without runtime validation, allowing an unauthenticated attacker to pass a MongoDB query operator object (e.g., {\"$ne\": \"\"}) as the password field. This NoSQL injection bypasses the password check, enabling login as any user including the root administrator. This issue has been fixed in version 4.14.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40352": {
+    "cvss": 8.8,
+    "description": "FastGPT is an AI Agent building platform. In versions prior to 4.14.9.5, the password change endpoint is vulnerable to NoSQL injection. An authenticated attacker can bypass the \"old password\" verification by injecting MongoDB query operators. This allows an attacker who has gained a low-privileged session to change the password of their account (or others if combined with ID manipulation) without knowing the current one, leading to full account takeover and persistence. This issue has been fixed in version 4.14.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40476": {
+    "cvss": 7.5,
+    "description": "graphql-go is a Go implementation of GraphQL. In versions 15.31.4 and below, the OverlappingFieldsCanBeMerged validation rule performs O(n²) pairwise comparisons of fields sharing the same response name. An attacker can send a query with thousands of repeated identical fields, causing excessive CPU usage during validation before execution begins. This is not mitigated by existing QueryDepth or QueryComplexity rules. This issue has been fixed in version 15.31.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40477": {
+    "cvss": 9.0,
+    "description": "Thymeleaf is a server-side Java template engine for web and standalone environments. Versions 3.1.3.RELEASE and prior contain a security bypass vulnerability in the expression execution mechanisms. Although the library provides mechanisms to prevent expression injection, it fails to properly restrict the scope of accessible objects, allowing specific potentially sensitive objects to be reached from within a template. If an application developer passes unvalidated user input directly to the template engine, an unauthenticated remote attacker can bypass the library's protections to achieve Server-Side Template Injection (SSTI). This issue has ben fixed in version 3.1.4.RELEASE.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40478": {
+    "cvss": 9.0,
+    "description": "Thymeleaf is a server-side Java template engine for web and standalone environments. Versions 3.1.3.RELEASE and prior contain a security bypass vulnerability in the the expression execution mechanisms. Although the library provides mechanisms to prevent expression injection, it fails to properly neutralize specific syntax patterns that allow for the execution of unauthorized expressions. If an application developer passes unvalidated user input directly to the template engine, an unauthenticated remote attacker can bypass the library's protections to achieve Server-Side Template Injection (SSTI). This issue has ben fixed in version 3.1.4.RELEASE.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-5720": {
+    "cvss": 9.1,
+    "description": "miniupnpd contains an integer underflow vulnerability in SOAPAction header parsing that allows remote attackers to cause a denial of service or information disclosure by sending a malformed SOAPAction header with a single quote. Attackers can trigger an out-of-bounds memory read by exploiting improper length validation in ParseHttpHeaders(), where the parsed length underflows to a large unsigned value when passed to memchr(), causing the process to scan memory far beyond the allocated HTTP request buffer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-5426": {
+    "cvss": 9.1,
+    "description": "Hard-coded ASP.NET/IIS machineKey value in Digital Knowledge KnowledgeDeliver deployments prior to February 24, 2026 allows adversaries to circumvent ViewState validation mechanisms and achieve remote code execution via malicious ViewState deserialization attacks",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-24749": {
+    "cvss": 5.3,
+    "description": "The Silverstripe Assets Module is a required component of Silverstripe Framework. In versions prior to 2.4.5 and 3.0.0-rc1 through 3.1.2, images rendered in templates or otherwise accessed via DBFile::getURL() or DBFile::getSourceURL() incorrectly add an access grant to the current session, which bypasses file permissions. This usually happens when creating an image variant, for example using a manipulation method like ScaleWidth() or Convert(). Note that if developers use DBFile directly in the $db configuration for a DataObject class that doesn't subclass File, and if they were setting the visibility of those files to \"protected\", those files will now need an explicit access grant to be accessed. If developers do not want to explicitly provide access grants for these files in their apps (i.e. they want these files to be accessible by default), they should use the \"public\" visibility. This issue has been fixed in versions 2.4.5 and 3.1.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-27820": {
+    "cvss": 9.8,
+    "description": "zlib is a Ruby interface for the zlib compression/decompression library. Versions 3.0.0 and below, 3.1.0, 3.1.1, 3.2.0 and 3.2.1 contain a buffer overflow vulnerability in the Zlib::GzipReader. The zstream_buffer_ungets function prepends caller-provided bytes ahead of previously produced output but fails to guarantee the backing Ruby string has enough capacity before the memmove shifts the existing data. This can lead to memory corruption when the buffer length exceeds capacity. This issue has been fixed in versions 3.0.1, 3.1.2 and 3.2.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-2336": {
+    "cvss": 8.8,
+    "description": "A privilege escalation vulnerability in Microchip IStaX allows an authenticated low-privileged user to recover a shared per-device cookie secret from their own webstax_auth session cookie and forge a new cookie with administrative privileges.This issue affects IStaX before 2026.03.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41082": {
+    "cvss": 7.8,
+    "description": "In OCaml opam before 2.5.1, a .install field containing a destination filepath can use ../ to reach a parent directory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-20585": {
+    "cvss": 5.6,
+    "description": "Insufficient checks of the RMP on host buffer access in IOMMU may allow an attacker with privileges and a compromised hypervisor to trigger an out of bounds condition without RMP checks, resulting in a potential loss of confidential guest integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6442": {
+    "cvss": 8.3,
+    "description": "Improper validation of bash commands in Snowflake Cortex Code CLI versions prior to 1.0.25 allowed subsequent commands to execute outside the sandbox. An attacker could exploit this by embedding specially crafted commands in untrusted content, such as a malicious repository, causing the CLI agent to execute arbitrary code on the local device without user consent. Exploitation is non-deterministic and model-dependent. The fix is automatically applied upon relaunch with no user action required.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35469": {
+    "cvss": 6.5,
+    "description": "spdystream is a Go library for multiplexing streams over SPDY connections. In versions 0.5.0 and below, the SPDY/3 frame parser does not validate attacker-controlled counts and lengths before allocating memory. Three allocation paths are affected: the SETTINGS frame entry count, the header count in parseHeaderValueBlock, and individual header field sizes — all read as 32-bit integers and used directly as allocation sizes with no bounds checking. Because SPDY header blocks are zlib-compressed, a small on-the-wire payload can decompress into large attacker-controlled values. A remote peer that can send SPDY frames to a service using spdystream can exhaust process memory and cause an out-of-memory crash with a single crafted control frame. This issue has been fixed in version 0.5.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-39313": {
+    "cvss": 8.7,
+    "description": "mcp-framework is a framework for building Model Context Protocol (MCP) servers. In versions 0.2.21 and below, the readRequestBody() function in the HTTP transport concatenates request body chunks into a string with no size limit. Although a maxMessageSize configuration value exists, it is never enforced in readRequestBody(). A remote unauthenticated attacker can crash any mcp-framework HTTP server by sending a single large POST request to /mcp, causing memory exhaustion and denial of service. This issue has been fixed in version 0.2.22.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41113": {
+    "cvss": 8.1,
+    "description": "sagredo qmail before 2026.04.07 allows tls_quit remote code execution because of popen in notlshosts_auto in qmail-remote.c.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40255": {
+    "cvss": 6.1,
+    "description": "AdonisJS HTTP Server is a package for handling HTTP requests in the AdonisJS framework. In @adonisjs/http-server versions prior to 7.8.1 and 8.0.0-next.0 through 8.1.3, and @adonisjs/core versions prior to 7.4.0, the response.redirect().back() method reads the Referer header from the incoming HTTP request and redirects to that URL without validating the host.An attacker who can influence the Referer header can cause the application to redirect users to a malicious external site. This affects all AdonisJS applications that use response.redirect().back() or response.redirect('back'). This issue has been fixed in versions 7.8.1 and 8.2.0 and 7.4.0 of @adonisjs/core.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
