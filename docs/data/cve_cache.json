@@ -45088,5 +45088,29 @@
     "description": "Creating a draft release through the API returned an `assets` list that was built from a release without an ID, which matched every attachment that was not linked to a release. A user who could create a draft release in a repository therefore received the metadata (file name, UUID, upload time, size and download count) of issue and comment attachments of repositories they could not read, and of abandoned uploads.",
     "vendor": "Gitea",
     "product": "Gitea"
+  },
+  "CVE-2026-5201": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the gdk-pixbuf library. This heap-based buffer overflow vulnerability occurs in the JPEG image loader due to improper validation of color component counts when processing a specially crafted JPEG image. A remote attacker can exploit this flaw without user interaction, for example, via thumbnail generation. Successful exploitation leads to application crashes and denial of service (DoS) conditions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-26142": {
+    "cvss": 6.1,
+    "description": "All versions of the package crow are vulnerable to HTTP Response Splitting when untrusted user input is used to build header values. Header values are not properly sanitized against CRLF Injection in the set_header and add_header functions. An attacker can add the \\r\\n (carriage return line feeds) characters to end the HTTP response headers and inject malicious content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116748": {
+    "cvss": 8.8,
+    "description": "Transmission 4.0.0 before 4.1.3 contains a permissive CORS vulnerability in handle_request() in rpc-server.cc that exposes the X-Transmission-Session-Id anti-CSRF token to any web origin. Malicious web pages can read the token from the 409 handshake response and replay it to issue RPC calls, enabling script-torrent-done execution, download-dir changes, or torrent and data deletion.",
+    "vendor": "transmission",
+    "product": "transmission"
+  },
+  "CVE-2026-98432": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipv4: free inet_opt and ireq_opt after an RCU grace period tcp_v4_syn_recv_sock() transfers ownership of ireq->ireq_opt to the child socket (newinet->inet_opt) without copying it. Another cpu can concurrently process a retransmitted SYN for the same request socket, and send a SYNACK from tcp_check_req(). tcp_v4_send_synack() and inet_csk_route_req() read ireq->ireq_opt under rcu_read_lock() only, and ip_build_and_send_pkt() and ip_options_build() then read opt->optlen twice. Note that the SYNACK timer itself is not an issue: it holds a reference on its request socket, and inet_csk_reqsk_queue_drop() calls timer_delete_sync() before the child can be freed. Since commit 079096f103fa (\"tcp/dccp: install syn_recv requests into ehash table\"), request sockets are processed without holding the listener lock, so nothing prevents the child socket from being freed while the SYNACK is still being built. TCP child sockets do not have SOCK_RCU_FREE, and inet_sock_destruct() frees inet_opt with a plain kfree(), leading to a use-after-free in ip_options_build(). A similar issue exists with request socket migration (net.ipv4.tcp_migrate_req=1, or a BPF_SK_REUSEPORT_SELECT_OR_MIGRATE program). reqsk_timer_handler() clones the request socket with inet_reqsk_clone(), so that the old request socket and its clone share the same ireq_opt, then reqsk_migrate_reset() clears the pointer in the old one. Another cpu holding a reference on the old request socket can still be using these options (sending a SYNACK, or creating a child in tcp_v4_syn_recv_sock()) when the clone is freed, and tcp_v4_reqsk_destructor() also uses a plain kfree(). Readers already use RCU, and other paths replacing inet_opt (do_ip_setsockopt(), cipso_v4_sock_setattr()...) already use kfree_rcu(). Use kfree_rcu() in inet_sock_destruct() and tcp_v4_reqsk_destructor() as well. IPv6 is not affected by the first issue, because tcp_v6_syn_recv_sock() duplicates the options. tcp_v6_reqsk_destructor() has the same migration issue with ipv6_opt, which is only set by CALIPSO. This will be addressed in a separate patch.",
+    "vendor": "Linux",
+    "product": "Linux"
   }
 }
