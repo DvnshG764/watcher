@@ -1520,7 +1520,7 @@
   "CVE-2026-76460": {
     "cvss": 10.0,
     "description": "Cisco Identity Services Engine (ISE) and Cisco ISE Passive Identity Connector (ISE-PIC) contain an incorrect use of privileged APIs vulnerability that could allow an unauthenticated, remote attacker to gain unauthorized access to the affected device by bypassing the web-based management interface.",
-    "vendor": "Cisco",
+    "vendor": "Check Point",
     "product": "Identity Services Engine"
   },
   "CVE-2026-87886": {
@@ -12530,7 +12530,7 @@
   "CVE-2026-23491": {
     "cvss": 9.3,
     "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. A path traversal vulnerability exists in the `get_file` method of the `Guest` module's `Get` controller in InvoicePlane up to and including through 1.6.3. The vulnerability allows unauthenticated attackers to read arbitrary files on the server by manipulating the input filename. This leads to the disclosure of sensitive information, including configuration files with database credentials. Version 1.6.4 fixes the issue.",
-    "vendor": "InvoicePlane",
+    "vendor": "Check Point",
     "product": "InvoicePlane"
   },
   "CVE-2026-23698": {
@@ -12830,7 +12830,7 @@
   "CVE-2026-104586": {
     "cvss": 9.8,
     "description": "AUTOM8N (WHM/cPanel plugin) through commit 82821f7 contains an OS Command Injection in borg_restore.cgi.",
-    "vendor": "Unknown",
+    "vendor": "Check Point",
     "product": "Unknown"
   },
   "CVE-2026-14840": {
@@ -13214,7 +13214,7 @@
   "CVE-2026-102607": {
     "cvss": 8.8,
     "description": "ZoneMinder is a free, open source closed-circuit television software application. Prior to 1.38.3, the exportEvents() function concatenates the attacker-controlled exportFile request parameter into a shell command without neutralizing shell metacharacters when an authenticated user with View Events or View Snapshots permission submits an event export request with a crafted exportFile value, a valid CSRF token, and exportDetail enabled. The affected components are exportEvents(), exportFile, web/ajax/event.php, web/skins/classic/includes/export_functions.php. In this attack mechanism, the crafted exportFile value reaches the trailing directory argument of a tar or zip command executed by exec(). The attacker can execute arbitrary operating system commands as the web server user. This issue is fixed in version 1.38.3.",
-    "vendor": "PHP",
+    "vendor": "Check Point",
     "product": "zoneminder"
   },
   "CVE-2026-26719": {
@@ -14582,7 +14582,7 @@
   "CVE-2026-27886": {
     "cvss": 9.2,
     "description": "Strapi is an open source headless content management system. Strapi versions starting in 4.0.0 and prior to 5.37.0 did not sufficiently sanitize query parameters when filtering content via relational fields. An unauthenticated attacker could use the `where` query parameter on any publicly-accessible content-type with an `updatedBy` (or other admin-relation) field to perform a boolean-oracle attack against private fields on the joined `admin_users` table, including the `resetPasswordToken` field. Extracting an admin reset token via this oracle made full administrative account takeover possible without authentication. When a filter such as `where[updatedBy][resetPasswordToken][$startsWith]=a` was applied to a public Content API endpoint, the underlying query generation performed a `LEFT JOIN` against the `admin_users` table and emitted a `WHERE` clause referencing the joined column. The query parameter sanitization layer did not block operator chains that traversed into relational target schemas the caller had no read permission on, allowing the response count to be used as a one-bit oracle on any admin-table field. The patch in version 5.37.0 introduces explicit query-parameter sanitization at the controller and service boundary via three new primitives: `strictParam`, `addQueryParams`, and `addBodyParams`. Operator chains that traverse into restricted relational targets are now rejected before reaching the database.",
-    "vendor": "strapi",
+    "vendor": "Check Point",
     "product": "strapi"
   },
   "CVE-2026-111823": {
@@ -14870,7 +14870,7 @@
   "CVE-2026-110264": {
     "cvss": 10.0,
     "description": "An issue has been discovered in GitLab CE/EE affecting all versions from 7.0 before 18.11.13, 19.0 before 19.0.10, 19.1 before 19.1.9, 19.2 before 19.2.9, 19.3 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1 that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server due to integer overflow when compiling a specially crafted regular expression.",
-    "vendor": "GitLab",
+    "vendor": "Check Point",
     "product": "GitLab"
   },
   "CVE-2026-27541": {
@@ -16874,7 +16874,7 @@
   "CVE-2026-22241": {
     "cvss": 7.3,
     "description": "The Open eClass platform (formerly known as GUnet eClass) is a complete course management system. Prior to version 4.2, an arbitrary file upload vulnerability in the theme import functionality enables an attacker with administrative privileges to upload arbitrary files on the server's file system. The main cause of the issue is that no validation or sanitization of the file's present inside the zip archive. This leads to remote code execution on the web server. Version 4.2 patches the issue.",
-    "vendor": "gunet",
+    "vendor": "Check Point",
     "product": "openeclass"
   },
   "CVE-2026-106781": {
@@ -17132,7 +17132,7 @@
   "CVE-2026-24849": {
     "cvss": 10.0,
     "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 7.0.4, the `disposeDocument()` method in `EtherFaxActions.php` allows authenticated users to read arbitrary files from the server filesystem. Any authenticated user (regardless of privilege level) can exploit this vulnerability to read sensitive files. Version 7.0.4 patches the issue.",
-    "vendor": "PHP",
+    "vendor": "Check Point",
     "product": "openemr"
   },
   "CVE-2026-104100": {
@@ -18050,7 +18050,7 @@
   "CVE-2026-41179": {
     "cvss": 9.8,
     "description": "Rclone is a command-line program to sync files and directories to and from different cloud storage providers. Starting in version 1.48.0 and prior to version 1.73.5, the RC endpoint `operations/fsinfo` is exposed without `AuthRequired: true` and accepts attacker-controlled `fs` input. Because `rc.GetFs(...)` supports inline backend definitions, an unauthenticated attacker can instantiate an attacker-controlled backend on demand. For the WebDAV backend, `bearer_token_command` is executed during backend initialization, making single-request unauthenticated local command execution possible on reachable RC deployments without global HTTP authentication. Version 1.73.5 patches the issue.",
-    "vendor": "rclone",
+    "vendor": "Check Point",
     "product": "rclone"
   },
   "CVE-2026-8237": {
@@ -27468,7 +27468,7 @@
     "product": "iOS and iPadOS"
   },
   "CVE-2025-52097": {
-    "cvss": null,
+    "cvss": 5.4,
     "description": "Cross Site Scripting vulnerability in InstantASP ltd, InstantForum.NET v.4.1.4 allows an attacker to execute arbitrary code via reflecting un-sanitized input from query string parameters directly into the HTML response without proper output encoding",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -43996,5 +43996,299 @@
     "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server via a specially crafted regular expression in a CI/CD configuration, due to insufficient regular expression validation.",
     "vendor": "GitLab",
     "product": "GitLab"
+  },
+  "CVE-2026-102608": {
+    "cvss": 9.0,
+    "description": "ZoneMinder is a free, open source closed-circuit television software application. Prior to 1.38.3, downloadEvents() manually wraps a monitor Name value in single quotes instead of using escapeshellarg() before placing it in shell commands when a user with monitor-create or monitor-edit permission stores a monitor Name containing shell metacharacters and a user with Events View permission exports that monitor's events. In this attack mechanism, the stored monitor Name reaches both the ffmpeg concatenation command and the tar or zip archive command and breaks out of manual quoting. Arbitrary commands execute as the web server user. This issue is fixed in version 1.38.3.",
+    "vendor": "Check Point",
+    "product": "zoneminder"
+  },
+  "CVE-2026-85405": {
+    "cvss": 3.5,
+    "description": "A flaw has been found in Eleveo Call Recording Software 9.7.0. This affects an unknown part of the file /callrec/roleAddAction.do. Executing a manipulation of the argument name/username can lead to cross site scripting. The attack may be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "Call Recording Software"
+  },
+  "CVE-2026-101141": {
+    "cvss": 3.5,
+    "description": "A flaw has been found in Eleveo Call Recording Software 9.7.0. Affected is an unknown function of the file /callrec/audio.jsp of the component Play Audio Page. Executing a manipulation of the argument viewRoleId/cfType can lead to cross site scripting. The attack can be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "Call Recording Software"
+  },
+  "CVE-2022-21552": {
+    "cvss": 7.2,
+    "description": "Vulnerability in the Oracle WebCenter Content product of Oracle Fusion Middleware (component: Search). Supported versions that are affected are 12.2.1.3.0 and 12.2.1.4.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Content. While the vulnerability is in Oracle WebCenter Content, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Oracle WebCenter Content accessible data as well as unauthorized read access to a subset of Oracle WebCenter Content accessible data. CVSS 3.1 Base Score 7.2 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N).",
+    "vendor": "Check Point",
+    "product": "WebCenter Content"
+  },
+  "CVE-2026-91495": {
+    "cvss": 9.8,
+    "description": "Vulnerability in the Oracle WebCenter Content product of Oracle Fusion Middleware (component: Content Server). Supported versions that are affected are 12.2.1.4.0 and 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Content. Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Content. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Check Point",
+    "product": "Oracle WebCenter Content"
+  },
+  "CVE-2026-95675": {
+    "cvss": 9.8,
+    "description": "D-Link DAP-1360 firmware version 6.14 and earlier contains an unauthenticated remote code execution vulnerability that allows remote attackers to execute arbitrary commands as root by sending crafted requests to the device's web management interface without valid credentials. Attackers can fully compromise the device to persistently modify its configuration and use it as a pivot point into the local network.",
+    "vendor": "Check Point",
+    "product": "DAP-1360"
+  },
+  "CVE-2026-93958": {
+    "cvss": 9.1,
+    "description": "A vulnerability was found in D-Link R95 BE9500_1.00.16. This vulnerability affects the function system of the file /bin/ssi of the component DHMAPI. The manipulation of the argument NTPServer results in os command injection. The attack can be executed remotely. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "R95"
+  },
+  "CVE-2026-65008": {
+    "cvss": 9.8,
+    "description": "Grav 2.0.4 (fixed in 2.0.7) contains a remote code execution vulnerability in Blueprint::dynamicData() (system/src/Grav/Common/Data/Blueprint.php), which passes a Class::method callable string and its arguments directly to call_user_func_array() without any allowlist. Because the form plugin routes page frontmatter through this path, an authenticated account with the admin.pages (or api.pages.write) permission can plant a malicious callable directive in a page. The command then executes as the web-server user whenever anyone — including an unauthenticated visitor — accesses the page.",
+    "vendor": "Check Point",
+    "product": "grav"
+  },
+  "CVE-2024-27923": {
+    "cvss": 8.8,
+    "description": "Grav is a content management system (CMS). Prior to version 1.7.43, users who may write a page may use the `frontmatter` feature due to insufficient permission validation and inadequate file name validation. This may lead to remote code execution. Version 1.7.43 fixes this issue.",
+    "vendor": "Check Point",
+    "product": "grav"
+  },
+  "CVE-2026-52198": {
+    "cvss": 7.5,
+    "description": "Buffer Overflow vulnerability in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to cause a denial of service via the gohead/sub_425994 component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-52195": {
+    "cvss": 7.5,
+    "description": "Buffer Overflow vulnerability in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to cause a denial of service via the gohead/sub_472f08 component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-52191": {
+    "cvss": 7.5,
+    "description": "Buffer Overflow vulnerability in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to cause a denial of service via the gohead/sub_444C8C component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-52196": {
+    "cvss": 7.5,
+    "description": "Buffer Overflow vulnerability in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to cause a denial of service via the gohead/sub_416f28 component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-52189": {
+    "cvss": 7.5,
+    "description": "Buffer Overflow vulnerability in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to cause a denial of service via the gohead/sub_487330 component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-52193": {
+    "cvss": 7.5,
+    "description": "Buffer Overflow vulnerability in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to cause a denial of service via the gohead/sub_447CAC component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-52187": {
+    "cvss": 7.5,
+    "description": "Buffer Overflow vulnerability in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to cause a denial of service via the gohead/sub_483ba0 component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-52190": {
+    "cvss": 7.5,
+    "description": "Buffer Overflow vulnerability in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to cause a denial of service via the gohead/sub_448384 component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-76584": {
+    "cvss": 9.9,
+    "description": "A security flaw has been discovered in TRENDnet TV-IP751WIC 11.03.03. Affected by this issue is some unknown functionality of the file /cgi-bin/admin/set_time.cgi of the component alphapd. The manipulation of the argument Currenttime results in stack-based buffer overflow. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "TV-IP751WIC"
+  },
+  "CVE-2026-5183": {
+    "cvss": 6.3,
+    "description": "A vulnerability was determined in TRENDnet TEW-713RE up to 1.02. The affected element is the function sub_421494 of the file /goform/addRouting. Executing a manipulation of the argument dest can lead to command injection. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "TEW-713RE"
+  },
+  "CVE-2026-36741": {
+    "cvss": 7.2,
+    "description": "U-SPEED AC1200 Gigabit Wi-Fi Router (Model: T18-21K) V1.0 is vulnerable to Command Injection. The Network Time Protocol (NTP) configuration interface does not properly sanitize user-supplied input. An authenticated user with permission to configure NTP settings can inject arbitrary system commands through crafted input fields. These commands are executed with elevated privileges, leading to potential full system compromise.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-76591": {
+    "cvss": 7.4,
+    "description": "A security flaw has been discovered in TRENDnet TEW-755AP up to 20260702. This affects the function log_email_server of the file /cgi-bin/email.cgi of the component ssi. Performing a manipulation results in command injection. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "TEW-755AP"
+  },
+  "CVE-2026-76583": {
+    "cvss": 7.4,
+    "description": "A vulnerability was identified in TRENDnet TV-IP751WIC 11.03.03. Affected by this vulnerability is an unknown functionality of the file /cgi-bin/admin/set_time.cgi of the component alphapd. The manipulation leads to command injection. The attack can be initiated remotely. The exploit is publicly available and might be used.",
+    "vendor": "Check Point",
+    "product": "TV-IP751WIC"
+  },
+  "CVE-2026-75985": {
+    "cvss": 7.4,
+    "description": "A flaw has been found in TRENDnet Router 1.1.02b01. The affected element is an unknown function of the file /cgi-bin/ping.cgi. This manipulation of the argument wan_type causes command injection. The attack may be initiated remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "Router"
+  },
+  "CVE-2026-52197": {
+    "cvss": 7.5,
+    "description": "An issue in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to cause a denial of service via the gohead/sub_44af70 component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-31059": {
+    "cvss": 9.8,
+    "description": "A remote command execution (RCE) vulnerability in the /goform/formDia component of UTT Aggressive HiPER 520W v3v1.7.7-180627 allows attackers to execute arbitrary commands via a crafted string.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-31067": {
+    "cvss": 6.8,
+    "description": "A remote command execution (RCE) vulnerability in the /goform/formReleaseConnect component of UTT Aggressive 520W v3v1.7.7-180627 allows attackers to execute arbitrary commands via a crafted string.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-52186": {
+    "cvss": 9.8,
+    "description": "SQL Injection vulnerability in UTT nv518G nv518GV3v3.2.7-210919-161313 allows a remote attacker to execute arbitrary code via the gohead/sub_463bbc component",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-75984": {
+    "cvss": 7.4,
+    "description": "A vulnerability was detected in TRENDnet TEW-823DRU 1.1.02b01. Impacted is an unknown function of the file /cgi-bin/admin.cgi. The manipulation of the argument Hostname results in command injection. The attack can be launched remotely. The exploit is now public and may be used.",
+    "vendor": "Check Point",
+    "product": "TEW-823DRU"
+  },
+  "CVE-2026-84441": {
+    "cvss": 7.3,
+    "description": "A security vulnerability has been detected in Piwigo up to 16.3.0. Affected by this issue is some unknown functionality of the file i.php of the component Image Derivative Handler. The manipulation leads to path traversal. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "Piwigo"
+  },
+  "CVE-2026-82275": {
+    "cvss": 7.5,
+    "description": "Qwen-Agent through 0.0.34 contains a path traversal vulnerability in the document parser that fails to restrict file access to intended directories. Attackers can supply absolute file paths to the unauthenticated Gradio interface to read arbitrary files accessible by the server process.",
+    "vendor": "Check Point",
+    "product": "Qwen-Agent"
+  },
+  "CVE-2024-56143": {
+    "cvss": 8.2,
+    "description": "Strapi is an open-source headless content management system. In versions from 5.0.0 to before 5.5.2, the lookup operator provided by the document service does not properly sanitize query parameters for private fields. An attacker can access private fields, including admin passwords and reset tokens, by crafting queries with the lookup parameter. This vulnerability is fixed in 5.5.2.",
+    "vendor": "Check Point",
+    "product": "strapi"
+  },
+  "CVE-2023-34235": {
+    "cvss": 8.6,
+    "description": "Strapi is an open-source headless content management system. Prior to version 4.10.8, it is possible to leak private fields if one is using the `t(number)` prefix. Knex query allows users to change the default prefix. For example, if someone changes the prefix to be the same as it was before or to another table they want to query, the query changes from `password` to `t1.password`. `password` is protected by filtering protections but `t1.password` is not protected. This can lead to filtering attacks on everything related to the object again, including admin passwords and reset-tokens. Version 4.10.8 fixes this issue.",
+    "vendor": "Check Point",
+    "product": "strapi"
+  },
+  "CVE-2026-24488": {
+    "cvss": 6.5,
+    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. In versions up to and including 8.0.0, an arbitrary file exfiltration vulnerability in the fax sending endpoint allows any authenticated user to read and transmit any file on the server (including database credentials, patient documents, system files, and source code) via fax to an attacker-controlled phone number. The vulnerability exists because the endpoint accepts arbitrary file paths from user input and streams them to the fax gateway without path restrictions or authorization checks. As of time of publication, no known patched versions are available.",
+    "vendor": "Check Point",
+    "product": "openemr"
+  },
+  "CVE-2026-32238": {
+    "cvss": 9.1,
+    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Versions prior to 8.0.0.2 contain a Command injection vulnerability in the backup functionality that can be exploited by authenticated attackers. The vulnerability exists due to insufficient input validation in the backup functionality. Version 8.0.0.2 fixes the issue.",
+    "vendor": "Check Point",
+    "product": "openemr"
+  },
+  "CVE-2026-101072": {
+    "cvss": 10.0,
+    "description": "A vulnerability was identified in Netcore NR289-GE 1.4.5102. This issue affects the function system of the file /ap_ip.cgi of the component CGI Handler. Such manipulation of the argument ip leads to os command injection. The attack can be launched remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "NR289-GE"
+  },
+  "CVE-2026-101075": {
+    "cvss": 10.0,
+    "description": "A security vulnerability has been detected in Netcore NR289-GE 1.4.5102. The impacted element is the function system of the file /location_time.cgi of the component Location Time Handler. The manipulation of the argument mac leads to os command injection. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "NR289-GE"
+  },
+  "CVE-2026-101076": {
+    "cvss": 10.0,
+    "description": "A vulnerability was detected in Netcore NR289-GE 1.4.5102. This affects the function system of the file /set_ntp_server_ip.cgi of the component CGI Handler. The manipulation of the argument ntp_ip results in os command injection. The attack can be executed remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "NR289-GE"
+  },
+  "CVE-2026-12197": {
+    "cvss": 7.2,
+    "description": "A security flaw has been discovered in Ruijie EG105G-P 2.340. The impacted element is the function nslookup of the file /cgi-bin/luci/api/diagnose of the component JSON-RPC Diagnose Endpoint. Performing a manipulation of the argument params.target results in command injection. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "EG105G-P"
+  },
+  "CVE-2026-101001": {
+    "cvss": 10.0,
+    "description": "A vulnerability was identified in Netcore NBR200V2 1.3.241127.071246. This impacts the function eval of the file /www/cgi-bin/network_tools of the component Web Management Interface. Such manipulation of the argument QUERY_STRING leads to os command injection. It is possible to launch the attack remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "NBR200V2"
+  },
+  "CVE-2026-52832": {
+    "cvss": 4.9,
+    "description": "Nuclio is a \"Serverless\" framework for Real-Time Events and Data Processing. Prior to version 1.16.5, Nuclio Dashboard exposes POST /api/functions without authentication by default (NOP auth mode). The spec.handler field (e.g., mymodule:myfunction) is parsed by functionconfig.ParseHandler() which splits on : only — no path validation is applied to the module portion. This issue has been patched in version 1.16.5.",
+    "vendor": "Check Point",
+    "product": "nuclio"
+  },
+  "CVE-2026-82639": {
+    "cvss": 7.5,
+    "description": "NextChat versions from 2.15.8 through 2.16.1 contain an improper URL validation vulnerability in the proxy endpoint that allows attackers to obtain the server's OpenAI API key. The x-base-url header is validated using substring matching instead of hostname parsing, allowing any URL containing 'api.openai.com' to pass validation and receive the server's credentials in the Authorization header.",
+    "vendor": "ChatGPTNextWeb",
+    "product": "NextChat"
+  },
+  "CVE-2026-52887": {
+    "cvss": 10.0,
+    "description": "NocoBase is an AI-powered no-code/low-code platform for building business applications and enterprise solutions. Prior to 2.0.61, NocoBase @nocobase/plugin-notification-in-app-message exposed GET /api/myInAppChannels:list, where the filter[latestMsgReceiveTimestamp][$lt] value was inserted into a Sequelize.literal() template string without escaping or parameter binding, allowing a signed-up authenticated user to run stacked PostgreSQL statements and potentially execute commands with COPY ... TO PROGRAM. This vulnerability is fixed in 2.0.61.",
+    "vendor": "Check Point",
+    "product": "nocobase"
+  },
+  "CVE-2026-32852": {
+    "cvss": 5.1,
+    "description": "MailEnable versions prior to 10.55 contain a reflected cross-site scripting vulnerability in the webmail interface that allows remote attackers to execute arbitrary JavaScript in a victim's browser by crafting a malicious URL. Attackers can inject malicious code through the StartDate parameter in the FreeBusy.aspx form, which is not properly sanitized before being embedded into dynamically generated JavaScript.",
+    "vendor": "Check Point",
+    "product": "MailEnable"
+  },
+  "CVE-2026-32850": {
+    "cvss": 5.1,
+    "description": "MailEnable versions prior to 10.55 contain a reflected cross-site scripting vulnerability in the webmail interface that allows remote attackers to execute arbitrary JavaScript in a victim's browser by crafting a malicious URL. Attackers can inject malicious code through the SelectedIndex parameter in the ManageShares.aspx form, which is not properly sanitized before being embedded into dynamically generated JavaScript.",
+    "vendor": "Check Point",
+    "product": "MailEnable"
+  },
+  "CVE-2026-32851": {
+    "cvss": 5.1,
+    "description": "MailEnable versions prior to 10.55 contain a reflected cross-site scripting vulnerability in the webmail interface that allows remote attackers to execute arbitrary JavaScript in a victim's browser by crafting a malicious URL. Attackers can inject malicious code through the StartDate parameter in the FreeBusy.aspx form, which is not properly sanitized before being embedded into dynamically generated JavaScript.",
+    "vendor": "Check Point",
+    "product": "MailEnable"
+  },
+  "CVE-2026-9426": {
+    "cvss": 8.8,
+    "description": "A vulnerability was detected in Edimax EW-7438RPn 1.31. This affects the function formHwSet of the file /goform/formHwSet. The manipulation of the argument Anntena/Mcs/regDomain/nic0Addr/nic1Addr/wlanAddr/wanAddr/wlanSSID/wlanChan/initgain/txcck/txofdm/submit-url results in stack-based buffer overflow. The attack can be executed remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "EW-7438RPn"
+  },
+  "CVE-2026-9459": {
+    "cvss": 8.8,
+    "description": "A security flaw has been discovered in Edimax EW-7438RPn 1.31. This affects the function formConnectionSetting of the file /goform/formConnectionSetting. Performing a manipulation of the argument max_Conn/timeOut results in stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "EW-7438RPn"
+  },
+  "CVE-2026-36540": {
+    "cvss": 7.3,
+    "description": "Netis AC1200 Router NC21 V4.0.1.4296 is vulnerable to unauthenticated command injection via the /cgi-bin/skk_set.cgi endpoint. The password and new_pwd_confirm POST parameters are passed directly to the underlying OS shell without sanitization. An attacker can inject arbitrary shell commands by wrapping them in backticks (`) and encoding them in base64. Because the endpoint requires no authentication, any device on the LAN can achieve full Remote Code Execution on the router's operating system with a single HTTP POST request.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-36356": {
+    "cvss": 9.1,
+    "description": "The GoAhead web server on MeiG Smart FORGE_SLT711 devices (firmware MDM9607.LE.1.0-00110-STD.PROD-1) allows unauthenticated OS command injection via the /action/SetRemoteAccessCfg endpoint.",
+    "vendor": "Check Point",
+    "product": "Unknown"
   }
 }
