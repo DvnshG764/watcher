@@ -47752,5 +47752,53 @@
     "description": "A flaw was found in Red Hat Network Satellite. The Inter-Satellite Sync (ISS) operation, which synchronizes data between satellites, does not properly verify the authenticity of clients. This allows remote attackers to bypass the initial authentication process and obtain sensitive channel content. This vulnerability leads to unauthorized information disclosure.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-109566": {
+    "cvss": 9.8,
+    "description": "Rapyd Admin from 9.0.0 before 9.20.0 contains a hard-coded credentials vulnerability that allows remote unauthenticated attackers to gain super-admin access through an AuthSeeder-created admin@laravel account with password admin. The account is seeded by the setup installer and silently re-created on every rpd:make run, letting attackers log in as a global super admin bypassing per-record authorization and tenant scoping.",
+    "vendor": "zofe",
+    "product": "rapyd-admin"
+  },
+  "CVE-2026-104623": {
+    "cvss": 6.3,
+    "description": "A security vulnerability exists in the authorization handling for the local (management) cluster shell feature of SUSE Rancher Manager 2.15.0 up to 2.15.3, 2.14.0 up to 2.14.7, 2.13.0 up to 2.13.11, 2.12.0 up to 2.12.15, 2.11.0 up to 2.11.19 and possible older versions. The authorization check that was introduced to protect this feature was not applied to every API route that can reach it, so an alternative request form reached the shell handler without the access check being evaluated. This could allow any authenticated users to run a pod on the management cluster.",
+    "vendor": "SUSE",
+    "product": "Rancher"
+  },
+  "CVE-2026-106378": {
+    "cvss": 8.3,
+    "description": "Privilege elevation in Sandbox in Google Chrome on on Mac prior to 155.0.8059.39 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Google",
+    "product": "Chrome"
+  },
+  "CVE-2026-103056": {
+    "cvss": 9.0,
+    "description": "AiSOC versions 7.2.0 before 12.0.0 contain a command injection vulnerability in the actions service that builds CrowdStrike Real Time Response command strings by interpolating unescaped action parameters in crowdstrike_rtr.py and endpoint.py. Authenticated users can inject single quotes into file_path, path, script_name, or script_args parameters to break out of quoted arguments and execute arbitrary commands on managed endpoints with SYSTEM or root privileges.",
+    "vendor": "beenuar",
+    "product": "AiSOC"
+  },
+  "CVE-2026-104850": {
+    "cvss": 7.5,
+    "description": "MCP TypeScript SDK is the official TypeScript SDK for Model Context Protocol servers and clients. Starting in version 1.12.0 and prior to versions 1.31.0 and 2.2.0, the SDK's OAuth client support let the MCP server a client connected to decide which authorization server received the client's OAuth credentials. Stored and pre-provisioned credentials were not bound to the authorization server they belong to. A malicious or compromised MCP server could name its own authorization server in its protected resource metadata. Without any user interaction, the client would send that server the `refresh_token` and `client_secret` stored from an earlier sign-in (1.x), or the configured `client_secret` or signed assertion of a bundled non-interactive provider (1.x and 2.x). Only those applications that use the SDK as an MCP client over HTTP with an `authProvider`: your own `OAuthClientProvider`, or the bundled `ClientCredentialsProvider`, `PrivateKeyJwtProvider`, `StaticPrivateKeyJwtProvider` or (2.x) `CrossAppAccessProvider` and that may connect to an MCP server the owners does not fully trust while holding credentials for a legitimate authorization server are affected. `@modelcontextprotocol/sdk` 1.31.0 (1.x) and `@modelcontextprotocol/client` 2.2.0 (2.x) patch the issue. A workaround for those who cannot upgrade is available. 2.0.0 and 2.1.0 already accept `expectedIssuer`. On 1.x, the only workaround is to connect OAuth-enabled clients only to MCP servers you trust.",
+    "vendor": "modelcontextprotocol",
+    "product": "typescript-sdk"
+  },
+  "CVE-2026-103409": {
+    "cvss": 9.8,
+    "description": "A Missing authentication for critical function vulnerability in Juniper Networks Session Smart Router allows an unauthenticated network-based attacker to obtain administrative privileges by passing crafted URL parameters to an insecure endpoint running as root. Note that this vulnerability can only be exploited prior to the device being onboarded to Mist/Conductor. The issue can no longer be exploited once a device is onboarded to Mist/Conductor.",
+    "vendor": "Juniper Networks",
+    "product": "Session Smart Router"
+  },
+  "CVE-2026-105697": {
+    "cvss": 9.9,
+    "description": "Langflow is a tool for building and deploying AI-powered agents and workflows. Before Langflow 1.10.3, the MCP stdio transport launched whatever command / args a user put in an MCP server configuration, with no allowlist and (before 1.10.3) wrapped in bash -c \"exec {command} ...\". Any user able to reach the MCP server settings (\"Settings → MCP Servers → Add MCP Server\", POST/PATCH /api/v2/mcp/servers/{server_name}) or to build a flow with the MCP Tools component could add a \"server\" whose command is an arbitrary OS command (touch, rm -rf, a reverse shell, ...). The command runs on the Langflow host as the Langflow process user as soon as Langflow tries to connect to the server (listing servers, loading tools, running the flow) — even when the UI then reports that the stdio server failed to start. With the default LANGFLOW_AUTO_LOGIN=true, GET /api/v1/auto_login hands out a token without credentials, so on an exposed instance running the default configuration this is reachable without an account. AUTO_LOGIN is documented as a development-only setting; with it disabled, any authenticated (non-admin) user can exploit it. This issue is fixed in Langflow 1.10.3, langflow-base 0.10.3, and lfx 1.10.3.",
+    "vendor": "langflow-ai",
+    "product": "langflow"
+  },
+  "CVE-2025-28137": {
+    "cvss": 9.8,
+    "description": "The TOTOLINK A810R V4.1.2cu.5182_B20201026 were found to contain a pre-auth remote command execution vulnerability in the setNoticeCfg function through the NoticeUrl parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
