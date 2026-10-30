@@ -45352,5 +45352,29 @@
     "description": "A flaw was found in the interactive shell of the xmllint command-line tool, used for parsing XML files. When a user inputs an overly long command, the program does not check the input size properly, which can cause it to crash. This issue might allow attackers to run harmful code in rare configurations without modern protections.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-112705": {
+    "cvss": null,
+    "description": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2, tvOS 27.2. An app may be able to cause unexpected system termination.",
+    "vendor": "Apple",
+    "product": "iOS and iPadOS"
+  },
+  "CVE-2026-119025": {
+    "cvss": 7.5,
+    "description": "open 7.2.0 before 11.0.0 contains an OS command injection vulnerability that allows attackers to execute PowerShell code by supplying crafted URLs on Windows and WSL. Attackers can embed $(...) subexpressions in URLs, such as OAuth authorization_endpoint values from malicious MCP servers, which execute when index.js passes them unescaped to powershell -EncodedCommand.",
+    "vendor": "sindresorhus",
+    "product": "open"
+  },
+  "CVE-2026-111585": {
+    "cvss": 8.8,
+    "description": "An integer overflow in the remote-control screen processing component of TeamViewer clients (Full Client, Portable and Remote Control App) prior to version 15.83 may allow a malicious remote host to cause a denial of service or, depending on the platform, potentially execute arbitrary code with the privileges of the viewer process. Exploitation requires a user to establish a remote-control session to an attacker-controlled or compromised host.",
+    "vendor": "TeamViewer",
+    "product": "Full Client"
+  },
+  "CVE-2026-118539": {
+    "cvss": null,
+    "description": "Missing Authorization vulnerability in Drupal Commerce Core allows Forceful Browsing. This issue affects Commerce Core versions: from 0.0.0 to 2.41, from 3.0.0 to 3.3.13.",
+    "vendor": "Drupal",
+    "product": "Commerce Core"
   }
 }
