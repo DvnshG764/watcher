@@ -15277,9 +15277,9 @@
   },
   "CVE-2026-108097": {
     "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "description": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Drupal Drupal core allows Reflection Injection. This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
+    "vendor": "Drupal",
+    "product": "Drupal core"
   },
   "CVE-2026-102422": {
     "cvss": 8.1,
@@ -15307,9 +15307,9 @@
   },
   "CVE-2026-107268": {
     "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Drupal Two Factor Authentication - TFA / Passwordless Login allows Forceful Browsing. This issue affects Two Factor Authentication - TFA / Passwordless Login versions: from 0.0.0 to 5.4.1, from 5.5.0 to 5.5.2.",
+    "vendor": "Drupal",
+    "product": "Two Factor Authentication - TFA / Passwordless Login"
   },
   "CVE-2026-15282": {
     "cvss": 9.8,
@@ -45346,5 +45346,11 @@
     "description": "Pillow is a Python imaging library. From 11.3.0 until 13.0.0, Pillow has a heap use-after-free when libtiff rejects a tag while encoding TIFF data to an in-memory buffer. When an application saves attacker-influenced TIFF tags to BytesIO, libtiff can reject a tag during encoding in ImagingLibTiffEncode; the error path then frees the output buffer without closing or clearing the TIFF handle, and later cleanup flushes through the write callback into freed memory, which can crash the process and may enable code execution. This issue is fixed in version 13.0.0.",
     "vendor": "python-pillow",
     "product": "Pillow"
+  },
+  "CVE-2025-6170": {
+    "cvss": 2.5,
+    "description": "A flaw was found in the interactive shell of the xmllint command-line tool, used for parsing XML files. When a user inputs an overly long command, the program does not check the input size properly, which can cause it to crash. This issue might allow attackers to run harmful code in rare configurations without modern protections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
