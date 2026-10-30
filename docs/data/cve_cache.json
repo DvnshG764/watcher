@@ -45334,5 +45334,17 @@
     "description": "A flaw was found in uv. This vulnerability allows an attacker to execute malicious code during package resolution or installation via specially crafted ZIP (Zipped Information Package) archives that exploit parsing differentials, requiring user interaction to install an attacker-controlled package.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-26080": {
+    "cvss": 3.7,
+    "description": "HAProxy Community Edition 3.2.x through 3.3.x before 3.3.3 can enter a loop or crash because varint is mishandled. HAProxy Enterprise and ALOHA are also affected.",
+    "vendor": "HAProxy",
+    "product": "HAProxy"
+  },
+  "CVE-2026-112396": {
+    "cvss": 5.9,
+    "description": "Pillow is a Python imaging library. From 11.3.0 until 13.0.0, Pillow has a heap use-after-free when libtiff rejects a tag while encoding TIFF data to an in-memory buffer. When an application saves attacker-influenced TIFF tags to BytesIO, libtiff can reject a tag during encoding in ImagingLibTiffEncode; the error path then frees the output buffer without closing or clearing the TIFF handle, and later cleanup flushes through the write callback into freed memory, which can crash the process and may enable code execution. This issue is fixed in version 13.0.0.",
+    "vendor": "python-pillow",
+    "product": "Pillow"
   }
 }
