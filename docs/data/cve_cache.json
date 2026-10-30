@@ -11910,7 +11910,7 @@
     "product": "Ally – Web Accessibility & Usability"
   },
   "CVE-2026-23004": {
-    "cvss": 7.8,
+    "cvss": 4.7,
     "description": "In the Linux kernel, the following vulnerability has been resolved: dst: fix races in rt6_uncached_list_del() and rt_del_uncached_list() syzbot was able to crash the kernel in rt6_uncached_list_flush_dev() in an interesting way [1] Crash happens in list_del_init()/INIT_LIST_HEAD() while writing list->prev, while the prior write on list->next went well. static inline void INIT_LIST_HEAD(struct list_head *list) { WRITE_ONCE(list->next, list); // This went well WRITE_ONCE(list->prev, list); // Crash, @list has been freed. } Issue here is that rt6_uncached_list_del() did not attempt to lock ul->lock, as list_empty(&rt->dst.rt_uncached) returned true because the WRITE_ONCE(list->next, list) happened on the other CPU. We might use list_del_init_careful() and list_empty_careful(), or make sure rt6_uncached_list_del() always grabs the spinlock whenever rt->dst.rt_uncached_list has been set. A similar fix is neeed for IPv4. [1] BUG: KASAN: slab-use-after-free in INIT_LIST_HEAD include/linux/list.h:46 [inline] BUG: KASAN: slab-use-after-free in list_del_init include/linux/list.h:296 [inline] BUG: KASAN: slab-use-after-free in rt6_uncached_list_flush_dev net/ipv6/route.c:191 [inline] BUG: KASAN: slab-use-after-free in rt6_disable_ip+0x633/0x730 net/ipv6/route.c:5020 Write of size 8 at addr ffff8880294cfa78 by task kworker/u8:14/3450 CPU: 0 UID: 0 PID: 3450 Comm: kworker/u8:14 Tainted: G L syzkaller #0 PREEMPT_{RT,(full)} Tainted: [L]=SOFTLOCKUP Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 10/25/2025 Workqueue: netns cleanup_net Call Trace: dump_stack_lvl+0xe8/0x150 lib/dump_stack.c:120 print_address_description mm/kasan/report.c:378 [inline] print_report+0xca/0x240 mm/kasan/report.c:482 kasan_report+0x118/0x150 mm/kasan/report.c:595 INIT_LIST_HEAD include/linux/list.h:46 [inline] list_del_init include/linux/list.h:296 [inline] rt6_uncached_list_flush_dev net/ipv6/route.c:191 [inline] rt6_disable_ip+0x633/0x730 net/ipv6/route.c:5020 addrconf_ifdown+0x143/0x18a0 net/ipv6/addrconf.c:3853 addrconf_notify+0x1bc/0x1050 net/ipv6/addrconf.c:-1 notifier_call_chain+0x19d/0x3a0 kernel/notifier.c:85 call_netdevice_notifiers_extack net/core/dev.c:2268 [inline] call_netdevice_notifiers net/core/dev.c:2282 [inline] netif_close_many+0x29c/0x410 net/core/dev.c:1785 unregister_netdevice_many_notify+0xb50/0x2330 net/core/dev.c:12353 ops_exit_rtnl_list net/core/net_namespace.c:187 [inline] ops_undo_list+0x3dc/0x990 net/core/net_namespace.c:248 cleanup_net+0x4de/0x7b0 net/core/net_namespace.c:696 process_one_work kernel/workqueue.c:3257 [inline] process_scheduled_works+0xad1/0x1770 kernel/workqueue.c:3340 worker_thread+0x8a0/0xda0 kernel/workqueue.c:3421 kthread+0x711/0x8a0 kernel/kthread.c:463 ret_from_fork+0x510/0xa50 arch/x86/kernel/process.c:158 ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:246 Allocated by task 803: kasan_save_stack mm/kasan/common.c:57 [inline] kasan_save_track+0x3e/0x80 mm/kasan/common.c:78 unpoison_slab_object mm/kasan/common.c:340 [inline] __kasan_slab_alloc+0x6c/0x80 mm/kasan/common.c:366 kasan_slab_alloc include/linux/kasan.h:253 [inline] slab_post_alloc_hook mm/slub.c:4953 [inline] slab_alloc_node mm/slub.c:5263 [inline] kmem_cache_alloc_noprof+0x18d/0x6c0 mm/slub.c:5270 dst_alloc+0x105/0x170 net/core/dst.c:89 ip6_dst_alloc net/ipv6/route.c:342 [inline] icmp6_dst_alloc+0x75/0x460 net/ipv6/route.c:3333 mld_sendpack+0x683/0xe60 net/ipv6/mcast.c:1844 mld_send_cr net/ipv6/mcast.c:2154 [inline] mld_ifc_work+0x83e/0xd60 net/ipv6/mcast.c:2693 process_one_work kernel/workqueue.c:3257 [inline] process_scheduled_works+0xad1/0x1770 kernel/workqueue.c:3340 worker_thread+0x8a0/0xda0 kernel/workqueue.c:3421 kthread+0x711/0x8a0 kernel/kthread.c:463 ret_from_fork+0x510/0xa50 arch/x86/kernel/process.c:158 ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entr ---truncated---",
     "vendor": "Linux",
     "product": "Linux"
@@ -16302,7 +16302,7 @@
     "product": "Events Manager"
   },
   "CVE-2026-111943": {
-    "cvss": null,
+    "cvss": 6.8,
     "description": "On most platforms, Go uses the given system root certificates. However, in some narrower cases, the system trust stores may not be updated without further action. To defend against the narrower set of cases that may remain affected, a denylist was added in crypto/x509 to return an error when calling Verify with any of the known intermediate certificates that are no longer considered to be trustworthy.",
     "vendor": "Go standard library",
     "product": "crypto/x509"
@@ -24006,7 +24006,7 @@
     "product": "Import WP – Export and Import CSV and XML files to WordPress"
   },
   "CVE-2025-39965": {
-    "cvss": 7.8,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: xfrm: xfrm_alloc_spi shouldn't use 0 as SPI x->id.spi == 0 means \"no SPI assigned\", but since commit 94f39804d891 (\"xfrm: Duplicate SPI Handling\"), we now create states and add them to the byspi list with this value. __xfrm_state_delete doesn't remove those states from the byspi list, since they shouldn't be there, and this shows up as a UAF the next time we go through the byspi list.",
     "vendor": "Linux",
     "product": "Linux"
@@ -45380,6 +45380,48 @@
   "CVE-2024-9287": {
     "cvss": 7.8,
     "description": "A vulnerability has been found in the CPython `venv` module and CLI where path names provided when creating a virtual environment were not quoted properly, allowing the creator to inject commands into virtual environment \"activation\" scripts (ie \"source venv/bin/activate\"). This means that attacker-controlled virtual environments are able to run commands when the virtual environment is activated. Virtual environments which are not created by an attacker or which aren't activated before being used (ie \"./venv/bin/python\") are not affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-22037": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix null pointer dereference in alloc_preauth_hash() The Client send malformed smb2 negotiate request. ksmbd return error response. Subsequently, the client can send smb2 session setup even thought conn->preauth_info is not allocated. This patch add KSMBD_SESS_NEED_SETUP status of connection to ignore session setup request if smb2 negotiate phase is not complete.",
+    "vendor": "Linux",
+    "product": "Linux"
+  },
+  "CVE-2026-117184": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-13684": {
+    "cvss": 9.8,
+    "description": "An improper encoding or escaping of output vulnerability in SCGI in Synology DiskStation Manager (DSM) before 7.2.1-69057-12, 7.2.2-72806-9, 7.3.2-86009-4 and 7.4-90075 allows remote attackers to read or write arbitrary files and conduct denial-of-service attacks.",
+    "vendor": "Synology",
+    "product": "DiskStation Manager (DSM)"
+  },
+  "CVE-2026-117183": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116165": {
+    "cvss": 8.8,
+    "description": "Parse Server before 8.6.101 and 9.0.0 before 9.10.4-alpha.4 contains a missing authorization vulnerability on MongoDB deployments that lets clients without the master key delete the stored schema of any class. Unauthenticated attackers can send REST API delete requests targeting the internal _SCHEMA collection to remove field definitions, class-level permissions, and protected fields, exposing data to unauthorized reads and modifications.",
+    "vendor": "parse-community",
+    "product": "parse-server"
+  },
+  "CVE-2026-107326": {
+    "cvss": 8.8,
+    "description": "IBM Langflow OSS 1.0.0 through 1.12.4 could allow a remote authenticated attacker to execute arbitrary code due to improper neutralization of special elements used in an OS command.",
+    "vendor": "IBM",
+    "product": "Langflow OSS"
+  },
+  "CVE-2026-117182": {
+    "cvss": null,
+    "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
   }
