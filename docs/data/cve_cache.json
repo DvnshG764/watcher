@@ -47722,5 +47722,35 @@
     "description": "A flaw was found in OpenSSL. When configured to use an RSA key with exponent 3, OpenSSL improperly removes PKCS-1 padding before generating a hash. This allows remote attackers to forge PKCS #1 v1.5 signatures. Consequently, OpenSSL may incorrectly verify X.509 and other certificates, leading to a bypass of trust and authentication mechanisms.",
     "vendor": "Red Hat",
     "product": "Red Hat Enterprise Linux 3"
+  },
+  "CVE-2024-11218": {
+    "cvss": 8.6,
+    "description": "A vulnerability was found in `podman build` and `buildah.` This issue occurs in a container breakout by using --jobs=2 and a race condition when building a malicious Containerfile. SELinux might mitigate it, but even with SELinux on, it still allows the enumeration of files and directories on the host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-9675": {
+    "cvss": 4.4,
+    "description": "A vulnerability was found in Buildah. Cache mounts do not properly validate that user-specified paths for the cache are within our cache directory, allowing a `RUN` instruction in a Container file to mount an arbitrary directory from the host (read/write) into the container as long as those files can be accessed by the user running Buildah.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-7557": {
+    "cvss": 8.8,
+    "description": "A vulnerability was found in OpenShift AI that allows for authentication bypass and privilege escalation across models within the same namespace. When deploying AI models, the UI provides the option to protect models with authentication. However, credentials from one model can be used to access other models and APIs within the same namespace. The exposed ServiceAccount tokens, visible in the UI, can be utilized with oc --token={token} to exploit the elevated view privileges associated with the ServiceAccount, leading to unauthorized access to additional resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-5562": {
+    "cvss": 8.6,
+    "description": "A flaw was found in rhn-proxy. This vulnerability may allow the rhn-proxy to transmit user credentials in clear-text when it accesses RHN Satellite. This could lead to information disclosure, where sensitive authentication details are exposed to unauthorized parties.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2013-2056": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Red Hat Network Satellite. The Inter-Satellite Sync (ISS) operation, which synchronizes data between satellites, does not properly verify the authenticity of clients. This allows remote attackers to bypass the initial authentication process and obtain sensitive channel content. This vulnerability leads to unauthorized information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
