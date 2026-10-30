@@ -14400,7 +14400,7 @@
     "product": "Django"
   },
   "CVE-2026-118238": {
-    "cvss": null,
+    "cvss": 7.2,
     "description": "The Tenda W18E web management server is vulnerable to OS command injection via the \"diagnose\" packet-capture feature due to improper validation of JSON fields. An authenticated user can inject shell metacharacters into the protocol or targetDevice fields, which are later concatenated into a tcpdump command and executed with root privileges. This vulnerability can be exploited without authentication if the device is in a factory-reset state.",
     "vendor": "Tenda",
     "product": "W18E"
@@ -16878,7 +16878,7 @@
     "product": "openeclass"
   },
   "CVE-2026-106781": {
-    "cvss": null,
+    "cvss": 7.8,
     "description": "An issue in WCH CH340/CH341 USB-to-Serial Windows Driver setup package CH341SER.EXE version 4.0 allows a local attacker to escalate privileges.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -45223,7 +45223,7 @@
   },
   "CVE-2026-111357": {
     "cvss": 7.0,
-    "description": "Ivanti Connect Secure 22.8R2.4 mishandles the manner in which the dsinvoked broker trusts DSCache configuration data, leading to privilege escalation to root, as exploited in the wild in October 2026.",
+    "description": "Ivanti Connect Secure contains a missing authentication for critical function vulnerability that could allow a local authenticated attacker to escalate their privileges. This vulnerability can be chained with CVE-2026-104935 and CVE-2026-118527.",
     "vendor": "Ivanti",
     "product": "Connect Secure"
   },
@@ -47704,5 +47704,23 @@
     "description": "dbt enables data analysts and engineers to transform their data using the same practices that software engineers use to build applications. When a user installs a package in dbt, it has the ability to override macros, materializations, and other core components of dbt. This is by design, as it allows packages to extend and customize dbt's functionality. However, this also means that a malicious package could potentially override these components with harmful code. This issue has been fixed in versions 1.8.0, 1.6.14 and 1.7.14. Users are advised to upgrade. There are no kn own workarounds for this vulnerability. Users updating to either 1.6.14 or 1.7.14 will need to set `flags.require_explicit_package_overrides_for_builtin_materializations: False` in their configuration in `dbt_project.yml`.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2025-66208": {
+    "cvss": 9.8,
+    "description": "Collabora Online - Built-in CODE Server (richdocumentscode) provides a built-in server with all of the document editing features of Collabora Online. In versions prior to 25.04.702, Collabora Online has a Configuration-Dependent RCE (OS Command Injection) in richdocumentscode proxy. Users of Nextcloud with Collabora Online - Built-in CODE Server app can be vulnerable to attack via proxy.php and an intermediate reverse proxy. This vulnerability is fixed in 25.04.702.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-118527": {
+    "cvss": null,
+    "description": "Ivanti Connect Secure contains a generation of predictable numbers or identifiers vulnerability that allows a remote authenticated attacker to upload files with attacker-controlled content to a known location on disk. This vulnerability can be chained with CVE-2026-104935 and CVE-2026-111357.",
+    "vendor": "Ivanti",
+    "product": "Connect Secure"
+  },
+  "CVE-2006-4339": {
+    "cvss": 9.1,
+    "description": "A flaw was found in OpenSSL. When configured to use an RSA key with exponent 3, OpenSSL improperly removes PKCS-1 padding before generating a hash. This allows remote attackers to forge PKCS #1 v1.5 signatures. Consequently, OpenSSL may incorrectly verify X.509 and other certificates, leading to a bypass of trust and authentication mechanisms.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 3"
   }
 }
