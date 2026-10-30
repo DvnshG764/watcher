@@ -15306,7 +15306,7 @@
     "product": "Smart Popup by Supsystic"
   },
   "CVE-2026-107268": {
-    "cvss": null,
+    "cvss": 4.3,
     "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Drupal Two Factor Authentication - TFA / Passwordless Login allows Forceful Browsing. This issue affects Two Factor Authentication - TFA / Passwordless Login versions: from 0.0.0 to 5.4.1, from 5.5.0 to 5.5.2.",
     "vendor": "Drupal",
     "product": "Two Factor Authentication - TFA / Passwordless Login"
@@ -45372,7 +45372,7 @@
     "product": "Full Client"
   },
   "CVE-2026-118539": {
-    "cvss": null,
+    "cvss": 6.5,
     "description": "Missing Authorization vulnerability in Drupal Commerce Core allows Forceful Browsing. This issue affects Commerce Core versions: from 0.0.0 to 2.41, from 3.0.0 to 3.3.13.",
     "vendor": "Drupal",
     "product": "Commerce Core"
@@ -47798,6 +47798,156 @@
   "CVE-2025-28137": {
     "cvss": 9.8,
     "description": "The TOTOLINK A810R V4.1.2cu.5182_B20201026 were found to contain a pre-auth remote command execution vulnerability in the setNoticeCfg function through the NoticeUrl parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-11537": {
+    "cvss": 5.0,
+    "description": "A flaw was found in Keycloak. When the logging format is configured to a verbose, user-supplied pattern (such as the pre-defined 'long' pattern), sensitive headers including Authorization and Cookie are disclosed to the logs in cleartext. An attacker with read access to the log files can extract these credentials (e.g., bearer tokens, session cookies) and use them to impersonate users, leading to a full account compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-13204": {
+    "cvss": 9.8,
+    "description": "npm package `expr-eval` is vulnerable to Prototype Pollution. An attacker with access to express eval interface can use JavaScript prototype-based inheritance model to achieve arbitrary code execution. The npm expr-eval-fork package resolves this issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57848": {
+    "cvss": 6.4,
+    "description": "A container privilege escalation flaw was found in certain Container-native Virtualization images. This issue stems from the /etc/passwd file being created with group-writable permissions during build time. In certain conditions, an attacker who can execute commands within an affected container, even as a non-root user, can leverage their membership in the root group to modify the /etc/passwd file. This could allow the attacker to add a new user with any arbitrary UID, including UID 0, leading to full root privileges within the container.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-6017": {
+    "cvss": 5.5,
+    "description": "A flaw was found in Red Hat Advanced Cluster Management through versions 2.10, before 2.10.7, 2.11, before 2.11.4, and 2.12, before 2.12.4. This vulnerability allows an unprivileged user to view confidential managed cluster credentials through the UI. This information should only be accessible to authorized users and may result in the loss of confidentiality of administrative information, which could be leaked to unauthorized actors.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-0750": {
+    "cvss": 6.6,
+    "description": "A vulnerability was found in CRI-O. A path traversal issue in the log management functions (UnMountPodLogs and LinkContainerLogs) may allow an attacker with permissions to create and delete Pods to unmount arbitrary host paths, leading to node-level denial of service by unmounting critical system directories.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-12397": {
+    "cvss": 7.4,
+    "description": "A flaw was found in Quarkus-HTTP, which incorrectly parses cookies with certain value-delimiting characters in incoming requests. This issue could allow an attacker to construct a cookie value to exfiltrate HttpOnly cookie values or spoof arbitrary additional cookie values, leading to unauthorized data access or modification. The main threat from this flaw impacts data confidentiality and integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-9676": {
+    "cvss": 6.5,
+    "description": "A vulnerability was found in Podman, Buildah, and CRI-O. A symlink traversal vulnerability in the containers/storage library can cause Podman, Buildah, and CRI-O to hang and result in a denial of service via OOM kill when running a malicious image using an automatically assigned user namespace (`--userns=auto` in Podman and Buildah). The containers/storage library will read /etc/passwd inside the container, but does not properly validate if that file is a symlink, which can be used to cause the library to read an arbitrary file on the host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-9341": {
+    "cvss": 8.2,
+    "description": "A flaw was found in Go. When FIPS mode is enabled on a system, container runtimes may incorrectly handle certain file paths due to improper validation in the containers/common Go library. This flaw allows an attacker to exploit symbolic links and trick the system into mounting sensitive host directories inside a container. This issue also allows attackers to access critical host files, bypassing the intended isolation between containers and the host system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4813": {
+    "cvss": 5.9,
+    "description": "A flaw has been identified in glibc. In an uncommon situation, the gaih_inet function may use memory that has been freed, resulting in an application crash. This issue is only exploitable when the getaddrinfo function is called and the hosts database in /etc/nsswitch.conf is configured with SUCCESS=continue or SUCCESS=merge.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2011-1594": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Spacewalk, as used in Red Hat Network Satellite. This open redirect vulnerability allows remote attackers to redirect users to arbitrary web sites by manipulating a URL in the url_bounce parameter. This can enable attackers to conduct phishing attacks, potentially leading to unauthorized information disclosure or credential theft.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2011-2920": {
+    "cvss": 5.5,
+    "description": "A flaw was found in Spacewalk and Red Hat Network Satellite. This cross-site scripting (XSS) vulnerability allows a remote attacker to inject arbitrary web script or HTML into web pages through various input fields, such as the \"Filter by Synopsis\" field. This could lead to the execution of malicious code in a user's web browser, potentially compromising user sessions or disclosing sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2011-2927": {
+    "cvss": 5.4,
+    "description": "A flaw was found in Spacewalk and Red Hat Network Satellite. This vulnerability, known as cross-site scripting (XSS), allows remote attackers to inject malicious web scripts or HTML into web pages viewed by other users. The flaw is triggered through vectors related to Search forms, enabling attackers to potentially steal sensitive information or perform actions on behalf of the victim.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2011-3344": {
+    "cvss": 5.4,
+    "description": "A flaw was found in Spacewalk. A remote attacker can exploit a cross-site scripting (XSS) vulnerability in the Lookup Login/Password form by injecting arbitrary web script or HTML via the URI. This can lead to information disclosure or unauthorized actions within the user's browser session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-0059": {
+    "cvss": 4.9,
+    "description": "A flaw was found in Spacewalk-backend. This information disclosure vulnerability occurs when a system registration XML-RPC call fails, causing cleartext user passwords to be included in error messages. Remote administrators can exploit this by reading server logs and emails, leading to the unauthorized disclosure of user passwords.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-3427": {
+    "cvss": 5.5,
+    "description": "A flaw was found in JBoss Enterprise Application Platform (EAP) and EC2 Amazon Machine Image (AMI). Incorrect permissions (755) for the /var/cache/jboss-ec2-eap/ directory allow a local user to read sensitive files. This vulnerability can lead to information disclosure, specifically exposing Amazon Web Services (AWS) credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2013-1815": {
+    "cvss": 6.1,
+    "description": "A flaw was found in PackStack. This vulnerability allows a local user to modify deployed systems by changing the answer file, which is created in insecure directories such as /tmp or the current working directory. This insecure file creation could lead to unauthorized system modifications.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2013-1840": {
+    "cvss": 6.5,
+    "description": "A flaw was found in OpenStack Glance. Remote authenticated users can exploit this vulnerability by requesting a cached image when the single-tenant Swift or S3 store is in use. This action causes the system to report the location field, which can lead to the disclosure of the operator's backend credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2013-0261": {
+    "cvss": 8.8,
+    "description": "A flaw was found in PackStack. A local user could exploit a symlink attack on a temporary file with a predictable name in the `/tmp` directory. This vulnerability allows the local user to overwrite arbitrary files on the system, potentially leading to system compromise or data corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2013-0266": {
+    "cvss": 5.5,
+    "description": "A flaw was found in the `puppetlabs-cinder` module, as used in PackStack. This vulnerability is due to incorrect file permissions, specifically world-readable permissions, on the `cinder.conf` and `api-paste.ini` configuration files. A local user can exploit this by reading these files, which leads to the disclosure of OpenStack administrative passwords. This information disclosure could allow unauthorized access to sensitive OpenStack resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-4574": {
+    "cvss": 5.5,
+    "description": "A flaw was found in Pulp, as used in Red Hat CloudForms. This vulnerability allows a local user to read the administrative password due to world-readable permissions on the `pulp.conf` configuration file. This information disclosure could enable unauthorized access to sensitive system credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-5605": {
+    "cvss": 3.3,
+    "description": "A flaw was found in Grinder, a component of Red Hat CloudForms. This vulnerability allows a local user to modify Grinder's cache files due to incorrect world-writable permissions set on the `/var/lib/pulp/cache/grinder/` directory. This could lead to unauthorized data tampering within the application's cache.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-5625": {
+    "cvss": 6.5,
+    "description": "OpenStack Compute (Nova) Folsom before 2012.2.2 and Grizzly, when using libvirt and LVM backed instances, does not properly clear physical volume (PV) content when reallocating for instances, which allows attackers to obtain sensitive information by reading the memory of the previous logical volume (LV).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-5571": {
+    "cvss": 5.4,
+    "description": "A flaw was found in OpenStack Keystone. This vulnerability allows remote authenticated users to bypass intended authorization restrictions. This occurs because OpenStack Keystone does not properly handle EC2 (Elastic Compute Cloud) tokens when a user's role has been removed from a tenant. An attacker can leverage a token associated with a removed user role to gain unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2011-4346": {
+    "cvss": 4.6,
+    "description": "Cross-site scripting (XSS) vulnerability in the web interface in Red Hat Network (RHN) Satellite allows remote authenticated users to inject arbitrary web script or HTML via the Description field of the asset tag in a Custom Info page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2009-4139": {
+    "cvss": 6.8,
+    "description": "A flaw was found in Spacewalk Java site packages. This cross-site request forgery (CSRF) vulnerability allows a remote attacker to hijack the authentication of arbitrary users. This can lead to unauthorized actions, including disabling user accounts, adding new user accounts, or escalating privileges by modifying existing user accounts to have administrator access.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
