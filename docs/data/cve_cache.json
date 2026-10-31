@@ -47974,5 +47974,23 @@
     "description": "A flaw was found in GNU Coreutils. The sort utility's begfield() function is vulnerable to a heap buffer under-read. The program may access memory outside the allocated buffer if a user runs a crafted command using the traditional key format. A malicious input could lead to a crash or leak sensitive data.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-119712": {
+    "cvss": 6.4,
+    "description": "PipesHub before 0.10.0 contains a server-side request forgery vulnerability in ImageParser._fetch_single_url that allows attackers to make the indexing service fetch internal addresses by embedding image URLs in documents. Attackers can supply Markdown or HTML via uploads, synced mailboxes, or web connectors to reach loopback, private-network, or cloud metadata endpoints, with image responses embedded into indexed content.",
+    "vendor": "pipeshub-ai",
+    "product": "pipeshub-ai"
+  },
+  "CVE-2026-116366": {
+    "cvss": 9.5,
+    "description": "An issue has been discovered in ClickHouse Server that, under certain conditions, could allow an unauthenticated user with network access to execute arbitrary code on the ClickHouse Server.",
+    "vendor": "ClickHouse",
+    "product": "ClickHouse"
+  },
+  "CVE-2026-116244": {
+    "cvss": 8.2,
+    "description": "When a pgAdmin 4 connection was not meant to use a Kerberos user's delegated credentials, pgAdmin removed KRB5CCNAME from its environment, so the Kerberos library fell back to the default credential cache, or a client keytab, of the operating-system account running pgAdmin. libpq then answered any server that asked for GSSAPI authentication with that account's ticket, whatever user name the pgAdmin user gave, so in server mode any user could connect as the service account's Kerberos principal; gssencmode=disable did not prevent it. On Windows, SSPI used the service account's logon in the same way. psql was also started with pgAdmin's environment, which could hold another user's credential cache while that user was connecting. The fix points KRB5CCNAME and KRB5_CLIENT_KTNAME at a file that cannot exist except while a Kerberos-authenticated user connects with Kerberos, and gives every other connection, psql and the utilities require_auth=!gss,!sspi and gssencmode=disable, checked on the final connection string. require_auth needs libpq 16 or later. This issue affects pgAdmin 4: before 9.19.",
+    "vendor": "pgadmin.org",
+    "product": "pgAdmin 4"
   }
 }
