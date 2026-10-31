@@ -16650,7 +16650,7 @@
     "product": "SMA1000"
   },
   "CVE-2026-22747": {
-    "cvss": 6.8,
+    "cvss": 8.1,
     "description": "Vulnerability in Spring Spring Security. SubjectX500PrincipalExtractor does not correctly handle certain malformed X.509 certificate CN values, which can lead to reading the wrong value for the username. In a carefully crafted certificate, this can lead to an attacker impersonating another user. This issue affects Spring Security: from 7.0.0 through 7.0.4.",
     "vendor": "Spring",
     "product": "Spring Security"
@@ -29533,7 +29533,7 @@
   },
   "CVE-2025-71334": {
     "cvss": 9.8,
-    "description": "Flowise before 3.0.6 (affected versions 2.2.8 and earlier) contains an arbitrary file access vulnerability due to missing validation that the chatflowId and chatId parameters are UUIDs or numbers in file handling operations. By supplying a path-traversal value (e.g., '../../../../../tmp') as the chatflow id, an unauthenticated attacker can use the /api/v1/chatflows endpoint (via addBase64FilesToStorage) to write arbitrary files, and the /api/v1/get-upload-file and /api/v1/openai-assistants-file/download endpoints (via streamStorageFile) to read arbitrary files. Arbitrary file write may lead to remote code execution.",
+    "description": "Flowise before 3.0.6 contains an arbitrary file access vulnerability due to missing validation that the chatflowId and chatId parameters are UUIDs or numbers in file handling operations. By supplying a path-traversal value (e.g., '../../../../../tmp') as the chatflow id, an unauthenticated attacker can use the /api/v1/chatflows endpoint (via addBase64FilesToStorage) to write arbitrary files, and the /api/v1/get-upload-file and /api/v1/openai-assistants-file/download endpoints (via streamStorageFile) to read arbitrary files. Arbitrary file write may lead to remote code execution.",
     "vendor": "Flowise",
     "product": "Flowise"
   },
@@ -48040,5 +48040,59 @@
     "description": "The Gravity Forms plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 3.1.2 via a Post Custom Field whose input type is List. This is due to GFFormsModel::create_post() passing the submitted value to WordPress' unrestricted global maybe_unserialize() rather than the plugin's own hardened GFCommon::maybe_unserialize(), which was added in 3.1.1 and passes allowed_classes => false precisely to prevent object instantiation. Where the field has a content template enabled, the submitted row reaches that call verbatim. This makes it possible for unauthenticated attackers to inject a PHP object into post meta. No PHP Object Injection gadget chain is present in the plugin itself; however, if a gadget chain is present via an additional plugin or theme, it could allow the attacker to perform actions such as remote code execution. Where the custom field is mapped to the protected _wp_page_template meta key, WordPress itself supplies the chain: validate_file() accepts non-scalars, WP_Theme::__toString() then resolves an attacker-controlled path, and on hosts with a readable PEAR install and register_argc_argv enabled this yields remote code execution.",
     "vendor": "Gravity Forms",
     "product": "Gravity Forms"
+  },
+  "CVE-2026-40871": {
+    "cvss": 7.2,
+    "description": "mailcow: dockerized is an open source groupware/email suite based on docker. Versions prior to 2026-03b have a second-order SQL injection vulnerability in the quarantine_category field via the Mailcow API. The /api/v1/add/mailbox endpoint stores quarantine_category without validation or sanitization. This value is later used by quarantine_notify.py, which constructs SQL queries using unsafe % string formatting instead of parameterized queries. This results in a delayed (second-order) SQL injection when the quarantine notification job executes, allowing an attacker to inject arbitrary SQL. Using a UNION SELECT, sensitive data (e.g., admin credentials) can be exfiltrated and rendered inside quarantine notification emails. Version 2026-03b fixes the vulnerability.",
+    "vendor": "mailcow",
+    "product": "mailcow-dockerized"
+  },
+  "CVE-2026-40933": {
+    "cvss": 9.9,
+    "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.0, due to unsafe serialization of stdio commands in the MCP adapter, an authenticated attacker can add an MCP stdio server with an arbitrary command, achieving command execution. The vulnerability lies in a bug in the input sanitization from the “Custom MCP” configuration in http://localhost:3000/canvas - where any user can add a new MCP, when doing so - adding a new MCP using stdio, the user can add any command, even though your code have input sanitization checks such as validateCommandInjection and validateArgsForLocalFileAccess, and a list of predefined specific safe commands - these commands, for example \"npx\" can be combined with code execution arguments (\"-c touch /tmp/pwn\") that enable direct code execution on the underlying OS. This vulnerability is fixed in 3.1.0.",
+    "vendor": "FlowiseAI",
+    "product": "Flowise"
+  },
+  "CVE-2026-40343": {
+    "cvss": 5.8,
+    "description": "free5GC UDR is the user data repository (UDR) for free5GC, an an open-source project for 5th generation (5G) mobile core networks. In versions up to and including 1.4.2, a fail-open request handling flaw in the UDR service causes the `/nudr-dr/v2/policy-data/subs-to-notify` POST handler to continue processing requests even after request body retrieval or deserialization errors. This may allow unintended creation of Policy Data notification subscriptions with invalid, empty, or partially processed input, depending on downstream processor behavior. As of time of publication, a patched version is not available.",
+    "vendor": "free5gc",
+    "product": "udr"
+  },
+  "CVE-2026-25874": {
+    "cvss": 9.8,
+    "description": "LeRobot through 0.5.1 contains an unsafe deserialization vulnerability in the async inference pipeline where pickle.loads() is used to deserialize data received over unauthenticated gRPC channels without TLS in the policy server and robot client components. An unauthenticated network-reachable attacker can achieve arbitrary code execution on the server or client by sending a crafted pickle payload through the SendPolicyInstructions, SendObservations, or GetActions gRPC calls.",
+    "vendor": "Hugging Face",
+    "product": "LeRobot"
+  },
+  "CVE-2026-41268": {
+    "cvss": 9.8,
+    "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.0, Flowise is vulnerable to a critical unauthenticated remote command execution (RCE) vulnerability. It can be exploited via a parameter override bypass using the FILE-STORAGE:: keyword combined with a NODE_OPTIONS environment variable injection. This allows for the execution of arbitrary system commands with root privileges within the containerized Flowise instance, requiring only a single HTTP request and no authentication or knowledge of the instance. This vulnerability is fixed in 3.1.0.",
+    "vendor": "FlowiseAI",
+    "product": "Flowise"
+  },
+  "CVE-2026-41276": {
+    "cvss": 9.8,
+    "description": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.0, this vulnerability allows remote attackers to bypass authentication on affected installations of FlowiseAI Flowise. Authentication is not required to exploit this vulnerability. The specific flaw exists within the resetPassword method of the AccountService class. There is no check performed to ensure that a password reset token has actually been generated for a user account. By default the value of the reset token stored in a users account is null, or an empty string if they've reset their password before. An attacker with knowledge of the user's email address can submit a request to the \"/api/v1/account/reset-password\" endpoint containing a null or empty string reset token value and reset that user's password to a value of their choosing. This vulnerability is fixed in 3.1.0.",
+    "vendor": "FlowiseAI",
+    "product": "Flowise"
+  },
+  "CVE-2026-33453": {
+    "cvss": 10.0,
+    "description": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in Apache Camel Camel-Coap component. Apache Camel's camel-coap component is vulnerable to Camel message header injection, leading to remote code execution when routes forward CoAP requests to header-sensitive producers (e.g. camel-exec) The camel-coap component maps incoming CoAP request URI query parameters directly into Camel Exchange In message headers without applying any HeaderFilterStrategy. Specifically, CamelCoapResource.handleRequest() iterates over OptionSet.getUriQuery() and calls camelExchange.getIn().setHeader(...) for every query parameter. CoAPEndpoint extends DefaultEndpoint rather than DefaultHeaderFilterStrategyEndpoint, and CoAPComponent does not implement HeaderFilterStrategyComponent; the component contains no references to HeaderFilterStrategy at all. As a result, an unauthenticated attacker who can send a single CoAP UDP packet to a Camel route consuming from coap:// can inject arbitrary Camel internal headers (those prefixed with Camel*) into the Exchange. When the route delivers the message to a header-sensitive producer such as camel-exec, camel-sql, camel-bean, camel-file, or template components (camel-freemarker, camel-velocity), the injected headers can alter the producer's behavior. In the case of camel-exec, the CamelExecCommandExecutable and CamelExecCommandArgs headers override the executable and arguments configured on the endpoint, resulting in arbitrary OS command execution under the privileges of the Camel process. The producer's output is written back to the Exchange body and returned in the CoAP response payload by CamelCoapResource, giving the attacker an interactive RCE channel without any need for out-of-band exfiltration. Exploitation prerequisites are minimal: a single unauthenticated UDP datagram to the CoAP port (default 5683). CoAP (RFC 7252) has no built-in authentication, and DTLS is optional and disabled by default. Because the protocol is UDP-based, HTTP-layer WAF/IDS controls do not apply. This issue affects Apache Camel: from 4.14.0 through 4.14.5, from 4.18.0 before 4.18.1, 4.19.0. Users are recommended to upgrade to version 4.18.1 or 4.19.0, fixing the issue.",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache Camel"
+  },
+  "CVE-2026-4670": {
+    "cvss": 9.8,
+    "description": "Authentication bypass by primary weakness vulnerability in Progress Software MOVEit Automation allows Authentication Bypass. This issue affects MOVEit Automation: from 2025.0.0 before 2025.0.9, from 2024.0.0 before 2024.1.8, versions prior to 2024.0.0.",
+    "vendor": "Progress Software",
+    "product": "MOVEit Automation"
+  },
+  "CVE-2024-51092": {
+    "cvss": 9.1,
+    "description": "LibreNMS before 24.10.0 allows a remote attacker to execute arbitrary code via OS command injection involving AboutController.php's index(), SettingsController.php's update(), and PollDevice.php's initRrdDirectory().",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
