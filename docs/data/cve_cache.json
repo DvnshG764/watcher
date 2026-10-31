@@ -47992,5 +47992,11 @@
     "description": "When a pgAdmin 4 connection was not meant to use a Kerberos user's delegated credentials, pgAdmin removed KRB5CCNAME from its environment, so the Kerberos library fell back to the default credential cache, or a client keytab, of the operating-system account running pgAdmin. libpq then answered any server that asked for GSSAPI authentication with that account's ticket, whatever user name the pgAdmin user gave, so in server mode any user could connect as the service account's Kerberos principal; gssencmode=disable did not prevent it. On Windows, SSPI used the service account's logon in the same way. psql was also started with pgAdmin's environment, which could hold another user's credential cache while that user was connecting. The fix points KRB5CCNAME and KRB5_CLIENT_KTNAME at a file that cannot exist except while a Kerberos-authenticated user connects with Kerberos, and gives every other connection, psql and the utilities require_auth=!gss,!sspi and gssencmode=disable, checked on the final connection string. require_auth needs libpq 16 or later. This issue affects pgAdmin 4: before 9.19.",
     "vendor": "pgadmin.org",
     "product": "pgAdmin 4"
+  },
+  "CVE-2025-2241": {
+    "cvss": 8.2,
+    "description": "A flaw was found in Hive, a component of Multicluster Engine (MCE) and Advanced Cluster Management (ACM). This vulnerability causes VCenter credentials to be exposed in the ClusterProvision object after provisioning a VSphere cluster. Users with read access to ClusterProvision objects can extract sensitive credentials even if they do not have direct access to Kubernetes Secrets. This issue can lead to unauthorized VCenter access, cluster management, and privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
