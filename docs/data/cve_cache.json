@@ -57496,5 +57496,275 @@
     "description": "A vulnerability was determined in Artifex MuPDF. The impacted element is the function fz_subset_cff_for_gids of the file subset-cff.c of the component CFF Index Handler. This manipulation causes out-of-bounds read. The attack can only be executed locally. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through a bug report but has not responded yet.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-89078": {
+    "cvss": 9.9,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.2.7, 19.3 before 19.3.3, and 19.4 before 19.4.1 that under certain conditions could have allowed an authenticated user to execute arbitrary code on the GitLab server due to a double free issue when parsing a specially crafted regular expression in a CI/CD configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93577": {
+    "cvss": 9.9,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.2.7, 19.3 before 19.3.3, and 19.4 before 19.4.1 that under certain conditions could have allowed an authenticated user to execute arbitrary code on the GitLab server due to an integer overflow issue when compiling a specially crafted regular expression in a CI/CD configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93205": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: iommu/arm-smmu-v3: Manage teardown with devm arm_smmu_device_remove() manually frees the IOPF queue, destroys the vmid_map and disables the device, while the IRQs and queues are devm managed. devm unwinds only after remove() returns, so the cleanup runs in the wrong order. The IOPF queue is freed before the event-queue IRQ whose handler uses it. Manage all of it with devm so the unwind order is correct. Free the IOPF queue and vmid_map via devm actions, and disable the device from one registered after arm_smmu_device_reset(). This is also a prerequisite for fixing a Tegra241 CMDQV CMD_SYNC use-after-free in the subsequent patch.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93208": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: kasan: fix cache shrink race with CPU hotplug kasan_quarantine_remove_cache() first invokes per_cpu_remove_cache() on all online CPUs. Each callback moves objects belonging to the cache from cpu_quarantine to the CPU's shrink_qlist, where they can later be freed from task context. kmem_cache_destroy() invokes the quarantine removal path while holding cpus_read_lock(), but kmem_cache_shrink() does not. The latter can therefore race with CPU offlining as follows: kmem_cache_shrink() CPU hotplug ------------------- ----------- on_each_cpu() CPU1 moves objects to CPU1's shrink_qlist on_each_cpu() returns CPU1 goes offline kasan_cpu_offline() drains cpu_quarantine leaves shrink_qlist untouched for_each_online_cpu() skips CPU1 The objects left on CPU1's shrink_qlist are not returned to the slab allocator. This may prevent kmem_cache_shrink() from releasing slabs that would otherwise become empty. If CPU1 remains offline, a later kmem_cache_destroy() also skips the list and can report that the cache still contains objects. An intermittent occurrence was observed with a virtio-9p filesystem. The mount and umount commands both returned 0, but the kernel logged the following during the userspace-triggered teardown: [ 2994.380134][ T111] BUG 9p-fcall-cache-1 (Tainted: G B ): Objects remaining on __kmem_cache_shutdown() [ 2994.381140][ T111] Object 0xff11000004361118 @offset=4376 [ 2994.381607][ T111] Allocated in p9_fcall_init+0x201/0x400 age=19564 cpu=1 pid=104 [ 2994.382591][ T111] p9_fcall_init+0x201/0x400 [ 2994.382810][ T111] p9_tag_alloc+0x12f/0x700 [ 2994.382982][ T111] p9_client_prepare_req+0x102/0x3e0 [ 2994.383165][ T111] p9_client_rpc+0x1ab/0xa50 [ 2994.383334][ T111] p9_client_getattr_dotl+0xb0/0x1a0 [ 2994.383515][ T111] v9fs_vfs_getattr_dotl+0x115/0x360 [ 2994.383719][ T111] vfs_getattr_nosec+0x22c/0x3a0 [ 2994.383910][ T111] vfs_statx+0xd7/0x170 [ 2994.384062][ T111] vfs_fstatat+0x45/0x80 [ 2994.384215][ T111] __do_sys_newfstatat+0x84/0xe0 [ 2994.384386][ T111] do_syscall_64+0x115/0x6a0 [ 2994.384566][ T111] entry_SYSCALL_64_after_hwframe+0x77/0x7f [ 2994.399720][ T111] WARNING: mm/slub.c:1244 at __kmem_cache_shutdown+0x363/0x500, CPU#0: busybox/111 [ 2994.405655][ T111] Call Trace: [ 2994.406325][ T111] kmem_cache_destroy+0x73/0x1b0 [ 2994.406630][ T111] p9_client_destroy+0x271/0x3c0 [ 2994.407210][ T111] v9fs_session_close+0x3c/0x260 [ 2994.407409][ T111] v9fs_kill_super+0x48/0x90 [ 2994.407584][ T111] deactivate_locked_super+0xa3/0x160 [ 2994.407778][ T111] cleanup_mnt+0x1dd/0x3e0 Thus, a successful umount left objects in the 9p fcall cache and prevented the cache from being destroyed cleanly. Per-CPU shrink_qlist storage exists for every possible CPU, and each list is protected by its own raw spinlock. Iterate over possible CPUs so that a list populated before its CPU went offline is drained as well. for_each_possible_cpu() can do more work than for_each_online_cpu(), but this change only affects CONFIG_KASAN_GENERIC kernels. The extra work is limited to cache shrink and cache destruction paths and does not affect the normal allocation/free fast path. It adds one raw-spinlock-protected scan of each possible CPU's shrink list. These lists are normally empty; a non-empty list is traversed to remove objects belonging to the cache being shrunk or destroyed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93228": {
+    "cvss": 9.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: svcrdma: Reject Write/Reply chunks with segcount 0 A peer can send a Write or Reply chunk whose segcount field is zero. xdr_check_write_chunk() only rejects segcount > rc_maxpages, so zero passes the range check, and xdr_inline_decode(stream, 0) returns the current (non-NULL) cursor without advancing. The function returns true and pcl_alloc_write() then links a struct svc_rdma_chunk with ch_segcount == 0 onto rc_write_pcl or rc_reply_pcl. An earlier patch in this series made pcl_for_each_segment() safe for ch_segcount == 0, so this no longer drives the memory walk it used to. Rejecting the malformed frame at the decode boundary is still worthwhile as defense in depth: it keeps degenerate zero-segment chunks off the parsed chunk lists entirely, so any future consumer that walks ch_segments directly cannot observe one, and it makes the zero-floor easy to backport to trees where the macro change is more intrusive. RFC 8166 has no meaning for a Write/Reply chunk that describes no remote buffer, so no legitimate client is affected. xdr_check_reply_chunk() funnels Reply chunks through xdr_check_write_chunk() and inherits the same rejection. pcl_alloc_write() also links each chunk onto the parsed chunk list before filling its segment array. If a future change weakens the segcount-0 rejection, an incomplete chunk is visible to consumers during the fill loop. Reorder so that list_add_tail() follows the segment fill loop, ensuring only fully-populated chunks appear on the list.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93231": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: lockd: fix swapped arguments in nlmsvc_match_ip() When releasing locks by server IP address via /proc/fs/nfsd/unlock_ip, nlmsvc_unlock_all_by_ip() calls nlm_traverse_files() with the server sockaddr as the opaque @data argument: nlm_traverse_files(server_addr, nlmsvc_match_ip, NULL); The match callback is later invoked from nlm_traverse_locks() as: match(lockhost, host); where the first argument is the nlm_host that owns the lock, and the second argument is the @data that was originally passed down (here the server sockaddr). This is the convention every other match callback relies on (nlmsvc_mark_host(), nlmsvc_same_host(), nlmsvc_is_client()): arg1 is the real nlm_host, arg2 is the caller-supplied reference value. nlmsvc_match_ip() has had these two arguments reversed ever since the unlock-by-IP feature was introduced in commit 4373ea84c84d (\"lockd: unlock lockd locks associated with a given server ip\"): return rpc_cmp_addr(nlm_srcaddr(host), datap); Here @host is actually the server sockaddr, so nlm_srcaddr(host) dereferences a struct sockaddr as a struct nlm_host and reads garbage at the offset of h_srcaddr; meanwhile @datap is actually the lock owner's nlm_host but is compared as a sockaddr. As a result the comparison practically never matches and locks are not released for the requested IP. Swap the arguments so the lock owner's source address is compared against the requested server address: return rpc_cmp_addr(nlm_srcaddr(datap), (struct sockaddr *)host); [ cel: fix the misleading typedef parameter names too ]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93239": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: arm64: mm: Fix the lockless page-table walk in show_pte() show_pte() walks page tables locklessly and can run with interrupts enabled. A concurrent teardown can free a table page while it is being walked. It can also clear a parent entry after show_pte() checked it; the regular pXd_offset() helpers then reread the cleared entry and can derive a bogus lower-level pointer and fault again. Use the lockless offset helpers with the saved parent entries, as gup_fast() does, and pass the saved PMD to pte_offset_map(). For task page tables, arm64 selects MMU_GATHER_RCU_TABLE_FREE. Disable local interrupts around the walk to hold off RCU-deferred table frees and block the tlb_remove_table_sync_one() IPI until the walk is finished. Place the IRQ guard after the header print. This does not make the output a consistent snapshot, but prevents the task page-table walk from dereferencing a released table page or deriving a pointer from a different parent value.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93243": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mm/secretmem: properly account locked pages secretmem accounts folios by treating memory as if it were mlock()'d and thus limited by the RLIMIT_MEMLOCK limit. However the folios are unevictable and remain so until the inode is evicted, eliminating usual mlock() semantics - mapping folios then unmapping them does not clear their unevictable state, since it depends on AS_UNEVICTABLE, not PG_mlocked. A user can therefore easily work around the RLIMIT_MEMLOCK limit - simply map then unmap and VmLck no longer counts the secretmem range. Worse, folios are not accounted in the process's RSS, meaning the OOM killer won't know to kill the process. Repeatedly mapping/unmapping (or forking) can then result in the consumption of all available system memory with unevictable folios and cause system instability. A secretmem fd can be passed between processes and over fork so a per-process limit simply does not make sense, so follow the precedent set by io_uring, perf, skbuff, iommufd and xdp by tracking the number of locked pages in user_struct->locked_vm. Since the scope tracked is actually inode lifetime, the RLIMIT_MEMLOCK applies per-user not per-process, so it doesn't make sense to bypass for users with CAP_IPC_LOCK, therefore remove this bypass. There is simply no reason to carry on marking the mapping as mlock()'d since it's misleading and the lifecycle is now correctly handled, so remove this too. Note that secretmem does not support any form of truncation (including hole punching) and the folios are unreclaimable, so the folios need only be accounted on fault and unaccounted on inode destruction. __secretmem_account_pages() is more or less a duplicate of the code that io_uring etc. use, but since this is a bug fix that needs backporting, defer any de-duplication efforts to a follow-up. test_mlock_limit() asserts mlock_future_ok() on mmap(), however this has been removed, so remove the test altogether for the fix. A new test will be sent separately for upstream.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93244": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/sysfb: simpledrm: Improve stride validation Validate the computed stride against the maximum value INT_MAX.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93251": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ACPI: bus: Introduce acpi_bus_get_primary_device() The function used for obtaining the first \"physical\" device for which the given ACPI one is the ACPI companion, acpi_get_first_physical_node(), may return a stale device pointer (mostly in theory) because acpi_unbind_one() may run as a whole after dropping the ACPI device's physical_node_lock in acpi_get_first_physical_node() and before it returns. The last reference to the \"physical\" device may be dropped then before the pointer to it is returned to the caller. If that happens and the acpi_get_first_physical_node() caller invokes get_device() on the pointer obtained from it, which is done by the majority of its callers, a use-after-free will occur. To prepare for addressing this problem, introduce a new function for getting the first \"physical\" device associated with the given ACPI one (the \"primary physical device\") that will also reference count the device in question before returning a pointer to it. Make that new function and acpi_get_first_physical_node() share the physical node list lookup code. No intentional functional impact.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93260": {
+    "cvss": 7.4,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: powerpc/xive: propagate IPI init errors to prevent use-after-free When xive_init_ipis() fails (e.g. irq_domain_alloc_irqs() fails), the error path frees the global xive_ipis array. However, xive_smp_probe() previously ignored this failure and proceeded to call xive_setup_cpu_ipi(), which dereferences the already-freed xive_ipis pointer -- a use-after-free. Now that xive_smp_probe() returns int (previous patch), propagate the error from xive_init_ipis() and xive_setup_cpu_ipi() through xive_smp_probe(). Check the return value in both pnv_smp_probe() and pSeries_smp_probe() so that IPI setup is aborted cleanly on failure, avoiding the use-after-free.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93269": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ext4: fix circular lock dependency in ext4_ext_migrate Move iput(tmp_inode) after ext4_writepages_up_write() to avoid a circular lock dependency between s_writepages_rwsem and sb_internal (freeze protection). The deadlock scenario: CPU0 (EXT4_IOC_MIGRATE) CPU1 (orphan cleanup during mount) ---- ---- ext4_ext_migrate() ext4_writepages_down_write() s_writepages_rwsem (write) ext4_evict_inode() sb_start_intwrite() [sb_internal] ... ext4_writepages() s_writepages_rwsem (read) [BLOCKED] iput(tmp_inode) ext4_evict_inode() sb_start_intwrite() [BLOCKED] The tmp_inode is a temporary inode with nlink=0 created solely for building the extent tree. Its eviction does not require s_writepages_rwsem protection, so deferring iput() until after releasing the rwsem is safe.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93272": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: remoteproc: qcom_wcnss: Fix handling the lack of PD regulators in v3 The changes introduced to handle single power domain platforms have swapped the info pointer increment from num_pd_vregs to num_pds, which would shift the info pointer past the end of the array for pronto-v3, which does not list power domain regulators in vregs. This showed up as a difference between GCC- and LLVM-compiled kernels on SDM632 devices, where only with LLVM one would get the \"regulator request with no identifier\" error, because the out-of-bounds memory ended up being zeroed. Fix by skipping the increment when there are more power domains than regulators.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91788": {
+    "cvss": 5.5,
+    "description": "When implementing the JavaScript interface, Foxit PDF Editor/Reader did not perform the attribute authorization checks required by the specification. As a result, a trusted malicious PDF could potentially access sensitive content from other documents within the same process and transmit it externally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91794": {
+    "cvss": 7.8,
+    "description": "An out-of-bounds write vulnerability exists in the PDF rendering process of Foxit PDF Editor/Reader due to insufficient consistency and boundary validation when processing malformed color space data, which may cause the program to crash and potentially lead to remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91798": {
+    "cvss": 8.8,
+    "description": "A local privilege escalation vulnerability exists in the update daemon of Foxit PDF Editor/Reader due to an insecure permission configuration that allows the configuration file to be modified by regular users, which may lead to arbitrary script execution with higher privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91814": {
+    "cvss": 5.5,
+    "description": "A signature validation vulnerability exists in Foxit PDF Editor/Reader’s handling of incrementally updated PDF documents. Changes to visible document content may not invalidate the existing signature, allowing attackers to alter signed content and potentially carry out content spoofing while the document continues to appear validly signed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96442": {
+    "cvss": 7.8,
+    "description": "A code execution flaw was found in Emacs, affecting versions prior to 31.2. The Flymake mode using language backends other than Lisp would execute arbitrary code from the edited file while performing syntax checking. Viewing or editing untrusted files using Emacs could lead to arbitrary code execution with the privileges of the user running Emacs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96512": {
+    "cvss": 7.8,
+    "description": "A flaw was found in sudo. When sudoers rules use NOTBEFORE or NOTAFTER time-based access restrictions with timestamps that omit the trailing 'Z' timezone indicator, the time evaluation relies on the TZ environment variable inherited from the calling user. Because sudo is a setuid-root program, an unprivileged local user can set TZ to an extreme timezone offset to shift the authorization window by up to approximately 25 hours, causing expired rules to be treated as valid. This allows the user to execute commands outside the intended time window. Authentication is not bypassed; only the time-based authorization check is affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96275": {
+    "cvss": 8.8,
+    "description": "A malicious or compromised Flatpak repository can write attacker-controlled content to arbitrary locations on the host filesystem via extract_extra_data(). On system installs, the write happens as root. Two issues combine: `files/extra` is resolved via path operations that follow symlinks, and blob names from `xa.extra-data-sources` are not sanitized against `..` traversal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67238": {
+    "cvss": 6.5,
+    "description": "RabbitMQ is a messaging and streaming broker. Prior to versions 4.2.7 and 4.3.1, rabbit_pid_codec:decompose_from_binary/1 parses a caller-supplied ETF-encoded binary and calls binary_to_atom(Node, utf8) on the node-name field. It is reached from rabbit_volatile_queue:pid_from_name/2, which is invoked for any queue name / routing key beginning amq.rabbitmq.reply-to.. The CandidateNodes membership check happens after the atom is created, and the surrounding try/catch cannot reclaim atoms (they are never GC'd). binary_to_existing_atom is not used. Any authenticated AMQP client can crash the entire Erlang VM (all vhosts, all connections) with ~1M cheap requests. Preconditions include Authenticated AMQP 0-9-1 connection to any vhost No per-connection rate limit low enough to make ~1M operations infeasible. This issue is fixed in versions 4.2.7 and 4.3.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96889": {
+    "cvss": 7.8,
+    "description": "A flaw was found in librsvg. When processing an SVG document containing nested XML inclusions (Xincludes) with duplicate entity declarations, a use-after-free error can occur. This vulnerability arises because the library incorrectly frees an XML entity that is still in use by the parser. An attacker could potentially exploit this to cause a denial of service or execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66067": {
+    "cvss": 6.5,
+    "description": "RabbitMQ is a messaging and streaming broker. Prior to versions 4.2.7 and 4.3.1, The stream open handler calls only check_vhost_access; it omits the node/vhost/user connection-limit checks that rabbit_reader performs for AMQP. A developer %% FIXME comment at the cited line explicitly acknowledges the gap. No compensating enforcement exists in connection tracking or elsewhere in rabbitmq_stream. An authenticated tenant can fully bypass operator-configured per-user and per-vhost connection caps by connecting via port 5552 instead of 5672. Preconditions include rabbitmq_stream plugin enabled Authenticated stream-protocol credentials Operator relies on per-user/per-vhost connection limits for tenant isolation. This issue is fixed in versions 4.2.7 and 4.3.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66069": {
+    "cvss": 4.3,
+    "description": "RabbitMQ is a messaging and streaming broker. Prior to versions 4.1.13, 4.2.7, and 4.3.0, is_authorized/2 uses is_authorized_monitor for all methods. DELETE resets rabbit_core_metrics:reset_auth_attempt_metrics(). Impact is cosmetic (counters only, no log erasure), but inconsistent with rabbit_mgmt_wm_reset.erl which requires admin for the analogous operation. A monitoring-tagged user can reset the per-node authentication-attempt counters via DELETE /api/auth/attempts/:node, erasing evidence of brute-force activity. The sibling endpoint wm_reset requires administrator. Preconditions include Management plugin enabled monitoring tag. This issue is fixed in versions 4.1.13, 4.2.7, and 4.3.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67228": {
+    "cvss": 4.9,
+    "description": "RabbitMQ is a messaging and streaming broker. Prior to versions 4.2.7 and 4.3.1, The runtime-parameters lookup path coerces the URL :component segment to an atom with rabbit_data_coercion:to_atom/1 in lookup_component/1 (deps/rabbit/src/rabbit_runtime_parameters.erl), creating a new atom for any previously unseen value. A safe helper, rabbit_registry:binary_to_type/1, which uses binary_to_existing_atom with a catch, already exists but is not used at this call site. lookup_component/1 calls rabbit_data_coercion:to_atom(Component) on the :component segment of the request URL, converting an attacker-supplied string into a new atom. Because the Erlang atom table is bounded and atoms are never garbage collected, an authorized policymaker issuing roughly one million requests with distinct component values can exhaust the atom table and crash the node, resulting in a denial of service. Preconditions include Exploitation requires policymaker privileges and roughly one million requests.. This issue is fixed in versions 4.2.7 and 4.3.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67240": {
+    "cvss": 6.5,
+    "description": "RabbitMQ is a messaging and streaming broker. Prior to versions 4.2.7 and 4.3.1, pattern_to_regex maps % -> .*? and _ -> ., then compiles ^...$ with only [unicode]; re:run is called with only [{capture, none}] - no explicit match_limit. A pattern like %_%_..._%X becomes ^.*?..*?.....*?.X$ with overlapping lazy quantifiers. The whole-expression cap is ?MAX_EXPRESSION_LENGTH=4096 chars / ?MAX_TOKENS=200; a LIKE string literal is one token, so ~2000 %_ pairs fit. SQL filters are accepted unconditionally at rabbit_amqp_session.erl:3264 (no feature flag). Evaluated per-message at rabbit_stream_queue.erl:1439. OTP's default 10M match_limit caps each match at ~100-200 ms (not seconds), and the re NIF yields to the scheduler. An authenticated AMQP 1.0 consumer with read+write on a stream queue can cause ~100-200 ms of CPU per delivered message via a crafted LIKE filter, multiplied across thousands of messages and parallel sessions - a substantial backtracking-driven CPU amplification. Preconditions include AMQP 1.0 with stream queues in use Attacker can attach a receiver with a filter (read permission) and publish messages with long property values (write permission). This issue is fixed in versions 4.2.7 and 4.3.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70125": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95619": {
+    "cvss": 7.7,
+    "description": "A flaw was found in libstdc++. An integer overflow can occur when processing large inputs to the aligned operator new in the C++ library. This vulnerability could lead to an undersized memory allocation, potentially causing memory corruption or application instability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88010": {
+    "cvss": 5.3,
+    "description": "Traefik is an open source HTTP reverse proxy and load balancer. From 3.6.11 until 3.7.13, checkPassword in pkg/middlewares/auth/basic_auth.go constructs the BasicAuth singleflight key from the submitted password and stored secret. Concurrent requests for absent usernames therefore coalesce on one key while configured usernames perform separate password hashes, creating an unauthenticated timing discrepancy that reveals whether a username exists. Sequential checks remain cost-equalized, Traefik v2 and Digest authentication are not affected, and the issue does not disclose credentials or bypass authentication. This issue is fixed in version 3.7.13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94640": {
+    "cvss": 7.5,
+    "description": "A flaw was found in rpcbind. This vulnerability allows a remote, unauthenticated attacker to cause a Denial of Service (DoS) by sending a large number of unique requests. The rpcbind service records previously unseen RPC (Remote Procedure Call) statistics in unbounded in-memory lists, leading to persistent memory growth and increased CPU usage. This can degrade or exhaust service availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67615": {
+    "cvss": 8.8,
+    "description": "openEQUELLA before 2026.1.0 contains an authenticated remote code execution vulnerability that allows any authenticated non-guest user to execute arbitrary code by exploiting Java deserialization in the HTTP invoker endpoint at /invoker/*. Attackers can bypass the class-name denylist enforced by PluginAwareObjectInputStream by nesting a serialized payload inside a java.security.SignedObject, causing the inner stream to be deserialized by a separate ObjectInputStream that does not apply the denylist, ultimately reaching a JNDI sink and enabling code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15801": {
+    "cvss": 8.0,
+    "description": "A vulnerability was found in CRI-O related to the container checkpoint and restore feature. When CRI-O is configured to restore containers from checkpoint archives, insufficient validation of restore metadata may allow a user with sufficient privileges to perform unintended operations on the host filesystem. Successful exploitation requires that container checkpoint and restore functionality is enabled, which is not the default configuration. An attacker must also be able to trigger restoration of a container from untrusted checkpoint content.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-92574": {
+    "cvss": 8.8,
+    "description": "A vulnerability in CRI-O checkpoint restore allows a user who can create a pod from a malicious checkpointed container to bypass the destination Kubernetes security context. The restored process may retain credentials, Linux capabilities, no_new_privs, and seccomp state from the checkpoint instead of enforcing the destination configuration. This can allow execution with elevated privileges across the container security boundary. Affected upstream supported versions are CRI-O 1.34 and later. Downstream Red Hat products are affected from OCP 4.17 onward. Fixes have been applied to supported branches but are not yet released. Exploitation requires permission to create a pod from a malicious checkpoint image and checkpoint restore functionality to be available.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-94109": {
+    "cvss": 8.0,
+    "description": "openEQUELLA before 2026.1.0 contains an authenticated stored server-side template injection vulnerability in FreemarkerPortletRenderer.renderHtml() that allows any authenticated non-guest user to achieve remote code execution by storing a malicious FreeMarker payload through a POST request to the RemotePortletService invoker endpoint. The markup field from stored portlet configuration is passed directly to custFactory.createResult() without a TemplateClassResolver restriction or FreeMarker sandboxing in BasicConfiguration, leaving built-ins such as ?new and freemarker.template.utility.Execute available, causing the payload to execute in the application server process context when any user renders a dashboard containing the affected portlet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89058": {
+    "cvss": 7.4,
+    "description": "A flaw was found in RESTEasy's CorsFilter, which, when configured to allow all origins (\"*\"), reflects the request's Origin header back in the Access-Control-Allow-Origin response together with Access-Control-Allow-Credentials: true. This permissive cross-origin policy allows a malicious website to make credentialed cross-origin requests and read authenticated responses from a victim's session, resulting in a loss of confidentiality.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89059": {
+    "cvss": 7.5,
+    "description": "A flaw was found in RESTEasy's IIOImageProvider, which decodes attacker-supplied image request bodies without enforcing any limit on the declared image dimensions or pixel count. A remote, unauthenticated attacker can send a small crafted image declaring enormous dimensions to trigger a very large memory allocation, exhausting the JVM heap and resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87743": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Quarkus HTTP security. An unauthenticated attacker can exploit a discrepancy in how paths are normalized between the security matcher and HTTP request dispatchers. This allows the attacker to craft a URL that the security matcher considers public, but which is then routed to a protected endpoint, leading to an authorization bypass and potential unauthorized access to sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81627": {
+    "cvss": 8.2,
+    "description": "A flaw was found in QEMU. The VAPIC setup hypercall in hw/i386/vapic.c does not validate that the writable RAM alias remains within the option ROM window. A privileged guest user on a Q35/KVM machine can position this alias over locked SMRAM, bypassing chipset D_LCK protection and injecting code into System Management Mode memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93586": {
+    "cvss": 3.3,
+    "description": "ImageMagick before 7.1.2-31 and before 6.9.13-56 contains a use-after-free vulnerability in the ImagesToBlob method, caused by a pointer that is not updated correctly. Exploitation may result in a limited availability impact (e.g., a crash of the affected process). The issue is fixed in versions 7.1.2-31 and 6.9.13-56.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93587": {
+    "cvss": 3.3,
+    "description": "ImageMagick before 7.1.2-31 and before 6.9.13-56 contains a policy bypass in the PCD (and, per the upstream advisory, CUBE and HALD) coder: when a specific command line option is supplied, the decoder does not check a configured resource limit, which can result in extra memory allocation. A local user able to pass command line options to ImageMagick can therefore exceed the intended memory policy limit, causing a limited availability impact. The issue is fixed in 7.1.2-31 and 6.9.13-56.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93588": {
+    "cvss": 4.3,
+    "description": "ImageMagick before 7.1.2-31 and before 6.9.13-56 contains a NULL pointer dereference in the PNM coder. When the coder reaches a memory (resource) limit at a specific point during processing, the failed allocation is not handled and a NULL pointer is dereferenced, which can lead to a denial of service (application crash) when processing a specially crafted or sufficiently large PNM image.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93589": {
+    "cvss": 7.5,
+    "description": "ImageMagick before 7.1.2-31 and 6.9.13-56 contains a division-by-zero flaw in the FLIF encoder. An incorrect value for ticks per second in the image being encoded causes a divide-by-zero and crashes the encoder, resulting in a denial of service. The issue is fixed in 7.1.2-31 and 6.9.13-56.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93200": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: i3c: master: Fix use-after-free of master->this sysfs attribute callbacks for the master controller device dereference master->this. However, master->this is freed in i3c_master_detach_free_devs() before the master device itself is released. As a result, sysfs accesses can dereference a freed master->this pointer, leading to a use-after-free. Keep master->this alive until i3c_masterdev_release(), which is called after the master device and its sysfs state are being torn down. Do not free master->this as part of the normal device detach path. On the error path in i3c_master_set_info(), reset master->this and bus.cur_master to NULL before freeing the allocated device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93202": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: i3c: master: Fix recursive locking during device registration i3c_master_register_new_i3c_devs() registers newly discovered devices while holding i3c_bus_normaluse_lock(), a down_read(). device_register() can immediately probe the device, and probe callbacks typically invoke I3C helpers that take i3c_bus_normaluse_lock() again, leading to a recursive acquisition of the same rwsem. rwsems do not support recursive read locking and can deadlock when a writer is waiting. See the \"Recursive read locks\" section of Documentation/locking/lockdep-design.rst. For example, with Intel LPSS I3C, LOCKDEP generates a WARNING like: # echo intel-lpss-i3c.0 > /sys/bus/platform/drivers/mipi-i3c-hci/unbind # echo intel-lpss-i3c.0 > /sys/bus/platform/drivers/mipi-i3c-hci/bind WARNING: possible recursive locking detected kworker/5:1/94 is trying to acquire lock: ffff88811c810d78 (&i3cbus->lock){++++}-{4:4}, at: i3c_device_match_id+0x45/0x370 but task is already holding lock: ffff88811c810d78 (&i3cbus->lock){++++}-{4:4}, at: i3c_master_reg_work_fn+0x21/0x5f0 Fix this by separating device creation from device registration. Populate desc->dev under the maintenance lock, collect the devices that still need registration into a local list, then release the lock before calling device_register(). Finally retake the lock and clean up any devices that failed to register. Use the maintenance lock rather than the normal-use lock while adding device objects. A write-side maintenance lock prevents readers from observing a partially initialized desc->dev during initial device population, or desc->dev disappearing if registration fails. The local list requires a list node, so add a list node member to struct i3c_device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69399": {
+    "cvss": 9.9,
+    "description": "Unintended proxy or intermediary in Azure Arc allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
