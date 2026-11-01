@@ -3098,8 +3098,8 @@
   "CVE-2026-33888": {
     "cvss": 5.3,
     "description": "ApostropheCMS is an open-source Node.js content management system. Versions 4.28.0 and prior contain an authorization bypass vulnerability in the getRestQuery method of the @apostrophecms/piece-type module, where the method checks whether a MongoDB projection has already been set before applying the admin-configured publicApiProjection. An unauthenticated attacker can supply a project query parameter in the REST API request, which is processed by applyBuildersSafely before the permission check, pre-populating the projection state and causing the publicApiProjection to be skipped entirely. This allows disclosure of any field on publicly queryable documents that the administrator explicitly restricted from the public API, such as internal notes, draft content, or metadata. Exploitation is trivial, requiring only appending query parameters to a public URL with no authentication. This issue has been fixed in version 4.29.0.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "apostrophe"
   },
   "CVE-2026-33889": {
     "cvss": 5.4,
@@ -6326,8 +6326,8 @@
   "CVE-2026-35600": {
     "cvss": 5.4,
     "description": "Vikunja is an open-source self-hosted task management platform. Prior to 2.3.0, task titles are embedded directly into Markdown link syntax in overdue email notifications without escaping Markdown special characters. When rendered by goldmark and sanitized by bluemonday (which allows and tags), injected Markdown constructs produce phishing links and tracking pixels in legitimate notification emails. This vulnerability is fixed in 2.3.0.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "vikunja"
   },
   "CVE-2026-35601": {
     "cvss": 4.1,
@@ -7982,8 +7982,8 @@
   "CVE-2026-35489": {
     "cvss": 7.3,
     "description": "Tandoor Recipes is an application for managing recipes, planning meals, and building shopping lists. Prior to 2.6.4, the POST /api/food/{id}/shopping/ endpoint reads amount and unit directly from request.data and passes them without validation to ShoppingListEntry.objects.create(). Invalid amount values (non-numeric strings) cause an unhandled exception and HTTP 500. A unit ID from a different Space can be associated cross-space, leaking foreign-key references across tenant boundaries. All other endpoints creating ShoppingListEntry use ShoppingListEntrySerializer, which validates and sanitizes these fields. This vulnerability is fixed in 2.6.4.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "recipes"
   },
   "CVE-2026-35490": {
     "cvss": 9.8,
@@ -12570,7 +12570,7 @@
     "product": "Archer C20 v6.0, Archer AX53 v1.0"
   },
   "CVE-2026-100752": {
-    "cvss": 9.3,
+    "cvss": 9.8,
     "description": "Joomla Extension - ordasoft.com - Unauthenticated SQL Injection in Real Estate Manager (Free) < 6.7.9 - site/realestatemanager.php builds the ORDER BY clause of three separate frontend property-listing queries (category browsing, search results, and the full property listing) from a request-controlled order_field parameter, concatenated directly into an unquoted SQL clause with no allow-list of real column names and no cast.",
     "vendor": "PHP",
     "product": "Real Estate Manager (Free) extension for Joomla"
@@ -14996,7 +14996,7 @@
   "CVE-2026-107081": {
     "cvss": 9.8,
     "description": "SQL injection via identifier injection in the tableName and tableFields POST parameters of admin AJAX endpoints (admin/AJAX_lookup_handler.php, admin/AJAX_check_id.php, admin/AJAX_vocabolary_control.php) in SENAYAN Library Management System (SLiMS) Bulian 9.8.0 allows any authenticated staff user to extract arbitrary database contents.",
-    "vendor": "PHP",
+    "vendor": "Check Point",
     "product": "Unknown"
   },
   "CVE-2026-24102": {
@@ -15524,7 +15524,7 @@
   "CVE-2026-107082": {
     "cvss": 8.8,
     "description": "Slims (Senayan Library Management Systems) 9 Bulian 9.8.0 allows an authenticated staff user to perform SQL injection via the opac_hide and promoted GET parameters of admin/modules/bibliography/index.php, because escape_string() is applied but the values are concatenated into an unquoted numeric SQL context, leading to error-based information disclosure and arbitrary data extraction.",
-    "vendor": "PHP",
+    "vendor": "Check Point",
     "product": "Unknown"
   },
   "CVE-2026-101108": {
@@ -16484,7 +16484,7 @@
   "CVE-2026-107083": {
     "cvss": 9.8,
     "description": "SENAYAN Library Management System (SLiMS) Bulian (slims9_bulian) 9.8.0 is vulnerable to SQL Injection in admin/modules/reporting/customs/dl_detail.php via the parameter fileID.",
-    "vendor": "PHP",
+    "vendor": "Check Point",
     "product": "Unknown"
   },
   "CVE-2026-16348": {
@@ -16724,7 +16724,7 @@
   "CVE-2026-11518": {
     "cvss": 4.3,
     "description": "A vulnerability was identified in SourceCodester Inventory System 1.0. Affected is an unknown function of the file /users.php of the component User Management Page. The manipulation of the argument fullname/username leads to cross site scripting. The attack is possible to be carried out remotely. The exploit is publicly available and might be used.",
-    "vendor": "PHP",
+    "vendor": "Check Point",
     "product": "Inventory System"
   },
   "CVE-2026-21437": {
@@ -19256,7 +19256,7 @@
   "CVE-2026-85714": {
     "cvss": 9.1,
     "description": "Stirling-PDF is a locally hosted web application that facilitates various operations on PDF files. Prior to 2.13.2, an authenticated administrator using the default H2 database and security mode can upload a crafted SQL file to POST /api/v1/database/import-database. DatabaseService.validateSqlContent() splits normalized input on semicolons and accepts a statement when it contains any allowed keyword, allowing dangerous H2 functions such as FILE_READ and CSVWRITE, plus CREATE ALIAS, to bypass the insufficient whitelist and execute side effects when RUNSCRIPT processes the file. This permits arbitrary file access. The demonstrated operating-system command execution chain writes attacker-controlled startup files to a user-site location and then triggers an application Python interpreter configured to load those startup files, resulting in command execution as the JVM service account. This issue is fixed in version 2.13.2.",
-    "vendor": "Stirling-Tools",
+    "vendor": "Check Point",
     "product": "Stirling-PDF"
   },
   "CVE-2026-46364": {
@@ -57908,6 +57908,888 @@
   "CVE-2023-42756": {
     "cvss": 4.7,
     "description": "A flaw was found in the Netfilter subsystem of the Linux kernel. A race condition between IPSET_CMD_ADD and IPSET_CMD_SWAP can lead to a kernel panic due to the invocation of `__ip_set_put` on a wrong `set`. This issue may allow a local user to crash the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100724": {
+    "cvss": 5.4,
+    "description": "http4k (Maven package org.http4k:http4k-core) before 6.49.0.0, 5.42.0.0 and 4.51.0.0 uses substring (Contains) matching on the Host header by default in reverseProxy() and reverseProxyRouting() when dispatching to configured virtual hosts. If these functions are deployed as a public-facing inbound HTTP handler with two or more configured virtual hosts, a remote attacker can supply a Host header that merely contains a configured vhost name (for example Host: admin.evil.com for a vhost configured as \"admin\") and be routed to that vhost, bypassing routing-based authorization. The intended outbound-dispatch and test-time uses, where the Host value is set by the calling application, are not affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100709": {
+    "cvss": 7.5,
+    "description": "Froxlor through 2.3.10 stores only a numeric user ID in remembered-2FA tokens (panel_2fa_tokens) without recording the account namespace, and the remembered-token lookup during login is not constrained to the customer or administrator account type. Because customer and administrator IDs are allocated from separate namespaces, a remembered-2FA token legitimately issued to a customer with a given ID also matches an administrator with the same ID. An attacker who controls a customer account with a colliding ID, holds a valid remembered-2FA cookie for it, and already knows the target administrator's password can bypass the administrator's TOTP second factor and obtain an authenticated administrator session. This is a second-factor bypass only; it does not defeat password authentication. Fixed in 2.3.11.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97529": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: qla2xxx: Validate BSG request_len before reading vendor_cmd[] The FC BSG transport allocates job->request via memdup_user() using the exact user-supplied request_len. For FC_BSG_HST_VENDOR, fc_bsg_host_dispatch() only guarantees request_len covers msgcode and vendor_id; it does not account for the vendor_cmd[] flexible array. qla2xxx then reads the command selector vendor_cmd[0] and, in several sub-handlers, vendor_cmd[1]/[2] or structures overlaid on the vendor command area without verifying request_len. A caller holding CAP_SYS_RAWIO can submit a short request whose vendor_id matches the host, triggering out-of-bounds heap reads (KASAN-detectable, and able to mis-select a command or panic). Add a central guard in qla2x00_process_vendor_specific() so the selector is always in bounds, restrict the early vendor_cmd[0] read in qla24xx_bsg_request() to sufficiently long vendor messages, and add request_len checks to the sub-handlers that read further: qla24xx_proc_fcp_prio_cfg_cmd(), qla2x00_process_loopback(), qla84xx_reset(), qla84xx_updatefw(), qla2x00_read_optrom(), qla2x00_update_optrom(), qlafx00_mgmt_cmd() and qla28xx_validate_flash_image().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97530": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: qla2xxx: Fix soft lockup polling continuation IOCB signature qla27xx_copy_multiple_pkt() and qla27xx_copy_fpin_pkt() poll rsp_q->ring_ptr->signature for RESPONSE_PROCESSED (0xDEADDEAD) to decide whether the next continuation IOCB has arrived, spinning on cpu_relax() without advancing the ring or decrementing the entry count while it has not. response_t::signature lives at byte offset 60, but a continuation IOCB (sts_cont_entry_t / struct sts_cont_entry_ext) carries raw FC frame payload at that offset (data[56..59]). A received frame whose payload bytes happen to equal 0xDEADDEAD is therefore misread as \"not yet arrived\", and the loop spins forever in interrupt/DPC context, causing a CPU soft lockup. The poll is also unnecessary: callers of qla27xx_copy_multiple_pkt() (PT_LS4_UNSOL and the NVMe purls path) already gate on qla_chk_cont_iocb_avail(), which guarantees all entry_count IOCBs are present before copying begins. The sibling helper __qla_copy_purex_to_buffer() already drops the signature poll and relies on the entry_type == STATUS_CONT_TYPE guard instead. Remove the signature busy-wait from both helpers, keeping the entry_type guard, and gate the FPIN path with qla_chk_cont_iocb_avail() so it defers and re-processes on the next interrupt once all continuation IOCBs have arrived, mirroring the ELS_AUTH_ELS and PT_LS4_UNSOL arms. With this the signature field is never read on a continuation IOCB, eliminating the payload-aliasing lockup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97531": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: qla2xxx: Skip vport under deletion in report ID acquisition qla24xx_report_id_acquisition() format-1 handling walks ha->vp_list under vport_slock, takes a vref_count on the matching vport and calls qla_update_host_map() to register its port id. A vport teardown via qla24xx_vport_delete() sets VPORT_DELETE, then qla24xx_disable_vp() removes the vport from the host_map btree and zeroes vha->d_id (RESET_AL_PA). The vport is only unlinked from vp_list later, in qla24xx_deallocate_vp_id(), which clears vp_map[idx] (RESET_VP_IDX) but does not touch host_map. In the window in between, report ID acquisition can still find the vport on vp_list and call qla_update_host_map(); with d_id already zeroed it takes the btree_insert32() path and re-inserts the dying vport into host_map. Nothing cleans that entry afterwards, so once scsi_host_put() frees the vha a later host_map lookup dereferences freed memory. Skip a vport that has VPORT_DELETE set before taking the reference, so it is neither re-registered nor scheduled for DPC re-registration. This mirrors the existing guard in qla2x00_alert_all_vps().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97532": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: qla2xxx: Null out freed pointers in qla2x00_mem_alloc() error path When qla2x00_mem_alloc() fails, qla2x00_probe_one() jumps to probe_hw_failed and calls qla2x00_mem_free(). Several error labels in qla2x00_mem_alloc() freed adapter members (elsrej.c, purex_dma_pool, flt, sfp_data, loop_id_map, async_pd, sf_init_cb, ex_init_cb, npiv_info) but left the pointers dangling. qla2x00_mem_free() then freed them a second time. Worse, for the dma_pool members it issued dma_pool_free(ha->s_dma_pool, ...) after s_dma_pool had already been destroyed and set to NULL at fail_s_dma_pool, dereferencing a NULL pool. Clear each freed pointer (and its DMA handle) in the error labels so the subsequent qla2x00_mem_free() skips them.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97534": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: f2fs: accurately adjust free_sections during free_segment_range In free_segment_range(), MAIN_SECS(sbi) is temporarily reduced by `secs` to restrict block allocation to the safe remaining main area while valid blocks in the truncated range are evacuated by GC. However, FREE_I(sbi)->free_sections tracks the total number of free sections across the whole filesystem. If any sections within the truncated range were already free upon entering free_segment_range(), failing to deduct them from free_sections causes the filesystem to overestimate available free sections in the active, reduced main area. This leads to inconsistent free section accounting during GC data migration and can trigger unexpected allocation failures or assertion errors when space is tight. Fix this by calculating the number of already-free sections in the truncated range, deducting them from free_sections upon entering free_segment_range(), and restoring them on exit.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97535": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: qla2xxx: Bound VP index against VP_CTRL IOCB bitmap size The VP control IOCB selects its target virtual port by setting one bit in vp_idx_map, a fixed 16-byte (128-bit) array in both vp_ctrl_entry_24xx and vp_ctrl_entry_24xx_ext. qla25xx_ctrlvp_iocb() computes map = (vp_index - 1) / 8 and writes vce->vp_idx_map[map] without checking that map stays within the array. max_npiv_vports is taken from firmware and only sanitized to a MIN_MULTI_ID_FABRIC-aligned boundary, so it can legitimately be 191 or 255, and qla24xx_control_vp() only rejects vp_index >= max_npiv_vports. A vp_index above 128 therefore yields map >= 16 and an out-of-bounds write of up to 16 bytes past vp_idx_map, corrupting the trailing IOCB fields (or the adjacent request-ring slot on the 64-byte layout). Reject a vp_index that cannot be represented in the IOCB bitmap in qla24xx_control_vp(), and add a defensive ARRAY_SIZE() guard in qla25xx_ctrlvp_iocb() before the write. Adapters that report the usual 63 or 127 NPIV vports are unaffected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97536": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: qla2xxx: Fix use-after-free of qpair work on queue teardown The response queue MSI-X handler qla2xxx_msix_rsp_q() schedules qla_do_work() via queue_work(ha->wq, &qpair->q_work). qla_do_work() dereferences the qpair (vha, rsp) and takes qpair->qp_lock. During teardown, qla2xxx_delete_qpair() deletes the response queue, which calls free_irq() in qla25xx_free_rsp_que(), and then frees the queue and the qpair. free_irq() waits for running hardirq handlers but does not cancel work already placed on ha->wq. A still-pending q_work then runs qla_do_work() against the freed qpair and response queue, causing a use-after-free. This is especially likely during full adapter teardown, where destroy_workqueue(ha->wq) forces pending work to run after the queue pairs have been freed. Flush the work item with cancel_work_sync() in qla25xx_free_rsp_que() after free_irq() has released the interrupt (so no new work can be queued) and before the response queue and qpair memory are freed (so the flushed handler still sees valid memory). Guard on rsp->qpair and ha->wq to match the INIT_WORK() condition and avoid operating on an uninitialized work_struct.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97537": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: qla2xxx: Fix queue teardown NULL dma_free and bitmap locking qla25xx_free_req_que() and qla25xx_free_rsp_que() have two pre-existing bugs exposed on the error path of qla25xx_create_{req,rsp}_que(): 1. When dma_alloc_coherent() fails during queue creation, the error path calls the free function with req->ring / rsp->ring still NULL (from kzalloc). The unconditional dma_free_coherent() with a NULL cpu_addr is undefined behavior and can panic. 2. The free functions clear req_qid_map / rsp_qid_map under vport_lock, but the create functions protect the same bitmaps with mq_lock. This provides no mutual exclusion. Additionally, the create error path clears the bit and releases mq_lock before calling the free function, creating a window where another thread can allocate the same que_id and have its ha->req_q_map entry clobbered by the subsequent lockless NULL assignment in the free function. Fix by: - Guarding dma_free_coherent() with a NULL check on the ring pointer. - Using mq_lock (the lock held by all creators) in the free functions to atomically NULL the map entry and clear the bitmap bit. - Removing the now-redundant clear_bit blocks from the create error paths since the free functions handle it atomically.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97554": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: avoid using uninitialized SIDs in cifs_posix_to_fattr() cifs_posix_to_fattr() ignores the return value of posix_info_parse(). When a malformed POSIX directory entry is encountered (e.g. invalid SID lengths from an untrusted server), posix_info_parse() returns -1 without populating the 'parsed' struct. The uninitialized stack memory in parsed.owner and parsed.group is then passed to sid_to_id(), which processes the garbage bytes and passes them to request_key() to construct a SID string, potentially leaking kernel stack contents to the userspace idmap daemon. Fix this by checking the return value and skipping the SID-to-id mapping when parsing fails. The remaining fattr fields (timestamps, mode, etc.) are populated directly from the 'info' pointer so they are unaffected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97555": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fix heap overflow in DACL owner/group rewrite When id_mode_to_cifs_acl rewrites an existing DACL, it allocates a buffer sized according to the on-disk DACL length reported by dacl_ptr->size. However, replace_sids_and_copy_aces may rewrite each ACE with a new owner/group SID obtained from the cifs.idmap upcall. Those SIDs can have up to SID_MAX_SUB_AUTHORITIES (15) sub-authorities, making each ACE up to 76 bytes (sizeof(struct smb_ace)). If the original DACL contains short SIDs (e.g., 1 sub-authority) while the replacement SIDs are long, the rewritten ACEs overflow the allocation. Fix this by always budgeting for worst-case SID expansion: allocate sizeof(struct smb_acl) plus num_aces * sizeof(struct smb_ace), which covers the smb_acl header and room for every ACE at maximum SID size. This replaces the previous split logic that used dacl_ptr->size for cifsacl mounts but num_aces * sizeof(struct smb_ace) for mode_from_sid mounts: both paths can trigger the same rewrite and need the same headroom. KASAN reports this as: BUG: KASAN: slab-out-of-bounds in build_sec_desc+0x1e8a/0x2680 [cifs] Write of size 4 at addr ffff8881a5e25374 by task chown/5298 ... The buggy address is located 0 bytes to the right of allocated 884-byte region [ffff8881a5e25000, ffff8881a5e25374)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97556": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: avoid leaking refcount when cifs_sb_tlink() fails cifs_oplock_break() takes over the reference that cifs_queue_oplock_break() acquired when it queued the work, and drops it with _cifsFileInfo_put() once the break has been processed. Only in setups with \"-o multiuser\", cifs_sb_tlink() may fail, at which point cifs_oplock_break() returns without putting the file reference, mirroring the reference leak we already fixed in the companion patch to cifs_queue_oplock_break(). This would trigger a crash due to busy inodes on the next unmount: BUG: Dentry ... still in use (1) [unmount of cifs cifs] VFS: Busy inodes after unmount of cifs (cifs) Drop the reference on that path as well. Doing so before the out label mirrors the normal path, which also puts the reference before cifs_done_oplock_break(). Found by Sashiko code review. The failure path was not exercised at runtime.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97557": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: avoid leaking refcount in cifs_queue_oplock_break() cifs_queue_oplock_break() unconditionally takes a reference on the target file before queueing cifs_oplock_break(). Only that work item decreases the reference counter again. If another oplock break arrives while that work is still queued, queue_work() will return false and not queue this second work item. As a result, we will never reach the point to drop the file reference again and are leaking this reference. This can be triggered when interacting with a slow-responding server. As a result, later unmount operations for this file system will fail with BUG: Dentry ... still in use (1) [unmount of cifs cifs] VFS: Busy inodes after unmount of cifs (cifs) kernel BUG at fs/super.c:777! Fix this by only incrementing the reference count if the work has been queued successfully. Taking it after queue_work() is safe because all three callers hold tcon->open_file_lock across the call and _cifsFileInfo_put() decrements under that same lock, so a worker that starts the handler in the window cannot drop the reference before it has been taken.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97558": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fix cifsFileInfo reference leak in deferred close When cifs_close() defers a close, it hands the cifsFileInfo reference of the closing struct file to the queued work. Each execution of smb2_deferred_work_close() drops one such reference. deferred_close_scheduled can be false while the work is pending: the workqueue clears PENDING when the callback starts to run, before the callback clears the flag under deferred_lock. A close in that interval requeues the running work, and the callback then clears the flag, leaving the requeued work pending with the flag down. A later cifs_open() can reuse the handle and its cifs_close() reaches the same branch: queue_delayed_work() fails because the work is still pending, but cifs_close() returns without dropping the closing file's reference. The cifsFileInfo count stays pinned and its tlink, dentry and server handle are leaked. Check the return value and hand off the reference only when work was actually queued. Otherwise, use the shared _cifsFileInfo_put(), like the mod_delayed_work() branch above: the pending execution already owns its reference. This issue was found by an in-house static analysis tool.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97559": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fail DACL rewrite when the new DACL exceeds 64K replace_sids_and_copy_aces() and set_chmod_dacl() accumulate the size of the DACL they build in a u16. That accumulator can wrap. validate_dacl() caps num_aces at (dacl_size - sizeof(struct smb_acl)) / 20, i.e. 3276 for a maximally sized DACL, while each rewritten ACE can grow to sizeof(struct smb_ace) (76 bytes) once its SID is replaced with one carrying SID_MAX_SUB_AUTHORITIES sub-authorities. The worst case is therefore sizeof(struct smb_acl) + 3276 * 76 = 248984 bytes, far beyond what a u16 can hold. A wraparound is reached with 863 ACEs. After the wraparound, ndacl_ptr->size becomes meaningless and the offset will point anywhere in the ACE array. As a result, we will see corruption of the DACL, which then gets sent to the server. This is not an out-of-bounds write as the allocation now covers the worst-case expansion, so writes will always go into the buffer. Adjust the code to use a u32 internally and return -EOVERFLOW in the overflow case. The operation must be refused, because a DACL can only hold 2^16-1 bytes on the wire and larger DACLs cannot be represented. set_chmod_dacl() carries the same pattern and is fixed the same way. It only wraps once the source DACL comes within roughly 380 bytes of the 64K ceiling, but the failure mode is identical.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97561": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: honor forceuid/forcegid when mapping SIDs to uid/gid When the administrator mounts with forceuid or forcegid (uid=/gid= mount options), they expect all files to appear owned by the specified user/group. However, several code paths unconditionally called sid_to_id() to overwrite cf_uid/cf_gid with server-provided values, ignoring the administrator's explicit override: - smb311_posix_info_to_fattr() (stat via POSIX extensions) - cifs_posix_to_fattr() (readdir via POSIX extensions) - parse_sec_desc() (CIFS ACL ownership mapping) This allowed an untrusted server to dictate local file ownership even when the mount was configured to force specific uid/gid values. Fix all three call sites to check CIFS_MOUNT_OVERR_UID and CIFS_MOUNT_OVERR_GID before calling sid_to_id(), following the same pattern already used by cifs_unix_basic_to_fattr() for unix extensions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97564": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: reject userspace cifs.idmap descriptions cifs.idmap key descriptions carry authority-bearing fields (owner and group SIDs and uid/gid values in \"os:\"/\"gs:\"/\"oi:\"/\"gi:\" form) that the cifs.idmap upcall helper treats as kernel-originating inputs. Unlike its sibling cifs.spnego, the cifs.idmap key type has no vet_description hook, so userspace can create keys of this type through request_key(2)/add_key(2) and supply those fields without CIFS origin. A request_key(2) call with a non-NULL callout then drives a root usermodehelper upcall (/sbin/request-key -> cifs.idmap) that consumes the unvetted description in root context. Only accept cifs.idmap descriptions while CIFS is using its private root_cred to request the key. id_to_sid()/sid_to_id() already run under override_creds(root_cred), so the kernel-originated path is unaffected. This mirrors commit 3da1fdf4efbc (\"smb: client: reject userspace cifs.spnego descriptions\"), which applied the same restriction to cifs.spnego.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97566": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mptcp: pm: kernel: drop pending ADD_ADDR when removing ID0 The in-kernel MPTCP path manager can leave a stale ADD_ADDR announcement entry alive when removing the id 0 endpoint. This happens because the id 0 removal path does not tear down pending announcements, unlike the non-zero id path. When the PM later reselects id 0 after adding another signal endpoint, it finds the stale anno_list entry and hits WARN_ON_ONCE(mptcp_pm_is_kernel()) in mptcp_pm_announced_alloc(). Root cause: asymmetry between removal paths. - Non-zero id path: mptcp_nl_remove_subflow_and_signal_addr() calls mptcp_pm_remove_announced() to clean up. - Id 0 path: mptcp_nl_remove_id_zero_address() skips cleanup entirely. Fix by making the id 0 path symmetric: call mptcp_pm_announced_remove() and decrement add_addr_signaled before queuing the RM_ADDR. Subtle detail: signal endpoints are stored in anno_list with port 0, but msk_local carries the connection's local port. In other words, entries linked to ID0 paths should have port == 0. A follow-up patch will ensure that. mptcp_pm_announced_remove() uses use_port=true for comparison. So clear the port before the lookup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97567": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mptcp: prevent race between disconnect() and rtx Sashiko noted that the two event can race, leading to inconsistent status. Prevent the race using the synchronous timer stop operation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97582": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: hwmon: (gpio-fan) Fix use-after-free in alarm work fan_alarm_irq_handler() queues fan_data->alarm_work, but nothing cancels it. fan_alarm_notify() dereferences fan_data and its hwmon device. On unbind, devres frees the interrupt, which only waits for the handler itself, and then releases the hwmon device and fan_data, so a pending fan_alarm_notify() can run after those frees. Replace INIT_WORK() with devm_work_autocancel(), registered before devm_request_irq(). The devres cleanup then frees the interrupt first, so no new work can be queued, and cancels the work while fan_data and the hwmon device are still alive. This issue was found by an in-house static analysis tool.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97587": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: perf: RISC-V: store available counter mask as bitmap The available-counter mask was a single unsigned long, but iteration uses RISCV_MAX_COUNTERS, which is 64. On RV32 that reads past the object. Filling with an unsigned-long bit at index 32 and above is also wrong. Use DECLARE_BITMAP and set_bit/bitmap helpers. Walk each bitmap word into CFG_MATCH when checking events, when allocating an index, and when stopping all counters. Set the counter base to i times BITS_PER_LONG. Share the CFG_MATCH ecall through a small helper so the 32-bit argument split is not duplicated. On qemu-system-riscv32 the probe bitmap has bits above XLEN set, so the first word alone is not enough. [pjw@kernel.org: updated to apply; fixed checkpatch.pl issues]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97594": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: landlock: Fix use-after-free of the source's parent directory current_check_refer_path() reads old_dentry->d_parent without holding a reference nor a lock on it, and then dereferences it in collect_domain_accesses() and in the audit record. A reference on a child does not pin its parent: __d_move() reassigns dentry->d_parent and drops the reference the child held on its former parent. hook_path_rename() is not affected because the rename path calls lock_rename() before the hook, so the source cannot be reparented under it. hook_path_link() has no such protection: filename_linkat() holds a reference on the source dentry but neither locks nor references its parent, so a concurrent rename(2) can reparent the source while security_path_link() runs, and the former parent can then be removed and freed while the hook walks it. A process can trigger this after entering a Landlock domain that handles at least one filesystem access right. The process can then race a linkat(2) loop against rename(2) and rmdir(2): BUG: KASAN: slab-use-after-free in collect_domain_accesses+0x278/0x290 Read of size 4 at addr ffff888160bd53f4 by task llrepro2/549 collect_domain_accesses+0x278/0x290 current_check_refer_path+0x952/0x1120 security_path_link+0x1be/0x320 filename_linkat+0x342/0x6d0 __x64_sys_linkat+0xfa/0x150 Freed by task 562: kmem_cache_free+0x139/0x4c0 i_callback+0x4b/0x80 rcu_core+0x7dc/0x10a0 Take a reference on the dentry selected as the source parent, using dget() for the common-mount-root case and dget_parent() otherwise. Release it after the hierarchy walk and synchronous audit logging. [mic: Clarify the caller, reachability, and reference handling]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97597": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: flowlabel: cap duplicate leases per socket ipv6_flowlabel_get() allocates an ipv6_fl_socklist entry for every successful GET. The recheck path for a compatible existing flowlabel links another lease without applying any lease admission check. Repeated GET requests for one shareable label can therefore grow a socket's lease list without bound. Reject a new unprivileged lease once the socket already holds FL_MAX_PER_SOCK leases. Check this on the shared recheck path so reuse of a globally interned label, including the fl_intern() collision path, is covered as well. New-label admission remains under the existing mem_check() policy. Use capable(CAP_NET_ADMIN) rather than ns_capable(), matching mem_check(). An unprivileged user must not bypass the cap by creating a user namespace and a netns where they have CAP_NET_ADMIN, which would still consume host memory. Check the capability only when the socket reaches the limit, so successful unprivileged GET requests below the cap do not generate a capability audit. Do the admission check before updating linger and expires so a rejected GET does not refresh the shared label, matching the existing socket-list allocation failure path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97599": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ieee802154: hwsim: serialize pib updates to fix double-free hwsim_update_pib() does an unserialized read-swap-free of phy->pib: pib_old = rtnl_dereference(phy->pib); ... rcu_assign_pointer(phy->pib, pib); kfree_rcu(pib_old, rcu); It assumes the RTNL is held, but ->set_channel is not always called under it: the mac802154 scan worker changes channels via drv_set_channel() without the RTNL. Such an update can race an RTNL-held one on the same phy; both read the same pib_old and both kfree_rcu() it, double-freeing the object. With SLUB percpu sheaves batching kfree_rcu(), this surfaces as a KASAN invalid-free in rcu_free_sheaf(). struct hwsim_phy has no lock for pib. Add one and make the swap atomic with rcu_replace_pointer() under it, dropping the misleading rtnl_dereference().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97605": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: erofs: preserve LZMA decoders on resize failure The pool-resize path frees each stream's old decoder before allocating its replacement. If an allocation fails after some streams have already been replaced, the failed stream is put back on the list with state == NULL. z_erofs_lzma_max_dictsize is still advanced as if the whole pool had been resized. An existing LZMA mount can select the broken stream and pass NULL to xz_dec_microlzma_reset(). A retry at the same size also skip another resize attempt. Since the global maximum was advanced, thus, the invalid state is left unrepaired. Allocate each replacement before freeing the old decoder, temporarily retaining one old decoder during allocation. Stop at the first failure and advance z_erofs_lzma_max_dictsize only after all streams satisfy the request. Record each stream's dictionary capacity so retries can skip streams already enlarged before a partial failure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97609": {
+    "cvss": 7.0,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: netfilter: cttimeout: prevent UAF during module unload nf_ct_set_timeout() protects the timeout hook dereference and policy lookup with rcu_read_lock(). cttimeout_exit(), however, unregisters the per-net operations before it clears the hook. This allows the following interleaving: CPU 0 CPU 1 cttimeout_exit() nf_ct_set_timeout() unregister_pernet_subsys() rcu_read_lock() kfree(pernet) h = nf_ct_timeout_hook h->timeout_find_get() nfct_timeout_pernet() The hook still points to ctnl_timeout_find_get() when CPU 1 looks up the already freed per-net timeout list. KASAN reported: BUG: KASAN: slab-use-after-free in ctnl_timeout_find_get Read of size 8 by task poc/90 Call Trace: ctnl_timeout_find_get+0x271/0x2a0 [nfnetlink_cttimeout] nf_ct_set_timeout+0x7b/0x3c0 xt_ct_tg_check+0x724/0xb20 xt_check_target+0x234/0xa90 do_ipt_set_ctl+0x570/0x1270 Allocated by task 89: __kmalloc_noprof+0x16e/0x460 ops_init+0x6d/0x420 register_pernet_operations+0x2f6/0x670 Freed by task 91: kfree+0x131/0x390 ops_undo_list+0x3d4/0x730 unregister_pernet_operations+0x232/0x490 unregister_pernet_subsys+0x1c/0x30 cttimeout_exit+0x52/0x970 [nfnetlink_cttimeout] Clear the hook and wait for existing readers before unregistering the per-net operations. This blocks new policy lookups and ensures readers that observed the hook finish before the per-net storage is freed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97613": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: mana: Reserve extra CQ slot for the fence completion CQE The RX completion queue is sized to hold exactly one CQE per posted RX WQE. MANA_FENCE_RQ makes hardware post an additional CQE_RX_OBJECT_FENCE after the packet CQEs. The current sizing reserves no extra slot for it and in rare cases, CQ has no guaranteed slot for the fence CQE when it is full of packet CQEs. This can lead to dropping the fence completion while the driver waits holding RTNL lock throughout the timeout duration. Reserve one extra CQE slot for CQE_RX_OBJECT_FENCE. mana_gd_alloc_memory() requires queue_size to be a power-of-two and at least MANA_PAGE_SIZE; the reservation pushes cq_size past a power-of-two, so round up the CQ size in mana_create_rxq().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97615": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: bridge: use option bits for CFM/MRP frame handlers CFM and MRP register a global br_frame_type whose hlist_node is linked into the per-bridge frame_type_list when the first MEP/MRP instance is created. Enabling the protocol on multiple bridges therefore inserts the same node into multiple lists. Unregistering it on one bridge then corrupts list state belonging to another. These handlers can only be installed once per bridge, and they are uncommon. Track their per-bridge enable state with net_bridge option bits, which already live on the Rx hot cache line, and dispatch the matching handler directly from the receive path. Check both bits together first as an unlikely case. Remove the generic frame_type_list and br_frame_type helpers, which have had no other users since CFM and MRP were added. That shrinks struct net_bridge by 8 bytes and drops the list walk from the fast path. When neither protocol is compiled in, BR_CFM_MRP_OPTS is 0 and the compiler prunes the branch.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97616": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/sched: act_api: release all action references on NEWACTION failure When a batched RTM_NEWACTION request replaces an existing action, tcf_idr_check_alloc() takes a temporary reference on it. If a later action fails to initialize, tcf_action_destroy() uses strict release semantics to clean up the actions initialized so far. For an action bound to a filter, the strict check returns -EPERM without dropping the temporary reference. This error also makes tcf_action_destroy() return before releasing subsequent entries. Any new action initialized between the bound action and the failing entry is leaked together with its reserved IDR slot, preventing reuse of its index. Use tcf_idr_release() to drop each reference held by the batch without rejecting bound actions. This allows cleanup to continue through all initialized entries and preserves the module reference release when an action is destroyed. Explicit action deletion and flushing retain their separate bind-count checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97619": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: io_uring/rw: end write accounting from ->ki_complete Commit b000145e9907 moved both the fsnotify calls and the write accounting out of the kiocb completion handler and into the io_req_rw_complete() task_work. However, only the fsnotify part actually needed to move as it may sleep. Ending the write accounting is just a percpu_up_read() on the superblock writers sem. Deferring it is a problem, because it makes dropping SB_FREEZE_WRITE protection depend on the ring owner getting to running task_work. But the task may be blocked in freeze_super(), causing it to never get to that: task io-wq worker -------------------------------------------------------------- io_write() io_kiocb_start_write() (takes sb_writers, hidden from lockdep by __sb_writers_release) write_iter() -> -EIOCBQUEUED ioctl(FS_IOC_SHUTDOWN) bdev_freeze() freeze_super() percpu_down_write() <- waits for the reader above io_write() kiocb_start_write() percpu_down_read() <- queued behind the writer io_complete_rw() queues io_req_rw_complete() <- never runs, task is in D state End the write from io_complete_rw() instead, and leave only the fsnotify calls in task_work.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97901": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: genetlink: pin family module during policy dump The generic netlink controller's policy dump keeps pointers to the target family's operation and policy tables in its callback state. A dump may be split across multiple skbs and remain pending after the initial request. Netlink pins the module which owns the dump callback, but in this case that is the controller's owner rather than the target family's owner. The target family can consequently be unregistered and its module unloaded while a policy dump is pending. Advancing the dump then dereferences policy memory from the unloaded module. Take a reference to the target family's module when the dump starts. Drop it from the error and done paths. This matches the lifetime for which the dump context retains the family and policy pointers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97908": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: btqcomsmd: destroy RPMsg endpoints before freeing hci_dev The command and ACL RPMsg endpoints store struct btqcomsmd as their callback private data. The receive callbacks dereference btq->hdev without taking an hci_dev reference. The current teardown order frees the hci_dev before destroying the RPMsg endpoints in both the hci_register_dev() error path and the driver remove path. If WCNSS delivers data in that window, the endpoint callback can run with an already freed hci_dev and pass it to the Bluetooth core. For qcom_smd endpoints, rpmsg_destroy_ept() closes the channel and clears the callback under the channel recv_lock. The receive path holds the same lock while invoking the callback, so destroying the endpoints first both prevents new callbacks and serializes with any callback already running. Destroy the command and ACL endpoints before hci_free_dev(). Keep hci_unregister_dev() first during remove so the HCI core stops issuing operations before the transport endpoints are shut down. In the full registration-error cleanup path, return directly after freeing the hci_dev to avoid falling through to the partial-construction labels and destroying the endpoints twice.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97924": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: tracing/user_events: Don't destroy fields when event removal fails destroy_user_event() destroys the event's fields before attempting to remove the trace event call. If user_event_set_call_visible() fails, e.g. because the event is still enabled and trace_remove_event_call() returns -EBUSY, the event is left registered with an irreversibly destroyed field list. Any subsequent interaction with the event then operates on an empty field list while it is still fully visible in tracefs. Move the field destruction after the call removal, and splice the field list back onto the event when the removal fails so the event remains in a consistent state.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97925": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: tick/broadcast: Plug clockevents replacement race 朱恺乾 reported and decoded the following race condition when a broadcast device is replaced: CPUA CPUB __tick_broadcast_oneshot_control() bc = tick_broadcast_device.evtdev; tick_install_broadcast_device(dev) clockevents_exchange_device(cur, dev) shutdown(cur); detach(cur); cur->handler = noop; tick_broadcast_device.evtdev = dev; tick_broadcast_set_event(bc, next_event); <- FAIL: arms a detached device. If the original broadcast device has a restricted interrupt affinity mask and the last CPU in that mask goes offline then the BUG() in tick_cleanup_dead_cpu() triggers because the clockevent device is not in detached state. The reason for this is that tick_install_broadcast_device() is not serialized vs. tick broadcast operations. The obvious cure is to serialize tick_install_broadcast_device() with tick_broadcast_lock against a concurrent tick broadcast operation. That requires to split clockevents_exchange_device() into two parts, one which does the exchange, shutdown and detach operation and the other which drops the module reference count. This is required because the module reference cannot be dropped while holding tick_broadcast_lock. Let clockevents_exchange_device() do both operations as before, but let the broadcast device code take the two step approach and do the device exchange under tick_broadcast_lock and drop the module reference count after releasing it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97935": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: tracing: Set the trace clock before registering the histogram trigger hist_register_trigger() puts the trigger on the global named_triggers list in cmd_ops->init(), and only then sets the trace clock: if (data->cmd_ops->init) { ret = data->cmd_ops->init(data); if (ret < 0) goto out; } if (hist_data->enable_timestamps) { ret = tracing_set_clock(file->tr, hist_data->attrs->clock); if (ret) { hist_err(tr, HIST_ERR_SET_CLOCK_FAIL, errpos(clock)); goto out; } The clock string is not checked anywhere before that call, so a named trigger using common_timestamp with an unknown clock fails after it has already become findable. event_hist_trigger_parse() then frees it without taking it off the list, and the next lookup by name reads the freed object: ~# cd /sys/kernel/tracing/events/sched/sched_switch ~# echo 'hist:name=foo:keys=common_pid:ts=common_timestamp:clock=bogus' > trigger bash: echo: write error: Invalid argument ~# echo 'hist:name=foo:keys=common_pid' > trigger BUG: KASAN: slab-use-after-free in find_named_trigger+0xac/0xc0 Read of size 8 at addr ffff88800915d760 by task init/1 find_named_trigger+0xac/0xc0 hist_register_trigger+0xc1/0x900 event_hist_trigger_parse+0x3146/0x6af0 event_trigger_write+0xce/0x160 Freed by task 63: kfree+0x154/0x420 trigger_kthread_fn+0xfd/0x160 Set the clock before the trigger is registered, so that nothing which can fail runs after it is published, the way commit 6f86bdeab633 (\"tracing: Fix bad hist from corrupting named_triggers list\") moved the registration below the rest of the setup. tracing_set_filter_buffering() is reference counted, so the init failure path has to drop the reference that the clock block now takes first.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97939": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipmr: account multicast table and route memory A netadmin in a user+net namespace can create many IPv4 and IPv6 multicast routing tables with MRT_TABLE and MRT6_TABLE. Each unseen id allocates an mr_table via the shared mr_table_alloc(), links it into the per-net list, and leaves it until netns teardown. Those objects were not charged to memcg, so the host unreclaimable slab grows with the table count. Account mr_table allocations with GFP_KERNEL_ACCOUNT and mark the IPv4/IPv6 MFC caches SLAB_ACCOUNT. This matches the established handling of IP addresses, routes and alternate interface names. Unresolved MFC entries are still allocated from softIRQ with GFP_ATOMIC and are not charged. They expire after 10 seconds and are bounded by the socket receive queue; see commit 0079ad8e8dc3 (\"ipmr: remove hard code cache_resolve_queue_len limit\").",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98059": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: bpf: Mark sched_process_wait argument as nullable do_wait() passes wo->wo_pid to the sched_process_wait tracepoint. kernel_wait4() leaves wo_pid NULL for wait4(-1), and kernel_waitid_prepare() does likewise for waitid(P_ALL). btf_ctx_access() currently types argument 0 as PTR_TO_BTF_ID | PTR_TRUSTED. Without PTR_MAYBE_NULL, the verifier accepts an unchecked dereference. Trusted pointer loads have no fault protection, so a wait for any child can then cause a NULL pointer dereference in JITed BPF code. Add sched_process_wait to raw_tp_null_args[] with argument 0 marked nullable. The verifier rejects an unchecked dereference while preserving access after the program checks the pointer for NULL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98096": {
+    "cvss": 7.4,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: sr: restore network header before routing and forwarding ipv6_srh_rcv() runs with skb->data at the Segment Routing Header (SRH) while skb_network_header() points at the IPv6 header. When segments_left > 0, ipv6_srh_rcv() previously restored the skb->data position by pushing sizeof(struct ipv6hdr), assuming the SRH immediately followed the fixed IPv6 header. If another extension header (such as a Hop-by-Hop options header) precedes the SRH, skb_network_offset() remained negative. This led to two problems: 1. During ip6_route_input(), fib6_rules_early_flow_dissect() invokes __skb_flow_dissect() which passes the negative skb_network_offset() to flow dissection, breaking BPF and C flow dissector logic. 2. If forwarded via ip6_forward() or redirected via act_mirred, downstream handlers (like sch_fragment() or neighbour output) pass the negative offset as an unsigned length, triggering OOB memcpy or buffer overflows. Fix this by pushing -skb_network_offset(skb) before routing, ensuring skb_network_offset(skb) is 0 for route lookup / flow dissection as well as downstream forwarding. On the loopback path, pull skb_transport_offset(skb) to restore skb->data to the SRH before looping back.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98097": {
+    "cvss": 5.3,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: tipc: Dont send random pad bytes in RESET/ACTIVATE messages The interface name is passed in a fixed length (TIPC_MAX_IF_NAME) buffer. Replace the strcpy(data, l->if_name) with memcpy() so that the pad bytes are actually written (l->if_name[] is zero padded) rather than sending random bytes from the skb to the remote system. Replace two other strcpy() with strscpy().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98098": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: tipc: fix NULL deref in tipc_named_node_up() on empty publication list User-space applications can bind a large number of service addresses to one or more sockets. Each binding of a local-scope service address inserts one entry (publication) into the TIPC name table. If the number of these publications exceeds TIPC_MAX_PUBL (65535), protocol service types (such as node state and link state) are no longer inserted into the name table. This causes two issues: 1. User-space applications subscribing to node or link up/down events stop receiving notifications. 2. A NULL pointer dereference can occur: BUG: kernel NULL pointer dereference, address: 00000000000000d0 ... CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.2.0-rc4-default+ #5 PREEMPT(full) ... RIP: 0010:tipc_named_node_up (./include/linux/skbuff.h:2251 net/tipc/name_distr.c:195 net/tipc/name_distr.c:221) ... Call Trace: tipc_node_write_unlock (net/tipc/node.c:428) tipc_rcv (net/tipc/node.c:934 net/tipc/node.c:2189) tipc_udp_recv (net/tipc/udp_media.c:389) Thread 1 (tipc_net_finalize) | Thread 2 (named_distribute) -----------------------------|----------------------------- | ... | list_for_each_entry(publ, pls, binding_node) { | ... | __skb_queue_tail(list, skb); | ... | } | ... | hdr = buf_msg(skb_peek_tail(list)); ... | tipc_nametbl_publish(); | If 'tipc_nametbl_publish()' (Thread 1) fails because the number of local publications reaches TIPC_MAX_PUBL, list (Thread 2) will be empty. As a result, NULL is passed to 'buf_msg()', leading to a NULL pointer dereference. Fix these issues by allowing protocol service types (node state, link state, and topology server) to be inserted into the name table unconditionally. This ensures that users subscribing to these types always receive notifications. In addition, the maximum number of local user publications is reduced to (TIPC_MAX_PUBL - 1). This ensures that the maximum bulk size calculated in tipc_link_set_queue_limits() remains valid.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98099": {
+    "cvss": 4.7,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: mcast: use rcu_assign_pointer() for __rcu list updates Several places in net/ipv6/mcast.c update RCU-protected lists (np->ipv6_mc_list, idev->mc_list, idev->mc_tomb) using direct pointer assignments instead of rcu_assign_pointer(): 1. In __ipv6_dev_mc_dec(), unlinking a group from idev->mc_list did: *map = ma->next; without rcu_assign_pointer() while concurrent readers traverse idev->mc_list locklessly under rcu_read_lock(). 2. In ipv6_sock_mc_drop() and __ipv6_sock_mc_close(), unlinking a group from np->ipv6_mc_list directly assigned *lnk = mc_lst->next and np->ipv6_mc_list = mc_lst->next without rcu_assign_pointer(), racing with lockless readers in inet6_mc_check(). 3. In __ipv6_sock_mc_join(), mc_lst->next was initialized to np->ipv6_mc_list via raw assignment before publishing mc_lst. 4. In mld_del_delrec() and __ipv6_dev_mc_inc(), __rcu source pointers passed into rcu_assign_pointer() lacked explicit dereference helpers. Fix these by consistently using rcu_assign_pointer() along with mc_dereference() / sock_dereference().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98110": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: btintel: bound firmware ID by TLV length The firmware ID is treated as a NUL-terminated string even though the TLV length is its only boundary. If the value does not contain a NUL terminator, snprintf() can read beyond the received response. Limit the conversion to the advertised TLV value length.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98111": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: btintel: validate version TLV value lengths btintel_parse_version_tlv() verifies that a complete TLV is present in the response, but it does not ensure that the value is long enough for the specific TLV type. A short value can therefore cause an out-of-bounds read through get_unaligned_le16(), get_unaligned_le32(), or memcpy(). Reject values shorter than the minimum required by each known TLV type. Also reject responses that do not contain the Command Complete Status field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98112": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix listener task lifetime on netdev events The listener thread exits when its listening socket is shutdown. The netdevice notifier shuts down the socket before calling kthread_stop(), so the task_struct can be freed before kthread_stop() gets its reference. Create the listener in a stopped state and hold an extra task_struct reference until kthread_stop_put() completes. Also stop and release listeners before freeing their interface records during TCP teardown.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98113": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: rate limit unmapped SID errors A client can include many structurally valid but unmapped SIDs in a DACL. Logging every mapping failure lets one request generate hundreds of kernel error messages. Rate limit the message to prevent an authenticated client from flooding the kernel log.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98114": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: propagate DACL parsing errors parse_dacl() silently accepts truncated ACEs and allocation failures, allowing set_info_sec() to continue with an incomplete ACL conversion. Return parsing and allocation errors to parse_sec_desc() so malformed security descriptors are rejected before inode attributes or ACL xattrs are updated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98116": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: pcm: Serialize PCM mmap with buffer reallocation to fix page UAF snd_pcm_hw_params() and snd_pcm_hw_free() guard buffer reallocation with an mmap_count check performed under the PCM stream lock, but the lock is released long before the buffer is actually freed: snd_pcm_sync_stop(), constraint refinement and do_free_pages() all happen in between. snd_pcm_mmap_data(), on the other hand, takes no lock at all: it validates against the old buffer's state and dma_bytes, remaps its pages into the VMA, and only then increments mmap_count. A concurrent mmap() can therefore slip in between the check and the free. remap_pfn_range() installs writable PTEs for the old buffer's pages without taking page references, and the subsequent do_free_pages() returns those pages to the page allocator while the VMA still maps them. This leaves a stale, writable mapping of freed pages: a page-level use-after-free that can be leveraged for local privilege escalation. Make snd_pcm_mmap_data() participate in the buffer-access scheme introduced for hw_params/hw_free: acquire runtime->buffer_accessing before validating and remapping, and release it afterwards. Buffer reallocation already fails with -EBUSY while accessors are active, and the mmap side now fails with -EBUSY while a reallocation is in progress, so the validate/remap sequence and the check/free sequence can no longer interleave. A reproducer that turns this race into a stale writable mapping of the freed DMA buffer pages is available on request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98117": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: cachefiles: Fix potential UAF/KASAN warning Currently, trace_cachefiles_coherency() is being passed a pointer to a __be64 lain over the coherency data in struct cachefiles_xattr so that it can display the first 8 bytes. However, the data is of variable length and could even be 0 bytes. This could lead to a UAF or KASAN warning. Fix this by making sure the buffer has room for at least 8 bytes and that those 8 bytes are pre-cleared. Further, those bytes are not 8-byte aligned, so fix the tracepoint to extract the data as four 2-byte words (they are 2-byte aligned) and reassemble the __be64. The compiler will convert this into a single 8-byte load where the CPU supports it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98118": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: netfs: Fix readahead synchronisation issues by loading all folios upfront There are some synchronisation issues that derive from the app thread adding more folios to the rolling buffer whilst the collector thread is looking at them or trying to clear them, such as determining the setting of front_folio_order when the next folio hasn't been added yet, The reason for the rolling buffer approach is that loading the buffer upfront and then dropping all the refs just acquired is quite a slow operation, and loading progressively allows some of the cost to be deferred until after at least some of the I/O is started. Instead, a better way is to load all the folios into the rolling buffer upfront - and then drop the refs later, once the I/O is in progress. (Even better would be for the refs not to be there at all.) Fix this by changing the rolling buffer loader to load all the folios selected by the VM for readahead upfront into the folio queue. The folio queue is allocated a batch worth at a time as we don't know how many folios are involved (the readahead_control struct, alas, has a page count, not a folio count). The folio refs acquired from readahead are then dropped in bulk once the first subrequest is dispatched as it's quite a slow operation. The collector waits for NETFS_RREQ_NEED_PUT_RA_REFS to be cleared so that it doesn't unlock folios before the xarray has been scanned for them. This simplifies the buffer handling later and isn't noticeably slower as the xarray doesn't need to be modified and the folios are all already pre-locked.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98141": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ntfs: propagate reparse index insertion failure update_reparse_data() ignores the return value of set_reparse_index(). When index insertion fails, the code removes the just-written reparse data as cleanup but still returns 0, so symlink(2) (and WSL special file creation) reports success while no reparse data exists on disk. When there was no previous reparse data (oldsize == 0), the failure was likewise silently ignored. Propagate the error to the caller.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98142": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/cirrus-qemu: Validate BAR0 size during probe The `cirrus-qemu` driver relies on `CIRRUS_VRAM_SIZE` (4 MB) to validate framebuffer sizes. However, during PCI probe, the driver mapped BAR0 without verifying that its size matches `CIRRUS_VRAM_SIZE`. If a PCI device with a BAR0 smaller than 4 MB is bound to the driver, the mapped VRAM will be smaller than expected. Because validation checks assume 4 MB VRAM, framebuffers larger than the mapped memory can be created. When the display plane is updated (e.g. during release), `cirrus_primary_plane_helper_atomic_update()` copies the framebuffer to VRAM using `drm_fb_memcpy()`. Writing past the end of the mapped I/O memory causes a supervisor write page fault: BUG: unable to handle page fault for address: ffffc9000389c000 ... RIP: 0010:memcpy_toio+0x7c/0xe0 arch/x86/lib/iomem.c:110 ... Call Trace: iosys_map_memcpy_to include/linux/iosys-map.h:285 [inline] drm_fb_memcpy+0x325/0x5d0 drivers/gpu/drm/drm_format_helper.c:442 cirrus_primary_plane_helper_atomic_update+0x98a/0xb00 drivers/gpu/drm/tiny/cirrus-qemu.c:358 drm_atomic_helper_commit_planes+0x626/0xea0 drivers/gpu/drm/drm_atomic_helper.c:3038 drm_atomic_helper_commit_tail+0x60/0x510 drivers/gpu/drm/drm_atomic_helper.c:1989 commit_tail+0x2b1/0x3c0 drivers/gpu/drm/drm_atomic_helper.c:2074 drm_atomic_helper_commit+0xa77/0xb10 drivers/gpu/drm/drm_atomic_helper.c:2312 Fix this by validating in `cirrus_pci_probe()` that the PCI BAR0 resource is not less than `CIRRUS_VRAM_SIZE`, returning `-ENODEV` if it is less.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98147": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: printk: Don't WARN on kthread_run failure. Since __kthread_create_on_node() returns -EINTR upon SIGKILL, we should not use WARN_ON() in order to catch kthread_run() failure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98148": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/gud: validate GUD_ROTATION_0 is present in supported rotations The rotation argument to drm_plane_create_rotation_property() is set to DRM_MODE_ROTATE_0, and the device reported rotation bitmask is used as the supported_rotations argument. The driver never validates that GUD_ROTATION_0 is present, so a device that omits it from its GUD_PROPERTY_ROTATION triggers the WARN_ON(rotation & ~supported_rotations) in drm_plane_create_rotation_property() Fix this by skipping the creation of rotation property if the device doesn't have the GUD_ROTATION_0 bit",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100076": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: staging: rtl8723bs: fix xmit_frame/xmit_buf leaks on mgnt-frame error paths issue_beacon(), issue_probersp() and issue_asocrsp() obtain a management xmit_frame together with its xmit_buf from the driver's fixed-size management-TX pools via alloc_mgtxmitframe(). On the normal path the frame is handed to dump_mgntframe(), which transfers ownership and eventually returns both objects to their pools (the frame and, for beacons, the buf in rtl8723bs_mgnt_xmit(); other bufs via the pending-xmitbuf/TX-completion path). Several error/edge paths return early after a successful alloc_mgtxmitframe() but before dump_mgntframe(), so ownership is never transferred and neither object is freed: - issue_beacon(): beacon larger than 512 bytes - issue_probersp(): cur_network->ie_length > MAX_IE_SZ - issue_probersp(): kzalloc() of the SSID scratch buffer fails - issue_asocrsp(): pkt_type is neither ASSOCRSP nor REASSOCRSP Because alloc_mgtxmitframe() removes the frame and buf from their free lists (list_del_init) without placing them on any pending list, an orphaned pair is on no list and referenced by nobody, so it is only reclaimed at driver teardown. Repeated hits progressively exhaust the management-TX pools until alloc_mgtxmitframe() returns NULL and the interface can no longer send beacons or probe/assoc responses. Free the frame and buffer on these paths, matching the existing correct error handling in issue_assocreq().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100077": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/msm: Recover HW before retire hung submit During recovery, it is not safe to retire the hung submit before we recover the GPU. Retiring the submit triggers BO free and that can result in GPU pagefaults since the GPU may be actively accessing those BOs. To fix this, retire the submits after gpu recovery is complete in recover_worker(). Patchwork: https://patchwork.freedesktop.org/patch/730655/",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93834": {
+    "cvss": 8.8,
+    "description": "A use-after-free vulnerability was found in QEMU's 9pfs subsystem. A race condition between the main thread and a worker thread when processing concurrent Tlcreate and Twalk requests allows a malicious guest user to craft a fid path containing stale heap data, bypassing directory traversal restrictions and escaping the shared directory boundary. This can lead to arbitrary host file read/write and code execution (VM escape) as the QEMU process user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100208": {
+    "cvss": 8.1,
+    "description": "Integer overflow or wraparound in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91767": {
+    "cvss": 6.5,
+    "description": "php_openssl_matches_wildcard_name() in ext/openssl/xp_ssl.c underflows the length argument passed to memchr() when a TLS server certificate presents a wildcard name whose literal characters are together longer than the hostname being verified. A malicious server presenting such a certificate makes the PHP client read up to SIZE_MAX bytes past the end of a heap allocation. The path is reachable from any default client stream, because verify_peer_name is enabled by default.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-91768": {
+    "cvss": 6.5,
+    "description": "The IPv6 branch of the FastCGI client access check compares only the first 12 bytes of a 16-byte IPv6 address, so listen.allowed_clients matches on a /96 prefix instead of the exact address. An attacker who can source an address sharing the first 96 bits with an allowed one passes the check and reaches the FastCGI endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92842": {
+    "cvss": 5.9,
+    "description": "The convert.base64-encode, convert.quoted-printable-encode and convert.quoted-printable-decode stream filters accept a line-break-chars option whose length is tracked separately from the string itself. The filter constructors duplicate the value with pestrdup(), which stops at the first NUL byte, while keeping the original length. When the filter later emits a line break it copies the recorded length out of the truncated allocation, reading past its end and placing adjacent heap bytes into the filter output.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97500": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: rtw89: phy: check length before parsing PHY status IE Hardware might report PHY status IE with unexpected length, and parser might access out of range. Check the length ahead.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97501": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: pinctrl: mediatek: paris: bypass pinctrl GPIO layer in set GPIO direction pinctrl_gpio_direction_input() / pinctrl_gpio_direction_output() take the pinctrl mutex. This causes a gpiochip operations to need to sleep. Worse yet, the .can_sleep field in the gpiochip is not set. This causes the shared GPIO proxy to trip over, as it uses gpiod_cansleep() to check whether it can use a spinlock or needs a mutex. In this case, it ends up taking a spinlock, then calls pinctrl_gpio_direction_output(), which takes a mutex. This causes a huge warning. While this class of Mediatek hardware does not have separate clear/set registers, the pinctrl context has a spinlock that is taken whenever a register read-modify-write is done. Also, once the GPIO function is selected / muxed in, further GPIO operations do not involve pinctrl operations or state. The GPIO direction and level values do not require toggling the pinmux or any other pin config options. Switch to directly calling mtk_pinmux_gpio_set_direction() in the GPIO set direction callbacks to avoid taking the pinctrl mutex. Drop the .gpio_set_direction field in mtk_pmxops to signal we are no longer using the pinctrl GPIO layer for setting the direction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97505": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: PCI/sysfs: Add CAP_SYS_ADMIN check to __resource_resize_store() Currently, the __resource_resize_store() allows writing to the resourceN_resize sysfs attribute to change a BAR's size without checking for capabilities, currently relying only on the file access check. Resizing a BAR modifies PCI device configuration and can disrupt active drivers. After the upcoming conversion to static attributes, it will also trigger resource file updates via sysfs_update_groups(). Add a CAP_SYS_ADMIN check to prevent unprivileged users from performing BAR resize operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97512": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: spi: spi-qcom-qspi: Fix incomplete error handling in runtime PM The runtime PM functions had incomplete error handling that could leave the system in an inconsistent state. If any operation failed midway through suspend or resume, some resources would be left in the wrong state while others were already changed, leading to potential clock/power imbalances. Reorder the suspend/resume sequences to avoid brownout risk by ensuring the performance state is set appropriately before clocks are enabled and clocks are disabled before dropping the performance state. Fix by adding proper error checking for all operations and using goto-based cleanup to ensure all successfully acquired resources are properly released on any error.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97518": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: cfg80211: reject duplicate wiphy cipher suite entries Duplicate entries in wiphy->cipher_suites do not describe any additional capability, but cfg80211 currently accepts them and leaves individual consumers to deal with them. One such consumer is the WEXT compatibility code, which appends a WEP key length for each WEP cipher entry it sees. Repeated WEP entries can therefore overflow the fixed iw_range::encoding_size array returned by SIOCGIWRANGE. Reject duplicate cipher suite entries in wiphy_register() instead. This keeps the cipher suite invariant in one place and makes malformed wiphy descriptions fail early with -EINVAL, rather than relying on a single cfg80211 user to handle duplicates correctly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97320": {
+    "cvss": 6.3,
+    "description": "A flaw has been found in YunaiV/zhijiantianya ruoyi-vue-pro up to 2026.08. The affected element is the function AiKnowledgeDocumentServiceImpl.readUrl of the file AiKnowledgeDocumentServiceImpl.java of the component AI Knowledge Module. This manipulation of the argument url causes server-side request forgery. The attack is possible to be carried out remotely. The exploit has been published and may be used. The vendor explains: \"[W]e have reviewed the AI knowledge URL fetching report and decided not to schedule a code change for this behavior. The existing behavior is retained.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93289": {
+    "cvss": 7.5,
+    "description": "The affected products are vulnerable to command injection attack that could allow an unauthenticated attacker to execute system commands during the pairing process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93290": {
+    "cvss": 5.5,
+    "description": "Omni C20 uses hard-coded credentials that could allow an attacker to monitor log files to obtain credentials to access information like mapping data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93291": {
+    "cvss": 9.4,
+    "description": "Omni C20 lacks proper certificate validation which could allow an attacker to perform a man-in-the-middle attack which could allow them to execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115378": {
+    "cvss": 5.8,
+    "description": "Incus before 6.0.7, 6.1.0 before 7.0.2, and 7.1.0 before 7.5.0 contains an arbitrary file write vulnerability in sftpRecursivePullFile that allows a malicious incus-agent to escape the target directory during incus file pull -r. Attackers with root in a virtual machine can return duplicate entries reported first as symlinks then as files or directories, writing attacker-controlled files such as /etc/shadow on the operator's host.",
+    "vendor": "Check Point",
+    "product": "incus"
+  },
+  "CVE-2026-48769": {
+    "cvss": 9.9,
+    "description": "Incus is a system container and virtual machine manager. Prior to version 7.2.0, an arbitrary file write exists in the Incus client when a malicious image server returns a crafted `Incus-Image-Hash` header. This can lead to arbitrary command execution as root on the server. Version 7.2.0 patches the issue.",
+    "vendor": "Check Point",
+    "product": "incus"
+  },
+  "CVE-2026-115507": {
+    "cvss": 3.5,
+    "description": "Vikunja 2.2.0 before 2.7.1 contains an HTML injection vulnerability in CreateConversationalHeader in pkg/notifications/mail.go that interpolates display names and task and project titles raw into email anchors. Authenticated users can craft titles or display names that close the anchor and inject phishing links into task-comment and task-mention notification emails sent to project members.",
+    "vendor": "Check Point",
+    "product": "vikunja"
+  },
+  "CVE-2026-27116": {
+    "cvss": 6.1,
+    "description": "Vikunja is an open-source self-hosted task management platform. Prior to version 2.0.0, a reflected HTML injection vulnerability exists in the Projects module where the `filter` URL parameter is rendered into the DOM without output encoding when the user clicks \"Filter.\" While `",
+    "vendor": "Check Point",
+    "product": "vikunja"
+  },
+  "CVE-2026-33684": {
+    "cvss": 5.3,
+    "description": "WWBN AVideo is an open source video platform. Prior to version 29.0, Privilege Escalation is possible through unguarded permission parameters in signUp API, which allows any user who can solve a CAPTCHA to self-grant elevated permissions during account registration. The set_api_signUp method in the API plugin accepts emailVerified, canUpload, canStream, and canCreateMeet parameters from user-supplied input and applies them to newly created accounts without verifying that the request was authenticated with a valid APISecret. By self-granting account attributes, attackers can mark their own accounts as email-verified without owning the address (bypassing email-gated functionality) and award themselves upload, streaming, and meeting-creation permissions, circumventing administrator access controls that intentionally restrict these capabilities for new users. This issue has been fixed in version 29.0",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-114633": {
+    "cvss": 6.5,
+    "description": "WWBN AVideo before 29.4.0 contains an incorrect authorization vulnerability that allows delegated Users Admin accounts to delete or modify administrator accounts. Attackers can submit requests to confirmDeleteUser.json.php or userAddNew.json.php targeting administrators to delete their videos and accounts, or change and demote them.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-114061": {
+    "cvss": 4.7,
+    "description": "SvelteKit (@sveltejs/kit) before 3.0.0 contains a cross-site scripting vulnerability in prerendered pages because a cache-control header value set via setHeaders is inserted without escaping into a tag. An attacker who can influence that untrusted value at prerender time can break out of the content attribute and inject HTML or JavaScript that executes when users visit the page.",
+    "vendor": "Check Point",
+    "product": "kit"
+  },
+  "CVE-2025-32388": {
+    "cvss": 5.4,
+    "description": "SvelteKit is a framework for rapidly developing robust, performant web applications using Svelte. Prior to 2.20.6 , unsanitized search param names cause XSS vulnerability. You are affected if you iterate over all entries of event.url.searchParams inside a server load function. Attackers can exploit it by crafting a malicious URL and getting a user to click a link with said URL. This vulnerability is fixed in 2.20.6.",
+    "vendor": "Check Point",
+    "product": "kit"
+  },
+  "CVE-2026-115362": {
+    "cvss": 2.2,
+    "description": "OpenBao before 2.6.4 and 2.7.x before 2.7.1 does not check Secret ID expiration at use in the AppRole auth method, leaving expired Secret IDs valid until the periodic tidy removes them. An attacker holding an expired, untidied Secret ID can log in and gain access beyond its TTL.",
+    "vendor": "Check Point",
+    "product": "openbao"
+  },
+  "CVE-2026-55770": {
+    "cvss": 6.8,
+    "description": "OpenBao is an open source identity-based secrets management system. Prior to 2.5.5, OpenBao used EscapeLDAPValue, an RFC 4514 distinguished-name escaping function, where RFC 4515 LDAP search-filter escaping was required in sdk/helper/ldaputil/client.go GetUserDN. With the LDAP authentication backend configured for an Active Directory UPNDomain path or UserDN and UserAttr binding, an attacker-controlled username containing filter metacharacters could alter the search predicate and select a different directory entry because EscapeLDAPValue does not neutralize the characters handled by ldap.EscapeFilter. A resulting token could be associated with another LDAP identity and gain access to secrets, policies, or modification capabilities assigned to that identity. This issue is fixed in version 2.5.5.",
+    "vendor": "Check Point",
+    "product": "openbao"
+  },
+  "CVE-2026-114251": {
+    "cvss": 6.3,
+    "description": "A vulnerability has been found in itsourcecode Sales-and-Inventory-System up to 0a3c45a78aaff3601b8cf9ce8ba82ff5c345caac. Impacted is an unknown function of the file /pages/cust_del.php. Such manipulation of the argument ID leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Check Point",
+    "product": "Sales-and-Inventory-System"
+  },
+  "CVE-2026-114250": {
+    "cvss": 6.3,
+    "description": "A flaw has been found in itsourcecode Sales-and-Inventory-System up to 0a3c45a78aaff3601b8cf9ce8ba82ff5c345caac. This issue affects some unknown processing of the file /pages/cust_edit.php. This manipulation of the argument ID causes sql injection. The attack can be initiated remotely. The exploit has been published and may be used. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Check Point",
+    "product": "Sales-and-Inventory-System"
+  },
+  "CVE-2026-114252": {
+    "cvss": 6.3,
+    "description": "A vulnerability was found in itsourcecode Sales-and-Inventory-System up to 0a3c45a78aaff3601b8cf9ce8ba82ff5c345caac. The affected element is an unknown function of the file /pages/cust_searchfrm.php. Performing a manipulation of the argument ID results in sql injection. The attack may be initiated remotely. The exploit has been made public and could be used. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Check Point",
+    "product": "Sales-and-Inventory-System"
+  },
+  "CVE-2026-114658": {
+    "cvss": 8.8,
+    "description": "Grav Login plugin from 3.6.0 before 3.9.13 contains a missing authorization vulnerability in the login.invite task that allows page authors to obtain super user accounts. Attackers can define an invitation form granting super access in page frontmatter, submit it unauthenticated, and register the invited address for full site control.",
+    "vendor": "Check Point",
+    "product": "grav-plugin-login"
+  },
+  "CVE-2026-42613": {
+    "cvss": 9.4,
+    "description": "Grav is a file-based Web platform. Prior to 2.0.0-beta.2, the Login::register() method in the Login plugin accepts attacker-controlled groups and access fields from the registration POST data without server-side validation. When registration is enabled and groups or access are included in the configured allowed fields list, an unauthenticated user can self-register with admin.super privileges by injecting these fields into the registration request. This vulnerability is fixed in 2.0.0-beta.2.",
+    "vendor": "Check Point",
+    "product": "grav"
+  },
+  "CVE-2026-65603": {
+    "cvss": 8.8,
+    "description": "The Grav Login plugin (grav-plugin-login) versions <= 3.8.11 contain a privilege escalation flaw in the authenticated profile self-update handler (processUserProfile(), the update_user task). Unlike the registration handler, this handler does not strip privilege fields ('groups','access') from user-submitted form data before persisting them. When an administrator has added 'groups' and/or 'access' to plugins.login.user_registration.fields and the default 'regular'/DataUser account backend is in use, a low-privilege authenticated user can POST crafted profile form data (e.g. access[admin][super]=true) to escalate to super-admin, enabling admin panel access, scheduler abuse (RCE), and Twig evaluation. Fixed in 3.8.12.",
+    "vendor": "Check Point",
+    "product": "grav"
+  },
+  "CVE-2026-48753": {
+    "cvss": 9.9,
+    "description": "Incus is a system container and virtual machine manager. Prior to version 7.1.0, the S3 protocol upload endpoint is vulnerable to path traversal and allows creation of arbitrary files on the host. This behavior could lead to arbitrary command execution. Version 7.1.0 fixes the issue.",
+    "vendor": "Check Point",
+    "product": "incus"
+  },
+  "CVE-2026-115375": {
+    "cvss": 9.9,
+    "description": "Incus 7.0.0 before 7.0.2 and 7.1.0 before 7.5.0 contains a path traversal vulnerability that allows clients able to create instances to write files on the host. The flaw stems from unvalidated dependent custom volume names in instance backup index.yaml files. Attackers can import a crafted instance backup with ../ sequences in dependent volume names to create root-owned directories with controlled content, leading to full host compromise.",
+    "vendor": "Check Point",
+    "product": "incus"
+  },
+  "CVE-2026-48755": {
+    "cvss": 9.9,
+    "description": "Incus is a system container and virtual machine manager. Prior to version 7.1.0, improper validation of user-provided backup compression algorithm leads to argument injection in the constructed command line. This leads to an arbitrary file write on the host, possibly leading to arbitrary command execution. Version 7.1.0 patches the issue.",
+    "vendor": "Check Point",
+    "product": "incus"
+  },
+  "CVE-2026-115372": {
+    "cvss": 8.5,
+    "description": "Incus from 7.3.0 before 7.5.0 contains a project restriction bypass that allows restricted project users to set block.create_options through volume update, copy, and move operations. Attackers can set the option on a custom volume and trigger a copy or move onto a formatting pool to inject arguments into mkfs executed as root.",
+    "vendor": "Check Point",
+    "product": "incus"
+  },
+  "CVE-2026-113740": {
+    "cvss": 6.3,
+    "description": "A flaw has been found in itsourcecode Online Cake Ordering System 1.0. Affected by this vulnerability is an unknown functionality of the file /deletecustomer.php. This manipulation of the argument ID causes sql injection. The attack is possible to be carried out remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "Online Cake Ordering System"
+  },
+  "CVE-2026-114380": {
+    "cvss": 6.3,
+    "description": "A vulnerability was found in itsourcecode Online Cake Ordering System 1.0. Impacted is an unknown function of the file /inserttrans.php. Performing a manipulation of the argument prcd results in sql injection. The attack is possible to be carried out remotely. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "Online Cake Ordering System"
+  },
+  "CVE-2026-114378": {
+    "cvss": 6.3,
+    "description": "A vulnerability was detected in itsourcecode Online Cake Ordering System 1.0. This affects an unknown part of the file /deleteproduct.php. The manipulation of the argument ID results in sql injection. The attack may be launched remotely. The exploit is now public and may be used.",
+    "vendor": "Check Point",
+    "product": "Online Cake Ordering System"
+  },
+  "CVE-2020-12640": {
+    "cvss": null,
+    "description": "Roundcube Webmail before 1.4.4 allows attackers to include local files and execute code via directory traversal in a plugin name to rcube_plugin_api.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-114714": {
+    "cvss": 5.3,
+    "description": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 is affected by a path traversal vulnerability in the squirrelmail_usercopy plugin. With the file based backend, the source path was built from the login name without rejecting path separators, so a login name containing a slash could cause files outside the configured squirrelmail_data_dir to be read and imported. Upstream fixed this in the commit “Fix unsafe use of a login name in SquirrelMail import file path”, which rejects login names containing a slash.",
+    "vendor": "Check Point",
+    "product": "Webmail"
+  },
+  "CVE-2024-31457": {
+    "cvss": 7.7,
+    "description": "gin-vue-admin is a backstage management system based on vue and gin, which separates the front and rear of the full stack. gin-vue-admin pseudoversion 0.0.0-20240407133540-7bc7c3051067, corresponding to version 2.6.1, has a code injection vulnerability in the backend. In the Plugin System -> Plugin Template feature, an attacker can perform directory traversal by manipulating the `plugName` parameter. They can create specific folders such as `api`, `config`, `global`, `model`, `router`, `service`, and `main.go` function within the specified traversal directory. Moreover, the Go files within these folders can have arbitrary code inserted based on a specific PoC parameter. The main reason for the existence of this vulnerability is the controllability of the PlugName field within the struct. Pseudoversion 0.0.0-20240409100909-b1b7427c6ea6, corresponding to commit b1b7427c6ea6c7a027fa188c6be557f3795e732b, contains a patch for the issue. As a workaround, one may manually use a filtering method available in the GitHub Security Advisory to rectify the directory traversal problem.",
+    "vendor": "Check Point",
+    "product": "gin-vue-admin"
+  },
+  "CVE-2026-114492": {
+    "cvss": 6.5,
+    "description": "gin-vue-admin through 2.9.2 contains a path traversal vulnerability that allows authenticated administrators to recursively delete arbitrary directories by supplying traversal sequences in the pluginName parameter. Attackers can send a crafted POST request to /autoCode/removePlugin with '../' sequences, causing os.RemoveAll to delete any directory writable by the server process.",
+    "vendor": "Check Point",
+    "product": "gin-vue-admin"
+  },
+  "CVE-2026-114268": {
+    "cvss": 9.9,
+    "description": "A flaw has been found in Tenda BE3L Pro 16.03.60.62. Affected by this vulnerability is the function formWifiBasicSet of the file /goform/WifiBasicSet. This manipulation of the argument security_5g causes buffer overflow. It is possible to initiate the attack remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "BE3L Pro"
+  },
+  "CVE-2026-113605": {
+    "cvss": 7.2,
+    "description": "Stirling-PDF from 2.13.2 through 3.2.0 contains an incomplete denylist in DatabaseService.validateSqlContent() that allows administrators to bypass H2 import restrictions using CREATE OR REPLACE ALIAS. Authenticated administrators can upload a crafted SQL backup to the import-database endpoint, where RUNSCRIPT defines H2 Java function aliases and restores Java-method execution.",
+    "vendor": "Check Point",
+    "product": "Stirling-PDF"
+  },
+  "CVE-2026-114127": {
+    "cvss": 2.3,
+    "description": "Astro is a web framework for content-driven websites. From 7.1.0 until 7.3.3, Astro's server-side View Transition CSS generator does not keep string animation properties within their generated declarations. An application that passes attacker-controlled data into properties such as duration, delay, easing, direction, fillMode, or animation names can allow CSS delimiters to terminate the declaration and add attacker-selected rules to the server-rendered page. The generated stylesheet still escapes literal less-than characters, so the injected content cannot terminate the style element or directly inject HTML or JavaScript. The injected CSS can conceal or reposition content, add generated text, and otherwise misrepresent the interface; some applications may also expose data already present in selectable DOM attributes through conditional resource loads. This issue is fixed in 7.3.3.",
+    "vendor": "Check Point",
+    "product": "astro"
+  },
+  "CVE-2026-114039": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in projectworlds Advanced Library Management System 1.0. Impacted is the function mysqli_query of the file report_search.php. Executing a manipulation of the argument dateto/datefrom can lead to sql injection. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "Advanced Library Management System"
+  },
+  "CVE-2026-113802": {
+    "cvss": 9.8,
+    "description": "Wavlink WL-WN530BE1-A firmware through M30BE1_V251117 contains an OS command injection vulnerability in the sub_23B54 function of the ioos binary, which passes the unsanitized file_id parameter of /protocol.csp?opt=ovpn_file requests with type=del to popen(). A remote unauthenticated attacker can send a forged IP-FROM: 127.0.0.1 header to bypass login and execute arbitrary commands as root.",
+    "vendor": "Check Point",
+    "product": "WL-WN530BE1-A"
+  },
+  "CVE-2026-113678": {
+    "cvss": 9.9,
+    "description": "Froxlor before 2.3.15 contains a symlink following vulnerability in Statistics::makeChownWithNewStats that allows authenticated customers to take ownership of arbitrary host directories by abusing the root-run traffic cron. Attackers can replace the goaccess statistics directory in their document root with a symlink, causing chown -R to hand root-owned trees to them and enabling root escalation.",
+    "vendor": "Check Point",
+    "product": "froxlor"
+  },
+  "CVE-2026-41235": {
+    "cvss": 8.6,
+    "description": "Froxlor is open source server administration software. Version 2.3.6 lets administrators configure `system.available_shells` as the approved shell list that customers may assign to FTP users. However, the server-side FTP account handlers do not enforce that whitelist when processing add or edit requests. As a result, an authenticated customer with shell delegation enabled can submit an arbitrary shell such as `/bin/bash` even when the panel UI only offers more restricted choices. In deployments that use the default `nssextrausers` integration, the attacker-controlled shell is then propagated into the system account database, leading to real host shell access. Version 2.3.7 fixes the issue.",
+    "vendor": "Check Point",
+    "product": "froxlor"
+  },
+  "CVE-2026-113710": {
+    "cvss": 5.9,
+    "description": "ApostropheCMS is an open-source Node.js content management system. Prior to 4.33.0, the self-service password-change endpoint verifies the current password but does not use the login module’s failed-attempt counter, throttle, delay, or lockout mechanism. An attacker with a valid authenticated session can submit repeated guesses for the current password without receiving a lockout or throttle response. This issue is fixed in version 4.33.0.",
+    "vendor": "Check Point",
+    "product": "apostrophe"
+  },
+  "CVE-2026-113392": {
+    "cvss": 7.4,
+    "description": "A vulnerability was found in DrayTek Vigor2960 1.5.1.6 Revision 8218. This vulnerability affects unknown code of the file /cgi-bin/mainfunction.cgi of the component Apmupload. Performing a manipulation of the argument action results in path traversal. The attack is possible to be carried out remotely. The exploit has been made public and could be used. Upgrading to version 1.5.1.7 is able to resolve this issue. Upgrading the affected component is advised. The vendor explains: \"2960 1.5.1.7 has corrected many security issues. And 2960 is EoS with limited support, only major issues would be reviewed(e.g. unauthenticated vuln.)\". This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Check Point",
+    "product": "Vigor2960"
+  },
+  "CVE-2026-113395": {
+    "cvss": 7.4,
+    "description": "A security flaw has been discovered in DrayTek Vigor2960 1.5.1.6 Revision 8218. The affected element is the function cgiEscape of the file /cgi-bin/mainfunction.cgi of the component swmconfigupload. The manipulation of the argument multipart results in path traversal. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks. Upgrading to version 1.5.1.7 is sufficient to fix this issue. The affected component should be upgraded. The vendor explains: \"2960 1.5.1.7 has corrected many security issues. And 2960 is EoS with limited support, only major issues would be reviewed(e.g. unauthenticated vuln.)\". This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Check Point",
+    "product": "Vigor2960"
+  },
+  "CVE-2026-113712": {
+    "cvss": 4.8,
+    "description": "Cachet is an open-source status page system. Versions 2.4.1 and earlier have a stored Cross-Site Scripting (XSS) vulnerability in the incident creation form, allowing an authenticated attacker to inject malicious HTML/JavaScript that executes in the browser of any user who views the status page, potentially leading to session token theft and account takeover. Commits 57b44a8bac0b250b0d5751e93e0349070d14606e and 23adbb88ffa819f92be4a905ff1d812670d980a2 in `cachethq/core` patch the issue.",
+    "vendor": "Check Point",
+    "product": "cachet"
+  },
+  "CVE-2026-113388": {
+    "cvss": 4.3,
+    "description": "A security flaw has been discovered in opensource-socialnetwork up to 9.11/10.1. This affects the function input of the file actions/administrator/cache/dynamic.php of the component Cache Settings. Performing a manipulation of the argument host/port/username/password/type/status results in code injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks. The patch is named 40945057cb451f0f35153110bc7e889c094400e1. Applying a patch is the recommended action to fix this issue. The vendor explains: \"While we have implemented this patch as a defense-in-depth measure, we emphasize that in Open Source Social Network (OSSN), site administrators are fully trusted users who are intentionally granted broad system authority by design including the native ability to upload custom components/themes containing arbitrary PHP code.\"",
+    "vendor": "Check Point",
+    "product": "opensource-socialnetwork"
+  },
+  "CVE-2026-113354": {
+    "cvss": 6.5,
+    "description": "Dockhand before 1.0.46 contains an arbitrary file read vulnerability that allows non-admin users with stacks:edit permission to read files through the path parameter of /api/system/files/content. Attackers can supply absolute paths to read /etc/shadow, /etc/passwd, git .git/config credentials, and SSH keys from the Dockhand container.",
+    "vendor": "Check Point",
+    "product": "dockhand"
+  },
+  "CVE-2026-112772": {
+    "cvss": 8.8,
+    "description": "Craft CMS from 5.0.0 before 5.11.0 contains a remote code execution vulnerability that allows authenticated Control Panel users to escape the Twig sandbox via Asset::getMimeType transforms. Attackers can supply 'as' or 'on' keys passed unfiltered to Craft::createObject, attaching malicious behaviors or event handlers that execute code as the web user.",
+    "vendor": "Check Point",
+    "product": "cms"
+  },
+  "CVE-2023-30179": {
+    "cvss": 7.2,
+    "description": "CraftCMS version 3.7.59 is vulnerable to Server-Side Template Injection (SSTI). An authenticated attacker can inject Twig Template to User Photo Location field when setting User Photo Location in User Settings, lead to Remote Code Execution. NOTE: the vendor disputes this because only Administrators can add this Twig code, and (by design) Administrators are allowed to do that by default.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2025-69945": {
+    "cvss": 7.3,
+    "description": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in /doctor/edit-patient.php?editid=1.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-111990": {
+    "cvss": 7.3,
+    "description": "A weakness has been identified in kishan0725 Hospital Management System up to 777fda46b77a820977a5ba616283dbfbc40bf7e1. This affects the function mysqli_query of the file admin-panel.php of the component Appointment Cancellation Handler. Executing a manipulation of the argument ID can lead to sql injection. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Check Point",
+    "product": "Hospital Management System"
+  },
+  "CVE-2025-69944": {
+    "cvss": 7.3,
+    "description": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in the view-medhistory.php endpoint via the viewid parameter.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2025-65340": {
+    "cvss": 9.8,
+    "description": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in /betweendates-detailsreports.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2025-69942": {
+    "cvss": 9.8,
+    "description": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in /hms/doctor/view-patient.php?viewid=1.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2025-69943": {
+    "cvss": 9.8,
+    "description": "kishan0725 Hospital Management System 4.0 is vulnerale to SQL Injection in get_doctor.php via the parameters doctor and specilizationid.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2025-25403": {
+    "cvss": 9.8,
+    "description": "Slims (Senayan Library Management Systems) 9 Bulian V9.6.1 is vulnerable to SQL Injection in admin/modules/master_file/coll_type.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-56736": {
+    "cvss": 8.2,
+    "description": "phpMyFAQ is an open source FAQ web application. A stored cross-site scripting (XSS) vulnerability in versions prior to 4.2.0-alpha allows any unauthenticated user (or low-privileged registered user) to inject arbitrary JavaScript that executes in an administrator's browser when they review or edit a user-submitted FAQ entry. This leads to admin account takeover via session theft. The vulnerability exists because `html_entity_decode()` converts HTML entities into executable HTML after `strip_tags()` has already passed them through, and the admin template renders the content with Twig's `|raw` filter without any output sanitization. Version 4.2.0-alpha fixes the issue.",
+    "vendor": "Check Point",
+    "product": "phpMyFAQ"
+  },
+  "CVE-2026-111903": {
+    "cvss": 5.4,
+    "description": "phpMyFAQ 4.2.0-alpha before 4.2.0-beta contains a stored cross-site scripting vulnerability in SvgSanitizer that allows users with FAQ_EDIT permission to bypass sanitization using XML DTD custom entities. Attackers can upload an SVG defining an entity that expands to javascript in an anchor href, executing script when viewers click it to hijack admin sessions.",
+    "vendor": "Check Point",
+    "product": "phpMyFAQ"
+  },
+  "CVE-2026-105772": {
+    "cvss": 9.1,
+    "description": "Path Traversal (CWE-22) in FileArtifactService in Google ADK TypeScript (@google/adk) versions 0.4.0 before 0.6.0 allows a remote unauthenticated attacker to read files matching the artifact directory layout or write files (when an agent tool invokes saveArtifact) outside the intended artifact storage root via crafted relative or percent-encoded path traversal sequences (such as ../ or ..%2F) in the userId or sessionId parameters when the ADK API server is exposed with the non-default FileArtifactService enabled. Applications using the default InMemoryArtifactService are unaffected. Upgrade to @google/adk version 0.6.0 or later.",
+    "vendor": "Check Point",
+    "product": "ADK TypeScript (@google/adk)"
+  },
+  "CVE-2026-90805": {
+    "cvss": 7.3,
+    "description": "A flaw has been found in subhajitkhan online-clinic-management-system up to e9ee77a8827a1446220fa07ee693dc4d9a29a578. This affects an unknown part of the file doctorlogin.php. Executing a manipulation of the argument doc_mail/doc_pswd can lead to sql injection. The attack can be executed remotely. The exploit has been published and may be used. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Check Point",
+    "product": "online-clinic-management-system"
+  },
+  "CVE-2026-112139": {
+    "cvss": 7.3,
+    "description": "A vulnerability has been found in subhajitkhan online-clinic-management-system up to e9ee77a8827a1446220fa07ee693dc4d9a29a578. This affects an unknown function of the file admindocview.php of the component Administrative Mutation Handler. The manipulation of the argument docid leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Check Point",
+    "product": "online-clinic-management-system"
+  },
+  "CVE-2026-112097": {
+    "cvss": 3.5,
+    "description": "A vulnerability was found in SourceCodester Inventory System 1.0. This issue affects some unknown processing of the file /api/transactions_handler.php?action=save_sale of the component Sales Management Handler. The manipulation of the argument Hsn_Code results in cross site scripting. It is possible to launch the attack remotely.",
+    "vendor": "Check Point",
+    "product": "Inventory System"
+  },
+  "CVE-2026-112370": {
+    "cvss": 9.9,
+    "description": "A vulnerability was found in H3C Magic NX15 100R017. This issue affects the function sub_416874 of the file /usr/bin/usrlist. Performing a manipulation results in os command injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "Magic NX15"
+  },
+  "CVE-2026-108959": {
+    "cvss": 6.3,
+    "description": "A security vulnerability has been detected in itsourcecode Online Cake Ordering System 1.0. This impacts an unknown function of the file /addtransacdetail.php. The manipulation of the argument ID leads to sql injection. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "Online Cake Ordering System"
+  },
+  "CVE-2026-112087": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in itsourcecode Online Cake Ordering System 1.0. This issue affects some unknown processing of the file confirm.php. This manipulation of the argument cancel causes sql injection. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "Online Cake Ordering System"
+  },
+  "CVE-2026-114384": {
+    "cvss": 6.3,
+    "description": "A security vulnerability has been detected in itsourcecode Online Cake Ordering System 1.0. Affected is an unknown function of the file /transactionsave.php. Such manipulation of the argument del leads to sql injection. The attack can be launched remotely. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "Online Cake Ordering System"
+  },
+  "CVE-2019-25778": {
+    "cvss": 8.2,
+    "description": "SeaCMS through 8.7 contains an unauthenticated SQL injection vulnerability that allows remote attackers to manipulate database queries by injecting SQL through the rlist[] array parameter. Attackers can send GET requests to /comment/api/index.php with crafted rlist[] values using backtick-quoted variables and extractvalue to extract database information via error messages. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14.",
+    "vendor": "Check Point",
+    "product": "SeaCMS"
+  },
+  "CVE-2025-10662": {
+    "cvss": 4.7,
+    "description": "A vulnerability has been found in SeaCMS up to 13.3. The impacted element is an unknown function of the file /admin_members.php?ac=editsave. Such manipulation of the argument ID leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. This affects another injection point than CVE-2025-25513.",
+    "vendor": "Check Point",
+    "product": "SeaCMS"
+  },
+  "CVE-2026-82600": {
+    "cvss": 7.3,
+    "description": "A security flaw has been discovered in SeaCMS up to 13.6. Affected by this issue is some unknown functionality of the file /zyapi.php?ac=videolist. Performing a manipulation of the argument ids results in sql injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "SeaCMS"
+  },
+  "CVE-2025-11071": {
+    "cvss": 4.7,
+    "description": "A security vulnerability has been detected in SeaCMS 13.3.20250820. Impacted is an unknown function of the file /admin_cron.php of the component Cron Task Management Module. The manipulation of the argument resourcefrom/collectID leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "SeaCMS"
+  },
+  "CVE-2026-85138": {
+    "cvss": 7.3,
+    "description": "A vulnerability was detected in SeaCMS up to 13.6. Affected is the function addslashes of the file weixin/index.php of the component WeChat Module. The manipulation of the argument Content results in sql injection. The attack may be launched remotely. The exploit is now public and may be used.",
+    "vendor": "Check Point",
+    "product": "SeaCMS"
+  },
+  "CVE-2026-11959": {
+    "cvss": 6.9,
+    "description": "Stored Cross-Site Scripting (XSS) in FacturaScripts, version 2025.61, caused by a lack of adequate validation or sanitisation of user input in the ‘city’ and ‘province’ fields in the ‘ListAlmacen’ endpoint. Successful exploitation of this vulnerability could allow an attacker to execute arbitrary JavaScript code in the victim’s browser (the application user) or to escalate privileges from a normal user to an administrator by executing specially crafted JavaScript code, thereby compromising the system’s confidentiality or hijacking the session (even with httpOnly cookies by extracting CSRF tokens).",
+    "vendor": "Check Point",
+    "product": "FacturaScripts"
+  },
+  "CVE-2026-23476": {
+    "cvss": 5.4,
+    "description": "FacturaScripts is open-source enterprise resource planning and accounting software. Prior to 2025.8, there a reflected XSS bug in FacturaScripts. The problem is in how error messages get displayed. Twig's | raw filter is used, which skips HTML escaping. When triggering a database error (like passing a string where an integer is expected), the error message includes the input and gets rendered without sanitization. This vulnerability is fixed in 2025.8.",
+    "vendor": "Check Point",
+    "product": "facturascripts"
+  },
+  "CVE-2026-42877": {
+    "cvss": 5.4,
+    "description": "FacturaScripts is an open source accounting and invoicing software. In 2025.92 and earlier, a stored Cross-Site Scripting (XSS) vulnerability exists in the product search modal of sales (Core/Lib/AjaxForms/SalesModalHTML.php) and purchases documents (Core/Lib/AjaxForms/PurchasesModalHTML.php). An authenticated user with access to the warehouse module can create a product with a malicious reference that executes arbitrary JavaScript in the browser of any other user who opens the product search modal inside an invoice, order, or delivery note.",
+    "vendor": "Check Point",
+    "product": "facturascripts"
+  },
+  "CVE-2026-27964": {
+    "cvss": 3.9,
+    "description": "FacturaScripts is an open source accounting and invoicing software. Versions 2025.7 and prior contain a Reflected Cross-Site Scripting (XSS) vulnerability through the fsNick cookie parameter. The application reflects the cookie's value directly into the HTML without sanitization. The fsNick cookie is rendered into the DOM without encoding. While the server does reject the modified session and forces a logout, the HTML containing the payload reaches the browser first. This lets the script execute immediately upon load, effectively beating the redirect. This issue has been fixed in version 2025.8.",
+    "vendor": "Check Point",
+    "product": "facturascripts"
+  },
+  "CVE-2026-111992": {
+    "cvss": 6.3,
+    "description": "A vulnerability was detected in itsmeravitejak Online-Examination-System up to e6208e630b14657999bbfe4c9912302d2a1e2449. This issue affects the function Exam::startExam of the file exam.php of the component Exam Module. The manipulation of the argument topicid results in sql injection. The attack can be executed remotely. The exploit is now public and may be used. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Check Point",
+    "product": "Online-Examination-System"
+  },
+  "CVE-2026-111873": {
+    "cvss": 7.3,
+    "description": "A vulnerability was detected in itsmeravitejak Online-Examination-System up to e6208e630b14657999bbfe4c9912302d2a1e2449. This impacts the function MySQLDB::topicslist of the file exammanger.php of the component AJAX Endpoint. The manipulation of the argument subject results in sql injection. The attack may be launched remotely. The exploit is now public and may be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Check Point",
+    "product": "Online-Examination-System"
+  },
+  "CVE-2026-111053": {
+    "cvss": 6.9,
+    "description": "FOSSBilling is an open source billing and client-management platform. From 0.1.0 until 0.8.7, the unauthenticated api/guest/system/template_exists endpoint permits path traversal because templateExists uses Path::join on the attacker-controlled file parameter without rejecting .. sequences or verifying that the resolved path remains inside the active theme directory. The trigger is an unauthenticated request to guest/system/template_exists containing traversal sequences in the file parameter. An attacker can submit traversal sequences in the file parameter and observe the returned boolean to determine whether arbitrary files or directories exist on the server. The oracle does not disclose file contents. This issue is fixed in version 0.8.7.",
+    "vendor": "Check Point",
+    "product": "FOSSBilling"
+  },
+  "CVE-2026-59970": {
+    "cvss": 7.7,
+    "description": "Tandoor Recipes is an application for managing recipes, planning meals, and building shopping lists. Prior to 2.6.10, passes an administrator-controlled AI provider URL directly to LiteLLM without applying the server's outbound-request SSRF checks when an authenticated user creates a Space, configures an AI provider with a URL targeting an internal address, and invokes an AI action. In cookbook/views/api.py, the affected AI actions call completion through TARGET/api/ai-import/ and api/ai-step-sort/ while bypassing safe_request. The attack works because the server connects to the supplied provider URL from each AI action and exposes connection success, refusal, or timeout as a blind network-reachability oracle. This can reach internal services, other hosts on the server network, and cloud metadata endpoints and map reachable internal hosts and ports. This issue is fixed in version 2.6.10.",
+    "vendor": "Check Point",
+    "product": "recipes"
+  },
+  "CVE-2026-59963": {
+    "cvss": 7.1,
+    "description": "Tandoor Recipes is an application for managing recipes, planning meals, and building shopping lists. Prior to 2.6.10, recipe utility endpoints retrieve same-Space Recipe objects without invoking the private-recipe owner or sharing permission when an authenticated member of a shared Space supplies another member's private recipe identifier to AI import, file, external-link, or share-link endpoints. Request processing uses api/ai-import/, api/get_recipe_file/, api/get_external_file_link/, api/share-link/, CustomRecipePermission. The attack works because the endpoints read private recipe files, send file bytes to the configured AI provider, or create and disclose external links without object-level authorization, and api/share-link/ can create a public link when Space sharing is enabled. This can expose private recipe files and sensitive uploaded content to another same-Space user and to configured external services. This issue is fixed in version 2.6.10.",
+    "vendor": "Check Point",
+    "product": "recipes"
+  },
+  "CVE-2026-33153": {
+    "cvss": 7.7,
+    "description": "Tandoor Recipes is an application for managing recipes, planning meals, and building shopping lists. In versions prior to 2.6.0, the Recipe API endpoint exposes a hidden `?debug=true` query parameter that returns the complete raw SQL query being executed, including all table names, column names, JOIN relationships, WHERE conditions (revealing access control logic), and multi-tenant space IDs. This parameter works even when Django's `DEBUG=False` (production mode) and is accessible to any authenticated user regardless of their privilege level. This allows a low-privilege attacker to map the entire database schema and reverse-engineer the authorization model. Version 2.6.0 patches the issue.",
+    "vendor": "Check Point",
+    "product": "recipes"
+  },
+  "CVE-2026-59966": {
+    "cvss": 5.7,
+    "description": "Tandoor Recipes is an application for managing recipes, planning meals, and building shopping lists. Prior to 2.6.10, executes user-controlled Automation regular-expression patterns with Python re.sub() without complexity validation or an execution timeout when an authenticated user stores a catastrophic-backtracking regex and any user in the same Space imports a matching recipe. Request processing uses Automation.param_2, apply_regex_replace_automation, sub, api/recipe-from-source/. The attack works because the shared-Space automation engine evaluates the malicious pattern during recipe import and can occupy a Gunicorn worker until its request timeout. This can exhaust application worker slots and make the service unavailable to users. This issue is fixed in version 2.6.10.",
+    "vendor": "Check Point",
+    "product": "recipes"
+  },
+  "CVE-2026-33148": {
+    "cvss": 6.5,
+    "description": "Tandoor Recipes is an application for managing recipes, planning meals, and building shopping lists. In versions prior to 2.6.0, the FDC (USDA FoodData Central) search endpoint constructs an upstream API URL by directly interpolating the user-supplied `query` parameter into the URL string without URL-encoding. An attacker can inject additional URL parameters by including `&` characters in the query value. This allows overriding the API key, manipulating upstream query behavior, and causing server crashes (HTTP 500) via malformed requests — a Denial of Service condition. Version 2.6.0 patches the issue.",
+    "vendor": "Check Point",
+    "product": "recipes"
+  },
+  "CVE-2026-120232": {
+    "cvss": null,
+    "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
   }
