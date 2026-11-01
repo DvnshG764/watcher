@@ -57328,5 +57328,47 @@
     "description": "n8n versions before 1.123.64, 2.29.8, and 2.30.1 contain a credential exposure vulnerability: when configured with a Google Service Account key, the full PEM private key was mistakenly placed in the JWT header's kid field (intended only for a key identifier). Because JWT headers are Base64-encoded rather than encrypted, the private key could be recovered by anything that logged or inspected the JWT. An attacker who obtained the key could impersonate the service account and access or modify any Google Cloud resource it was authorized to use. Only instances using Google Service Account credentials are affected.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-93175": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/amd/display: Fix dangling pointer in CRTC reset function amdgpu_dm_crtc_reset_state() frees the old state before allocating a new one. If kzalloc() fails, the function returns without updating the state pointer, leaving a dangling pointer to already freed memory. Fix this by allocating the new state first. On allocation failure, the old state remains untouched and the function safely returns. Found by Linux Verification Center (linuxtesting.org) with SVACE. [adjust for movement around current amd-staging-drm-next]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93176": {
+    "cvss": 7.0,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/amd/display: Fix dangling pointer in plane reset function amdgpu_dm_plane_drm_plane_reset() frees the old state before allocating a new one. If kzalloc() fails, the function returns without updating the state pointer, leaving a dangling pointer to already freed memory. Fix this by allocating the new state first. On allocation failure, the old state remains untouched and the function safely returns. Found by Linux Verification Center (linuxtesting.org) with SVACE. [adjust for movement around current amd-staging-drm-next]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93179": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/amd/powerplay: fix VoltageObjectInfo zero-stride loop and OOB read Reject voltage objects whose usSize is smaller than the header or would advance the cursor past the table end, preventing an infinite loop or heap OOB read when the VBIOS supplies a malformed VoltageObjectInfo table.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93186": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: cxl/mbox: Clamp mailbox output allocation to the payload size CXL_MEM_SEND_COMMAND bounds the user's in.size to the mailbox payload size but leaves out.size unbounded, then cxl_mbox_cmd_ctor() calls kvzalloc(out.size). A large out.size drives a huge allocation, above INT_MAX it WARNs and taints, and with panic_on_warn=1 it panics. The transport __cxl_pci_mbox_send_cmd() already clamps the response copy to min(out.size, payload_size, device len), so the output buffer is never written beyond payload_size. Clamp the allocation to payload_size too, matching the RAW path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93192": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/v3d: Clear queue->active_job when v3d_fence_create() fails The run_job() callbacks for BIN, RENDER, TFU and CSD assign the incoming job to queue->active_job before calling v3d_fence_create(). If v3d_fence_create() fails, the callback returns NULL without clearing active_job, leaving a dangling pointer. Create a failure path in all run_job() callbacks that clears the active job before returning NULL. The BIN path takes queue->queue_lock around the clear as it races against v3d_overflow_mem_work(); RENDER, TFU and CSD paths have no concurrent reader, so the clear is lock-free.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93196": {
+    "cvss": 8.4,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: nvdimm: virtio_pmem: refcount requests for token lifetime KASAN reports slab-use-after-free in __wake_up_common(): BUG: KASAN: slab-use-after-free in __wake_up_common+0x114/0x160 Read of size 8 at addr ffff88810fdcb710 by task swapper/0/0 CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 6.19.0-next-20260220-00006-g1eae5f204ec3 #4 PREEMPT(full) Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS Arch Linux 1.17.0-2-2 04/01/2014 Call Trace: dump_stack_lvl+0x6d/0xb0 print_report+0x170/0x4e2 ? __pfx__raw_spin_lock_irqsave+0x10/0x10 ? __virt_addr_valid+0x1dc/0x380 kasan_report+0xbc/0xf0 ? __wake_up_common+0x114/0x160 ? __wake_up_common+0x114/0x160 __wake_up_common+0x114/0x160 ? __pfx__raw_spin_lock_irqsave+0x10/0x10 __wake_up+0x36/0x60 virtio_pmem_host_ack+0x11d/0x3b0 ? sched_balance_domains+0x29f/0xb00 ? __pfx_virtio_pmem_host_ack+0x10/0x10 ? _raw_spin_lock_irqsave+0x98/0x100 ? __pfx__raw_spin_lock_irqsave+0x10/0x10 vring_interrupt+0x1c9/0x5e0 ? __pfx_vp_interrupt+0x10/0x10 vp_vring_interrupt+0x87/0x100 ? __pfx_vp_interrupt+0x10/0x10 __handle_irq_event_percpu+0x17f/0x550 ? __pfx__raw_spin_lock+0x10/0x10 handle_irq_event+0xab/0x1c0 handle_fasteoi_irq+0x276/0xae0 __common_interrupt+0x65/0x130 common_interrupt+0x78/0xa0 virtio_pmem_host_ack() wakes a request that has already been freed by the submitter. This happens when the request token is still reachable via the virtqueue, but virtio_pmem_flush() returns and frees it. Fix the token lifetime by refcounting struct virtio_pmem_request. virtio_pmem_flush() holds a submitter reference, and the virtqueue holds an extra reference once the request is queued. The completion path drops the virtqueue reference, and the submitter drops its reference before returning.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93199": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: i3c: master: Do not treat master device as a duplicate target i3c_master_search_i3c_dev_duplicate() searches the bus for another I3C device with the same PID as the reference device. The search can match master->this, causing the controller itself to be returned as a duplicate. Since the controller is not a target device, it cannot be a duplicate of one. Exclude master->this from matching so that the function only returns real duplicate target devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
