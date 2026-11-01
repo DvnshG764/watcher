@@ -58996,5 +58996,665 @@
     "description": "Improper certificate validation in PkixNameConstraintValidator in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows an attacker who controls, or can obtain certificates from, a name-constrained intermediate CA to have certificates accepted during PKIX certification path validation for email addresses, DNS names or URI hosts that lie within excluded subtrees applying to that CA, via an rfc822Name, dNSName or uniformResourceIdentifier name whose host ends with a dot, because names and constraints were compared without first removing the RFC 1034 root-label trailing dot, so a fully qualified host name did not match an excluded subtree for the same host written without the dot.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-89111": {
+    "cvss": 10.0,
+    "description": "The SAP Cloud SDK for Python contains an OAuth2 SSRF vulnerability affecting multi-tenant BTP applications. An attacker who controls the tenant_subdomain parameter can redirect OAuth2 token requests to an attacker-controlled server, causing client credentials to be exfiltrated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109763": {
+    "cvss": 5.4,
+    "description": "Mitigation bypass in the File Handling component. This vulnerability was fixed in Firefox 158, Firefox ESR 153.5, Thunderbird 158, and Thunderbird 153.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109976": {
+    "cvss": 4.7,
+    "description": "A flaw was found in the clevis PKCS#11 pin. The clevis-pkcs11-afunix-socket-unlock daemon crashes when an AF_UNIX client connects to the data socket without a bound address, due to an integer underflow in the getpeername result handling. This causes a denial of service, preventing LUKS disk decryption from completing during boot.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-34319": {
+    "cvss": 6.5,
+    "description": "A Server-Side Request Forgery (SSRF) in the serviceURL parameter of ProPhoenix Law RMS v2022.2403.3.101 allows attackers to force the application server to make unintended DNS and web requests via a crafted HTTP request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95117": {
+    "cvss": 3.7,
+    "description": "Buffer Overflow vulnerability in zserge jsmn jsmn HEAD 25647e6 allows a remote attacker to cause a denial of service via the jsmn.h, jsmn_parse(), example/jsondump.c, dump() components",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-34320": {
+    "cvss": 9.8,
+    "description": "ProPhoenix Law RMS v2022.2403.3.101 was discovered to contain an incorrect access control issue in sensitive API endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-34321": {
+    "cvss": 6.1,
+    "description": "ProPhoenix Law RMS v2022.2403.3.101 was discovered to contain a reflected cross-site scripting (XSS) vulnerability via the PageTitle/Notes parameter in the Notes.aspx endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-34323": {
+    "cvss": 10.0,
+    "description": "ProPhoenix Law RMS v2022.2403.3.101 was discovered to contain an Insecure Direct Object Reference (IDOR) via the usrLogin$hdnPFID parameter. This vulnerability allows attackers to access sensitive information via a crafted HTTP request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-34324": {
+    "cvss": 9.1,
+    "description": "An issue in ProPhoenix Law RMS v2022.2403.3.101 allows attackers to execute a session hijacking attack via injecting a crafted 24-character string into the ASP.NET_SessionId cookie.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-34326": {
+    "cvss": 6.1,
+    "description": "ProPhoenix Law RMS v2022.2403.3.101 was discovered to contain a reflected cross-site scripting (XSS) vulnerability via the PageTitle/Alert/MsgType parameter in the errorHandler.aspx endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104085": {
+    "cvss": 8.8,
+    "description": "odt2spip plugin for SPIP before 4.4.0 contains an OS command injection vulnerability that allows authenticated authors to execute arbitrary commands by uploading a document with a maliciously crafted filename through the document import form. Attackers can embed shell metacharacters such as $(id) in a non-.odt filename, which survives insufficient sanitization in odt2spip_deplacer_fichier_upload() and LibreOffice::createCommand(), to achieve remote code execution as the web-server user during the LibreOffice conversion process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106175": {
+    "cvss": 2.3,
+    "description": "A Double Free vulnerability [CWE-415] vulnerability in Fortinet FortiOS 7.6.0 through 7.6.8, FortiOS 7.4 all versions, FortiOS 7.2 all versions, FortiOS 7.0 all versions, FortiProxy 7.6.0 through 7.6.6, FortiProxy 7.4 all versions, FortiProxy 7.2 all versions, FortiProxy 7.0 all versions, FortiSwitch 7.6.0 through 7.6.6, FortiSwitch 7.4 all versions, FortiSwitch 7.2 all versions may allow a local authenticated attacker to crash the newcli daemon via crafted CLI commands.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-23705": {
+    "cvss": 7.2,
+    "description": "An Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability [CWE-89] vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.2, FortiAnalyzer 7.4.0 through 7.4.6, FortiAnalyzer 7.2.0 through 7.2.13, FortiManager 7.4.0 through 7.4.6, FortiManager 7.2 all versions may allow a low privileged user to execute arbitrary commands via crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-104875": {
+    "cvss": 7.1,
+    "description": "Ente provides end-to-end encrypted cloud services and security tools. Prior to server image 2026.07.09, the POST /emergency-contacts/approve-recovery endpoint authorized approval using a client-supplied userID and updated an emergency recovery session using only its client-supplied recovery-session UUID. An accepted emergency contact could submit the contact's own identifier, transition the victim's session from WAITING to READY, clear wait_till, retrieve recovery information, and continue account recovery before the owner-configured notice period expired. Exploitation of the approval bypass required the victim to have previously added and accepted the attacker as an emergency contact, and it did not create recovery rights for an arbitrary account. Separately, the same insufficiently scoped update pattern affected the reject and stop recovery transitions, allowing a user who knew another recovery-session UUID to potentially cancel a session to which the user was not a party. This issue is fixed in server image 2026.07.09.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105733": {
+    "cvss": 8.8,
+    "description": "Improper access control in Windows Hyper-V allows an authorized attacker to execute code locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108130": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Virtualization-Based Security (VBS) Enclave allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108133": {
+    "cvss": 7.8,
+    "description": "Release of invalid pointer or reference in Windows Modern Device Management (MDM) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108134": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Autopilot allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108399": {
+    "cvss": 7.2,
+    "description": "Heap-based buffer overflow in Windows Hyper-V allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110247": {
+    "cvss": 8.4,
+    "description": "Several buffer-growth sites in libmime performed size arithmetic in 32-bit types without overflow checks. On a sufficiently large message the growth guard could fail open, or the buffer could be reallocated smaller than required, and a subsequent memcpy would then write attacker-controlled data across adjacent heap allocations. This vulnerability was fixed in Thunderbird 158 and Thunderbird 153.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69644": {
+    "cvss": 5.5,
+    "description": "Exposure of sensitive system information to an unauthorized control sphere in Windows iSCSI allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69650": {
+    "cvss": 7.8,
+    "description": "Improper verification of cryptographic signature in Windows Key Distribution Center allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69743": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Program Compatibility Assistant Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69763": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Storage allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69966": {
+    "cvss": 7.8,
+    "description": "Integer overflow or wraparound in Microsoft Streaming Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69967": {
+    "cvss": 5.5,
+    "description": "Out-of-bounds read in Windows Overlay Filter allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69988": {
+    "cvss": 7.5,
+    "description": "Use after free in Remote Desktop Client allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70005": {
+    "cvss": 5.9,
+    "description": "Weak authentication in Active Directory Federation Services (AD FS) allows an unauthorized attacker to bypass a security feature over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70006": {
+    "cvss": 7.5,
+    "description": "Use after free in Remote Desktop Client allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70048": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Resilient File System (ReFS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70051": {
+    "cvss": 7.8,
+    "description": "Access of resource using incompatible type ('type confusion') in Windows SmartScreen allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70052": {
+    "cvss": 7.8,
+    "description": "Integer overflow or wraparound in Windows PowerShell allows an authorized attacker to execute code locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105081": {
+    "cvss": 3.6,
+    "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 does not properly account for symbolic links in the IsRightsAuthorizedByName security policy check, allowing configured policy restrictions to be bypassed. Local attackers who can create a symlink can point it at a policy-restricted path to evade the configured policy.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109256": {
+    "cvss": 6.5,
+    "description": "FreeRDP 3.10.0 through 3.32.2 contains a heap buffer overflow in the WinPR png_write_data callback that writes past the buffer after a realloc failure. A malicious RDP clipboard peer can supply a large CF_DIB image that triggers out-of-bounds memcpy during PNG conversion, causing a client crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75888": {
+    "cvss": 7.7,
+    "description": "A flaw was found in the OpenShift console. An authenticated console user can exploit a Server-Side Request Forgery (SSRF) vulnerability by providing a specially crafted Helm chart URL without proper validation. This allows the user to make the console pod fetch arbitrary URLs, potentially leading to the disclosure of sensitive information through error messages or enabling blind port scanning within the cluster.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58389": {
+    "cvss": 6.1,
+    "description": "HoloViz Panel from 1.2.2 before 1.9.0 contains an open redirect vulnerability in panel/auth.py that allows remote attackers to redirect users by supplying an unvalidated next query parameter. BasicLoginHandler and PasswordLoginHandler store the parameter in a next_url cookie, so crafted login links send victims to attacker-controlled external sites after successful login.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58390": {
+    "cvss": 8.8,
+    "description": "Frappe before 14.81.4 and 15.x before 15.41.0 contains an improper privilege management vulnerability involving a certain document action that permits escalation from the Website User role to System Manager. Authenticated attackers with Website User access can combine this document action with additional steps to obtain administrative System Manager privileges in the Frappe application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83526": {
+    "cvss": 8.8,
+    "description": "The FV Player 8 plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 8.1.7 via the check_mimetype function. This is due to insufficient file type validation in check_mimetype(), which writes attacker-supplied remote file content to the public uploads directory before any MIME or extension check, combined with a missing capability check on new player creation. This makes it possible for authenticated attackers, with subscriber-level access and above, to upload files that may be executable, which makes remote code execution possible. This requires successfully exploiting a race condition, and is only exploitable if the '[fvplayer_editor]' shortcode is present, or the \"Enable profile videos\" setting is enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42693": {
+    "cvss": 7.1,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in TieLabs Jannah jannah allows Reflected XSS.This issue affects Jannah: from n/a before 7.6.8.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98375": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: xen/netfront: drop RX packets with a short Ethernet header handle_incoming_queue() pulls pull_to bytes into the head before calling eth_type_trans(). pull_to is the length of the first RX slot, capped at RX_COPY_THRESHOLD, and that length comes from the backend. Nothing checks it against ETH_HLEN. If the first slot is shorter than ETH_HLEN and more slots follow, the head ends up shorter than an Ethernet header while skb->len is longer, and eth_type_trans() BUG()s in __skb_pull(). If the whole packet is shorter than ETH_HLEN, eth_type_trans() reads the header past the end of the data instead. Pull at least ETH_HLEN, and drop the packet if that fails, which also drops packets too short to hold an Ethernet header. This also checks the return value of the pull, which was ignored.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98377": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: vlan: require the MAC header to be present in __vlan_insert_inner_tag() __vlan_insert_inner_tag() only guarantees head room via skb_cow_head(), never that mac_len bytes of MAC header are present. Its ETH_HLEN wrappers - __vlan_insert_tag() under skb_vlan_push(), and vlan_insert_tag() under validate_xmit_vlan() on the generic transmit path - therefore rewrite the first 16 bytes at skb->data: a 12-byte memmove plus two 2-byte stores at +12 and +14. No caller supplies the bound, while the pop helpers use skb_ensure_writable()/pskb_may_pull(). An IFF_TUN device has hard_header_len == 0, so packet_snd() accepts a one-byte AF_PACKET/SOCK_RAW frame. The first vlan push only sets a hwaccel tag; the next - clsact \"action vlan push\" or bpf_skb_vlan_push() - enters the helper with skb->len still 1. The head comes from skbuff_small_head without __GFP_ZERO, so each push drags bytes from beyond skb->tail into the frame. After three the one-byte send leaves as 13 bytes carrying 11 bytes of uninitialised slab: 0000: 5a b3 62 12 80 88 ff ff 00 b3 62 12 81 `------------------------------' only 0x5a was sent; the rest is slab, here the top 56 bits of a linear-map address Require the MAC header the helper rewrites to be present, so such a frame is dropped rather than transmitted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8374": {
+    "cvss": 8.5,
+    "description": "Misuse and misconfiguration in Bluetooth communication in SwitchBot Door Lock Series allows an attacker to bypass the electronic lock and access controls via a manipulated communication protocol.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107444": {
+    "cvss": 4.3,
+    "description": "A flaw was found in Katello where the Docker Tags repositories API does not properly enforce organization scoping when listing repositories for a Docker meta tag. An authenticated user with permission to view products in one organization may be able to retrieve repository metadata associated with Docker tags belonging to another organization by supplying the tag identifier. This can result in unauthorized disclosure of repository configuration information across organization boundaries.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107445": {
+    "cvss": 5.4,
+    "description": "A flaw was found in Katello where the Flatpak Remote Repositories API does not properly enforce authorization when accessing a flatpak remote repository by identifier. An authenticated user with permission to view flatpak remotes in one organization may be able to access flatpak remote repository information belonging to another organization. The same unscoped lookup is used by the mirror action, which may allow creating a repository in a product the user can edit that is configured with another organization's flatpak remote URL and stored remote credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107565": {
+    "cvss": 5.1,
+    "description": "A flaw was found in luksmeta. A local attacker with administrative privileges can cause data corruption when saving metadata to a Linux Unified Key Setup (LUKS) device. Due to incorrect boundary calculations and flawed overlap detection, new metadata entries can be written beyond available free space or over existing records. This issue can corrupt stored encrypted payload data or existing metadata, potentially rendering the affected data inaccessible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93017": {
+    "cvss": 7.7,
+    "description": "The `insights-operator-gather` ClusterRole grants the operator's service account read access to secrets in the core API group with no namespace or resourceNames restriction — therefore, access to every secret in every namespace in the cluster. Ref: https://github.com/openshift/insights-operator/blob/8f15e3157ff09f54ab22801f5b21da35a195cc6d/manifests/03-clusterrole.yaml#L368-L373 ``` - apiGroups: - \"\" resources: - secrets verbs: - get - list ``` By spawning a pod with the gather service account mounted, an attacker will be able to access any secret in any namespace. ``` spec: serviceAccountName:\"gather\" ```",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106433": {
+    "cvss": 8.8,
+    "description": "Improper state management in MongoDB libmongocrypt can cause provider-specific data to be treated as an incompatible type when cleaning up a key document containing duplicate masterKey fields. An authenticated actor who can modify key vault documents, or a server that returns such a key document, can cause invalid memory access and invalid frees in the client process. This can terminate the application or corrupt process memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106437": {
+    "cvss": 7.4,
+    "description": "The BSON buffer-reservation API in the MongoDB C Driver can record a length smaller than the five-byte BSON minimum. Later append or comparison operations can underflow unsigned length calculations and read or write outside the document buffer. An actor who can influence the length supplied by an embedding application can cause the application to terminate or read or corrupt adjacent process memory. Reaching this issue requires the application to pass an undersized value to bson_reserve_buffer and then perform an affected operation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106438": {
+    "cvss": 3.7,
+    "description": "An incorrect calculation in Decimal128 string parsing in the MongoDB C Driver can accept certain over-precision inputs containing leading zeros instead of rejecting them. This produces a value different from the supplied text. An actor who can provide a decimal string to an embedding application, including through Extended JSON parsing, can cause the application to store or use an incorrect numeric value.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107324": {
+    "cvss": 5.9,
+    "description": "An integer overflow in BSON value-length handling in the MongoDB Go Driver can cause a runtime panic when an application validates or accesses a malformed BSON document. An unauthenticated actor who can supply BSON bytes to an affected application may terminate an unprotected application process, causing a denial of service. The driver's server-monitoring path contains panic recovery and is limited to server-selection failure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107325": {
+    "cvss": 5.9,
+    "description": "Improper validation of a BSON array length in the MongoDB Go Driver can cause an out-of-bounds index and runtime panic when an application calls bson.RawArray.Validate or bsoncore.Array.Validate on a malformed four-byte array. An unauthenticated actor who can supply raw BSON array data to an affected application may terminate an unprotected application process, causing a denial of service. No confidentiality or integrity impact has been identified.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88648": {
+    "cvss": 3.7,
+    "description": "Incomplete X.509 implementation in GnuTLS v3.8.13 allows attackers controlling a subordinate Certificate Authority to bypass cross-domain PKI restrictions and issue unauthorized certificates.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83943": {
+    "cvss": 8.7,
+    "description": "Exposure of sensitive information to an unauthorized actor in Azure API Center allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98373": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mm/hugetlb: preserve mremap address delta when skipping page tables move_hugetlb_page_tables() optimizes mremap() by advancing to the last entry in the page table when the source page table does not exist, either initially or after unsharing a PMD table. The common loop increment then steps to the first entry in the next page table. However, the code advances both the source and destination addresses to the last entries in their respective page tables, which is wrong. The destination address must be advanced only by the same amount as the source address. If the source and destination offsets within their page tables differ, the destination address can be advanced too far, causing follow-up issues. Fix this by advancing the destination address by the source advance distance. With a reproducer, we were able to trigger a kernel panic on x86-64. With this fix in place, we can no longer reproduce the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107161": {
+    "cvss": 7.5,
+    "description": "A heap-based buffer overflow flaw was found in Cyrus SASL. The add_to_challenge() function in the DIGEST-MD5 plugin computes the size of the buffer needed for a challenge/response field before DIGEST-MD5 quoting is applied, but does not recompute that size when quoting (escaping special characters) makes the value longer. The under-sized buffer is then passed to strcat(), causing a heap-based out-of-bounds write whose size depends on attacker-controlled input. A malicious or on-path DIGEST-MD5 (or HTTP Digest) server can trigger this flaw in a connecting client by supplying a crafted challenge field, such as realm or nonce, most likely resulting in a crash of the client application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107176": {
+    "cvss": 6.8,
+    "description": "A flaw was found in the cluster-samples-operator. The RBAC Role coreos-pull-secret-reader in namespace openshift-config grants get, list, and watch permissions on all Secret resources without resourceNames scoping. The operator only requires access to the pull-secret Secret. If the samples-operator pod or its service account token is compromised through a separate vulnerability, an attacker could read all secrets in openshift-config, potentially including OAuth identity provider credentials, cloud provider credentials, and other sensitive cluster configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76281": {
+    "cvss": null,
+    "description": "As part of Cisco's ongoing commitment to proactive security and product quality, Cisco has conducted a comprehensive internal security review. This review resulted in a software hardening release that addresses multiple internally discovered vulnerabilities. The vulnerabilities tracked by CVE-2026-76281 are related to improper access control issues that are grouped under the Common Weakness Enumeration (CWE) CWE-284.",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-104031": {
+    "cvss": 5.5,
+    "description": "A flaw was found in SSSD. In configurations where the autofs responder service is enabled, memory allocated during successful request processing is not released until the client connection terminates. A local attacker can exploit this vulnerability by maintaining an open connection and repeatedly submitting valid requests, leading to memory exhaustion and a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104032": {
+    "cvss": 5.5,
+    "description": "A flaw was found in SSSD. An unprivileged local user can repeatedly request master automount map updates through the autofs responder due to missing authorization checks. This triggers global cache invalidation and forces repeated lookups to backend directory providers, leading to a Denial of Service (DoS) from degraded automount availability and elevated resource consumption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104040": {
+    "cvss": 6.1,
+    "description": "A flaw was found in SSSD. When configured with the Entra ID identity provider, input lookup names containing single quotes are not properly escaped before being included in Microsoft Graph Open Data Protocol (OData) queries. A low-privileged local user can exploit this flaw by submitting a crafted search request, altering query filters to broaden user or group searches. This can lead to information disclosure by retrieving unintended directory objects, as well as a Denial of Service (DoS) through excessive processing and cache population.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104041": {
+    "cvss": 5.5,
+    "description": "A flaw was found in SSSD. An unprivileged local user can repeatedly request lookups for nonexistent entries through the Name Service Switch (NSS) responder. Because the negative cache does not limit the total number of stored entries and only removes expired records when an existing key is rechecked, the cache can grow without bound. This behavior can lead to memory exhaustion, resulting in a Denial of Service (DoS) as the responder becomes unresponsive or terminates.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32557": {
+    "cvss": 9.3,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in BookingWP WooCommerce Appointments woocommerce-appointments allows Blind SQL Injection.This issue affects WooCommerce Appointments: from n/a through 5.3.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-39746": {
+    "cvss": 9.3,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Booknetic Booknetic booknetic allows Blind SQL Injection.This issue affects Booknetic: from n/a before 5.10.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-39795": {
+    "cvss": 9.3,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in brewlabs SendPress Newsletters sendpress allows Blind SQL Injection.This issue affects SendPress Newsletters: from n/a through 1.26.1.20.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98169": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fix potential OOB read in smb3_enum_snapshots() If snapshot_array_size is smaller than GMT_TOKEN_SIZE, smb3_enum_snapshots() sets ret_data_len to sizeof(struct smb_snapshot_array) without verifying the actual length of the server's reply. Because SMB2_ioctl() places no lower bound on the server-supplied OutputCount and allocates retbuf to exactly that length, a short reply results in ret_data_len exceeding the size of retbuf. The subsequent copy_to_user() then reads past the end of retbuf, leaking adjacent slab memory to userspace. The subsequent clamp check is ineffective as it only reduces ret_data_len. Fix this by rejecting replies shorter than sizeof(struct smb_snapshot_array) with -EIO. Note that the bound is set to the 12-byte struct size rather than the 16-byte MIN_SNAPSHOT_ARRAY_SIZE defined in MS-SMB2 3.3.5.15.1, because 12 bytes is exactly what copy_to_user() attempts to read.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98170": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fix OOB struct field reads in move_smb2_ea_to_cifs() In move_smb2_ea_to_cifs(), the while (src_size > 0) loop condition is insufficient. It allows iteration to continue even if the remaining src_size is too small to contain a complete smb2_ea_info structure. Consequently, reads of ea_name_length and ea_value_length can occur out-of-bounds. Fix this by ensuring src_size >= sizeof(*src) before attempting to read any structure fields. Additionally, reject any next_entry_offset that is smaller than sizeof(*src) or that would advance the pointer beyond the available buffer. Note that for calls where the server returns a malformed EA list, the error returned to userspace changes from -ENODATA (getxattr) or -ERANGE (listxattr) to -EIO. This correctly signals a server protocol error rather than misleadingly indicating \"attribute not present\" or \"output buffer too small\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98171": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fix next_buffer UAF and NextCommand bounds in compound PDUs Fix several related bounds checking and pointer lifecycle issues in receive_encrypted_standard()'s handling of compound encrypted frames: - Clear next_buffer after assigning it to server->bigbuf. A stale next_buffer pointer can lead to a use-after-free on subsequent error paths. - Update pdu_length to the decrypted plaintext size (buf_size). Using the pre-decryption length allows NextCommand to point into stale ciphertext residue. - Reject next_cmd values smaller than MID_HEADER_SIZE(server). - Fix an integer overflow in the upper bound check by verifying pdu_length - next_cmd < MID_HEADER_SIZE(server), ensuring the trailing slice is large enough for a header.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98172": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fix smbd_connection leak on cifs_get_tcp_session() error When an RDMA connection is successfully established via smbd_get_connection() but cifs_get_tcp_session() later fails (e.g. kthread_create() returns an error), the error path frees tcp_ses without first destroying the smbd_connection. Fix this by calling smbd_destroy() in the out_err cleanup path before kfree(tcp_ses). smbd_destroy() safely handles the case where smbd_conn is NULL, so it can be called unconditionally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98173": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fix use-after-free of iface in cifs_try_adding_channels() cifs_try_adding_channels() iterates ses->iface_list with list_for_each_entry_safe_from(), which captures the next entry (niface) under iface_lock. The loop body then drops iface_lock for the whole duration of cifs_ses_add_channel(). A concurrent interface refresh (SMB3_request_interfaces() -> parse_server_interfaces()) marks all ifaces inactive and removes and frees any that are not re-advertised via list_del() + kref_put(), where release_iface() is a bare kfree(). Since niface typically has no channel holding a reference, the list reference is its last and it can be freed inside the unlocked window. On continue, the iterator advance step then dereferences niface->iface_head.next, and the loop body reads iface->rdma_capable/is_active, both on freed memory. Fix this by never keeping an unreferenced list pointer across the unlocked window. Each channel attempt now re-scans the list from the head under iface_lock, takes a kref on the selected candidate, and passes only that referenced candidate to cifs_ses_add_channel(). weight_fulfilled still tracks selection progress, so restarting the scan preserves the original weighted distribution and the weight_fulfilled-before-kref_put ordering on the failure path. Add a per-pass attempts cap so a flapping interface refresh cannot keep the inner loop spinning within a single tries increment.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98192": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: wcn36xx: Fix potential use-after-free in TX ack timer teardown wcn36xx_dxe_deinit() tears down the TX ack timer with timer_delete(), which only dequeues the timer and does not wait for a callback that is already executing; the preceding free_irq() calls synchronize the interrupt handlers only. The callback, wcn36xx_dxe_tx_timer(), can therefore be running past the teardown and use the wcn freed along with the ieee80211_hw in wcn36xx_remove(): it takes wcn->dxe_lock, reads wcn->tx_ack_skb and passes wcn->hw to ieee80211_tx_status_irqsafe(). Fix this by using timer_shutdown_sync(), which waits for a running callback and also prevents the timer from being rearmed again. The timer is set up again by wcn36xx_dxe_init() on the next start, so the start/stop cycle is unaffected. This issue was found by an in-house static analysis tool.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98193": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: libipw: reject TKIP frames without a full MIC libipw_michael_mic_verify() assumes that an skb contains an eight-byte Michael MIC. A short TKIP frame makes the unsigned payload length wrap, causing michael_mic() to read past the skb. Check that the MIC is present before verifying it, and use the existing MICHAEL_MIC_LEN constant for all MIC lengths in the verifier.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98198": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: hwmon: (pwm-fan) Stop RPM timer before freeing tach data sample_timer() rearms the RPM timer and accesses the devm-managed ctx->tachs and ctx->pulses_per_revolution arrays. The cleanup action which stops the timer is registered before those arrays are allocated. Since devres releases entries in reverse order, driver detach can free the arrays before pwm_fan_cleanup() shuts down the timer. A timer expiry in that window accesses the freed tach data. With a KASAN kernel, a test-only kprobe delayed entry to pwm_fan_cleanup() while normal sysfs unbind ran. Each of three runs reported three four-byte reads and two four-byte writes in sample_timer() after its backing devm allocations had been freed. The helper did not invoke the timer callback, cleanup actions or free functions. With the fix, three matching unbind runs completed without KASAN, BUG, WARNING, Oops or panic. Instrumentation confirmed that timer retirement completed before the first timer backing allocation was released. Split timer retirement from the power cleanup and register its devres action after the timer backing data and IRQ actions are installed. This preserves the early power rollback action while ensuring the timer is retired before its backing data is released. Use timer_shutdown_sync() because the callback can rearm itself.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98245": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: btrfs: take commit root semaphore when iterating in mark_block_group_to_copy() mark_block_group_to_copy() iterates over the commit root with skip_locking=true. A concurrent transaction commit can swap and free the commit root during iteration, causing use-after-free when accessing extent buffers. Fix it by using path->need_commit_sem to protect the commit root search.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98260": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: exec: Cleanup POSIX timers right after de_thread() A per-thread CPU timer holds a reference to the PID of the thread it is attached to and, while it is armed, its node is queued in that thread's posix_cputimers. The task is looked up by that PID. When a non-leader thread exec()s, de_thread() changes which task owns that PID. pid_task(timer->it.cpu.pid, PIDTYPE_PID) then returns NULL, but the node is still queued on tsk, which is alive. timer_lock_sighand() takes a failed lookup to mean that the node is already dequeued, so it has nothing to undo. begin_new_exec() calls posix_cpu_timers_exit(me) right after exec_task_namespaces() and that removes the leftover node, so the state normally stays invisible. But bprm->point_of_no_return is set before de_thread(), so if unshare_files(), set_mm_exe_file(), exec_mmap() or exec_task_namespaces() fails, the task dies before it gets there. exit_itimers() then frees the k_itimer while its node is still queued, and reaping tsk later erases that freed node from the rbtree. In short: the non-leader thread B the parent timer_create(CLOCK_THREAD_CPUTIME_ID) timer_settime() arm_timer() // the node is queued on B execve() de_thread(B) exchange_tids(B, leader) // B's PID now belongs to the leader release_task(leader) __exit_signal(leader) posix_cpu_timers_exit(leader) // cleans leader's queue, not B's __unhash_process(leader) // that PID has no task anymore exec_mmap() mmap_read_lock_killable(old_mm) kill(B, SIGKILL) // -EINTR get_signal() do_exit() exit_itimers() posix_timer_delete() posix_cpu_timer_del() posix_timer_unhash_and_free() // freed while still queued wait4() release_task(B) posix_cpu_timers_exit(B) cleanup_timerqueue() timerqueue_del() // use-after-free Move the POSIX timer cleanup right after de_thread() before any of the later failure conditions brings the task into do_exit(). [ tglx: Move the cleanup right after de_thread() ]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98264": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: virtio: reset device before deleting virtqueues virtsnd_remove() and virtsnd_freeze() delete the virtqueues before resetting the device. del_vqs() frees the vring backing, but does not provide a generic device quiesce operation. In particular, modern virtio-pci keeps enabled queues active until the device is reset. Reset the device before deleting the virtqueues so it can no longer access the vring memory when that memory is released. This also covers probe failures after DRIVER_OK, which unwind through virtsnd_remove().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98265": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: usb-audio: Clamp implicit feedback packet count to URB capacity data_ep_set_params() allocates each data URB for exactly u->packets isochronous frames, so urb->iso_frame_desc[] has u->packets slots and ctx->packets is the driver's only record of that limit. For an implicit feedback sink, snd_usb_queue_pending_output_urbs() overwrites it with the sync source's packet count, which is calculated independently from the capture endpoint's parameters. When that count is larger, prepare_playback_urb() and prepare_silent_urb() can write iso_frame_desc[] past the allocation; their existing bounds limit payload bytes, not the descriptor index. The reproducer uses a high-speed UAC2 device declaring bInterval 1 for implicit feedback capture (8 packets) and bInterval 4 for playback (1 packet). On the first capture completion after the stream starts, it accesses seven descriptors spanning 112 bytes beyond the one-packet URB: BUG: KASAN: slab-out-of-bounds in prepare_playback_urb (sound/usb/pcm.c:1560) Write of size 4 at addr ffff88801e696ad0 by task vhci_rx/178 prepare_playback_urb (sound/usb/pcm.c:1560) prepare_outbound_urb (sound/usb/endpoint.c:340) snd_usb_queue_pending_output_urbs (sound/usb/endpoint.c:501) snd_complete_urb (sound/usb/endpoint.c:1834) __usb_hcd_giveback_urb (drivers/usb/core/hcd.c:1657) usb_hcd_giveback_urb (drivers/usb/core/hcd.c:1741) vhci_rx_loop (drivers/usb/usbip/vhci_rx.c:107) kthread (kernel/kthread.c:436) The buggy address belongs to the object at ffff88801e696a00 which belongs to the cache kmalloc-256 of size 256 The buggy address is located 0 bytes to the right of allocated 208-byte region [ffff88801e696a00, ffff88801e696ad0) Record the allocated packet count per endpoint and clamp both the adopted count and the packet-size copy to it. Fold the Format Type II delimiter into urb_packs before the allocation loop so the recorded limit matches every URB.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98297": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: hci_core: Fix queuing tx_work after workqueue is drained hci_send_acl(), hci_send_sco() and hci_send_iso() queue hdev->tx_work unconditionally. They can run from the L2CAP/SCO/ISO socket send path while hci_dev_close_sync() is draining hdev->workqueue (HCIDEVDOWN racing with a socket write). Since that queue_work() is not chained work from the tx_work worker itself, __queue_work() sees the queue marked __WQ_DRAINING, warns \"cannot queue %ps on wq %s\", and drops the work: WARNING: CPU: 1 PID: 5985 at kernel/workqueue.c:2352 __queue_work Call Trace: queue_work_on l2cap_chan_send l2cap_sock_sendmsg ... hci_dev_close_sync() already sets HCI_CMD_DRAIN_WORKQUEUE before draining, but only hci_cmd_work() and handle_cmd_cnt_and_timer() check it before queuing. Route the tx_work producers through the same guard via a shared hci_sched_tx() helper.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98353": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: RDMA/erdma: Use IRQ-safe XArray helpers for QP and CQ tables Locked QP and CQ lookups from EQ interrupts can deadlock with create-path XArray updates. If an interrupt arrives while the create path holds the plain xa_lock, the lookup spins forever trying to acquire the same lock. Use IRQ-safe XArray helpers for all QP and CQ create-path updates, including the GSI QP store and error paths. Initialize both arrays with XA_FLAGS_LOCK_IRQ so sleeping allocations preserve interrupt state.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106117": {
+    "cvss": 7.5,
+    "description": "ImageSharp is a 2D graphics library. From 3.0.0 until 4.1.1, decoding a strip TIFF using CCITT Group 3 or Modified Huffman compression can pass attacker-expanded runs to BitWriterUtils.WriteBits without first checking the current row width. T4TiffCompression.WritePixelRun can accumulate oversized makeup-code runs, and ModifiedHuffmanTiffCompression.Decompress validates the width only after writing. The unchecked writes can overflow the strip buffer, corrupt heap memory, and terminate the process. This strip-path vulnerability is distinct from the tiled decompressor-width mismatch. This issue is fixed in version 4.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104047": {
+    "cvss": 5.3,
+    "description": "A flaw was found in SSSD. When configured to use Microsoft Entra ID, search inputs are not properly sanitized before being incorporated into directory query filters. A local user can exploit this vulnerability by submitting a crafted lookup request, manipulating the query logic to cause unauthorized information disclosure from the directory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106456": {
+    "cvss": 6.5,
+    "description": "Backstage is an open framework for building developer portals. From 0.5.0 until 0.6.18, the @backstage/plugin-proxy-backend package is affected by inconsistent credential enforcement for overlapping proxy routes. An operator can configure overlapping proxy paths with different credential requirements. When a parent path permits unauthenticated access and a nested path requires credentials, the parent exemption can also cover requests handled by the nested proxy. An unauthenticated caller may therefore reach the nested upstream through Backstage, including with static upstream credentials configured for that proxy. This issue is fixed in version 0.6.18.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106457": {
+    "cvss": 8.1,
+    "description": "Backstage is an open framework for building developer portals. From 0.1.0 until 0.5.0, the @backstage/plugin-auth-backend-module-cloudflare-access-provider package is affected by insufficient audience validation in the cloudflare access auth provider. The Cloudflare Access auth provider verifies a token's signature and team issuer, but affected versions do not verify that the token was issued for the Backstage application. A user holding a valid token for another Access application in the same Cloudflare Zero Trust team may therefore be able to authenticate to Backstage if that token reaches the auth endpoint without the Backstage application's audience already being enforced upstream. Cloudflare Access normally evaluates the protected application before forwarding requests. This issue is fixed in version 0.5.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106458": {
+    "cvss": 6.5,
+    "description": "Backstage is an open framework for building developer portals. From 0.4.0 until 0.5.15, the @backstage/plugin-catalog-backend-module-bitbucket-server package is affected by inconsistent repository filtering in bitbucket server catalog event updates. Deployments using event-driven updates in the Bitbucket Server catalog provider may ingest catalog locations from repositories that are excluded by the provider's configured project, repository, or archived-repository filters. An authenticated Bitbucket Server user who can push to a filtered-out repository that remains readable by the configured Backstage integration can trigger a legitimate repository event. The affected event path may then add a Location for that repository even though scheduled discovery excludes it. This issue is fixed in version 0.5.15.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106460": {
+    "cvss": 6.8,
+    "description": "Backstage is an open framework for building developer portals. From 0.3.0 until 0.6.15 and 0.7.5, the @backstage/plugin-auth-node package did not consistently honor explicit negative email verification during shared OAuth profile normalization. The affected paths include a selected profile email marked verified: false, a matching raw provider email marked email_verified: false, and an email obtained only from an ID token marked email_verified: false. Exploitation requires an admitted identity-provider user who can supply or change an unverified email and a deployment that uses the selected profile email to resolve catalog identities. The verification metadata must apply to the selected email; an absent email_verified claim alone is not affected. In an affected configuration, the user may assume another catalog identity and obtain its associated access and permissions. This issue is fixed in versions 0.6.15 and 0.7.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-20579": {
+    "cvss": 6.7,
+    "description": "In vdec, there is a possible out of bounds write due to type confusion. This could lead to local escalation of privilege if a malicious actor has already obtained the System privilege. User interaction is not needed for exploitation. Patch ID: ALPS11383899; Issue ID: MSV-9800.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-20586": {
+    "cvss": 8.8,
+    "description": "In vdec, there is a possible out of bounds write due to a missing bounds check. This could lead to remote escalation of privilege with no additional execution privileges needed. User interaction is needed for exploitation. Patch ID: ALPS11383899; Issue ID: MSV-9614.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-20587": {
+    "cvss": 6.7,
+    "description": "In mtee, there is a possible escalation of privilege due to type confusion. This could lead to local escalation of privilege if a malicious actor has already obtained the System privilege. User interaction is not needed for exploitation. Patch ID: ALPS11383899; Issue ID: MSV-9608.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-20588": {
+    "cvss": 6.7,
+    "description": "In mtee, there is a possible escalation of privilege due to a missing bounds check. This could lead to local escalation of privilege if a malicious actor has already obtained the System privilege. User interaction is not needed for exploitation. Patch ID: ALPS11383899; Issue ID: MSV-9607.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-20589": {
+    "cvss": 6.7,
+    "description": "In venc, there is a possible out of bounds write due to type confusion. This could lead to local escalation of privilege if a malicious actor has already obtained the System privilege. User interaction is not needed for exploitation. Patch ID: ALPS11383899; Issue ID: MSV-9606.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104029": {
+    "cvss": 5.5,
+    "description": "A flaw was found in SSSD. A local attacker can exploit this vulnerability by sending a specially crafted request to the autofs responder UNIX socket. Due to improper buffer offset calculation during request parsing, the service performs an out-of-bounds memory read. This flaw can cause the autofs responder process to crash, resulting in a denial of service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104030": {
+    "cvss": 5.5,
+    "description": "A flaw was found in sssd. This vulnerability allows a local user to cause a Denial of Service (DoS) by submitting a specially crafted passkey authentication token that lacks null terminators. The authentication service reads past the end of the provided memory buffer, causing the process to crash and disrupting authentication services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105206": {
+    "cvss": 5.3,
+    "description": "ZITADEL 3.0.0 through 3.4.15 and 4.x before 4.17.3 contains an incorrect authorization flaw in the User Service API, which verifies user.read against the caller's organization rather than the organization owning the target user. An authenticated member holding org-scoped user.read can query GET /v2/users/{userId}/authentication_methods to learn which authentication method types users in other organizations have registered.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105207": {
+    "cvss": 9.8,
+    "description": "ZITADEL 3.0.0 through 3.4.15 and 4.0.0 before 4.17.3 creates links between user accounts and external identity providers without verifying a primary factor or the caller's permission, including on identify-only Login V2 sessions and via the User Service V2 AddIDPLink endpoint. An unauthenticated attacker knowing a victim's login name can bind their own external IdP identity to the victim's account and then sign in as the victim.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105208": {
+    "cvss": 7.7,
+    "description": "ZITADEL 4.x before 4.17.3 and 3.x through 3.4.15 protects IdP intent tokens with unauthenticated, malleable encryption, allowing authenticated users to tamper with their own token so it is accepted for another user's external login intent. An attacker who predicts a victim's in-flight intent identifier and wins a timing race can call /v2/idp_intents or /v2/sessions to steal the victim's IdP tokens or hijack their session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105209": {
+    "cvss": 9.6,
+    "description": "ZITADEL 3.x before 3.4.15 and 4.x before 4.17.1 contains an improper authorization vulnerability: when issuing passkey or passwordless enrollment codes, it checks only the organization in the x-zitadel-orgid header, not the target user's organization. Attackers with user-write permission in one organization can obtain an enrollment code for a user in another organization on the same instance and register their own authenticator to take over that account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105210": {
+    "cvss": 8.2,
+    "description": "ZITADEL 3.x before 3.4.15 and 4.x before 4.17.1 contains a missing authentication flaw in the hosted Login V1 UI, whose second-factor enrollment and initialization handlers act on an identify-only session before any primary factor is verified. Attackers knowing only a victim's login name can enroll attacker-controlled TOTP, OTP-SMS, OTP-Email, or U2F factors, overwrite the verified phone number, and enumerate users through discrepant errors.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105212": {
+    "cvss": 7.5,
+    "description": "ZITADEL 3.x before 3.4.14 and 4.x before 4.16.2 contains an authentication bypass in the hosted Login V1 and Login V2 UIs that accepts passkey or other authenticator enrollment on identify-only login sessions, before any primary factor is verified. Unauthenticated attackers knowing only a victim's login name can register an attacker-controlled authenticator and log in as that user, bypassing existing passwords and MFA.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105215": {
+    "cvss": 9.1,
+    "description": "ZITADEL before 3.4.14 and 4.x before 4.16.2 contains an authentication bypass in the hosted Login V1 UI because the 'external account not found' registration endpoint trusts client-supplied external identity fields without a completed IdP callback. Unauthenticated attackers can submit forged IDPConfigID and ExternalUserID values to pre-create an account bound to a victim's external IdP identity, which the victim's later genuine external login then signs into.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-103603": {
+    "cvss": 7.5,
+    "description": "Memory allocation with excessive size value in the HSS/LMS signature code (HssPublicKeyParameters, HssSignature) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows a remote unauthenticated attacker who can supply both an HSS public key and a signature to cause a denial of service through memory exhaustion via a public key encoding with an excessive level count, because the level count L read when parsing an HSS public key was not checked against the RFC 8554 maximum of 8, and signature parsing then allocated an array of L - 1 entries before reading any further signature data. A single verification can commit up to about 17 GB of memory or fail with an OutOfMemoryException.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-103604": {
+    "cvss": 7.5,
+    "description": "Inefficient algorithmic complexity in X.509 distinguished name string conversion (X509Name.ToString and IetfUtilities.ValueToString) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows a remote unauthenticated attacker to cause a denial of service through CPU exhaustion via a certificate, CRL, certification request or other structure whose name contains a long attribute value made up of characters that must be escaped, such as commas, or of leading or trailing spaces, because each escaping backslash was inserted into the buffer being scanned, so the work grew quadratically with the length of the value. Applications are exposed when they convert such a name to a string, for example to log or display it, or compare it with IetfUtilities.RdnAreEqual, as PKIX path validation does for directoryName name constraints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63570": {
+    "cvss": 7.5,
+    "description": "Loop with unreachable exit condition in Pkcs12Store.GetCertificateChain in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows an attacker who can supply a crafted PKCS#12 file to an application that loads it and requests a key entry's certificate chain to cause a denial of service, in which the call never returns and consumes CPU and memory until an OutOfMemoryException, via certificates whose issuer links form a cycle, for example two certificates whose AuthorityKeyIdentifier extensions each identify the other's public key. This happens because the chain-building loop stops only when no issuer is found or a certificate links to itself, and keeps no record of certificates already visited. The key-identifier links are followed without checking signatures.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63571": {
+    "cvss": 7.5,
+    "description": "Improper verification of cryptographic signature in the attribute certificate path validator (PkixAttrCertPathValidator, also used by PkixAttrCertPathBuilder) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows a remote attacker to have a forged X.509 attribute certificate accepted as valid, and so obtain whatever roles or privileges an application grants on the strength of its attributes, via an attribute certificate that names a trusted attribute authority as its issuer but was not signed by it, because the RFC 3281 validation steps check the holder and issuer certification paths, validity period, extensions and revocation status but never verify the attribute certificate's signature with the issuer's public key. Only applications that use these classes to validate attribute certificates are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63572": {
+    "cvss": 7.5,
+    "description": "Allocation of resources without limits in PKCS#12 keystore loading (Pkcs12Store.Load) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows an attacker who can supply a PKCS#12 (PFX) file to cause a denial of service through CPU exhaustion via an iteration count close to 2^31 in the file's MacData or in the PBE parameters of an encrypted SafeContents or shrouded key bag, because the counts are taken from the file without an upper bound and the key derivation runs before the MAC or the password can be checked. A zero or negative count is covered by CVE-2026-63575. Pkcs12Utilities.ConvertToDefiniteLength is also affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63573": {
+    "cvss": 7.5,
+    "description": "Observable discrepancy in the CMS RSA PKCS#1 v1.5 key-transport unwrap (KeyTransRecipientInformation.UnwrapKey) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows a remote attacker who holds a captured CMS EnvelopedData message, and who can submit many modified messages to an application that decrypts them with the recipient's RSA private key and reveals how decryption failed, to recover the captured message's content-encryption key and so its content, via a Bleichenbacher-style adaptive chosen-ciphertext attack, because a key-transport ciphertext with invalid PKCS#1 v1.5 padding is rejected during unwrap with a distinct \"bad padding in message.\" CmsException instead of being replaced by a random key, so it can be told apart from a correctly padded ciphertext, which fails only later at content decryption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63574": {
+    "cvss": 7.5,
+    "description": "Memory allocation with excessive size value in the OpenPGP signature and user attribute subpacket parsers (SignatureSubpacketsParser.ReadPacket, UserAttributeSubpacketsParser.ReadPacket) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows a remote, unauthenticated attacker who can supply a crafted OpenPGP public key, certificate or signature to cause a denial of service (OutOfMemoryException or memory exhaustion in the parsing process) via a subpacket header using the five-octet length form, because the declared length was used to size the subpacket buffer with no upper bound and without being compared with the size of the enclosing subpacket area or packet, so a few bytes of input could demand an allocation of up to about 2 GB before any subpacket data was read.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63575": {
+    "cvss": 7.5,
+    "description": "Loop with unreachable exit condition in the PKCS#12 key derivation (Pkcs12ParametersGenerator) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows an attacker who can supply a PKCS#12 (PFX) file, or a PKCS#8 encrypted private key that uses a PKCS#12 password-based encryption algorithm, to cause a denial of service through CPU exhaustion via an iteration count of zero or below, because the derivation loop ran until its counter equalled the count, so for such a count it wrapped through about 2^32 iterations before the MAC or the password could be checked. A 75-byte PFX file with a negative MacData iteration count kept Pkcs12Store.Load busy for many minutes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63576": {
+    "cvss": 7.5,
+    "description": "Improper certificate validation in PkixNameConstraintValidator (ExtractHostFromURL) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows a name-constrained subordinate CA, or anyone able to obtain certificates with chosen subjectAltName URIs from such a CA, to bypass permitted or excluded uniformResourceIdentifier name constraints during certification path validation via a URI whose path, query, fragment or userinfo contains characters such as '@' or ':', because the host was extracted by string slicing without first isolating the RFC 3986 authority component, so the host compared against the constraints could differ from the URI's actual host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63577": {
+    "cvss": 7.5,
+    "description": "Improper certificate validation in the directoryName name-constraint check (PkixNameConstraintValidator.WithinDNSubtree) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows an attacker who controls, or can have certificates issued by, a name-constrained intermediate CA to get certificates accepted by PKIX path validation whose subject distinguished name, or a directoryName subjectAltName, lies outside the CA's permitted subtrees, via a name that places other RDNs ahead of a copy of the permitted RDN sequence, because the check looks for the constraint's first RDN anywhere in the name and compares the remaining RDNs from that position, instead of requiring the constraint to be an initial prefix of the name as RFC 5280 sections 4.2.1.10 and 7.1 require.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63578": {
+    "cvss": 7.5,
+    "description": "Allocation of resources without limits in password-based private-key decryption (PbeUtilities.GenerateCipherParameters) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows an attacker who can supply an encrypted private key, such as a PKCS#8 EncryptedPrivateKeyInfo or \"ENCRYPTED PRIVATE KEY\" PEM file, to cause a denial of service through CPU exhaustion via an iteration count close to 2^31, because the count is taken from the unauthenticated algorithm parameters without an upper bound and the key derivation runs before the password or the data can be checked. PKCS#5 PBES1 and PBES2 (PBKDF2), the PKCS#12 PBE algorithms and CMS password recipients (CmsPbeKey) are affected. Loading PKCS#12 files with Pkcs12Store is covered by CVE-2026-63572, and a zero or negative count with the PKCS#12 algorithms by CVE-2026-63575.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104436": {
+    "cvss": 3.7,
+    "description": "Zebra before 4.5.0 contains an uncontrolled resource consumption vulnerability that allows remote P2P peers to exhaust blocking-pool threads by sending oversized block locator vectors. Attackers can send getblocks or getheaders messages with up to 65,535 locator hashes, triggering per-hash chain lookups that degrade block validation, RPC, and mempool performance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
