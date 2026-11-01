@@ -57370,5 +57370,107 @@
     "description": "In the Linux kernel, the following vulnerability has been resolved: i3c: master: Do not treat master device as a duplicate target i3c_master_search_i3c_dev_duplicate() searches the bus for another I3C device with the same PID as the reference device. The search can match master->this, causing the controller itself to be returned as a duplicate. Since the controller is not a target device, it cannot be a duplicate of one. Exclude master->this from matching so that the function only returns real duplicate target devices.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-86404": {
+    "cvss": 8.8,
+    "description": "EAP's Artemis deserialization configuration permits deserialization by default. ObjectMessage.getObject() uses ObjectInputStreamWithClassLoader, which implements allow-list/block-list filtering via its checkSecurity()/isTrustedType() method. However, by default both allow-list and block-list are empty. When the allow-list is empty (size == 0), isTrustedType() returns true for ALL classes. This means all classes are deserializable by default.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-10579": {
+    "cvss": 9.8,
+    "description": "A flaw was found in Picketlink Federation SAML; the unsolcited response handler would accept forged assertions with no verification or validation, permitting an unauthed attacker to authenticate as any principal in any role. This could lead to information disclosure, access to restricted operations, or other flaws.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15554": {
+    "cvss": 7.4,
+    "description": "the Undertow AJP listener honours forged ssl_cert and is_ssl AJP attributes without requiring any shared-secret authentication. This enables an unauthenticated attacker with direct TCP access to port 8009 to bypass CLIENT-CERT authentication by injecting a forged X.509 certificate via the AJP protocol.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15556": {
+    "cvss": 8.1,
+    "description": "A flaw was found in Picketlink's SP signature validation; a SAML response containing zero assertion elements matching the signature check can allow an attacker to forge a SAML response and auth as any principal with any roles on the protected application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15560": {
+    "cvss": 8.1,
+    "description": "when EAP runs with -secmgr, the openjdk-orb's JDKBridge honours attacker-supplied CDR codebase URLs during object unmarshalling on :3528, allowing an unauthenticated attacker to load and instantiate arbitrary classes from a remote URL in the server JVM before EJB security interceptors run.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15561": {
+    "cvss": 7.5,
+    "description": "A flaw was found in EAP's undertow http/1.1 chunked-transfer decoder. missing limits on size and count would allow an attacker to use an unauthenticated connection to drive the JVM to an OutOfMemory error, stopping all deployments on the listener, and achieving Denial of Service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15562": {
+    "cvss": 7.5,
+    "description": "A flaw was found in EAP's jboss-remoting. A remote unauthenticated attacker who can reach :8080 (or :9990, or :4447) and complete an Upgrade: jboss-remoting handshake can cause OOM errors that degrade requests server-wide, leading to denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15563": {
+    "cvss": 7.4,
+    "description": "A flaw was found in EAP's IIOP. The listener's NameService would accept bind operations without authentication, allowing an attacker to hijack JNDI lookups and binding them to a malicious ORB, achieving MITM or DoS on further invocations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15565": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Undertow. A remote attacker can cause Out of Memory on websockets endpoint without authentication on any @ServerEndpoint class that has any @OnMessage method. This allows an attacker to cause Denial of Service attack without authentication and using only a standard WebSocket handshake.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15567": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Wildfly. A remote unauthenticated attacker can trigger OutOfMemoryError as CSIv2Util's GSS token decoder reads an attacker-controlled length field without bounds checking and attempts to allocate a byte array of that size.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-4948": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the soup_multipart_new_from_message() function of the libsoup HTTP library, which is commonly used by GNOME and other applications to handle web communications. The issue occurs when the library processes specially crafted multipart messages. Due to improper validation, an internal calculation can go wrong, leading to an integer underflow. This can cause the program to access invalid memory and crash. As a result, any application or server using libsoup could be forced to exit unexpectedly, creating a denial-of-service (DoS) risk.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-32911": {
+    "cvss": 9.0,
+    "description": "A use-after-free type vulnerability was found in libsoup, in the soup_message_headers_get_content_disposition() function. This flaw allows a malicious HTTP client to cause memory corruption in the libsoup server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-32906": {
+    "cvss": 7.5,
+    "description": "A flaw was found in libsoup, where the soup_headers_parse_request() function may be vulnerable to an out-of-bound read. This flaw allows a malicious user to use a specially crafted HTTP request to crash the HTTP server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-32913": {
+    "cvss": 7.5,
+    "description": "A flaw was found in libsoup, where the soup_message_headers_get_content_disposition() function is vulnerable to a NULL pointer dereference. This flaw allows a malicious HTTP peer to crash a libsoup client or server that uses this function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-32914": {
+    "cvss": 7.4,
+    "description": "A flaw was found in libsoup, where the soup_multipart_new_from_message() function is vulnerable to an out-of-bounds read. This flaw allows a malicious HTTP client to induce the libsoup server to read out of bounds.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-2784": {
+    "cvss": 6.5,
+    "description": "A flaw was found in libsoup. The package is vulnerable to a heap buffer over-read when sniffing content via the skip_insight_whitespace() function. Libsoup clients may read one byte out-of-bounds in response to a crafted HTTP response by an HTTP server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-32049": {
+    "cvss": 7.5,
+    "description": "A flaw was found in libsoup. The SoupWebsocketConnection may accept a large WebSocket message, which may cause libsoup to allocate memory and lead to a denial of service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
