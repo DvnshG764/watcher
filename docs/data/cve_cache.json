@@ -58930,5 +58930,47 @@
     "description": "Cross Site Scripting vulnerability in Greek Universities Network (GUnet) Open eClass Platform v.3.15 allows a remote attacker to execute arbitrary code via the last name, first name, and username parameters in the user registration functionality.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-15999": {
+    "cvss": 7.5,
+    "description": "Improper validation of integrity check value in the AES-CCM implementation (CcmParameters and CcmBlockCipher) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows an on-path attacker to modify CCM-encrypted content without detection via an AlgorithmIdentifier whose CCMParameters declare an authentication tag (aes-ICVlen) of zero or another length outside the RFC 5084 set, because CcmParameters accepted any value and CcmBlockCipher validated the tag length only when encrypting, so decryption compared a zero-length or very short tag. Affected paths include ParameterUtilities.GetCipherParameters, used by CmsEnvelopedData and CmsEnvelopedDataParser for EnvelopedData encrypted with AES-CCM, and any caller passing an unchecked tag length to CcmBlockCipher for decryption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83589": {
+    "cvss": 6.1,
+    "description": "A flaw was found in oauth-proxy. The application fails to properly validate the destination redirect parameter (`rd`) during post-login redirection. A remote attacker can exploit this vulnerability by enticing a user to follow a specially crafted link, resulting in the user being redirected to an arbitrary external website after authenticating. This open redirect can be leveraged to conduct phishing attacks or credential theft.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100517": {
+    "cvss": 7.5,
+    "description": "Authorization Bypass Through User-Controlled Key vulnerability in VillaTheme Photo Reviews for WooCommerce woo-photo-reviews allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Photo Reviews for WooCommerce: from n/a through 1.2.30.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-54404": {
+    "cvss": null,
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority. The described memory use only grows in proportion to input already allocated by JSON.parse before Zod runs, is reachable only without an application request-size limit, and reflects expected validator behavior rather than a defect in Zod.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62146": {
+    "cvss": 7.8,
+    "description": "A trust-boundary flaw in CRI-O's sandbox state persistence allows attacker-influenced pod metadata to overwrite CRI-O's own reserved sandbox bookkeeping; once reloaded as trusted after a restart, a later container recreate in that sandbox can expose a host-side runtime-management resource inside the container, enabling container escape.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93903": {
+    "cvss": 9.4,
+    "description": "LiteSpeed Web Server (LSWS) before 6.3.7 build 1 mishandles internal redirect URL validation in a certain \"corner case.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101295": {
+    "cvss": 7.3,
+    "description": "Path traversal / arbitrary file write in oc-mirror's operator catalog image extraction. When mirroring operator catalogs using either the legacy v1 path (--v1) or the OCI feature path (--use-oci-feature), oc-mirror extracts tar entries from catalog image layers without validating that file paths resolve within the intended destination directory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
