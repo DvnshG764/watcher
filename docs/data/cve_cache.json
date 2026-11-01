@@ -58792,5 +58792,95 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-100750": {
+    "cvss": 7.5,
+    "description": "Joomla Extension - regularlabs.com - LFI / SSRF in Modules Anywhere 1.5.0 - 9.0.5 for Joomla - Modules Anywhere Pro lets additional attributes on a module tag replace arbitrary parameters of the selected module. This feature is enabled by default in affected versions. The overrides are applied without checking who authored the content containing the tag. The security effect depends on how the selected module consumes the replaced parameter. Joomla's core Feed module provides a concrete affected path: its rssurl parameter is opened by the server and accepts local file: URLs as well as network URLs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100751": {
+    "cvss": 6.1,
+    "description": "Joomla Extension - regularlabs.com - Privileged stored XSS via data-rlta-url attributes in Tabs & Accordions (Pro) 2.3.0 - 3.1.0 - Tabs & Accordions Pro accepts a url option for an item and writes it to a generated data-rlta-url attribute. The browser code passes that value to window.open() when the item is activated. Affected versions do not reject browser URL schemes which execute JavaScript. Joomla sees ordinary plugin syntax while filtering the authored article; Tabs & Accordions creates the executable browser behavior later while rendering the article.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100753": {
+    "cvss": 6.1,
+    "description": "Joomla Extension - ordasoft.com - Reflected Cross-Site Scripting in Real Estate Manager (Free) < 6.7.9 - The public property-detail page’s “leave a review” form repopulates its title field directly from the request with no escaping and no filtering function of any kind, unlike the adjacent comment field on the same form, which at least receives partial tag-stripping. A \" character in the title query parameter breaks out of the HTML attribute the value is placed in, allowing a following",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102010": {
+    "cvss": 7.0,
+    "description": "A flaw was found in GCC. When an application calls the erase_if function on a binary heap priority queue in libstdc++, the library reallocates storage but fails to update its internal entry pointer. An attacker capable of triggering this operation can exploit this use-after-free condition, leading to a Denial of Service (DoS) via an application crash or potential memory corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16513": {
+    "cvss": 7.8,
+    "description": "The userspace verifier z_vrfy_rtio_sqe_copy_in_get_handles() in subsys/rtio/rtio_syscalls.c (subsys/rtio/rtio_handlers.c before v4.3.0) validated the RTIO object handle and the sqes input array, but not the handle out-parameter. On the first loop iteration it executed *handle = sqe, storing the kernel address of the newly acquired submission-queue entry through a pointer taken verbatim from user mode, with no K_SYSCALL_MEMORY_WRITE check in front of it. Any user-mode thread that has been granted a struct rtio kernel object can invoke the syscall with an arbitrary address in handle. That is the ordinary way an unprivileged thread uses the RTIO API, for example via sensor_read_async_mempool() or the async ADC helpers, which call rtio_sqe_copy_in_get_handles() internally. The store happens in supervisor mode before any submission-entry validation, so it fires regardless of whether the SQE contents are subsequently rejected. Only builds with CONFIG_USERSPACE and CONFIG_RTIO are affected; without CONFIG_USERSPACE the verifier is not compiled and the caller is already privileged. The write address is fully attacker-chosen and the written value is a pointer into the caller's own RTIO ring, whose contents the caller controls (the following *sqe = sqes[i] copies an attacker-supplied struct rtio_sqe into that slot). This yields a write-what-where primitive placing a pointer to attacker-controlled data at any kernel address, sufficient to corrupt kernel function pointers, thread structures, or memory-domain partition tables, and thus to escalate from user mode to kernel mode, defeating the isolation boundary CONFIG_USERSPACE is meant to enforce. At minimum it is a reliable kernel memory-corruption and crash primitive. The reporter reproduced the write on qemu_x86: a K_USER thread changed a supervisor global from NULL to a live kernel SQE pointer. The fix adds K_SYSCALL_MEMORY_WRITE(handle, sizeof(*handle)) (guarded by the existing optional-NULL semantics) before the loop, so the destination must lie in the calling thread's writable memory domain or the thread is terminated by K_OOPS. The neighbouring verifier z_vrfy_rtio_cqe_get_mempool_buffer(), which checked its buff/buff_len out-parameters only for read although the implementation writes through them, was hardened separately by bea93400138 (\"rtio: syscalls: validate output params as writable\"); that residual was materially weaker, since a read check still confines the target to the caller's own memory domain.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18413": {
+    "cvss": 7.8,
+    "description": "The ADC API requires each driver to reject a sampling sequence whose destination buffer is too small: the buffer_size field of struct adc_sequence in include/zephyr/drivers/adc.h documents that \"the driver must ensure that samples are not written beyond the limit and it must return an error if the buffer turns out to be not large enough\". The NXP MCUX LPADC driver did not honour that contract. mcux_lpadc_start_read() in drivers/adc/adc_mcux_lpadc.c performed no buffer-size check at all before assigning data->buffer = sequence->buffer. Each completed conversion then stores one 16-bit sample per enabled channel per sampling round through an unbounded *data->buffer++: in mcux_lpadc_isr() for interrupt-driven builds, and in mcux_lpadc_dma_callback() for DMA-driven builds on releases that have the DMA path. A sequence selecting two channels with a two-byte buffer, for example, has its second sample written past the end of the buffer. On a build with CONFIG_USERSPACE, adc_read() and adc_read_async() are system calls. The handler in drivers/adc/adc_handlers.c copies the sequence in from user memory, verifies only that [buffer, buffer + buffer_size) is writable by the calling thread, and rejects a user-supplied options->callback; it deliberately leaves the size arithmetic to the driver. A user-mode thread that has been granted access to an LPADC device object therefore fully controls channels, buffer, buffer_size and options->extra_samplings, and can request far more samples than its buffer can hold: up to channels * 65536 samples into a two-byte buffer, since the sample pointer is only rewound on a repeat sampling, never on the extra samplings of a sequence. The resulting stores are performed by the driver in kernel mode (in the ADC interrupt handler or the DMA completion callback), where the MPU does not restrict the thread's memory domain, so the write walks linearly out of the user partition and into adjacent memory such as other partitions, kernel data or thread stacks. The impact is kernel-memory corruption of attacker-chosen length at an attacker-chosen offset, a plausible privilege-escalation and denial-of-service primitive from an unprivileged user-mode thread. Builds without CONFIG_USERSPACE are affected only as a caller-side robustness defect, since the application itself supplies the buffer. The fix calls the new shared helper adc_sequence_validate_buffer() in drivers/adc/adc_common.c from mcux_lpadc_start_read(). The helper computes active_channels sizeof(uint16_t) (1 + extra_samplings) and returns -ENOMEM before any sampling is started.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18414": {
+    "cvss": 7.8,
+    "description": "The ADC API requires each driver to reject a sampling sequence whose destination buffer is too small: the buffer_size field of struct adc_sequence in include/zephyr/drivers/adc.h documents that \"the driver must ensure that samples are not written beyond the limit and it must return an error if the buffer turns out to be not large enough\". The ADI MAX32 driver did not honour that contract. start_read() in drivers/adc/adc_max32.c compared buffer_size, a byte count, against a sample count ((1 + extra_samplings) channels), ignoring sizeof(uint16_t), so it accepted a buffer half the required size. The samples are then stored through the uint16_t data->buffer by Wrap_MXC_ADC_GetData(), which writes two bytes per sample and advances the pointer by one uint16_t: in adc_max32_start_channel() for synchronous reads, and in adc_max32_isr() for asynchronous ones. A sequence selecting two channels with a two-byte buffer, for example, passes the check and has its second sample written past the end of the buffer. On a build with CONFIG_USERSPACE, adc_read() and adc_read_async() are system calls. The handler in drivers/adc/adc_handlers.c copies the sequence in from user memory, verifies only that [buffer, buffer + buffer_size) is writable by the calling thread, and rejects a user-supplied options->callback; it deliberately leaves the size arithmetic to the driver. A user-mode thread that has been granted access to a MAX32 ADC device object therefore fully controls channels, buffer, buffer_size and options->extra_samplings, and can make the driver write twice as many bytes as its buffer holds. Because the check scales with extra_samplings, the overrun equals the length of the buffer itself, up to channels * 65536 bytes past its end, since the sample pointer is only rewound on a repeat sampling, never on the extra samplings of a sequence. The resulting stores are performed by the driver in kernel mode (in the system call itself, the ADC context timer, or the ADC interrupt handler for asynchronous reads), where the MPU does not restrict the thread's memory domain, so the write walks linearly out of the user partition and into adjacent memory such as other partitions, kernel data or thread stacks. The impact is kernel-memory corruption of attacker-chosen length at an attacker-chosen offset, a plausible privilege-escalation and denial-of-service primitive from an unprivileged user-mode thread. Builds without CONFIG_USERSPACE are affected only as a caller-side robustness defect, since the application itself supplies the buffer. The fix replaces that check in start_read() with a call to the new shared helper adc_sequence_validate_buffer() in drivers/adc/adc_common.c, passing sizeof(uint16_t) as the sample size. The helper computes active_channels sizeof(uint16_t) (1 + extra_samplings) and returns -ENOMEM before any sampling is started.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18415": {
+    "cvss": 7.1,
+    "description": "ieee802154_send() in subsys/net/l2/ieee802154/ieee802154.c copies the outgoing packet into a single fixed 125-byte transmit buffer (tx_frame_buf_pool, sized IEEE802154_MTU). In builds with CONFIG_NET_L2_IEEE802154_FRAGMENT enabled (the default whenever CONFIG_NET_6LO is set), the branch taken when 6LoWPAN fragmentation is not required performed an unchecked net_buf_add_mem(frame_buf, pkt_buf->data, pkt_buf->len). The only guard was __ASSERT_NO_MSG() inside net_buf_simple_add(), which is compiled out without CONFIG_ASSERT, so an oversized packet silently overran the frame buffer. The defect is not reachable from the radio: for NET_AF_INET6 packets ieee802154_6lo_encode_pkt() compares the whole packet length against IEEE802154_MTU and takes the fragmentation path when it does not fit, so every buffer copied on the unfragmented branch is within bounds. It is reachable through NET_AF_PACKET sockets bound to an 802.15.4 interface: for NET_SOCK_RAW the 6LoWPAN block is skipped entirely and for NET_SOCK_DGRAM it returns early on the address-family test, leaving no length validation anywhere on the transmit path (net_context_sendto() and net_if_tx() apply none, and pkt_buffer_length() does not clamp the allocation for this L2). An application — or, in a CONFIG_USERSPACE build, an unprivileged application thread using the zsock_socket()/zsock_sendto() syscalls — can therefore drive a supervisor-mode out-of-bounds write of chosen bytes past the 125-byte pool buffer. With the default CONFIG_NET_BUF_FIXED_DATA_SIZE of 128 bytes the overrun is bounded to roughly ll_hdr_len + 3 bytes; with CONFIG_NET_BUF_VARIABLE_DATA_SIZE a single storage buffer can be as large as CONFIG_NET_PKT_BUF_TX_DATA_POOL_SIZE, making the overrun far larger. The consequence is corruption of memory adjacent to the pool, with a crash or further compromise of kernel state as the practical impact. The fix validates ll_hdr_len + net_pkt_get_len(pkt) + authtag_len against IEEE802154_MTU before any copy and adds a tailroom-checking copy_pkt_to_frame() helper that returns -EMSGSIZE instead of overrunning the buffer. The same change also linearizes the whole net_buf chain into one MAC frame, so packet storage boundaries no longer become frame boundaries on the wire.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18416": {
+    "cvss": 5.3,
+    "description": "The CoAP link-format helper match_path_uri() in subsys/net/lib/coap/coap_link_format.c compares a registered resource path against the URI carried in a Uri-Query href= option. That URI is not NUL terminated, but the inner character loop advanced its index k once per path character without ever testing it against the option length len. When a registered path segment is longer than the supplied URI and the URI is a prefix of it, the loop reads uri[len] and beyond, past the end of the option value. The path is reached from coap_well_known_core_get_len() and coap_well_known_core_get() via match_queries_resource(), i.e. by any unauthenticated GET /.well-known/core?href=/ request to a device that serves /.well-known/core (for the CoAP server subsystem, CONFIG_COAP_SERVER_WELL_KNOWN_CORE, default y) and has at least one resource that declares struct coap_core_metadata attributes. The over-read does not reach the receive buffer. The well-known-core builders parse the query into a stack-local struct coap_option, whose value is a fixed array (value[12], or CONFIG_COAP_EXTENDED_OPTIONS_LEN_VALUE bytes) that the option bytes are copied into, so uri points into that copy. Reading past len therefore reads the unused, uninitialized tail of the array and, when the option fills it, the bytes just past it in the same stack frame. (In the ZoAP library of v1.8.0 to v1.9.x the option value was instead a pointer into the received packet, and the over-read ran past the option inside the packet buffer.) The impact is bounded. The number of bytes read past the end is limited by the length of the resource path segment, and each additional byte is only read if it happens to equal the next path character, so in practice the over-read is one byte. It also cannot influence the response: returning a match requires the final compared index to be len - 1 or len, both in bounds, so out-of-bounds bytes only ever steer the loop to the next candidate resource. The consequence is undefined behaviour, not information disclosure and not a matching error. The fix adds a k >= len guard at the top of the inner loop, so every uri[k] dereference is within the option value while still allowing a trailing * wildcard to match a longer path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100725": {
+    "cvss": 6.5,
+    "description": "http4k (Maven artifact org.http4k:http4k-core) before 6.48.0.0, 5.42.0.0, and 4.51.0.0 ships a BasicCookieStorage (client-side cookie store used by ClientFilters.Cookies) that does not enforce RFC 6265 scoping rules for the cookie domain, path, and Secure attributes. When a single BasicCookieStorage instance is used to talk to more than one origin or scheme, cookies stored for one origin can be sent to other origins, and cookies marked Secure can be sent over plain HTTP, potentially disclosing session cookies or other sensitive values to unauthorized hosts or network observers. Clients that use a storage instance for a single origin are not affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100834": {
+    "cvss": 5.9,
+    "description": "http4k's Digest authentication module (org.http4k:http4k-security-digest) before versions 6.48.0.0, 5.42.0.0 and 4.51.0.0 defaults the nonceVerifier parameter of ServerFilters.DigestAuth and DigestAuthProvider to { true }, so every nonce is accepted regardless of its value, age, or prior use. Applications relying on this default have no replay protection on Digest authentication: an attacker who can capture a valid 'Authorization: Digest' response (for example by observing network traffic or reading logs) can replay it indefinitely against the same protected resource.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100749": {
+    "cvss": 4.3,
+    "description": "Joomla Extension - svenbluege.de - CSRF in backend cleanup actions in Event Gallery extension < 6.5.0 - Only orphaned file entries and shopping carts that are older than 30 days will be deleted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97164": {
+    "cvss": 8.1,
+    "description": "Joomla Extension - svenbluege.de - Authenticated arbitrary path deletion in `clear cache` task in Event Gallery extension < 6.5.0 - Using the `images` parameter of the `cache.process` task, you can recursively delete any directories that the web server is authorized to write to.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97165": {
+    "cvss": 6.1,
+    "description": "Joomla Extension - svenbluege.de - Reflected XSS and open redirect in Event Gallery extension < 6.5.0 - The “return” parameter is base64-decoded and written to the “Back” link without being validated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96280": {
+    "cvss": 7.5,
+    "description": "The OCI delta stream parser read sizes as guint64 but passed them to GLib I/O and allocation functions expecting gsize (32 bits on 32-bit systems), causing undersized allocations while subsequent operations use the original 64-bit size, leading to heap buffer overflows. An attacker controlling an OCI registry can craft a delta stream that triggers this during flatpak install/update, potentially achieving code execution on 32-bit systems.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
