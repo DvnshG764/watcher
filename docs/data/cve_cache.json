@@ -59656,5 +59656,143 @@
     "description": "Zebra before 4.5.0 contains an uncontrolled resource consumption vulnerability that allows remote P2P peers to exhaust blocking-pool threads by sending oversized block locator vectors. Attackers can send getblocks or getheaders messages with up to 65,535 locator hashes, triggering per-hash chain lookups that degrade block validation, RPC, and mempool performance.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-70054": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows NetBIOS allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70055": {
+    "cvss": 5.5,
+    "description": "Exposure of sensitive system information to an unauthorized control sphere in Windows Cryptographic Services allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70056": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Update Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70057": {
+    "cvss": 5.5,
+    "description": "Incorrect authorization in Windows Routing and Remote Access Service (RRAS) allows an authorized attacker to bypass a security feature locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70058": {
+    "cvss": 7.5,
+    "description": "Out-of-bounds write in Windows DHCP Server allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70059": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows OLE allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70060": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Win32 Kernel Subsystem allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70062": {
+    "cvss": 8.1,
+    "description": "Double free in Windows Libarchive allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70063": {
+    "cvss": 4.7,
+    "description": "Out-of-bounds read in Windows Kernel allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70064": {
+    "cvss": 7.8,
+    "description": "Integer underflow (wrap or wraparound) in Windows Kerberos allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70066": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows DHCP Server allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70067": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Win32 Kernel Subsystem allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70068": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Client-Side Caching (CSC) Service allows an unauthorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70069": {
+    "cvss": 8.8,
+    "description": "Stack-based buffer overflow in Windows DHCP Server allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70072": {
+    "cvss": 6.5,
+    "description": "Allocation of resources without limits or throttling in Windows Netlogon allows an authorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70075": {
+    "cvss": 4.4,
+    "description": "Time-of-check time-of-use (toctou) race condition in Windows Virtualization-Based Security (VBS) Enclave allows an authorized attacker to bypass a security feature locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70076": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Win32 Kernel Subsystem allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70077": {
+    "cvss": 4.7,
+    "description": "Use after free in Windows Kernel allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70084": {
+    "cvss": 5.5,
+    "description": "Improper access control in Windows Projected File System allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70086": {
+    "cvss": 7.0,
+    "description": "Use after free in Microsoft Windows Search Component allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116779": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19971": {
+    "cvss": 4.7,
+    "description": "A flaw has been found in LB-Link WR1210M 1.0.3. This impacts the function main of the file /www/cgi-bin/backup.cgi of the component Backup Endpoint. This manipulation causes missing authentication. The attack is only possible within the local network. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "LB-Link",
+    "product": "WR1210M"
+  },
+  "CVE-2026-116296": {
+    "cvss": null,
+    "description": "The API routes for releases, release assets, milestones and repository labels did not reject changes to archived repositories. A user with write access to an archived repository, or a holder of such a user's write-scoped token, could replace or delete release assets while keeping their download URLs, delete releases and tags, and create, edit or delete milestones and labels of a repository that is meant to be read-only. Changing requests on these routes now return 423 Locked for archived repositories.",
+    "vendor": "Gitea",
+    "product": "Gitea"
   }
 }
