@@ -15702,7 +15702,7 @@
     "product": "Unknown"
   },
   "CVE-2026-107079": {
-    "cvss": null,
+    "cvss": 4.3,
     "description": "An issue in Systrome Validation & Certification 1.0 allows an attacker to cause a denial of service via the t URL parameter in the qrcode_auth.html component",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -60634,5 +60634,77 @@
     "description": "pypdf is an open source, pure-python PDF library. In affected versions an attacker may craft a PDF which leads to an infinite loop if `__parse_content_stream` is executed. That is, for example, the case if the user extracted text from such a PDF. This issue was introduced in pull request #969 and resolved in pull request #1828. Users are advised to upgrade. Users unable to upgrade may modify the line `while peek not in (b\"\\r\", b\"\\n\")` in `pypdf/generic/_data_structures.py` to `while peek not in (b\"\\r\", b\"\\n\", b\"\")`.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2017-5647": {
+    "cvss": 7.5,
+    "description": "A bug in the handling of the pipelined requests in Apache Tomcat 9.0.0.M1 to 9.0.0.M18, 8.5.0 to 8.5.12, 8.0.0.RC1 to 8.0.42, 7.0.0 to 7.0.76, and 6.0.0 to 6.0.52, when send file was used, results in the pipelined request being lost when send file processing of the previous request completed. This could result in responses appearing to be sent for the wrong request. For example, a user agent that sent requests A, B and C could see the correct response for request A, the response for request C for request B and no response for request C.",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache Tomcat"
+  },
+  "CVE-2019-1543": {
+    "cvss": 7.4,
+    "description": "ChaCha20-Poly1305 is an AEAD cipher, and requires a unique nonce input for every encryption operation. RFC 7539 specifies that the nonce value (IV) should be 96 bits (12 bytes). OpenSSL allows a variable nonce length and front pads the nonce with 0 bytes if it is less than 12 bytes. However it also incorrectly allows a nonce to be set of up to 16 bytes. In this case only the last 12 bytes are significant and any additional leading bytes are ignored. It is a requirement of using this cipher that nonce values are unique. Messages encrypted using a reused nonce value are susceptible to serious confidentiality and integrity attacks. If an application changes the default nonce length to be longer than 12 bytes and then makes a change to the leading bytes of the nonce expecting the new value to be a new unique nonce then such an application could inadvertently encrypt messages with a reused nonce. Additionally the ignored bytes in a long nonce are not covered by the integrity guarantee of this cipher. Any application that relies on the integrity of these ignored leading bytes of a long nonce may be further affected. Any OpenSSL internal use of this cipher, including in SSL/TLS, is safe because no such use sets such a long nonce value. However user applications that use this cipher directly and set a non-default nonce length to be longer than 12 bytes may be vulnerable. OpenSSL versions 1.1.1 and 1.1.0 are affected by this issue. Due to the limited scope of affected deployments this has been assessed as low severity and therefore we are not creating new releases at this time. Fixed in OpenSSL 1.1.1c (Affected 1.1.1-1.1.1b). Fixed in OpenSSL 1.1.0k (Affected 1.1.0-1.1.0j).",
+    "vendor": "OpenSSL",
+    "product": "OpenSSL"
+  },
+  "CVE-2019-9936": {
+    "cvss": 7.5,
+    "description": "In SQLite 3.27.2, running fts5 prefix queries inside a transaction could trigger a heap-based buffer over-read in fts5HashEntrySort in sqlite3.c, which may lead to an information leak. This is related to ext/fts5/fts5_hash.c.",
+    "vendor": "Siemens",
+    "product": "SIMATIC S7-1500 CPU 1518-4 PN/DP MFP"
+  },
+  "CVE-2019-9937": {
+    "cvss": 7.5,
+    "description": "In SQLite 3.27.2, interleaving reads and writes in a single transaction with an fts5 virtual table will lead to a NULL Pointer Dereference in fts5ChunkIterate in sqlite3.c. This is related to ext/fts5/fts5_hash.c and ext/fts5/fts5_index.c.",
+    "vendor": "Siemens",
+    "product": "SIMATIC S7-1500 CPU 1518-4 PN/DP MFP"
+  },
+  "CVE-2019-0232": {
+    "cvss": 8.1,
+    "description": "When running on Windows with enableCmdLineArguments enabled, the CGI Servlet in Apache Tomcat 9.0.0.M1 to 9.0.17, 8.5.0 to 8.5.39 and 7.0.0 to 7.0.93 is vulnerable to Remote Code Execution due to a bug in the way the JRE passes command line arguments to Windows. The CGI Servlet is disabled by default. The CGI option enableCmdLineArguments is disable by default in Tomcat 9.0.x (and will be disabled by default in all versions in response to this vulnerability). For a detailed explanation of the JRE behaviour, see Markus Wulftange's blog (https://codewhitesec.blogspot.com/2016/02/java-and-command-line-injections-in-windows.html) and this archived MSDN blog (https://web.archive.org/web/20161228144344/https://blogs.msdn.microsoft.com/twistylittlepassagesallalike/2011/04/23/everyone-quotes-command-line-arguments-the-wrong-way/).",
+    "vendor": "Apache",
+    "product": "Tomcat"
+  },
+  "CVE-2019-0221": {
+    "cvss": 6.1,
+    "description": "The SSI printenv command in Apache Tomcat 9.0.0.M1 to 9.0.0.17, 8.5.0 to 8.5.39 and 7.0.0 to 7.0.93 echoes user provided data without escaping and is, therefore, vulnerable to XSS. SSI is disabled by default. The printenv command is intended for debugging and is unlikely to be present in a production website.",
+    "vendor": "Apache",
+    "product": "Apache Tomcat"
+  },
+  "CVE-2019-5439": {
+    "cvss": 6.5,
+    "description": "A Buffer Overflow in VLC Media Player < 3.0.7 causes a crash which can possibly be further developed into a remote code execution exploit.",
+    "vendor": "Unknown",
+    "product": "VLC Media Player"
+  },
+  "CVE-2019-10072": {
+    "cvss": 7.5,
+    "description": "The fix for CVE-2019-0199 was incomplete and did not address HTTP/2 connection window exhaustion on write in Apache Tomcat versions 9.0.0.M1 to 9.0.19 and 8.5.0 to 8.5.40 . By not sending WINDOW_UPDATE messages for the connection window (stream 0) clients were able to cause server-side threads to block eventually leading to thread exhaustion and a DoS.",
+    "vendor": "Unknown",
+    "product": "Apache Tomcat"
+  },
+  "CVE-2020-11022": {
+    "cvss": 6.1,
+    "description": "In jQuery starting with 1.12.0 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.",
+    "vendor": "jquery",
+    "product": "jQuery"
+  },
+  "CVE-2020-8203": {
+    "cvss": 7.4,
+    "description": "Prototype pollution attack when using _.zipObjectDeep in lodash before 4.17.20.",
+    "vendor": "Unknown",
+    "product": "lodash"
+  },
+  "CVE-2020-8231": {
+    "cvss": 7.5,
+    "description": "Due to use of a dangling pointer, libcurl 7.29.0 through 7.71.1 can use the wrong connection when sending data.",
+    "vendor": "Siemens",
+    "product": "https://github.com/curl/curl"
+  },
+  "CVE-2021-1636": {
+    "cvss": 8.8,
+    "description": "Microsoft SQL Elevation of Privilege Vulnerability",
+    "vendor": "Microsoft",
+    "product": "Microsoft SQL Server 2012 Service Pack 4 (QFE)"
   }
 }
