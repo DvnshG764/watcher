@@ -59972,7 +59972,13 @@
   "CVE-2026-14900": {
     "cvss": 9.8,
     "description": "The Cost Calculator Builder PRO plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 4.0.3 via the js_to_php function. This is due to insufficient sanitization of the orderDetails[*].originalValue field, which is injected verbatim into a calculator formula string passed to PHP eval() inside js_to_php(), with the regex allow-list in evaluateFormula() only filtering alphanumeric tokens and leaving non-word punctuation characters intact. This makes it possible for unauthenticated attackers to execute code on the server. The only authentication barrier is a nonce check, but the required nonce is publicly emitted on every front-end page via the wp_head hook, making it freely obtainable by unauthenticated visitors. Payloads must be non-word XOR gadgets to bypass sanitization.",
-    "vendor": "StylemixThemes",
+    "vendor": "PHP",
     "product": "Cost Calculator Builder PRO"
+  },
+  "CVE-2026-81799": {
+    "cvss": 7.5,
+    "description": "Missing Authorization vulnerability in WP Swings Return Refund and Exchange For WooCommerce woo-refund-and-exchange-lite allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Return Refund and Exchange For WooCommerce: from n/a through 4.6.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
