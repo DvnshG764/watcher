@@ -59918,7 +59918,25 @@
   "CVE-2026-116512": {
     "cvss": 9.8,
     "description": "The Project Manager – AI Powered Project Management, Task Management, Kanban Board & Time Tracker plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 4.1.1 via the 'id' parameter parameter. This is due to unsanitized 'id' parameter value concatenated directly into the pipe-delimited validation rule string, which is then split and each token invoked as a dynamic PHP function with no allowlist check. This makes it possible for unauthenticated attackers to execute code on the server. This is exploitable by unauthenticated attackers because WordPress core executes the route argument's validate_callback inside WP_REST_Server::dispatch() before the route's permission_callback is invoked, meaning the Project_Manage_Capability authorization gate is never reached on the vulnerable code path.",
-    "vendor": "wedevs",
+    "vendor": "PHP",
     "product": "Project Manager – AI Powered Project Management, Task Management, Kanban Board & Time Tracker"
+  },
+  "CVE-2026-70139": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Update Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70140": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Audio Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70141": {
+    "cvss": 5.5,
+    "description": "Out-of-bounds read in Microsoft Windows Search Component allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
