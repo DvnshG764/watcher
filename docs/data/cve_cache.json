@@ -60124,5 +60124,11 @@
     "description": "A flaw has been found in Comfast CF-E7 2.6.0.9. This affects the function sub_441CF4 of the file /cgi-bin/mbox-config?method=SET&section=ping_config of the component webmggnt. Executing a manipulation of the argument destination can lead to command injection. The attack may be performed from remote. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
     "vendor": "Check Point",
     "product": "CF-E7"
+  },
+  "CVE-2026-72693": {
+    "cvss": 7.8,
+    "description": "`openvt -u` is intended to identify the owner of the current VT and then execute `login` as that user from a privileged context. In the documented `kbrequest`/init usage, the ownership test in `authenticate_user()` relies on `stat(\"/proc/ /fd/0\")`. `stat()` on `/proc/ /fd/0` follows the symlink to the underlying TTY device node. As a result, `buf.st_uid` reflects the owner of the TTY node rather than the owner of the process holding the file descriptor. If the TTY owner returns to `root` or the getty owner after logout while an unprivileged process still has `fd 0` attached to that TTY, the check can incorrectly treat that process as belonging to the privileged console owner. Once that check succeeds, the `-u` path executes a passwordless login as the selected user. In the documented `kbrequest`/init deployment using `openvt -us`, this can result in passwordless `login -f root` on the spawned VT. This report establishes that privilege escalation path for that documented deployment; it does not claim equivalent reachability for deployments that do not use `openvt -u` from a privileged `kbrequest`/init path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
