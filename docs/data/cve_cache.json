@@ -59938,5 +59938,17 @@
     "description": "Out-of-bounds read in Microsoft Windows Search Component allows an authorized attacker to disclose information locally.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-102560": {
+    "cvss": 9.8,
+    "description": "A flaw was found in libsoup. When the permessage-deflate WebSocket extension compresses a very large outgoing message, truncated size calculations used for GByteArray growth could wrap, causing zlib to write past the allocated buffer and resulting in a heap buffer overflow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79678": {
+    "cvss": 8.1,
+    "description": "A flaw was found in FreeIPA's idp-add command, where insufficiently validated --organization/--base-url input reaches a constrained eval() call before the corresponding LDAP access control check is enforced. This allows any authenticated IPA principal, regardless of privilege level, to enumerate and read the environment variables of the affected server process and to cause denial of service via memory exhaustion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
