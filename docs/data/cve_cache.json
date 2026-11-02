@@ -59980,5 +59980,29 @@
     "description": "Missing Authorization vulnerability in WP Swings Return Refund and Exchange For WooCommerce woo-refund-and-exchange-lite allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Return Refund and Exchange For WooCommerce: from n/a through 4.6.4.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-102555": {
+    "cvss": 8.2,
+    "description": "A flaw was found in libsoup. The soup_uri_decode_data_uri() function incorrectly treated base64 data-URI payloads as NUL-terminated strings when calling g_base64_decode_inplace(). If the percent-decoded payload contained embedded NUL bytes, the decoded length could remain uninitialized and be used as the size of the returned GBytes. This can lead to an out-of-bounds read or application crash when processing a crafted data URI.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86469": {
+    "cvss": 5.3,
+    "description": "A flaw was found in GLib2. When g_file_replace() is used with G_FILE_CREATE_REPLACE_DESTINATION and creating the .goutputstream-XXXXXX temporary file fails, the library unlinks the destination and recreates it without exclusive creation or symlink protection. A local attacker who can write to the destination directory can win that race and redirect the write to another file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15195": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in apidevtools json-schema-ref-parser. This impacts the function Refs.set/Pointer.set in the library lib/pointer.ts. Executing a manipulation can lead to improperly controlled modification of object prototype attributes. The attack can be launched remotely. Upgrading to version 15.3.6 will fix this issue. This patch is called a786bc6afc3674f650496472ee93d5cf74c4bd84. It is suggested to upgrade the affected component. The project maintainer confirms: \"I reproduced prototype pollution through the public $Refs.set() API in published versions 7.1.4, 9.0.0, 11.0.0, 14.0.0, 14.2.1, 15.3.0, and 15.3.5. The same pointer is rejected by 15.3.6 without modifying Object.prototype. This reported path requires an application to pass an attacker-controlled pointer to $Refs.set(); dependency presence alone does not establish exploitability.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-7358": {
+    "cvss": 7.8,
+    "description": "A vulnerability was detected in Point B Ltd Getscreen Agent up to 2.19.6/3.9.4 on Windows. This affects an unknown function of the file getscreen.msi of the component MSI Installer. The manipulation results in creation of temporary file with insecure permissions. The attack is only possible with local access. The exploit is now public and may be used. Upgrading to version 3.9.5 mitigates this issue. Upgrading the affected component is advised.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
