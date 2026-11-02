@@ -29246,8 +29246,8 @@
   "CVE-2025-63387": {
     "cvss": 7.5,
     "description": "Dify v1.9.1 is vulnerable to Insecure Permissions. An unauthenticated attacker can directly send HTTP GET requests to the /console/api/system-features endpoint without any authentication credentials or session tokens. The endpoint fails to implement proper authorization checks, allowing anonymous access to sensitive system configuration data. NOTE: The maintainer states that the endpoint is unauthenticated by design and serves as a bootstrap mechanism required for the dashboard initialization. They also state that the description inaccurately classifies the returned data as sensitive system configuration, stating that the data is non-sensitive and required for client-side rendering. No PII, credentials, or secrets are exposed.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Dify",
+    "product": "Dify"
   },
   "CVE-2025-55161": {
     "cvss": 8.6,
@@ -45110,7 +45110,7 @@
   "CVE-2026-98432": {
     "cvss": 9.8,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ipv4: free inet_opt and ireq_opt after an RCU grace period tcp_v4_syn_recv_sock() transfers ownership of ireq->ireq_opt to the child socket (newinet->inet_opt) without copying it. Another cpu can concurrently process a retransmitted SYN for the same request socket, and send a SYNACK from tcp_check_req(). tcp_v4_send_synack() and inet_csk_route_req() read ireq->ireq_opt under rcu_read_lock() only, and ip_build_and_send_pkt() and ip_options_build() then read opt->optlen twice. Note that the SYNACK timer itself is not an issue: it holds a reference on its request socket, and inet_csk_reqsk_queue_drop() calls timer_delete_sync() before the child can be freed. Since commit 079096f103fa (\"tcp/dccp: install syn_recv requests into ehash table\"), request sockets are processed without holding the listener lock, so nothing prevents the child socket from being freed while the SYNACK is still being built. TCP child sockets do not have SOCK_RCU_FREE, and inet_sock_destruct() frees inet_opt with a plain kfree(), leading to a use-after-free in ip_options_build(). A similar issue exists with request socket migration (net.ipv4.tcp_migrate_req=1, or a BPF_SK_REUSEPORT_SELECT_OR_MIGRATE program). reqsk_timer_handler() clones the request socket with inet_reqsk_clone(), so that the old request socket and its clone share the same ireq_opt, then reqsk_migrate_reset() clears the pointer in the old one. Another cpu holding a reference on the old request socket can still be using these options (sending a SYNACK, or creating a child in tcp_v4_syn_recv_sock()) when the clone is freed, and tcp_v4_reqsk_destructor() also uses a plain kfree(). Readers already use RCU, and other paths replacing inet_opt (do_ip_setsockopt(), cipso_v4_sock_setattr()...) already use kfree_rcu(). Use kfree_rcu() in inet_sock_destruct() and tcp_v4_reqsk_destructor() as well. IPv6 is not affected by the first issue, because tcp_v6_syn_recv_sock() duplicates the options. tcp_v6_reqsk_destructor() has the same migration issue with ipv6_opt, which is only set by CALIPSO. This will be addressed in a separate patch.",
-    "vendor": "Linux",
+    "vendor": "Fortinet",
     "product": "Linux"
   },
   "CVE-2026-115925": {
@@ -45402,7 +45402,7 @@
     "product": "DiskStation Manager (DSM)"
   },
   "CVE-2026-117183": {
-    "cvss": null,
+    "cvss": 7.5,
     "description": "A path traversal vulnerability in the FeaturedImage component of astro-notion-blog 0.13.0 allows attackers to escape the intended directory, as well as read and overwrite files on the server via a crafted URL.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -60176,6 +60176,108 @@
   "CVE-2026-76561": {
     "cvss": 7.2,
     "description": "A flaw was found in Dogtag PKI, as used by FreeIPA's certificate authority component. The certificate profile import functionality does not fully validate uploaded profile content beyond the profile ID. An authenticated user with CA Administrator privileges can exploit Dogtag's ExternalProcessConstraint mechanism to execute arbitrary commands with attacker-controlled environment variables, achieving code execution as the pkiuser account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70153": {
+    "cvss": 9.8,
+    "description": "Heap-based buffer overflow in Microsoft PostScript Printer Driver allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70156": {
+    "cvss": 7.0,
+    "description": "Use after free in Microsoft Windows Search Component allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70157": {
+    "cvss": 9.8,
+    "description": "Heap-based buffer overflow in Windows System Information Console allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70158": {
+    "cvss": 8.8,
+    "description": "Remote Code Execution in Windows Routing and Remote Access Service (RRAS) allows attacker to gain an unauthorized access to victim's machine",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70198": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Push Notifications allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70207": {
+    "cvss": 7.5,
+    "description": "Heap-based buffer overflow in Network Policy Server (NPS) allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70208": {
+    "cvss": 5.5,
+    "description": "Out-of-bounds read in Windows HTTP.sys allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70210": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows OLE DB allows an unauthorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70211": {
+    "cvss": 5.5,
+    "description": "Out-of-bounds read in Windows Win32 Kernel Subsystem allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70212": {
+    "cvss": 7.0,
+    "description": "Improper restriction of communication channel to intended endpoints in Windows Security Center allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70216": {
+    "cvss": 5.5,
+    "description": "Insufficient granularity of access control in Windows Mobile Device Management allows an authorized attacker to perform tampering locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70218": {
+    "cvss": 7.8,
+    "description": "Insufficient granularity of access control in Windows StateRepository API allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-78077": {
+    "cvss": 8.6,
+    "description": "Joomla Extension - joomshaper.com - Stored Cross-Site Scripting (XSS) in MegaMenu Layout Container & Embed Inputs in Helix Ultimate < 2.2.11 - Unsanitized column and item configuration values stored within the MegaMenu layout JSON were rendered without complete contextual escaping, allowing injection of malicious HTML/JS. Stricter sanitization and tag allowlists via `InputFilter` and `htmlspecialchars` were implemented.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77026": {
+    "cvss": 6.9,
+    "description": "Joomla Extension - tassos.gr - Client-controlled validation bypass in Convert Forms extension 1.0.0-4.4.16, 5.0.0-5.2.5 - CAPTCHA and field validation bypass.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-35987": {
+    "cvss": 6.1,
+    "description": "Omission of security-relevant information for some Intel(R) Software Guard Extensions Data Center Attestation Primitives within Ring 0: Kernel may allow a denial of service. Authorized adversary with a privileged user combined with a high complexity attack may enable data alteration. This result may potentially occur via local access when attack requirements are present with special internal knowledge and requires no user interaction. The potential vulnerability may impact the confidentiality (none), integrity (low) and availability (low) of the vulnerable system, resulting in subsequent system confidentiality (none), integrity (high) and availability (low) impacts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-20702": {
+    "cvss": 10.0,
+    "description": "Protection mechanism failure for some Intel(R) Data Center Attestation Primitives (Intel(R) DCAP) may allow information disclosure. Unprivileged software adversary with an unauthenticated user combined with a low complexity attack may enable data exposure. This result may potentially occur via network access when attack requirements are present with special internal knowledge and requires no user interaction. The potential vulnerability may impact the confidentiality (none), integrity (high) and availability (none) of the vulnerable system, resulting in subsequent system confidentiality (high), integrity (none) and availability (none) impacts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-20707": {
+    "cvss": 5.6,
+    "description": "Hardware logic contains race conditions for some 3rd Gen Intel(R) Xeon(R) Scalable Processors within Ring 3: unprivileged software may allow a denial of service. Unprivileged software adversary with an authenticated user combined with a high complexity attack may enable denial of service. This result may potentially occur via local access when attack requirements are not present with special internal knowledge and requires no user interaction. The potential vulnerability may impact the confidentiality (none), integrity (none) and availability (high) of the vulnerable system, resulting in subsequent system confidentiality (none), integrity (none) and availability (high) impacts.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
