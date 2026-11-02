@@ -59956,5 +59956,23 @@
     "description": "Langchain-Chatchat through 0.3.1.3 exposes a POST /tools/call API endpoint that invokes any registered tool by name without authentication, leaving the always-registered shell tool callable. Remote attackers can send a single request naming the shell tool to execute arbitrary OS commands as the server user (root in the shipped Docker image).",
     "vendor": "chatchat-space",
     "product": "Langchain-Chatchat"
+  },
+  "CVE-2026-71225": {
+    "cvss": 6.5,
+    "description": "A flaw was found in libkcapi. When performing one-shot symmetric cipher operations on large inputs (over 64 KiB) in stateful modes such as Counter (CTR) or Cipher Block Chaining (CBC), the library improperly reuses the Initialization Vector (IV) for each internal data chunk. A remote attacker could potentially exploit this by making an application that uses libkcapi process specially crafted large inputs. This can lead to a significant weakening of data confidentiality, as the repeated IV use can expose relationships in encrypted plaintext, and may also affect data integrity by causing incorrect cryptographic processing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71227": {
+    "cvss": 5.1,
+    "description": "A flaw was found in libkcapi. A local attacker can influence an application that uses the Asynchronous Input/Output (AIO) interface. By reusing an AIO-enabled handle after a prior completion error, the _kcapi_aio_read_all() function can enter a non-terminating wait loop. This can lead to a persistent denial of service, making the affected application or thread unresponsive.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-14900": {
+    "cvss": 9.8,
+    "description": "The Cost Calculator Builder PRO plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 4.0.3 via the js_to_php function. This is due to insufficient sanitization of the orderDetails[*].originalValue field, which is injected verbatim into a calculator formula string passed to PHP eval() inside js_to_php(), with the regex allow-list in evaluateFormula() only filtering alphanumeric tokens and leaving non-word punctuation characters intact. This makes it possible for unauthenticated attackers to execute code on the server. The only authentication barrier is a nonce check, but the required nonce is publicly emitted on every front-end page via the wp_head hook, making it freely obtainable by unauthenticated visitors. Payloads must be non-word XOR gadgets to bypass sanitization.",
+    "vendor": "StylemixThemes",
+    "product": "Cost Calculator Builder PRO"
   }
 }
