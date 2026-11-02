@@ -60004,5 +60004,125 @@
     "description": "A vulnerability was detected in Point B Ltd Getscreen Agent up to 2.19.6/3.9.4 on Windows. This affects an unknown function of the file getscreen.msi of the component MSI Installer. The manipulation results in creation of temporary file with insecure permissions. The attack is only possible with local access. The exploit is now public and may be used. Upgrading to version 3.9.5 mitigates this issue. Upgrading the affected component is advised.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-97185": {
+    "cvss": 7.8,
+    "description": "A flaw was found in GIMP. When processing a specially crafted GIMPressionist preset file, the plug-in does not properly validate vector indices before writing into fixed-size arrays. This can lead to an out-of-bounds write, corrupting memory. An attacker could exploit this by convincing a user to load a malicious preset file, potentially causing a crash or enabling arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92248": {
+    "cvss": 7.8,
+    "description": "A flaw was found in the file-psd plugin in GIMP. When generating a thumbnail preview for a specially crafted PSD (Photoshop Document) image file, an integer overflow occurs during the multiplication of values from an embedded JPEG header. This leads to an undersized heap allocation, resulting in a heap-based buffer overflow when the image data is decoded. This buffer overflow corrupts adjacent heap objects, allowing for a controlled memory write that can result in an application crash or arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-90948": {
+    "cvss": 7.8,
+    "description": "A flaw was found in GIMP's ICO file loader. When processing an ICO file containing an embedded PNG image, an integer overflow can occur during the calculation of the required buffer size. This leads to an undersized buffer being allocated, causing a heap-based buffer overflow when the decoded pixel data is written. A remote attacker could exploit this by crafting a malicious ICO file, which, when opened, could lead to arbitrary code execution or a crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-90947": {
+    "cvss": 7.8,
+    "description": "A flaw was found in GIMP. When processing a specially crafted lighting preset file, the Lighting Effects filter does not properly validate the number of light sources. This can lead to an out-of-bounds write, corrupting memory. An attacker could exploit this by convincing a user to open a malicious preset file, potentially causing a crash or enabling arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59090": {
+    "cvss": 9.9,
+    "description": "A flaw was found in GIMP's PSD file format plugin. This vulnerability, an unsigned integer underflow in the `block_rem` variable, occurs when a user opens a specially crafted `.psd` image file. The underflow leads to parser confusion, enabling an attacker to inject arbitrary data as layer resource blocks. This can ultimately result in arbitrary code execution, allowing the attacker to run malicious code on the victim's system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42169": {
+    "cvss": 7.8,
+    "description": "A heap-buffer-overflow vulnerability exists in the APNG (Animated PNG) file loader of GIMP. This flaw occurs when the `fcTL` width exceeds the `IHDR` width, leading to pixel data being written past the end of a heap allocation. Additionally, a heap-based buffer overflow exists in the DDS plug-in due to a BPP mismatch in the `load_layer()` function. Both vulnerabilities can be triggered by opening a specially crafted image file, potentially leading to code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66758": {
+    "cvss": 7.8,
+    "description": "A flaw was found in the file-fits plugin in GIMP. When processing a FITS image file, the plugin calculates memory allocation sizes using signed 32-bit integers for width and height. If a crafted file sets both values to large values, their product exceeds 2^31 and overflows, resulting in an undersized heap-based buffer allocation. This integer overflow issue results in a heap-based buffer overflow when cfitsio subsequently writes a full row of pixels in the buffer, causing memory corruption, potentially leading to arbitrary code execution or a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58384": {
+    "cvss": 7.8,
+    "description": "A flaw was found in GIMP's PSD parser. An integer overflow in read_RLE_channel() can cause an undersized heap allocation for the RLE row-length table, after which subsequent per-row writes corrupt heap memory. This could lead to memory corruption, potentially resulting in denial of service or arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58380": {
+    "cvss": 7.8,
+    "description": "A flaw was found in GIMP's PNM file format parser. When parsing a specially crafted PNM file, the pnmscanner_gettoken() function writes a null terminator one byte past the end of a stack-allocated buffer due to an off-by-one error in the loop boundary check. This could lead to memory corruption, potentially resulting in denial of service or arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58379": {
+    "cvss": 7.3,
+    "description": "A flaw was found in GIMP's Paint Shop Pro (PSP) file format parser. This heap buffer overflow vulnerability allows a remote attacker to cause arbitrary code execution or a denial of service (DoS) by tricking a user into opening a specially crafted PSP image file. The vulnerability occurs because the software incorrectly calculates buffer sizes when processing low bit-depth images, leading to an overwrite of adjacent memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116009": {
+    "cvss": 8.8,
+    "description": "Camaleon CMS before 2.9.3 contains a path traversal vulnerability that allows users with only the media permission to write arbitrary files by supplying ../ sequences in the name parameter. Attackers can send a base64 data: URI to the crop_url media action to write an ERB template into a theme's views directory, which executes when rendered.",
+    "vendor": "Check Point",
+    "product": "camaleon-cms"
+  },
+  "CVE-2026-114622": {
+    "cvss": 7.2,
+    "description": "baserCMS is a website development framework. In versions 5.2.3 before 5.3.2 and 5.4.0 before 5.4.2, the optional BcThemeFile plugin's Admin API validates a raw path in ThemeFilesService::update() and getFullpath(), but ThemeFileForm::_execute() subsequently applies rawurldecode() to fullpath before writing. Because normalizePath() resolves only literal dot segments, percent-encoded traversal can pass the containment checks and become a path outside the theme directory at the write sink. An authenticated administrator can write PHP files into writable locations such as webroot and execute them, exceeding the intended theme-template editing boundary. The source also identifies the same check-before-decode ordering in ThemeFilesService::copy(), although that path was not dynamically verified. Exploitation requires the non-default plugin, an administrator session, and a same-origin Origin header; USE_CORE_ADMIN_API=false does not block session-authenticated requests. The Admin web form is not affected by this encoded-path tampering because FormProtection protects fullpath. This is a third bypass of the protections associated with CVE-2026-30940, using encoded traversal decoded after validation. This issue has been patched in versions 5.3.2 and 5.4.2.",
+    "vendor": "Check Point",
+    "product": "basercms"
+  },
+  "CVE-2026-114623": {
+    "cvss": 6.5,
+    "description": "baserCMS is a website development framework. In versions 5.0.0 before 5.3.2 and 5.4.0 before 5.4.2, an authenticated user with only theme-file view permission can traverse outside the theme directory through the optional BcThemeFile plugin's Admin web screen. ThemeFilesController::parseArgs() constructs a path containing literal ../ segments, and the view and edit actions pass it to ThemeFilesService::get() without containment validation. Authorization checks the unresolved request path, after which ThemeFile::_getContents() reads the resolved file and exposes its contents in the form textarea. A client must preserve the dot segments rather than normalize them away. Readable files are limited to .php, .css, .js, and .ctp; this can disclose application source and config/install.php database credentials in MySQL or PostgreSQL deployments, while SQLite configurations have an empty database password. Reading config/app_local.php may expose the Security.salt fallback, which is effective only when not overridden by environment configuration. The flaw does not disclose .env, .pem, or SQLite .db files, does not itself permit file writes or code execution, and does not affect the separate API getFullpath() route. The plugin is disabled by default and unauthenticated requests are not sufficient. This issue has been patched in versions 5.3.2 and 5.4.2.",
+    "vendor": "Check Point",
+    "product": "basercms"
+  },
+  "CVE-2026-115481": {
+    "cvss": 8.5,
+    "description": "baserCMS is a website development framework. Starting in version 5.0.0-beta1 and prior to versions 5.3.2 and 5.4.2, `PermissionGroupsService::build()` reads a plugin's `config/permission.php` to decide what each user group may reach. When that file is absent it writes a wildcard allow rule instead: `url` `/baser/ / /*`, `method` `*`, `auth` true, for every non-admin group. BcCustomContent has no such file in any release. After an administrator installs it, the default `operators` group can store and execute arbitrary PHP under the document root. Versions 5.3.2 and 5.4.2 patch the issue.",
+    "vendor": "Check Point",
+    "product": "basercms"
+  },
+  "CVE-2026-61429": {
+    "cvss": 8.5,
+    "description": "PraisonAI versions before 1.6.78 contain a server-side request forgery vulnerability in the Crawl4AI/Chromium backend that allows attackers to bypass SSRF validation by exploiting DNS rebinding and HTTP redirects. Attackers can craft URLs that resolve to internal services after the initial validation check, enabling the headless browser to follow redirects and read internal responses including sensitive canary values.",
+    "vendor": "Check Point",
+    "product": "PraisonAI"
+  },
+  "CVE-2026-55535": {
+    "cvss": 6.8,
+    "description": "PraisonAI is a multi-agent teams system. Prior to praisonai 4.6.58, the Jobs API validate_webhook_url() path fails open on socket.gaierror and does not bind the validated address to the later request. An attacker webhook_url can later resolve to 127.0.0.1, 169.254.169.254, or another internal address. This issue is fixed in version 4.6.58.",
+    "vendor": "Check Point",
+    "product": "PraisonAI"
+  },
+  "CVE-2026-55537": {
+    "cvss": 7.1,
+    "description": "PraisonAI is a multi-agent teams system. Prior to praisonai 4.6.58, JobSubmitRequest.validate_webhook_url() accepts webhook_url when resolution raises socket.gaierror because the exception path uses except socket.gaierror: pass. JobExecutor._send_webhook() later performs a fresh lookup, allowing DNS changes to direct the request to an internal service. This issue is fixed in version 4.6.58.",
+    "vendor": "Check Point",
+    "product": "PraisonAI"
+  },
+  "CVE-2026-57114": {
+    "cvss": 7.2,
+    "description": "PraisonAI is a multi-agent teams system. From version 4.5.126 to before version 4.6.59, PraisonAI's Async Jobs API validates webhook_url when a job request is parsed and again when the internal Job object is constructed. That validation blocks direct loopback/private targets, but it is not bound to the later network request. When a job completes, _send_webhook() passes the original hostname to httpx.AsyncClient.post() with no send-time validation, IP pinning, or guarded transport. An attacker-controlled hostname can therefore resolve to a public IP during Pydantic validation and later resolve to loopback/private/cloud-metadata infrastructure during webhook delivery. This bypasses the intended SSRF guard in current supported releases. This appears to be an incomplete fix / patch bypass for GHSA-8frj-8q3m-xhgm. This issue has been patched in version 4.6.59.",
+    "vendor": "Check Point",
+    "product": "PraisonAI"
+  },
+  "CVE-2026-114621": {
+    "cvss": 8.8,
+    "description": "baserCMS is a website development framework. In versions 5.0.0 before 5.3.2 and 5.4.0 before 5.4.2, list and detail actions in the Admin and Api/Admin prefixes pass request query parameters, including contain, conditions, fields, finder, and order, directly to the ORM as options. A user able to log into the admin panel can embed SQL fragments in those options to execute arbitrary SQL against the application's database, including reading password hashes from the users table. Public-page and public-API fixes released in 5.3.1 and 5.4.1 did not protect these administrative paths. Setting USE_CORE_ADMIN_API to false does not prevent access through an authenticated browser session. This issue has been patched in versions 5.3.2 and 5.4.2.",
+    "vendor": "Check Point",
+    "product": "basercms"
+  },
+  "CVE-2026-2824": {
+    "cvss": 6.3,
+    "description": "A flaw has been found in Comfast CF-E7 2.6.0.9. This affects the function sub_441CF4 of the file /cgi-bin/mbox-config?method=SET&section=ping_config of the component webmggnt. Executing a manipulation of the argument destination can lead to command injection. The attack may be performed from remote. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "CF-E7"
   }
 }
