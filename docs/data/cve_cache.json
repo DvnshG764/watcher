@@ -14976,7 +14976,7 @@
     "product": "Hippoo Mobile App for WooCommerce"
   },
   "CVE-2026-24688": {
-    "cvss": 5.1,
+    "cvss": 4.3,
     "description": "pypdf is a free and open-source pure-python PDF library. An attacker who uses an infinite loop vulnerability that is present in versions prior to 6.6.2 can craft a PDF which leads to an infinite loop. This requires accessing the outlines/bookmarks. This has been fixed in pypdf 6.6.2. If projects cannot upgrade yet, consider applying the changes from PR #3610 manually.",
     "vendor": "py-pdf",
     "product": "pypdf"
@@ -29244,8 +29244,8 @@
     "product": "Unknown"
   },
   "CVE-2025-63387": {
-    "cvss": 7.5,
-    "description": "Dify v1.9.1 is vulnerable to Insecure Permissions. An unauthenticated attacker can directly send HTTP GET requests to the /console/api/system-features endpoint without any authentication credentials or session tokens. The endpoint fails to implement proper authorization checks, allowing anonymous access to sensitive system configuration data. NOTE: The maintainer states that the endpoint is unauthenticated by design and serves as a bootstrap mechanism required for the dashboard initialization. They also state that the description inaccurately classifies the returned data as sensitive system configuration, stating that the data is non-sensitive and required for client-side rendering. No PII, credentials, or secrets are exposed.",
+    "cvss": 4.3,
+    "description": "Dify 1.9.1 and 1.17.0 exposes the /console/api/system-features endpoint to unauthenticated HTTP GET requests that return system feature and configuration information. NOTE: The maintainer states that the endpoint is unauthenticated by design and serves as a bootstrap mechanism required for the dashboard initialization. They also state that the data is non-sensitive and required for client-side rendering. No PII, credentials, or secrets are exposed.",
     "vendor": "Dify",
     "product": "Dify"
   },
@@ -60280,5 +60280,41 @@
     "description": "Hardware logic contains race conditions for some 3rd Gen Intel(R) Xeon(R) Scalable Processors within Ring 3: unprivileged software may allow a denial of service. Unprivileged software adversary with an authenticated user combined with a high complexity attack may enable denial of service. This result may potentially occur via local access when attack requirements are not present with special internal knowledge and requires no user interaction. The potential vulnerability may impact the confidentiality (none), integrity (none) and availability (high) of the vulnerable system, resulting in subsequent system confidentiality (none), integrity (none) and availability (high) impacts.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-20713": {
+    "cvss": 7.5,
+    "description": "Always-incorrect control flow implementation in some firmware for some Intel(R) Xeon(R) processors may allow an escalation of privilege. System software adversary with a privileged user combined with a high complexity attack may enable escalation of privilege. This result may potentially occur via local access when attack requirements are not present without special internal knowledge and requires no user interaction. The potential vulnerability may impact the confidentiality (none), integrity (none) and availability (none) of the vulnerable system, resulting in subsequent system confidentiality (high), integrity (high) and availability (none) impacts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-20755": {
+    "cvss": 6.7,
+    "description": "Protection mechanism failure for some LLM Scaler software within Ring 3: User Applications may allow an escalation of privilege. Unprivileged software adversary with a privileged user combined with a low complexity attack may enable escalation of privilege. This result may potentially occur via local access when attack requirements are present without special internal knowledge and requires passive user interaction. The potential vulnerability may impact the confidentiality (high), integrity (high) and availability (high) of the vulnerable system, resulting in subsequent system confidentiality (none), integrity (none) and availability (none) impacts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12970": {
+    "cvss": 7.1,
+    "description": "The LearnPress WordPress plugin before 4.4.1 does not escape a search parameter before reflecting it into an HTML attribute, leading to Reflected Cross-Site Scripting that executes in the browser of a logged-in instructor or administrator who is tricked into opening a crafted link.",
+    "vendor": "Unknown",
+    "product": "LearnPress"
+  },
+  "CVE-2026-116690": {
+    "cvss": 7.5,
+    "description": "MLflow is an open source AI engineering platform for agents, large language models, and machine learning models. From 3.10.0 until 3.17.0, the prompt branch in _create_model_version() accepts schemeless relative sources because path validation runs only when a source has a URL scheme, and mlflow.prompt.is_prompt is interpreted by tag presence rather than a true value. A remote caller can store a server-local path as the model version artifact location and use /api/2.0/mlflow/model-versions/get-artifact to read files accessible to the MLflow server process. Default unauthenticated servers require no privileges, while basic-auth deployments are exposed to authenticated users who can create registered models. This issue is fixed in version 3.17.0.",
+    "vendor": "mlflow",
+    "product": "mlflow"
+  },
+  "CVE-2026-53468": {
+    "cvss": 4.6,
+    "description": "Typemill is a flat-file, Markdown-based content management system designed for informational documentation websites. Versions prior to 2.23.0 are vulnerable to stored HTML attribute injection in the page metadata fields (`og:title` and `og:description`). An authenticated user with permission to modify page metadata can inject arbitrary HTML attributes into generated ` ` tags due to missing output encoding. Under certain browser or DOM interaction scenarios, this may lead to stored cross-site scripting (XSS). Version 2.23.0 fixes the issue.",
+    "vendor": "typemill",
+    "product": "typemill"
+  },
+  "CVE-2026-7873": {
+    "cvss": 9.9,
+    "description": "IBM Langflow OSS 1.0.0 through 1.10.0 allows authenticated attackers to execute arbitrary OS commands and read sensitive files including credentials, enabling complete system compromise and lateral movement.",
+    "vendor": "IBM",
+    "product": "Langflow OSS"
   }
 }
