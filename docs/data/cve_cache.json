@@ -29346,7 +29346,7 @@
     "product": "Reliance CG (legacy)"
   },
   "CVE-2025-0107": {
-    "cvss": 7.7,
+    "cvss": 9.8,
     "description": "An OS command injection vulnerability in Palo Alto Networks Expedition enables an unauthenticated attacker to run arbitrary OS commands as the www-data user in Expedition, which results in the disclosure of usernames, cleartext passwords, device configurations, and device API keys for firewalls running PAN-OS software.",
     "vendor": "Palo Alto",
     "product": "Cloud NGFW"
@@ -31488,7 +31488,7 @@
     "product": "Artica Proxy"
   },
   "CVE-2024-10914": {
-    "cvss": 8.1,
+    "cvss": 9.8,
     "description": "A vulnerability was found in D-Link DNS-320, DNS-320LW, DNS-325 and DNS-340L up to 20241028. It has been declared as critical. Affected by this vulnerability is the function cgi_user_add of the file /cgi-bin/account_mgr.cgi?cmd=cgi_user_add. The manipulation of the argument name leads to os command injection. The attack can be launched remotely. The complexity of an attack is rather high. The exploitation appears to be difficult. The exploit has been disclosed to the public and may be used.",
     "vendor": "D-Link",
     "product": "DNS-320"
@@ -31830,7 +31830,7 @@
     "product": "tlr-2005ksh_firmware"
   },
   "CVE-2024-6235": {
-    "cvss": 9.4,
+    "cvss": 8.8,
     "description": "Sensitive information disclosure in NetScaler Console",
     "vendor": "NetScaler",
     "product": "NetScaler Console"
@@ -33594,7 +33594,7 @@
     "product": "jan"
   },
   "CVE-2024-9264": {
-    "cvss": 9.9,
+    "cvss": 8.8,
     "description": "The SQL Expressions experimental feature of Grafana allows for the evaluation of `duckdb` queries containing user input. These queries are insufficiently sanitized before being passed to `duckdb`, leading to a command injection and local file inclusion vulnerability. Any user with the VIEWER or higher permission is capable of executing this attack. The `duckdb` binary must be present in Grafana's $PATH for this attack to function; by default, this binary is not installed in Grafana distributions.",
     "vendor": "Grafana",
     "product": "Grafana"
@@ -58999,7 +58999,7 @@
   },
   "CVE-2026-89111": {
     "cvss": 10.0,
-    "description": "The SAP Cloud SDK for Python contains an OAuth2 SSRF vulnerability affecting multi-tenant BTP applications. An attacker who controls the tenant_subdomain parameter can redirect OAuth2 token requests to an attacker-controlled server, causing client credentials to be exfiltrated.",
+    "description": "The SAP Cloud SDK for Python contains an OAuth2 SSRF vulnerability affecting multi-tenant BTP applications. An attacker who controls the tenant_subdomain parameter can redirect OAuth2 token requests to an attacker-controlled server, causing client credentials to be exfiltrated. This vulnerability was originally fixed in 0.45.2. It was reintroduced in 0.53.0 when the HTTP client was refactored into a shared core module, and the tenant subdomain validation was not carried over to the new location. The validation was restored in 0.55.1.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -63156,13 +63156,13 @@
     "product": "Unknown"
   },
   "CVE-2026-109266": {
-    "cvss": 5.3,
+    "cvss": 3.6,
     "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains an XML injection vulnerability in the CIP encoder, which does not properly escape input-derived data when writing Cisco IP Phone XML output. Attackers can supply a crafted file that, when converted to CIP format, injects arbitrary markup into the generated XML.",
     "vendor": "Cisco",
     "product": "Unknown"
   },
   "CVE-2026-109267": {
-    "cvss": 7.5,
+    "cvss": 5.5,
     "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a stack overflow in the MSL decoder caused by an incorrect depth check that fails to limit recursion. Attackers can supply a set of crafted MSL images that exhaust the stack when one of them is read, crashing the process and causing a denial of service.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -64180,5 +64180,443 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-109964": {
+    "cvss": 5.6,
+    "description": "ImageMagick before 7.1.2-33 and 6.9.13-58 contains a heap buffer underwrite vulnerability in DecodeImage() in coders/pict.c on 32-bit builds due to pointer arithmetic overflow. Attackers can supply a crafted PICT file with maximized row, column and bytes-per-line values to bypass bounds checks and write up to 128 controlled bytes below the heap buffer, causing crashes or code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85908": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Win32K - GRFX allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88094": {
+    "cvss": 8.1,
+    "description": "Improper neutralization of special elements in output used by a downstream component ('injection') in Azure Storage Library allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88137": {
+    "cvss": 6.5,
+    "description": "Files or directories accessible to external parties in WebDAV allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88158": {
+    "cvss": 5.5,
+    "description": "Out-of-bounds read in Microsoft Digest Authentication allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97782": {
+    "cvss": 6.8,
+    "description": "Observable discrepancy in Microsoft Office SharePoint allows an authorized attacker to perform tampering over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106632": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a DOM-based Cross-Site Scripting (XSS) vulnerability. An attacker could exploit this issue by manipulating the DOM environment to execute malicious JavaScript within the context of the victim's browser. Exploitation of this issue requires user interaction in that a victim must visit a crafted webpage. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106633": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a stored Cross-Site Scripting (XSS) vulnerability that could be abused by a low-privileged attacker to inject malicious scripts into vulnerable form fields. Malicious JavaScript may be executed in a victim's browser when they browse to the page containing the vulnerable field. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106634": {
+    "cvss": 7.7,
+    "description": "Adobe Experience Manager is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could result in arbitrary file system write. A low-privileged attacker could leverage this vulnerability to write files to unauthorized locations on the file system. Exploitation of this issue does not require user interaction. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107305": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a stored Cross-Site Scripting (XSS) vulnerability that could be abused by a low-privileged attacker to inject malicious scripts into vulnerable form fields. Malicious JavaScript may be executed in a victim's browser when they browse to the page containing the vulnerable field. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107682": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a DOM-based Cross-Site Scripting (XSS) vulnerability. An attacker could exploit this issue by manipulating the DOM environment to execute malicious JavaScript within the context of the victim's browser. Exploitation of this issue requires user interaction in that a victim must visit a crafted webpage. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109415": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a stored Cross-Site Scripting (XSS) vulnerability that could be abused by a low-privileged attacker to inject malicious scripts into vulnerable form fields. Malicious JavaScript may be executed in a victim's browser when they browse to the page containing the vulnerable field. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110037": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a stored Cross-Site Scripting (XSS) vulnerability that could be abused by a low-privileged attacker to inject malicious scripts into vulnerable form fields. Malicious JavaScript may be executed in a victim's browser when they browse to the page containing the vulnerable field. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110080": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a DOM-based Cross-Site Scripting (XSS) vulnerability. An attacker could exploit this issue by manipulating the DOM environment to execute malicious JavaScript within the context of the victim's browser. Exploitation of this issue requires user interaction in that a victim must visit a crafted webpage. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109240": {
+    "cvss": 3.1,
+    "description": "FreeRDP 3.11.0 before 3.32.1 contains a reachable assertion vulnerability in urb_isoch_transfer that allows malicious RDP servers to crash clients by sending unvalidated OutputBufferSize values. Attackers can send a TS_URB_ISOCH_TRANSFER IN-direction request with OutputBufferSize above INT32_MAX over URBDRC, triggering an assertion in libusb_udev_isoch_transfer that terminates the client.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109241": {
+    "cvss": 3.1,
+    "description": "FreeRDP before 3.32.0 contains a NULL pointer dereference vulnerability in the client video redirection channel that allows malicious servers to crash clients by sending out-of-order messages. Attackers can send a Geometry CLEAR message that nulls presentation->geometry, then send VideoData that dereferences it, causing client denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109242": {
+    "cvss": 7.1,
+    "description": "FreeRDP before 3.0.0 and 3.6.0 before 3.32.0 renders uninitialized heap memory from un-decoded progressive tiles because the tile->current buffer is allocated without zeroing. A malicious RDP server can send a crafted WBT_TILE_FIRST then WBT_TILE_UPGRADE sequence to paint heap bytes onscreen or abort the client process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109269": {
+    "cvss": 5.3,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains an information disclosure vulnerability in the JPEG decoder, which performs a read that exposes uninitialized memory when handling crafted input. Attackers can supply a crafted JPEG file for processing to disclose uninitialized memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109270": {
+    "cvss": 3.3,
+    "description": "ImageMagick before 7.1.2-32 contains a memory leak vulnerability in the -process option that allows attackers to cause unreleased memory allocations by supplying certain arguments. Attackers can repeatedly invoke the -process option with crafted arguments to gradually exhaust memory and degrade service availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109271": {
+    "cvss": 3.7,
+    "description": "ImageMagick 7.1.2-30 before 7.1.2-32 contains a use after free vulnerability in the WBINFO decoder that occurs when a memory allocation fails during image decoding. Attackers can supply a crafted image that, when decoded under memory allocation failure conditions, causes freed memory to be reused, crashing the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109272": {
+    "cvss": 3.7,
+    "description": "ImageMagick 7.1.1-31 before 7.1.2-32 contains a NULL pointer dereference in the PostScript decoder that is triggered when a policy limit is reached. Attackers can supply a crafted PostScript file for processing to crash the application, causing a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109273": {
+    "cvss": 5.3,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains an information disclosure vulnerability in the PostScript decoder, which allocates a buffer one byte longer than the data it decoded. Attackers can supply a crafted PostScript file to expose a single uninitialized byte of memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109274": {
+    "cvss": 2.5,
+    "description": "ImageMagick before 7.1.2-32 contains a time-of-check time-of-use symlink race vulnerability that allows attackers to bypass the path security policy when executing a magick script. Attackers can swap a checked path with a symlink during script execution to read files that the security policy is meant to block.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109275": {
+    "cvss": 4.8,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a code injection vulnerability in the MVG decoder when a PostScript renderer is used. Attackers can supply a crafted MVG file that, when decoded, injects code into the PostScript rendering path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109276": {
+    "cvss": 5.3,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains an incomplete cleanup flaw in the JNG decoder that fails to remove temporary files when processing crafted input. Attackers can submit crafted JNG files for processing to repeatedly leak temporary files, consuming disk space and degrading availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109277": {
+    "cvss": 3.3,
+    "description": "ImageMagick before 7.1.2-32 contains a policy bypass vulnerability in the -script operation due to missing checks on file descriptor handling. Attackers can use the -script operation to close file descriptors not opened by the current operation, circumventing configured security policies.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109278": {
+    "cvss": 3.7,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a memory leak in the wavelet-denoise operation, which fails to release allocated memory when a required resource cannot be acquired. Attackers can repeatedly trigger wavelet-denoise processing under resource-constrained conditions to leak memory and degrade service availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109279": {
+    "cvss": 2.5,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 lacks proper synchronization when the security policy is accessed, so simultaneous reads and writes of the policy by multiple threads trigger a race condition that causes a heap buffer over-write. An attacker able to induce concurrent security policy access can crash the application, causing a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109280": {
+    "cvss": 2.5,
+    "description": "ImageMagick 7.1.0-20 before 7.1.2-32 contains a use after free vulnerability in the -fx option that occurs when a memory allocation fails during a specific operation. Attackers who can supply crafted -fx expressions under memory pressure can trigger freed memory access, causing crashes or memory corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109281": {
+    "cvss": 4.4,
+    "description": "ImageMagick 7.1.0-21 before 7.1.2-32 contains a heap buffer over-read in its handling of the -fx option, where a certain -fx operation reads beyond the bounds of an allocated heap buffer in specific situations. Attackers who can get a crafted -fx expression processed can read out-of-bounds heap memory, potentially disclosing limited memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109282": {
+    "cvss": 2.5,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a type confusion flaw in the INFO, JSON and YAML encoders, where an internal method receives a pointer of an unexpected type when writing an image in a compressed format. An attacker who can cause such an image write can trigger a SIGABRT or SIGSEGV, crashing the process and causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104039": {
+    "cvss": 5.5,
+    "description": "A flaw was found in SSSD. A local user can cause a denial of service (DoS) by disrupting system authentication services. When handling Generic Security Services Application Programming Interface (GSSAPI) authentication in the Pluggable Authentication Module (PAM) responder, cached connection state is freed upon completion without clearing the reference pointer. An attacker can exploit this by sending an additional request over the same connection, causing the service to access invalid memory and unexpectedly terminate.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91947": {
+    "cvss": 7.5,
+    "description": "FreeRDP server versions before 3.31.0 contain a use-after-free vulnerability in the DRDYNVC parser that dereferences a channel pointer after releasing the synchronization lock. Authenticated clients can race AUDIN channel closure messages against DRDYNVC data parsing to trigger heap-use-after-free when accessing freed channel objects.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91964": {
+    "cvss": 8.8,
+    "description": "FreeRDP versions before 3.31.0 contain a heap-based buffer overflow in nego_send_negotiation_request when processing Server Redirection PDU messages with attacker-controlled LoadBalanceInfo fields. A malicious RDP server can trigger the overflow by sending an arbitrary-length field that gets written to a fixed 512-byte buffer without validation, causing client crashes or potential code execution when chained with memory disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73954": {
+    "cvss": 8.1,
+    "description": "Vulnerability in the PeopleSoft Enterprise PeopleTools product of Oracle PeopleSoft (component: Business Interlink). Supported versions that are affected are 8.61-8.63. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools. Successful attacks of this vulnerability can result in takeover of PeopleSoft Enterprise PeopleTools. CVSS 3.1 Base Score 8.1 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73955": {
+    "cvss": 7.3,
+    "description": "Vulnerability in the PeopleSoft Enterprise PeopleTools product of Oracle PeopleSoft (component: Charting). Supported versions that are affected are 8.61-8.63. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools. Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all PeopleSoft Enterprise PeopleTools accessible data as well as unauthorized access to critical data or complete access to all PeopleSoft Enterprise PeopleTools accessible data. CVSS 3.1 Base Score 7.3 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73960": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the PeopleSoft Enterprise PeopleTools product of Oracle PeopleSoft (component: Ren Server). Supported versions that are affected are 8.61-8.63. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of PeopleSoft Enterprise PeopleTools. CVSS 3.1 Base Score 7.5 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82993": {
+    "cvss": 8.5,
+    "description": "Vulnerability in the PeopleSoft Enterprise PeopleTools product of Oracle PeopleSoft (component: Business Interlink). Supported versions that are affected are 8.61-8.63. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools. While the vulnerability is in PeopleSoft Enterprise PeopleTools, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all PeopleSoft Enterprise PeopleTools accessible data as well as unauthorized update, insert or delete access to some of PeopleSoft Enterprise PeopleTools accessible data. CVSS 3.1 Base Score 8.5 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87264": {
+    "cvss": 7.7,
+    "description": "Vulnerability in the PeopleSoft Enterprise PeopleTools product of Oracle PeopleSoft (component: Integration Broker). Supported versions that are affected are 8.61-8.63. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools. While the vulnerability is in PeopleSoft Enterprise PeopleTools, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all PeopleSoft Enterprise PeopleTools accessible data. CVSS 3.1 Base Score 7.7 (Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70462": {
+    "cvss": 6.5,
+    "description": "rsync 3.1.0 before 3.5.0 contains a signed integer overflow vulnerability in the I/O timeout implementation that allows attackers to permanently disable connection timeouts by injecting MSG_IO_TIMEOUT messages carrying non-positive (zero or negative) values. Attackers can craft malicious MSG_IO_TIMEOUT messages that cause the timeout variable to wrap to a non-positive value, preventing the timeout check from firing and enabling idle or stalled connections to hold daemon slots indefinitely, leading to resource exhaustion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70464": {
+    "cvss": 7.5,
+    "description": "rsync daemon 2.0.0 before 3.5.0 contains a denial of service vulnerability that allows unauthenticated remote attackers to exhaust daemon connection slots by stalling the handshake process before or after module selection without triggering the I/O timeout. Attackers can open many simultaneous connections and trickle data at the minimum rate to avoid timeout, or stall entirely before module selection where no timeout applies, consuming all available connection slots and denying service to legitimate clients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67295": {
+    "cvss": 6.3,
+    "description": "FreeRDP before 3.29.0 fails to properly validate server-supplied RDPDR paths in drive redirection, allowing attackers to access prefix-sibling paths outside the configured shared root. A malicious RDP server can read, write, delete, and enumerate files in sibling directories by sending non-rooted paths that bypass the shared-root boundary check.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67298": {
+    "cvss": 7.5,
+    "description": "FreeRDP versions 3.28.0 and earlier contain a heap buffer overflow in the server-side RAIL channel handler (rail_server_handle_messages() in channels/rail/server/rail_main.c). When processing a RAIL PDU header, the code subtracts RAIL_PDU_HEADER_LENGTH from the peer-controlled orderLength field without first verifying orderLength is at least the header length. For orderLength values 0..3 this causes an unsigned integer underflow to a very large size, which bypasses the Stream_EnsureRemainingCapacity() capacity check (due to pointer arithmetic wraparound) and is then passed to WTSVirtualChannelRead(), resulting in an out-of-bounds heap write. A malicious or compromised RDP client can exploit this to corrupt the heap and crash the server. Fixed in FreeRDP 3.29.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67300": {
+    "cvss": 7.5,
+    "description": "FreeRDP before 3.29.0 contains client-side heap use-after-free vulnerabilities in the async update message proxy for RAIL WINDOW_STATE_ORDER and NOTIFY_ICON_STATE_ORDER when AsyncUpdate is enabled. When a malicious or compromised RDP server sends crafted update orders, the message proxy shallow-copies structures containing nested parser-owned pointers (e.g., titleInfo.string, windowRects, visibilityRects, icon buffers). The parser frees those nested buffers after the callback returns, so the queued async message later dispatches stale pointers, potentially causing memory corruption or a client crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11404": {
+    "cvss": 7.5,
+    "description": "Cesanta Mongoose before 7.22 contains an out-of-bounds read in the built-in TLS server function mg_tls_server_recv_hello(), which uses an attacker-controlled session_id_len byte from a TLS ClientHello as a buffer index without validating it against the length of received data. A remote, unauthenticated attacker can send a single crafted ClientHello with an oversized session id length to read past the receive buffer, crashing any HTTPS, MQTTS, or WSS service built on MG_TLS_BUILTIN.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-1292": {
+    "cvss": 7.3,
+    "description": "The c_rehash script does not properly sanitise shell metacharacters to prevent command injection. This script is distributed by some operating systems in a manner where it is automatically executed. On such operating systems, an attacker could execute arbitrary commands with the privileges of the script. Use of the c_rehash script is considered obsolete and should be replaced by the OpenSSL rehash command line tool. Fixed in OpenSSL 3.0.3 (Affected 3.0.0,3.0.1,3.0.2). Fixed in OpenSSL 1.1.1o (Affected 1.1.1-1.1.1n). Fixed in OpenSSL 1.0.2ze (Affected 1.0.2-1.0.2zd).",
+    "vendor": "OpenSSL",
+    "product": "OpenSSL"
+  },
+  "CVE-2022-2068": {
+    "cvss": 7.3,
+    "description": "In addition to the c_rehash shell command injection identified in CVE-2022-1292, further circumstances where the c_rehash script does not properly sanitise shell metacharacters to prevent command injection were found by code review. When the CVE-2022-1292 was fixed it was not discovered that there are other places in the script where the file names of certificates being hashed were possibly passed to a command executed through the shell. This script is distributed by some operating systems in a manner where it is automatically executed. On such operating systems, an attacker could execute arbitrary commands with the privileges of the script. Use of the c_rehash script is considered obsolete and should be replaced by the OpenSSL rehash command line tool. Fixed in OpenSSL 3.0.4 (Affected 3.0.0,3.0.1,3.0.2,3.0.3). Fixed in OpenSSL 1.1.1p (Affected 1.1.1-1.1.1o). Fixed in OpenSSL 1.0.2zf (Affected 1.0.2-1.0.2ze).",
+    "vendor": "OpenSSL",
+    "product": "OpenSSL"
+  },
+  "CVE-2022-34718": {
+    "cvss": 9.8,
+    "description": "Windows TCP/IP Remote Code Execution Vulnerability",
+    "vendor": "Microsoft",
+    "product": "Windows 10 Version 1809"
+  },
+  "CVE-2023-0507": {
+    "cvss": 5.4,
+    "description": "Grafana is an open-source platform for monitoring and observability. Starting with the 8.1 branch, Grafana had a stored XSS vulnerability affecting the core plugin GeoMap. The stored XSS vulnerability was possible due to map attributions weren't properly sanitized and allowed arbitrary JavaScript to be executed in the context of the currently authorized user of the Grafana instance. An attacker needs to have the Editor role in order to change a panel to include a map attribution containing JavaScript. This means that vertical privilege escalation is possible, where a user with Editor role can change to a known password for a user having Admin role if the user with Admin role executes malicious JavaScript viewing a dashboard. Users may upgrade to version 8.5.21, 9.2.13 and 9.3.8 to receive a fix.",
+    "vendor": "Grafana",
+    "product": "Grafana"
+  },
+  "CVE-2024-20017": {
+    "cvss": 9.8,
+    "description": "In wlan service, there is a possible out of bounds write due to improper input validation. This could lead to remote code execution with no additional execution privileges needed. User interaction is not needed for exploitation Patch ID: WCNCR00350938; Issue ID: MSV-1132.",
+    "vendor": "MediaTek, Inc.",
+    "product": "MT6890, MT7915, MT7916, MT7981, MT7986"
+  },
+  "CVE-2024-26230": {
+    "cvss": 7.8,
+    "description": "Windows Telephony Server Elevation of Privilege Vulnerability",
+    "vendor": "Microsoft",
+    "product": "Windows 10 Version 1809"
+  },
+  "CVE-2024-2961": {
+    "cvss": 7.3,
+    "description": "The iconv() function in the GNU C Library versions 2.39 and older may overflow the output buffer passed to it by up to 4 bytes when converting strings to the ISO-2022-CN-EXT character set, which may be used to crash an application or overwrite a neighbouring variable.",
+    "vendor": "The GNU C Library",
+    "product": "glibc"
+  },
+  "CVE-2024-32030": {
+    "cvss": 8.1,
+    "description": "Kafka UI is an Open-Source Web UI for Apache Kafka Management. Kafka UI API allows users to connect to different Kafka brokers by specifying their network address and port. As a separate feature, it also provides the ability to monitor the performance of Kafka brokers by connecting to their JMX ports. JMX is based on the RMI protocol, so it is inherently susceptible to deserialization attacks. A potential attacker can exploit this feature by connecting Kafka UI backend to its own malicious broker. This vulnerability affects the deployments where one of the following occurs: 1. dynamic.config.enabled property is set in settings. It's not enabled by default, but it's suggested to be enabled in many tutorials for Kafka UI, including its own README.md. OR 2. an attacker has access to the Kafka cluster that is being connected to Kafka UI. In this scenario the attacker can exploit this vulnerability to expand their access and execute code on Kafka UI as well. Instead of setting up a legitimate JMX port, an attacker can create an RMI listener that returns a malicious serialized object for any RMI call. In the worst case it could lead to remote code execution as Kafka UI has the required gadget chains in its classpath. This issue may lead to post-auth remote code execution. This is particularly dangerous as Kafka-UI does not have authentication enabled by default. This issue has been addressed in version 0.7.2. All users are advised to upgrade. There are no known workarounds for this vulnerability. These issues were discovered and reported by the GitHub Security lab and is also tracked as GHSL-2023-230.",
+    "vendor": "provectus",
+    "product": "kafka-ui"
+  },
+  "CVE-2024-5805": {
+    "cvss": 9.1,
+    "description": "Improper Authentication vulnerability in Progress MOVEit Gateway (SFTP modules) allows Authentication Bypass.This issue affects MOVEit Gateway: 2024.0.0.",
+    "vendor": "Progress",
+    "product": "MOVEit Gateway"
+  },
+  "CVE-2024-38368": {
+    "cvss": 9.3,
+    "description": "trunk.cocoapods.org is the authentication server for the CoacoaPods dependency manager. A vulnerability affected older pods which migrated from the pre-2014 pull request workflow to trunk. If the pods had never been claimed then it was still possible to do so. It was also possible to have all owners removed from a pod, and that made the pod available for the same claiming system. This was patched server-side in commit 71be5440906b6bdfbc0bcc7f8a9fec33367ea0f4 in September 2023.",
+    "vendor": "CocoaPods",
+    "product": "CocoaPods"
+  },
+  "CVE-2024-24974": {
+    "cvss": 7.5,
+    "description": "The interactive service in OpenVPN 2.6.9 and earlier allows the OpenVPN service pipe to be accessed remotely, which allows a remote attacker to interact with the privileged OpenVPN interactive service.",
+    "vendor": "OpenVPN",
+    "product": "OpenVPN 2"
+  },
+  "CVE-2024-27903": {
+    "cvss": 9.8,
+    "description": "OpenVPN plug-ins on Windows with OpenVPN 2.6.9 and earlier could be loaded from any directory, which allows an attacker to load an arbitrary plug-in which can be used to interact with the privileged OpenVPN interactive service.",
+    "vendor": "OpenVPN",
+    "product": "OpenVPN 2"
+  },
+  "CVE-2024-6409": {
+    "cvss": 7.0,
+    "description": "A race condition vulnerability was discovered in how signals are handled by OpenSSH's server (sshd). If a remote attacker does not authenticate within a set time period, then sshd's SIGALRM handler is called asynchronously. However, this signal handler calls various functions that are not async-signal-safe, for example, syslog(). As a consequence of a successful attack, in the worst case scenario, an attacker may be able to perform a remote code execution (RCE) as an unprivileged user running the sshd server.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 9"
+  },
+  "CVE-2024-23469": {
+    "cvss": 8.8,
+    "description": "SolarWinds Access Rights Manager (ARM) is susceptible to a Remote Code Execution vulnerability. If exploited, this vulnerability allows an unauthenticated user to perform the actions with SYSTEM privileges.",
+    "vendor": "SolarWinds",
+    "product": "Access Rights Manager"
+  },
+  "CVE-2024-23472": {
+    "cvss": 8.0,
+    "description": "SolarWinds Access Rights Manager (ARM) is susceptible to Directory Traversal vulnerability. This vulnerability allows an authenticated user to arbitrary read and delete files in ARM.",
+    "vendor": "SolarWinds",
+    "product": "Access Rights Manager"
+  },
+  "CVE-2024-28074": {
+    "cvss": 8.8,
+    "description": "It was discovered that a previous vulnerability was not completely fixed with SolarWinds Access Rights Manager. While some controls were implemented the researcher was able to bypass these and use a different method to exploit the vulnerability.",
+    "vendor": "SolarWinds",
+    "product": "Access Rights Manager"
+  },
+  "CVE-2024-38200": {
+    "cvss": 6.5,
+    "description": "Microsoft Office Spoofing Vulnerability",
+    "vendor": "Microsoft",
+    "product": "Microsoft Office 2019"
+  },
+  "CVE-2024-41730": {
+    "cvss": 9.8,
+    "description": "In SAP BusinessObjects Business Intelligence Platform, if Single Signed On is enabled on Enterprise authentication, an unauthorized user can get a logon token using a REST endpoint. The attacker can fully compromise the system resulting in High impact on confidentiality, integrity and availability.",
+    "vendor": "SAP_SE",
+    "product": "SAP BusinessObjects Business Intelligence Platform"
+  },
+  "CVE-2024-45409": {
+    "cvss": 9.8,
+    "description": "The Ruby SAML library is for implementing the client side of a SAML authorization. Ruby-SAML in <= 12.2 and 1.13.0 <= 1.16.0 does not properly verify the signature of the SAML Response. An unauthenticated attacker with access to any signed saml document (by the IdP) can thus forge a SAML Response/Assertion with arbitrary contents. This would allow the attacker to log in as arbitrary user within the vulnerable system. This vulnerability is fixed in 1.17.0 and 1.12.3.",
+    "vendor": "SAML-Toolkits",
+    "product": "ruby-saml"
+  },
+  "CVE-2024-29847": {
+    "cvss": 9.8,
+    "description": "Deserialization of untrusted data in the agent portal of Ivanti EPM before 2022 SU6, or the 2024 September update allows a remote unauthenticated attacker to achieve remote code execution.",
+    "vendor": "Ivanti",
+    "product": "EPM"
+  },
+  "CVE-2024-49368": {
+    "cvss": 9.8,
+    "description": "Nginx UI is a web user interface for the Nginx web server. Prior to version 2.0.0-beta.36, when Nginx UI configures logrotate, it does not verify the input and directly passes it to exec.Command, causing arbitrary command execution. Version 2.0.0-beta.36 fixes this issue.",
+    "vendor": "0xJacky",
+    "product": "nginx-ui"
+  },
+  "CVE-2024-50330": {
+    "cvss": 9.8,
+    "description": "SQL injection in Ivanti Endpoint Manager before 2024 November Security Update or 2022 SU6 November Security Update allows a remote unauthenticated attacker to achieve remote code execution.",
+    "vendor": "Ivanti",
+    "product": "Endpoint Manager"
+  },
+  "CVE-2024-53691": {
+    "cvss": 8.8,
+    "description": "A link following vulnerability has been reported to affect several QNAP operating system versions. If exploited, the vulnerability could allow remote attackers who have gained user access to traverse the file system to unintended locations. We have already fixed the vulnerability in the following versions: QTS 5.1.8.2823 build 20240712 and later QTS 5.2.0.2802 build 20240620 and later QuTS hero h5.1.8.2823 build 20240712 and later QuTS hero h5.2.0.2802 build 20240620 and later",
+    "vendor": "QNAP Systems Inc.",
+    "product": "QTS"
+  },
+  "CVE-2024-53677": {
+    "cvss": 9.8,
+    "description": "File upload logic in Apache Struts is flawed. An attacker can manipulate file upload params to enable paths traversal and under some circumstances this can lead to uploading a malicious file which can be used to perform Remote Code Execution. This issue affects Apache Struts: from 2.0.0 before 6.4.0. Users are recommended to upgrade to version 6.4.0 at least and migrate to the new file upload mechanism https://struts.apache.org/core-developers/file-upload . If you are not using an old file upload logic based on FileuploadInterceptor your application is safe. You can find more details in https://cwiki.apache.org/confluence/display/WW/S2-067",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache Struts"
+  },
+  "CVE-2024-49112": {
+    "cvss": 9.8,
+    "description": "Windows Lightweight Directory Access Protocol (LDAP) Remote Code Execution Vulnerability",
+    "vendor": "Microsoft",
+    "product": "Windows 10 Version 1507"
+  },
+  "CVE-2024-49113": {
+    "cvss": 7.5,
+    "description": "Windows Lightweight Directory Access Protocol (LDAP) Denial of Service Vulnerability",
+    "vendor": "Microsoft",
+    "product": "Windows 10 Version 1507"
+  },
+  "CVE-2024-50379": {
+    "cvss": 9.8,
+    "description": "Time-of-check Time-of-use (TOCTOU) Race Condition vulnerability during JSP compilation in Apache Tomcat permits an RCE on case insensitive file systems when the default servlet is enabled for write (non-default configuration). This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.1, from 10.1.0-M1 through 10.1.33, from 9.0.0.M1 through 9.0.97. The following versions were EOL at the time the CVE was created but are known to be affected: 8.5.0 though 8.5.100. Other, older, EOL versions may also be affected. Users are recommended to upgrade to version 11.0.2, 10.1.34 or 9.0.98, which fixes the issue.",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache Tomcat"
+  },
+  "CVE-2024-12108": {
+    "cvss": 9.6,
+    "description": "In WhatsUp Gold versions released before 2024.0.2, an attacker can gain access to the WhatsUp Gold server via the public API.",
+    "vendor": "Progress Software Corporation",
+    "product": "WhatsUp Gold"
   }
 }
