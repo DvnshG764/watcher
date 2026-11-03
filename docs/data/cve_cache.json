@@ -59190,7 +59190,7 @@
     "product": "Unknown"
   },
   "CVE-2026-105081": {
-    "cvss": 3.6,
+    "cvss": 4.4,
     "description": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 does not properly account for symbolic links in the IsRightsAuthorizedByName security policy check, allowing configured policy restrictions to be bypassed. Local attackers who can create a symlink can point it at a policy-restricted path to evade the configured policy.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63046,5 +63046,83 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-109258": {
+    "cvss": 7.5,
+    "description": "ImageMagick 7.1.0-20 before 7.1.2-32 contains an invalid memory free vulnerability in the fx operation that occurs when initialization of an FX runtime entry fails. Attackers can trigger the failed FX runtime initialization to cause an invalid free, resulting in memory corruption and application crashes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109259": {
+    "cvss": 5.3,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains an uninitialized memory read in the TGA image decoder that can expose memory contents. Attackers can supply a crafted TGA image for processing to disclose contents of uninitialized memory from the ImageMagick process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109260": {
+    "cvss": 7.5,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a memory leak in the PNG encoder, which does not release allocated memory when libpng initialization fails. Attackers who can repeatedly trigger PNG encoding operations in which libpng initialization fails can exhaust memory and cause a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109261": {
+    "cvss": 7.5,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a memory leak in the GIF encoder because allocated memory is not released when color quantization fails during encoding. Attackers can supply images whose GIF conversion causes quantization to fail, leaking memory with each attempt and degrading availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108693": {
+    "cvss": 7.8,
+    "description": "ImageMagick on Windows through 7.1.2-33 and 6.9.13-58 contains an uncontrolled search path vulnerability in NTGhostscriptEXE() that launches gswin64c.exe by bare name when Ghostscript is unregistered. Attackers can plant a malicious gswin64c.exe in the working directory to execute code with ImageMagick privileges when PDF, PostScript, or EPS files are converted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102709": {
+    "cvss": 8.4,
+    "description": "In Eclipse ThreadX versions 6.0.1 through 6.5.2.202603, the four non-secure-callable secure stack functions of the TrustZone-M ports dereference a thread pointer supplied by the non-secure world without checking that it points to non-secure memory. Non-secure code can make the secure firmware reveal which secure bytes are zero, write chosen secure words, and fault the secure world, breaking TrustZone-M isolation and enabling recovery of secure-world secrets such as cryptographic keys.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-12767": {
+    "cvss": 5.3,
+    "description": "IBM Concert 1.0.0 through 3.0.0 could allow a remote attacker to cause a denial of service using a specially crafted regular expression that would cause excessive resource consumption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-36084": {
+    "cvss": 7.5,
+    "description": "IBM Concert 1.0.0 through 3.0.0 uses weaker than expected cryptographic algorithms that could allow an attacker to decrypt highly sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15915": {
+    "cvss": 5.5,
+    "description": "IBM Concert 1.0.0 through 3.0.0 could allow a local attacker to obtain sensitive information due to recursive copying of build context directories into container images.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16426": {
+    "cvss": 5.4,
+    "description": "IBM Concert 1.0.0 through 3.0.0 is vulnerable to server-side request forgery (SSRF). This may allow an authenticated attacker to send unauthorized requests from the system, potentially leading to network enumeration or facilitating other attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17465": {
+    "cvss": 6.5,
+    "description": "IBM Concert 1.0.0 through 3.0.0 could allow a remote authenticated attacker to cause a denial of service due to improper enforcement of storage limits.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2011-4899": {
+    "cvss": 7.5,
+    "description": "wp-admin/setup-config.php in the installation component in WordPress 3.3.1 and earlier does not ensure that the specified MySQL database service is appropriate, which allows remote attackers to configure an arbitrary database via the dbhost and dbname parameters, and subsequently conduct static code injection and cross-site scripting (XSS) attacks via (1) an HTTP request or (2) a MySQL query. NOTE: the vendor disputes the significance of this issue; however, remote code execution makes the issue important in many realistic environments",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116606": {
+    "cvss": 9.3,
+    "description": "An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration.",
+    "vendor": "Barracuda Networks",
+    "product": "Barracuda Email Security Gateway (ESG)"
   }
 }
