@@ -62590,5 +62590,29 @@
     "description": "follow-redirects is an open source, drop-in replacement for Node's `http` and `https` modules that automatically follows redirects. Prior to 1.16.0, when an HTTP request follows a cross-domain redirect (301/302/307/308), follow-redirects only strips authorization, proxy-authorization, and cookie headers (matched by regex at index.js). Any custom authentication header (e.g., X-API-Key, X-Auth-Token, Api-Key, Token) is forwarded verbatim to the redirect target. This vulnerability is fixed in 1.16.0.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-17527": {
+    "cvss": 7.7,
+    "description": "In containerized-data-importer (CDI), the aggregated cdi.kubevirt.io:view ClusterRole, intended to provide read-only access to CDI resources, includes a rule granting create on the datavolumes/source subresource. CDI's DataVolume clone authorization accepts this permission as sufficient to authorize cloning the contents of any PVC the caller can name, without requiring write access to the source namespace. A user or service account bound to the view role, commonly granted cluster-wide via ClusterRoleBinding, who also has ordinary write access (edit/admin) to any single namespace, can use this to exfiltrate the contents of any PVC in the cluster into a namespace they control, bypassing namespace isolation and the read-only guarantee of the view role.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6324": {
+    "cvss": 4.8,
+    "description": "A flaw was found in libsoup. A remote attacker could exploit an unsigned to signed conversion error in the `soup_body_input_stream_read_chunked()` function by sending a malicious HTTP request. This vulnerability occurs when libsoup operates behind a non-libsoup proxy server or as a proxy in front of a non-libsoup backend server. Successful exploitation can allow an attacker to bypass security controls, poison web caches, or gain unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58115": {
+    "cvss": 10.0,
+    "description": "A vulnerability has been identified in SIMATIC IoT2050 Advanced (6ES7647-0BA00-1YA2) (All versions < V4.3.4.1 running Industrial OS with Node-RED installed). Affected devices do not enforce authentication on the Node-RED HTTP interface, allowing unauthenticated access to programming nodes that are capable of executing system commands on the server. This could allow an unauthenticated remote attacker to create malicious flows through the HTTP interface in order to execute arbitrary code on the underlying server with maximum privileges.",
+    "vendor": "Siemens",
+    "product": "SIMATIC IoT2050 Advanced"
+  },
+  "CVE-2026-81648": {
+    "cvss": 10.0,
+    "description": "The CryptoPayment Gateway WordPress plugin from 1.2.1 to 1.2.2 does not apply an authorization check on one of its AJAX endpoints, allowing unauthenticated users to invoke administrative operations, including deleting arbitrary files on the server, overwriting the payment gateway configuration and recovering stored wallet credentials in cleartext.",
+    "vendor": "Unknown",
+    "product": "CryptoPayment Gateway"
   }
 }
