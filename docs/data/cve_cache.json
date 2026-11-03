@@ -63988,5 +63988,95 @@
     "description": "A flaw was found in OpenShift Console. A Server Side Request Forgery (SSRF) attack can happen if an attacker supplies all or part of a URL to the server to query. The server is considered to be in a privileged network position and can often reach exposed services that aren't readily available to clients due to network filtering. Leveraging such an attack vector, the attacker can have an impact on other services and potentially disclose information or have other nefarious effects on the system. The /api/dev-console/proxy/internet endpoint on the OpenShift Console allows authenticated users to have the console's pod perform arbitrary and fully controlled HTTP(s) requests. The full response to these requests is returned by the endpoint. While the name of this endpoint suggests the requests are only bound to the internet, no such checks are in place. An authenticated user can therefore ask the console to perform arbitrary HTTP requests from outside the cluster to a service inside the cluster.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-92615": {
+    "cvss": 6.6,
+    "description": "A flaw was found in flightctl. The configureRepoHTTPSClient() function in the device-render worker builds a per-repository tls.Config (which may include InsecureSkipVerify, a custom CA bundle, or tenant-supplied mTLS client certificates) and installs it into go-git's process-global client.Protocols map via gitclient.InstallProtocol(\"https\", ...). Because the worker renders devices for multiple organizations concurrently from a shared goroutine pool, whichever tenant's repository configuration is written last wins for all in-flight git.Clone calls. This race condition can cause one tenant's TLS settings, including InsecureSkipVerify or mTLS client credentials, to leak into another tenant's git operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83129": {
+    "cvss": 7.7,
+    "description": "Vulnerability in the Oracle Sales product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Sales. While the vulnerability is in Oracle Sales, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Sales accessible data. CVSS 3.1 Base Score 7.7 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83130": {
+    "cvss": 7.1,
+    "description": "Vulnerability in the Oracle Site Hub product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Site Hub. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Site Hub accessible data as well as unauthorized read access to a subset of Oracle Site Hub accessible data. CVSS 3.1 Base Score 7.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83131": {
+    "cvss": 7.7,
+    "description": "Vulnerability in the Oracle Web Applications Desktop Integrator product of Oracle E-Business Suite (component: File download). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTPS to compromise Oracle Web Applications Desktop Integrator. While the vulnerability is in Oracle Web Applications Desktop Integrator, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Web Applications Desktop Integrator accessible data. CVSS 3.1 Base Score 7.7 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87126": {
+    "cvss": 7.1,
+    "description": "Vulnerability in the Oracle Report Manager product of Oracle E-Business Suite (component: Reports Security). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Report Manager. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Report Manager accessible data and unauthorized ability to cause a partial denial of service (partial DOS) of Oracle Report Manager. CVSS 3.1 Base Score 7.1 (Confidentiality and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87152": {
+    "cvss": 8.1,
+    "description": "Vulnerability in the Oracle Installed Base product of Oracle E-Business Suite (component: Create Item Instance). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Installed Base. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Installed Base accessible data as well as unauthorized access to critical data or complete access to all Oracle Installed Base accessible data. CVSS 3.1 Base Score 8.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87159": {
+    "cvss": 8.1,
+    "description": "Vulnerability in the Oracle HRMS (India) product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle HRMS (India). Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle HRMS (India) accessible data as well as unauthorized access to critical data or complete access to all Oracle HRMS (India) accessible data. CVSS 3.1 Base Score 8.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87160": {
+    "cvss": 7.1,
+    "description": "Vulnerability in the Oracle HRMS (India) product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTPS to compromise Oracle HRMS (India). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle HRMS (India) accessible data as well as unauthorized update, insert or delete access to some of Oracle HRMS (India) accessible data. CVSS 3.1 Base Score 7.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87161": {
+    "cvss": 8.5,
+    "description": "Vulnerability in the Oracle HRMS (India) product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle HRMS (India). While the vulnerability is in Oracle HRMS (India), attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle HRMS (India) accessible data as well as unauthorized update, insert or delete access to some of Oracle HRMS (India) accessible data. CVSS 3.1 Base Score 8.5 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-5419": {
+    "cvss": 3.7,
+    "description": "A flaw was found in gnutls. The PKCS#7 padding check, performed during decryption, was not constant-time. This timing side-channel could allow a remote attacker to potentially leak sensitive information about the padding bytes through observable timing differences. This vulnerability is a form of information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60676": {
+    "cvss": 6.5,
+    "description": "An unauthenticated command injection vulnerability exists in the D-Link DIR-878A1 router firmware FW101B04.bin. The vulnerability occurs in the 'SetNetworkSettings' functionality of prog.cgi, where the 'IPAddress' and 'SubnetMask' parameters are directly concatenated into shell commands executed via system(). An attacker can exploit this vulnerability remotely without authentication by sending a specially crafted HTTP request, leading to arbitrary command execution on the device. NOTE: this is disputed by third parties because /cgi-bin/prog.cgi does not exist and because \"directly concatenated into shell commands\" occurs after adequate input vaidation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-31698": {
+    "cvss": 5.4,
+    "description": "Bludit v3.14.1 is vulnerable to Stored Cross Site Scripting (XSS) via SVG file on site logo. NOTE: the product's security model is that users are trusted by the administrator to insert arbitrary content (users cannot create their own accounts through self-registration).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-24908": {
+    "cvss": 8.1,
+    "description": "Remote Procedure Call Runtime Remote Code Execution Vulnerability",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-37959": {
+    "cvss": 6.5,
+    "description": "Network Device Enrollment Service (NDES) Security Feature Bypass Vulnerability",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119977": {
+    "cvss": 8.1,
+    "description": "WordPress WordPress Core contains a time-of-check time-of-use (TOCTOU) race condition vulnerability that could allow unauthenticated attackers to execute code on the server during the upgrade window. This is due to predictable, web-accessible staging paths used during full-package core upgrades.",
+    "vendor": "WordPress",
+    "product": "WordPress"
   }
 }
