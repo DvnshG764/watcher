@@ -63116,7 +63116,7 @@
   "CVE-2011-4899": {
     "cvss": 7.5,
     "description": "wp-admin/setup-config.php in the installation component in WordPress 3.3.1 and earlier does not ensure that the specified MySQL database service is appropriate, which allows remote attackers to configure an arbitrary database via the dbhost and dbname parameters, and subsequently conduct static code injection and cross-site scripting (XSS) attacks via (1) an HTTP request or (2) a MySQL query. NOTE: the vendor disputes the significance of this issue; however, remote code execution makes the issue important in many realistic environments",
-    "vendor": "Unknown",
+    "vendor": "PHP",
     "product": "Unknown"
   },
   "CVE-2026-116606": {
@@ -63124,5 +63124,71 @@
     "description": "An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration.",
     "vendor": "Barracuda Networks",
     "product": "Barracuda Email Security Gateway (ESG)"
+  },
+  "CVE-2026-105725": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Security App allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109262": {
+    "cvss": 7.5,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a memory leak in the SVG encoder (WriteSVGImage) that fails to release allocated memory when handling crafted images. Attackers can supply crafted image files that are processed by the SVG encoder to leak memory and cause a denial of service through resource consumption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109263": {
+    "cvss": 7.5,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a memory leak in the YUV encoder, which fails to release allocated memory when a specific operation fails. Attackers can supply crafted input that triggers the failing encoder operation, leaking memory and potentially exhausting resources to cause a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109264": {
+    "cvss": 3.7,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains uncontrolled recursion in the MVG decoder that can exhaust the program stack. An attacker who controls a file name processed by ImageMagick can trigger a stack overflow that crashes the process, causing a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109265": {
+    "cvss": 5.3,
+    "description": "ImageMagick 7.1.1-7 before 7.1.2-32 contains a heap buffer over-read vulnerability that allows attackers to read beyond allocated memory due to incorrect string termination in XMP profiles. Attackers can supply a crafted image containing a malformed XMP profile to trigger the over-read and crash the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109266": {
+    "cvss": 5.3,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains an XML injection vulnerability in the CIP encoder, which does not properly escape input-derived data when writing Cisco IP Phone XML output. Attackers can supply a crafted file that, when converted to CIP format, injects arbitrary markup into the generated XML.",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-109267": {
+    "cvss": 7.5,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a stack overflow in the MSL decoder caused by an incorrect depth check that fails to limit recursion. Attackers can supply a set of crafted MSL images that exhaust the stack when one of them is read, crashing the process and causing a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109268": {
+    "cvss": 7.5,
+    "description": "ImageMagick before 6.9.13-57 and 7.x before 7.1.2-32 contains a use after free vulnerability in the PDF writer when writing CMYK images with JPEG2000 compression. Attackers can supply a crafted CMYK image that, when written to PDF with JPEG2000 compression, causes freed memory to be reused, potentially crashing the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102710": {
+    "cvss": 8.5,
+    "description": "In Eclipse ThreadX versions 6.0.1 through 6.5.2.202603, built with TX_ENABLE_EVENT_TRACE, the Module Manager lets a user-mode, memory-protected module register any function pointer as the kernel's trace-buffer-full callback, which the kernel calls from privileged code when the trace buffer wraps. A malicious module can thereby run its own code with kernel privilege, defeating module isolation, or fault the kernel with an invalid pointer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98058": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: bpf: Mark syscall helpers as sleepable bpf_sys_bpf() executes the bpf(2) syscall body, which can take mutexes, allocate with GFP_KERNEL, and wait for an RCU grace period. bpf_sys_close() reaches close_fd() and filp_close(), which can sleep as well. Both helpers are limited to BPF_PROG_TYPE_SYSCALL, whose main program is sleepable. That does not make every callback sleepable: a syscall program can register a bpf_timer callback, and the verifier checks that callback in a non-sleepable context while retaining the syscall helper set. Without .might_sleep on the prototypes, such a callback can invoke bpf_sys_bpf() from hrtimer softirq context and trigger a scheduling-while-atomic failure. bpf_sys_close() is exposed through the same missing context check. Set .might_sleep on both prototypes so the existing helper-context check rejects them from timer callbacks and other atomic regions. Calls from the sleepable main body remain valid.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41242": {
+    "cvss": 9.8,
+    "description": "protobufjs compiles protobuf definitions into JavaScript (JS) functions. In versions prior to 8.0.1, 7.5.5, and 6.11.6, attackers can inject arbitrary code in the \"type\" fields of protobuf definitions, which will then execute during object decoding using that definition. Versions 8.0.1, 7.5.5, and 6.11.6 patch the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
