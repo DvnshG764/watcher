@@ -16476,8 +16476,8 @@
     "product": "wpForo Forum"
   },
   "CVE-2026-106991": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.1,
+    "description": "hustoj >=24.09.10 and <=26.08.19 is vulnerable to Incorrect Access Control. Any registered user can delete, lock, or sticky any forum thread (including admins' announcements) via threadadmin.php. The thread branch only verifies login, never authorship or admin rights.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -47712,7 +47712,7 @@
     "product": "Unknown"
   },
   "CVE-2026-118527": {
-    "cvss": null,
+    "cvss": 4.3,
     "description": "Ivanti Connect Secure contains a generation of predictable numbers or identifiers vulnerability that allows a remote authenticated attacker to upload files with attacker-controlled content to a known location on disk. This vulnerability can be chained with CVE-2026-104935 and CVE-2026-111357.",
     "vendor": "Ivanti",
     "product": "Connect Secure"
@@ -62998,5 +62998,23 @@
     "description": "A flaw was found in sequoia-openpgp. The library incorrectly infers key flags for older certificates when a key flags subpacket is missing, leading to a discrepancy in how key capabilities are viewed. This key flag confusion allows an attacker to bypass the back-signature check. Consequently, an attacker can illegitimately bind an arbitrary subkey to their own certificate and forge signatures, completely compromising cryptographic integrity.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2025-49520": {
+    "cvss": 8.8,
+    "description": "A flaw was found in Ansible Automation Platform’s EDA component where user-supplied Git URLs are passed unsanitized to the git ls-remote command. This vulnerability allows an authenticated attacker to inject arguments and execute arbitrary commands on the EDA worker. In Kubernetes/OpenShift environments, this can lead to service account token theft and cluster access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-49521": {
+    "cvss": 8.8,
+    "description": "A flaw was found in the EDA component of the Ansible Automation Platform, where user-supplied Git branch or refspec values are evaluated as Jinja2 templates. This vulnerability allows authenticated users to inject expressions that execute commands or access sensitive files on the EDA worker. In OpenShift, it can lead to service account token theft.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120318": {
+    "cvss": 7.2,
+    "description": "Product Gallery Slider & Additional Variation Images for WooCommerce 2.3.23 before 2.3.26 contains a missing authorization vulnerability in Codestar backup AJAX actions csf-export, csf-import and csf-reset. Shop Managers can read the csf_backup_nonce from the settings page and supply arbitrary option names via the 'unique' parameter to read, overwrite or delete WordPress options, including modifying wp_user_roles to escalate to administrator.",
+    "vendor": "Codeixer",
+    "product": "Product Gallery Slider & Additional Variation Images for WooCommerce"
   }
 }
