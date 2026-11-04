@@ -72048,21 +72048,213 @@
     "product": "Unknown"
   },
   "CVE-2026-76419": {
-    "cvss": null,
+    "cvss": 6.1,
     "description": "A vulnerability in the web-based management interface of Cisco Unified Communications Manager (Unified CM) and Cisco Unified Communications Manager Session Management Edition (Unified CM SME) could allow an unauthenticated, remote attacker to conduct a cross-site scripting (XSS) attack against a user of the interface. This vulnerability exists because the web-based management interface does not properly validate user",
     "vendor": "Cisco",
-    "product": "Unknown"
+    "product": "Cisco Unified Communications Manager"
   },
   "CVE-2026-20241": {
-    "cvss": null,
-    "description": "A vulnerability in the authorization mechanism of Cisco Identity Services Engine (ISE) and Cisco ISE Passive Identity Connector (ISE-PIC) could allow an unauthenticated, remote attacker to obtain an endpoint identity certificate. This vulnerability is due to improper authorization checks. An attacker could exploit this vulnerability by sending a crafted request to an affected device. A successful exploit could allow ",
+    "cvss": 5.3,
+    "description": "A vulnerability in the authorization mechanism of Cisco Identity Services Engine (ISE) and Cisco ISE Passive Identity Connector (ISE-PIC) could allow an unauthenticated, remote attacker to obtain an endpoint identity certificate. This vulnerability is due to improper authorization checks. An attacker could exploit this vulnerability by sending a crafted request to an affected device. A successful exploit could allow",
     "vendor": "Cisco",
-    "product": "Unknown"
+    "product": "Cisco Identity Services Engine Software"
   },
   "CVE-2026-76506": {
-    "cvss": null,
+    "cvss": 7.6,
     "description": "A vulnerability in the web-based management interface of Cisco UCS Central Software could allow an authenticated, remote attacker to achieve remote code execution or conduct information disclosure attacks on an affected device. This vulnerability is due to insufficient validation of user-supplied input in an HTTP request. An attacker could exploit this vulnerability by sending a crafted HTTP request to an affected en",
     "vendor": "Cisco",
+    "product": "Cisco Unified Computing System Central Software"
+  },
+  "CVE-2026-115379": {
+    "cvss": 5.7,
+    "description": "Wasmtime 47.0.0 before 48.0.4 and 49.0.0 before 49.0.2 contains a missing GC rooting vulnerability that leaves references live across try_call unrooted when compiling Wasm modules. Attackers can supply Wasm modules whose callee triggers garbage collection, leaving stale or dangling references that cause GC heap corruption or incorrect execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115383": {
+    "cvss": 4.8,
+    "description": "Wasmtime 47.0.0 before 48.0.4 and 49.0.0 before 49.0.2 contains an improper validation vulnerability that accepts components whose core modules import WebAssembly tags with a subtype of the original type. Malicious guests can mis-type exception object payloads to corrupt the GC heap, causing Wasmtime to panic when the exceptions proposal is enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115387": {
+    "cvss": 6.2,
+    "description": "Wasmtime before 36.0.16, 37.0.0 before 48.0.3, and 49.0.0 before 49.0.1 contains a denial of service vulnerability in wasmtime-wasi that allows guest WASI programs to panic the host via overflowing filesystem timestamps. Attackers can pass atim or mtim values whose sub-second field overflows the seconds field to path_filestat_set_times, fd_filestat_set_times, set-times, or set-times-at, crashing the host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79872": {
+    "cvss": 9.4,
+    "description": "A buffer overflow vulnerability exists in the underlying operating system of AOS that could lead to unauthenticated remote code execution by an unauthenticated remote attacker. Successful exploitation of this vulnerability results in the ability to execute arbitrary code as a privileged user on the underlying operating system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79873": {
+    "cvss": 9.3,
+    "description": "Authentication bypass vulnerabilities in the PAPI protocol of AOS-10 could allow an unauthenticated adjacent attacker to circumvent existing authentication controls. Successful exploitation could allow an attacker to gain administrative access, modify system configurations, and access or manipulate sensitive data on affected devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79874": {
+    "cvss": 9.3,
+    "description": "An authentication bypass in the API of AOS-10 allows an unauthenticated adjacent attacker to circumvent existing authentication controls. Successful exploitation could allow an attacker to gain administrative access, modify system configurations, and access or manipulate sensitive data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79875": {
+    "cvss": 9.3,
+    "description": "A vulnerability has been identified in the PAPI protocol of AOS-8 that could potentially allow an unauthenticated adjacent attacker to circumvent existing authentication controls. Successful exploitation could allow an attacker to gain administrative access, modify system configurations, and access or manipulate sensitive data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79876": {
+    "cvss": 9.3,
+    "description": "A sensitive information disclosure vulnerability in the Wi-Fi frame processing of AOS-10 could allow an unauthenticated adjacent attacker to access sensitive information. Successful exploitation could allow an attacker to retrieve information which could be used to potentially gain further access to network services supported by AOS-10, or to interrupt the normal operation of the affected service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79877": {
+    "cvss": 8.8,
+    "description": "A remote code execution vulnerability in the underlying operating system of AOS-10 could allow an unauthenticated adjacent attacker to execute arbitrary code on an affected device. Successful exploitation could allow an attacker to execute arbitrary commands as a privileged user on the underlying operating system leading to complete system compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91392": {
+    "cvss": 3.7,
+    "description": "Vulnerability in the Siebel CRM End User product of Oracle Siebel CRM (component: Open UI). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM End User. Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Siebel CRM End User accessible data. CVSS 3.1 Base Score 3.7 (Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91393": {
+    "cvss": 3.1,
+    "description": "Vulnerability in the Siebel CRM End User product of Oracle Siebel CRM (component: Open UI). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM End User. Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Siebel CRM End User accessible data. CVSS 3.1 Base Score 3.1 (Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91414": {
+    "cvss": 5.3,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM Deployment. Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Siebel CRM Deployment accessible data. CVSS 3.1 Base Score 5.3 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91420": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Siebel CRM Deployment accessible data. CVSS 3.1 Base Score 6.5 (Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91421": {
+    "cvss": 5.9,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Siebel CRM Deployment. CVSS 3.1 Base Score 5.9 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91422": {
+    "cvss": 5.3,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Siebel CRM Deployment accessible data. CVSS 3.1 Base Score 5.3 (Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91423": {
+    "cvss": 6.0,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows high privileged attacker with logon to the infrastructure where Siebel CRM Deployment executes to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Siebel CRM Deployment accessible data as well as unauthorized access to critical data or complete access to all Siebel CRM Deployment accessible data. CVSS 3.1 Base Score 6.0 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91424": {
+    "cvss": 6.4,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Siebel CRM Deployment as well as unauthorized update, insert or delete access to some of Siebel CRM Deployment accessible data and unauthorized read access to a subset of Siebel CRM Deployment accessible data. CVSS 3.1 Base Score 6.4 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91426": {
+    "cvss": 5.5,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows low privileged attacker with logon to the infrastructure where Siebel CRM Deployment executes to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Siebel CRM Deployment accessible data. CVSS 3.1 Base Score 5.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91427": {
+    "cvss": 2.3,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows high privileged attacker with logon to the infrastructure where Siebel CRM Deployment executes to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized ability to cause a partial denial of service (partial DOS) of Siebel CRM Deployment. CVSS 3.1 Base Score 2.3 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91429": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Siebel CRM Deployment accessible data as well as unauthorized update, insert or delete access to some of Siebel CRM Deployment accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91434": {
+    "cvss": 6.7,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows high privileged attacker with logon to the infrastructure where Siebel CRM Deployment executes to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in takeover of Siebel CRM Deployment. CVSS 3.1 Base Score 6.7 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91435": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Siebel CRM Deployment. CVSS 3.1 Base Score 6.5 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91436": {
+    "cvss": 3.9,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows high privileged attacker with logon to the infrastructure where Siebel CRM Deployment executes to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Siebel CRM Deployment accessible data as well as unauthorized read access to a subset of Siebel CRM Deployment accessible data and unauthorized ability to cause a partial denial of service (partial DOS) of Siebel CRM Deployment. CVSS 3.1 Base Score 3.9 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91442": {
+    "cvss": 8.8,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in takeover of Siebel CRM Deployment. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91443": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Siebel CRM Deployment product of Oracle Siebel CRM (component: Server Infrastructure). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM Deployment. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Siebel CRM Deployment accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93492": {
+    "cvss": 5.3,
+    "description": "A flaw was found in Netty's HTTP/2 HpackEncoder. A remote attacker can exploit this by sending HTTP/2 SETTINGS frames with a very large MAX_HEADER_TABLE_SIZE. This causes the HpackEncoder to store an excessive number of unique headers, leading to increased CPU usage and memory consumption, ultimately resulting in a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93567": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Netty's HTTP/2 codec. When converting HTTP/1 CONNECT requests to HTTP/2, the component incorrectly uses the Host header instead of the CONNECT authority-form request-target for the tunnel authority. A remote attacker can exploit this by supplying a different Host header, leading to a malformed HTTP/2 CONNECT request. This can bypass security controls such as tunnel allow-lists or egress policies, resulting in integrity loss.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93568": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Netty. A remote attacker could exploit this vulnerability by sending specially crafted HTTP/2 or HTTP/3 Extended CONNECT requests. Netty's HTTP-object conversion path incorrectly processes these requests as regular HTTP/1.1 CONNECT requests, leading to a loss of critical protocol and path information. This misinterpretation can allow attackers to bypass security policies, such as routing or authorization logic, in applications that rely on Netty for HTTP/2 or HTTP/3 communication, resulting in integrity loss.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93569": {
+    "cvss": 8.2,
+    "description": "A flaw was found in Netty. A remote unauthenticated attacker can exploit a vulnerability in Netty's HTTP/1 to HTTP/2 conversion process. When an HTTP/1 request includes both an absolute-form request-target and a conflicting Host header, Netty incorrectly prioritizes the Host header for the HTTP/2 :authority field, discarding the original request-target authority. This inconsistency can allow an attacker to bypass security controls in Netty-based proxies or gateways, potentially leading to unauthorized access, cache poisoning, or misrouting of requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93579": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Netty's HTTP/2 stack. This vulnerability allows a remote attacker to inject prohibited characters, such as NUL, Line Feed, and Carriage Return, into HTTP/2 header field values due to insufficient validation. When these values cross an HTTP/2 to HTTP/1.1 translation boundary, they can be exploited for request smuggling, header injection, or response splitting. This could lead to unauthorized access, data manipulation, or other security bypasses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-13048": {
+    "cvss": 8.2,
+    "description": "Data::MuForm::Localizer versions through 0.05 for Perl execute Perl from a message catalog header, reached at an arbitrary path because load_lexicon interpolates the language attribute into the catalog filename. load_lexicon builds the catalog path by appending `Messages/$lang.po` to the directory holding Localizer.pm, where $lang is the language attribute, with no check that it names a bare locale tag. A value holding `../` segments walks out of the message directory, so any readable path with a `.po` suffix is loaded. While parsing the catalog, extract_header_msgstr takes the `Plural-Forms:` header, prefixes `$` to the bare words nplurals, plural and n, and passes the rest verbatim into a string that is evaluated: the nplurals form evaluates the header expression immediately, and the plural_code form compiles it into a subroutine whose body runs when a plural message is localized. A header of `nplurals=2; plural=(system('...'),0);` therefore runs that command as the catalog loads. The evaluation inherits strict, so an expression that assigns to an undeclared variable fails to compile, while one built from calls alone does not. An application that sets the language attribute from request data, an Accept-Language header or a locale parameter, and an attacker who can place a file with a `.po` suffix and chosen contents at a readable path, together give code execution as the application user. The message expansion path is not affected: expand_named substitutes only the placeholder names the caller supplies, and _mangle_value returns the value unchanged.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-7631": {
+    "cvss": 4.3,
+    "description": "A flaw was found in the OpenShift Console, an endpoint for plugins to serve resources in multiple languages: /locales/resources.json. This endpoint's lng and ns parameters are used to construct a filepath in pkg/plugins/handlers unsafely.go#L112 Because of this unsafe filepath construction, an authenticated user can manipulate the path to retrieve any JSON files on the console's pod by using sequences of ../ and valid directory paths.",
+    "vendor": "Unknown",
     "product": "Unknown"
   }
 }
