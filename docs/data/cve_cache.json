@@ -72382,5 +72382,329 @@
     "description": "An unauthenticated attacker with network access to the SonicWall GMS 9.5.2 and earlier versions may be able to read internal GMS files, potentially exposing sensitive information.",
     "vendor": "SonicWall",
     "product": "Global Management System (GMS)"
+  },
+  "CVE-2026-115486": {
+    "cvss": 7.1,
+    "description": "A flaw was found in the iscsiuio component of open-iscsi. The IPv6 Neighbor Discovery handler accesses link-layer address options at a fixed offset without verifying the packet contains them. Additionally, the ARP table is updated unconditionally with attacker-controlled addresses from the packet headers. An attacker on the same network segment can send a minimal Neighbor Advertisement to poison the ARP table and redirect network traffic.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19677": {
+    "cvss": 9.3,
+    "description": "An authentication bypass vulnerability in the public onPhase/ frevvo registration form version 11.0.14 allows an unauthenticated remote attacker to authenticate as an arbitrary tenant user, obtain TenantAdmin and Designer privileges, and execute arbitrary operating system commands via manipulation of registration parameters containing a valid tenant name and existing user identifier.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19678": {
+    "cvss": 8.7,
+    "description": "A server-side request forgery (SSRF) vulnerability in the unauthenticated form service in version 11.0.14 in onPhase Forms allows an unauthenticated remote attacker to access sensitive internal Apache Solr data via an attacker-controlled URL supplied to a publicly accessible form.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89419": {
+    "cvss": 5.0,
+    "description": "OpenStack Ironic before 39.0.1 sometimes allows a user to change the maintenance setting on a node via PATCH to /v1/nodes/{ident} - in other words, not using the specific maintenance endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107858": {
+    "cvss": 7.2,
+    "description": "Missing Origin Validation in WebSockets (CWE-1385) and Permissive Cross-domain Policy with Untrusted Domains (CWE-942) in the development web server (ADK Web) in Google Agent Development Kit (ADK) for Java (com.google.adk:google-adk-dev versions 0.1.0 before 1.13.0 and com.google.adk:google-adk-maven-plugin versions 0.3.0 before 1.13.0) allow a remote attacker to control a locally running agent and read its data via a malicious web page visited by a developer while the server is running. The /run_live WebSocket endpoint accepts connections from any origin by default (hardcoded via setAllowedOrigins(\"*\") in versions 0.1.0 through 1.5.0, and defaulting to * via adk.web.cors.origins in versions 1.6.0 through 1.12.0), and since version 0.4.0 the REST API returns Access-Control-Allow-Origin: * by default. Because the server has no authentication and requests originate from the developer's browser (so binding to localhost does not prevent exploitation), a cross-origin page can send messages to the agent (triggering registered tools), stream agent responses, and list, read, create, or delete sessions and artifacts. In versions 1.6.0 through 1.12.0, users can mitigate the issue by setting the adk.web.cors.origins property to an explicit allowlist of trusted origins (such as http://localhost:8000). The vulnerability is fixed in version 1.13.0, which enforces a same-origin default for CORS and the /run_live WebSocket endpoint, and rejects DNS-rebinding requests over loopback.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55981": {
+    "cvss": 9.6,
+    "description": "A firmware verification vulnerability in Creative Sound Blaster Katana could allow an attacker to modify a legitimate firmware image and upload the modified firmware to an affected device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63243": {
+    "cvss": 4.3,
+    "description": "An authentication vulnerability in the Bluetooth Low Energy (BLE) implementation of Creative Sound Blaster Katana could allow an attacker within Bluetooth range to connect to an affected device without prior pairing or authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63244": {
+    "cvss": 9.8,
+    "description": "An authentication bypass vulnerability in WizLearn Technologies' Learning Management System (LMS) could allow an unauthenticated remote attacker to bypass password authentication and the OAuth authentication flow by sending a specially crafted POST request, potentially resulting in unauthorised access to user accounts and full administrative control of the LMS platform.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75775": {
+    "cvss": 7.7,
+    "description": "Improper Neutralization of Special Elements used in an OS Command in certain ASUS routers allows remote user to execute arbitrary commands with root privileges via crafted parameters sent to the router while the device is in its factory-default state.Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75779": {
+    "cvss": 8.6,
+    "description": "Improper Neutralization of Special Elements used in an OS Command (“OS Command Injection”) and Cross-Site Request Forgery (CSRF) in an ASUS router model allow an attacker to trick a logged-in administrator into visiting a phishing website, causing the router to execute arbitrary commands with root privileges. Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93489": {
+    "cvss": 8.7,
+    "description": "Improper Authentication in ASUS router modules allows an unauthenticated nearby user to send an HTTP request and forge an access ticket, subsequently enabling the user to perform administrator operations. Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-25784": {
+    "cvss": 9.8,
+    "description": "Initialization of a Resource with an Insecure Default vulnerability in Hallo Welt! GmbH BlueSpice (container image bluespice/wiki) allows privilege escalation. The default value of $mwsgTokenAuthenticatorServiceCIDR in the container's LocalSettings.php was intended to restrict internal service authentication to the container network, but evaluated to an empty string when the environment variable WIKI_SERVICE_TOKEN_AUTH_ALLOWED was not set. An empty value disables the IP restriction in the token authenticator component (mwstake/mediawiki-component-token-authenticator). As a result, any user with read access to the wiki (anonymous users on publicly readable wikis) could obtain an application token from the REST API and use it to get a session with sysop privileges as the internal service user. This issue affects BlueSpice: from 5.2.3 before 5.2.7, and the 5.2.7 container images published before 2026-10-19 15:37 UTC.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-89312": {
+    "cvss": 6.9,
+    "description": "`AesGcmCryptor.Open` passed a caller-supplied nonce straight to `cipher.AEAD.Open` without checking its length. The Go standard library **panics** rather than returning an error when a GCM nonce is not exactly `NonceSize()` bytes, so a JWE carrying a wrong-sized IV crashes the decrypting goroutine.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89313": {
+    "cvss": 6.3,
+    "description": "`JwksTrustStore.Get` assigned each parsed key to the function's **named return value** while refreshing the JWKS cache. When the requested `kid` was not present, the trailing naked `return` handed the caller the last key in the JWKS document together with a `nil` error — a confidently wrong answer instead of \"not found\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89314": {
+    "cvss": 6.9,
+    "description": "`jwkFields.CheckConsistency` detected duplicate `key_ops` entries with a pairwise nested loop, making validation cost grow with the **square** of the entry count. Because the check runs on every JWK and JWKS unmarshal, a modestly sized but hostile JWKS document could occupy a CPU core for many seconds.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89315": {
+    "cvss": 6.9,
+    "description": "`JwtClaims.MarshalJSON` built a Go struct at runtime with `reflect.StructOf`, synthesising a field named `\"A\" + claimName` for each untyped claim. `reflect.StructOf` **panics** when a field name is not a valid Go identifier, or when it duplicates another field. Both conditions are reachable from ordinary JWT claim names.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89316": {
+    "cvss": 6.3,
+    "description": "`LoadPublicKey` resolved an EC key's curve with an unchecked type assertion, `algToOptsMap[alg].(*ECDSAOptions)`. A JWK declaring `\"kty\":\"EC\"` together with a non-EC `\"alg\"` — which RFC 7517 §4.4 permits — reaches that assertion and **panics**.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89317": {
+    "cvss": 6.3,
+    "description": "gose parsed the JWS `crit` header into `JwsHeader.Crit` and then never read it. RFC 7515 §4.1.11 requires a recipient to reject a JWS whose listed critical extension parameters it does not understand. gose implements no header extensions, so every token carrying a non-empty `crit` should have been rejected — and none were.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89318": {
+    "cvss": 6.9,
+    "description": "`JweRsaKeyEncryptionDecryptorImpl.Decrypt` passed the JWE's initialization vector to `cipher.AEAD.Open` without checking its length. The Go standard library **panics** rather than returning an error when a GCM nonce is not exactly `NonceSize()` bytes, so a JWE carrying a wrong-sized IV crashes the decrypting goroutine.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89319": {
+    "cvss": 6.3,
+    "description": "`JweDirectDecryptorBlock.Decrypt` read a 64-bit plaintext length from the `_thales_aad` protected-header field and used it without any validation. A truncated field panics `binary.BigEndian.Uint64`, an oversized value drives an unbounded allocation, and a value larger than the decrypted block panics with a slice-bounds error.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89320": {
+    "cvss": 8.8,
+    "description": "`HmacShaCryptor.Hash` never hashed its input. For any input it returned `HMAC_K(\"\")` — the MAC of the empty message under the key. Every AES-CBC-HMAC JWE produced or verified by gose therefore carried an authentication tag that is constant per key and independent of the message, removing ciphertext integrity entirely.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107685": {
+    "cvss": 9.1,
+    "description": "Improper Certificate Validation vulnerability in the WebSocket streaming client in agentjido req_llm allows an on-path attacker to read and modify OpenAI WebSocket sessions, including the authorization bearer token, via a TLS certificate the client does not trust. ReqLLM.Streaming.WebSocketSession.Client.start/3 in lib/req_llm/streaming/web_socket_session/client.ex starts WebSockex without TLS options, and WebSockex defaults to insecure: true, which connects with verify: :verify_none. The option allowlist also drops any caller-supplied cacerts or ssl_options, so an application cannot turn verification on. The OpenAI Responses, Realtime, and Codex WebSocket paths reach this client and send the API key or OAuth access token in the authorization header. HTTP streaming through Finch and the HTTP/2 duplex session through Mint verify certificates and are not affected. This issue affects req_llm: from 1.9.0 before 1.29.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115724": {
+    "cvss": 2.9,
+    "description": "VLC for Android before 3.7.2 contains a confused-deputy file overwrite vulnerability in FileUtils.getUri() that trusts content URIs based only on the com.fsck.k9.attachmentprovider or gmail-ls authority. A co-installed app without permissions can declare these authorities and send a crafted VIEW intent to the exported StartActivity, making VLC write attacker-chosen content under an attacker-chosen name in the shared Download directory, overwriting other apps' files when VLC holds All files access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95620": {
+    "cvss": 2.1,
+    "description": "A use-after-free vulnerability in the Qt QNetworkAccessManager HTTP/2 client support of the Qt Network module allows a malicious or compromised HTTP/2 server to cause the client application to crash, affecting availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115479": {
+    "cvss": 5.3,
+    "description": "baserCMS is a website development framework. In versions 5.2.5 before 5.3.2 and 5.4.0 before 5.4.2, an unauthenticated visitor can supply a comma-separated address list in a public mail form's email field and cause a single auto-reply to be addressed to multiple third parties. MailMessageMailer::sendFormToUser() passes the visitor-controlled userMail value to parseAndNormalizeMailAddresses(), which splits it with explode(',') and supplies every resulting address to setTo(). Newly created forms with an email-type field are affected when the separate, optional VALID_EMAIL server-side validation is not enabled; browser type=email validation does not prevent crafted requests. The bundled contact form enables VALID_EMAIL and is not affected. The auto-reply uses the site's sender identity and includes partially attacker-controlled content, allowing abuse of the site to deliver unsolicited mail. This issue has been patched in versions 5.3.2 and 5.4.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115785": {
+    "cvss": 4.3,
+    "description": "An SMTP command injection vulnerability in the data-source testing functionality of Zimbra Collaboration Suite (ZCS) allows an ordinary authenticated user with account options enabled to inject CR/LF into the emailAddress inserted into an SMTP envelope command by a JSON SOAP request. After a successful preliminary POP3 or IMAP login, Zimbra sends the injected commands to the selected SMTP service. If that service accepts the pipelined transaction, the attacker can submit mail with attacker-selected recipients, headers and body content without victim interaction. The vulnerable command-construction path is present in ZCS 10.1.16 and 10.1.20.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115786": {
+    "cvss": 6.5,
+    "description": "A mailbox quota-accounting vulnerability in Zimbra Collaboration Suite (ZCS) allows an authenticated user to consume another user’s mailbox quota by repeatedly sharing and revoking a document. Creation of the recipient’s shared-file record charges the document size to mailbox-wide usage. Revocation deletes the record and reverses its folder counters without reversing the mailbox-wide charge. Repeated normal share notifications therefore accumulate quota usage after the visible records are gone. On accounts with a finite quota, this can prevent incoming mail and other size-increasing operations without recipient interaction. The issue affects ZCS 10.1.16 and 10.1.20.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50053": {
+    "cvss": 5.4,
+    "description": "A request attribute override vulnerability in Zimbra Collaboration Suite (ZCS) allows unauthenticated requests to /h/* to populate servlet attributes intended for trusted internal dispatch. RestFilter copies URL parameters specifying an authentication token, target account, target item and dispatch state into the request attributes consumed by the Classic Web Client. Combined with CVE-2026-10632 on ZCS 10.1.16, this allows an attacker to supply their own valid token and document identifiers and execute JavaScript in another user's signed-in browser session. ZCS 10.1.17 blocks that XSS chain by changing the document renderer, but retains the request attribute override.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53918": {
+    "cvss": 8.8,
+    "description": "odhcpd is the DHCPv6, DHCPv4, and router-advertisement server used by OpenWrt. Prior to version 25.12, odhcpd's DHCPv6 IA handler keeps a per-message `first` lease pointer so multiple IA options in one message reuse the same Reconfigure authentication key. A DHCPv6 REQUEST from an adjacent-network client can make the first IA set `first`, then make a later same-IAID IA fail the on-link check and free that same lease, leaving `first` dangling. A following IA in the same packet allocates a new lease and copies `first->key`, producing a 16-byte heap-use-after-free read. ASan confirms the UAF; native tracing shows the packet shape can deterministically reclaim the freed lease as the destination allocation, producing a zeroed Reconfigure key copy. The validated impact is unauthenticated adjacent-network denial of service and DHCPv6 Reconfigure/ForceRenew key confusion. Arbitrary PC control is not proven for this UAF alone. This issue has been patched in version 25.12.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-57207": {
+    "cvss": 5.9,
+    "description": "NetBox MCP Server is a simple read-only Model Context Protocol server for NetBox. Prior to version 1.2.1, when running with TRANSPORT=http, the MCP server has no authentication on the HTTP endpoint. Any client that can reach the port gets a valid MCP session and full access to all four NetBox tools - no token or credential needed. This issue has been patched in version 1.2.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102786": {
+    "cvss": 8.6,
+    "description": "Joomla Extension - phoca.cz - Authenticated stored cross-site scripting through HTML attribute injection in Phoca Gallery 4.5.0 - 6.1.5",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106763": {
+    "cvss": 7.5,
+    "description": "An issue in @justice8096/sagemath-mcp-server 1.0.1 allows a remote attacker to execute arbitrary code via the escapeShellString and sanitizeCode functions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106765": {
+    "cvss": 7.5,
+    "description": "An issue in @rog0x/mcp-docker-tools 1.0.1 allows a remote attacker to execute arbitrary code via the handleImageList function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115478": {
+    "cvss": 7.1,
+    "description": "obsidian-tc is a governed, agent-ready Model Context Protocol server for Obsidian vaults. From 1.0.1 until 1.31.4, `create_entity`, `link_entities`, `rename_entity`, `unlink_entities` and `delete_entity` regenerate memory notes from SQLite at the computed `memory/ / .md` path without reliably preserving note ownership or the consistency of a failed lifecycle operation. During shared materialization, a hand-authored note or an orphan left by a different entity whose name sanitized to the same path could have its entire body overwritten on the next write naming that type and name, with non-owned frontmatter preserved. `rename_entity` also seeded the destination path with a direct atomic write without validating ownership and could overwrite a foreign note there. Separately, several tools mutated SQLite before fallible filesystem work: `create_entity` and `link_entities` inserted the row or relation before materialization; `rename_entity` updated the entity, including a retired status, before updating its note; `unlink_entities` removed a relation before rematerializing the source note; and `delete_entity`'s cascade removed the target and its relations before rematerializing neighbouring notes. A later filesystem failure could therefore leave a row or relation changed and the memory graph inconsistent with the notes on disk even when the operation failed. An authorized caller with the required memory-tool permissions could, without intending to, destroy the body of a vault note outside the entity being written; `delete_entity` additionally requires its deletion permission and destructive confirmation, which this memory flaw does not bypass. Snapshots-before-write through `restore_note` mitigate the overwrite only where snapshots are enabled and the note had previously been written through obsidian-tc. This issue is fixed in version 1.31.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49442": {
+    "cvss": 5.3,
+    "description": "Cacti is an open source performance and fault management framework. Prior to version 1.2.31, a User Enumeration vulnerability allows an attacker to identify valid usernames on the Cacti service. When a user attempts to log in, the application returns slightly different error messages depending on whether the provided username exists in the system. When username exists on Cacti, in the response, they see Access Denied! Login failed. When it does not exist on Cacti, they see Access Denied! Login Failed. The only difference between the responses is the capitalization of the letter \"f\" in the word failed. This issue has been patched in version 1.2.31.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79883": {
+    "cvss": 8.3,
+    "description": "A buffer overflow vulnerability in the PAPI protocol of HPE Networking AOS-10 could allow an unauthenticated adjacent attacker to access sensitive information. Successful exploitation could allow an attacker to retrieve information which could be used to potentially gain further access to network services supported by AOS-10, and to interrupt the normal operation of the affected service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79884": {
+    "cvss": 8.2,
+    "description": "A vulnerability in the web-based management interface of AOS-8 could allow an unauthenticated adjacent attacker to bypass existing authentication controls and access sensitive information. Successful exploitation could allow an attacker to gain access to some data in a cleartext format possibly exposing other network infrastructure to further compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79885": {
+    "cvss": 8.2,
+    "description": "An unauthenticated file write vulnerability exists in the PAPI protocol in AOS-8. Successful exploitation could allow an unauthenticated remote attacker to make limited modifications to files on the affected system and to disrupt the availability of the affected service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79886": {
+    "cvss": 8.2,
+    "description": "An unauthenticated buffer overflow vulnerability exists in the PAPI protocol of AOS-8. Successful exploitation could allow an unauthenticated remote attacker to disrupt the availability of the affected service on the controller, with a limited impact to its integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115506": {
+    "cvss": 7.5,
+    "description": "libexpat through 2.9.0 contains a denial of service vulnerability because billion laughs protection in accountingDiffTolerated() in xmlparse.c detects entity amplification too late. Attackers can supply a moderately sized XML document with a large DTD and nested entity expansions to consume tens of seconds of CPU per parse.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114583": {
+    "cvss": 6.9,
+    "description": "tarfile.tar_filter could be bypassed using crafted link entries, including symlinks with empty or directory-like names, to redirect later archive members outside the intended extraction directory. This allowed a malicious tar archive to cause tarfile.extractall() with filter=\"tar\" to write files outside the destination directory, subject to the permissions of the extracting process. This is the tarfile.tar_filter counterpart of CVE-2026-7774, which covered tarfile.data_filter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115419": {
+    "cvss": 8.1,
+    "description": "The A2A server component in Amazon Strands Agents SDK for Python before 1.43.0 and Amazon Strands Agents SDK for TypeScript before 1.5.0 does not properly isolate conversation state between callers. An authenticated remote user could read other tenants' conversation history and add persistent instructions that alter model behavior for subsequent callers via HTTP requests to the A2A endpoint using a different context_id. To mitigate this issue, users should upgrade to strands-agents 1.43.0 (Python) or @strands-agents/sdk 1.5.0 (TypeScript).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111594": {
+    "cvss": 8.1,
+    "description": "InterSystems IRIS for Health has TLS/SSL encryption turned off by default, which may enable an attacker to view transmitted data and use that data to log into the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114616": {
+    "cvss": 9.1,
+    "description": "Authlib is a Python library which builds OAuth and OpenID Connect servers. Prior to 1.9.1, Authlib's OctKey.import_key() and HMAC signing and verification path accept zero-length key material. If an application's secret lookup can return an empty string or empty bytes, a remote attacker can compute the deterministic HS256, HS384, or HS512 signature for arbitrary token claims and have Authlib treat the token as authentic. This issue is fixed in version 1.9.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114620": {
+    "cvss": 5.4,
+    "description": "Authlib is a Python library which builds OAuth and OpenID Connect servers. Prior to 1.9.0, Authlib's RFC 9101 JWTAuthenticationRequest passes the unauthenticated, client-controlled request_uri parameter to the abstract get_request_object() hook before applying a destination or registration policy; the hook itself performs no network request, while the documentation demonstrates an unrestricted HTTP fetch. In deployments whose integrator implements that hook as an unrestricted outbound fetch, a remote attacker who knows a valid public client identifier can make the authorization server request internal, link-local, or otherwise unintended URLs and can distinguish fetch outcomes through different error responses and timing. Deployments whose custom hook already applies a secure allowlist, destination controls, and retrieval limits are not affected. The JWTAuthenticationRequest implementation in authlib/oauth2/rfc9101/authorization_server.py forwards request_uri to get_request_object() before an application-approved retrieval policy accepts the destination. This issue is fixed in version 1.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115424": {
+    "cvss": 5.5,
+    "description": "A flaw was found in the OpenShift client oc. When extracting container image layers with oc image extract, the application fails to properly sanitize symbolic and hard link targets pointing to absolute paths or to sibling directories of the extraction destination. An attacker who supplies a malicious container image can exploit this vulnerability by embedding links, and a chained file entry, that reference locations outside the intended extraction directory. This allows the attacker to write attacker-controlled content to arbitrary locations on the host filesystem with the privileges of the user running the command, potentially leading to file modification outside the destination directory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92450": {
+    "cvss": 7.5,
+    "description": "The authentication framework used by affected Kiloview E3 NDI encoder firmware signs session JSON Web Tokens using an HMAC-SHA256 secret hardcoded as a static string within the firmware image, identical across all deployed devices. An attacker with access to the publicly distributed firmware can recover this secret and forge arbitrary session tokens, including administrative tokens, without valid credentials, enabling unauthenticated access to privileged device functions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87338": {
+    "cvss": 6.9,
+    "description": "Vulnerability in the Siebel CRM Integration product of Oracle Siebel CRM (component: EAI). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM Integration. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Siebel CRM Integration, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Siebel CRM Integration accessible data as well as unauthorized update, insert or delete access to some of Siebel CRM Integration accessible data. CVSS 3.1 Base Score 6.9 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87339": {
+    "cvss": 3.1,
+    "description": "Vulnerability in the Siebel CRM Integration product of Oracle Siebel CRM (component: REST). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM Integration. Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized read access to a subset of Siebel CRM Integration accessible data. CVSS 3.1 Base Score 3.1 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91387": {
+    "cvss": 5.4,
+    "description": "Vulnerability in the Siebel CRM End User product of Oracle Siebel CRM (component: Open UI). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM End User. Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Siebel CRM End User accessible data as well as unauthorized read access to a subset of Siebel CRM End User accessible data. CVSS 3.1 Base Score 5.4 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91388": {
+    "cvss": 4.7,
+    "description": "Vulnerability in the Siebel CRM End User product of Oracle Siebel CRM (component: Open UI). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM End User. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Siebel CRM End User, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Siebel CRM End User accessible data as well as unauthorized read access to a subset of Siebel CRM End User accessible data. CVSS 3.1 Base Score 4.7 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91389": {
+    "cvss": 5.4,
+    "description": "Vulnerability in the Siebel CRM End User product of Oracle Siebel CRM (component: Open UI). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM End User. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Siebel CRM End User, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Siebel CRM End User accessible data as well as unauthorized read access to a subset of Siebel CRM End User accessible data. CVSS 3.1 Base Score 5.4 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91390": {
+    "cvss": 5.4,
+    "description": "Vulnerability in the Siebel CRM End User product of Oracle Siebel CRM (component: Open UI). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM End User. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Siebel CRM End User, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Siebel CRM End User accessible data as well as unauthorized read access to a subset of Siebel CRM End User accessible data. CVSS 3.1 Base Score 5.4 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91391": {
+    "cvss": 3.7,
+    "description": "Vulnerability in the Siebel CRM End User product of Oracle Siebel CRM (component: Open UI). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM End User. Successful attacks of this vulnerability can result in unauthorized read access to a subset of Siebel CRM End User accessible data. CVSS 3.1 Base Score 3.7 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
