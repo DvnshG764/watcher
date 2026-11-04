@@ -462,7 +462,7 @@
     "product": "Commerce and Magento"
   },
   "CVE-2026-111497": {
-    "cvss": 9.2,
+    "cvss": 9.8,
     "description": "Google Brotli contains an unchecked return value vulnerability that allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream.",
     "vendor": "Check Point",
     "product": "Brotli"
@@ -564,13 +564,13 @@
     "product": "Cisco TelePresence Video Communication Server (VCS) Expressway"
   },
   "CVE-2026-109618": {
-    "cvss": 9.2,
+    "cvss": 9.8,
     "description": "PHP contains an out-of-memory corruption vulnerability that allows for unauthenticated remote code execution.",
     "vendor": "Check Point",
     "product": "PHP"
   },
   "CVE-2026-109619": {
-    "cvss": 9.2,
+    "cvss": 8.1,
     "description": "PHP contains a stale internal request-state vulnerability that allows for unauthenticated remote code execution.",
     "vendor": "Check Point",
     "product": "PHP"
@@ -618,7 +618,7 @@
     "product": "VeloCloud Orchestrator"
   },
   "CVE-2026-110447": {
-    "cvss": 9.2,
+    "cvss": 9.8,
     "description": "Collabora Collabora Online – Built-in CODE Server when used within the NextCloud platform contains an OS command injection vulnerability that allows for remote code execution when the CODE server isn't running.",
     "vendor": "Collabora",
     "product": "Collabora Online – Built-in CODE Server"
@@ -12648,7 +12648,7 @@
     "product": "Passster"
   },
   "CVE-2026-112611": {
-    "cvss": null,
+    "cvss": 6.1,
     "description": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2. Processing a maliciously crafted PDF file may lead to memory corruption.",
     "vendor": "Apple",
     "product": "iOS and iPadOS"
@@ -45066,7 +45066,7 @@
     "product": "Apache Camel"
   },
   "CVE-2026-112621": {
-    "cvss": null,
+    "cvss": 7.5,
     "description": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, visionOS 27.2. Processing a maliciously crafted image may result in memory corruption.",
     "vendor": "Apple",
     "product": "Safari"
@@ -65436,7 +65436,7 @@
     "product": "Unknown"
   },
   "CVE-2026-112689": {
-    "cvss": null,
+    "cvss": 8.4,
     "description": "An out-of-bounds write issue was addressed with improved input validation. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2, tvOS 27.2. An app may be able to cause unexpected system termination or corrupt kernel memory.",
     "vendor": "Apple",
     "product": "iOS and iPadOS"
@@ -65912,6 +65912,12 @@
   "CVE-2026-12610": {
     "cvss": 6.4,
     "description": "A flaw was found in sssd. When authenticating with a YubiKey, the SSSD PAM responder can crash due to a use-after-free vulnerability, where a memory pointer is incorrectly handled. A local attacker could exploit this flaw by manipulating smartcard or YubiKey contents, leading to a denial of service that disrupts authentication. This vulnerability also presents a potential for privilege escalation, although it is difficult to exploit.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102578": {
+    "cvss": 5.5,
+    "description": "A flaw was found in Moodle. An authenticated attacker with access to the question bank web service can submit unsanitized input directly into database queries, resulting in a SQL (Structured Query Language) injection vulnerability. This issue could allow an attacker to view, alter, or delete sensitive data stored in the underlying database.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
