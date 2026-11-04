@@ -65452,5 +65452,41 @@
     "description": "claudiopizzillo PIAF-HMS (PBX-In-A-Flash Hotel Management System; no released versions, latest commit 389d2633441b65ced1c104212cd62be2bfca21e5) contains multiple unauthenticated SQL injection vulnerabilities. The application has no authentication mechanism and passes user-supplied HTTP parameters directly into deprecated mysql_query calls via string concatenation, without sanitization, escaping, or parameterization.",
     "vendor": "claudiopizzillo",
     "product": "PIAF-HMS"
+  },
+  "CVE-2026-49293": {
+    "cvss": 7.5,
+    "description": "js-toml is a TOML parser for JavaScript, fully compliant with the TOML 1.0.0 Spec. Versions up to and including 1.1.1 parse hexadecimal / octal / binary integer literals via a hand-written `parseBigInt` loop that multiplies a `BigInt` accumulator by the radix once per input digit. Each iteration performs a `BigInt * BigInt` operation on an accumulator that grows linearly with the number of digits already consumed, so the whole loop is O(n²) in the literal length. The lexer regex places no upper bound on the literal length, so a single TOML document containing one ~500 kB hex literal pins one CPU core for ~40 seconds on a modern laptop (Apple M-series, Node v22). Memory amplification is bounded but CPU amplification is severe and grows quadratically: doubling the literal length quadruples the work. A caller that invokes `load()` on attacker-controlled TOML (configuration upload endpoints, CI/CD systems ingesting third-party `*.toml`, IDE plugins, build tools) is exposed to a single-request CPU exhaustion DoS. Version 1.1.2 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44007": {
+    "cvss": 9.1,
+    "description": "vm2 is an open source vm/sandbox for Node.js. Prior to 3.11.1, when a NodeVM is created with nesting: true, sandbox code can unconditionally require('vm2') regardless of the outer VM's require configuration — including require: false. With access to vm2, the sandbox constructs a new inner NodeVM with its own unrestricted require settings and executes arbitrary OS commands on the host. Any application that runs untrusted code inside a NodeVM with nesting: true is fully compromised. This vulnerability is fixed in 3.11.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44008": {
+    "cvss": 9.8,
+    "description": "vm2 is an open source vm/sandbox for Node.js. Prior to 3.11.2, the new method neutralizeArraySpeciesBatch works with objects from the other side but can call into this side via getter on the array prototype exposing objects of the wrong side into the sandbox. This can be used to get host objects and get the host Function object. This allows attackers to write code which can escape from the VM2 sandbox and execute arbitrary commands on the host system. This vulnerability is fixed in 3.11.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44009": {
+    "cvss": 9.8,
+    "description": "vm2 is an open source vm/sandbox for Node.js. Prior to 3.11.2, VM2 suffers from a sandbox breakout vulnerability. This allows attackers to write code which can escape from the VM2 sandbox and execute arbitrary commands on the host system. This vulnerability is fixed in 3.11.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45109": {
+    "cvss": 7.5,
+    "description": "Next.js is a React framework for building full-stack web applications. From 15.2.0 to before 15.5.18 and 16.2.6, it was found that the fix addressing CVE-2026-44575 did not apply to middleware.ts with Turbopack. This vulnerability is fixed in 15.5.18 and 16.2.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-39892": {
+    "cvss": 9.8,
+    "description": "cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. From 45.0.0 to before 46.0.7, if a non-contiguous buffer was passed to APIs which accepted Python buffers (e.g. Hash.update()), this could lead to buffer overflows. This vulnerability is fixed in 46.0.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
