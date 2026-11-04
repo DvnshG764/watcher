@@ -65440,5 +65440,17 @@
     "description": "An out-of-bounds write issue was addressed with improved input validation. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2, tvOS 27.2. An app may be able to cause unexpected system termination or corrupt kernel memory.",
     "vendor": "Apple",
     "product": "iOS and iPadOS"
+  },
+  "CVE-2026-120446": {
+    "cvss": 9.4,
+    "description": "madong-admin-saas through 5.1.4 contains a missing authentication vulnerability in the platform tenant management API because the 'platformapi' middleware key never matches the 'platform' application. Unauthenticated remote attackers can call /platformapi/tenant/account, bind-plan and sync-data endpoints to list, create, modify, disable or delete tenants and bind subscription plans.",
+    "vendor": "madong-code",
+    "product": "madong-admin-saas"
+  },
+  "CVE-2026-54419": {
+    "cvss": 9.8,
+    "description": "claudiopizzillo PIAF-HMS (PBX-In-A-Flash Hotel Management System; no released versions, latest commit 389d2633441b65ced1c104212cd62be2bfca21e5) contains multiple unauthenticated SQL injection vulnerabilities. The application has no authentication mechanism and passes user-supplied HTTP parameters directly into deprecated mysql_query calls via string concatenation, without sanitization, escaping, or parameterization.",
+    "vendor": "claudiopizzillo",
+    "product": "PIAF-HMS"
   }
 }
