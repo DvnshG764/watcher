@@ -65002,5 +65002,425 @@
     "description": "A vulnerability exists in NGINX Plus and NGINX Open Source when a map directive uses regex matching and a string expression references the map's regex capture variables before referencing the map output variable. Alternatively, the same result could be achieved by using a non-cacheable variable in a string expression under certain conditions. An unauthenticated attacker along with conditions beyond their control can exploit this vulnerability by sending crafted HTTP requests. This may cause a heap buffer overflow in the NGINX worker process leading to a restart. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR. Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or to possibly trigger a code execution. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
     "vendor": "F5",
     "product": "NGINX Plus"
+  },
+  "CVE-2026-96541": {
+    "cvss": 7.5,
+    "description": "A denial-of-service flaw was found in gnome-remote-desktop. An unauthenticated remote attacker can open RDP connections without completing the handshake and retain the connection-throttling slots indefinitely because no pre-authentication handshake deadline is enforced. By exhausting the global connection limit, an attacker can prevent new RDP clients from connecting until a holding socket is closed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81623": {
+    "cvss": 8.8,
+    "description": "IBM Guardium Data Protection 12.2 could allow an authenticated user to execute arbitrary commands with low user privileges on the system due to improper validation of user supplied input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81049": {
+    "cvss": 6.7,
+    "description": "Dell ThinOS 10, versions prior to 2605_10.2616, contain a Missing Support for Integrity Check vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84385": {
+    "cvss": 5.4,
+    "description": "A improper access control vulnerability in Fortinet FortiSOAR PaaS 7.6.0 through 7.6.6, FortiSOAR PaaS 7.5.0 through 7.5.3, FortiSOAR PaaS 7.4 all versions, FortiSOAR PaaS 7.3 all versions, FortiSOAR on-premise 7.6.0 through 7.6.6, FortiSOAR on-premise 7.5.0 through 7.5.3, FortiSOAR on-premise 7.4 all versions, FortiSOAR on-premise 7.3 all versions may allow attacker to escalation of privilege via",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-84389": {
+    "cvss": 3.1,
+    "description": "A url redirection to untrusted site ('open redirect') vulnerability in Fortinet FortiSIEM 7.5.0 through 7.5.1, FortiSIEM 7.4.1 through 7.4.2 may allow attacker to execute unauthorized code or commands via",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-35160": {
+    "cvss": 5.0,
+    "description": "Dell SmartFabric OS10 Software, versions prior to 10.5.6.14, contains an Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Command execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63694": {
+    "cvss": 5.0,
+    "description": "Dell SmartFabric OS10 Software, versions prior to 10.5.6.14, contains an Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Command execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75034": {
+    "cvss": 7.4,
+    "description": "A flaw was found in Rancher Manager. The SAML assertion replay protection introduced by the fix for CVE-2026-44946 recorded consumed assertion IDs in a per-process cache, so each replica only detected replays that reached the same pod. In a high-availability deployment, an attacker holding a captured assertion could replay it once against every other replica to obtain additional authenticated sessions as the victim. This issue affects Rancher: before 2.15.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65643": {
+    "cvss": 8.8,
+    "description": "Eval injection in cPanel 11.138.0.0 and earlier allows remote authenticated users to execute arbitrary code as root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73755": {
+    "cvss": 5.7,
+    "description": "A privilege escalation vulnerability exists in the API endpoint of AOS-CX. Successful exploitation could allow an authenticated low-privilege operator user, after a required user action, to access sensitive information from the vulnerable system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82393": {
+    "cvss": 7.5,
+    "description": "pnpm is a package manager. Prior to 10.34.5 and 11.11.0, pnpm accepts a scoped path traversal in a tarball dependency's package.json manifest name because pnpm11/resolving/npm-resolver/src/pickPackage.ts rejects slash characters only for unscoped names. During pnpm install, the unvalidated name reaches raw path joins in pnpm11/installing/deps-resolver/src/resolvePeers.ts, pnpm11/installing/deps-resolver/src/index.ts, and pnpm11/deps/graph-builder/src/lockfileToDepGraph.ts, causing package extraction outside node_modules and allowing attacker-controlled files to overwrite arbitrary filesystem paths even when --ignore-scripts is used. The overwrite can replace shell startup files, Git hooks, or installed package code and lead to code execution. This issue is fixed in versions 10.34.5, and 11.11.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49845": {
+    "cvss": 9.8,
+    "description": "SQL injection in Hive Metastore direct SQL partition-name resolution in Apache Hive before 4.2.1 on all platforms allows authenticated users with access to Hive Metastore APIs to read, modify, or affect unintended partition metadata (including statistics updates, truncation targets, and file-metadata cache operations) via crafted partition names in metastore RPC requests when direct SQL is enabled (the default). Users are recommended to upgrade to version 4.2.1, which fixes this issue. Details about the issue: Several Hive Metastore RPCs resolve partitions by full partition name (PART_NAME) through direct-SQL helpers. In those paths, client-supplied partition names are embedded into SQL using string concatenation (DirectSqlUpdatePart.quoteString() → '...') instead of bind parameters. A partition name containing a single quote (and crafted SQL) can alter the generated WHERE clause so that lookups intended for one partition match additional rows. That can affect reads, stats updates, truncate targets, metadata-cache targets, and related operations when metastore.try.direct.sql is enabled (default: true). An authenticated or network-trusted caller with the ability to invoke Hive Metastore partition-name APIs against a target table (directly or via Hive/other clients), when direct SQL is enabled can perform this attack. Also, the impact is mainly within table & partition targeting (read/update/truncate/drop/cache the wrong partitions in a table they can reference), not arbitrary cross-database access via this bug alone.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18444": {
+    "cvss": 7.8,
+    "description": "There is an integer conversion vulnerability resulting in an out-of-bounds read when loading images recently discovered in NI LabVIEW. This may result in information disclosure or arbitrary code execution. Successful exploitation requires an attacker to get a user to open a specially crafted VI file. This vulnerability affects NI LabVIEW 2026 Q3 and prior versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-74985": {
+    "cvss": 9.8,
+    "description": "Privilege escalation in the Enterprise Policies component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70805": {
+    "cvss": 8.1,
+    "description": "Vulnerability in the Oracle Project Planning and Control product of Oracle E-Business Suite (component: Change Management). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Project Planning and Control. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Project Planning and Control accessible data as well as unauthorized access to critical data or complete access to all Oracle Project Planning and Control accessible data. CVSS 3.1 Base Score 8.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-13477": {
+    "cvss": 8.8,
+    "description": "IBM QRadar 7.6.0.0 through 7.6.0.1, and 7.5.0 through 7.5.0 UP 15 Interim Fix 005 could allow an authenticated privileged user to execute arbitrary commands with normal user privileges on the system due to improper validation of user supplied input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70603": {
+    "cvss": 6.0,
+    "description": "Electron is a framework for writing cross-platform desktop applications using JavaScript, HTML and CSS. Prior to 39.8.6, 40.9.0, 41.1.1, and 42.0.0-beta.1, shell.openPath() did not reject paths containing embedded null bytes. Apps that perform string-only validation of file paths, for example checking the file extension, before passing them to shell.openPath() could be bypassed, allowing an attacker-controlled path to open a different file than the one that passed validation. Apps are only affected if they pass paths derived from untrusted input to shell.openPath() and rely on string-based validation without a filesystem check. This issue is fixed in versions 39.8.6, 40.9.0, 41.1.1, and 42.0.0-beta.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70611": {
+    "cvss": 6.9,
+    "description": "Electron is a framework for writing cross-platform desktop applications using JavaScript, HTML and CSS. Prior to 39.8.9, 40.9.2, 41.2.1, and 42.0.0-beta.3, the DevTools reveal in file manager action could launch the target file rather than reveal it. An attacker with a separate means of running script inside the DevTools frontend, such as a malicious DevTools extension, could use showItemInFolder handling to execute native code outside the sandbox when DevTools is opened for windows exposed to untrusted content or untrusted DevTools extensions. This issue is fixed in 39.8.9, 40.9.2, 41.2.1, and 42.0.0-beta.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71312": {
+    "cvss": 8.0,
+    "description": "rclone is a command-line program to sync files and directories to and from different cloud storage providers. Prior to v1.75.0, rclone interpolates remote SFTP paths into PowerShell hash commands in backend/sftp/sftp.go, and quoteOrEscapeShellPath escapes only ASCII apostrophe even though PowerShell treats U+2018, U+2019, U+201A, and U+201B as single-quote delimiters, allowing an attacker-controlled filename to terminate the intended path literal and append PowerShell statements that execute as the victim SSH account when server-side hashing is invoked. This issue is fixed in v1.75.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70482": {
+    "cvss": 8.8,
+    "description": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.8.0 until 0.11.0, when ENABLE_OAUTH_TOKEN_EXCHANGE=True, /oauth/{provider}/token/exchange accepts a raw provider access token and validates it by calling the provider userinfo endpoint without confirming which OAuth client the token was issued to. Anyone holding an access token minted for any client registered with the same provider could exchange it for an Open WebUI session as that token user, including applications the operator does not control and has never authorized. This issue is fixed in 0.11.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7769": {
+    "cvss": 8.1,
+    "description": "IBM Sterling B2B Integrator 6.2.0.0 through 6.2.0.5_2, 6.2.1.0 through 6.2.1.1_2, and 6.2.2.0 through 6.2.2.0_1 and IBM Sterling File Gateway 6.2.0.0 through 6.2.0.5_2, 6.2.1.0 through 6.2.1.1_2, and 6.2.2.0 through 6.2.2.0_1 is vulnerable to SQL injection. A remote attacker could send specially crafted SQL statements, which could allow the attacker to view, add, modify, or delete information in the back-end database.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47009": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Oracle Agile PLM product of Oracle Supply Chain (component: Folders, Files & Attachments). The supported version that is affected is 9.3.6. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Agile PLM. Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Agile PLM accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47015": {
+    "cvss": 7.1,
+    "description": "Vulnerability in the PeopleSoft Enterprise PeopleTools product of Oracle PeopleSoft (component: PIA Core Technology). The supported version that is affected is 8.62. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in PeopleSoft Enterprise PeopleTools, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of PeopleSoft Enterprise PeopleTools accessible data as well as unauthorized read access to a subset of PeopleSoft Enterprise PeopleTools accessible data and unauthorized ability to cause a partial denial of service (partial DOS) of PeopleSoft Enterprise PeopleTools. CVSS 3.1 Base Score 7.1 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47026": {
+    "cvss": 7.4,
+    "description": "Vulnerability in the PeopleSoft Enterprise PeopleTools product of Oracle PeopleSoft (component: OpenSearch Dashboards). Supported versions that are affected are 8.61 and 8.62. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in PeopleSoft Enterprise PeopleTools, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all PeopleSoft Enterprise PeopleTools accessible data. CVSS 3.1 Base Score 7.4 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-60870": {
+    "cvss": 7.1,
+    "description": "Vulnerability in the Oracle Advanced Pricing product of Oracle E-Business Suite (component: Pricing Installation). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Advanced Pricing. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Advanced Pricing accessible data as well as unauthorized update, insert or delete access to some of Oracle Advanced Pricing accessible data. CVSS 3.1 Base Score 7.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-61169": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Oracle Agile PLM product of Oracle Supply Chain (component: Security). The supported version that is affected is 9.3.6. Easily exploitable vulnerability allows low privileged attacker with logon to the infrastructure where Oracle Agile PLM executes to compromise Oracle Agile PLM. While the vulnerability is in Oracle Agile PLM, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Agile PLM accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-61186": {
+    "cvss": 9.4,
+    "description": "Vulnerability in the Oracle Agile Engineering Data Management product of Oracle Supply Chain (component: Install). The supported version that is affected is 6.2.1. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Agile Engineering Data Management. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Agile Engineering Data Management accessible data as well as unauthorized read access to a subset of Oracle Agile Engineering Data Management accessible data and unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Agile Engineering Data Management. CVSS 3.1 Base Score 9.4 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-61189": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Oracle Agile Engineering Data Management product of Oracle Supply Chain (component: Install). The supported version that is affected is 6.2.1. Easily exploitable vulnerability allows low privileged attacker with logon to the infrastructure where Oracle Agile Engineering Data Management executes to compromise Oracle Agile Engineering Data Management. While the vulnerability is in Oracle Agile Engineering Data Management, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Agile Engineering Data Management accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-61325": {
+    "cvss": 7.6,
+    "description": "Vulnerability in the Oracle Advanced Benefits product of Oracle E-Business Suite (component: Internal Operations). The supported version that is affected is 12.2.15. Easily exploitable vulnerability allows high privileged attacker with network access via HTTP to compromise Oracle Advanced Benefits. While the vulnerability is in Oracle Advanced Benefits, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Advanced Benefits accessible data as well as unauthorized update, insert or delete access to some of Oracle Advanced Benefits accessible data. CVSS 3.1 Base Score 7.6 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15343": {
+    "cvss": 8.6,
+    "description": "A path traversal vulnerability was identified in GitHub Enterprise Server that allowed an attacker with code execution inside a Dependabot updater container to write files to arbitrary repository paths, including GitHub Actions workflow files under .github/workflows/, because path validation did not check the actual write destination. The initial fix in versions 3.21.3, 3.20.5, 3.19.9, 3.18.12, and 3.17.18 was incomplete because validation checked the supplied symlink target, while the publisher wrote the file using its directory and name. Writing GitHub Actions workflow files required the Dependabot installation to have workflows: write permission. Depending on repository permissions and workflow configuration, including a relevant pull_request_target workflow or auto-merge, an injected workflow could execute with access to GitHub Actions secrets. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.23 and was fully fixed in versions 3.22.3, 3.21.8, 3.20.10, and 3.19.14. This vulnerability was reported via the GitHub Bug Bounty program.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50354": {
+    "cvss": 7.1,
+    "description": "Use after free in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58279": {
+    "cvss": 6.5,
+    "description": "Missing authorization in Azure CycleCloud allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50377": {
+    "cvss": 7.8,
+    "description": "Out-of-bounds read in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50447": {
+    "cvss": 9.8,
+    "description": "Heap-based buffer overflow in Windows Message Queuing allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55126": {
+    "cvss": 5.4,
+    "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56178": {
+    "cvss": 7.0,
+    "description": "Time-of-check time-of-use (toctou) race condition in Microsoft Defender for Endpoint allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56649": {
+    "cvss": 8.1,
+    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Network File System allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58547": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Universal Plug and Play (upnp.dll) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62196": {
+    "cvss": 8.3,
+    "description": "OpenClaw versions 2026.3.22 before 2026.6.6 contain an authorization bypass vulnerability where WhatsApp group IDs can satisfy elevated sender allowlists. Attackers with lower-trust access can perform actions requiring stronger authorization by leveraging group ID validation in the affected feature.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-57156": {
+    "cvss": 9.8,
+    "description": "FreeRDP is a free implementation of the Remote Desktop Protocol. Prior to 3.28.0 on 32-bit builds, FreeRDP clients contain an integer overflow in update_read_delta_points in libfreerdp/core/orders.c when multiplying an attacker-controlled point count by sizeof(DELTA_POINT), allowing a malicious RDP peer to allocate an undersized heap buffer and then write beyond it during initialization. This issue is fixed in version 3.28.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48946": {
+    "cvss": 6.3,
+    "description": "The K2 frontend article-attachment upload path accepts files whose extension is `.php`, and Apache's standard mod_php matches `\\.php$` and executes them under the K2 web user. A K2 Author can upload a `shell.php`, then fetch `/media/k2/attachments/shell.php` and execute arbitrary PHP code in the web server's context.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-50014": {
+    "cvss": 7.3,
+    "description": "pnpm is a package manager. Prior to 10.34.0 and 11.4.0, pnpm passes the lockfile-controlled git resolution.commit value to git fetch without a -- separator or commit-format validation. For git dependencies fetched through the shallow-fetch path, a malicious lockfile can replace the expected 40-character commit hash with a Git option such as --upload-pack= . For SSH and local transports, --upload-pack can execute the supplied command. HTTPS transports ignore --upload-pack, so the practical attack surface is primarily SSH or local git dependencies. This vulnerability is fixed in 10.34.0 and 11.4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50021": {
+    "cvss": 8.1,
+    "description": "pnpm is a package manager. Prior to 10.34.0 and 11.4.0, pnpm's tarball extraction worker skips integrity verification when the integrity field is absent from the lockfile resolution. If an attacker can both modify pnpm-lock.yaml to remove the integrity: field and cause the referenced registry URL to serve altered package content, pnpm install --frozen-lockfile can install the altered package without an integrity error. npm's npm ci enforces integrity by default; pnpm's behavior of silently skipping verification is a pnpm-specific fail-open gap. This vulnerability is fixed in 10.34.0 and 11.4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50573": {
+    "cvss": 8.1,
+    "description": "pnpm is a package manager. Prior to 10.34.0 and 11.4.0, `pnpm install` in non-frozen mode can accept new remote package content after detecting that the downloaded tarball does not match the integrity recorded in pnpm-lock.yaml. When a package is already locked with an integrity value, and the registry later serves different metadata and tarball content for the same package name and version, pnpm initially reports an integrity mismatch. However, plain pnpm install then performs a resolution repair, accepts the registry's new integrity, updates the lockfile, installs the new content, and exits successfully. This means the lockfile integrity check does not act as a hard stop by default. This vulnerability is fixed in 10.34.0 and 11.4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45688": {
+    "cvss": 9.1,
+    "description": "Rocket.Chat is an open-source, secure, fully customizable communications platform. Prior to 8.5.0, 8.4.1, 8.3.3, 8.2.3, 8.1.4, 8.0.5, 7.13.7, and 7.10.11, Rocket.Chat's CAS login handler forwards the client-supplied options.cas.credentialToken value straight into a MongoDB findOne({_id: ...}) query without any runtime type check. TypeScript's string parameter annotation is erased at runtime, so an unauthenticated attacker can substitute a MongoDB query operator ({\"$gt\": \"\"}, {\"$ne\": null}, etc.) for what the server expects to be an opaque ticket string. The injected operator matches the first unexpired document in the credential_tokens collection, bypassing the CAS ticket check entirely. When any legitimate CAS or SAML SSO login is in flight, the attacker's next DDP login call matches the same credential-token row via the NoSQL operator and is issued a full Meteor auth token (userId + token) bound to the victim. The token is immediately usable against the complete REST and DDP surface as that user. If the victim is an administrator, this escalates to full instance compromise via Apps-Engine app install. This vulnerability is fixed in 8.5.0, 8.4.1, 8.3.3, 8.2.3, 8.1.4, 8.0.5, 7.13.7, and 7.10.11.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45689": {
+    "cvss": 9.1,
+    "description": "Rocket.Chat is an open-source, secure, fully customizable communications platform. Prior to 8.5.0, 8.4.1, 8.3.3, 8.2.3, 8.1.4, 8.0.5, 7.13.7, and 7.10.11, an unauthenticated network attacker obtains a valid Rocket.Chat OAuth access token for an arbitrary user by sending a single HTTP POST with MongoDB query operators to /oauth/token. The Rocket.Chat OAuth2 server does not validate that grant parameters are strings before forwarding them to findOne({...}) against the oauth_apps and oauth_access_tokens collections, so an attacker substitutes {\"$ne\": null} for client_id, client_secret, and refresh_token and receives a freshly minted {access_token, refresh_token} pair bound to whichever user's refresh token Mongo returned first. The resulting access token is a first-class bearer credential against the full /api/v1/* surface as that user. By iterating with $nin / $regex operators the attacker walks the entire oauth_access_tokens collection, collecting one fresh access token per user per request. If any matched token belongs to an admin, the stolen bearer gives full admin API access (including Apps-Engine app installation, i.e. server-side code execution). No account, credentials, userId, or prior interaction with the instance are required. This vulnerability is fixed in 8.5.0, 8.4.1, 8.3.3, 8.2.3, 8.1.4, 8.0.5, 7.13.7, and 7.10.11.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49278": {
+    "cvss": 6.7,
+    "description": "Rocket.Chat is an open-source, secure, fully customizable communications platform. Prior to 8.5.0, 8.4.2, 8.3.4, 8.2.4, 8.1.5, 8.0.6, 7.13.8, and 7.10.12, in the visitors.info endpoint, https://developer.rocket.chat/apidocs/get-visitor-information-by-id-1, token is returned in the response. It looks like there's no use case for the token to be present in the response and it would be a good security practice to remove it altogether. This vulnerability is fixed in 8.5.0, 8.4.2, 8.3.4, 8.2.4, 8.1.5, 8.0.6, 7.13.8, and 7.10.12.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52804": {
+    "cvss": 5.5,
+    "description": "Gogs is an open source self-hosted Git service. Prior to 0.14.3, a repository admin collaborator can escalate their privileges to owner-level access by exploiting an off-by-one error in the ChangeCollaborationAccessMode function. This vulnerability is fixed in 0.14.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52805": {
+    "cvss": 8.7,
+    "description": "Gogs is an open source self-hosted Git service. Prior to 0.14.3, a Server-Side Request Forgery (SSRF) vulnerability exists in the repository migration functionality. The application validates only the initially submitted URL hostname, but git clone --mirror follows HTTP redirects. An authenticated user can submit a public URL that redirects to a blocked internal endpoint (e.g., 127.0.0.1), importing the internal repository's contents into an attacker-controlled repository. This vulnerability is fixed in 0.14.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52809": {
+    "cvss": 6.8,
+    "description": "Gogs is an open source self-hosted Git service. Prior to 0.14.3, password-reset tokens are generated using conf.Auth.ActivateCodeLives (the account-activation lifetime), not conf.Auth.ResetPasswordCodeLives. The token lifetime is baked into the token itself at generation time and is re-extracted from the token at verification time, making RESET_PASSWORD_CODE_LIVES irrelevant to actual enforcement. When an administrator configures a shorter reset window (e.g., 10 minutes) for compliance or security reasons, reset tokens remain exploitable for the full activation lifetime instead, while the reset email falsely advertises the shorter expiry. This vulnerability is fixed in 0.14.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52811": {
+    "cvss": 9.0,
+    "description": "Gogs is an open source self-hosted Git service. Prior to 0.14.3, (*Repository).UploadRepoFiles checks for symlinks only on the leaf of the upload target (osx.IsSymlink(targetPath)). The siblings UpdateRepoFile, DeleteRepoFile, and GetDiffPreview use hasSymlinkInPath, which lstats every component — UploadRepoFiles is the lone outlier. An attacker with repo-write access plus a multipart upload whose filename contains a literal backslash (preserved by filepath.Base on Linux, then converted to / by pathx.Clean) redirects the write through a previously-committed directory symlink. iox.CopyFile opens the destination with os.Create (no O_NOFOLLOW), so the kernel follows the parent symlink and writes attacker bytes anywhere the gogs UID can write — ~git/.ssh/authorized_keys → SSH foothold, or .git/hooks/post-receive → next-push RCE. This vulnerability is fixed in 0.14.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44273": {
+    "cvss": 4.4,
+    "description": "Dell Wyse Management Suite (WMS), versions prior to WMS 2605, contain a Use of Default Credentials vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to Information Disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44939": {
+    "cvss": 9.4,
+    "description": "A command injection vulnerability in the Rancher Manager cluster before 2.14.2 import endpoint /v3/import/{token}_{clusterId}.yaml through unsanitized YAML parameters could allow remote attackers to break out of an image, and execute e.g. malicious containers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42895": {
+    "cvss": 7.5,
+    "description": "Improper neutralization of special elements used in a command ('command injection') in Microsoft Copilot allows an unauthorized attacker to perform tampering over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-54130": {
+    "cvss": 7.5,
+    "description": "Missing authentication for critical function in M365 Copilot allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48613": {
+    "cvss": 5.9,
+    "description": "SQL injection vulnerability in phpBB profile field migration due to improper handling of user-supplied profile field data during migration, allowing execution of arbitrary SQL queries. Only applies to phpBB forums that had been updated from versions prior to phpBB 3.3.8 and have not been updated to 3.3.11 or newer yet.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-44420": {
+    "cvss": 8.8,
+    "description": "FreeRDP is a free implementation of the Remote Desktop Protocol. Prior to 3.26.0, a malicious RDP client can trigger a heap-buffer-overflow write in FreeRDP's server-side clipboard (cliprdr) channel by sending a CB_CLIP_CAPS PDU with a too-small capabilitySetLength. This can crash the server process (remote DoS) and may be exploitable for code execution because it corrupts heap memory. This vulnerability is fixed in 3.26.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32996": {
+    "cvss": 7.3,
+    "description": "This vulnerability in Veeam Agent for Microsoft Windows allows for Local Privilege Escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35086": {
+    "cvss": 6.5,
+    "description": "Improper Control of Generation of Code ('Code Injection') vulnerability in email services of Apache OFBiz. This issue affects Apache OFBiz: before 24.09.06. Users are recommended to upgrade to version 24.09.06, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40369": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7363": {
+    "cvss": 8.8,
+    "description": "Use after free in Canvas in Google Chrome on Linux, ChromeOS prior to 147.0.7727.138 allowed a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30871": {
+    "cvss": 9.8,
+    "description": "OpenWrt Project is a Linux operating system targeting embedded devices. In versions prior to 24.10.6 and 25.12.1, the mdns daemon has a Stack-based Buffer Overflow vulnerability in the parse_question function. The issue is triggered by PTR queries for reverse DNS domains (.in-addr.arpa and .ip6.arpa). DNS packets received on UDP port 5353 are expanded by dn_expand into an 8096-byte global buffer (name_buffer), which is then copied via an unbounded strcpy into a fixed 256-byte stack buffer when handling TYPE_PTR queries. The overflow is possible because dn_expand converts non-printable ASCII bytes (e.g., 0x01) into multi-character octal representations (e.g., \\001), significantly inflating the expanded name beyond the stack buffer's capacity. A crafted DNS packet can exploit this expansion behavior to overflow the stack buffer, making the vulnerability reachable through normal multicast DNS packet processing. This issue has been fixed in versions 24.10.6 and 25.12.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30872": {
+    "cvss": 9.8,
+    "description": "OpenWrt Project is a Linux operating system targeting embedded devices. In versions prior to 24.10.6 and 25.12.1, the mdns daemon has a Stack-based Buffer Overflow vulnerability in the match_ipv6_addresses function, triggered when processing PTR queries for IPv6 reverse DNS domains (.ip6.arpa) received via multicast DNS on UDP port 5353. During processing, the domain name from name_buffer is copied via strcpy into a fixed 256-byte stack buffer, and then the reverse IPv6 request is extracted into a buffer of only 46 bytes (INET6_ADDRSTRLEN). Because the length of the data is never validated before this extraction, an attacker can supply input larger than 46 bytes, causing an out-of-bounds write. This allows a specially crafted DNS query to overflow the stack buffer in match_ipv6_addresses, potentially enabling remote code execution. This issue has been fixed in versions 24.10.6 and 25.12.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-24317": {
+    "cvss": 5.0,
+    "description": "SAP GUI for Windows allows DLL files to be loaded from arbitrary directories within the application. An unauthenticated attacker could exploit this vulnerability by persuading a victim to place a malicious DLL within one of these directories. The malicious command is executed in the victim user's context provided GuiXT is enabled. This vulnerability has a low impact on confidentiality, integrity, and availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-27688": {
+    "cvss": 5.0,
+    "description": "Due to a missing authorization check in SAP NetWeaver Application Server for ABAP, an authenticated attacker with user privileges could read Database Analyzer Log Files via a specific RFC function module. The attacker with the necessary privileges to execute this function module could potentially escalate their privileges and read the sensitive data, resulting in a limited impact on the confidentiality of the information stored. However, the integrity and availability of the system are not affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-29783": {
+    "cvss": 7.8,
+    "description": "The shell tool within GitHub Copilot CLI versions prior to and including 0.0.422 can allow arbitrary code execution through crafted bash parameter expansion patterns. An attacker who can influence the commands executed by the agent (e.g., via prompt injection through repository files, MCP server responses, or user instructions) can exploit bash parameter transformation operators to execute hidden commands, bypassing the safety assessment that classifies commands as \"read-only.\" This has been patched in version 0.0.423. The vulnerability stems from how the CLI's shell safety assessment evaluates commands before execution. The safety layer parses and classifies shell commands as either read-only (safe) or write-capable (requires user approval). However, several bash parameter expansion features can embed executable code within arguments to otherwise read-only commands, causing them to appear safe while actually performing arbitrary operations. The specific dangerous patterns are ${var@P}, ${var=value} / ${var:=value}, ${!var}, and nested $(cmd) or <(cmd) inside ${...} expansions. An attacker who can influence command text sent to the shell tool - for example, through prompt injection via malicious repository content (README files, code comments, issue bodies), compromised or malicious MCP server responses, or crafted user instructions containing obfuscated commands - could achieve arbitrary code execution on the user's workstation. This is possible even in permission modes that require user approval for write operations, since the commands can appear to use only read-only utilities to ultimately trigger write operations. Successful exploitation could lead to data exfiltration, file modification, or further system compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-27612": {
+    "cvss": 6.1,
+    "description": "Repostat is a React component to fetch and display GitHub repository info. Prior to version 1.0.1, the `RepoCard` component is vulnerable to Reflected Cross-Site Scripting (XSS). The vulnerability occurs because the component uses React's `dangerouslySetInnerHTML` to render the repository name (`repo` prop) during the loading state without any sanitization. If a developer using this package passes unvalidated user input directly into the `repo` prop (for example, reading it from a URL query parameter), an attacker can execute arbitrary JavaScript in the context of the user's browser. In version 1.0.1, the use of dangerouslySetInnerHTML has been removed, and the repo prop is now safely rendered using standard React JSX data binding, which automatically escapes HTML entities.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-25929": {
+    "cvss": 6.5,
+    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0, the document controller’s `patient_picture` context serves the patient’s photo by document ID or patient ID without verifying that the current user is authorized to access that patient. An authenticated user with document ACL can supply another patient’s ID and retrieve their photo. Version 8.0.0 fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-25941": {
+    "cvss": 8.1,
+    "description": "FreeRDP is a free implementation of the Remote Desktop Protocol. Versions on the 2.x branch prior to to 2.11.8 and on the 3.x branch prior to 3.23.0 have an out-of-bounds read vulnerability in the FreeRDP client's RDPGFX channel that allows a malicious RDP server to read uninitialized heap memory by sending a crafted WIRE_TO_SURFACE_2 PDU with a `bitmapDataLength` value larger than the actual data in the packet. This can lead to information disclosure or client crashes when a user connects to a malicious server. Versions 2.11.8 and 3.23.0 fix the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-9900": {
+    "cvss": 8.8,
+    "description": "A flaw was found in Libtiff. This vulnerability is a \"write-what-where\" condition, triggered when the library processes a specially crafted TIFF image file. By providing an abnormally large image height value in the file's metadata, an attacker can trick the library into writing attacker-controlled color data to an arbitrary memory location. This memory corruption can be exploited to cause a denial of service (application crash) or to achieve arbitrary code execution with the permissions of the user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
