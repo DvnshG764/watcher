@@ -65422,5 +65422,23 @@
     "description": "A flaw was found in Libtiff. This vulnerability is a \"write-what-where\" condition, triggered when the library processes a specially crafted TIFF image file. By providing an abnormally large image height value in the file's metadata, an attacker can trick the library into writing attacker-controlled color data to an arbitrary memory location. This memory corruption can be exploited to cause a denial of service (application crash) or to achieve arbitrary code execution with the permissions of the user.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-91149": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Cockpit. An unauthenticated remote attacker can exploit this vulnerability by initiating and sustaining numerous simultaneous connections to the `cockpit-tls` service. This forces the service to create an unbounded number of detached threads, consuming system resources such as memory and file descriptors. The primary consequence is a denial of service (DoS), leading to degradation or complete unavailability of the Cockpit service for legitimate users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-46633": {
+    "cvss": 9.8,
+    "description": "Twig is a template language for PHP. Starting in 1.15.1 and prior to 3.26.0, Compiler::string() does not escape single quotes when a template name from a {% use %} tag is placed inside a PHP single-quoted string literal, allowing a crafted template name to terminate the string and inject arbitrary PHP expressions into the compiled cache file. This issue is fixed in version 3.26.0.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-112689": {
+    "cvss": null,
+    "description": "An out-of-bounds write issue was addressed with improved input validation. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2, tvOS 27.2. An app may be able to cause unexpected system termination or corrupt kernel memory.",
+    "vendor": "Apple",
+    "product": "iOS and iPadOS"
   }
 }
