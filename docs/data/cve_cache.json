@@ -62605,7 +62605,7 @@
   },
   "CVE-2026-58115": {
     "cvss": 10.0,
-    "description": "A vulnerability has been identified in SIMATIC IoT2050 Advanced (6ES7647-0BA00-1YA2) (All versions < V4.3.4.1 running Industrial OS with Node-RED installed). Affected devices do not enforce authentication on the Node-RED HTTP interface, allowing unauthenticated access to programming nodes that are capable of executing system commands on the server. This could allow an unauthenticated remote attacker to create malicious flows through the HTTP interface in order to execute arbitrary code on the underlying server with maximum privileges.",
+    "description": "A vulnerability has been identified in SIMATIC IoT2050 Advanced (6ES7647-0BA00-1YA2) (All versions < V4.3.4-1 running Industrial OS with Node-RED installed), SIMATIC IoT2050 Basic (6ES7647-0BA00-0YA2) (All versions < V4.3.4-1 running Industrial OS with Node-RED installed), SIMATIC IoT2050 M.2 (6ES7647-0BB00-1YA2) (All versions < V4.3.4-1 running Industrial OS with Node-RED installed), SIMATIC IoT2050 SM (6ES7647-0CA00-1AA2) (All versions < V4.3.4-1 running Industrial OS with Node-RED installed). Affected devices do not enforce authentication on the Node-RED HTTP interface, allowing unauthenticated access to programming nodes that are capable of executing system commands on the server. This could allow an unauthenticated remote attacker to create malicious flows through the HTTP interface in order to execute arbitrary code on the underlying server with maximum privileges.",
     "vendor": "Siemens",
     "product": "SIMATIC IoT2050 Advanced"
   },
@@ -72706,5 +72706,245 @@
     "description": "Vulnerability in the Siebel CRM End User product of Oracle Siebel CRM (component: Open UI). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM End User. Successful attacks of this vulnerability can result in unauthorized read access to a subset of Siebel CRM End User accessible data. CVSS 3.1 Base Score 3.7 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-115929": {
+    "cvss": 6.8,
+    "description": "MongoDB Compass relies on Electron, a third-party runtime that carries its own TLS root certificate store. This root certificate store has the recoverable eMudhra intermediate CA certificates. Issue is resolved by updating to Compass 1.53.1, which includes Electron 44.9.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108013": {
+    "cvss": 6.8,
+    "description": "BigFix Platform uses Mozilla CA certificate bundle (PEM). Versions of the bundle dated before 2026/10/20 still trust certificates whose private keys have been compromised. When BigFix Platform validates servers using such a bundle, an on-path attacker can impersonate remote servers and tamper with files downloaded by the application. The issue is resolved by using bundle version 2026/10/20 or later. The fixed bundle is available starting from BES Support v1520.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115975": {
+    "cvss": 7.1,
+    "description": "Broken access control in JiraController in Cervantes version v1.3-beta could allow an attacker to create, edit, or delete Jira tickets for vulnerabilities in other projects",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115993": {
+    "cvss": 6.8,
+    "description": "Stored XSS vulnerability in the “Notes” field of the Checklists in Cervantes version v1.3-beta could allow an attacker to execute arbitrary code in another user's browser with elevated privileges",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115994": {
+    "cvss": 5.4,
+    "description": "BOLA Allows Cross-Project Target Tampering in Cervantes version v1.3-beta could allow an attacker modify or delete targets belonging to other projects without authorization, compromising the integrity of penetration testing scopes, results, and associated security reports.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115998": {
+    "cvss": 4.3,
+    "description": "IDOR in Cervantes version v1.3-beta could allow an authenticated attacker ca access sensitive findings, proof-of-concept details, credentials, and client information from projects they do not belong to. Additionally, they can modify finding statuses and transfer findings to their own projects, compromising data confidentiality and integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116016": {
+    "cvss": 7.1,
+    "description": "yudao-cloud through 2026.09 contains an authorization bypass vulnerability that allows authenticated users to evade row-level data scope restrictions by sending a data-permission-enable header set to false. Attackers can add this header to /admin-api requests, which DataPermissionRpcWebFilter trusts, to read or modify other departments' and users' records within the same tenant.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115932": {
+    "cvss": 9.6,
+    "description": "When a post is published, Postiz treats a media path that is not a web address as a file on the server's disk, but it does not check that the file lies inside the upload directory. A registered user can store a crafted media path with a post, get it past the checks that normally restrict it, and have the publishing worker read an arbitrary file and send it as an attachment to a Discord server the user controls. The same unconfined reads can be reached through two further routes. One tells the caller whether a file exists and can exhaust the backend's memory, the other delivers the file the same way as the main route. Self-registration is open by default, so the attacker needs no existing account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114629": {
+    "cvss": 7.5,
+    "description": "Web::Simple versions before 0.035 for Perl allocate a buffer sized by the Content-Length header for urlencoded body parameters. Web::Dispatch::ParamParser::get_unpacked_body_from reads an application/x-www-form-urlencoded body using a single read call, with no cap and the return value ignored. Perl's read grows the buffer to the requested length before reading, so the declared Content-Length determines the allocation. An attacker can trigger this through any route whose dispatch specification has a % body-parameter match, such as sub (POST + %name=), sending a Content-Length far larger than the body actually sent. No authentication is involved.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115557": {
+    "cvss": 9.4,
+    "description": "Python has added a denylist for known compromised certificates to the \"ssl\" module to ensure user safety even without certificate revocation configured. Known compromised certificates will automatically be rejected regardless of the SSLContext policy configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87901": {
+    "cvss": 8.3,
+    "description": "Improper sanitization in the registration module allows reflected Cross-Site Scripting.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110975": {
+    "cvss": 7.4,
+    "description": "A flaw was found in Kruize Autotune. Its REST API ships without an authentication layer, and the endpoints that return datasource configuration — the list-datasources endpoint (GET /datasources) and the datasource-metadata endpoint — serialized datasource objects using a default Gson configuration with no field-exclusion strategy. As a result, the authentication secrets stored for each configured monitoring datasource (basic-auth passwords, bearer tokens, API keys, and OAuth2 client secrets) were returned in cleartext to any client able to reach the service. An attacker with network access to Autotune could harvest these credentials and reuse them to authenticate to the backing monitoring stack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115812": {
+    "cvss": 9.8,
+    "description": "Relative path traversal during model archive extraction in Amazon Web Services Multi Model Server 1.1.11 and earlier might allow remote actors to execute arbitrary code via a crafted model archive. Multi Model Server is end of life and no fixed version is available. Users should discontinue use of Multi Model Server and migrate to a supported model serving solution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115813": {
+    "cvss": 5.8,
+    "description": "Server-side request forgery in the model download path in Amazon Web Services Multi Model Server 1.1.11 and earlier might allow remote actors to send requests to internal network destinations via a crafted model URL. Multi Model Server is end of life and no fixed version is available. Users should discontinue use of Multi Model Server and migrate to a supported model serving solution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115863": {
+    "cvss": 7.6,
+    "description": "ConnMan through 2.0 has a stack-based buffer overflow via a DHCPv6 Reply message. This occurs in get_domains in gdhcp/client.c. It copies a fixed NS_MAXDNAME (1025) bytes from a DHCPv6 DOMAIN_LIST (option 24) value into a 1026-byte stack buffer dns_name regardless of the actual option length, then walks DNS labels with an unbounded \"c += jump + 1\" loop. A crafted DHCPv6 REPLY with a DOMAIN_LIST option of >= 1025 non-zero bytes makes the label walk leave the buffer and read/write '.' past its end in attacker-chosen strides. An on-link attacker can trigger this without authentication via a forged Router Advertisement (O=1) and a forged DHCPv6 REPLY matching xid/CLIENTID with a long DOMAIN_LIST. The impact is unauthenticated on-link crash of connmand (runs as root). This was introduced in bb06c47.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115569": {
+    "cvss": 3.3,
+    "description": "Fallow is a codebase intelligence tool for TypeScript and JavaScript. From 2.68.0 until 3.34.0, Fallow follows attacker-controlled Jest projects paths outside the project root through absolute paths, parent segments, dot-prefixed wildcard globs, or symlinks. In version 3.33.1, the same behavior also affects Vitest test.projects paths, Vitest inline-project extends paths, and symlinked script --config paths. Fallow parses the outside files as test-runner configuration and uses them to credit dependencies, setup files, and JSX import sources, which can change unused dependency and unused file findings in CI or agent analysis. The outside file contents are not printed or sent over the network. This issue is fixed in version 3.34.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115845": {
+    "cvss": 6.4,
+    "description": "An incomplete list of disallowed inputs in the Python code validator of the run_script tool in AWS MCP Server might allow an authenticated remote user to execute arbitrary code within their own isolated session environment via a crafted script. AWS fixed this issue service-side. No customer action is required.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115572": {
+    "cvss": 7.1,
+    "description": "pypdf is a free and open-source pure-python PDF library. Prior to 6.21.2, an attacker can craft a PDF that repeatedly references the same nonexistent indirect object, causing relevant file parts such as pages to trigger repeated full-file recovery loads and long runtimes when accessed. This issue is fixed in version 6.21.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115580": {
+    "cvss": 7.1,
+    "description": "pypdf is a free and open-source pure-python PDF library. Prior to 6.21.2, an attacker can craft a PDF with a standard cross-reference table whose declared entry count exceeds what the file can contain, causing excessive processing and long runtimes when the file is opened. This issue is fixed in version 6.21.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115585": {
+    "cvss": 7.1,
+    "description": "pypdf is a free and open-source pure-python PDF library. Prior to 6.21.2, an incomplete remediation for repeated malformed cross-reference entries in GHSA-55h5-xmcq-c37v could still trigger a complete PDF stream reload during each recovery attempt even when a recovery cache was present, causing crafted cross-reference streams to produce long runtimes. This issue is fixed in version 6.21.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19741": {
+    "cvss": 7.5,
+    "description": "Zephyr's OpenThread integration defined CONFIG_OPENTHREAD_JOINER_PSKD with default \"J01NME\" in modules/openthread/Kconfig.thread (previously subsys/net/l2/openthread/Kconfig, then subsys/net/l2/openthread/Kconfig.thread). J01NME is the example Joining Device Credential used throughout the public OpenThread and Thread commissioning documentation, including Zephyr's own samples/net/sockets/echo_client/README.rst, so it is not a secret. A firmware image built with CONFIG_OPENTHREAD_JOINER_AUTOSTART=y that never overrode the PSKd therefore shipped with a publicly known joining credential compiled in, with no build-time or run-time warning. The PSKd is the only value that authenticates Thread commissioning: joiner and commissioner run a DTLS-PSK handshake keyed on it, after which the commissioner supplies the full operational dataset. In ot_configure_instance() (modules/openthread/openthread.c), a device with no stored dataset calls otJoinerStart() with the configured PSKd, and ot_joiner_start_handler() calls otThreadSetEnabled() on success. An unauthenticated attacker within 802.15.4 radio range of an uncommissioned device (factory-fresh, after a factory reset, or after a settings erase) can run any stock Thread commissioner registered with J01NME, complete the handshake, and hand the device an attacker-controlled operational dataset. The device then joins and enables Thread on the attacker's mesh. The attacker becomes its router, seeing, dropping, injecting and spoofing all of the device's IPv6 traffic and impersonating the peers the application expects, while the device is cut off from the network it was meant to join and stays mis-provisioned until it is reset. Only application-layer security with independently provisioned credentials survives. Exposure is limited to builds that enable joiner autostart and leave the PSKd unset; the option is not enabled by default and no in-tree sample uses the vulnerable combination. The fix removes the default from CONFIG_OPENTHREAD_JOINER_PSKD and adds a BUILD_ASSERT() in modules/openthread/openthread.c, active only under CONFIG_OPENTHREAD_JOINER_AUTOSTART, that fails the build unless a 6-to-32-character PSKd is configured. Products should provision a per-device PSKd from factory data and call otJoinerStart() from the application rather than relying on a credential compiled identically into every unit.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79977": {
+    "cvss": 8.2,
+    "description": "The WireGuard VPN service in subsys/net/lib/wireguard/wg.c updated the peer endpoint from a message it could not authenticate. In handle_transport_data(), when the 32-bit receiver index of an incoming transport-data message matched no session, the code both scheduled a new handshake and copied the datagram's source address into peer->endpoint with memcpy(&peer->endpoint, peer_addr, sizeof(peer->endpoint)). Because the receiver index is unknown, there is no key with which such a message could be verified, so the address written into peer->endpoint is entirely attacker-supplied. Every other endpoint update in the implementation happens only after authentication — after the Noise handshake in handle_handshake_init(), or after AEAD decryption plus the anti-replay check in wg_process_data_message(). The WireGuard listener is registered with net_udp_register() using no remote address or port filter and defaults to UDP port 51820 (CONFIG_WIREGUARD_PORT), and wg_ctrl_recv() resolves the peer by interface rather than by any cryptographic identity. Any host able to send a UDP datagram to that port can therefore reach the defect off-path, with no need to observe legitimate traffic: a 16-byte datagram carrying the transport-data type, zeroed reserved bytes and an arbitrary receiver index is sufficient. The vulnerable branch runs whenever the peer has neither a valid handshake nor a current keypair — the state at boot and after a session expires. A single spoofed datagram redirects peer->endpoint to an address of the attacker's choosing, and all subsequent handshake initiations, keepalives and encrypted data packets are sent there. The legitimate peer never receives the initiations and so never re-authenticates, and nothing resets the endpoint afterwards, leaving the tunnel persistently unusable on devices whose peer does not initiate handshakes itself. The attacker can also relay the redirected initiations to the real peer to place itself in the path of the tunnel, observing ciphertext and traffic metadata and selectively dropping packets. WireGuard's end-to-end cryptography still prevents decryption or forgery of tunnel content, so the impact is loss of availability plus limited confidentiality, not key compromise. The fix removes the endpoint learning from this path entirely: the stale-session recovery is kept, but the handshake is sent only to an endpoint learnt from an authenticated message, falling back to the configured cfg_endpoint, and the message is dropped when neither is known. CONFIG_WIREGUARD is marked experimental and is not enabled by default.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79978": {
+    "cvss": 3.6,
+    "description": "The RTIO streaming completion callback adxl345_process_fifo_samples_cb() in drivers/sensor/adi/adxl345/adxl345_stream.c clamps the amount of FIFO data it will report (read_len = MIN(fifo_bytes, buf_avail)) to the space actually returned by rtio_sqe_rx_buf(), but then queues one 6-byte bus read per hardware FIFO entry at consecutive offsets from read_buf, bounded by the device-reported entry count rather than by the clamp. When the allocated buffer is smaller than a full batch, the driver writes up to 186 bytes past the end of the allocation; a companion defect left data->fifo_total_bytes un-reset at batch start, so an aborted or errored chain could leave a stale write offset that pushes the next batch's writes out of bounds as well. A short buffer is an expected, first-class outcome of the RTIO allocator: rtio_block_pool_alloc() walks the requested size down one block at a time until a contiguous run is available, and the driver only demands sizeof(struct adxl345_fifo_data) + 6 bytes as its minimum. Any streaming configuration whose mempool block granularity is smaller than a full FIFO batch (204 bytes) — for example the sensor shell's RTIO_DEFINE_WITH_MEMPOOL(sensor_read_rtio, 8, 8, 32, 64, 4) used by sensor stream on fifo_wm incl, or the 16-byte-block streaming example in the documentation — takes this path whenever the pool is fragmented or the consuming thread falls behind. The out-of-bounds writes are performed by the I2C/SPI RTIO backend (DMA on many SoCs) into the shared RTIO block pool, corrupting neighbouring live buffers or, for a pool smaller than one batch, memory beyond the pool itself. The written bytes are accelerometer samples and the destination follows the allocation, so there is no controllable corruption primitive: the realistic impact is silent corruption of other RTIO consumers' data or a crash. Reaching it requires a board with an interrupt-wired ADXL345 built with CONFIG_ADXL345_STREAM, plus buffer-pool starvation, which a co-resident local workload can induce but which also occurs spontaneously under load; there is no network, USB or radio path to this code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79979": {
+    "cvss": 7.8,
+    "description": "The arm64 MMU backend invalidates a single virtual address from the TLB with invalidate_tlb_page() in arch/arm64/core/mmu.c, which issued TLBI VAE1{IS} with an operand of virt >> 12. That operand encodes the ASID in bits [63:48], so the invalidation only ever matched ASID 0 (the kernel page tables) and global entries. Memory domains, however, are allocated ASIDs starting at 1 in arch_mem_domain_init(), and every domain-private leaf created by private_map() is mapped with MT_NG, i.e. non-global. A domain's cached translation therefore survived the invalidation. All callers of invalidate_tlb_page() are demand-paging paths. When the eviction algorithm reclaims a frame, page_frame_prepare_locked() in kernel/mmu.c calls arch_mem_page_out(), which marks the kernel leaf invalid, propagates the invalid descriptor into every domain via sync_domains(), and then flushes only ASID 0. do_page_fault() immediately reuses the very same page frame for the incoming mapping through arch_mem_page_in(). A user thread that had already touched the evicted page — a k_mem_partition added with arch_mem_domain_partition_add(), or its own stack mapped by map_thread_stack() — retains a valid EL0 read/write translation to that physical frame under its own ASID. Unprivileged code running in a user thread can drive memory pressure to force eviction and then keep accessing the stale address, obtaining read and write access to whatever the kernel subsequently placed in that frame: supervisor data, another memory domain's partition, or another thread's stack. This defeats the isolation that CONFIG_USERSPACE is meant to enforce, allowing information disclosure and memory corruption up to full compromise of the system. The fix switches the implementation to TLBI VAAE1{IS}, which matches every ASID and both global and non-global entries, so no domain-tagged translation survives a page out, dirty-bit update or access-flag clear. Exploitation requires an arm64 build with both CONFIG_USERSPACE and CONFIG_DEMAND_PAGING enabled, an active backing store, and at least one demand-paged page that is also privately mapped into a user memory domain. The same commit additionally stops globalize_table() from stripping EL0 permission and non-global attributes off domain-private leaves during paging synchronization, which previously caused user threads to lose access to their own partitions and stacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79980": {
+    "cvss": 5.6,
+    "description": "The DHCPv4 client in subsys/net/lib/dhcpv4/dhcpv4.c maintained its transaction identifier (iface->config.dhcpv4.xid) as a counter rather than as a per-transaction random value. It was seeded once with sys_rand32_get() in dhcpv4_start_internal(), incremented by one in dhcpv4_send_discover() and dhcpv4_send_decline(), and never changed by dhcpv4_send_request() — so every RENEWING and REBINDING exchange reused, unchanged, the identifier that had already appeared on the wire in the broadcast DHCPDISCOVER at boot, and where the identifier did move it moved predictably by one. RFC 2131 4.1 requires a single identifier per transaction, chosen so that clients are unlikely to collide. This identifier is the client's only unpredictable reply-validation token. net_dhcpv4_input() accepts a BOOTP reply on op, a matching xid, and a matching chaddr (the interface MAC, which is public); the UDP callback is registered with a wildcard remote address and port, and no server-identifier or source-address check is applied. An attacker who learns one identifier — for example any host on the same segment that sees the broadcast DHCPDISCOVER, or a DHCP server or relay on a network the device previously joined — therefore retains a valid token for the device's whole uptime, and can predict the identifiers of later exchanges, without having to observe the unicast renew traffic or race the legitimate server. A forged reply that passes those checks has effect regardless of client state, because dhcpv4_parse_options() applies its side effects before the state machine gate in dhcpv4_handle_reply(): the router option calls net_if_ipv4_set_gw() and the DNS option calls dns_resolve_reconfigure(). A single accepted datagram can thus repoint the device's default gateway and resolvers at attacker-controlled addresses, redirecting its traffic; during RENEWING or REBINDING a forged DHCPACK re-binds the lease with attacker-chosen parameters and a forged DHCPNAK removes the address and restarts configuration. The fix draws a fresh sys_rand32_get() value at each point where a transaction begins — entering SELECTING, RENEWING and REBINDING, and at the INIT/INIT-REBOOT entry taken when an interface with a lease goes down — while REQUESTING and DECLINE keep the identifier of the exchange they belong to, as RFC 2131 requires. As a side effect the client also no longer discards a slow server's offer after retransmitting a discover, and the initial-discover backoff now draws its own randomness instead of deriving it from the identifier.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79981": {
+    "cvss": 6.5,
+    "description": "The DNS stub resolver in subsys/net/lib/dns/resolve.c binds one UDP socket per configured server when the resolver context is initialised (dns_resolve_init_locked() -> register_dispatcher() -> dns_dispatcher_register()), with the local port left at 0 so the stack picks an ephemeral port exactly once. dns_write() then sends every subsequent query from that same socket without re-binding, so the source port is constant for the lifetime of the resolver context while only the 16-bit transaction identifier (ctx->queries[i].id, drawn with sys_rand16_get()) varies per query. RFC 5452 section 9.2 requires both to vary; with a fixed port, an off-path attacker has to guess only the identifier. The stable port is cheap to learn. Any single observed query reveals it permanently, and it can also be found by probing the ephemeral UDP range: subsys/net/ip/connection.c answers unmatched unicast UDP with an ICMP port-unreachable, so the resolver's socket is the one port in that range that stays silent. Acceptance of a reply is decided solely by get_slot_by_id() matching the transaction identifier and a CRC-16 of the queried name — the reply's source address is never checked (dispatcher_cb() does ARG_UNUSED(addr)), so forged answers need not even be spoofed to appear to come from the configured server; they only need to reach the resolver's port. An attacker with UDP reachability to the device (same LAN, Wi-Fi or mesh segment, or a globally routable device address) can therefore flood answers for a predictable query name across the 16-bit identifier space during a query window and race the legitimate server. A win makes the application resolve an attacker-chosen address, and with CONFIG_DNS_RESOLVER_CACHE enabled the forged record is retained for its attacker-chosen TTL. The attack still requires winning that race, and applications that validate TLS certificates for the resolved endpoint are largely protected. The fix draws a fresh local port before each query to a server that has nothing outstanding: dns_randomize_source_port() unregisters the dispatcher, closes and reopens the socket, and re-registers it bound to port 0 so the system selects a new port, raising the per-query guessing space from roughly 16 to roughly 31 bits. Multicast DNS and LLMNR are excluded because their ports are protocol-fixed. The behaviour is controlled by CONFIG_DNS_RESOLVER_RANDOMIZE_SOURCE_PORT (default y).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79982": {
+    "cvss": 8.8,
+    "description": "The Bluetooth HCI USB transport class of the new USB device stack, subsys/usb/device_next/class/bt_hci.c, copies every controller-to-host HCI packet into a USB transfer buffer before enqueuing it on an endpoint. bt_hci_tx_sync_in() allocated that buffer from bt_hci_ep_pool, a fixed pool whose slots are only USBD_MAX_BULK_MPS bytes (64 on full-speed-only builds), and then performed net_buf_add_mem(buf, bt_buf->data, bt_buf->len) with no length check. HCI event and ACL buffers are sized by CONFIG_BT_BUF_EVT_RX_SIZE and CONFIG_BT_BUF_ACL_RX_SIZE and can be far larger, so the copy runs past the end of the 64-byte slot into the adjacent slots and into whatever follows the statically allocated pool. The device runs the local Bluetooth controller in raw HCI mode (CONFIG_BT_HCI_RAW), so the oversized packets originate over the air. With the HCI buffer sizes recommended for full-featured controllers, an unauthenticated attacker within Bluetooth range can supply the overflowing bytes: a connected peer that negotiates Data Length Extension can send ACL fragments up to CONFIG_BT_CTLR_DATA_LENGTH_MAX bytes, and an attacker that merely broadcasts extended advertising data reaches the same path through LE Extended Advertising Report events, which the controller fragments only to CONFIG_BT_BUF_EVT_RX_SIZE. In the stock configuration the overflow is already reached without any radio traffic: the mandatory Read Supported Commands command-complete event is 70 bytes and overruns the 64-byte slot by six bytes on every host initialization. Because net_buf_add_mem() validates tailroom only through an assertion unless CONFIG_NET_BUF_HARDENING is enabled, builds with CONFIG_ASSERT=n — the usual production setting — silently corrupt memory adjacent to the USB buffer pool with attacker-chosen contents, which on a target without memory protection between subsystems can lead to arbitrary code execution. Builds with assertions enabled fail the assertion instead and panic, giving a remotely triggerable denial of service. The fix introduces a separate bt_hci_tx_pool sized to MAX(BT_BUF_ACL_RX_SIZE, BT_BUF_EVT_RX_SIZE) for the controller-to-host direction while leaving the host-to-device pool at the endpoint packet size, which is already bounds-checked during reassembly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113877": {
+    "cvss": 7.5,
+    "description": "HTTP::Headers::ActionPack versions before 0.10 for Perl allow CPU exhaustion via Accept-Language ranges matched as regular expressions. _language_match interpolates each Accept-Language range into the pattern `/^$range\\-/i` without escaping it, so regular expression syntax in the header reaches the regex engine. A 12-byte range such as `(a?|b?){26}z` backtracks for seconds, and each increment of the quantifier doubles the time. An invalid range such as `(` fails to compile. A remote attacker can exhaust CPU, or make choose_language die, in any application that passes an untrusted Accept-Language header to it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113951": {
+    "cvss": 7.8,
+    "description": "If an attacker can write to the filesystem of a container k8s cluster container, they can plant an exec credential plugin in /etc/kubernetes/admin.conf. kubectl will run that plugin as the macOS host user the next time someone pulls the cluster's kubeconfig onto the host with container k8s write-config or create and then runs kubectl against it — turning filesystem access inside an untrusted Linux container into arbitrary command execution on the host. This vulnerability is addressed in Container version 1.5.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115887": {
+    "cvss": 7.5,
+    "description": "GraphQL Scalars is a library of custom GraphQL scalars for creating precise type-safe GraphQL schemas. From 1.24.1 until 2.0.1, GraphQLPhoneNumber in src/scalars/PhoneNumber.ts uses ambiguous nested digit quantifiers that backtrack exponentially when a PhoneNumber value contains a run of digits followed by a character that makes the match fail. GraphQL evaluates parseLiteral during document validation and parseValue during variable coercion before resolver authentication or authorization, so a small unauthenticated request can block the Node.js event loop and stall the server process. serialize is also affected when unvalidated stored values are returned through the scalar. This issue is fixed in version 2.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115895": {
+    "cvss": 8.8,
+    "description": "Happy DOM is a JavaScript implementation of a web browser without its graphical user interface. From 17.0.0 until 21.0.4, packages/happy-dom/src/module/ECMAScriptModuleCompiler.ts accepts a named ESM import alias without validating that it is a JavaScript binding identifier before inserting it into a generated destructuring binding. With enableJavaScriptEvaluation enabled, attacker-controlled HTML or module source can use an invalid alias that becomes a valid default initializer after compilation, causing the generated JavaScript to execute in the Node.js host process. The demonstrated reachable path uses a JSON module import attribute, which prevents the malicious alias from being emitted again in a later ESM circular-import assignment and keeps the generated function syntactically valid. This incomplete fix for CVE-2026-33943 is a distinct residual path because the earlier remediation validated the local export importName path but not the named-import alias. This issue is fixed in version 21.0.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115935": {
+    "cvss": 8.8,
+    "description": "The app/process-api-response-headers action accepts fake Craft API response headers from any authenticated control panel user. A non-admin user with only accessCp can place newline characters in X-Craft-Plugin-Licenses. Craft passes this value to its .env writer without removing the newlines. This lets the user insert a new attacker-known CRAFT_SECURITY_KEY into .env. After Craft loads that key, the user can forge a signed login redirect containing a Twig system() callback. This is different from the previous report. That report reads the existing key through a Twig sandbox bypass. This report replaces the key through fake API headers and CRLF injection. Fixing either source does not fix the other.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115937": {
+    "cvss": 7.5,
+    "description": "The Mollie webhook endpoint accepts two independent, attacker-controlled parameters and never verifies that they belong together: * commerceTransactionHash — selects which Craft Commerce transaction is completed * id — selects which Mollie payment is queried for its status An unauthenticated attacker holding any paid Mollie payment ID from the merchant’s account can pair it with any transaction hash. Commerce queries Mollie, sees status: paid, and marks the target transaction successful for that transaction’s full amount, regardless of how much was actually paid.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115938": {
+    "cvss": 8.8,
+    "description": "Craft CMS allows any authenticated control panel user to submit an element-search condition whose element selector is evaluated as a sandboxed Twig object template. Craft’s allowed column filter delegates property lookup to Yii ArrayHelper, outside Twig’s SecurityPolicy. Repeated single-segment lookups therefore bypass the sandbox’s empty property/method allowlists. The vulnerable condition value is ultimately cast to an integer. That does not protect the secret: the template can return author ID 1 when a guessed key character is correct and an impossible ID otherwise. The JSON endpoint returns entries for the first case and an empty array for the second, forming a stable remote character oracle. After recovering GeneralConfig::securityKey, the same user can compute Craft’s generic HMAC wire format offline. Signed parameters such as redirect are then accepted and passed to unsandboxed View::renderObjectTemplate(), where Twig’s string-callable form can invoke native PHP callables. The regression proof uses the harmless substr() callback and observes abcdef becoming cdef; it does not execute an OS command.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-115931": {
+    "cvss": 9.9,
+    "description": "Postiz lets a signed-in user ask the backend to run a function on one of their connected channels. The backend did not restrict which functions can be requested, so a user could call internal helper functions that were never meant to be reachable from the web interface. One of those helpers reads a file from the server's disk. A user who connects a channel whose stored token is a file path can have the backend return the contents of any file it can read, including its environment, which holds the secret used to sign login sessions, the database address and the credentials of connected services. Another helper makes the backend process exit with a single request. Self-registration is open by default, so no existing account and no action by another user is needed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115326": {
+    "cvss": 5.4,
+    "description": "QloApps through 1.7.0 contains an insecure direct object reference vulnerability in OrderDetailController::displayAjaxSubmitRefundRequest() that allows authenticated customers to submit refunds for other customers' service lines. Attackers can submit foreign id_service_product_order_detail values with their own id_order to create refund records, cancel victims' service lines, and corrupt refund quantities.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107362": {
+    "cvss": 7.1,
+    "description": "The bundled FilePond PHP server in Malcolm's file-upload component exposes a fetch route that retrieves an arbitrary URL and returns the response to the caller. An authenticated user can exploit this server-side request forgery (SSRF) to read HTTP, HTTPS, or FTP resources reachable from the upload container. In the default basic authentication mode this affects any authenticated user.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-9212": {
+    "cvss": 8.0,
+    "description": "Insufficient authentication and input validation in the listed NETGEAR models allow users connected to the local network to execute commands impacting the product's confidentiality or change certain configurations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118306": {
+    "cvss": 9.6,
+    "description": "Use after free in FileSystem in Google Chrome prior to 156.0.8078.73 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+    "vendor": "Google",
+    "product": "Chrome"
+  },
+  "CVE-2026-120019": {
+    "cvss": 5.4,
+    "description": "The W3 Total Cache plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 2.10.7 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires HTML Minify to be enabled with the default 'mfunc' entry present in the ignored-comment stems list, and exploitation depends on the attacker predicting the md5(time()) placeholder namespace by reading the server clock via the HTTP Date response header within the applicable time window.",
+    "vendor": "boldgrid",
+    "product": "W3 Total Cache"
   }
 }
