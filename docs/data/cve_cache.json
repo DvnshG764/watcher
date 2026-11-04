@@ -73702,5 +73702,281 @@
     "description": "A heap-based buffer overflow flaw was found in the rsync daemon. This issue is due to improper handling of attacker-controlled checksum lengths (s2length) in the code. When MAX_DIGEST_LEN exceeds the fixed SUM_LENGTH (16 bytes), an attacker can write out of bounds in the sum2 buffer.",
     "vendor": "Red Hat",
     "product": "Red Hat Enterprise Linux 10"
+  },
+  "CVE-2026-115750": {
+    "cvss": 3.7,
+    "description": "mcp-from-openapi from 2.5.0 before 2.9.0 contains a credential exposure vulnerability that allows attackers to capture Authorization and Cookie headers because safeFetch() forwards them on cross-origin redirects. Attackers controlling a spec host or abusing an open redirect can redirect fromURL() spec requests to their own origin to steal bearer tokens or cookies.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115330": {
+    "cvss": 8.8,
+    "description": "Lotus through 0.10.2 contains an sql injection vulnerability that allows authenticated organization users to execute arbitrary SQL by appending stacked statements to custom metric queries. Attackers can submit semicolon-separated SQL through POST /app/metrics/, bypassing first-statement-only validation, to read or modify data across all tenants.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115334": {
+    "cvss": 6.8,
+    "description": "Lotus through 0.10.2 contains an authorization bypass vulnerability in ChangeUserOrganizationView.post that allows authenticated users to join any organization by supplying its UUID. Self-registered attackers who know another organization's UUID can send a POST request to /app/switch_organization/ to access that tenant's data and billing configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115353": {
+    "cvss": 8.6,
+    "description": "Mistune before 3.3.0 contains a path traversal vulnerability in the RST include directive that allows attackers to read arbitrary files by supplying relative or absolute paths. Attackers can submit markdown containing include directives referencing ../ sequences or absolute paths to embed sensitive files like credentials or environment data in rendered HTML.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112331": {
+    "cvss": 7.5,
+    "description": "Motor.NET before 0.19.0 contains a denial-of-service vulnerability that allows a remote attacker who can produce records to a consumed topic to crash the service permanently by sending a single crafted record. By setting the content-type header to application/cloudevents+json and omitting required CloudEvent attributes (id, source, type), the attacker triggers an ArgumentException in KafkaMessageConsumer.SingleMessageHandlingAsync that is treated as fatal, causing the host to stop and re-process the same poison record on every restart, resulting in a permanent crash-loop.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91537": {
+    "cvss": 7.8,
+    "description": "Vulnerability in the Oracle Solaris product of Oracle Systems (component: Utility). The supported version that is affected is 11.4. Easily exploitable vulnerability allows low privileged attacker with logon to the infrastructure where Oracle Solaris executes to compromise Oracle Solaris. Successful attacks of this vulnerability can result in takeover of Oracle Solaris. CVSS 3.1 Base Score 7.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91542": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle WebCenter Sites product of Oracle Fusion Middleware (component: WebCenter Sites). Supported versions that are affected are 12.2.1.4.0 and 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Sites. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle WebCenter Sites accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91552": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle WebCenter Sites product of Oracle Fusion Middleware (component: WebCenter Sites). Supported versions that are affected are 12.2.1.4.0 and 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Sites. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle WebCenter Sites accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83128": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle Sales Offline product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Sales Offline. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Sales Offline accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83424": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle JDeveloper product of Oracle Fusion Middleware (component: Oracle JDeveloper). Supported versions that are affected are 12.2.1.4.0 and 14.1.2.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle JDeveloper. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle JDeveloper accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-12125": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the 3scale Developer Portal. When creating or updating an account in the Developer Portal UI it is possible to modify fields explicitly configured as read-only or hidden, allowing an attacker to modify restricted information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-10963": {
+    "cvss": 7.4,
+    "description": "A flaw was found in pam_access, where certain rules in its configuration file are mistakenly treated as hostnames. This vulnerability allows attackers to trick the system by pretending to be a trusted hostname, gaining unauthorized access. This issue poses a risk for systems that rely on this feature to control who can access certain services or terminals.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-10295": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Gateway. Sending a non-base64 'basic' auth with special characters can cause APICast to incorrectly authenticate a request. A malformed basic authentication header containing special characters bypasses authentication and allows unauthorized access to the backend. This issue can occur due to a failure in the base64 decoding process, which causes APICast to skip the rest of the authentication checks and proceed with routing the request upstream.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-7885": {
+    "cvss": 7.5,
+    "description": "A vulnerability was found in Undertow where the ProxyProtocolReadListener reuses the same StringBuilder instance across multiple requests. This issue occurs when the parseProxyProtocolV1 method processes multiple requests on the same HTTP connection. As a result, different requests may share the same StringBuilder instance, potentially leading to information leakage between requests or responses. In some cases, a value from a previous request or response may be erroneously reused, which could lead to unintended data exposure. This issue primarily results in errors and connection termination but creates a risk of data leakage in multi-request environments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-3657": {
+    "cvss": 7.5,
+    "description": "A flaw was found in 389-ds-base. A specially-crafted LDAP query can potentially cause a failure on the directory server, leading to a denial of service",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1132": {
+    "cvss": 8.1,
+    "description": "A flaw was found in Keycloak, where it does not properly validate URLs included in a redirect. This issue could allow an attacker to construct a malicious request to bypass validation and access other URLs and sensitive information within the domain or conduct further attacks. This flaw affects any client that utilizes a wildcard in the Valid Redirect URIs field, and requires user interaction within the malicious URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-3019": {
+    "cvss": 8.8,
+    "description": "A flaw was found in PCP. The default pmproxy configuration exposes the Redis server backend to the local network, allowing remote command execution with the privileges of the Redis user. This issue can only be exploited when pmproxy is running. By default, pmproxy is not running and needs to be started manually. The pmproxy service is usually started from the 'Metrics settings' page of the Cockpit web interface. This flaw affects PCP versions 4.3.4 and newer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5685": {
+    "cvss": 7.5,
+    "description": "A flaw was found in XNIO. The XNIO NotifierState that can cause a Stack Overflow Exception when the chain of notifier states becomes problematically large can lead to uncontrolled resource management and a possible denial of service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1753": {
+    "cvss": 8.6,
+    "description": "A flaw was found in Buildah (and subsequently Podman Build) which allows containers to mount arbitrary locations on the host filesystem into build containers. A malicious Containerfile can use a dummy image with a symbolic link to the root filesystem as a mount source and cause the mount operation to mount the host root filesystem inside the RUN step. The commands inside the RUN step will then have read-write access to the host filesystem, allowing for full container escape at build time.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-21885": {
+    "cvss": 7.8,
+    "description": "A flaw was found in X.Org server. In the XISendDeviceHierarchyEvent function, it is possible to exceed the allocated array length when certain new device IDs are added to the xXIHierarchyInfo struct. This can trigger a heap buffer overflow condition, which may lead to an application crash or remote code execution in SSH X11 forwarding environments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-21886": {
+    "cvss": 7.8,
+    "description": "A heap buffer overflow flaw was found in the DisableDevice function in the X.Org server. This issue may lead to an application crash or, in some circumstances, remote code execution in SSH X11 forwarding environments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1635": {
+    "cvss": 7.5,
+    "description": "A vulnerability was found in Undertow. This vulnerability impacts a server that supports the wildfly-http-client protocol. Whenever a malicious user opens and closes a connection with the HTTP port of the server and then closes the connection immediately, the server will end with both memory and open file limits exhausted at some point, depending on the amount of memory available. At HTTP upgrade to remoting, the WriteTimeoutStreamSinkConduit leaks connections if RemotingConnection is closed by Remoting ServerConnectionOpenListener. Because the remoting connection originates in Undertow as part of the HTTP upgrade, there is an external layer to the remoting connection. This connection is unaware of the outermost layer when closing the connection during the connection opening procedure. Hence, the Undertow WriteTimeoutStreamSinkConduit is not notified of the closed connection in this scenario. Because WriteTimeoutStreamSinkConduit creates a timeout task, the whole dependency tree leaks via that task, which is added to XNIO WorkerThread. So, the workerThread points to the Undertow conduit, which contains the connections and causes the leak.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1488": {
+    "cvss": 7.3,
+    "description": "A vulnerability was found in Unbound due to incorrect default permissions, allowing any process outside the unbound group to modify the unbound runtime configuration. If a process can connect over localhost to port 8953, it can alter the configuration of unbound.service. This flaw allows an unprivileged attacker to manipulate a running instance, potentially altering forwarders, allowing them to track all queries forwarded by the local resolver, and, in some cases, disrupting resolving altogether.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0229": {
+    "cvss": 7.8,
+    "description": "An out-of-bounds memory access flaw was found in the X.Org server. This issue can be triggered when a device frozen by a sync grab is reattached to a different master device. This issue may lead to an application crash, local privilege escalation (if the server runs with extended privileges), or remote code execution in SSH X11 forwarding environments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6291": {
+    "cvss": 7.1,
+    "description": "A flaw was found in the redirect_uri validation logic in Keycloak. This issue may allow a bypass of otherwise explicitly allowed hosts. A successful attack may lead to an access token being stolen, making it possible for the attacker to impersonate other users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6267": {
+    "cvss": 9.8,
+    "description": "A flaw was found in the json payload. If annotation based security is used to secure a REST resource, the JSON body that the resource may consume is being processed (deserialized) prior to the security constraints being evaluated and applied. This does not happen with configuration based security.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6816": {
+    "cvss": 9.8,
+    "description": "A flaw was found in X.Org server. Both DeviceFocusEvent and the XIQueryPointer reply contain a bit for each logical button currently down. Buttons can be arbitrarily mapped to any value up to 255, but the X.Org Server was only allocating space for the device's particular number of buttons, leading to a heap overflow if a bigger value was used.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0408": {
+    "cvss": 5.5,
+    "description": "A flaw was found in the X.Org server. The GLX PBuffer code does not call the XACE hook when creating the buffer, leaving it unlabeled. When the client issues another request to access that resource (as with a GetGeometry) or when it creates another resource that needs to access that buffer, such as a GC, the XSELINUX code will try to use an object that was never labeled and crash because the SID is NULL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0409": {
+    "cvss": 7.8,
+    "description": "A flaw was found in the X.Org server. The cursor code in both Xephyr and Xwayland uses the wrong type of private at creation. It uses the cursor bits type with the cursor as private, and when initiating the cursor, that overwrites the XSELINUX context.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0646": {
+    "cvss": 7.8,
+    "description": "An out-of-bounds memory write flaw was found in the Linux kernel’s Transport Layer Security functionality in how a user calls a function splice with a ktls socket as the destination. This flaw allows a local user to crash or potentially escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0193": {
+    "cvss": 6.7,
+    "description": "A use-after-free flaw was found in the netfilter subsystem of the Linux kernel. If the catchall element is garbage-collected when the pipapo set is removed, the element can be deactivated twice. This can cause a use-after-free issue on an NFT_CHAIN object or NFT_OBJECT object, allowing a local unprivileged user with CAP_NET_ADMIN capability to escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6546": {
+    "cvss": 7.0,
+    "description": "A race condition was found in the GSM 0710 tty multiplexor in the Linux kernel. This issue occurs when two threads execute the GSMIOC_SETCONF ioctl on the same tty file descriptor with the gsm line discipline enabled, and can lead to a use-after-free problem on a struct gsm_dlci while restarting the gsm mux. This could allow a local unprivileged user to escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6377": {
+    "cvss": 7.8,
+    "description": "A flaw was found in xorg-server. Querying or changing XKB button actions such as moving from a touchpad to a mouse can result in out-of-bounds memory reads and writes. This may allow local privilege escalation or possible remote code execution in cases where X11 forwarding is involved.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6478": {
+    "cvss": 7.5,
+    "description": "A flaw was found in xorg-server. A specially crafted request to RRChangeProviderProperty or RRChangeOutputProperty can trigger an integer overflow which may lead to a disclosure of sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5824": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Squid. The limits applied for validation of HTTP response headers are applied before caching. However, Squid may grow a cached HTTP response header beyond the configured maximum size, causing a stall or crash of the worker process when a large header is retrieved from the disk cache, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5367": {
+    "cvss": 7.8,
+    "description": "A out-of-bounds write flaw was found in the xorg-x11-server. This issue occurs due to an incorrect calculation of a buffer offset when copying data stored in the heap in the XIChangeDeviceProperty function in Xi/xiproperty.c and in RRChangeOutputProperty function in randr/rrproperty.c, allowing for possible escalation of privileges or denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5574": {
+    "cvss": 7.0,
+    "description": "A use-after-free flaw was found in xorg-x11-server-Xvfb. This issue occurs in Xvfb with a very specific and legacy configuration (a multi-screen setup with multiple protocol screens, also known as Zaphod mode). If the pointer is warped from a screen 1 to a screen 0, a use-after-free issue may be triggered during shutdown or reset of the Xvfb server, allowing for possible escalation of privileges or denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5633": {
+    "cvss": 7.8,
+    "description": "The reference count changes made as part of the CVE-2023-33951 and CVE-2023-33952 fixes exposed a use-after-free flaw in the way memory objects were handled when they were being used to store a surface. When running inside a VMware guest with 3D acceleration enabled, a local, unprivileged user could potentially use this flaw to escalate their privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5557": {
+    "cvss": 7.7,
+    "description": "A flaw was found in the tracker-miners package. A weakness in the sandbox allows a maliciously-crafted file to execute code outside the sandbox if the tracker-extract process has first been compromised by a separate vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4853": {
+    "cvss": 8.1,
+    "description": "A flaw was found in Quarkus where HTTP security policies are not sanitizing certain character permutations correctly when accepting requests, resulting in incorrect evaluation of permissions. This issue could allow an attacker to bypass the security policy altogether, resulting in unauthorized endpoint access and possibly a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-3094": {
+    "cvss": 10.0,
+    "description": "Malicious code was discovered in the upstream tarballs of xz, starting with version 5.6.0. Through a series of complex obfuscations, the liblzma build process extracts a prebuilt object file from a disguised test file existing in the source code, which is then used to modify specific functions in the liblzma code. This results in a modified liblzma library that can be used by any software linked against this library, intercepting and modifying the data interaction with this library.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 10"
+  },
+  "CVE-2025-3155": {
+    "cvss": 7.4,
+    "description": "A flaw was found in Yelp. The Gnome user help application allows the help document to execute arbitrary scripts. This vulnerability allows malicious users to input help documents, which may exfiltrate user files to an external environment.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 8"
+  },
+  "CVE-2025-57201": {
+    "cvss": 8.8,
+    "description": "AVTECH SECURITY Corporation DGM1104 FullImg-1015-1004-1006-1003 was discovered to contain an authenticated command injection vulnerability in the SMB server function. This vulnerability allows attackers to execute arbitrary commands via a crafted input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-29268": {
+    "cvss": 9.8,
+    "description": "ALLNET ALL-RUT22GW v3.3.8 was discovered to store hardcoded credentials in the libicos.so library.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-65212": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in NJHYST HY511 POE core before 2.1 and plugins before 0.1. The vulnerability stems from the device's insufficient cookie verification, allowing an attacker to directly request the configuration file address and download the core configuration file without logging into the device management backend. By reading the corresponding username and self-decrypted MD5 password in the core configuration file, the attacker can directly log in to the backend, thereby bypassing the front-end backend login page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61260": {
+    "cvss": 9.8,
+    "description": "A vulnerability was identified in OpenAI Codex CLI v0.23.0 and before that enables code execution through malicious MCP (Model Context Protocol) configuration files. The attack is triggered when a user runs the codex command inside a malicious or compromised repository. Codex automatically loads project-local .env and .codex/config.toml files without requiring user confirmation, allowing attackers to embed arbitrary commands that execute immediately.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
