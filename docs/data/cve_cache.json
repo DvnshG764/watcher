@@ -76294,5 +76294,185 @@
     "description": "Insecure Direct Object Reference (IDOR) in the Track order function in PHPGURUKUL Online Shopping Portal 2.1 allows information disclosure via the oid parameter.",
     "vendor": "PHP",
     "product": "Unknown"
+  },
+  "CVE-2026-86476": {
+    "cvss": 8.4,
+    "description": "A flaw was found in gst-plugins-base. A heap buffer overflow can be triggered when processing video buffers whose attached GstVideoMeta metadata declares plane strides and offsets that exceed the actual backing memory allocation. The metadata is not range-checked during deserialization, and the video frame mapping code does not verify that the declared plane geometry fits within the buffer before allowing consumers to read or write video data. A local attacker who controls the sending side of a GStreamer inter-process IPC pipeline can deliver a crafted buffer carrying fabricated strides, causing the receiving process to read or write beyond heap boundaries. Successful exploitation can cause a denial of service or potentially allow code execution within the affected process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86344": {
+    "cvss": 7.5,
+    "description": "A flaw was found in 389-ds-base. An unauthenticated remote attacker can send a complete LDAP operation followed by the first bytes of an incomplete LDAPMessage on the same connection, causing the server to hand that connection to a second worker thread before the first worker's result is flushed. The second worker blocks until nsslapd-ioblocktimeout while holding the connection mutex, preventing delivery of the completed operation's result. Repeating this across a small number of connections proportional to the configured worker-thread pool size exhausts the entire pool under default configuration, denying service to all clients (anonymous and authenticated, plaintext and TLS) for as long as the attacker maintains the connections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84474": {
+    "cvss": 9.9,
+    "description": "A flaw was found in Red Hat Ansible Automation Platform's automation- controller. The provisioning-callback secret (host_config_key) is exposed to users holding only the read-level view_jobtemplate permission -- both in the job template API representation and in the activity stream -- and the provisioning callback endpoint trusts a client-supplied X-Forwarded-For header to determine the calling host when the controller is deployed behind the AAP gateway with an empty proxy allow-list. By reading the secret and spoofing X-Forwarded-For to match any host in the job template's inventory, a minimally privileged or unauthenticated remote attacker can launch the job template against arbitrary managed hosts using the job template's credentials, resulting in privilege escalation and remote code execution on managed hosts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84486": {
+    "cvss": 8.2,
+    "description": "A flaw was found in Red Hat Ansible Automation Platform's automation- controller. Four debug views that trigger the internal task, dependency, and workflow schedulers are configured to allow any user (including unauthenticated clients) and are routed in production builds because their URL include is not gated on the debug setting. An unauthenticated remote attacker can repeatedly invoke these endpoints to acquire the cluster-wide scheduler advisory lock; because the legitimate scheduler acquires the same lock without waiting, the attacker causes real scheduler runs to be skipped, stalling job dispatch for all tenants, while also consuming controller web workers. The debug root view additionally discloses the list of debug endpoints to unauthenticated callers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84502": {
+    "cvss": 9.9,
+    "description": "A flaw was found in Red Hat Ansible Automation Platform's automation- controller. The Project scm_url field is not validated against values that begin with a dash and is stored and passed verbatim to the git SCM module. Because the module runs git ls-remote with the URL as a positional argument and without a \"--\" separator, a git project URL such as \"--upload-pack= :x\" is interpreted by git as the --upload-pack option and executed via a shell. A user with permission to create or modify a project in a single organization can thereby execute arbitrary commands on the control-plane task pod, with output reflected through the project update stdout endpoint, leading to cross-tenant compromise and in-cluster lateral movement",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75884": {
+    "cvss": 9.1,
+    "description": "A flaw was found in AWX. The container group pod_spec_override field uses an incomplete blocklist that only restricts automountServiceAccountToken, allowing injection of initContainers, serviceAccountName overrides, and projected service account token volumes. An AAP platform administrator can exploit this to escalate privileges to OpenShift namespace-level access and exfiltrate namespace secrets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84683": {
+    "cvss": 8.7,
+    "description": "A flaw was found in Red Hat Ansible Automation Platform's automation- controller. The HTML view of job, ad hoc command, project update, and inventory update standard output escapes HTML metacharacters but does not remove ANSI terminal escape sequences before conversion to HTML. An ANSI OSC 8 hyperlink sequence in the output is expanded into an HTML anchor whose href is not scheme- filtered or escaped, so a low-privileged user who can produce output -- or an external party whose data a playbook echoes -- can embed a javascript: link that is rendered into a text/html response with no Content-Security-Policy. When a higher-privileged user views the output page and clicks the link, attacker- controlled JavaScript executes in their authenticated session, allowing actions as that user up to full platform takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84691": {
+    "cvss": 8.7,
+    "description": "A flaw was found in Red Hat Ansible Automation Platform's automation- controller. The setting that formats the log message emitted for API 4XX errors is an administrator-controlled Python format-string template that is rendered with a live user object as an argument. Because Python string formatting permits attribute and item traversal on its arguments, an administrator can craft a template that walks from the user object into the application settings and reads the Django secret key and the database password. The formatted message is written to a logger that can be forwarded to an external log aggregator, whose destination is also administrator-controlled, allowing the secrets to be sent off the host. An authenticated administrator can thereby obtain the master encryption key used to protect all stored credentials and the database service password, enabling offline decryption of every stored credential, forgery of user sessions, and direct access to the controller database.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84706": {
+    "cvss": 7.6,
+    "description": "A flaw was found in Ansible Automation Platform's automation-controller. The custom Credential Type environment-variable injector validates variable names against a deny-list (an ANSIBLE_* prefix check plus a fixed ENV_BLOCKLIST) that omits process-hijacking loader variables such as BASH_ENV, ENV, LD_PRELOAD, LD_LIBRARY_PATH, PYTHONSTARTUP and GIT_SSH_COMMAND. Combined with the credential file injector, a privileged user can write an attacker-controlled script into the execution environment and point BASH_ENV at it, obtaining arbitrary code execution inside the execution-environment container for any job that attaches a credential of that type.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84714": {
+    "cvss": 7.1,
+    "description": "A flaw was found in the automation-controller input-validation guard sanitize_jinja(). The function uses two regular expressions to reject user-supplied Jinja, but the patterns stop at the first interior '}' or '%' character, so a Jinja expression containing an inner brace (for example an empty dict) is accepted while remaining valid Jinja. Because sanitize_jinja() is the sole guard on several launch-time fields — ad-hoc command module_args, Machine-credential username / become_method / become_user, and inventory host names — a low-privileged user can inject Jinja that ansible-core evaluates in the execution environment. This enables execution of arbitrary commands in the execution environment (bypassing an administrator's AD_HOC_COMMANDS module allowlist) and disclosure of secrets belonging to credentials the attacker cannot read (by templating a co-attached credential's injected environment variables), across the credential access-control boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84719": {
+    "cvss": 9.9,
+    "description": "A flaw was found in the Ansible Automation Platform automation-controller. When a WorkflowJobTemplate is copied, the deep-copy permission sanitizer validates only the inventory, unified_job_template, and credentials of each cloned node and fails to check the instance_groups (and execution_environment and labels) that were preserved from the original. A user with organization workflow-admin permission but no role on the referenced instance groups can copy a workflow, become its administrator, and launch jobs pinned to instance groups they are not authorized to use — including the control-plane instance group — bypassing the InstanceGroup use_role boundary and causing attacker-influenced automation to run in the control-plane execution context.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80110": {
+    "cvss": 8.1,
+    "description": "A flaw was found in pki-core. The v2 REST ACL filter selects a tie-breaking permission for colliding literal and wildcard ACL keys using lexicographic string comparison rather than specificity, causing a wildcard-mapped permission to override a more specific literal-mapped permission when both match. In the CA's profile-management REST API this allows a request to POST /v2/profiles/raw -- intended to require Administrator-level profiles.create permission -- to instead be authorized under the lower-privileged profiles.approve permission held by the default Certificate Manager Agents group. The highest threat from this vulnerability is to confidentiality and integrity of the certificate authority's issuance policy.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75092": {
+    "cvss": 7.3,
+    "description": "A privilege escalation flaw was found in the scan_mysql actor of leapp-upgrade-el9toel10 (provided by leapp-repository). During RHEL 9 to RHEL 10 upgrades, the actor runs: mysqld --validate-config --log-error-verbosity=2 directly as root in the Leapp actor context, bypassing the packaged MySQL systemd unit that normally starts the daemon as User=mysql. A process compromised as the mysql OS identity can write a version-2 persisted configuration (mysqld-auto.cnf) and a malicious shared object into /var/lib/mysql (a directory owned by mysql). That persisted map can set plugin_dir to /var/lib/mysql and early_plugin_load (or related loader options such as plugin_load / plugin_load_add) so MySQL loads the attacker-controlled object during configuration validation. Plugin loading can reach dlopen() before MySQL’s runtime-user check and before plugin-symbol validation. When an administrator subsequently runs the documented Leapp preupgrade or upgrade workflow, attacker-controlled code can execute as UID 0 with a full capability set in an unconfined SELinux domain (unconfined_t). The attack does not require write access to the default system plugin path under /usr; redirecting plugin_dir via mysql-owned persisted state is sufficient. Ordinary SQL privileges alone (including highly privileged SQL accounts) are not a sufficient startpoint — OS-level execution as the mysql service identity is required, plus later administrator invocation of Leapp.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84042": {
+    "cvss": 7.8,
+    "description": "A flaw was found in crun. When crun is built with libkrun and a container is started rootful with passt networking (krun.use_passt), crun can execute attacker-controlled payload from the container image with host root privileges. The issue is a regression in crun 1.29. It affects crun >= 1.29",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88924": {
+    "cvss": 7.0,
+    "description": "A flaw was found in the admin backend of gvfs. The privileged gvfsd-admin daemon changes the ownership of newly created private D-Bus sockets by calling the link-following chown() function on a pathname inside a user-controlled directory. A local attacker can exploit this via a Time-of-Check Time-of-Use (TOCTOU) race condition and exchange the socket pathname with a symbolic link pointing to an arbitrary root-owned file (such as /etc/pam.d/su). The daemon subsequently follows the symlink and changes the ownership of the targeted root-owned file to the attacker's user ID. This allows an authenticated local attacker to modify critical system files, leading to a full local privilege escalation to root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76560": {
+    "cvss": 7.5,
+    "description": "A flaw was found in 389 Directory Server. The SELFDN ACI bind-rule evaluator incorrectly matches an anonymous LDAP client's empty bind DN against an empty stored attribute value, allowing an unauthenticated client to satisfy access control checks intended to require a matching authenticated identity. This can allow an anonymous LDAP client to perform an operation, such as adding or modifying a directory entry, that a SELFDN-based ACI intended to restrict to a specific authenticated user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85197": {
+    "cvss": 7.6,
+    "description": "A flaw was found in libsoup. A malicious HTTP/2 server or a Man-in-the-Middle (MITM) attacker can exploit a heap use-after-free vulnerability in the HTTP/2 client implementation. This occurs when a GNOME application uploads a file using HTTP/2, and the server sends a GOAWAY frame while the file body is being read asynchronously. This can lead to memory corruption, potentially resulting in information disclosure or arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-78409": {
+    "cvss": 7.0,
+    "description": "The X-mount.subdir option uses a detached-tree fast path on Linux 6.15 and later and passes the configured subdirectory to open_tree() with AT_SYMLINK_NOFOLLOW. That flag does not stop intermediate symlink traversal or keep resolution inside the newly mounted filesystem. A local unprivileged user with an fstab-authorized X-mount.subdir entry can attach a host path at the intended mountpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84268": {
+    "cvss": 8.8,
+    "description": "A flaw was found in the SFTP backend in gvfs. When mounting a share and reading a file, a malicious SFTP server can cause read_reply() to process a length that exceeds the size requested by the client. The function does not verify the server-provided length against the allocated buffer size, causing the operation to write past the intended boundaries. This issue allows a malicious server to corrupt adjacent heap memory in the gvfsd-sftp process, resulting in a denial of service as the process aborts upon detecting the heap corruption or potentially allowing arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81624": {
+    "cvss": 7.5,
+    "description": "Undertow is a flexible performant web server used in JBoss EAP and WildFly. A flaw was found in how Undertow handles WebSocket connections. Specifically, certain configuration limits like message buffer sizes and session timeouts cannot be adjusted and default to being unlimited. This allows a remote attacker to send large amounts of data or maintain connections indefinitely, potentially crashing the server by exhausting its memory or other resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79655": {
+    "cvss": 7.8,
+    "description": "A flaw was found in sos clean, a utility within the sos package. This vulnerability allows a local attacker to perform arbitrary file creation or overwrite. By crafting a malicious tar archive, an attacker can exploit a path traversal issue during tar extraction, where symlink and hardlink targets are not properly validated. This enables the attacker to write files to arbitrary locations on the system with the privileges of the sos clean process, which often runs as root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79992": {
+    "cvss": 7.8,
+    "description": "A flaw was found in Emacs TRAMP. A local attacker could exploit this vulnerability by processing maliciously crafted filenames. This occurs because TRAMP concatenates login arguments without proper sanitization, which are then passed to a local shell. Successful exploitation could lead to arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80186": {
+    "cvss": 7.6,
+    "description": "A stack-based buffer overflow vulnerability exists in BlueZ, the Linux Bluetooth protocol stack. A remote user within Bluetooth radio range can send a specially crafted Extended Inquiry Response (EIR) packet that causes a buffer overflow when the target device performs Bluetooth discovery. This vulnerability can lead to a Denial of Service (DoS) by crashing the bluetoothd service and may allow for arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71364": {
+    "cvss": 7.2,
+    "description": "A path traversal vulnerability was found in AWX's project archive extraction. The project_archive action plugin extracts zip and tar archive members by joining the project directory path with the member filename without performing path normalization, boundary validation, or rejecting directory traversal sequences. A malicious archive containing members with path traversal components can write files to arbitrary locations on the execution node's filesystem outside the intended project directory. An attacker who controls the archive content, either through a compromised upstream source, a malicious archive URL, or a man-in-the-middle attack on a plain HTTP connection, can achieve arbitrary file writes as the user performing the extraction, potentially leading to remote code execution through mechanisms such as cron files, SSH authorized keys, or playbook content injection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71366": {
+    "cvss": 7.7,
+    "description": "A server-side request forgery (SSRF) vulnerability was found in multiple AWX notification backends. The webhook, Mattermost, Rocket.Chat, and Grafana notification backends use notification template URLs as direct HTTP request targets without validating the target address against private, loopback, or reserved IP ranges. An organization notification administrator can create notification templates pointing to internal or loopback addresses, causing the AWX control node to issue HTTP requests to services that are not externally accessible. Additionally, the webhook notification backend follows HTTP redirects and resends configured Basic Authentication credentials to redirect targets regardless of host change, allowing an attacker to exfiltrate notification credentials by redirecting to an attacker-controlled host. The Grafana backend sends its API key in the Authorization header to the configured target URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-78465": {
+    "cvss": 7.0,
+    "description": "A flaw was found in the file-pcx plugin in GIMP, affecting 32-bit builds only. When processing a PCX image file, the plugin calculates memory allocation sizes based on the image dimensions and the number of color planes. If a crafted file sets the number of planes to 4 alongside sufficiently large dimensions, the calculation exceeds the 32-bit integer limit and overflows, resulting in an undersized heap-based buffer allocation. This integer overflow issue results in a heap-based buffer overflow when the plugin subsequently writes image data into the undersized buffer, causing memory corruption, potentially leading to arbitrary code execution or a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71365": {
+    "cvss": 7.7,
+    "description": "A server-side request forgery (SSRF) vulnerability was found in AWX's webhook status callback mechanism. When processing GitHub pull request webhooks, AWX extracts the status callback URL (pull_request.statuses_url) from the incoming webhook payload without validating the target host against the expected Git provider. This URL is persisted in job extra variables and later used to send authenticated status updates. A user with admin role on a webhook-enabled job template can read the template's webhook signing key, forge a signed GitHub webhook payload with an arbitrary statuses_url, and cause AWX to POST status updates to an attacker-controlled or internal URL. The status update request includes the configured Git Personal Access Token (PAT) in the Authorization header, resulting in credential leakage to the attacker-specified endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71217": {
+    "cvss": 7.5,
+    "description": "A flaw was found in iperf3. A remote attacker can exploit this vulnerability by sending crafted control-channel JSON with oversized numeric parameters, such as `parallel` and `len`, which are not properly validated by the server. This improper input validation can lead to excessive stream and thread creation, as well as large buffer allocations, causing resource exhaustion. Consequently, this can result in a Denial of Service (DoS) on the affected iperf3 server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7867": {
+    "cvss": 7.8,
+    "description": "A flaw was found in udisks2. A local attacker with an active console session can exploit insufficient authorization checking on the 'as-user' option in the org.freedesktop.UDisks2.Filesystem.Mount() D-Bus method. This allows the attacker to spoof the 'as-user' parameter, mounting filesystems on behalf of arbitrary users, including privileged accounts. This can lead to local privilege escalation through mount point injection and manipulation of the mount namespace visible to privileged users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6846": {
+    "cvss": 7.8,
+    "description": "A flaw was found in binutils. A heap-buffer-overflow vulnerability exists when processing a specially crafted XCOFF (Extended Common Object File Format) object file during linking. A local attacker could trick a user into processing this malicious file, which could lead to arbitrary code execution, allowing the attacker to run unauthorized commands, or cause a denial of service, making the system unavailable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
