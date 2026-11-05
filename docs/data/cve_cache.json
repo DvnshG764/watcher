@@ -76486,5 +76486,11 @@
     "description": "A flaw was found in 389-ds-base. The get_ldapmessage_controls_ext() function in the LDAP server does not enforce an upper bound on the number of controls per LDAP message. A remote, unauthenticated attacker can send a specially crafted LDAP request containing hundreds of thousands of minimal controls within the default maximum BER message size (2 MB), causing excessive CPU consumption and heap allocation on the server. Under concurrent exploitation, this leads to significant latency degradation, worker thread starvation, or out-of-memory termination, resulting in a denial of service.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2024-1139": {
+    "cvss": 7.7,
+    "description": "A credentials leak vulnerability was found in the cluster monitoring operator in OCP. This issue may allow a remote attacker who has basic login credentials to check the pod manifest to discover a repository pull secret.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
