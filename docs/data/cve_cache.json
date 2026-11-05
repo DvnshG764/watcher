@@ -17862,10 +17862,10 @@
     "product": "Juggle"
   },
   "CVE-2026-69137": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 7.7,
+    "description": "SuiteCRM is an open-source, enterprise-ready Customer Relationship Management (CRM) software application. Prior to 7.15.2 and 8.10.2, the CalendarAccount testConnection action passes an authenticated caller's server_url directly to curl without host, address, or scheme validation. The affected flow begins at CalendarAccount::action_testConnection and uses server_url, CalDAVProvider::makeCalDAVRequest(), and PROPFIND to carry attacker-controlled data or authorization state into the security-sensitive operation. The server sends a PROPFIND request from its network context and returns non-success response bodies, enabling internal-service access, partial response disclosure, service enumeration, and possible cloud metadata access. This issue is fixed in versions 7.15.2 and 8.10.2.",
+    "vendor": "SuiteCRM",
+    "product": "SuiteCRM"
   },
   "CVE-2026-76268": {
     "cvss": 9.8,
@@ -80096,6 +80096,408 @@
   "CVE-2024-32475": {
     "cvss": 7.5,
     "description": "Envoy is a cloud-native, open source edge and service proxy. When an upstream TLS cluster is used with `auto_sni` enabled, a request containing a `host`/`:authority` header longer than 255 characters triggers an abnormal termination of Envoy process. Envoy does not gracefully handle an error when setting SNI for outbound TLS connection. The error can occur when Envoy attempts to use the `host`/`:authority` header value longer than 255 characters as SNI for outbound TLS connection. SNI length is limited to 255 characters per the standard. Envoy always expects this operation to succeed and abnormally aborts the process when it fails. This vulnerability is fixed in 1.30.1, 1.29.4, 1.28.3, and 1.27.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102473": {
+    "cvss": 5.5,
+    "description": "A flaw was found in dash. When built without libc fnmatch, the internal pmatch() matcher implements * by unbounded recursion over candidate positions. A local user who can plant filenames, or otherwise feed that matcher, can make a short multi-star pattern such as *.*.*.*.*.tar.gz consume excessive CPU.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102474": {
+    "cvss": 4.0,
+    "description": "A flaw was found in dash. The printf builtin reserves four bytes before converting a Unicode \\u or \\U escape, but the multi-byte token can need five or six bytes. A local user who can supply such an escape to dash printf or echo %b, including through dash -c and a positional argument, can write one or two bytes past that reservation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11873": {
+    "cvss": 6.5,
+    "description": "An Apache-proxied Dogtag CA REST endpoint exposed by IdM (POST /ca/rest/certrequests) returns HTTP 500 with internal Java stack traces for unauthenticated malformed requests. The same unauthenticated error path emits large multi-line stack traces into the CA debug log, creating a log-amplification resource exhaustion vector (disk growth and I/O contention) without requiring authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-14180": {
+    "cvss": 5.3,
+    "description": "A flaw was found in the ChunkReader component of the Undertow HTTP server, which is used by WildFly and JBoss EAP to handle chunked transfer encoding. The issue occurs because the parser uses a single internal variable to store both the remaining chunk size and state flags. By sending a specially crafted request with an extremely large chunk size, an attacker can cause these values to overlap, tricking the parser into thinking a request has finished prematurely. This can allow a second, \"smuggled\" request to be processed out of sync, potentially bypassing security controls.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11770": {
+    "cvss": 7.5,
+    "description": "A flaw was found in 389 Directory Server. An unauthenticated remote attacker can inject LDAP search filters into the CleanAllRUV replication status-check extended operation. Because the handler performs the search against cn=config with elevated replication plugin privileges and returns a boolean match result, the attacker can extract sensitive server configuration metadata, including replication bind DNs and password storage scheme information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15003": {
+    "cvss": 5.6,
+    "description": "A flaw was found in the GNU Binutils (Binary Utilities) linker. This vulnerability, a heap-buffer-overflow read (CWE-125), occurs when the linker processes a specially crafted 32-bit XCOFF (Extended Common Object File Format) object file. An attacker could exploit this by providing a malicious file, leading to an out-of-bounds read of memory. This can result in information disclosure, potentially revealing sensitive heap data, and a Denial of Service (DoS) due to the linker crashing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12353": {
+    "cvss": 5.3,
+    "description": "An unauthenticated attacker could trigger an Out of Memory condition to crash the Java process for RHCS by repeatedly sending HTTP requests to the TLS endpoint. Depending on how the RHCS server is configured, a manual intervention to restart it may prove necessary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16473": {
+    "cvss": 4.3,
+    "description": "A flaw was found in the sbc library (BlueZ SBC codec). An off-by-one error in the SBC frame decoder allows a crafted audio payload to trigger a one-byte heap out-of-bounds read. This could allow an adjacent attacker streaming Bluetooth audio to read a single byte of adjacent heap memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15370": {
+    "cvss": 7.3,
+    "description": "A flaw was found in libssh. During SFTP server directory listing, the longname field is constructed with unsafe concatenation into a fixed-size stack buffer. When a client causes the server to list attacker-controlled filenames, sufficiently long names can overflow that stack buffer and may lead to crashes or possible code execution on the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16461": {
+    "cvss": 6.5,
+    "description": "A stack-based buffer overflow was found in rpcbind's rpcinfo utility. In rpcbdump() short mode (used by `rpcinfo -s`), version numbers from a remote RPCBPROC_DUMP reply are written into a fixed-size stack buffer without bounds checking. A user or administrator who runs `rpcinfo -s` against a malicious or compromised rpcbind endpoint could experience a crash or denial of service of the rpcinfo client.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12548": {
+    "cvss": 4.2,
+    "description": "A heap out-of-bounds read flaw was found in libsoup. When parsing multipart HTTP messages, an integer type mismatch between the caller and soup_headers_parse() can cause the length parameter to be incorrectly truncated, leading to a heap buffer over-read. A remote attacker could use this flaw to crash an application using libsoup or potentially disclose heap memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15813": {
+    "cvss": 6.5,
+    "description": "A vulnerability was found in the network packet de-fragmentation engine of kronosnet (Version affected <= 1.34). The internal reassembly code does not properly validate sequence numbers of incoming payload fragments. An attacker can exploit this lack of verification by transmitting malformed packets with corrupted sequence parameters. Under specific conditions, this forces the packet processing layer to parse data outside the designated bounds of the internal memory structures, causing an out-of-bounds memory access or heap corruption. This behavior can result in sudden application crashes or system instability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16277": {
+    "cvss": 6.5,
+    "description": "A stack-based buffer overflow was found in rpcbind's rpcinfo utility. When querying a remote rpcbind service with `rpcinfo -l`, address information returned by the server is copied into a fixed-size buffer without sufficient bounds checking. A malicious or compromised rpcbind server could use this flaw to crash the rpcinfo client, resulting in a denial of service. The highest threat from this vulnerability is to system availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15779": {
+    "cvss": 6.1,
+    "description": "A flaw was found in samba's pam_winbind. When mkhomedir is enabled, pam_winbind chowns the target account's home directory without validating the path is not a critical system directory such as /. On affected systems, accounts with / as their home directory (a common default for system accounts) can have this triggered not only by root, but by a non-root user holding a narrow sudo delegation to run commands as that account, causing ownership of / to change and resulting in severe denial of service (SSH, sudo, and package-manager failures). The change does not grant write access to / (which ships with restrictive 0555 permissions on RHEL), so the impact is availability loss rather than further privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15709": {
+    "cvss": 7.5,
+    "description": "A flaw was found in libsoup's WebSocket implementation when using the permessage-deflate extension. The extension's decompression loop (inflate()) processes data in chunks without enforcing an upper boundary limit on the output buffer size. While libsoup limits the incoming compressed frame size via max_incoming_payload_size, it fails to track or limit memory allocation during decompression. A separate check for decompressed size (max_total_message_size) exists but executes only after inflation is complete, and it is entirely disabled by default for client connections. A remote, unauthenticated attacker can exploit this by sending a small, highly compressed payload (a decompression bomb), causing unbounded memory allocation that triggers an Out-of-Memory (OOM) crash and a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15711": {
+    "cvss": 7.5,
+    "description": "A vulnerability was found in libsoup's WebSocket frame parsing implementation. The library fails to validate length rules specified in RFC 6455 §5.5, which mandates that all WebSocket control frames (e.g., PING, PONG, CLOSE) contain a payload of 125 bytes or less. A remote, unauthenticated attacker can exploit this by sending a non-compliant, oversized control frame. Because the parser handles this protocol violation improperly instead of throwing an immediate connection termination error, it triggers a internal processing crash, resulting in a remote denial of service (DoS) for applications utilizing libsoup WebSockets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15714": {
+    "cvss": 6.5,
+    "description": "An out-of-bounds read vulnerability was found in libsoup's multipart processing subsystem. The flaw exists in the soup_multipart_input_stream_read_headers() function inside soup-multipart-input-stream.c, which does not adequately restrict or validate the size of incoming multipart boundary strings. When processing a crafted HTTP response containing a malformed or oversized boundary parameter, the internal stream reader reads past the allocated buffer bounds. A remote, unauthenticated attacker can exploit this behavior to cause a service denial (DoS) through application failure or potentially read fragments of unauthorized memory metadata.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-14940": {
+    "cvss": 5.3,
+    "description": "A heap-buffer-overflow flaw was found in 389 Directory Server (389-ds-base). When normalizing a Distinguished Name (DN) that contains a legacy-quoted value encoding a multivalued nested Relative Distinguished Name (RDN), the server can write past the end of a heap allocation while sorting RDN attribute-value pairs. An unauthenticated remote attacker can trigger this condition by sending an LDAP operation whose DN reaches the DN normalization routine, such as a search with a crafted base DN. This can corrupt heap memory and may cause denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-14969": {
+    "cvss": 4.4,
+    "description": "A flaw was found in 389-ds-base where the LDBM backend attribute encryption uses a hardcoded static initialization vector for AES-CBC and 3DES-CBC operations, allowing an attacker with privileged filesystem access to detect plaintext equality across encrypted entries by comparing ciphertext blocks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-13757": {
+    "cvss": 6.2,
+    "description": "A flaw was found in p11-kit. The RPC message attribute parsing functions p11_rpc_message_get_attribute() and p11_rpc_message_get_attribute_array_value() form a mutually-recursive call chain with no recursion depth limit when processing nested CKA_WRAP_TEMPLATE, CKA_UNWRAP_TEMPLATE, and CKA_DERIVE_TEMPLATE attributes. An unauthenticated attacker with local access to the p11-kit RPC Unix domain socket can send a specially crafted request with deeply nested template attributes, causing stack exhaustion and crashing the p11-kit server process and its dependent services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11819": {
+    "cvss": 5.5,
+    "description": "Module: plugins/modules/keyring_info.py CVSS 3.1: 5.5 MEDIUM — AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N Issue: The module retrieves a passphrase from the OS native keyring (GNOME Keyring, macOS Keychain, Windows Credential Manager) and places it directly into result[\"passphrase\"] with no output suppression, no no_log protection, and no documentation warning. Root Cause: Line 105 (protected): keyring_password=dict(type=\"str\", required=True, no_log=True) Line 127 (NOT protected): result[\"passphrase\"] = passphrase Observed Output: { \"changed\": false, \"passphrase\": \"MyMasterP@ssw0rd!SSH_Key_Secret\" } Visible via register + debug: { \"keyring_result\": { \"changed\": false, \"passphrase\": \"MyMasterP@ssw0rd!SSH_Key_Secret\" } } Impact: Master passwords, SSH key passphrases and service credentials appear in all Ansible output register: keyring_result followed by debug: var=keyring_result prints passphrase in full Ansible fact caching backends (Redis, JSON file, memcached) may persist the passphrase AWX/Tower job logs silently store the live credential Fix: module.exit_json(changed=False, passphrase=passphrase, _ansible_no_log=True) Also add a documentation warning requiring callers to use no_log: true at the task level. PoCs Fig 1: PoC execution showing passphrase in plaintext output Fig 2: Source code showing no_log=True on input (line 105) vs unprotected output (line 127)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11820": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the community.general Ansible collection's nexmo module. The module constructs HTTP requests to the Vonage/Nexmo SMS API by encoding API credentials (api_key and api_secret) into URL query parameters and sending them via GET requests. This causes credentials to be exposed in web server access logs, proxy logs, HTTP Referer headers, and network monitoring tools, despite the Ansible argument specification marking these parameters as no_log. An attacker with access to any of these logging or monitoring points can obtain the full API credentials and gain unauthorized access to the victim's Vonage/Nexmo account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12891": {
+    "cvss": 4.3,
+    "description": "A flaw was found in the GStreamer gst-plugins-bad package. When processing a malformed H.266/VVC video stream with a crafted aspect ratio indicator value, the H.266 parser performs an out-of-bounds read of up to 8 bytes from adjacent memory. This flaw allows an attacker to craft a malicious H.266 video file or stream that, when processed by a GStreamer-based application, could leak limited memory contents through video metadata, potentially exposing sensitive information from the application's address space.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12892": {
+    "cvss": 4.4,
+    "description": "A flaw was found in GStreamer's gst-plugins-bad package. When processing a specially crafted H.264 video file containing malformed MVC or SVC extension slice NAL units, a 1-byte heap out-of-bounds read can occur during parsing. This happens when the parser attempts to check slice boundary information without first verifying that the NAL unit contains enough data beyond the extension header. An attacker could exploit this by tricking a user into opening a malicious H.264 video file, potentially causing the application to crash or leak a single byte of heap memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12549": {
+    "cvss": 4.8,
+    "description": "The fix for CVE-2026-2443 was regressed by a subsequent rework commit that replaced specific overflow checks with a general signed comparison. When a client sends a Range request with a suffix length exceeding the content size, the resulting negative start value is not properly clamped, leading to malformed HTTP 206 responses and log flooding.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12725": {
+    "cvss": 5.9,
+    "description": "A heap-based buffer overflow was found in dnsmasq. When DNSSEC validation and query logging are both enabled, logging of DS or DNSKEY replies containing unsupported algorithm or digest types can cause dnsmasq to write past the end of an internal logging buffer. A remote attacker able to supply such a DNS response may crash the dnsmasq process, resulting in denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11791": {
+    "cvss": 5.0,
+    "description": "A flaw was found in 389 Directory Server. During schema reload, the attr_syntax_swap_ht() function unconditionally frees attribute syntax information nodes, bypassing the refcount-based deferred deletion used elsewhere in the attribute syntax subsystem. If an administrator triggers schema reload while concurrent LDAP query traffic is active, worker threads may access freed memory, resulting in use-after-free or double-free and a denial of service (server crash).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11884": {
+    "cvss": 6.5,
+    "description": "A heap buffer overflow flaw was found in 389 Directory Server. When serializing objectclass definitions, the oc_superior (SUP) field length is omitted from buffer size calculations in read_schema_dse() and schema_oc_to_string(), but the field is still written via strcat(). An attacker with Directory Manager privileges, or a compromised replication supplier, can trigger a server crash by creating objectclasses with long SUP values. This is an incomplete fix variant of CVE-2025-14905.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11785": {
+    "cvss": 4.3,
+    "description": "A flaw was found in 389 Directory Server. A type confusion in the SSO token extended operation handler causes partial stack address information to be disclosed in LDAP responses to authenticated users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11787": {
+    "cvss": 6.3,
+    "description": "A flaw was found in 389 Directory Server. The ldap_utf8prev() function reads bytes before the start of a buffer without bounds checking, causing a heap buffer over-read in string filter parsing that may influence internal filter processing behavior.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11788": {
+    "cvss": 7.5,
+    "description": "A flaw was found in 389 Directory Server. The dereference control plugin does not check for allocation failure before using a BER structure, allowing an unauthenticated remote attacker to crash the LDAP server when the system is under memory pressure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11789": {
+    "cvss": 6.5,
+    "description": "A flaw was found in 389 Directory Server. The SMD5 password storage plugin performs unsigned integer underflow when computing salt length from a crafted password hash shorter than 16 bytes, causing a buffer over-read that crashes the LDAP server during authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11790": {
+    "cvss": 4.9,
+    "description": "A flaw was found in 389 Directory Server. The PBKDF2-SHA256 password storage plugin does not enforce an upper bound on the iteration count extracted from stored password hashes. A privileged attacker who can modify a user's password hash can cause excessive CPU consumption during authentication, resulting in denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11611": {
+    "cvss": 6.5,
+    "description": "A flaw was found in 389 Directory Server. The Content Synchronization persistent search plugin allows unbounded memory growth when an authenticated client stops reading sync responses, enabling denial of service. Additional race conditions in plugin thread lifecycle can cause crashes during connection teardown or shutdown.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-66286": {
+    "cvss": 4.7,
+    "description": "An API design flaw in WebKitGTK and WPE WebKit allows untrusted web content to unexpectedly perform IP connections, DNS lookups, and HTTP requests. Applications expect to use the WebPage::send-request signal handler to approve or reject all network requests. However, certain types of HTTP requests bypass this signal handler.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-58713": {
+    "cvss": 6.4,
+    "description": "A container privilege escalation flaw was found in certain Red Hat Process Automation Manager images. This issue stems from the /etc/passwd file being created with group-writable permissions during build time. In certain conditions, an attacker who can execute commands within an affected container, even as a non-root user, can leverage their membership in the root group to modify the /etc/passwd file. This could allow the attacker to add a new user with any arbitrary UID, including UID 0, leading to full root privileges within the container.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0964": {
+    "cvss": 6.3,
+    "description": "A malicious SCP server can send unexpected paths that could make the client application override local files outside of working directory. This could be misused to create malicious executable or configuration files and make the user execute them under specific consequences. This is the same issue as in OpenSSH, tracked as CVE-2019-6111.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0966": {
+    "cvss": 8.2,
+    "description": "A flaw was found in libssh. The API function `ssh_get_hexa()` is vulnerable to a denial of service when processing zero-length input. This can be exploited remotely by an attacker during GSSAPI (Generic Security Service Application Program Interface) authentication if the server's logging verbosity is set to `SSH_LOG_PACKET (3)` or higher. Successful exploitation could lead to a self-Denial of Service of the per-connection daemon process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-2271": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GIMP's PSP (Paint Shop Pro) file parser. A remote attacker could exploit an integer overflow vulnerability in the read_creator_block() function by providing a specially crafted PSP image file. This vulnerability occurs when a 32-bit length value from the file is used for memory allocation without proper validation, leading to a heap overflow and an out-of-bounds write. Successful exploitation could result in an application level denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-2272": {
+    "cvss": 6.5,
+    "description": "A flaw was found in GIMP. An integer overflow vulnerability exists when processing ICO image files, specifically in the `ico_read_info` and `ico_read_icon` functions. This issue arises because a size calculation for image buffers can wrap around due to a 32-bit integer evaluation, allowing oversized image headers to bypass security checks. A remote attacker could exploit this by providing a specially crafted ICO file, leading to a buffer overflow and memory corruption, which may result in an application level denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-9907": {
+    "cvss": 6.7,
+    "description": "A flaw was found in the Red Hat Ansible Automation Platform, Event-Driven Ansible (EDA) Event Stream API. This vulnerability allows exposure of sensitive client credentials and internal infrastructure headers via the test_headers field when an event stream is in test mode. The possible outcome includes leakage of internal infrastructure details, accidental disclosure of user or system credentials, privilege escalation if high-value tokens are exposed, and persistent sensitive data exposure to all users with read access on the event stream.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-9908": {
+    "cvss": 6.7,
+    "description": "A flaw was found in the Red Hat Ansible Automation Platform, Event-Driven Ansible (EDA) Event Streams. This vulnerability allows an authenticated user to gain access to sensitive internal infrastructure headers (such as X-Trusted-Proxy and X-Envoy-*) and event stream URLs via crafted requests and job templates. By exfiltrating these headers, an attacker could spoof trusted requests, escalate privileges, or perform malicious event injection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-9909": {
+    "cvss": 6.7,
+    "description": "A flaw was found in the Red Hat Ansible Automation Platform Gateway route creation component. This vulnerability allows credential theft via the creation of misleading routes using a double-slash (//) prefix in the gateway_path. A malicious or socially engineered administrator can configure a honey-pot route to intercept and exfiltrate user credentials, potentially maintaining persistent access or creating a backdoor even after their permissions are revoked.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1536": {
+    "cvss": 5.3,
+    "description": "A flaw was found in libsoup. An attacker who can control the input for the Content-Disposition header can inject CRLF (Carriage Return Line Feed) sequences into the header value. These sequences are then interpreted verbatim when the HTTP request or response is constructed, allowing arbitrary HTTP headers to be injected. This vulnerability can lead to HTTP header injection or HTTP response splitting without requiring authentication or user interaction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1539": {
+    "cvss": 5.8,
+    "description": "A flaw was found in the libsoup HTTP library that can cause proxy authentication credentials to be sent to unintended destinations. When handling HTTP redirects, libsoup removes the Authorization header but does not remove the Proxy-Authorization header if the request is redirected to a different host. As a result, sensitive proxy credentials may be leaked to third-party servers. Applications using libsoup for HTTP communication may unintentionally expose proxy authentication data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1467": {
+    "cvss": 5.3,
+    "description": "A flaw was found in libsoup, an HTTP client library. This vulnerability, known as CRLF (Carriage Return Line Feed) Injection, occurs when an HTTP proxy is configured and the library improperly handles URL-decoded input used to create the Host header. A remote attacker can exploit this by providing a specially crafted URL containing CRLF sequences, allowing them to inject additional HTTP headers or complete HTTP request bodies. This can lead to unintended or unauthorized HTTP requests being forwarded by the proxy, potentially impacting downstream services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1484": {
+    "cvss": 4.2,
+    "description": "A flaw was found in the GLib Base64 encoding routine when processing very large input data. Due to incorrect use of integer types during length calculation, the library may miscalculate buffer boundaries. This can cause memory writes outside the allocated buffer. Applications that process untrusted or extremely large Base64 input using GLib may crash or behave unpredictably.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1489": {
+    "cvss": 5.4,
+    "description": "A flaw was found in GLib. An integer overflow vulnerability in its Unicode case conversion implementation can lead to memory corruption. By processing specially crafted and extremely large Unicode strings, an attacker could trigger an undersized memory allocation, resulting in out-of-bounds writes. This could cause applications utilizing GLib for string conversion to crash or become unstable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0810": {
+    "cvss": 7.1,
+    "description": "A flaw was found in gix-date. The `gix_date::parse::TimeBuf::as_str` function can generate strings containing invalid non-UTF8 characters. This issue violates the internal safety invariants of the `TimeBuf` component, leading to undefined behavior when these malformed strings are subsequently processed. This could potentially result in application instability or other unforeseen consequences.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0990": {
+    "cvss": 5.9,
+    "description": "A flaw was found in libxml2, an XML parsing library. This uncontrolled recursion vulnerability occurs in the xmlCatalogXMLResolveURI function when an XML catalog contains a delegate URI entry that references itself. A remote attacker could exploit this configuration-dependent issue by providing a specially crafted XML catalog, leading to infinite recursion and call stack exhaustion. This ultimately results in a segmentation fault, causing a Denial of Service (DoS) by crashing affected applications.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0716": {
+    "cvss": 4.8,
+    "description": "A flaw was found in libsoup’s WebSocket frame processing when handling incoming messages. If a non-default configuration is used where the maximum incoming payload size is unset, the library may read memory outside the intended bounds. This can cause unintended memory exposure or a crash. Applications using libsoup’s WebSocket support with this configuration may be impacted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61661": {
+    "cvss": 4.8,
+    "description": "A vulnerability has been identified in the GRUB (Grand Unified Bootloader) component. This flaw occurs because the bootloader mishandles string conversion when reading information from a USB device, allowing an attacker to exploit inconsistent length values. A local attacker can connect a maliciously configured USB device during the boot sequence to trigger this issue. A successful exploitation may lead GRUB to crash, leading to a Denial of Service. Data corruption may be also possible, although given the complexity of the exploit the impact is most likely limited.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61663": {
+    "cvss": 4.9,
+    "description": "A vulnerability has been identified in the GRUB2 bootloader's normal command that poses an immediate Denial of Service (DoS) risk. This flaw is a Use-after-Free issue, caused because the normal command is not properly unregistered when the module is unloaded. An attacker who can execute this command can force the system to access memory locations that are no longer valid. Successful exploitation leads directly to system instability, which can result in a complete crash and halt system availability. Impact on the data integrity and confidentiality is also not discarded.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61664": {
+    "cvss": 4.9,
+    "description": "A vulnerability in the GRUB2 bootloader has been identified in the normal module. This flaw, a memory Use After Free issue, occurs because the normal_exit command is not properly unregistered when its related module is unloaded. An attacker can exploit this condition by invoking the command after the module has been removed, causing the system to improperly access a previously freed memory location. This leads to a system crash or possible impacts in data confidentiality and integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-62231": {
+    "cvss": 7.3,
+    "description": "A flaw was identified in the X.Org X server’s X Keyboard (Xkb) extension where improper bounds checking in the XkbSetCompatMap() function can cause an unsigned short overflow. If an attacker sends specially crafted input data, the value calculation may overflow, leading to memory corruption or a crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-62229": {
+    "cvss": 7.3,
+    "description": "A flaw was found in the X.Org X server and Xwayland when processing X11 Present extension notifications. Improper error handling during notification creation can leave dangling pointers that lead to a use-after-free condition. This can cause memory corruption or a crash, potentially allowing an attacker to execute arbitrary code or cause a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-62230": {
+    "cvss": 7.3,
+    "description": "A flaw was discovered in the X.Org X server’s X Keyboard (Xkb) extension when handling client resource cleanup. The software frees certain data structures without properly detaching related resources, leading to a use-after-free condition. This can cause memory corruption or a crash when affected clients disconnect.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-9901": {
+    "cvss": 5.9,
+    "description": "A flaw was found in libsoup’s caching mechanism, SoupCache, where the HTTP Vary header is ignored when evaluating cached responses. This header ensures that responses vary appropriately based on request headers such as language or authentication. Without this check, cached content can be incorrectly reused across different requests, potentially exposing sensitive user information. While the issue is unlikely to affect everyday desktop use, it could result in confidentiality breaches in proxy or multi-user environments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-5988": {
+    "cvss": 5.3,
+    "description": "A flaw was found in the Ansible aap-gateway. Cross-site request forgery (CSRF) origin checking is not done on requests from the gateway to external components, such as the controller, hub, and eda.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-8114": {
+    "cvss": 4.7,
+    "description": "A flaw was found in libssh, a library that implements the SSH protocol. When calculating the session ID during the key exchange (KEX) process, an allocation failure in cryptographic functions may lead to a NULL pointer dereference. This issue can cause the client or server to crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-7519": {
+    "cvss": 6.7,
+    "description": "A flaw was found in polkit. When processing an XML policy with 32 or more nested elements in depth, an out-of-bounds write can be triggered. This issue can lead to a crash or other unexpected behavior, and arbitrary code execution is not discarded. To exploit this flaw, a high-privilege account is needed as it's required to place the malicious policy file properly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-6395": {
+    "cvss": 6.5,
+    "description": "A NULL pointer dereference flaw was found in the GnuTLS software in _gnutls_figure_common_ciphersuite().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-7345": {
+    "cvss": 7.5,
+    "description": "A flaw exists in gdk‑pixbuf within the gdk_pixbuf__jpeg_image_load_increment function (io-jpeg.c) and in glib’s g_base64_encode_step (glib/gbase64.c). When processing maliciously crafted JPEG images, a heap buffer overflow can occur during Base64 encoding, allowing out-of-bounds reads from heap memory, potentially causing application crashes or arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-5987": {
+    "cvss": 8.1,
+    "description": "A flaw was found in libssh when using the ChaCha20 cipher with the OpenSSL library. If an attacker manages to exhaust the heap space, this error is not detected and may lead to libssh using a partially initialized cipher context. This occurs because the OpenSSL error code returned aliases with the SSH_OK code, resulting in libssh not properly detecting the error returned by the OpenSSL library. This issue can lead to undefined behavior, including compromised data confidentiality and integrity or crashes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-6196": {
+    "cvss": 5.5,
+    "description": "A flaw was found in libgepub, a library used to read EPUB files. The software mishandles file size calculations when opening specially crafted EPUB files, leading to incorrect memory allocations. This issue causes the application to crash. Known affected usage includes desktop services like Tumbler, which may process malicious files automatically when browsing directories. While no direct remote attack vectors are confirmed, any application using libgepub to parse user-supplied EPUB content could be vulnerable to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-6035": {
+    "cvss": 6.1,
+    "description": "A flaw was found in GIMP. An integer overflow vulnerability exists in the GIMP \"Despeckle\" plug-in. The issue occurs due to unchecked multiplication of image dimensions, such as width, height, and bytes-per-pixel (img_bpp), which can result in allocating insufficient memory and subsequently performing out-of-bounds writes. This issue could lead to heap corruption, a potential denial of service (DoS), or arbitrary code execution in certain scenarios.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-6021": {
+    "cvss": 7.5,
+    "description": "A flaw was found in libxml2's xmlBuildQName function, where integer overflows in buffer size calculations can lead to a stack-based buffer overflow. This issue can result in memory corruption or a denial of service when processing crafted input.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
