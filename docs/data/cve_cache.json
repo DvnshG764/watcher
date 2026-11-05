@@ -76474,5 +76474,17 @@
     "description": "A flaw was found in binutils. A heap-buffer-overflow vulnerability exists when processing a specially crafted XCOFF (Extended Common Object File Format) object file during linking. A local attacker could trick a user into processing this malicious file, which could lead to arbitrary code execution, allowing the attacker to run unauthorized commands, or cause a denial of service, making the system unavailable.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-90949": {
+    "cvss": 7.8,
+    "description": "A flaw was found in GIMP's PSP (Paint Shop Pro) file loader. When processing a compressed selection channel, a heap-based buffer overflow can occur due to a mismatch between the allocated buffer size and the amount of data decompressed. A remote attacker could exploit this vulnerability by crafting a malicious PSP file. Opening this file in GIMP could lead to a crash or arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-9064": {
+    "cvss": 7.5,
+    "description": "A flaw was found in 389-ds-base. The get_ldapmessage_controls_ext() function in the LDAP server does not enforce an upper bound on the number of controls per LDAP message. A remote, unauthenticated attacker can send a specially crafted LDAP request containing hundreds of thousands of minimal controls within the default maximum BER message size (2 MB), causing excessive CPU consumption and heap allocation on the server. Under concurrent exploitation, this leads to significant latency degradation, worker thread starvation, or out-of-memory termination, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
