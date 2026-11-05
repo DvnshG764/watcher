@@ -76498,5 +76498,41 @@
     "description": "Jpom 2.10.0 through 2.11.12 contains an authentication bypass vulnerability that allows unauthenticated attackers to gain super-administrator access by injecting query conditions into the JPOM-USER-TOKEN header. Attackers can send a value like 'is not null', which Hutool's Condition parser treats as an operator, then execute commands through Jpom's script features.",
     "vendor": "dromara",
     "product": "Jpom"
+  },
+  "CVE-2026-115290": {
+    "cvss": 7.5,
+    "description": "Uncontrolled Recursion (CWE-674) in Elasticsearch can lead to denial of service via Serialized Data with Nested Payloads (CAPEC-230). An unauthenticated attacker with network access to the remote cluster server interface of a node can send a specially crafted request that causes the node to terminate. No credentials are required. The attacker can repeat the request against each reachable node.",
+    "vendor": "Elastic",
+    "product": "Elasticsearch"
+  },
+  "CVE-2026-114550": {
+    "cvss": 8.1,
+    "description": "libwebsockets MQTT Protocol PUBACK Packet Handling Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of libwebsockets. Authentication is not required to exploit this vulnerability. The specific flaw exists within the handling of PUBACK packets. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-31039.",
+    "vendor": "libwebsockets",
+    "product": "libwebsockets"
+  },
+  "CVE-2026-122051": {
+    "cvss": 10.0,
+    "description": "A flaw has been found in Edimax BR-6208AC 1.32. Affected by this vulnerability is an unknown functionality of the file /goform/mp. Executing a manipulation can lead to command injection. The attack may be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Edimax",
+    "product": "BR-6208AC"
+  },
+  "CVE-2026-18470": {
+    "cvss": 7.5,
+    "description": "The Login & Register Forms WordPress plugin before 4.0.2 does not verify that a password reset request comes from the account's owner, and does not adequately redact the address returned in its response, allowing unauthenticated users to obtain registered users' email addresses, including administrators'.",
+    "vendor": "Unknown",
+    "product": "Login & Register Forms"
+  },
+  "CVE-2026-107441": {
+    "cvss": 8.8,
+    "description": "An out-of-bounds write vulnerability in the CGI program of Zyxel GS1900-24E firmware versions through 2.90(AAHK.2)C0 could allow an unauthenticated adjacent attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.",
+    "vendor": "Zyxel",
+    "product": "GS1900-24E firmware"
+  },
+  "CVE-2026-122006": {
+    "cvss": 9.8,
+    "description": "The activestorage gem before 8.1.4.1 for Ruby on Rails, when ImageMagick attachment processing occurs, can allow server read and write operations (e.g., reading secret_key_base) because the ImageMagick analyzer runs when a file is attached, and there is not an ImageMagick security policy to block unintended functionality.",
+    "vendor": "rubyonrails",
+    "product": "Active Storage"
   }
 }
