@@ -58963,7 +58963,7 @@
   },
   "CVE-2026-93903": {
     "cvss": 9.4,
-    "description": "LiteSpeed Web Server (LSWS) before 6.3.7 build 1 mishandles internal redirect URL validation in a certain \"corner case.\"",
+    "description": "LiteSpeed Web Server (LSWS) before 6.3.7 build 1 mishandles internal redirect URL validation in a certain \"corner case\" of %252e%252e double decoding, letting a low-privileged tenant execute code in the context of a different account.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -76492,5 +76492,11 @@
     "description": "A credentials leak vulnerability was found in the cluster monitoring operator in OCP. This issue may allow a remote attacker who has basic login credentials to check the pod manifest to discover a repository pull secret.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-120201": {
+    "cvss": 9.8,
+    "description": "Jpom 2.10.0 through 2.11.12 contains an authentication bypass vulnerability that allows unauthenticated attackers to gain super-administrator access by injecting query conditions into the JPOM-USER-TOKEN header. Attackers can send a value like 'is not null', which Hutool's Condition parser treats as an operator, then execute commands through Jpom's script features.",
+    "vendor": "dromara",
+    "product": "Jpom"
   }
 }
