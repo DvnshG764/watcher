@@ -38660,7 +38660,7 @@
   "CVE-2016-10174": {
     "cvss": 9.8,
     "description": "The NETGEAR WNR2000v5 router contains a buffer overflow which can be exploited to achieve remote code execution.",
-    "vendor": "NETGEAR",
+    "vendor": "Check Point",
     "product": "WNR2000v5 Router"
   },
   "CVE-2016-0752": {
@@ -44876,8 +44876,8 @@
   "CVE-2026-6563": {
     "cvss": 8.8,
     "description": "A vulnerability has been found in H3C Magic B1 up to 100R004. The affected element is the function SetAPWifiorLedInfoById of the file /goform/aspForm. The manipulation of the argument param leads to buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "Magic B1"
   },
   "CVE-2026-6564": {
     "cvss": 4.3,
@@ -62606,7 +62606,7 @@
   "CVE-2026-58115": {
     "cvss": 10.0,
     "description": "A vulnerability has been identified in SIMATIC IoT2050 Advanced (6ES7647-0BA00-1YA2) (All versions < V4.3.4-1 running Industrial OS with Node-RED installed), SIMATIC IoT2050 Basic (6ES7647-0BA00-0YA2) (All versions < V4.3.4-1 running Industrial OS with Node-RED installed), SIMATIC IoT2050 M.2 (6ES7647-0BB00-1YA2) (All versions < V4.3.4-1 running Industrial OS with Node-RED installed), SIMATIC IoT2050 SM (6ES7647-0CA00-1AA2) (All versions < V4.3.4-1 running Industrial OS with Node-RED installed). Affected devices do not enforce authentication on the Node-RED HTTP interface, allowing unauthenticated access to programming nodes that are capable of executing system commands on the server. This could allow an unauthenticated remote attacker to create malicious flows through the HTTP interface in order to execute arbitrary code on the underlying server with maximum privileges.",
-    "vendor": "Siemens",
+    "vendor": "Check Point",
     "product": "SIMATIC IoT2050 Advanced"
   },
   "CVE-2026-81648": {
@@ -76592,7 +76592,7 @@
   "CVE-2026-12583": {
     "cvss": 8.1,
     "description": "The Newsletters WordPress plugin before 4.15 does not prevent deserialization of untrusted input that is stored through a public form, allowing unauthenticated attackers to inject a PHP object and, via a property-oriented gadget chain bundled with the Newsletters WordPress plugin before 4.15, write arbitrary files and execute code on the server.",
-    "vendor": "Unknown",
+    "vendor": "PHP",
     "product": "Newsletters"
   },
   "CVE-2026-118523": {
@@ -76610,7 +76610,163 @@
   "CVE-2026-120597": {
     "cvss": 4.3,
     "description": "A vulnerability was identified in Welcart e-Commerce Plugin up to 2.12.6 on WordPress. This affects the function ESCOTT_MAIN::error_page_message of the file classes/paymentESCOTT.main.class.php. Such manipulation of the argument ResponseCd leads to cross site scripting. The attack can be launched remotely. The exploit is publicly available and might be used. Upgrading to version 2.12.7 mitigates this issue. It is recommended to upgrade the affected component. The value is now escaped with esc_html() before output. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.",
-    "vendor": "Welcart",
+    "vendor": "PHP",
     "product": "e-Commerce Plugin"
+  },
+  "CVE-2023-5341": {
+    "cvss": 5.5,
+    "description": "A heap use-after-free flaw was found in coders/bmp.c in ImageMagick.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2020-18753": {
+    "cvss": null,
+    "description": "An issue in Dut Computer Control Engineering Co.'s PLC MAC1100 allows attackers to gain access to the system and escalate privileges via a crafted packet.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2019-10887": {
+    "cvss": null,
+    "description": "A reflected HTML injection vulnerability on Salicru SLC-20-cube3(5) devices running firmware version cs121-SNMP v4.54.82.130611 allows remote attackers to inject arbitrary HTML elements via a /DataLog.csv?log= or /AlarmLog.csv?log= or /waitlog.cgi?name= or /chart.shtml?data= or /createlog.cgi?name= request.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2018-12979": {
+    "cvss": null,
+    "description": "An issue was discovered on WAGO e!DISPLAY 762-3000 through 762-3003 devices with firmware before FW 02. Weak permissions allow an authenticated user to overwrite critical files by abusing the unrestricted file upload in the WBM.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2018-12981": {
+    "cvss": null,
+    "description": "An issue was discovered on WAGO e!DISPLAY 762-3000 through 762-3003 devices with firmware before FW 02. The vulnerability can be exploited by authenticated and unauthenticated users by sending special crafted requests to the web server allowing injecting code within the WBM. The code will be rendered and/or executed in the browser of the user's browser.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2023-36622": {
+    "cvss": null,
+    "description": "The websocket configuration endpoint of the Loxone Miniserver Go Gen.2 before 14.1.5.9 allows remote authenticated administrators to inject arbitrary OS commands via the timezone parameter.",
+    "vendor": "Check Point",
+    "product": "miniserver_go_gen_2"
+  },
+  "CVE-2023-25369": {
+    "cvss": 7.5,
+    "description": "Siglent SDS 1104X-E SDS1xx4X-E_V6.1.37R9.ADS is vulnerable to Denial of Service on the user interface triggered by malformed SCPI command.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2023-25366": {
+    "cvss": 9.8,
+    "description": "In Siglent SDS 1104X-E SDS1xx4X-E_V6.1.37R9.ADS, insecure SCPI interface discloses web password.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2023-25367": {
+    "cvss": 9.8,
+    "description": "Siglent SDS 1104X-E SDS1xx4X-E_V6.1.37R9.ADS allows unfiltered user input resulting in Remote Code Execution (RCE) with SCPI interface or web server.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-40865": {
+    "cvss": 7.1,
+    "description": "Horilla is a free and open source Human Resource Management System (HRMS). In 1.5.0, an insecure direct object reference in the employee document viewer allows any authenticated user to access other employees’ uploaded documents by changing the document ID in the request. This exposes sensitive HR files such as identity documents, contracts, certificates, and other private employee records.",
+    "vendor": "Check Point",
+    "product": "horilla"
+  },
+  "CVE-2026-63432": {
+    "cvss": 6.5,
+    "description": "Horilla is an HR and CRM software. From 1.0.0 until 1.6.0 and 2.0.0, the get_mail_preview handlers in recruitment/views/actions.py and employee/not_in_out_dashboard.py render a user-controlled body at /recruitment/get-mail-preview/ and /employee/get-employee-mail-preview with the full request object in the Django template context. An authenticated user with a valid CSRF token can use template attribute traversal to read request.user.password, request.META, and related-user attributes, exposing password hashes, personal data, and server request metadata. Django template restrictions prevent arbitrary code execution through this primitive, so the demonstrated impact is information disclosure and possible offline password cracking or account compromise. This issue is fixed in versions 1.6.0 and 2.0.0.",
+    "vendor": "Check Point",
+    "product": "horilla-hr"
+  },
+  "CVE-2026-41192": {
+    "cvss": 7.1,
+    "description": "FreeScout is a free self-hosted help desk and shared mailbox. Prior to version 1.8.215, the reply and draft flows trust client-supplied encrypted attachment IDs. Any IDs present in `attachments_all[]` but omitted from retained lists are decrypted and passed directly to `Attachment::deleteByIds()`. Because `load_attachments` returns encrypted IDs for attachments on a visible conversation, a mailbox peer can replay those IDs through `save_draft` and delete the original attachment row and file. Version 1.8.215 fixes the vulnerability.",
+    "vendor": "Check Point",
+    "product": "freescout"
+  },
+  "CVE-2025-48479": {
+    "cvss": 8.5,
+    "description": "FreeScout is a free self-hosted help desk and shared mailbox. Prior to version 1.8.180, the laravel-translation-manager package does not correctly validate user input, enabling the deletion of any directory, given sufficient access rights. This issue has been patched in version 1.8.180.",
+    "vendor": "Check Point",
+    "product": "freescout"
+  },
+  "CVE-2025-48480": {
+    "cvss": 7.0,
+    "description": "FreeScout is a free self-hosted help desk and shared mailbox. Prior to version 1.8.180, an authorized user with the administrator role or with the privilege User::PERM_EDIT_USERS can create a user, specifying the path to the user's avatar ../.htaccess during creation, and then delete the user's avatar, resulting in the deletion of the file .htaccess in the folder /storage/app/public. This issue has been patched in version 1.8.180.",
+    "vendor": "Check Point",
+    "product": "freescout"
+  },
+  "CVE-2017-10033": {
+    "cvss": null,
+    "description": "Vulnerability in the Oracle WebCenter Sites component of Oracle Fusion Middleware (subcomponent: Support Tools). Supported versions that are affected are 11.1.1.8.0 and 12.2.1.2.0. Difficult to exploit vulnerability allows unauthenticated attacker with logon to the infrastructure where Oracle WebCenter Sites executes to compromise Oracle WebCenter Sites. Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Oracle WebCenter Sites accessible data as well as unauthorized read access to a subset of Oracle WebCenter Sites accessible data. Note: Please refer to Doc ID My Oracle Support Note 2318213.1 for instructions on how to address this issue. CVSS 3.0 Base Score 4.0 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.0/AV:L/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N).",
+    "vendor": "Check Point",
+    "product": "WebCenter Sites"
+  },
+  "CVE-2026-35318": {
+    "cvss": 8.8,
+    "description": "Vulnerability in the Oracle WebCenter Sites product of Oracle Fusion Middleware (component: WebCenter Sites). Supported versions that are affected are 12.2.1.4.0 and 14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle WebCenter Sites. Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Sites. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Check Point",
+    "product": "Oracle WebCenter Sites"
+  },
+  "CVE-2026-7244": {
+    "cvss": 9.8,
+    "description": "A security flaw has been discovered in Totolink A8000RU 7.1cu.643_b20200521. The impacted element is the function setWiFiEasyGuestCfg of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. The manipulation of the argument merge results in os command injection. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "A8000RU"
+  },
+  "CVE-2026-9478": {
+    "cvss": 9.8,
+    "description": "A weakness has been identified in Totolink A8000RU 7.1cu.643_b20200521. Impacted is the function setParentalRules of the file /cgi-bin/cstecgi.cgi of the component Web Management Interface. Executing a manipulation of the argument enable can lead to os command injection. The attack may be performed from remote. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "A8000RU"
+  },
+  "CVE-2026-9406": {
+    "cvss": 9.8,
+    "description": "A weakness has been identified in Totolink A8000RU 7.1cu.643_b20200521. Affected is the function setRemoteCfg of the file /cgi-bin/cstecgi.cgi of the component Web Management Interface. Executing a manipulation of the argument enable can lead to os command injection. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "A8000RU"
+  },
+  "CVE-2026-9455": {
+    "cvss": 9.8,
+    "description": "A vulnerability has been found in Totolink A8000RU 7.1cu.643_b20200521. This issue affects the function UploadOpenVpnCert of the file /cgi-bin/cstecgi.cgi of the component Web Management Interface. The manipulation of the argument FileName leads to os command injection. Remote exploitation of the attack is possible. The exploit has been disclosed to the public and may be used.",
+    "vendor": "Check Point",
+    "product": "A8000RU"
+  },
+  "CVE-2026-7123": {
+    "cvss": 9.8,
+    "description": "A vulnerability was found in Totolink A8000RU 7.1cu.643_b20200521. Affected is the function setIptvCfg of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. Performing a manipulation of the argument setIptvCfg results in os command injection. The attack can be initiated remotely. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "A8000RU"
+  },
+  "CVE-2026-9433": {
+    "cvss": 9.8,
+    "description": "A weakness has been identified in Totolink A8000RU 7.1cu.643_b20200521. This issue affects the function setMacFilterRules of the file /cgi-bin/cstecgi.cgi of the component Web Management Interface. This manipulation of the argument enable causes os command injection. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "A8000RU"
+  },
+  "CVE-2026-9475": {
+    "cvss": 9.8,
+    "description": "A vulnerability was determined in Totolink A8000RU 7.1cu.643_b20200521. This affects the function setIpQosRules of the file /cgi-bin/cstecgi.cgi of the component Web Management Interface. This manipulation of the argument Comment causes os command injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized.",
+    "vendor": "Check Point",
+    "product": "A8000RU"
+  },
+  "CVE-2026-7121": {
+    "cvss": 9.8,
+    "description": "A flaw has been found in Totolink A8000RU 7.1cu.643_b20200521. This affects the function setWizardCfg of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. This manipulation of the argument wizard causes os command injection. It is possible to initiate the attack remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "A8000RU"
+  },
+  "CVE-2026-7139": {
+    "cvss": 9.8,
+    "description": "A flaw has been found in Totolink A8000RU 7.1cu.643_b20200521. This issue affects the function setWiFiAclRules of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. This manipulation of the argument mode causes os command injection. The attack is possible to be carried out remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "A8000RU"
+  },
+  "CVE-2026-3701": {
+    "cvss": 8.8,
+    "description": "A security vulnerability has been detected in H3C Magic B1 up to 100R004. Affected by this vulnerability is the function Edit_BasicSSID_5G of the file /goform/aspForm. Such manipulation of the argument param leads to buffer overflow. The attack can be executed remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "Magic B1"
   }
 }
