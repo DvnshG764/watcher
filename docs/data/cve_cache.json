@@ -14875,7 +14875,7 @@
   },
   "CVE-2026-27541": {
     "cvss": 7.2,
-    "description": "Incorrect Privilege Assignment vulnerability in Josh Kohlbach Wholesale Suite woocommerce-wholesale-prices allows Privilege Escalation.This issue affects Wholesale Suite: from n/a through <= 2.2.6.",
+    "description": "Incorrect Privilege Assignment vulnerability in Josh Kohlbach Wholesale Suite allows Privilege Escalation. This issue affects Wholesale Suite: through 2.2.6.",
     "vendor": "Josh Kohlbach",
     "product": "Wholesale Suite"
   },
@@ -15655,7 +15655,7 @@
   },
   "CVE-2026-27540": {
     "cvss": 9.0,
-    "description": "Unrestricted Upload of File with Dangerous Type vulnerability in Rymera Web Co Pty Ltd. Woocommerce Wholesale Lead Capture woocommerce-wholesale-lead-capture allows Using Malicious Files.This issue affects Woocommerce Wholesale Lead Capture: from n/a through <= 2.0.3.1.",
+    "description": "Unrestricted Upload of File with Dangerous Type vulnerability in Rymera Web Co Pty Ltd. Woocommerce Wholesale Lead Capture allows Using Malicious Files. This issue affects Woocommerce Wholesale Lead Capture: through 2.0.3.1.",
     "vendor": "Rymera Web Co Pty Ltd.",
     "product": "Woocommerce Wholesale Lead Capture"
   },
@@ -16429,7 +16429,7 @@
   },
   "CVE-2026-27542": {
     "cvss": 9.8,
-    "description": "Incorrect Privilege Assignment vulnerability in Rymera Web Co Pty Ltd. Woocommerce Wholesale Lead Capture woocommerce-wholesale-lead-capture allows Privilege Escalation.This issue affects Woocommerce Wholesale Lead Capture: from n/a through <= 2.0.3.1.",
+    "description": "Incorrect Privilege Assignment vulnerability in Rymera Web Co Pty Ltd. Woocommerce Wholesale Lead Capture allows Privilege Escalation. This issue affects Woocommerce Wholesale Lead Capture: through 2.0.3.1.",
     "vendor": "Rymera Web Co Pty Ltd.",
     "product": "Woocommerce Wholesale Lead Capture"
   },
@@ -76564,5 +76564,53 @@
     "description": "An out-of-bounds read vulnerability was found in Samba due to insufficient length checks in winbindd_pam_auth_crap.c. When performing NTLM authentication, the client replies to cryptographic challenges back to the server. These replies have variable lengths, and Winbind fails to check the lan manager response length. When Winbind is used for NTLM authentication, a maliciously crafted request can trigger an out-of-bounds read in Winbind, possibly resulting in a crash.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-13423": {
+    "cvss": 9.8,
+    "description": "The Streamit WordPress theme before 4.5.2 does not perform any authorization or nonce verification on one of its unauthenticated AJAX routes, which invokes an attacker-supplied PHP function with an attacker-supplied argument array, allowing unauthenticated attackers to call arbitrary functions (for example to create an administrator account), leading to privilege escalation and remote code execution.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-116548": {
+    "cvss": 7.2,
+    "description": "The VikRentCar Car Rental Management System plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'optionals' parameter in all versions up to, and including, 1.4.10 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "vendor": "e4jvikwp",
+    "product": "VikRentCar Car Rental Management System"
+  },
+  "CVE-2026-119495": {
+    "cvss": 5.3,
+    "description": "Missing Authorization vulnerability in WebberZone Better Search better-search allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Better Search: from n/a through 4.5.2.",
+    "vendor": "WebberZone",
+    "product": "Better Search"
+  },
+  "CVE-2026-120442": {
+    "cvss": 9.8,
+    "description": "ape-volo-admin before 3.6.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge administrator tokens using a hardcoded JWT signing key in appsettings.json. Attackers can sign tokens offline with the jti claim set to the seeded administrator id to gain full API control over users, roles, permissions and data.",
+    "vendor": "xianhc",
+    "product": "ape-volo-admin"
+  },
+  "CVE-2026-12583": {
+    "cvss": 8.1,
+    "description": "The Newsletters WordPress plugin before 4.15 does not prevent deserialization of untrusted input that is stored through a public form, allowing unauthenticated attackers to inject a PHP object and, via a property-oriented gadget chain bundled with the Newsletters WordPress plugin before 4.15, write arbitrary files and execute code on the server.",
+    "vendor": "Unknown",
+    "product": "Newsletters"
+  },
+  "CVE-2026-118523": {
+    "cvss": 5.3,
+    "description": "The EventPrime WordPress plugin before 4.3.6.1 does not keep the built-in Pending Review post status non-public, allowing unauthenticated users to view posts, pages and other content that are awaiting review.",
+    "vendor": "Unknown",
+    "product": "EventPrime"
+  },
+  "CVE-2026-115574": {
+    "cvss": 5.3,
+    "description": "Zulip is an open-source team collaboration tool. From 11.0 until 12.2, organizations with web-public channels enabled exposed the GET /json/users endpoint to logged-out spectators, and a missing access-control check allowed include_custom_profile_fields=true to return every user's custom profile field values in addition to the documented limited directory data. This exposed those custom profile field values to unauthenticated visitors. This issue is fixed in version 12.2.",
+    "vendor": "zulip",
+    "product": "zulip"
+  },
+  "CVE-2026-120597": {
+    "cvss": 4.3,
+    "description": "A vulnerability was identified in Welcart e-Commerce Plugin up to 2.12.6 on WordPress. This affects the function ESCOTT_MAIN::error_page_message of the file classes/paymentESCOTT.main.class.php. Such manipulation of the argument ResponseCd leads to cross site scripting. The attack can be launched remotely. The exploit is publicly available and might be used. Upgrading to version 2.12.7 mitigates this issue. It is recommended to upgrade the affected component. The value is now escaped with esc_html() before output. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.",
+    "vendor": "Welcart",
+    "product": "e-Commerce Plugin"
   }
 }
