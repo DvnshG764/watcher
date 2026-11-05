@@ -80512,5 +80512,143 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-53994": {
+    "cvss": 6.5,
+    "description": "ProFTPD mod_sftp contains a heap-based buffer overflow reachable by an authenticated SFTP user. The fxp_packet_read() function accepts the attacker-supplied 32-bit big-endian SFTP packet length without a minimum sanity check. A value of 0 causes an unsigned subtraction elsewhere in the read path to underflow to approximately 4 GB. That oversized request reaches the core memory allocator, where the rounded size is computed in size_t but passed to new_block() as a 32-bit int; the low 32 bits of 0x100000000 are 0, so new_block() returns a small (~512-byte) block while the caller is told it received ~4 GB. The subsequent fill loop then streams attacker-controlled bytes past the end of the 544-byte allocation, producing an attacker-controlled heap buffer overflow. An authenticated user can crash the per-connection ProFTPD session child on demand with a single malformed SFTP packet (packet_len=0 followed by a body greater than approximately 544 bytes), producing reliable authenticated remote denial of service. Depending on heap layout and adjacent allocations, heap metadata corruption and further consequences beyond denial of service may be possible, though only denial of service is demonstrated by the supplied proof of concept.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-10665": {
+    "cvss": 7.4,
+    "description": "In Zephyr's WireGuard subsystem (subsys/net/lib/wireguard), wg_process_data_message() in wg_crypto.c linearizes an inbound transport-data payload into a fixed pool buffer of CONFIG_WIREGUARD_BUF_LEN bytes before decryption. The call net_buf_linearize(buf->data, data_len, pkt->buffer, ..., data_len) passed the attacker-derived data_len as both the destination capacity and the copy length, defeating the function's internal len = min(len, dst_len) bound. data_len is derived from the received UDP datagram length and is only lower-bounded by wg_ctrl_recv() (no upper bound). When data_len exceeds CONFIG_WIREGUARD_BUF_LEN — e.g. when the buffer length is lowered below the link MTU, on links with MTU above the buffer size, or via reassembled IPv4/IPv6 fragments that exceed it — the underlying memcpy writes past the end of the pool buffer, an out-of-bounds write (CWE-787). The overflow occurs before the Poly1305 authentication check, so it requires only a valid receiver session index rather than a valid authenticator, and is reachable by a malicious or compromised peer (or an on-path attacker driving an established session) over the network, yielding remote memory corruption and at minimum a reliable denial of service. The defect was present in the WireGuard implementation shipped in Zephyr 4.4.0. The fix adds an explicit data_len > CONFIG_WIREGUARD_BUF_LEN rejection and corrects the linearize call to pass net_buf_max_len(buf) as the destination capacity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-10634": {
+    "cvss": 5.3,
+    "description": "Zephyr's native TCP stack iterates the global connection list in net_tcp_foreach() (subsys/net/ip/tcp.c) using the SYS_SLIST_FOR_EACH_CONTAINER_SAFE macro, which caches a pointer to the next list node. Prior to this fix the function released tcp_lock while invoking the per-connection callback and re-acquired it afterwards. During that window a concurrent tcp_conn_release(), running on the dedicated TCP work-queue thread when a connection's reference count drops to zero (e.g. a remote peer closing or resetting the connection), can remove and k_mem_slab_free() the cached next connection. When the iterator advances it dereferences the freed (and possibly reallocated) slab memory — a use-after-free that can crash the system (denial of service) and, if the slot has been reused, cause the callback to operate on an attacker-influenced object (potential information disclosure or further fault). net_tcp_foreach() is reached in production via the net conn network shell command and via net_tcp_close_all_for_iface() on interface-down; the freeing side is driven by ordinary TCP traffic. The fix moves the connection/context teardown in tcp_conn_release() inside the tcp_lock critical section and keeps tcp_lock held across the callback in net_tcp_foreach(). The defect was introduced with the modern (TCP2) stack in 2020 and affects releases up to and including v4.4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0050": {
+    "cvss": 3.3,
+    "description": "In handleBondStateChanged of AdapterService.java, there is a possible sensitive information disclosure due to a permissions bypass. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0052": {
+    "cvss": 6.5,
+    "description": "In multiple functions of ubsan_throwing_runtime.cpp, there is a possible way to cause a crash due to an integer overflow. This could lead to remote denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0056": {
+    "cvss": 3.3,
+    "description": "In setTo of ResourceTypes.cpp, there is a possible read out of bounds due to an incorrect bounds check. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0060": {
+    "cvss": 5.5,
+    "description": "In updateState of GraphicsDriverEnableAngleAsSystemDriverController.java, there is a possible persistent dos issue due to an unusual root cause. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0067": {
+    "cvss": 5.5,
+    "description": "In multiple functions of ubsan_throwing_runtime.cpp, there is a possible way to cause a permanent denial of service due to a logic error in the code. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0077": {
+    "cvss": 7.8,
+    "description": "In resumeConfigurationDispatch of ActivityRecord.java, there is a possible background application launch (bal) due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0079": {
+    "cvss": 5.5,
+    "description": "In multiple functions of ubsan_throwing_runtime.cpp, there is a possible persistent denial of service due to an integer overflow. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0085": {
+    "cvss": 5.5,
+    "description": "In applySimpleFieldMaxSize of DataRowHandler.java, there is a possible way to insert a large contact name due to improper input validation. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0087": {
+    "cvss": 7.8,
+    "description": "In approvalLevelForDomainInternal of DomainVerificationService.java, there is a possible way to hijack an arbitrary app link due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0089": {
+    "cvss": 7.8,
+    "description": "In multiple functions of PackageInstallerService.java, there is a possible way to install unverified apps due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0093": {
+    "cvss": 7.8,
+    "description": "In multiple locations, there is a possible misleading UI due to obfuscation. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0095": {
+    "cvss": 8.0,
+    "description": "In l2c_fcr_clone_buf of l2c_fcr.cc, there is a possible way to trigger controlled heap corruption within the privileged Bluetooth process due to an integer overflow. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0097": {
+    "cvss": 8.0,
+    "description": "In multiple locations, there is a possible way to bypass user interaction when pairing an LE device due to a logic error. This could lead to remote (proximal/adjacent) escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0099": {
+    "cvss": 7.8,
+    "description": "In onNullBinding of HostEmulationManager.java, there is a possible way to launch an activity from the background due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28577": {
+    "cvss": 7.8,
+    "description": "In addWindow of WindowManagerService.java, there is a possible tapjacking issue due to a tapjacking/overlay attack. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1678": {
+    "cvss": 9.8,
+    "description": "dns_unpack_name() caches the buffer tailroom once and reuses it while appending DNS labels. As the buffer grows, the cached size becomes incorrect, and the final null terminator can be written past the buffer. With assertions disabled (default), a malicious DNS response can trigger an out-of-bounds write when CONFIG_DNS_RESOLVER is enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55095": {
+    "cvss": 7.0,
+    "description": "The function _ux_host_class_storage_media_mount() is responsible for mounting partitions on a USB mass storage device. When it encounters an extended partition entry in the partition table, it recursively calls itself to mount the next logical partition. This recursion occurs in _ux_host_class_storage_partition_read(), which parses up to four partition entries. If an extended partition is found (with type UX_HOST_CLASS_STORAGE_PARTITION_EXTENDED or EXTENDED_LBA_MAPPED), the code invokes: _ux_host_class_storage_media_mount(storage, sector + _ux_utility_long_get(...)); There is no limit on the recursion depth or tracking of visited sectors. As a result, a malicious or malformed disk image can include cyclic or excessively deep chains of extended partitions, causing the function to recurse until stack overflow occurs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55102": {
+    "cvss": 7.5,
+    "description": "A denial-of-service vulnerability exists in the NetX IPv6 component functionality of Eclipse ThreadX NetX Duo. A specially crafted network packet of \"Packet Too Big\" with more than 15 different source address can lead to denial of service. An attacker can send a malicious packet to trigger this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-1675": {
+    "cvss": 9.1,
+    "description": "The function dns_copy_qname in dns_pack.c performs performs a memcpy operation with an untrusted field and does not check if the source buffer is large enough to contain the copied data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2021-38299": {
+    "cvss": 9.8,
+    "description": "Webauthn Framework 3.3.x before 3.3.4 has Incorrect Access Control. An attacker that controls a user's system is able to login to a vulnerable service using an attached FIDO2 authenticator without passing a check of the user presence.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
