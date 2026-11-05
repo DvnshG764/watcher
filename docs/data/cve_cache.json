@@ -76768,5 +76768,395 @@
     "description": "A security vulnerability has been detected in H3C Magic B1 up to 100R004. Affected by this vulnerability is the function Edit_BasicSSID_5G of the file /goform/aspForm. Such manipulation of the argument param leads to buffer overflow. The attack can be executed remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
     "vendor": "Check Point",
     "product": "Magic B1"
+  },
+  "CVE-2026-101508": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Siebel CRM Integration product of Oracle Siebel CRM (component: EAI). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel CRM Integration. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Siebel CRM Integration. CVSS 3.1 Base Score 7.5 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-12133": {
+    "cvss": 5.3,
+    "description": "A flaw in libtasn1 causes inefficient handling of specific certificate data. When processing a large number of elements in a certificate, libtasn1 takes much longer than expected, which can slow down or even crash the system. This flaw allows an attacker to send a specially crafted certificate, causing a denial of service attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-12243": {
+    "cvss": 5.3,
+    "description": "A flaw was found in GnuTLS, which relies on libtasn1 for ASN.1 data processing. Due to an inefficient algorithm in libtasn1, decoding certain DER-encoded certificate data can take excessive time, leading to increased resource consumption. This flaw allows a remote attacker to send a specially crafted certificate, causing GnuTLS to become unresponsive or slow, resulting in a denial-of-service condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-11029": {
+    "cvss": 5.5,
+    "description": "A flaw was found in the FreeIPA API audit, where it sends the whole FreeIPA command line to journalctl. As a consequence, during the FreeIPA installation process, it inadvertently leaks the administrative user credentials, including the administrator password, to the journal database. In the worst-case scenario, where the journal log is centralized, users with access to it can have improper access to the FreeIPA administrator credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-12086": {
+    "cvss": 6.8,
+    "description": "A flaw was found in rsync. It could allow a server to enumerate the contents of an arbitrary file from the client's machine. This issue occurs when files are being copied from a client to a server. During this process, the rsync server will send checksums of local data to the client to compare with in order to determine what data needs to be sent to the server. By sending specially constructed checksum values for arbitrary files, an attacker may be able to reconstruct the data of those files byte-by-byte based on the responses from the client.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-12088": {
+    "cvss": 7.5,
+    "description": "A flaw was found in rsync. When using the `--safe-links` option, the rsync client fails to properly verify if a symbolic link destination sent from the server contains another symbolic link within it. This results in a path traversal vulnerability, which may lead to arbitrary file write outside the desired directory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-12747": {
+    "cvss": 5.6,
+    "description": "A flaw was found in rsync. This vulnerability arises from a race condition during rsync's handling of symbolic links. Rsync's default behavior when encountering symbolic links is to skip them. If an attacker replaced a regular file with a symbolic link at the right time, it was possible to bypass the default behavior and traverse symbolic links. Depending on the privileges of the rsync process, an attacker could leak sensitive information, potentially leading to privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-11079": {
+    "cvss": 5.5,
+    "description": "A flaw was found in Ansible-Core. This vulnerability allows attackers to bypass unsafe content protections using the hostvars object to reference and execute templated content. This issue can lead to arbitrary code execution if remote data or module outputs are improperly templated within playbooks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-10573": {
+    "cvss": 6.7,
+    "description": "An out-of-bounds write flaw was found in mpg123 when handling crafted streams. When decoding PCM, the libmpg123 may write past the end of a heap-located buffer. Consequently, heap corruption may happen, and arbitrary code execution is not discarded. The complexity required to exploit this flaw is considered high as the payload must be validated by the MPEG decoder and the PCM synth before execution. Additionally, to successfully execute the attack, the user must scan through the stream, making web live stream content (such as web radios) a very unlikely attack vector.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-10041": {
+    "cvss": 4.7,
+    "description": "A vulnerability was found in PAM. The secret information is stored in memory, where the attacker can trigger the victim program to execute by sending characters to its standard input (stdin). As this occurs, the attacker can train the branch predictor to execute an ROP chain speculatively. This flaw could result in leaked passwords, such as those found in /etc/shadow while performing authentications.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-10033": {
+    "cvss": 6.1,
+    "description": "A vulnerability was found in aap-gateway. A Cross-site Scripting (XSS) vulnerability exists in the gateway component. This flaw allows a malicious user to perform actions that impact users by using the \"?next=\" in a URL, which can lead to redirecting, injecting malicious script, stealing sessions and data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6841": {
+    "cvss": 7.5,
+    "description": "A denial of service vulnerability was found in keycloak where the amount of attributes per object is not limited,an attacker by sending repeated HTTP requests could cause a resource exhaustion when the application send back rows with long attribute values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-2199": {
+    "cvss": 5.7,
+    "description": "A denial of service vulnerability was found in 389-ds-base ldap server. This issue may allow an authenticated user to cause a server crash while modifying `userPassword` using malformed input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5675": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Quarkus. When a Quarkus RestEasy Classic or Reactive JAX-RS endpoint has its methods declared in the abstract Java class or customized by Quarkus extensions using the annotation processor, the authorization of these methods will not be enforced if it is enabled by either 'quarkus.security.jaxrs.deny-unannotated-endpoints' or 'quarkus.security.jaxrs.default-roles-allowed' properties.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-2467": {
+    "cvss": 5.9,
+    "description": "A timing-based side-channel flaw exists in the perl-Crypt-OpenSSL-RSA package, which could be sufficient to recover plaintext across a network in a Bleichenbacher-style attack. To achieve successful decryption, an attacker would have to be able to send a large number of trial messages. The vulnerability affects the legacy PKCS#1v1.5 RSA encryption padding mode.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1481": {
+    "cvss": 5.3,
+    "description": "A flaw was found in FreeIPA. This issue may allow a remote attacker to craft a HTTP request with parameters that can be interpreted as command arguments to kinit on the FreeIPA server, which can lead to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-2700": {
+    "cvss": 7.0,
+    "description": "A vulnerability was found in the quarkus-core component. Quarkus captures local environment variables from the Quarkus namespace during the application's build, therefore, running the resulting application inherits the values captured at build time. Some local environment variables may have been set by the developer or CI environment for testing purposes, such as dropping the database during application startup or trusting all TLS certificates to accept self-signed certificates. If these properties are configured using environment variables or the .env facility, they are captured into the built application, which can lead to dangerous behavior if the application does not override these values. This behavior only happens for configuration properties from the `quarkus.*` namespace. Application-specific properties are not captured.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1300": {
+    "cvss": 5.4,
+    "description": "A vulnerability in the Eclipse Vert.x toolkit causes a memory leak in TCP servers configured with TLS and SNI support. When processing an unknown SNI server name assigned the default certificate instead of a mapped certificate, the SSL context is erroneously cached in the server name map, leading to memory exhaustion. This flaw allows attackers to send TLS client hello messages with fake server names, triggering a JVM out-of-memory error.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1023": {
+    "cvss": 6.5,
+    "description": "A vulnerability in the Eclipse Vert.x toolkit results in a memory leak due to using Netty FastThreadLocal data structures. Specifically, when the Vert.x HTTP client establishes connections to different hosts, triggering the memory leak. The leak can be accelerated with intimate runtime knowledge, allowing an attacker to exploit this vulnerability. For instance, a server accepting arbitrary internet addresses could serve as an attack vector by connecting to these addresses, thereby accelerating the memory leak.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1013": {
+    "cvss": 7.8,
+    "description": "An out-of-bounds stack write flaw was found in unixODBC on 64-bit architectures where the caller has 4 bytes and callee writes 8 bytes. This issue may go unnoticed on little-endian architectures, while big-endian architectures can be broken.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-7250": {
+    "cvss": 5.3,
+    "description": "A flaw was found in iperf, a utility for testing network performance using TCP, UDP, and SCTP. A malicious or malfunctioning client can send less than the expected amount of data to the iperf server, which can cause the server to hang indefinitely waiting for the remainder or until the connection gets closed. This will prevent other connections to the server, leading to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-2002": {
+    "cvss": 7.5,
+    "description": "A double-free vulnerability was found in libdwarf. In a multiply-corrupted DWARF object, libdwarf may try to dealloc(free) an allocation twice, potentially causing unpredictable and various results.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1441": {
+    "cvss": 5.5,
+    "description": "An off-by-one error flaw was found in the udevListInterfacesByStatus() function in libvirt when the number of interfaces exceeds the size of the `names` array. This issue can be reproduced by sending specially crafted data to the libvirt daemon, allowing an unprivileged client to perform a denial of service attack by causing the libvirt daemon to crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-2236": {
+    "cvss": 5.9,
+    "description": "A timing-based side-channel flaw was found in libgcrypt's RSA implementation. This issue may allow a remote attacker to initiate a Bleichenbacher-style attack, which can lead to the decryption of RSA ciphertexts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6917": {
+    "cvss": 6.7,
+    "description": "A vulnerability has been identified in the Performance Co-Pilot (PCP) package, stemming from the mixed privilege levels utilized by systemd services associated with PCP. While certain services operate within the confines of limited PCP user/group privileges, others are granted full root privileges. This disparity in privilege levels poses a risk when privileged root processes interact with directories or directory trees owned by unprivileged PCP users. Specifically, this vulnerability may lead to the compromise of PCP user isolation and facilitate local PCP-to-root exploits, particularly through symlink attacks. These vulnerabilities underscore the importance of maintaining robust privilege separation mechanisms within PCP to mitigate the potential for unauthorized privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0560": {
+    "cvss": 4.3,
+    "description": "A vulnerability was found in 3Scale, when used with Keycloak 15 (or RHSSO 7.5.0) and superiors. When the auth_type is use_3scale_oidc_issuer_endpoint, the Token Introspection policy discovers the Token Introspection endpoint from the token_introspection_endpoint field, but the field was removed on RH-SSO 7.5. As a result, the policy doesn't inspect tokens, it determines that all tokens are valid.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1062": {
+    "cvss": 5.5,
+    "description": "A heap overflow flaw was found in 389-ds-base. This issue leads to a denial of service when writing a value larger than 256 chars in log_entry_attr.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6681": {
+    "cvss": 5.3,
+    "description": "A vulnerability was found in JWCrypto. This flaw allows an attacker to cause a denial of service (DoS) attack and possible password brute-force and dictionary attacks to be more resource-intensive. This issue can result in a large amount of computational consumption, causing a denial of service attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1459": {
+    "cvss": 5.3,
+    "description": "A path traversal vulnerability was found in Undertow. This issue may allow a remote attacker to append a specially-crafted sequence to an HTTP request for an application deployed to JBoss EAP, which may permit access to privileged or restricted files and directories.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1151": {
+    "cvss": 5.5,
+    "description": "A vulnerability was reported in the Open vSwitch sub-component in the Linux Kernel. The flaw occurs when a recursive operation of code push recursively calls into the code block. The OVS module does not validate the stack depth, pushing too many frames and causing a stack overflow. As a result, this can lead to a crash or other related issues.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6356": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the Linux kernel's NVMe driver. This issue may allow an unauthenticated malicious actor to send a set of crafted TCP packages when using NVMe over TCP, leading the NVMe driver to a NULL pointer dereference in the NVMe driver and causing kernel panic and a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6535": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the Linux kernel's NVMe driver. This issue may allow an unauthenticated malicious actor to send a set of crafted TCP packages when using NVMe over TCP, leading the NVMe driver to a NULL pointer dereference in the NVMe driver, causing kernel panic and a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6536": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the Linux kernel's NVMe driver. This issue may allow an unauthenticated malicious actor to send a set of crafted TCP packages when using NVMe over TCP, leading the NVMe driver to a NULL pointer dereference in the NVMe driver, causing kernel panic and a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0690": {
+    "cvss": 5.5,
+    "description": "An information disclosure flaw was found in ansible-core due to a failure to respect the ANSIBLE_NO_LOG configuration in some scenarios. Information is still included in the output in certain tasks, such as loop items. Depending on the task, this issue may include sensitive information, such as decrypted secret values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1048": {
+    "cvss": 3.3,
+    "description": "A flaw was found in the grub2-set-bootflag utility of grub2. After the fix of CVE-2019-14865, grub2-set-bootflag will create a temporary file with the new grubenv content and rename it to the original grubenv file. If the program is killed before the rename operation, the temporary file will not be removed and may fill the filesystem when invoked multiple times, resulting in a filesystem out of free inodes or blocks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6240": {
+    "cvss": 6.5,
+    "description": "A Marvin vulnerability side-channel leakage was found in the RSA decryption operation in the Linux Kernel. This issue may allow a network attacker to decrypt ciphertexts or forge signatures, limiting the services that use that private key.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0914": {
+    "cvss": 5.9,
+    "description": "A timing side-channel vulnerability has been discovered in the opencryptoki package while processing RSA PKCS#1 v1.5 padded ciphertexts. This flaw could potentially enable unauthorized RSA ciphertext decryption or signing, even without access to the corresponding private key.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5992": {
+    "cvss": 5.9,
+    "description": "A vulnerability was found in OpenSC where PKCS#1 encryption padding removal is not implemented as side-channel resistant. This issue may result in the potential leak of private data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0841": {
+    "cvss": 7.8,
+    "description": "A null pointer dereference flaw was found in the hugetlbfs_fill_super function in the Linux kernel hugetlbfs (HugeTLB pages) functionality. This issue may allow a local user to crash the system or potentially escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0775": {
+    "cvss": 7.1,
+    "description": "A use-after-free flaw was found in the __ext4_remount in fs/ext4/super.c in ext4 in the Linux kernel. This flaw allows a local user to cause an information leak problem while freeing the old quota file names before a potential failure, leading to a use-after-free.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6531": {
+    "cvss": 7.0,
+    "description": "A use-after-free flaw was found in the Linux Kernel due to a race problem in the unix garbage collector's deletion of SKB races with unix_stream_read_generic() on the socket that the SKB is queued on.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0607": {
+    "cvss": 6.6,
+    "description": "A flaw was found in the Netfilter subsystem in the Linux kernel. The issue is in the nft_byteorder_eval() function, where the code iterates through a loop and writes to the `dst` array. On each iteration, 8 bytes are written, but `dst` is an array of u32, so each element only has space for 4 bytes. That means every iteration overwrites part of the previous element corrupting this array of u32. This flaw allows a local user to cause a denial of service or potentially break NetFilter functionality.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0639": {
+    "cvss": 5.5,
+    "description": "A denial of service vulnerability due to a deadlock was found in sctp_auto_asconf_init in net/sctp/socket.c in the Linux kernel’s SCTP subsystem. This flaw allows guests with local user privileges to trigger a deadlock and potentially crash the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0641": {
+    "cvss": 5.5,
+    "description": "A denial of service vulnerability was found in tipc_crypto_key_revoke in net/tipc/crypto.c in the Linux kernel’s TIPC subsystem. This flaw allows guests with local user privileges to trigger a deadlock and potentially crash the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0553": {
+    "cvss": 7.5,
+    "description": "A vulnerability was found in GnuTLS. The response times to malformed ciphertexts in RSA-PSK ClientKeyExchange differ from the response times of ciphertexts with correct PKCS#1 v1.5 padding. This issue may allow a remote attacker to perform a timing side-channel attack in the RSA-PSK key exchange, potentially leading to the leakage of sensitive data. CVE-2024-0553 is designated as an incomplete resolution for CVE-2023-5981.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0567": {
+    "cvss": 7.5,
+    "description": "A vulnerability was found in GnuTLS, where a cockpit (which uses gnuTLS) rejects a certificate chain with distributed trust. This issue occurs when validating a certificate chain with cockpit-certificate-ensure. This flaw allows an unauthenticated, remote client or attacker to initiate a denial of service attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0562": {
+    "cvss": 7.8,
+    "description": "A use-after-free flaw was found in the Linux Kernel. When a disk is removed, bdi_unregister is called to stop further write-back and waits for associated delayed work to complete. However, wb_inode_writeback_end() may schedule bandwidth estimation work after this has completed, which can result in the timer attempting to access the recently freed bdi_writeback.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0565": {
+    "cvss": 7.4,
+    "description": "An out-of-bounds memory read flaw was found in receive_encrypted_standard in fs/smb/client/smb2ops.c in the SMB Client sub-component in the Linux Kernel. This issue occurs due to integer underflow on the memcpy length, leading to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6683": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the QEMU built-in VNC server while processing ClientCutText messages. The qemu_clipboard_request() function can be reached before vnc_server_cut_text_caps() was called and had the chance to initialize the clipboard peer, leading to a NULL pointer dereference. This could allow a malicious authenticated VNC client to crash QEMU and trigger a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5455": {
+    "cvss": 6.5,
+    "description": "A Cross-site request forgery vulnerability exists in ipa/session/login_password in all supported versions of IPA. This flaw allows an attacker to trick the user into submitting a request that could perform actions as the user, resulting in a loss of confidentiality and system integrity. During community penetration testing it was found that for certain HTTP end-points FreeIPA does not ensure CSRF protection. Due to implementation details one cannot use this flaw for reflection of a cookie representing already logged-in user. An attacker would always have to go through a new authentication attempt.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6270": {
+    "cvss": 7.0,
+    "description": "A flaw was found in the ATA over Ethernet (AoE) driver in the Linux kernel. The aoecmd_cfg_pkts() function improperly updates the refcnt on `struct net_device`, and a use-after-free can be triggered by racing between the free on the struct and the access through the `skbtxq` global queue. This could lead to a denial of service condition or potential code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6693": {
+    "cvss": 5.3,
+    "description": "A stack based buffer overflow was found in the virtio-net device of QEMU. This issue occurs when flushing TX in the virtio_net_flush_tx function if guest features VIRTIO_NET_F_HASH_REPORT, VIRTIO_F_VERSION_1 and VIRTIO_NET_F_MRG_RXBUF are enabled. This could allow a malicious user to overwrite local variables allocated on the stack. Specifically, the `out_sg` variable could be used to read a part of process memory and send it to the wire, causing an information leak.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-7192": {
+    "cvss": 4.4,
+    "description": "A memory leak problem was found in ctnetlink_create_conntrack in net/netfilter/nf_conntrack_netlink.c in the Linux Kernel. This issue may allow a local attacker with CAP_NET_ADMIN privileges to cause a denial of service (DoS) attack due to a refcount overflow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5379": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Undertow. When an AJP request is sent that exceeds the max-header-size attribute in ajp-listener, JBoss EAP is marked in an error state by mod_cluster in httpd, causing JBoss EAP to close the TCP connection without returning an AJP response. This happens because mod_proxy_cluster marks the JBoss EAP instance as an error worker when the TCP connection is closed from the backend after sending the AJP request without receiving an AJP response, and stops forwarding. This issue could allow a malicious user could to repeatedly send requests that exceed the max-header-size, causing a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5764": {
+    "cvss": 7.8,
+    "description": "A template injection flaw was found in Ansible where a user's controller internal templating operations may remove the unsafe designation from template data. This issue could allow an attacker to use a specially crafted file to introduce templating injection when supplying templating data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5868": {
+    "cvss": 4.3,
+    "description": "A memory disclosure vulnerability was found in PostgreSQL that allows remote users to access sensitive information by exploiting certain aggregate function calls with 'unknown'-type arguments. Handling 'unknown'-type values from string literals without type designation can disclose bytes, potentially revealing notable and confidential information. This issue exists due to excessive data output in aggregate function calls, enabling remote users to read some portion of system memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6606": {
+    "cvss": 7.1,
+    "description": "An out-of-bounds read vulnerability was found in smbCalcSize in fs/smb/client/netmisc.c in the Linux Kernel. This issue could allow a local attacker to crash the system or leak internal kernel information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6610": {
+    "cvss": 7.1,
+    "description": "An out-of-bounds read vulnerability was found in smb2_dump_detail in fs/smb/client/smb2ops.c in the Linux Kernel. This issue could allow a local attacker to crash the system or leak internal kernel information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6622": {
+    "cvss": 5.5,
+    "description": "A null pointer dereference vulnerability was found in nft_dynset_init() in net/netfilter/nft_dynset.c in nf_tables in the Linux kernel. This issue may allow a local attacker with CAP_NET_ADMIN user privilege to trigger a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5981": {
+    "cvss": 5.9,
+    "description": "A vulnerability was found that the response times to malformed ciphertexts in RSA-PSK ClientKeyExchange differ from response times of ciphertexts with correct PKCS#1 v1.5 padding.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5871": {
+    "cvss": 5.3,
+    "description": "A flaw was found in libnbd, due to a malicious Network Block Device (NBD), a protocol for accessing Block Devices such as hard disks over a Network. This issue may allow a malicious NBD server to cause a Denial of Service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6277": {
+    "cvss": 6.5,
+    "description": "An out-of-memory flaw was found in libtiff. Passing a crafted tiff file to TIFFOpen() API may allow a remote attacker to cause a denial of service via a craft input with size smaller than 379 KB.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5380": {
+    "cvss": 4.7,
+    "description": "A use-after-free flaw was found in the xorg-x11-server. An X server crash may occur in a very specific and legacy configuration (a multi-screen setup with multiple protocol screens, also known as Zaphod mode) if the pointer is warped from within a window on one screen to the root window of the other screen and if the original window is destroyed followed by another window being destroyed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-63207": {
+    "cvss": 9.8,
+    "description": "The R.V.R Elettronica TEX product (firmware TEXL-000400, Web GUI TLAN-000400) is vulnerable to broken access control due to improper authentication checks on the /_Passwd.html endpoint. An attacker can send an unauthenticated POST request to change the Admin, Operator, and User passwords, resulting in complete system compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-63932": {
+    "cvss": 7.3,
+    "description": "D-Link Router DIR-868L A1 FW106KRb01.bin has an unauthenticated remote code execution vulnerability in the cgibin binary. The HNAP service provided by cgibin does not filter the HTTP SOAPAction header field. The unauthenticated remote attacker can execute the shell command.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
