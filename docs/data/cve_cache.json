@@ -59790,7 +59790,7 @@
     "product": "WR1210M"
   },
   "CVE-2026-116296": {
-    "cvss": null,
+    "cvss": 6.5,
     "description": "The API routes for releases, release assets, milestones and repository labels did not reject changes to archived repositories. A user with write access to an archived repository, or a holder of such a user's write-scoped token, could replace or delete release assets while keeping their download URLs, delete releases and tags, and create, edit or delete milestones and labels of a repository that is meant to be read-only. Changing requests on these routes now return 423 Locked for archived repositories.",
     "vendor": "Gitea",
     "product": "Gitea"
@@ -88318,5 +88318,95 @@
     "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Fasttoggle allows Cross Site Request Forgery. This issue affects Fasttoggle versions: from 0.0.0 to 4.1.1.",
     "vendor": "Drupal",
     "product": "Fasttoggle"
+  },
+  "CVE-2024-3653": {
+    "cvss": 5.3,
+    "description": "A vulnerability was found in Undertow. This issue requires enabling the learning-push handler in the server's config, which is disabled by default, leaving the maxAge config in the handler unconfigured. The default is -1, which makes the handler vulnerable. If someone overwrites that config, the server is not subject to the attack. The attacker needs to be able to reach the server with a normal HTTP request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1454": {
+    "cvss": 3.4,
+    "description": "The use-after-free vulnerability was found in the AuthentIC driver in OpenSC packages, occuring in the card enrolment process using pkcs15-init when a user or administrator enrols or modifies cards. An attacker must have physical access to the computer system and requires a crafted USB device or smart card to present the system with specially crafted responses to the APDUs, which are considered high complexity and low severity. This manipulation can allow for compromised card management operations during enrolment.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-7216": {
+    "cvss": 5.3,
+    "description": "A path traversal vulnerability was found in the CPIO utility. This issue could allow a remote unauthenticated attacker to trick a user into opening a specially crafted archive. During the extraction process, the archiver could follow symlinks outside of the intended directory, which allows files to be written in arbitrary directories through symlinks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0564": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the Linux kernel's memory deduplication mechanism. The max page sharing of Kernel Samepage Merging (KSM), added in Linux kernel version 4.4.0-96.119, can create a side channel. When the attacker and the victim share the same host and the default setting of KSM is \"max page sharing=256\", it is possible for the attacker to time the unmap to merge with the victim's page. The unmapping time depends on whether it merges with the victim's page and additional physical pages are created beyond the KSM's \"max page share\". Through these operations, the attacker can leak the victim's page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0232": {
+    "cvss": 5.5,
+    "description": "A heap use-after-free issue has been identified in SQLite in the jsonParseAddNodeArray() function in sqlite3.c. This flaw allows a local attacker to leverage a victim to pass specially crafted malicious input to the application, potentially causing a crash and leading to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6004": {
+    "cvss": 4.8,
+    "description": "A flaw was found in libssh. By utilizing the ProxyCommand or ProxyJump feature, users can exploit unchecked hostname syntax on the client. This issue may allow an attacker to inject malicious code into the command of the features mentioned through the hostname parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-0217": {
+    "cvss": 3.3,
+    "description": "A use-after-free flaw was found in PackageKitd. In some conditions, the order of cleanup mechanics for a transaction could be impacted. As a result, some memory access could occur on memory regions that were previously freed. Once freed, a memory region can be reused for other allocations and any previously stored data in this memory region is considered lost.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-7042": {
+    "cvss": 5.5,
+    "description": "A null pointer dereference vulnerability was found in ath10k_wmi_tlv_op_pull_mgmt_tx_compl_ev() in drivers/net/wireless/ath/ath10k/wmi-tlv.c in the Linux kernel. This issue could be exploited to trigger a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6918": {
+    "cvss": 5.3,
+    "description": "A flaw was found in the libssh implements abstract layer for message digest (MD) operations implemented by different supported crypto backends. The return values from these were not properly checked, which could cause low-memory situations failures, NULL dereferences, crashes, or usage of the uninitialized memory as an input for the KDF. In this case, non-matching keys will result in decryption/integrity failures, terminating the connection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6228": {
+    "cvss": 3.3,
+    "description": "An issue was found in the tiffcp utility distributed by the libtiff package where a crafted TIFF file on processing may cause a heap-based buffer overflow leads to an application crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6710": {
+    "cvss": 5.4,
+    "description": "A flaw was found in the mod_proxy_cluster in the Apache server. This issue may allow a malicious user to add a script in the 'alias' parameter in the URL to trigger the stored cross-site scripting (XSS) vulnerability. By adding a script on the alias parameter on the URL, it adds a new virtual host and adds the script to the cluster-manager page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6679": {
+    "cvss": 5.5,
+    "description": "A null pointer dereference vulnerability was found in dpll_pin_parent_pin_set() in drivers/dpll/dpll_netlink.c in the Digital Phase Locked Loop (DPLL) subsystem in the Linux kernel. This issue could be exploited to trigger a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5870": {
+    "cvss": 4.4,
+    "description": "A flaw was found in PostgreSQL involving the pg_cancel_backend role that signals background workers, including the logical replication launcher, autovacuum workers, and the autovacuum launcher. Successful exploitation requires a non-core extension with a less-resilient background worker and would affect that specific background worker only. This issue may allow a remote high privileged user to launch a denial of service (DoS) attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6121": {
+    "cvss": 4.3,
+    "description": "An out-of-bounds read vulnerability was found in the NVMe-oF/TCP subsystem in the Linux kernel. This issue may allow a remote attacker to send a crafted TCP packet, triggering a heap-based buffer overflow that results in kmalloc data being printed and potentially leaked to the kernel ring buffer (dmesg).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-6176": {
+    "cvss": 4.7,
+    "description": "A null pointer dereference flaw was found in the Linux kernel API for the cryptographic algorithm scatterwalk functionality. This issue occurs when a user constructs a malicious packet with specific socket configuration, which could allow a local user to crash the system or escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
