@@ -88242,7 +88242,7 @@
     "product": "Wyse Management Suite"
   },
   "CVE-2026-118569": {
-    "cvss": null,
+    "cvss": 5.4,
     "description": "Incorrect Authorization vulnerability in Drupal Fasttoggle allows Forceful Browsing. This issue affects Fasttoggle versions: from 0.0.0 to 4.1.1.",
     "vendor": "Drupal",
     "product": "Fasttoggle"
@@ -88270,5 +88270,53 @@
     "description": "Out-of-bounds read in Windows Paint allows an unauthorized attacker to execute code over a network.",
     "vendor": "Microsoft",
     "product": "Microsoft Paint"
+  },
+  "CVE-2026-118423": {
+    "cvss": 10.0,
+    "description": "The WP Libre Form WordPress plugin 1.5.0.1 does not validate the type of files uploaded through its form submissions, allowing unauthenticated attackers to upload PHP files to a web-accessible location and execute them, leading to remote code execution.",
+    "vendor": "Unknown",
+    "product": "WP Libre Form"
+  },
+  "CVE-2026-123025": {
+    "cvss": 9.4,
+    "description": "An OS Command Injection vulnerability was discovered in the Google Cloud DNS validation module of the OPNsense os-acme-client plugin through 4.17. The DnsGcloud::prepare() method decodes the dns_gcloud_key model field and directly interpolates the string fields gcloud_account and gcloud_project into a shell command passed to proc_open() via LeUtils::run_shell_command() without any validation or escaping. A remote authenticated user with privileges to issue or renew certificates through the WebGUI/API can achieve arbitrary code execution as root.",
+    "vendor": "OPNsense",
+    "product": "os-acme-client"
+  },
+  "CVE-2026-114630": {
+    "cvss": 9.1,
+    "description": "The ELEX WordPress HelpDesk & Customer Ticketing System plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the factory_reset function in all versions up to, and including, 3.3.8 This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). This vulnerability is exploitable via a two-step chain: an unauthenticated attacker first stores an arbitrary ticket_attachment_path value by submitting a ticket through the nopriv eh_crm_new_ticket_post AJAX endpoint (whose nonce is publicly exposed via the [wsdesk_support] shortcode), then triggers the factory_reset routine via a GET request to wp-admin/admin.php?page=wsdesk_factory_reset, which is guarded only by is_admin() — a request-type check — rather than a capability check, causing unlink() to be called on the attacker-supplied path.",
+    "vendor": "elextensions",
+    "product": "ELEX WordPress HelpDesk & Customer Ticketing System"
+  },
+  "CVE-2026-19219": {
+    "cvss": 8.1,
+    "description": "In Progress® Telerik® UI for AJAX prior to v2026.3.812, insufficient integrity protection of dialog request parameters used by the RadEditor file browser may allow an attacker who has obtained certain application encryption key material to alter the folders the file browser reads from, writes to, and uploads into, potentially resulting in remote code execution.",
+    "vendor": "Progress Software",
+    "product": "Telerik UI for ASP.NET AJAX"
+  },
+  "CVE-2026-100109": {
+    "cvss": 9.8,
+    "description": "The Security For WooCommerce WordPress plugin from 1.0.10 to 1.0.16 does not perform capability checks when creating users through an action available to unauthenticated visitors, and lets the caller choose the new account's role, allowing unauthenticated attackers to create administrator accounts and take over the site.",
+    "vendor": "Unknown",
+    "product": "Security For WooCommerce"
+  },
+  "CVE-2026-0264": {
+    "cvss": 7.2,
+    "description": "A buffer overflow vulnerability in the DNS proxy and DNS Server features of Palo Alto Networks PAN-OS® Software allows an unauthenticated attacker with network access to cause a denial of service (DoS) condition (all PAN-OS platforms except Cloud NGFW and Prisma Access) or potentially execute arbitrary code by sending specially crafted network traffic (PA-Series hardware only). Panorama, Cloud NGFW, and Prisma® Access are not impacted by this vulnerability.",
+    "vendor": "Palo Alto Networks",
+    "product": "Cloud NGFW"
+  },
+  "CVE-2026-120209": {
+    "cvss": 9.8,
+    "description": "AJ-Report through 1.7.1 signs share tokens with a hard-coded JWT secret, allowing attackers to forge valid Share-Tokens offline. Attackers can mint a token with reportCode 'dataSet' to access the testTransform endpoint, which passes scripts to GroovyClassLoader for unauthenticated remote code execution.",
+    "vendor": "anji-plus",
+    "product": "AJ-Report"
+  },
+  "CVE-2026-118570": {
+    "cvss": 6.5,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Fasttoggle allows Cross Site Request Forgery. This issue affects Fasttoggle versions: from 0.0.0 to 4.1.1.",
+    "vendor": "Drupal",
+    "product": "Fasttoggle"
   }
 }
