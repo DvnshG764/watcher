@@ -88192,5 +88192,41 @@
     "description": "A stack overflow in the FTP service of Audi UTR 2.0 Universal Traffic Recorder 2.0 allows attackers to cause a Denial of Service (DoS) via a crafted input.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2025-6020": {
+    "cvss": 7.8,
+    "description": "A flaw was found in linux-pam. The module pam_namespace may use access user-controlled paths without proper protection, allowing local users to elevate their privileges to root via multiple symlink attacks and race conditions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121720": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123158": {
+    "cvss": 8.1,
+    "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
+    "vendor": "OpenBSD",
+    "product": "OpenSSH"
+  },
+  "CVE-2026-102334": {
+    "cvss": 7.4,
+    "description": "Nginx Proxy Manager through 2.16.0 lacks rate-limiting on authentication endpoints, allowing unauthenticated attackers to make unlimited password guesses against any account. Attackers can brute-force login credentials via POST /api/tokens and subsequently guess TOTP codes via POST /api/tokens/2fa to gain full session access and administrative control.",
+    "vendor": "NginxProxyManager",
+    "product": "nginx-proxy-manager"
+  },
+  "CVE-2026-122158": {
+    "cvss": 4.7,
+    "description": "A security flaw has been discovered in InvoiceShelf up to 2.4.3/3.0.0-alpha.3. Affected by this issue is the function MemberService::create of the file app/Domains/Accounts/Application/MemberService.php. Performing a manipulation of the argument companies[].id/companies[].role results in improper access controls. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks. Upgrading to version 2.4.4 and 3.0.0-alpha.4 can resolve this issue. The patch is named c798b513c3ab6e672a1678774720fbb282f4d0c6. It is recommended to upgrade the affected component.",
+    "vendor": "Unknown",
+    "product": "InvoiceShelf"
+  },
+  "CVE-2025-50579": {
+    "cvss": 5.3,
+    "description": "A CORS misconfiguration in Nginx Proxy Manager v2.12.3 allows unauthorized domains to access sensitive data, particularly JWT tokens, due to improper validation of the Origin header. This misconfiguration enables attackers to intercept tokens using a simple browser script and exfiltrate them to a remote attacker-controlled server, potentially leading to unauthorized actions within the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
