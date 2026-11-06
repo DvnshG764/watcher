@@ -88582,5 +88582,89 @@
     "description": "The reply function in ftpd.c in the gssftp ftpd in MIT Kerberos 5 (krb5) does not initialize the length variable when auth_type has a certain value, which has unknown impact and remote authenticated attack vectors. NOTE: the original disclosure misidentifies the conditions under which the uninitialized variable is used. NOTE: the vendor disputes this issue, stating \" The 'length' variable is only uninitialized if 'auth_type' is neither the 'KERBEROS_V4' nor 'GSSAPI'; this condition cannot occur in the unmodified source code.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2025-9640": {
+    "cvss": 4.3,
+    "description": "A flaw was found in Samba, in the vfs_streams_xattr module, where uninitialized heap memory could be written into alternate data streams. This allows an authenticated user to read residual memory content that may include sensitive data, resulting in an information disclosure vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60018": {
+    "cvss": 4.8,
+    "description": "glib-networking's OpenSSL backend fails to properly check the return value of a call to BIO_write(), resulting in an out of bounds read.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60019": {
+    "cvss": 3.7,
+    "description": "glib-networking's OpenSSL backend fails to properly check the return value of memory allocation routines. An out of memory condition could potentially result in writing to an invalid memory location.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-8277": {
+    "cvss": 3.1,
+    "description": "A flaw was found in libssh's handling of key exchange (KEX) processes when a client repeatedly sends incorrect KEX guesses. The library fails to free memory during these rekey operations, which can gradually exhaust system memory. This issue can lead to crashes on the client side, particularly when using libgcrypt, which impacts application stability and availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-4056": {
+    "cvss": 7.5,
+    "description": "A flaw was found in GLib. A denial of service on Windows platforms may occur if an application attempts to spawn a program using long command lines.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-8283": {
+    "cvss": 3.7,
+    "description": "A vulnerability was found in the netavark package, a network stack for containers used with Podman. Due to dns.podman search domain being removed, netavark may return external servers if a valid A/AAAA record is sent as a response. When creating a container with a given name, this name will be used as the hostname for the container itself, as the podman's search domain is not added anymore the container is using the host's resolv.conf, and the DNS resolver will try to look into the search domains contained on it. If one of the domains contain a name with the same hostname as the running container, the connection will forward to unexpected external servers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-4878": {
+    "cvss": 3.6,
+    "description": "A vulnerability was found in libssh, where an uninitialized variable exists under certain conditions in the privatekey_from_file() function. This flaw can be triggered if the file specified by the filename doesn't exist and may lead to possible signing failures or heap corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-6199": {
+    "cvss": 3.3,
+    "description": "A flaw was found in the GIF parser of GdkPixbuf’s LZW decoder. When an invalid symbol is encountered during decompression, the decoder sets the reported output size to the full buffer length rather than the actual number of written bytes. This logic error results in uninitialized sections of the buffer being included in the output, potentially leaking arbitrary memory contents in the processed image.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-5915": {
+    "cvss": 6.6,
+    "description": "A vulnerability has been identified in the libarchive library. This flaw can lead to a heap buffer over-read due to the size of a filter block potentially exceeding the Lempel-Ziv-Storer-Schieber (LZSS) window. This means the library may attempt to read beyond the allocated memory buffer, which can result in unpredictable program behavior, crashes (denial of service), or the disclosure of sensitive information from adjacent memory regions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-5916": {
+    "cvss": 5.6,
+    "description": "A vulnerability has been identified in the libarchive library. This flaw involves an integer overflow that can be triggered when processing a Web Archive (WARC) file that claims to have more than INT64_MAX - 4 content bytes. An attacker could craft a malicious WARC archive to induce this overflow, potentially leading to unpredictable program behavior, memory corruption, or a denial-of-service condition within applications that process such archives using libarchive. This bug affects libarchive versions prior to 3.8.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-5917": {
+    "cvss": 5.0,
+    "description": "A vulnerability has been identified in the libarchive library. This flaw involves an 'off-by-one' miscalculation when handling prefixes and suffixes for file names. This can lead to a 1-byte write overflow. While seemingly small, such an overflow can corrupt adjacent memory, leading to unpredictable program behavior, crashes, or in specific circumstances, could be leveraged as a building block for more sophisticated exploitation. This bug affects libarchive versions prior to 3.8.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-5918": {
+    "cvss": 6.6,
+    "description": "A vulnerability has been identified in the libarchive library. This flaw can be triggered when file streams are piped into bsdtar, potentially allowing for reading past the end of the file. This out-of-bounds read can lead to unintended consequences, including unpredictable program behavior, memory corruption, or a denial-of-service condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113615": {
+    "cvss": 9.8,
+    "description": "The GS JWT Authentication for WP REST API WordPress plugin through 1.0.0 does not sanitize or parameterize a request value before using it in SQL queries on several unauthenticated REST routes, allowing unauthenticated attackers to perform SQL injection and obtain an administrator session.",
+    "vendor": "Unknown",
+    "product": "GS JWT Authentication for WP REST API"
+  },
+  "CVE-2026-101678": {
+    "cvss": 4.3,
+    "description": "Vulnerability in the MySQL Connectors product of Oracle MySQL (component: Connector/J). The supported version that is affected is 26.7.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise MySQL Connectors. Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized ability to cause a partial denial of service (partial DOS) of MySQL Connectors. CVSS 3.1 Base Score 4.3 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L).",
+    "vendor": "Oracle Corporation",
+    "product": "MySQL Connectors"
   }
 }
