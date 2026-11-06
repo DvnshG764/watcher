@@ -15276,7 +15276,7 @@
     "product": "reva"
   },
   "CVE-2026-108097": {
-    "cvss": null,
+    "cvss": 8.1,
     "description": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Drupal Drupal core allows Reflection Injection. This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
     "vendor": "Drupal",
     "product": "Drupal core"
@@ -88406,6 +88406,102 @@
   "CVE-2023-6176": {
     "cvss": 4.7,
     "description": "A null pointer dereference flaw was found in the Linux kernel API for the cryptographic algorithm scatterwalk functionality. This issue occurs when a user constructs a malicious packet with specific socket configuration, which could allow a local user to crash the system or escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-11731": {
+    "cvss": 3.1,
+    "description": "A flaw was found in the exsltFuncResultComp() function of libxslt, which handles EXSLT elements during stylesheet parsing. Due to improper type handling, the function may treat an XML document node as a regular XML element node, resulting in a type confusion. This can cause unexpected memory reads and potential crashes. While difficult to exploit, the flaw could lead to application instability or denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-3416": {
+    "cvss": 3.7,
+    "description": "A flaw was found in OpenSSL's handling of the properties argument in certain functions. This vulnerability can allow use-after-free exploitation, which may result in undefined behavior or incorrect property parsing, leading to OpenSSL treating the input as an empty string.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-3360": {
+    "cvss": 3.7,
+    "description": "A flaw was found in GLib. An integer overflow and buffer under-read occur when parsing a long invalid ISO 8601 timestamp with the g_date_time_new_from_iso8601() function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-49394": {
+    "cvss": 5.3,
+    "description": "In mutt and neomutt the In-Reply-To email header field is not protected by cryptographic signing which allows an attacker to reuse an unencrypted but signed email message to impersonate the original sender.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-49395": {
+    "cvss": 5.3,
+    "description": "In mutt and neomutt, PGP encryption does not use the --hidden-recipient mode which may leak the Bcc email header field by inferring from the recipients info.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-8612": {
+    "cvss": 3.8,
+    "description": "A flaw was found in QEMU, in the virtio-scsi, virtio-blk, and virtio-crypto devices. The size for virtqueue_push as set in virtio_scsi_complete_req / virtio_blk_req_complete / virito_crypto_req_complete could be larger than the true size of the data which has been sent to guest. Once virtqueue_push() finally calls dma_memory_unmap to ummap the in_iov, it may call the address_space_write function to write back the data. Some uninitialized data may exist in the bounce.buffer, leading to an information leak.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-8354": {
+    "cvss": 5.5,
+    "description": "A flaw was found in QEMU. An assertion failure was present in the usb_ep_get() function in hw/net/core.c when trying to get the USB endpoint from a USB device. This flaw may allow a malicious unprivileged guest user to crash the QEMU process on the host and cause a denial of service condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-8443": {
+    "cvss": 2.9,
+    "description": "A heap-based buffer overflow vulnerability was found in the libopensc OpenPGP driver. A crafted USB device or smart card with malicious responses to the APDUs during the card enrollment process using the `pkcs15-init` tool may lead to out-of-bound rights, possibly resulting in arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-45615": {
+    "cvss": 3.9,
+    "description": "A vulnerability was found in OpenSC, OpenSC tools, PKCS#11 module, minidriver, and CTK. The problem is missing initialization of variables expected to be initialized (as arguments to other functions, etc.).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-45616": {
+    "cvss": 3.9,
+    "description": "A vulnerability was found in OpenSC, OpenSC tools, PKCS#11 module, minidriver, and CTK. An attacker could use a crafted USB Device or Smart Card, which would present the system with a specially crafted response to APDUs. The following problems were caused by insufficient control of the response APDU buffer and its length when communicating with the card.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-45617": {
+    "cvss": 3.9,
+    "description": "A vulnerability was found in OpenSC, OpenSC tools, PKCS#11 module, minidriver, and CTK. An attacker could use a crafted USB Device or Smart Card, which would present the system with a specially crafted response to APDUs. Insufficient or missing checking of return values of functions leads to unexpected work with variables that have not been initialized.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-45618": {
+    "cvss": 3.9,
+    "description": "A vulnerability was found in pkcs15-init in OpenSC. An attacker could use a crafted USB Device or Smart Card, which would present the system with a specially crafted response to APDUs. Insufficient or missing checking of return values of functions leads to unexpected work with variables that have not been initialized.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-45619": {
+    "cvss": 4.3,
+    "description": "A vulnerability was found in OpenSC, OpenSC tools, PKCS#11 module, minidriver, and CTK. An attacker could use a crafted USB Device or Smart Card, which would present the system with a specially crafted response to APDUs. When buffers are partially filled with data, initialized parts of the buffer can be incorrectly accessed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-45620": {
+    "cvss": 3.9,
+    "description": "A vulnerability was found in the pkcs15-init tool in OpenSC. An attacker could use a crafted USB Device or Smart Card, which would present the system with a specially crafted response to APDUs. When buffers are partially filled with data, initialized parts of the buffer can be incorrectly accessed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-5742": {
+    "cvss": 6.7,
+    "description": "A vulnerability was found in GNU Nano that allows a possible privilege escalation through an insecure temporary file. If Nano is killed while editing, a file it saves to an emergency file with the permissions of the running user provides a window of opportunity for attackers to escalate privileges through a malicious symlink.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-4029": {
+    "cvss": 4.1,
+    "description": "A vulnerability was found in Wildfly’s management interface. Due to the lack of limitation of sockets for the management interface, it may be possible to cause a denial of service hitting the nofile limit as there is no possibility to configure or set a maximum number of connections.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
