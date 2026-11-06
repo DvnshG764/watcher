@@ -87118,5 +87118,1079 @@
     "description": "MotionEye v0.43.1b4 and before is vulnerable to OS Command Injection in configuration parameters such as image_file_name. Unsanitized user input is written to Motion configuration files, allowing remote authenticated attackers with admin access to achieve code execution when Motion is restarted.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2025-63604": {
+    "cvss": 6.5,
+    "description": "A code injection vulnerability exists in baryhuang/mcp-server-aws-resources-python 0.1.0 that allows remote code execution through insufficient input validation in the execute_query method. The vulnerability stems from the exposure of dangerous Python built-in functions (__import__, getattr, hasattr) in the execution namespace and the direct use of exec() to execute user-supplied code. An attacker can craft malicious queries to execute arbitrary Python code, leading to AWS credential theft (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY), file system access, environment variable disclosure, and potential system compromise. The vulnerability allows attackers to bypass intended security controls and gain unauthorized access to sensitive AWS resources and credentials stored in the server's environment.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60314": {
+    "cvss": 5.4,
+    "description": "Configuroweb Sistema Web de Inventario 1.0 is vulnerable to a Stored Cross-Site Scripting (XSS) due to the lack of input sanitization on the product name parameter (Nombre:Producto) allowing an authenticated attacker to inject malicious payloads and execute arbitrary JavaScript.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60833": {
+    "cvss": 6.5,
+    "description": "An XML External Entity (XXE) vulnerability in the /mall/wxpay/pay component of uzy-ssm-mall v1.1.0 allows attackers to execute arbitrary code via supplying crafted XML data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57564": {
+    "cvss": 8.2,
+    "description": "CubeAPM nightly-2025-08-01-1 allow unauthenticated attackers to inject arbitrary log entries into production systems via the /api/logs/insert/elasticsearch/_bulk endpoint. This endpoint accepts bulk log data without requiring authentication or input validation, allowing remote attackers to perform unauthorized log injection. Exploitation may lead to false log entries, log poisoning, alert obfuscation, and potential performance degradation of the observability pipeline. The issue is present in the core CubeAPM platform and is not limited to specific deployment configurations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60312": {
+    "cvss": 6.1,
+    "description": "Sourcecodester Markdown to HTML Converter v1.0 is vulnerable to a Cross-Site Scripting (XSS) in the \"Markdown Input\" field, allowing a remote attacker to inject arbitrary HTML/JavaScript code that executes in the victim's browser upon clicking the \"Convert to HTML\" button.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56243": {
+    "cvss": 6.1,
+    "description": "A Cross-Site Scripting (XSS) vulnerability was found in the register.php page of PuneethReddyHC Event Management System 1.0, where the event_id GET parameter is improperly handled. An attacker can craft a malicious URL to execute arbitrary JavaScript in the victim s browser by injecting code into this parameter.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-61197": {
+    "cvss": 8.9,
+    "description": "An issue in Orban Optimod 5950, Optimod 5950HD, Optimod 5750, Optimod 5750HD, Optimod Trio Optimod version 1.0.0.33 - System version 2.5.26 allows a remote attacker to escalate privileges via the application stores user privilege/role information in client-side browser storage",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61198": {
+    "cvss": 5.4,
+    "description": "A stored cross-site scripting (XSS) vulnerability in Optimod 5950 - Optimod 5950HD - Optimod 5750 - Optimod 5750HD - Optimod Trio - Optimod version 1.0.0.33 - System version 2.5.26, allows remote attackers to execute arbitrary JavaScript in the web browser of a user, by including a malicious payload into the logs which would be returned in logs rendered in the UI.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57247": {
+    "cvss": 9.1,
+    "description": "The BATBToken smart contract (address 0xfbf1388408670c02f0dbbb74251d8ded1d63b7a2, Compiler Version v0.8.26+commit.8a97fa7a) contains incorrect access control implementation in whitelist management functions. The setColdWhiteList() and setSpecialAddress() functions in the base ERC20 contract are declared as public without proper access control modifiers, allowing any user to bypass transfer restrictions and manipulate special address settings. This enables unauthorized users to circumvent cold time transfer restrictions and potentially disrupt dividend distribution mechanisms, leading to privilege escalation and violation of the contract's intended tokenomics.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60956": {
+    "cvss": 8.0,
+    "description": "Cross Site Request Forgery (CSRF) vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to execute arbitrary code, cause a denial of service, gain escalated privileges, and gain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60957": {
+    "cvss": 9.9,
+    "description": "OS Command Injection vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to execute arbitrary code, cause a denial of service, gain escalated privileges, and gain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60958": {
+    "cvss": 7.3,
+    "description": "Cross Site Scripting (XSS) vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to gain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60959": {
+    "cvss": 8.2,
+    "description": "OS Command Injection vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to gain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60960": {
+    "cvss": 8.2,
+    "description": "OS Command Injection vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to execute arbitrary code, cause a denial of service, gain escalated privileges, and gain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60961": {
+    "cvss": 6.1,
+    "description": "Cross Site Scripting (XSS) vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to gain sensitive information, and possibly other unspecified impacts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60962": {
+    "cvss": 8.2,
+    "description": "OS Command Injection vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to gain sensitive information, and possibly other unspecified impacts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60963": {
+    "cvss": 8.2,
+    "description": "OS Command Injection vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to execute arbitrary code, cause a denial of service, gain escalated privileges, and gain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60964": {
+    "cvss": 9.1,
+    "description": "OS Command Injection vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to execute arbitrary code, cause a denial of service, gain escalated privileges, gain sensitive information, and possibly other unspecified impacts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60965": {
+    "cvss": 9.1,
+    "description": "OS Command Injection vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0071-000 Ver 4.00 allows attackers to execute arbitrary code, cause a denial of service, gain escalated privileges, gain sensitive information, and possibly other unspecified impacts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60967": {
+    "cvss": 7.3,
+    "description": "Cross Site Scripting (XSS) vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0076-000 Ver 4.00 allows attackers to gain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60969": {
+    "cvss": 5.7,
+    "description": "Directory Traversal vulnerability in EndRun Technologies Sonoma D12 Network Time Server (GPS) F/W 6010-0076-000 Ver 4.00 allows attackers to gain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-28129": {
+    "cvss": 5.4,
+    "description": "Phpgurukul Hostel Management System 2.1 is vulnerable to clickjacking.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-56382": {
+    "cvss": 6.1,
+    "description": "A stored Cross-site scripting (XSS) vulnerability exists in the Customer Management Module of LionCoders SalePro POS 5.4.8. An authenticated attacker can inject arbitrary web script or HTML via the 'Customer Name' parameter when creating or editing customer profiles. This malicious input is improperly sanitized before storage and subsequent rendering, leading to script execution in the browsers of users who view the affected customer details.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57515": {
+    "cvss": 9.8,
+    "description": "A SQL injection vulnerability has been identified in Uniclare Student Portal v2. This flaw allows remote attackers to inject arbitrary SQL commands via vulnerable input fields, enabling the execution of time-delay functions to infer database responses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60445": {
+    "cvss": 6.1,
+    "description": "A stored Cross-Site Scripting (XSS) vulnerability has been discovered in XunRuiCMS version 4.7.1. The vulnerability exists due to insufficient validation of SVG file uploads in the dayrui/Fcms/Library/Upload.php component, allowing attackers to inject malicious JavaScript code that executes when the uploaded file is viewed.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60447": {
+    "cvss": 5.9,
+    "description": "A stored Cross-Site Scripting (XSS) vulnerability has been discovered in Emlog Pro 2.5.19. The vulnerability exists in the email template configuration component located at /admin/setting.php?action=mail, which allows administrators to input HTML code that is not properly sanitized, leading to persistent JavaScript execution.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60448": {
+    "cvss": 6.1,
+    "description": "A stored Cross-Site Scripting (XSS) vulnerability has been discovered in Emlog Pro 2.5.19. The vulnerability exists due to insufficient validation of SVG file uploads in the /admin/media.php component, allowing attackers to upload malicious SVG files containing JavaScript code that executes when the uploaded file is viewed.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60449": {
+    "cvss": 4.9,
+    "description": "An information disclosure vulnerability has been discovered in SeaCMS 13.1. The vulnerability exists in the admin_safe.php component located in the /btcoan/ directory. This security flaw allows authenticated administrators to scan and download not only the application’s source code but also potentially any file accessible on the server’s root directory.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60450": {
+    "cvss": 6.1,
+    "description": "A stored Cross-Site Scripting (XSS) vulnerability has been discovered in MetInfo CMS version 8.0. The vulnerability exists due to insufficient validation and sanitization of SVG file uploads in the app\\system\\include\\module\\editor\\Uploader.class.php component. This security flaw allows attackers to upload malicious SVG files containing JavaScript code that executes when the uploaded file is viewed or accessed.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60451": {
+    "cvss": 6.1,
+    "description": "A stored Cross-Site Scripting (XSS) vulnerability has been discovered in MetInfo CMS version 8.0. The vulnerability exists due to insufficient validation and sanitization of SVG file uploads in the app\\system\\include\\module\\uploadify.class.php component, specifically in the website settings module. This security flaw allows attackers to upload malicious SVG files containing JavaScript code that executes when the uploaded file is viewed or accessed.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60452": {
+    "cvss": 6.1,
+    "description": "A stored Cross-Site Scripting (XSS) vulnerability has been discovered in MetInfo CMS version 8.0. The vulnerability exists in the download management module, specifically in the app\\system\\download\\admin\\download_admin.class.php component. The vulnerability allows attackers to upload malicious SVG files containing JavaScript code that executes when the uploaded file is viewed or accessed by users.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60453": {
+    "cvss": 6.1,
+    "description": "A stored Cross-Site Scripting (XSS) vulnerability has been discovered in MetInfo CMS version 8.0. The vulnerability exists in the column management module, specifically in the app\\system\\column\\admin\\index.class.php component. The vulnerability allows attackers to upload malicious SVG files containing JavaScript code that executes when the uploaded file is viewed or accessed by users.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60454": {
+    "cvss": 6.1,
+    "description": "A stored Cross-Site Scripting (XSS) vulnerability has been discovered in MetInfo CMS version 8.0. The vulnerability exists in the image management module, specifically in the app\\system\\img\\admin\\img_admin.class.php component. The vulnerability allows attackers to upload malicious SVG files containing JavaScript code that executes when the uploaded file is viewed or accessed by users.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-55972": {
+    "cvss": 7.5,
+    "description": "A TCL Smart TV running a vulnerable UPnP/DLNA MediaRenderer implementation is affected by a remote, unauthenticated Denial of Service (DoS) condition. By sending a flood of malformed or oversized SetAVTransportURI SOAP requests to the UPnP control endpoint, an attacker can cause the device to become unresponsive. This denial persists as long as the attack continues and affects all forms of TV operation. Manual user control and even reboots do not restore functionality unless the flood stops.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57423": {
+    "cvss": 6.5,
+    "description": "A SQL injection vulnerability was discovered in the /articles endpoint of MyClub 0.5, affecting the query parameters Content, GroupName, PersonName, lastUpdate, pool, and title. Due to insufficient input sanitisation, an unauthenticated remote attacker could inject arbitrary SQL commands via a crafted GET request, potentially leading to information disclosure or manipulation of the database.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56551": {
+    "cvss": 8.2,
+    "description": "An issue in DirectAdmin v1.680 allows unauthorized attackers to manipulate the page layout and replace the legitimate login interface with arbitrary attacker-controlled content via supplying a crafted GET request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56379": {
+    "cvss": 5.4,
+    "description": "A stored cross-site scripting (XSS) vulnerability in the blog post feature of ERPNEXT v15.67.0 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the content field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56380": {
+    "cvss": 6.5,
+    "description": "Frappe Framework v15.72.4 was discovered to contain a SQL injection vulnerability via the fieldname parameter in the frappe.client.get_value API endpoint and a crafted script to the fieldname parameter",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56381": {
+    "cvss": 6.5,
+    "description": "ERPNEXT v15.67.0 was discovered to contain multiple SQL injection vulnerabilities in the /api/method/frappe.desk.reportview.get endpoint via the order_by and group_by parameters.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57443": {
+    "cvss": 5.1,
+    "description": "FrostWire 6.14.0-build-326 for macOS contains permissive entitlements (allow-dyld-environment-variables, disable-library-validation) that allow unprivileged local attackers to inject code into the FrostWire process via the DYLD_INSERT_LIBRARIES environment variable. This allows escalated privileges to arbitrary TCC-approved directories.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60782": {
+    "cvss": 5.4,
+    "description": "PHP Education Manager v1.0 is vulnerable to Cross Site Scripting (XSS) stored Cross-Site Scripting (XSS) vulnerability in the topics management module (topics.php). Attackers can inject malicious JavaScript payloads into the Titlefield during topic creation or updates.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-61087": {
+    "cvss": 6.1,
+    "description": "SourceCodester Pet Grooming Management Software 1.0 is vulnerable to Cross Site Scripting (XSS) via the Customer Name field under Customer Management Section.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61096": {
+    "cvss": 6.5,
+    "description": "PHPGurukul Online Shopping Portal Project v2.1 is vulnerable to SQL Injection in /shopping/login.php via the fullname parameter.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-56154": {
+    "cvss": 6.1,
+    "description": "htmly v3.0.8 is vulnerable to Cross Site Scripting (XSS) in the /author/:name endpoint of the affected application. The name parameter is not properly sanitized before being reflected in the HTML response, allowing attackers to inject arbitrary JavaScript payloads.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56161": {
+    "cvss": 7.5,
+    "description": "YOSHOP 2.0 allows unauthenticated information disclosure via comment-list API endpoints in the Goods module. The Comment model eagerly loads the related User model without field filtering; because User.php defines no $hidden or $visible attributes, sensitive fields (bcrypt password hash, mobile number, pay_money, expend_money.) are exposed in JSON responses. Route names vary per deployment (e.g. /api/goods.pinglun/list), but all call the same vulnerable model logic.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-56162": {
+    "cvss": 6.5,
+    "description": "YOSHOP 2.0 suffers from an unauthenticated SQL injection in the goodsIds parameter of the /api/goods/listByIds endpoint. The getListByIds function concatenates user input into orderRaw('field(goods_id, ...)'), allowing attackers to: (a) enumerate or modify database data, including dumping admin password hashes; (b) write web-shell files or invoke xp_cmdshell, leading to remote code execution on servers configured with sufficient DB privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57305": {
+    "cvss": 6.5,
+    "description": "VitaraCharts 5.3.5 is vulnerable to Server-Side Request Forgery in fileLoader.jsp.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60660": {
+    "cvss": 7.5,
+    "description": "Tenda AC18 V15.03.05.19 was discovered to contain a stack overflow via the mac parameter in the fromAdvSetMacMtuWan function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60662": {
+    "cvss": 7.5,
+    "description": "Tenda AC18 V15.03.05.19 was discovered to contain a stack overflow via the wanSpeed parameter in the fromAdvSetMacMtuWan function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59403": {
+    "cvss": 9.8,
+    "description": "The Flock Safety Android Collins application (aka com.flocksafety.android.collins) 6.35.31 for Android lacks authentication. It is responsible for the camera feed on Falcon, Sparrow, and Bravo devices, but exposes administrative API endpoints on port 8080 without authentication. Endpoints include but are not limited to: /reboot, /logs, /crashpack, and /adb/enable. This results in multiple impacts including denial of service (DoS) via /reboot, information disclosure via /logs, and remote code execution (RCE) via /adb/enable. The latter specifically results in adb being started over TCP without debugging confirmation, providing an attacker in the LAN/WLAN with shell access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59405": {
+    "cvss": 7.5,
+    "description": "The Flock Safety Peripheral com.flocksafety.android.peripheral application 7.38.3 for Android (installed on Falcon and Sparrow License Plate Readers and Bravo Edge AI Compute Devices) contains a cleartext DataDog API key within in its codebase. Because application binaries can be trivially decompiled or inspected, attackers can recover the OAuth secret without special privileges. This secret is intended to remain confidential and should never be embedded directly in client-side software.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59406": {
+    "cvss": 6.2,
+    "description": "The Flock Safety Pisco com.flocksafety.android.pisco application 6.21.11 for Android (installed on Falcon and Sparrow License Plate Readers and Bravo Edge AI Compute Devices) has a cleartext Auth0 client secret in its codebase. Because application binaries can be trivially decompiled or inspected, attackers can recover this OAuth secret without special privileges. This secret is intended to remain confidential and should never be embedded directly in client-side software.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59407": {
+    "cvss": 9.8,
+    "description": "The Flock Safety DetectionProcessing com.flocksafety.android.objects application 6.35.33 for Android (installed on Falcon and Sparrow License Plate Readers and Bravo Edge AI Compute Devices) bundles a Java Keystore (flock_rye.bks) along with its hardcoded password (flockhibiki17) in its code. The keystore contains a private key.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59409": {
+    "cvss": 7.5,
+    "description": "Flock Safety Falcon and Sparrow License Plate Readers OPM1.171019.026 ship with development Wi-Fi credentials (test_flck) stored in cleartext in production firmware.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60661": {
+    "cvss": 5.3,
+    "description": "Tenda AC18 V15.03.05.19 was discovered to contain a stack overflow via the cloneType parameter in the fromAdvSetMacMtuWan function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60663": {
+    "cvss": 7.5,
+    "description": "Tenda AC18 V15.03.05.19 was discovered to contain a stack overflow via the wanMTU parameter in the fromAdvSetMacMtuWan function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56019": {
+    "cvss": 6.5,
+    "description": "An insecure permission vulnerability exists in the Agasta Easytouch+ version 9.3.97 The device allows unauthorized mobile applications to connect via Bluetooth Low Energy (BLE) without authentication. Once an unauthorized connection is established, legitimate applications are unable to connect, causing a denial of service. The attack requires proximity to the device, making it exploitable from an adjacent network location.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52039": {
+    "cvss": 8.2,
+    "description": "In Frappe ERPNext 15.57.5, the function get_material_requests_based_on_supplier() at erpnext/stock/doctype/material_request/material_request.py is vulnerable to SQL Injection, which allows an attacker to extract all information from databases by injecting a SQL query into the txt parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52040": {
+    "cvss": 8.2,
+    "description": "In Frappe ERPNext 15.57.5, the function get_blanket_orders() at erpnext/controllers/queries.py is vulnerable to SQL Injection, which allows an attacker can extract all information from databases by injecting a SQL query into the blanket_order_type parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52041": {
+    "cvss": 8.2,
+    "description": "In Frappe ERPNext 15.57.5, the function get_stock_balance_for() at erpnext/stock/doctype/stock_reconciliation/stock_reconciliation.py is vulnerable to SQL Injection, which allows an attacker to extract all information from databases by injecting a SQL query into the inventory_dimensions_dict parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52042": {
+    "cvss": 8.2,
+    "description": "In Frappe ERPNext 15.57.5, the function get_rfq_containing_supplier() at erpnext/buying/doctype/request_for_quotation/request_for_quotation.py is vulnerable to SQL Injection, which allows an attacker to extract all information from databases by injecting SQL query via the txt parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57275": {
+    "cvss": 5.5,
+    "description": "Storage Performance Development Kit (SPDK) 25.05 is vulnerable to Buffer Overflow in the NVMe-oF target component in SPDK - lib/nvmf.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59684": {
+    "cvss": 8.8,
+    "description": "DigiSign DigiSigner ONE 1.0.4.60 allows DLL Hijacking.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59685": {
+    "cvss": 5.3,
+    "description": "Kazaar 1.25.12 allows a JWT with none in the alg field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59686": {
+    "cvss": 6.5,
+    "description": "Kazaar 1.25.12 allows /api/v1/org-id/orders/order-id/documents calls with a modified order-id.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59687": {
+    "cvss": 4.3,
+    "description": "IMPAQTR Aurora before 1.36 allows Insecure Direct Object Reference attacks against the users list, organization details, bookmarks, and notifications of an arbitrary organization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61044": {
+    "cvss": 9.8,
+    "description": "TOTOLINK X18 V9.1.0cu.2053_B20230309 was discovered to contain a command injection vulnerability via the agentName parameter in the setEasyMeshAgentCfg function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61045": {
+    "cvss": 9.8,
+    "description": "TOTOLINK X18 V9.1.0cu.2053_B20230309 was discovered to contain a command injection vulnerability via the mac parameter in the setEasyMeshAgentCfg function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56514": {
+    "cvss": 5.4,
+    "description": "Cross Site Scripting (XSS) vulnerability in Fiora chat application 1.0.0 allows executes arbitrary JavaScript when malicious SVG files are rendered by other users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56515": {
+    "cvss": 8.8,
+    "description": "File upload vulnerability in Fiora chat application 1.0.0 through user avatar upload functionality. The application fails to validate SVG file content, allowing malicious SVG files with embedded foreignObject elements containing iframe tags and JavaScript event handlers (onmouseover) to be uploaded and stored. When rendered, these SVG files execute arbitrary JavaScript, enabling attackers to steal user sessions, cookies, and perform unauthorized actions in the context of users viewing affected profiles.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-28357": {
+    "cvss": 8.8,
+    "description": "A CRLF injection vulnerability in Neto CMS v6.313.0 through v6.314.0 allows attackers to execute arbitrary code via supplying a crafted HTTP request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57393": {
+    "cvss": 8.8,
+    "description": "A stored cross-site scripting (XSS) in Kissflow Work Platform Kissflow Application Versions 7337 Account v2.0 to v4.2vallows attackers to execute arbitrary web scripts or HTML via injecting a crafted payload.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60991": {
+    "cvss": 8.8,
+    "description": "A reflected cross-site scripted (XSS) vulnerability in Codazon Magento Themes v1.1.0.0 to v2.4.7 allows attackers to execute arbitrary Javascript in the context of a user's browser via a crafted payload injected into the cat parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-46205": {
+    "cvss": 8.1,
+    "description": "A heap-use-after free in the PdfTokenizer::ReadDictionary function of podofo v0.10.0 to v0.10.5 allows attackers to cause a Denial of Service (DoS) by supplying a crafted PDF file. NOTE: this is disputed by the Supplier because there is no available file to reproduce the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56588": {
+    "cvss": 8.8,
+    "description": "Dolibarr ERP & CRM v21.0.1 were discovered to contain a remote code execution (RCE) vulnerability in the User module configuration via the computed field parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57444": {
+    "cvss": 6.1,
+    "description": "An authenticated cross-site scripting (XSS) vulnerability in the Administrative interface of Radware AlteonOS Web UI Management v33.0.4.50 allows attackers to execute arbitrary web scripts or HTML via injecting a crafted payload into the Description parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61188": {
+    "cvss": 6.3,
+    "description": "Jeecgboot versions 3.8.2 and earlier are affected by a path traversal vulnerability. This vulnerability allows attackers to upload files with system-whitelisted extensions to the system directory /opt, instead of the /opt/upFiles directory specified by the web server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57389": {
+    "cvss": 5.4,
+    "description": "A reflected cross-site scripting (XSS) vulnerability in the /admin/system/packages endpoint of Luci OpenWRT v18.06.2 allows attackers to execute arbitrary Javascript in the context of a user's browser via a crafted payload. This vulnerability was fixed in OpenWRT v19.07.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57428": {
+    "cvss": 6.5,
+    "description": "Default credentials in Each Italy Wireless Mini Router WIRELESS-N 300M v28K.MiniRouter.20190211 allows attackers to gain access to the debug shell exposed via Telnet on Port 23 and execute hardware-level flash and register manipulation commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56449": {
+    "cvss": 8.2,
+    "description": "A security vulnerability was identified in Obsidian Scheduler's REST API 5.0.0 thru 6.3.0. If an account is locked out due to not enrolling in MFA (e.g. after the 7-day enforcement window), the REST API still allows the use of Basic Authentication to authenticate and perform administrative actions. In particular, the default admin account was found to be locked out via the web interface but still usable through the REST API. This allowed creation of a new privileged user, bypassing MFA protections. This undermines the intended security posture of MFA enforcement.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57516": {
+    "cvss": 8.2,
+    "description": "OS Command injection vulnerability in PublicCMS PublicCMS-V5.202506.a, and PublicCMS-V5.202506.b allowing attackers to execute arbitrary commands via crafted DATABASE, USERNAME, or PASSWORD variables to the backupDB.bat file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57483": {
+    "cvss": 8.1,
+    "description": "A reflected cross-site scripting (XSS) vulnerability in tawk.to chatbox widget v4 allows attackers to execute arbitrary Javascript in the context of the user's browser via injecting a crafted payload into the vulnerable parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57424": {
+    "cvss": 7.3,
+    "description": "A stored cross-site scripting (XSS) vulnerability exists in the MyCourts v3 application within the LTA number profile field. An attacker can insert arbitrary JavaScript into their profile, which executes in the browser of any user viewing it, including administrators. Due to the absence of the HttpOnly flag on the session cookie, this flaw could be exploited to capture session tokens and hijack user sessions, enabling elevated access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56764": {
+    "cvss": 5.3,
+    "description": "Trivision NC-227WF firmware 5.80 (build 20141010) login mechanism reveals whether a username exists or not by returning different error messages (\"Unknown user\" vs. \"Wrong password\"), allowing an attacker to enumerate valid usernames.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57266": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in file AssistantController.java in ThriveX Blogging Framework 2.5.9 thru 3.1.3 allowing unauthenticated attackers to gain sensitive information such as API Keys via the /api/assistant/list endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55187": {
+    "cvss": 9.9,
+    "description": "In DriveLock 24.1.4 before 24.1.5, 24.2.5 before 24.2.6, and 25.1.2 before 25.1.4, attackers can gain elevated privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57292": {
+    "cvss": 6.1,
+    "description": "Todoist v8484 contains a stored cross-site scripting (XSS) vulnerability in the avatar upload functionality. The application fails to properly validate the MIME type and sanitize image metadata.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56463": {
+    "cvss": 6.8,
+    "description": "Mercusys MW305R 3.30 and below is has a Transport Layer Security (TLS) certificate private key disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-58385": {
+    "cvss": 7.1,
+    "description": "In DOXENSE WATCHDOC before 6.1.0.5094, private user puk codes can be disclosed for Active Directory registered users (there is hard-coded and predictable data).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59362": {
+    "cvss": 4.0,
+    "description": "Squid through 7.1 mishandles ASN.1 encoding of long SNMP OIDs. This occurs in asn_build_objid in lib/snmplib/asn1.c.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-26258": {
+    "cvss": 6.1,
+    "description": "Sourcecodester Employee Management System v1.0 is vulnerable to Cross Site Scripting (XSS) via 'Add Designation.'",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55848": {
+    "cvss": 8.8,
+    "description": "An issue was discovered in DIR-823 firmware 20250416. There is an RCE vulnerability in the set_cassword settings interface, as the http_casswd parameter is not filtered by '&'to allow injection of reverse connection commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-45994": {
+    "cvss": 7.5,
+    "description": "An issue in Aranda PassRecovery v1.0 allows attackers to enumerate valid user accounts in Active Directory via sending a crafted POST request to /user/existdirectory/1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55847": {
+    "cvss": 8.8,
+    "description": "Wavlink M86X3A_V240730 contains a buffer overflow vulnerability in the /cgi-bin/ExportAllSettings.cgi file. The vulnerability arises because the Cookie parameter does not properly validate the length of input data. Attackers can exploit this to execute arbitrary code or cause a denial of service (DoS) on the system",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56383": {
+    "cvss": 8.4,
+    "description": "Notepad++ v8.8.3 has a DLL hijacking vulnerability, which can replace the original DLL file to execute malicious code. NOTE: this is disputed by multiple parties because the behavior only occurs when a user installs the product into a directory tree that allows write access by arbitrary unprivileged users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-58384": {
+    "cvss": 10.0,
+    "description": "In DOXENSE WATCHDOC before 6.1.1.5332, Deserialization of Untrusted Data can lead to remote code execution through the .NET Remoting library in the Watchdoc administration interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57692": {
+    "cvss": 6.8,
+    "description": "PiranhaCMS 12.0 allows stored XSS in the Text content block of Standard and Standard Archive Pages via /manager/pages, enabling execution of arbitrary JavaScript in another user s browser.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57317": {
+    "cvss": 7.5,
+    "description": "apidoc-core is the core parser library to generate apidoc result following the apidoc-spec. A Prototype Pollution vulnerability in the preProcess function of apidoc-core versions thru 0.15.0 allows attackers to inject properties on Object.prototype via supplying a crafted payload, causing denial of service (DoS) as the minimum consequence.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-46148": {
+    "cvss": 5.3,
+    "description": "In PyTorch through 2.6.0, when eager is used, nn.PairwiseDistance(p=2) produces incorrect results.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-46149": {
+    "cvss": 5.3,
+    "description": "In PyTorch before 2.7.0, when inductor is used, nn.Fold has an assertion error.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-46150": {
+    "cvss": 5.3,
+    "description": "In PyTorch before 2.7.0, when torch.compile is used, FractionalMaxPool2d has inconsistent results.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-46152": {
+    "cvss": 5.3,
+    "description": "In PyTorch before 2.7.0, bitwise_right_shift produces incorrect output for certain out-of-bounds values of the \"other\" argument.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-46153": {
+    "cvss": 5.3,
+    "description": "PyTorch before 3.7.0 has a bernoulli_p decompose function in decompositions.py even though it lacks full consistency with the eager CPU implementation, negatively affecting nn.Dropout1d, nn.Dropout2d, and nn.Dropout3d for fallback_random=True.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55551": {
+    "cvss": 7.5,
+    "description": "An issue in the component torch.linalg.lu of pytorch v2.8.0 allows attackers to cause a Denial of Service (DoS) when performing a slice operation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55552": {
+    "cvss": 7.5,
+    "description": "pytorch v2.8.0 was discovered to display unexpected behavior when the components torch.rot90 and torch.randn_like are used together.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55553": {
+    "cvss": 7.5,
+    "description": "A syntax error in the component proxy_tensor.py of pytorch v2.7.0 allows attackers to cause a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55554": {
+    "cvss": 5.3,
+    "description": "pytorch v2.8.0 was discovered to contain an integer overflow in the component torch.nan_to_num-.long().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55556": {
+    "cvss": 6.5,
+    "description": "TensorFlow v2.18.0 was discovered to output random results when compiling Embedding, leading to unexpected behavior in the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55557": {
+    "cvss": 7.5,
+    "description": "A Name Error occurs in pytorch v2.7.0 when a PyTorch model consists of torch.cummin and is compiled by Inductor, leading to a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55558": {
+    "cvss": 7.5,
+    "description": "A buffer overflow occurs in pytorch v2.7.0 when a PyTorch model consists of torch.nn.Conv2d, torch.nn.functional.hardshrink, and torch.Tensor.view-torch.mv() and is compiled by Inductor, leading to a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55559": {
+    "cvss": 7.5,
+    "description": "An issue was discovered TensorFlow v2.18.0. A Denial of Service (DoS) occurs when padding is set to 'valid' in tf.keras.layers.Conv2D.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55560": {
+    "cvss": 7.5,
+    "description": "An issue in pytorch v2.7.0 can lead to a Denial of Service (DoS) when a PyTorch model consists of torch.Tensor.to_sparse() and torch.Tensor.to_dense() and is compiled by Inductor.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57446": {
+    "cvss": 7.5,
+    "description": "An issue in O-RAN Near Realtime RIC ric-plt-submgr in the J-Release environment, allows remote attackers to cause a denial of service (DoS) via a crafted request to the Subscription Manager API component.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-29155": {
+    "cvss": 6.5,
+    "description": "An issue in petstore v.1.0.7 allows a remote attacker to execute arbitrary code via the DELETE endpoint",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-48707": {
+    "cvss": 7.5,
+    "description": "An issue was discovered in Stormshield Network Security (SNS) before 5.0.1. TPM authentication information could, in some HA use cases, be shared among administrators, which can cause secret sharing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57623": {
+    "cvss": 5.3,
+    "description": "A NULL pointer dereference in TOTOLINK N600R firmware v4.3.0cu.7866_B2022506 allows attackers to cause a Denial of Service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-29156": {
+    "cvss": 6.1,
+    "description": "Cross Site Scripting vulnerability in petstore v.1.0.7 allows a remote attacker to execute arbitrary code via a crafted script to the /api/v3/pet",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-29157": {
+    "cvss": 6.5,
+    "description": "An issue in petstore v.1.0.7 allows a remote attacker to execute arbitrary code via accessing a non-existent endpoint/cart, the server returns a 404-error page exposing sensitive information including the Servlet name (default) and server version",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57632": {
+    "cvss": 7.5,
+    "description": "libsmb2 6.2+ is vulnerable to Buffer Overflow. When processing SMB2 chained PDUs (NextCommand), libsmb2 repeatedly calls smb2_add_iovector() to append to a fixed-size iovec array without checking the upper bound of v->niov (SMB2_MAX_VECTORS=256). An attacker can craft responses with many chained PDUs to overflow v->niov and perform heap out-of-bounds writes, causing memory corruption, crashes, and potentially arbitrary code execution. The SMB2_OPLOCK_BREAK path bypasses message ID validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59402": {
+    "cvss": 5.4,
+    "description": "Flock Safety Bravo Edge AI Compute Device BRAVO_00.00_local_20241017 accepts the default Thundercomm TurboX 6490 Firehose loader in EDL/QDL mode. This enables attackers with physical access to flash arbitrary firmware, dump partitions, and bypass bootloader and OS security controls.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59404": {
+    "cvss": 7.5,
+    "description": "Flock Safety Bravo Edge AI Compute Device BRAVO_00.00_local_20241017 ships with its bootloader unlocked. This permits bypass of Android Verified Boot (AVB) and allows direct modification of partitions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59408": {
+    "cvss": 7.3,
+    "description": "Flock Safety Bravo Edge AI Compute Device BRAVO_00.00_local_20241017 ships with Secure Boot disabled. This allows an attacker to flash modified firmware with no cryptographic protections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56769": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in chinabugotech hutool before 5.8.4 allowing attackers to execute arbitrary expressions that lead to arbitrary method invocation and potentially remote code execution (RCE) via the QLExpressEngine class.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57407": {
+    "cvss": 5.4,
+    "description": "A stored cross-site scripting (XSS) vulnerability in the Admin Log Viewer of S-Cart <=10.0.3 allows a remote authenticated attacker to inject arbitrary web script or HTML via a crafted User-Agent header. The script is executed in an administrator's browser when they view the security log page, which could lead to session hijacking or other malicious actions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56304": {
+    "cvss": 6.1,
+    "description": "Cross-site scripting (XSS) vulnerability in YzmCMS thru 7.3 via the referer header in the register page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-29083": {
+    "cvss": 6.5,
+    "description": "SQL Injection vulnerability in CSZ-CMS v.1.3.0 allows a remote attacker to execute arbitrary code via the execSqlFile function in the Plugin_Manager.php file.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-29084": {
+    "cvss": 6.5,
+    "description": "SQL Injection vulnerability in CSZ-CMS v.1.3.0 allows a remote attacker to execute arbitrary code via the execSqlFile function in the Upgrade.php file.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-55780": {
+    "cvss": 7.5,
+    "description": "A null pointer dereference occurs in the function break_word_for_overflow_wrap() in MuPDF 1.26.4 when rendering a malformed EPUB document. Specifically, the function calls fz_html_split_flow() to split a FLOW_WORD node, but does not check if node->next is valid before accessing node->next->overflow_wrap, resulting in a crash if the split fails or returns a partial node chain.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56394": {
+    "cvss": 7.5,
+    "description": "Free5gc 4.0.1 is vulnerable to Buffer Overflow. The AMF incorrectly validates the 5GS mobile identity, resulting in slice reference overflow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57639": {
+    "cvss": 6.5,
+    "description": "OS Command injection vulnerability in Tenda AC9 1.0 was discovered to contain a command injection vulnerability via the usb.samba.guest.user parameter in the formSetSambaConf function of the httpd file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56146": {
+    "cvss": 5.3,
+    "description": "Indian Bank IndSMART Android App 3.8.1 is vulnerable to Missing SSL Certificate Validation in NuWebViewActivity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57637": {
+    "cvss": 7.5,
+    "description": "Buffer overflow vulnerability in D-Link DI-7100G 2020-02-21 in the sub_451754 function of the jhttpd service in the viav4 parameter allowing attackers to cause a denial of service or execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57638": {
+    "cvss": 7.5,
+    "description": "Buffer overflow vulnerability in Tenda AC9 1.0 via the user supplied sys.vendor configuration value.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57636": {
+    "cvss": 6.5,
+    "description": "OS Command injection vulnerability in D-Link C1 2020-02-21. The sub_47F028 function in jhttpd contains a command injection vulnerability via the HTTP parameter \"time\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56311": {
+    "cvss": 6.5,
+    "description": "In Shenzhen C-Data Technology Co. FD602GW-DX-R410 (firmware v2.2.14), the web management interface contains an authenticated CSRF vulnerability on the reboot endpoint (/boaform/admin/formReboot). An attacker can craft a malicious webpage that, when visited by an authenticated administrator, causes the router to reboot without explicit user consent. This lack of CSRF protection on a sensitive administrative function can lead to denial of service by disrupting network availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-10854": {
+    "cvss": 8.1,
+    "description": "The txtai framework allows the loading of compressed tar files as embedding indices. While the validate function is intended to prevent path traversal vulnerabilities by ensuring safe filenames, it does not account for symbolic links within the tar file. An attacker is able to write a file anywhere in the filesystem when txtai is used to load untrusted embedding indices",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-51006": {
+    "cvss": 7.8,
+    "description": "Within tcpreplay's tcprewrite, a double free vulnerability has been identified in the dlt_linuxsll2_cleanup() function in plugins/dlt_linuxsll2/linuxsll2.c. This vulnerability is triggered when tcpedit_dlt_cleanup() indirectly invokes the cleanup routine multiple times on the same memory region. By supplying a specifically crafted pcap file to the tcprewrite binary, a local attacker can exploit this flaw to cause a Denial of Service (DoS) via memory corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56074": {
+    "cvss": 9.8,
+    "description": "A SQL Injection vulnerability was discovered in the foreigner-bwdates-reports-details.php file of PHPGurukul Park Ticketing Management System v2.0. This vulnerability allows remote attackers to execute arbitrary SQL code via the fromdate parameter in a POST request.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-56075": {
+    "cvss": 5.4,
+    "description": "A SQL Injection vulnerability was discovered in the normal-bwdates-reports-details.php file of PHPGurukul Park Ticketing Management System v2.0. This vulnerability allows remote attackers to execute arbitrary SQL code via the fromdate parameter in a POST request.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-57430": {
+    "cvss": 7.5,
+    "description": "Creacast Creabox Manager 4.4.4 exposes sensitive configuration data via a publicly accessible endpoint /get. When accessed, this endpoint returns internal configuration including the creacodec.lua file, which contains plaintext admin credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57432": {
+    "cvss": 9.8,
+    "description": "Blackmagic Web Presenter version 3.3 exposes a Telnet service on port 9977 that accepts unauthenticated commands. This service allows remote attackers to manipulate stream settings, including changing video modes and possibly altering device functionality. No credentials or authentication mechanisms are required to interact with the Telnet interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57433": {
+    "cvss": 6.5,
+    "description": "The 2wcom IP-4c 2.15.5 device's web interface includes an information disclosure vulnerability. By sending a crafted POST request to a specific endpoint (/cwi/ajax_request/get_data.php), an authenticated attacker (even with a low-privileged account like guest) can retrieve the hashed passwords for the admin, manager, and guest accounts. This significantly weakens the system's security posture, as these hashes could be cracked offline, granting attackers administrative access to the device.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-57601": {
+    "cvss": 9.8,
+    "description": "AiKaan Cloud Controller uses a single hardcoded SSH private key and the username `proxyuser` for remote terminal access to all managed IoT/edge devices. When an administrator initiates \"Open Remote Terminal\" from the AiKaan dashboard, the controller sends this same static private key to the target device. The device then uses it to establish a reverse SSH tunnel to a remote access server, enabling browser-based SSH access for the administrator. Because the same `proxyuser` account and SSH key are reused across all customer environments: - An attacker who obtains the key (e.g., by intercepting it in transit, extracting it from the remote access server, or from a compromised admin account) can impersonate any managed device. - They can establish unauthorized reverse SSH tunnels and interact with devices without the owner's consent. This is a design flaw in the authentication model: compromise of a single key compromises the trust boundary between the controller and devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57605": {
+    "cvss": 8.8,
+    "description": "Lack of server-side authorisation on department admin assignment APIs in AiKaan IoT Platform allows authenticated users to elevate their privileges by assigning themselves as admins of other departments. This results in unauthorized privilege escalation across the department",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57682": {
+    "cvss": 6.5,
+    "description": "Directory Traversal vulnerability in Papermark 0.20.0 and prior allows authenticated attackers to retrieve arbitrary files from an S3 bucket through its CloudFront distribution via the \"POST /api/file/s3/get-presigned-get-url-proxy\" API",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57431": {
+    "cvss": 8.8,
+    "description": "The Sound4 PULSE-ECO AES67 1.22 web-based management interface is vulnerable to Remote Code Execution (RCE) via a malicious firmware update package. The update mechanism fails to validate the integrity of manual.sh, allowing an attacker to inject arbitrary commands by modifying this script and repackaging the firmware.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57434": {
+    "cvss": 8.8,
+    "description": "Creacast Creabox Manager contains a critical authentication flaw that allows an attacker to bypass login validation. The system grants access when the username is creabox and the password begins with the string creacast, regardless of what follows.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55885": {
+    "cvss": 6.3,
+    "description": "SQL Injection vulnerability in Alpes Recherche et Developpement ARD GEC en Lign before v.2025-04-23 allows a remote attacker to escalate privileges via the GET parameters in index.php",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-55886": {
+    "cvss": 6.5,
+    "description": "An Insecure Direct Object Reference (IDOR) vulnerability was discovered in ARD. The flaw exists in the `fe_uid` parameter of the payment history API endpoint. An authenticated attacker can manipulate this parameter to access the payment history of other users without authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57437": {
+    "cvss": 9.8,
+    "description": "The Blackmagic Web Presenter HD firmware version 3.3 exposes sensitive information via an unauthenticated Telnet service on port 9977. When connected, the service reveals extensive device configuration data including: - Model, version, and unique identifiers - Network settings including IP, MAC, DNS - Current stream platform, stream key, and streaming URL - Audio/video configuration This data can be used to hijack live streams or perform network reconnaissance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57438": {
+    "cvss": 6.8,
+    "description": "The 2wcom IP-4c 2.15.5 device suffers from a Broken Access Control vulnerability. Certain sensitive endpoints are intended to be accessible only after the admin explicitly grants access to a manager-level account. However, a manager-level user can bypass these controls by intercepting and modifying requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57439": {
+    "cvss": 8.8,
+    "description": "Creacast Creabox Manager 4.4.4 contains a critical Remote Code Execution vulnerability accessible via the edit.php endpoint. An authenticated attacker can inject arbitrary Lua code into the configuration, which is then executed on the server. This allows full system compromise, including reverse shell execution or arbitrary command execution.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-57440": {
+    "cvss": 7.5,
+    "description": "The Blackmagic ATEM Mini Pro 2.7 exposes an undocumented Telnet service on TCP port 9993, which accepts unauthenticated plaintext commands for controlling streaming, recording, formatting storage devices, and system reboot. This interface, referred to as the \"ATEM Ethernet Protocol 1.0\", provides complete device control without requiring credentials or encryption. An attacker on the same network (or with remote access to the exposed port) can exploit this interface to execute arbitrary streaming commands, erase disks, or shut down the device - effectively gaining full remote control.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57441": {
+    "cvss": 9.8,
+    "description": "The Blackmagic ATEM Mini Pro 2.7 exposes sensitive device and stream configuration information via an unauthenticated Telnet service on port 9990. Upon connection, the attacker can access a protocol preamble that leaks the video mode, routing configuration, input/output labels, device model, and even internal identifiers such as the unique ID. This can be used for reconnaissance and planning further attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55887": {
+    "cvss": 6.1,
+    "description": "Cross-Site Scripting (XSS) vulnerability was discovered in the meal reservation service ARD. The vulnerability exists in the transactionID GET parameter on the transaction confirmation page. Due to improper input validation and output encoding, an attacker can inject malicious JavaScript code that is executed in the context of a user s browser. This can lead to session hijacking, theft of cookies, and other malicious actions performed on behalf of the victim.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57685": {
+    "cvss": 8.8,
+    "description": "The LB-Link routers, including the BL-AC2100_AZ3 V1.0.4, BL-WR4000 v2.5.0, BL-WR9000_AE4 v2.4.9, BL-AC1900_AZ2 v1.0.2, BL-X26_AC8 v1.2.8, and BL-LTE300_DA4 V1.2.3 models, are vulnerable to unauthorized command injection. Attackers can exploit this vulnerability by accessing the /goform/set_serial_cfg interface to gain the highest level of device privileges without authorization, enabling them to remotely execute malicious commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57203": {
+    "cvss": 4.8,
+    "description": "MagicProject AI version 9.1 is affected by a Cross-Site Scripting (XSS) vulnerability within the chatbot generation feature available to authenticated admin users. The vulnerability resides in the prompt parameter submitted to the /dashboard/user/generator/generate-stream endpoint via a multipart/form-data POST request. Due to insufficient input sanitization, attackers can inject HTML-based JavaScript payloads. This payload is stored and rendered unsanitized in subsequent views, leading to execution in other users' browsers when they access affected content. This issue allows an authenticated attacker to execute arbitrary JavaScript in the context of another user, potentially leading to session hijacking, privilege escalation, data exfiltration, or administrative account takeover. The application does not implement a Content Security Policy (CSP) or adequate input filtering to prevent such attacks. A fix should include proper sanitization, output encoding, and strong CSP enforcement to mitigate exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57204": {
+    "cvss": 5.4,
+    "description": "Stocky POS with Inventory Management & HRM (ui-lib) version 5.0 is affected by a Stored Cross-Site Scripting (XSS) vulnerability within the Products module available to authenticated users. The vulnerability resides in the product name parameter submitted to the product-creation endpoint via a standard POST form. Due to insufficient input sanitization and output encoding, attackers can inject HTML/JS payloads. The payload is stored and subsequently rendered unsanitized in downstream views, leading to JavaScript execution in other users' browsers when they access the affected product pages. This issue allows an authenticated attacker to execute arbitrary JavaScript in the context of another user, potentially enabling session hijacking, privilege escalation within the application, data exfiltration, or administrative account takeover. The application also lacks a restrictive Content Security Policy (CSP), increasing exploitability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57205": {
+    "cvss": 5.4,
+    "description": "iNiLabs School Express (SMS Express) 6.2 is affected by a Stored Cross-Site Scripting (XSS) vulnerability in the content-management features available to authenticated admin users. The vulnerability resides in POSTed editor parameters submitted to the /posts/edit/{id} endpoint (and similarly in Notice and Pages editors). Due to insufficient input sanitization and output encoding, attackers can inject HTML/JS payloads. The payload is saved and later rendered unsanitized, resulting in JavaScript execution in other users' browsers when they access the affected content. This issue allows an authenticated attacker to execute arbitrary JavaScript in the context of another user, potentially leading to session hijacking, privilege escalation, data exfiltration, or administrative account takeover. The application does not enforce a restrictive Content Security Policy (CSP) or adequate filtering to prevent such attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55910": {
+    "cvss": 6.3,
+    "description": "CMSEasy v7.7.8.0 and before is vulnerable to Arbitrary file deletion in database_admin.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-57296": {
+    "cvss": 6.5,
+    "description": "Tenda AC6 router firmware 15.03.05.19 contains a command injection vulnerability in the formSetIptv function, which processes requests to the /goform/SetIPTVCfg web interface. When handling the list and vlanId parameters, the sub_ADBC0 helper function concatenates these user-supplied values into nvram set system commands using doSystemCmd, without validating or sanitizing special characters (e.g., ;, \", #). An unauthenticated or authenticated attacker can exploit this by submitting a crafted POST request, leading to arbitrary system command execution on the affected device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52159": {
+    "cvss": 8.8,
+    "description": "Hardcoded credentials in default configuration of PPress 0.0.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-54761": {
+    "cvss": 8.0,
+    "description": "An issue was discovered in PPress 0.0.9 allowing attackers to gain escilated privlidges via crafted session cookie.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-54815": {
+    "cvss": 8.8,
+    "description": "Server-side template injection (SSTI) vulnerability in PPress 0.0.9 allows attackers to execute arbitrary code via crafted themes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56762": {
+    "cvss": 6.1,
+    "description": "Paracrawl KeOPs v2 is vulnerable to Cross Site Scripting (XSS) in error.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-57396": {
+    "cvss": 6.5,
+    "description": "Tandoor Recipes 2.0.0-alpha-1, fixed in 2.0.0-alpha-2, is vulnerable to privilege escalation. This is due to the rework of the API, which resulted in the User Profile API Endpoint containing two boolean values indicating whether a user is staff or administrative. Consequently, any user can escalate their privileges to the highest level.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55911": {
+    "cvss": 6.5,
+    "description": "An issue Clip Bucket v.5.5.2 Build#90 allows a remote attacker to execute arbitrary codes via the file_downloader.php and the file parameter",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-57452": {
+    "cvss": 6.1,
+    "description": "In realme BackupRestore app v15.1.12_2810c08_250314, improper URI scheme handling in com.coloros.pc.PcToolMainActivity allows local attackers to cause a crash and potential XSS via crafted ADB intents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55912": {
+    "cvss": 7.3,
+    "description": "An issue in ClipBucket 5.5.0 and prior versions allows an unauthenticated attacker can exploit the plupload endpoint in photo_uploader.php to upload arbitrary files without any authentication, due to missing access controls in the upload handler",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-57293": {
+    "cvss": 8.8,
+    "description": "A command injection vulnerability in COMFAST CF-XR11 (firmware V2.7.2) exists in the multi_pppoe API, processed by the sub_423930 function in /usr/bin/webmgnt. The phy_interface parameter is not sanitized, allowing attackers to inject arbitrary commands via a POST request to /cgi-bin/mbox-config?method=SET&section=multi_pppoe. When the action parameter is set to \"one_click_redial\", the unsanitized phy_interface is used in a system() call, enabling execution of malicious commands. This can lead to unauthorized access to sensitive files, execution of arbitrary code, or full device compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56706": {
+    "cvss": 8.0,
+    "description": "Edimax BR-6473AX v1.0.28 was discovered to contain a remote code execution (RCE) vulnerability via the Object parameter in the openwrt_getConfig function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52053": {
+    "cvss": 9.8,
+    "description": "TOTOLINK X6000R V9.4.0cu.1360_B20241207 was found to contain a command injection vulnerability in the sub_417D74 function via the file_name parameter. This vulnerability allows unauthenticated attackers to execute arbitrary commands via a crafted request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52048": {
+    "cvss": 6.5,
+    "description": "In Frappe 15.x.x before 15.72.0 and 14.x.x before 14.96.10, in the function add_tag() at `frappe/desk/doctype/tag/tag.py` is vulnerable to SQL Injection, which allows an attacker to extract information from databases by injecting a SQL query into the `dt` parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57104": {
+    "cvss": 5.4,
+    "description": "Teampel 5.1.6 is vulnerable to SQL Injection in /Common/login.aspx.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57174": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in Siklu Communications Etherhaul 8010TX and 1200FX devices, Firmware 7.4.0 through 10.7.3 and possibly other previous versions. The rfpiped service listening on TCP port 555 which uses static AES encryption keys hardcoded in the binary. These keys are identical across all devices, allowing attackers to craft encrypted packets that execute arbitrary commands without authentication. This is a failed patch for CVE-2017-7318. This issue may affect other Etherhaul series devices with shared firmware.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52344": {
+    "cvss": 6.1,
+    "description": "Multiple Cross Site Scripting (XSS) vulnerabilities in input fields in Explorance Blue 8.1.2 allows attackers to inject arbitrary JavaScript code on the user's browser via the Group name and Project Description input fields.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-45091": {
+    "cvss": 5.4,
+    "description": "Seafile versions 11.0.18-Pro, 12.0.10, and 12.0.10-Pro are vulnerable to a stored Cross-Site Scripting (XSS) attack. An authenticated attacker can exploit this vulnerability by modifying their username to include a malicious XSS payload in notification and activities.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-45586": {
+    "cvss": 7.5,
+    "description": "An issue in Audi UTR 2.0 Universal Traffic Recorder 2.0 allows attackers to arbitrarily overwrite files via supplying a crafted PUT request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-45587": {
+    "cvss": 7.0,
+    "description": "A stack overflow in the FTP service of Audi UTR 2.0 Universal Traffic Recorder 2.0 allows attackers to cause a Denial of Service (DoS) via a crafted input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
