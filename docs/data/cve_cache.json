@@ -85768,5 +85768,1343 @@
     "description": "D-Link DIR-816A2_FWv1.10CNB05 was discovered to contain a stack overflow via the statuscheckpppoeuser parameter in the dir_setWanWifi function. This vulnerability allows attackers to cause a Denial of Service (DoS) via a crafted input.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2025-55471": {
+    "cvss": 7.5,
+    "description": "Incorrect access control in the getUserFormData function of youlai-boot v2.21.1 allows attackers to access sensitive information for other users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-40134": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: dm: fix NULL pointer dereference in __dm_suspend() There is a race condition between dm device suspend and table load that can lead to null pointer dereference. The issue occurs when suspend is invoked before table load completes: BUG: kernel NULL pointer dereference, address: 0000000000000054 Oops: 0000 [#1] PREEMPT SMP PTI CPU: 6 PID: 6798 Comm: dmsetup Not tainted 6.6.0-g7e52f5f0ca9b #62 Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.1-2.fc37 04/01/2014 RIP: 0010:blk_mq_wait_quiesce_done+0x0/0x50 Call Trace: blk_mq_quiesce_queue+0x2c/0x50 dm_stop_queue+0xd/0x20 __dm_suspend+0x130/0x330 dm_suspend+0x11a/0x180 dev_suspend+0x27e/0x560 ctl_ioctl+0x4cf/0x850 dm_ctl_ioctl+0xd/0x20 vfs_ioctl+0x1d/0x50 __se_sys_ioctl+0x9b/0xc0 __x64_sys_ioctl+0x19/0x30 x64_sys_call+0x2c4a/0x4620 do_syscall_64+0x9e/0x1b0 The issue can be triggered as below: T1 T2 dm_suspend table_load __dm_suspend dm_setup_md_queue dm_mq_init_request_queue blk_mq_init_allocated_queue => q->mq_ops = set->ops; (1) dm_stop_queue / dm_wait_for_completion => q->tag_set NULL pointer! (2) => q->tag_set = set; (3) Fix this by checking if a valid table (map) exists before performing request-based suspend and waiting for target I/O. When map is NULL, skip these table-dependent suspend steps. Even when map is NULL, no I/O can reach any target because there is no table loaded; I/O submitted in this state will fail early in the DM layer. Skipping the table-dependent suspend logic in this case is safe and avoids NULL pointer dereferences.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-63783": {
+    "cvss": 7.6,
+    "description": "A Broken Object Level Authorization (BOLA) vulnerability was discovered in the tRPC project mutation APIs (update, delete, add/remove tag) of the Onlook web application 0.2.32. The vulnerability exists because the API fails to verify the ownership or membership of the currently authenticated user for the requested project ID. An authenticated attacker can send a malicious request containing another user's project ID to unlawfully modify, delete, or manipulate tags on that project, which can severely compromise data integrity and availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-63589": {
+    "cvss": 7.1,
+    "description": "A reflected XSS vulnerability exists in CMSimple_XH 1.8's index.php router when attacker-controlled path segments are not sanitized or encoded before being inserted into the generated HTML (navigation links, breadcrumbs, search form action, footer links). An attacker-controlled string placed in the URL path is reflected into multiple HTML elements, allowing execution of arbitrary JavaScript in victims' browsers visiting a crafted URL.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-63416": {
+    "cvss": 9.1,
+    "description": "** exclusively-hosted-service ** A Stored Cross-Site Scripting (XSS) vulnerability in the chat functionality of the SelfBest platform 2023.3 allows authenticated low-privileged attackers to execute arbitrary JavaScript in the context of other users' sessions. This can be exploited to access administrative data and functions, leading to privilege escalation and full compromise of sensitive user data, as demonstrated by the ability to fetch and exfiltrate the contents of the /admin/users endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-63294": {
+    "cvss": 6.5,
+    "description": "WorkDo HRM SaaS HR and Payroll Tool 8.1 is affected vulnerable to Insecure Permissions. An authenticated user can create leave or resignation records on behalf of other users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-63442": {
+    "cvss": 4.6,
+    "description": "Simple User Management System with PHP-MySQL v1.0 is vulnerable to Cross-Site Scripting (XSS) via the Profile Section. The system fails to properly sanitize user input, allowing attackers to inject and execute arbitrary JavaScript when the input is displayed in the browser",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60503": {
+    "cvss": 8.7,
+    "description": "A cross-site scripting (XSS) vulnerability exists in the administrative interface of ultimatefosters UltimatePOS 4.8 where input submitted in the purchase functionality is reflected without proper escaping in the admin log panel page in the 'reference No.' field. This flaw allows an authenticated attacker to execute arbitrary JavaScript in the context of an administrator's browser session, which could lead to session hijacking or other malicious actions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-63441": {
+    "cvss": 7.3,
+    "description": "Open Source Social Network (OSSN) 8.6 is vulnerable to Cross Site Scripting (XSS) via the parameter param` at endpoint u/administrator/friends.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61115": {
+    "cvss": 7.5,
+    "description": "ABC Fine Wine & Spirits Android App version v.11.27.5 and before (package name com.cta.abcfinewineandspirits), developed by ABC Liquors, Inc., contains an improper access control vulnerability in its login mechanism. The application does not properly validate user passwords during authentication, allowing attackers to bypass login checks and obtain valid session identifiers. Successful exploitation could result in unauthorized account access, privacy breaches, and misuse of the platform.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61117": {
+    "cvss": 7.5,
+    "description": "Senza: Keto & Fasting Android App version 2.10.15 (package name com.gl.senza), developed by Paul Itoi, contains an improper access control vulnerability. By exploiting insufficient checks in user data API endpoints, attackers can obtain authentication tokens and perform account takeover. Successful exploitation could result in unauthorized account access, privacy breaches, and misuse of the platform.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61141": {
+    "cvss": 7.5,
+    "description": "sqls-server/sqls 0.2.28 is vulnerable to command injection in the config command because the openEditor function passes the EDITOR environment variable and config file path to sh -c without sanitization, allowing attackers to execute arbitrary commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-63423": {
+    "cvss": 7.5,
+    "description": "Each Italy Wireless Mini Router WIRELESS-N 300M v28K.MiniRouter.20190211 was discovered to store the Administrator password.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60571": {
+    "cvss": 7.5,
+    "description": "D-Link DIR600LAx FW116WWb01 was discovered to contain a buffer overflow via the curTime parameter in the function formSetQoS.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60572": {
+    "cvss": 7.5,
+    "description": "D-Link DIR600L Ax FW116WWb01 was discovered to contain a buffer overflow via the curTime parameter in the function formAdvNetwork.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61430": {
+    "cvss": 6.5,
+    "description": "Improper handling of DNS over TCP in Simple DNS Plus v9 allows a remote attacker with querying access to the DNS server to cause the server to return request payloads from other clients. This happens when the TCP length prefix is malformed (len differs from actual packet len), and due to a concurrency/buffering issue, even when the lengths match. A length prefix that is smaller than the actual packet size increases information leakage. In summary, this vulnerability allows an attacker to see DNS queries of other clients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56447": {
+    "cvss": 9.8,
+    "description": "TM2 Monitoring v3.04 contains an authentication bypass and plaintext credential disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56450": {
+    "cvss": 6.5,
+    "description": "Log2Space Subscriber Management Software 1.1 is vulnerable to unauthenticated SQL injection via the `lead_id` parameter in the `/l2s/api/selfcareLeadHistory` endpoint. A remote attacker can exploit this by sending a specially crafted POST request, resulting in the execution of arbitrary SQL queries. The backend fails to sanitize the user input, allowing enumeration of database schemas, table names, and potentially leading to full database compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57521": {
+    "cvss": 6.1,
+    "description": "Bambu Studio 2.1.1.52 and earlier is affected by a vulnerability that allows arbitrary code execution during application startup. The application loads a network plugin without validating its digital signature or verifying its authenticity. A local attacker can exploit this behavior by placing a malicious component in the expected location, which is controllable by the attacker (e.g., under %APPDATA%), resulting in code execution within the context of the user. The main application is digitally signed, which may allow a malicious component to inherit trust and evade detection by security solutions that rely on signed parent processes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-59438": {
+    "cvss": 5.3,
+    "description": "Mbed TLS through 3.6.4 has an Observable Timing Discrepancy.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60932": {
+    "cvss": 6.1,
+    "description": "Multiple stored cross-site scripting (XSS) vulnerabilities in the Current Goals function of HR Performance Solutions Performance Pro v3.19.17 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Goal Name, Goal Notes, Action Step Name, Action Step Description, Note Name, and Goal Description parameters. The patched version is PP-Release-6.3.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60933": {
+    "cvss": 6.1,
+    "description": "Multiple stored cross-site scripting (XSS) vulnerabilities in the Future Goals function of HR Performance Solutions Performance Pro v3.19.17 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Goal Name, Goal Notes, Action Step Name, Action Step Description, Note Name, and Goal Description parameters. The patched version is PP-Release-6.3.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60280": {
+    "cvss": 6.1,
+    "description": "Cross-Site Scripting (XSS) vulnerability in Bang Resto v1.0 could allow an attacker to inject malicious JavaScript code into the application's web pages. This vulnerability exists due to insufficient input sanitization or output encoding, allowing attacker-controlled input to be rendered directly in the browser. When exploited, an attacker can steal session cookies, redirect users to malicious sites, perform actions on behalf of the user, or deface the website. This can lead to user data compromise, loss of user trust, and a broader attack surface for more advanced exploitation techniques.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61181": {
+    "cvss": 6.5,
+    "description": "daicuocms V1.3.13 contains an arbitrary file upload vulnerability in the image upload feature.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61194": {
+    "cvss": 6.5,
+    "description": "daicuocms V1.3.13 contains a SQL injection vulnerability in the file library\\think\\db\\Builder.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-61220": {
+    "cvss": 7.5,
+    "description": "The incomplete verification mechanism in the AutoBizLine com.mysecondline.app 1.2.91 allows attackers to log in as other users and gain unauthorized access to their personal information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60500": {
+    "cvss": 7.2,
+    "description": "QDocs Smart School Management System 7.1 allows authenticated users with roles such as \"accountant\" or \"admin\" to bypass file type restrictions in the media upload feature by abusing the alternate YouTube URL option. This logic flaw permits uploading of arbitrary PHP files, which are stored in a web-accessible directory.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60506": {
+    "cvss": 5.4,
+    "description": "Moodle PDF Annotator plugin v1.5 release 9 allows stored cross-site scripting (XSS) via the Public Comments feature. An attacker with a low-privileged account (e.g., Student) can inject arbitrary JavaScript payloads into a comment. When any other user (Student, Teacher, or Admin) views the annotated PDF, the payload is executed in their browser, leading to session hijacking, credential theft, or other attacker-controlled actions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60511": {
+    "cvss": 4.3,
+    "description": "Moodle OpenAI Chat Block plugin 3.0.1 (2025021700) suffers from an Insecure Direct Object Reference (IDOR) vulnerability due to insufficient validation of the blockId parameter in /blocks/openai_chat/api/completion.php. An authenticated student can impersonate another user's block (e.g., administrator) and send queries that are executed with that block's configuration. This can expose administrator-only Source of Truth entries, alter model behavior, and potentially misuse API resources.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60772": {
+    "cvss": 9.8,
+    "description": "Improper authentication in the web-based management interface of NETLINK HG322G V1.0.00-231017, allows a remote unauthenticated attacker to escalate privileges and lock out the legitimate administrator via crafted HTTP requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60427": {
+    "cvss": 6.5,
+    "description": "LibreTime 3.0.0-alpha.10 and possibly earlier is vulnerable to Broken Access Control, where a user with the DJ role can access analytics data via the Web UI and direct API calls. The backend does not verify role-based permissions for analytics endpoints, allowing unauthorized retrieval of station-wide metrics. This results in information disclosure to less privileged users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60507": {
+    "cvss": 8.9,
+    "description": "Cross site scripting vulnerability in Moodle GeniAI plugin (local_geniai) 2.3.6. An authenticated user with Teacher role can upload a PDF containing embedded JavaScript. The assistant outputs a direct HTML link to the uploaded file without sanitization. When other users (including Students or Administrators) click the link, the payload executes in their browser.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56799": {
+    "cvss": 6.5,
+    "description": "Reolink desktop application 8.18.12 contains a command injection vulnerability in its scheduled cache-clearing mechanism via a crafted folder name. NOTE: this is disputed by the Supplier because a crafted folder name would arise only if the local user were attacking himself.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56800": {
+    "cvss": 5.1,
+    "description": "Reolink desktop application 8.18.12 contains a vulnerability in its local authentication mechanism. The application implements lock screen password logic entirely on the client side using JavaScript within an Electron resource file. Because the password is stored and returned via a modifiable JavaScript property(a.settingsManager.lockScreenPassword), an attacker can patch the return value to bypass authentication. NOTE: this is disputed by the Supplier because the lock-screen bypass would only occur if the local user modified his own instance of the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56801": {
+    "cvss": 5.1,
+    "description": "The Reolink Desktop Application 8.18.12 contains hardcoded credentials as the Initialization Vector (IV) in its AES-CFB encryption implementation allowing attackers with access to the application environment to reliably decrypt encrypted configuration data. NOTE: the Supplier's position is that material is not hardcoded and is instead randomly generated on each installation of the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56802": {
+    "cvss": 5.1,
+    "description": "The Reolink desktop application uses a hard-coded and predictable AES encryption key to encrypt user configuration files allowing attackers with local access to decrypt sensitive application data stored in %APPDATA%. A different vulnerability than CVE-2025-56801. NOTE: the Supplier's position is that material is not hardcoded and is instead randomly generated on each installation of the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61255": {
+    "cvss": 6.1,
+    "description": "Bank Locker Management System by PHPGurukul is affected by a Cross-Site Scripting (XSS) vulnerability via the /search parameter, where unsanitized input allows arbitrary HTML and JavaScript injection, potentially resulting in information disclosure and user redirection.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-56219": {
+    "cvss": 7.1,
+    "description": "Incorrect access control in SigningHub v8.6.8 allows attackers to arbitrarily add user accounts without any rate limiting. This can lead to a resource exhaustion and a Denial of Service (DoS) when an excessively large number of user accounts are created.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56223": {
+    "cvss": 7.5,
+    "description": "A lack of rate limiting in the component /Home/UploadStreamDocument of SigningHub v8.6.8 allows attackers to cause a Denial of Service (DoS) via uploading an excessive number of files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56224": {
+    "cvss": 8.1,
+    "description": "A lack of rate limiting in the One-Time Password (OTP) verification endpoint of SigningHub v8.6.8 allows attackers to bypass verification via a bruteforce attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61454": {
+    "cvss": 6.1,
+    "description": "A Cross-Site Scripting (XSS) vulnerability exists in Bhabishya-123 E-commerce 1.0, specifically within the search endpoint. Unsanitized input in the /search parameter is directly reflected back into the response HTML, allowing attackers to execute arbitrary JavaScript in the browser of a user who visits a malicious link or submits a crafted request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61455": {
+    "cvss": 9.8,
+    "description": "SQL Injection vulnerability exists in Bhabishya-123 E-commerce 1.0, specifically within the signup.inc.php endpoint. The application directly incorporates unsanitized user inputs into SQL queries, allowing unauthenticated attackers to bypass authentication and gain full access.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-54957": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in Dolby UDC 4.5 through 4.13. A crash of the DD+ decoder process can occur when a malformed DD+ bitstream is processed. When Evolution data is processed by evo_priv.c from the DD+ bitstream, the decoder writes that data into a buffer. The length calculation for a write can overflow due to an integer wraparound. This can lead to the allocated buffer being too small, and the out-of-bounds check of the subsequent write to be ineffective, leading to an out-of-bounds write.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61417": {
+    "cvss": 8.8,
+    "description": "Cross-Site Scripting (XSS) vulnerability exists in TastyIgniter 3.7.7, affecting the /admin/media_manager component. Attackers can upload a malicious SVG file containing JavaScript code. When an administrator previews the file, the code executes in their browser context, allowing the attacker to perform unauthorized actions such as modifying the admin account credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61456": {
+    "cvss": 6.1,
+    "description": "A Cross-Site Scripting (XSS) vulnerability exists in Bhabishya-123 E-commerce 1.0, specifically within the index endpoint. Unsanitized input in the /index parameter is directly reflected back into the response HTML, allowing attackers to execute arbitrary JavaScript in the browser of a user who visits a malicious link or submits a crafted request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-26781": {
+    "cvss": 7.5,
+    "description": "An issue was discovered in L2 in Samsung Mobile Processor, Wearable Processor, and Modem Exynos 980, 990, 850, 1080, 2100, 1280, 2200, 1330, 1380, 1480, 9110, W920, W930, Modem 5123, and Modem 5300. Incorrect handling of RLC AM PDUs leads to a Denial of Service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-26782": {
+    "cvss": 7.5,
+    "description": "An issue was discovered in L2 in Samsung Mobile Processor, Wearable Processor, and Modem Exynos 980, 990, 850, 1080, 2100, 1280, 2200, 1330, 1380, 1480, 9110, W920, W930, Modem 5123, and Modem 5300. Incorrect handling of RLC AM PDUs leads to a Denial of Service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-48025": {
+    "cvss": 4.3,
+    "description": "In Samsung Mobile Processor and Wearable Processor Exynos 980, 850, 1280, 1330, 1380, 1480, 1580, W920, W930, and W1000, there is an improper access control vulnerability related to a log file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60856": {
+    "cvss": 6.8,
+    "description": "Reolink Video Doorbell WiFi DB_566128M5MP_W allows root shell access through an unsecured UART/serial console. An attacker with physical access can connect to the exposed interface and execute arbitrary commands with root privileges. NOTE: this is disputed by the Supplier because of \"certain restrictions on users privately connecting serial port cables\" and because \"the root user has a password and it meets the requirements of password security complexity.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61488": {
+    "cvss": 7.6,
+    "description": "An issue in Senayan Library Management System (SLiMS) 9 Bulian v.9.6.1 allows a remote attacker to execute arbitrary code via the scrap_image.php component and the imageURL parameter",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60783": {
+    "cvss": 6.5,
+    "description": "There is a SQL injection vulnerability in Restaurant Management System DBMS Project v1.0 via login.php. The vulnerability allows attackers to manipulate the application's database through specially crafted SQL query strings.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-61301": {
+    "cvss": 7.5,
+    "description": "Denial-of-analysis in reporting/mongodb.py and reporting/jsondump.py in CAPEv2 (commit 52e4b43, on 2025-05-17) allows attackers who can submit samples to cause incomplete or missing behavioral analysis reports by generating deeply nested or oversized behavior data that trigger MongoDB BSON limits or orjson recursion errors when the sample executes in the sandbox.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61303": {
+    "cvss": 9.8,
+    "description": "Hatching Triage Sandbox Windows 10 build 2004 (2025-08-14) and Windows 10 LTSC 2021(2025-08-14) contains a vulnerability in its Windows behavioral analysis engine that allows a submitted malware sample to evade detection and cause denial-of-analysis. The vulnerability is triggered when a sample recursively spawns a large number of child processes, generating high log volume and exhausting system resources. As a result, key malicious behavior, including PowerShell execution and reverse shell activity, may not be recorded or reported, misleading analysts and compromising the integrity and availability of sandboxed analysis results.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-54764": {
+    "cvss": 6.2,
+    "description": "Mbed TLS before 3.6.5 allows a local timing attack against certain RSA operations, and direct calls to mbedtls_mpi_mod_inv or mbedtls_mpi_gcd.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60359": {
+    "cvss": 5.5,
+    "description": "radare2 v5.9.8 and before contains a memory leak in the function r_bin_object_new.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60360": {
+    "cvss": 5.5,
+    "description": "radare2 v5.9.8 and before contains a memory leak in the function r2r_subprocess_init.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60361": {
+    "cvss": 3.3,
+    "description": "radare2 v5.9.8 and before contains a memory leak in the function bochs_open.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57567": {
+    "cvss": 9.1,
+    "description": "A remote code execution (RCE) vulnerability exists in the PluXml CMS theme editor, specifically in the minify.php file located under the default theme directory (/themes/defaut/css/minify.php). An authenticated administrator user can overwrite this file with arbitrary PHP code via the admin panel, enabling execution of system commands.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60279": {
+    "cvss": 9.6,
+    "description": "A server-side request forgery (SSRF) vulnerability in Illia Cloud illia-Builder before v4.8.5 allows authenticated users to send arbitrary requests to internal services via the API. An attacker can leverage this to enumerate open ports based on response discrepancies and interact with internal services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57164": {
+    "cvss": 6.5,
+    "description": "Flowise through v3.0.4 is vulnerable to remote code execution via unsanitized evaluation of user input in the \"Supabase RPC Filter\" field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60514": {
+    "cvss": 6.5,
+    "description": "Tillywork v0.1.3 and below is vulnerable to SQL Injection in app/common/helpers/query.builder.helper.ts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56218": {
+    "cvss": 9.8,
+    "description": "An arbitrary file upload vulnerability in SigningHub v8.6.8 allows attackers to execute arbitrary code via uploading a crafted PDF file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56221": {
+    "cvss": 9.8,
+    "description": "A lack of rate limiting in the login mechanism of SigningHub v8.6.8 allows attackers to bypass authentication via a brute force attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56316": {
+    "cvss": 9.8,
+    "description": "A SQL injection vulnerability in the content_title parameter of the /cms/content/list endpoint in MCMS 5.5.0 allows remote attackers to execute arbitrary SQL queries via unsanitized input in the FreeMarker template rendering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56320": {
+    "cvss": 5.4,
+    "description": "CobbleStone Enterprise Contract Management Portal v.22.4.0 is vulnerable to Stored Cross-Site Scripting (XSS) in its chat box component. This allows a remote attacker to execute arbitrary code. NOTE: the Supplier reports that this is \"Present only in an obsolete, unsupported version no longer in circulation.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61536": {
+    "cvss": 8.2,
+    "description": "FelixRiddle dev-jobs-handlebars 1.0 uses absolute password-reset (magic) links using the untrusted `req.headers.host` header and forces the `http://` scheme. An attacker who can control the `Host` header (or exploit a misconfigured proxy/load-balancer that forwards the header unchanged) can cause reset links to point to attacker-controlled domains or be delivered via insecure HTTP, enabling token theft, phishing, and account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61539": {
+    "cvss": 6.1,
+    "description": "Cross site scripting (XSS) vulnerability in Ultimate PHP Board 2.2.7 via the u_name parameter in lostpassword.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-61540": {
+    "cvss": 6.5,
+    "description": "SQL injection vulnerability in Ultimate PHP Board 2.2.7 via the username field in lostpassword.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-61541": {
+    "cvss": 7.1,
+    "description": "Webmin 2.510 is vulnerable to a Host Header Injection in the password reset functionality (forgot_send.cgi). The reset link sent to users is constructed using the HTTP Host header via get_webmin_email_url(). An attacker can manipulate the Host header to inject a malicious domain into the reset email. If a victim follows the poisoned link, the attacker can intercept the reset token and gain full control of the target account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61543": {
+    "cvss": 7.1,
+    "description": "A Host Header Injection vulnerability exists in the password reset functionality of CraftMyCMS 4.0.2.2. The system uses `$_SERVER['HTTP_HOST']` directly to construct password reset links sent via email. An attacker can manipulate the Host header to send malicious reset links, enabling phishing attacks or account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56699": {
+    "cvss": 5.4,
+    "description": "SQL injection vulnerability in the cmd component of Base Digitale Group spa product Centrax Open PSIM version 6.1 allows an unauthenticated user to execute arbitrary SQL commands via the sender parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56700": {
+    "cvss": 5.4,
+    "description": "Boolean SQL injection vulnerability in the web app of Base Digitale Group spa product Centrax Open PSIM version 6.1 allows a low level priviliged user that has access to the platform, to execute arbitrary SQL commands via the datafine parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60639": {
+    "cvss": 6.5,
+    "description": "Hardcoded credentials in gsigel14 ATLAS-EPIC commit f29312c (2025-05-26).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60641": {
+    "cvss": 6.5,
+    "description": "The file mexcel.php in the Vfront 0.99.52 codebase contains a vulnerable call to unserialize(base64_decode($_POST['mexcel'])), where $_POST['mexcel'] is user-controlled input. This input is decoded from base64 and deserialized without validation or use of the allowed_classes option, allowing an attacker to inject arbitrary PHP objects. This can lead to malicious behavior, such as Remote Code Execution (RCE), SQL Injection, Path Traversal, or Denial of Service, depending on the availability of exploitable classes in the Vfront codebase or its dependencies.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-61330": {
+    "cvss": 6.5,
+    "description": "A hard-coded weak password vulnerability has been discovered in all Magic-branded devices from Chinese network equipment manufacturer H3C. The vulnerability stems from the use of a hard-coded weak password for the root account in the /etc/shadow configuration or even the absence of any password at all. Some of these devices have the Telnet service enabled by default, or users can choose to enable the Telnet service in other device management interfaces (e.g. /debug.asp or /debug_telnet.asp). In addition, these devices have related interfaces called Virtual Servers, which can map the devices to the public network, posing the risk of remote attacks. Therefore, attackers can obtain the highest root privileges of the devices through the Telnet service using the weak password hardcoded in the firmware (or without a password), and remote attacks are possible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60855": {
+    "cvss": 5.1,
+    "description": "Reolink Video Doorbell WiFi DB_566128M5MP_W performs insufficient validation of firmware update signatures. This allows attackers to load malicious firmware images, resulting in arbitrary code execution with root privileges. NOTE: this is disputed by the Supplier because the integrity of updates is instead assured via a \"private encryption algorithm\" and other \"tamper-proof verification.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61514": {
+    "cvss": 6.5,
+    "description": "An arbitrary file upload vulnerability in SageMath, Inc CoCalc before commit 0d2ff58 allows attackers to execute arbitrary code via uploading a crafted SVG file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61553": {
+    "cvss": 8.2,
+    "description": "An out-of-bounds write in VirtIO network device emulation in BitVisor from commit 108df6 (2020-05-20) to commit 480907 (2025-07-06) allows local attackers to cause a denial of service (host hypervisor crash) via a crafted PCI configuration space access. Given it's a heap overflow in a privileged hypervisor context, exploitation may enable arbitrary code execution or guest-to-host privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60358": {
+    "cvss": 5.5,
+    "description": "radare2 v.5.9.8 and before contains a memory leak in the function _load_relocations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61554": {
+    "cvss": 5.5,
+    "description": "A divide-by-zero in VirtIO network device emulation in BitVisor from commit 108df6 (2020-05-20) to commit 480907 (2025-07-06) allows local attackers to cause a denial of service (host hypervisor crash) via a crafted PCI configuration space access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56746": {
+    "cvss": 2.2,
+    "description": "Creativeitem Academy LMS up to and including 5.13 does not regenerate session IDs upon successful authentication, enabling session fixation attacks where attackers can hijack user sessions by predetermining session identifiers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56748": {
+    "cvss": 6.4,
+    "description": "Creativeitem Academy LMS up to and including 5.13 uses predictable password reset tokens based on Base64 encoded templates without rate limiting, allowing brute force attacks to guess valid reset tokens and compromise user accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56749": {
+    "cvss": 9.4,
+    "description": "Creativeitem Academy LMS up to and including 6.14 uses a hardcoded default JWT secret for token signing. This predictable secret allows attackers to forge valid JWT tokens, leading to authentication bypass and unauthorized access to any user account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56747": {
+    "cvss": 6.5,
+    "description": "Creativeitem Academy LMS up to and including 5.13 contains a privilege escalation vulnerability in the Api_instructor controller where regular authenticated users can access instructor-only functions without proper role validation, allowing unauthorized course creation and management.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-54603": {
+    "cvss": 9.0,
+    "description": "An incorrect OIDC authentication flow in Claroty Secure Access 3.3.0 through 4.0.2 can result in unauthorized user creation or impersonation of existing OIDC users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60535": {
+    "cvss": 7.3,
+    "description": "A Cross-Site Request Forgery (CSRF) in the component /endpoints/currency/currency of Wallos v4.1.1 allows attackers to execute arbitrary operations via a crafted GET request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57563": {
+    "cvss": 6.5,
+    "description": "A path traversal in StarNet Communications Corporation FastX v.4 through v4.1.51 allows unauthenticated attackers to read arbitrary files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57618": {
+    "cvss": 7.3,
+    "description": "A path traversal vulnerability in FastX3 thru 3.3.67 allows an unauthenticated attacker to read arbitrary files on the server. By leveraging this vulnerability, it is possible to access the application's configuration files, which contain the secret key used to sign JSON Web Tokens as well as existing JTIs. With this information, an attacker can forge valid JWTs, impersonate the root user, and achieve remote code execution in privileged context via authenticated endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60536": {
+    "cvss": 7.5,
+    "description": "An issue in the Configure New Cluster interface of kafka-ui v0.6.0 to v0.7.2 allows attackers to cause a Denial of Service (DoS) via uploading a crafted configuration file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60537": {
+    "cvss": 6.5,
+    "description": "Improper input validation in the component /kafka/ui/serdes/CustomSerdeLoader.java of kafka-ui v0.6.0 to v0.7.2 allows attackers to execute arbitrary code via supplying crafted data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60374": {
+    "cvss": 6.1,
+    "description": "Stored Cross-Site Scripting (XSS) in Perfex CRM chatbot before 3.3.1 allows attackers to inject arbitrary HTML/JavaScript. The payload is executed in the browsers of users viewing the chat, resulting in client-side code execution, potential session token theft, and other malicious actions. A different vulnerability than CVE-2024-8867.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60540": {
+    "cvss": 6.5,
+    "description": "karakeep v0.26.0 to v0.7.0 was discovered to contain a Server-Side Request Forgery (SSRF).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60868": {
+    "cvss": 6.5,
+    "description": "The Alt Redirect 1.6.3 addon for Statamic fails to consistently strip query string parameters when the \"Query String Strip\" feature is enabled. Case variations, encoded keys, and duplicates are not removed, allowing attackers to bypass sanitization. This may lead to cache poisoning, parameter pollution, or denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61152": {
+    "cvss": 6.5,
+    "description": "python-jose thru 3.3.0 allows JWT tokens with 'alg=none' to be decoded and accepted without any cryptographic signature verification. A malicious actor can craft a forged token with arbitrary claims (e.g., is_admin=true) and bypass authentication checks, leading to privilege escalation or unauthorized access in applications that rely on python-jose for token validation. This issue is exploitable unless developers explicitly reject 'alg=none' tokens, which is not enforced by the library. NOTE: all parties agree that the issue is not relevant because it only occurs in a \"verify_signature\": False situation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61319": {
+    "cvss": 6.1,
+    "description": "ReNgine thru 2.2.0 is vulnerable to a Stored Cross-Site Scripting (XSS) vulnerability in the Vulnerabilities module. When scanning a target with an XSS payload, the unsanitized payload is rendered in the ReNgine web UI, resulting in arbitrary JavaScript execution in the victim's browser. This can be abused to steal session cookies, perform unauthorized actions, or compromise the ReNgine administrator's account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60378": {
+    "cvss": 8.1,
+    "description": "Stored HTML injection in RISE Ultimate Project Manager & CRM allows authenticated users to inject arbitrary HTML into invoices and messages. Injected content renders in emails, PDFs, and messaging/chat modules sent to clients or team members, enabling phishing, credential theft, and business email compromise. Automated recurring invoices and messaging amplify the risk by distributing malicious content to multiple recipients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60869": {
+    "cvss": 7.3,
+    "description": "Publii CMS v0.46.5 (build 17089) allows persistent Cross-Site Scripting (XSS) via unsanitized input in configuration fields such as \"Site Description\" and \"Footer Follow Buttons\". An attacker can inject arbitrary JavaScript, which is stored in the project and executed in the browsers of remote visitors viewing the generated static site.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60305": {
+    "cvss": 8.8,
+    "description": "SourceCodester Online Student Clearance System 1.0 is vulnerable to Incorrect Access Control. The application contains a logic flaw which allows low privilege users can forge high privileged sessions and perform sensitive operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60307": {
+    "cvss": 9.8,
+    "description": "code-projects Computer Laboratory System 1.0 has a SQL injection vulnerability, where entering a universal password in the Password field on the login page can bypass login attempts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60269": {
+    "cvss": 9.4,
+    "description": "JEEWMS 20250820 is vulnerable to SQL Injection in the exportXls function located in the src/main/java/org/jeecgframework/web/cgreport/controller/excel/CgExportExcelController.java file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60306": {
+    "cvss": 9.9,
+    "description": "code-projects Simple Car Rental System 1.0 has a permission bypass issue where low privilege users can forge high privilege sessions and perform sensitive operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60308": {
+    "cvss": 4.1,
+    "description": "code-projects Simple Online Hotel Reservation System 1.0 has a Cross Site Scripting (XSS) vulnerability in the Add Room function of the online hotel reservation system. Malicious JavaScript code is entered in the Description field, which can leak the administrator's cookie information when browsing this room information",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60268": {
+    "cvss": 6.5,
+    "description": "An arbitrary file upload vulnerability exists in JeeWMS 20250820, which is caused by the lack of file checking in the saveFiles function in /jeewms/cgUploadController.do. An attacker with normal privileges was able to upload a malicious file that would lead to remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60838": {
+    "cvss": 6.5,
+    "description": "An arbitrary file upload vulnerability in MCMS v6.0.1 allows attackers to execute arbitrary code via uploading a crafted file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60880": {
+    "cvss": 8.3,
+    "description": "An authenticated stored XSS vulnerability exists in the Bagisto 2.3.6 admin panel's product creation path, allowing an attacker to upload a crafted SVG file containing malicious JavaScript code. This vulnerability can be exploited by an authenticated admin user to execute arbitrary JavaScript in the browser, potentially leading to session hijacking, data theft, or unauthorized actions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61505": {
+    "cvss": 6.5,
+    "description": "e107 CMS thru 2.3.3 are vulnerable to insecure deserialization in the `install.php` script. The script processes user-controlled input in the `previous_steps` POST parameter using `unserialize(base64_decode())` without validation, allowing attackers to craft malicious serialized data. This could lead to remote code execution, arbitrary file operations, or denial of service, depending on available PHP object gadgets in the codebase.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-55903": {
+    "cvss": 8.3,
+    "description": "A HTML injection vulnerability exists in Perfex CRM v3.3.1. The application fails to sanitize user input in the \"Bill To\" address field within the estimate module. As a result, arbitrary HTML can be injected and rendered unescaped in client-facing documents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39958": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: iommu/s390: Make attach succeed when the device was surprise removed When a PCI device is removed with surprise hotplug, there may still be attempts to attach the device to the default domain as part of tear down via (__iommu_release_dma_ownership()), or because the removal happens during probe (__iommu_probe_device()). In both cases zpci_register_ioat() fails with a cc value indicating that the device handle is invalid. This is because the device is no longer part of the instance as far as the hypervisor is concerned. Currently this leads to an error return and s390_iommu_attach_device() fails. This triggers the WARN_ON() in __iommu_group_set_domain_nofail() because attaching to the default domain must never fail. With the device fenced by the hypervisor no DMAs to or from memory are possible and the IOMMU translations have no effect. Proceed as if the registration was successful and let the hotplug event handling clean up the device. This is similar to how devices in the error state are handled since commit 59bbf596791b (\"iommu/s390: Make attach succeed even if the device is in error state\") except that for removal the domain will not be registered later. This approach was also previously discussed at the link. Handle both cases, error state and removal, in a helper which checks if the error needs to be propagated or ignored. Avoid magic number condition codes by using the pre-existing, but never used, defines for PCI load/store condition codes and rename them to reflect that they apply to all PCI instructions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39959": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ASoC: amd: acp: Fix incorrect retrival of acp_chip_info Use dev_get_drvdata(dev->parent) instead of dev_get_platdata(dev) to correctly obtain acp_chip_info members in the acp I2S driver. Previously, some members were not updated properly due to incorrect data access, which could potentially lead to null pointer dereferences. This issue was missed in the earlier commit (\"ASoC: amd: acp: Fix NULL pointer deref in acp_i2s_set_tdm_slot\"), which only addressed set_tdm_slot(). This change ensures that all relevant functions correctly retrieve acp_chip_info, preventing further null pointer dereference issues.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-45095": {
+    "cvss": 7.3,
+    "description": "Lavasoft Web Companion (also known as Ad-Aware WebCompanion) versions 8.9.0.1091 through 12.1.3.1037 installs the DCIService.exe service with an unquoted service path vulnerability. An attacker with write access to the file system could potentially execute arbitrary code with elevated privileges by placing a malicious executable in the unquoted path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56683": {
+    "cvss": 9.6,
+    "description": "A cross-site scripting (XSS) vulnerability in the component /app/marketplace.html of Logseq v0.10.9 allows attackers to execute arbitrary code via injecting arbitrary Javascript into a crafted README.md file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56426": {
+    "cvss": 6.5,
+    "description": "An issue WebKul Bagisto v.2.3.6 allows a remote attacker to execute arbitrary code via the Cart/Checkout API endpoint, specifically, the price calculation logic fails to validate quantity inputs properly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60265": {
+    "cvss": 6.5,
+    "description": "In xckk v9.6, there is a SQL injection vulnerability in which the orderBy parameter in user/list is not securely filtered, resulting in a SQL injection vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60302": {
+    "cvss": 6.1,
+    "description": "code-projects Client Details System 1.0 is vulnerable to Cross Site Scripting (XSS). When adding customer information, the client details system fills in malicious JavaScript code in the username field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61532": {
+    "cvss": 6.1,
+    "description": "Cross Site Scripting vulnerability in SVX Portal v.2.7A to execute arbitrary code via the TG parameter on last_heard_page.php component",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60266": {
+    "cvss": 6.5,
+    "description": "In xckk v9.6, there is a SQL injection vulnerability in which the orderBy parameter in address/list is not securely filtered, resulting in a SQL injection vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60304": {
+    "cvss": 6.1,
+    "description": "code-projects Simple Scheduling System 1.0 is vulnerable to Cross Site Scripting (XSS) via the Subject Description field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60267": {
+    "cvss": 6.5,
+    "description": "In xckk v9.6, there is a SQL injection vulnerability in which the cond parameter in notice/list is not securely filtered, resulting in a SQL injection vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60316": {
+    "cvss": 9.4,
+    "description": "SourceCodester Pet Grooming Management Software 1.0 is vulnerable to SQL Injection in admin/view_customer.php via the ID parameter.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60375": {
+    "cvss": 7.3,
+    "description": "The authentication mechanism in Perfex CRM before 3.3.1 allows attackers to bypass login credentials due to insufficient server-side validation. By sending empty username and password parameters in the login request, an attacker can gain unauthorized access to user accounts, including administrative accounts, without providing valid credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60298": {
+    "cvss": 5.4,
+    "description": "Novel-Plus up to 5.2.4 was discovered to contain a Stored Cross-Site Scripting (XSS) vulnerability via the /author/updateIndexName endpoint. This vulnerability allows authenticated attackers to inject malicious JavaScript code through the indexName parameter, which gets stored in the database and executed when other users view the affected book chapter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60299": {
+    "cvss": 5.4,
+    "description": "Novel-Plus with 5.2.0 was discovered to contain a Stored Cross-Site Scripting (XSS) vulnerability via the /book/addCommentReply endpoint. An authenticated user can inject malicious JavaScript through the replyContent parameter when replying to a book comment. The payload is stored in the database and is executed in other users’ browsers when they view the affected comment thread.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60828": {
+    "cvss": 6.5,
+    "description": "WukongCRM-9.0-JAVA was discovered to contain a fastjson deserialization vulnerability via the /OaExamine/setOaExamine interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60830": {
+    "cvss": 6.5,
+    "description": "redragon-erp v1.0 was discovered to contain a Shiro deserialization vulnerability caused by the default Shiro key.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61183": {
+    "cvss": 6.1,
+    "description": "Cross Site Scripting in vaahcms v.2.3.1 allows a remote attacker to execute arbitrary code via upload method in the storeAvatar() method of UserBase.php",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-60313": {
+    "cvss": 6.1,
+    "description": "Sourcecodester Link Status Checker 1.0 is vulnerable to a Cross-Site Scripting (XSS) in the Enter URLs to check input field. This allows a remote attacker to execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60834": {
+    "cvss": 6.5,
+    "description": "A fastjson deserialization vulnerability in uzy-ssm-mall v1.1.0 allows attackers to execute arbitrary code via supplying a crafted input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60318": {
+    "cvss": 6.1,
+    "description": "SourceCodester Pet Grooming Management Software 1.0 is vulnerable to Cross Site Scripting (XSS) in /admin/profile.php via the fname (First Name) and lname (Last Name) fields.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-57457": {
+    "cvss": 8.8,
+    "description": "An OS Command Injection vulnerability in the Admin panel in Curo UC300 5.42.1.7.1.63R1 allows local attackers to inject arbitrary OS Commands via the \"IP Addr\" parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61524": {
+    "cvss": 7.2,
+    "description": "An issue in the permission verification module and organization/application editing interface in Casdoor v2.26.0 and before, and fixed in v.2.63.0, allows remote authenticated administrators of any organization within the system to bypass the system's permission verification mechanism by directly concatenating URLs after login",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60311": {
+    "cvss": 8.8,
+    "description": "ProjectWorlds Gym Management System1.0 is vulnerable to SQL Injection via the \"id\" parameter in the profile/edit.php page",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-39937": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: rfkill: gpio: Fix crash due to dereferencering uninitialized pointer Since commit 7d5e9737efda (\"net: rfkill: gpio: get the name and type from device property\") rfkill_find_type() gets called with the possibly uninitialized \"const char *type_name;\" local variable. On x86 systems when rfkill-gpio binds to a \"BCM4752\" or \"LNV4752\" acpi_device, the rfkill->type is set based on the ACPI acpi_device_id: rfkill->type = (unsigned)id->driver_data; and there is no \"type\" property so device_property_read_string() will fail and leave type_name uninitialized, leading to a potential crash. rfkill_find_type() does accept a NULL pointer, fix the potential crash by initializing type_name to NULL. Note likely sofar this has not been caught because: 1. Not many x86 machines actually have a \"BCM4752\"/\"LNV4752\" acpi_device 2. The stack happened to contain NULL where type_name is stored",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39940": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: dm-stripe: fix a possible integer overflow There's a possible integer overflow in stripe_io_hints if we have too large chunk size. Test if the overflow happened, and if it did, don't set limits->io_min and limits->io_opt;",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39947": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/mlx5e: Harden uplink netdev access against device unbind The function mlx5_uplink_netdev_get() gets the uplink netdevice pointer from mdev->mlx5e_res.uplink_netdev. However, the netdevice can be removed and its pointer cleared when unbound from the mlx5_core.eth driver. This results in a NULL pointer, causing a kernel panic. BUG: unable to handle page fault for address: 0000000000001300 at RIP: 0010:mlx5e_vport_rep_load+0x22a/0x270 [mlx5_core] Call Trace: mlx5_esw_offloads_rep_load+0x68/0xe0 [mlx5_core] esw_offloads_enable+0x593/0x910 [mlx5_core] mlx5_eswitch_enable_locked+0x341/0x420 [mlx5_core] mlx5_devlink_eswitch_mode_set+0x17e/0x3a0 [mlx5_core] devlink_nl_eswitch_set_doit+0x60/0xd0 genl_family_rcv_msg_doit+0xe0/0x130 genl_rcv_msg+0x183/0x290 netlink_rcv_skb+0x4b/0xf0 genl_rcv+0x24/0x40 netlink_unicast+0x255/0x380 netlink_sendmsg+0x1f3/0x420 __sock_sendmsg+0x38/0x60 __sys_sendto+0x119/0x180 do_syscall_64+0x53/0x1d0 entry_SYSCALL_64_after_hwframe+0x4b/0x53 Ensure the pointer is valid before use by checking it for NULL. If it is valid, immediately call netdev_hold() to take a reference, and preventing the netdevice from being freed while it is in use.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39891": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: mwifiex: Initialize the chan_stats array to zero The adapter->chan_stats[] array is initialized in mwifiex_init_channel_scan_gap() with vmalloc(), which doesn't zero out memory. The array is filled in mwifiex_update_chan_statistics() and then the user can query the data in mwifiex_cfg80211_dump_survey(). There are two potential issues here. What if the user calls mwifiex_cfg80211_dump_survey() before the data has been filled in. Also the mwifiex_update_chan_statistics() function doesn't necessarily initialize the whole array. Since the array was not initialized at the start that could result in an information leak. Also this array is pretty small. It's a maximum of 900 bytes so it's more appropriate to use kcalloc() instead vmalloc().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39916": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mm/damon/reclaim: avoid divide-by-zero in damon_reclaim_apply_parameters() When creating a new scheme of DAMON_RECLAIM, the calculation of 'min_age_region' uses 'aggr_interval' as the divisor, which may lead to division-by-zero errors. Fix it by directly returning -EINVAL when such a case occurs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39877": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mm/damon/sysfs: fix use-after-free in state_show() state_show() reads kdamond->damon_ctx without holding damon_sysfs_lock. This allows a use-after-free race: CPU 0 CPU 1 ----- ----- state_show() damon_sysfs_turn_damon_on() ctx = kdamond->damon_ctx; mutex_lock(&damon_sysfs_lock); damon_destroy_ctx(kdamond->damon_ctx); kdamond->damon_ctx = NULL; mutex_unlock(&damon_sysfs_lock); damon_is_running(ctx); /* ctx is freed */ mutex_lock(&ctx->kdamond_lock); /* UAF */ (The race can also occur with damon_sysfs_kdamonds_rm_dirs() and damon_sysfs_kdamond_release(), which free or replace the context under damon_sysfs_lock.) Fix by taking damon_sysfs_lock before dereferencing the context, mirroring the locking used in pid_show(). The bug has existed since state_show() first accessed kdamond->damon_ctx.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39838": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: cifs: prevent NULL pointer dereference in UTF16 conversion There can be a NULL pointer dereference bug here. NULL is passed to __cifs_sfu_make_node without checks, which passes it unchecked to cifs_strndup_to_utf16, which in turn passes it to cifs_local_to_utf16_bytes where '*from' is dereferenced, causing a crash. This patch adds a check for NULL 'src' in cifs_strndup_to_utf16 and returns NULL early to prevent dereferencing NULL pointer. Found by Linux Verification Center (linuxtesting.org) with SVACE",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39847": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ppp: fix memory leak in pad_compress_skb If alloc_skb() fails in pad_compress_skb(), it returns NULL without releasing the old skb. The caller does: skb = pad_compress_skb(ppp, skb); if (!skb) goto drop; drop: kfree_skb(skb); When pad_compress_skb() returns NULL, the reference to the old skb is lost and kfree_skb(skb) ends up doing nothing, leading to a memory leak. Align pad_compress_skb() semantics with realloc(): only free the old skb if allocation and compression succeed. At the call site, use the new_skb variable so the original skb is not lost when pad_compress_skb() fails.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39853": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: i40e: Fix potential invalid access when MAC list is empty list_first_entry() never returns NULL - if the list is empty, it still returns a pointer to an invalid object, leading to potential invalid memory access when dereferenced. Fix this by using list_first_entry_or_null instead of list_first_entry.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39865": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: tee: fix NULL pointer dereference in tee_shm_put tee_shm_put have NULL pointer dereference: __optee_disable_shm_cache --> shm = reg_pair_to_ptr(...);//shm maybe return NULL tee_shm_free(shm); --> tee_shm_put(shm);//crash Add check in tee_shm_put to fix it. panic log: Unable to handle kernel paging request at virtual address 0000000000100cca Mem abort info: ESR = 0x0000000096000004 EC = 0x25: DABT (current EL), IL = 32 bits SET = 0, FnV = 0 EA = 0, S1PTW = 0 FSC = 0x04: level 0 translation fault Data abort info: ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000 CM = 0, WnR = 0, TnD = 0, TagAccess = 0 GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0 user pgtable: 4k pages, 48-bit VAs, pgdp=0000002049d07000 [0000000000100cca] pgd=0000000000000000, p4d=0000000000000000 Internal error: Oops: 0000000096000004 [#1] SMP CPU: 2 PID: 14442 Comm: systemd-sleep Tainted: P OE ------- ---- 6.6.0-39-generic #38 Source Version: 938b255f6cb8817c95b0dd5c8c2944acfce94b07 Hardware name: greatwall GW-001Y1A-FTH, BIOS Great Wall BIOS V3.0 10/26/2022 pstate: 80000005 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--) pc : tee_shm_put+0x24/0x188 lr : tee_shm_free+0x14/0x28 sp : ffff001f98f9faf0 x29: ffff001f98f9faf0 x28: ffff0020df543cc0 x27: 0000000000000000 x26: ffff001f811344a0 x25: ffff8000818dac00 x24: ffff800082d8d048 x23: ffff001f850fcd18 x22: 0000000000000001 x21: ffff001f98f9fb88 x20: ffff001f83e76218 x19: ffff001f83e761e0 x18: 000000000000ffff x17: 303a30303a303030 x16: 0000000000000000 x15: 0000000000000003 x14: 0000000000000001 x13: 0000000000000000 x12: 0101010101010101 x11: 0000000000000001 x10: 0000000000000001 x9 : ffff800080e08d0c x8 : ffff001f98f9fb88 x7 : 0000000000000000 x6 : 0000000000000000 x5 : 0000000000000000 x4 : 0000000000000000 x3 : 0000000000000000 x2 : ffff001f83e761e0 x1 : 00000000ffff001f x0 : 0000000000100cca Call trace: tee_shm_put+0x24/0x188 tee_shm_free+0x14/0x28 __optee_disable_shm_cache+0xa8/0x108 optee_shutdown+0x28/0x38 platform_shutdown+0x28/0x40 device_shutdown+0x144/0x2b0 kernel_power_off+0x3c/0x80 hibernate+0x35c/0x388 state_store+0x64/0x80 kobj_attr_store+0x14/0x28 sysfs_kf_write+0x48/0x60 kernfs_fop_write_iter+0x128/0x1c0 vfs_write+0x270/0x370 ksys_write+0x6c/0x100 __arm64_sys_write+0x20/0x30 invoke_syscall+0x4c/0x120 el0_svc_common.constprop.0+0x44/0xf0 do_el0_svc+0x24/0x38 el0_svc+0x24/0x88 el0t_64_sync_handler+0x134/0x150 el0t_64_sync+0x14c/0x15",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39808": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: HID: hid-ntrig: fix unable to handle page fault in ntrig_report_version() in ntrig_report_version(), hdev parameter passed from hid_probe(). sending descriptor to /dev/uhid can make hdev->dev.parent->parent to null if hdev->dev.parent->parent is null, usb_dev has invalid address(0xffffffffffffff58) that hid_to_usb_dev(hdev) returned when usb_rcvctrlpipe() use usb_dev,it trigger page fault error for address(0xffffffffffffff58) add null check logic to ntrig_report_version() before calling hid_to_usb_dev()",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39813": {
+    "cvss": 4.7,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ftrace: Fix potential warning in trace_printk_seq during ftrace_dump When calling ftrace_dump_one() concurrently with reading trace_pipe, a WARN_ON_ONCE() in trace_printk_seq() can be triggered due to a race condition. The issue occurs because: CPU0 (ftrace_dump) CPU1 (reader) echo z > /proc/sysrq-trigger !trace_empty(&iter) trace_iterator_reset(&iter) <- len = size = 0 cat /sys/kernel/tracing/trace_pipe trace_find_next_entry_inc(&iter) __find_next_entry ring_buffer_empty_cpu <- all empty return NULL trace_printk_seq(&iter.seq) WARN_ON_ONCE(s->seq.len >= s->seq.size) In the context between trace_empty() and trace_find_next_entry_inc() during ftrace_dump, the ring buffer data was consumed by other readers. This caused trace_find_next_entry_inc to return NULL, failing to populate `iter.seq`. At this point, due to the prior trace_iterator_reset, both `iter.seq.len` and `iter.seq.size` were set to 0. Since they are equal, the WARN_ON_ONCE condition is triggered. Move the trace_printk_seq() into the if block that checks to make sure the return value of trace_find_next_entry_inc() is non-NULL in ftrace_dump_one(), ensuring the 'iter.seq' is properly populated before subsequent operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39819": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: fs/smb: Fix inconsistent refcnt update A possible inconsistent update of refcount was identified in `smb2_compound_op`. Such inconsistent update could lead to possible resource leaks. Why it is a possible bug: 1. In the comment section of the function, it clearly states that the reference to `cfile` should be dropped after calling this function. 2. Every control flow path would check and drop the reference to `cfile`, except the patched one. 3. Existing callers would not handle refcount update of `cfile` if -ENOMEM is returned. To fix the bug, an extra goto label \"out\" is added, to make sure that the cleanup logic would always be respected. As the problem is caused by the allocation failure of `vars`, the cleanup logic between label \"finished\" and \"out\" can be safely ignored. According to the definition of function `is_replayable_error`, the error code of \"-ENOMEM\" is not recoverable. Therefore, the replay logic also gets ignored.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39823": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: KVM: x86: use array_index_nospec with indices that come from guest min and dest_id are guest-controlled indices. Using array_index_nospec() after the bounds checks clamps these values to mitigate speculative execution side-channels.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39824": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: HID: asus: fix UAF via HID_CLAIMED_INPUT validation After hid_hw_start() is called hidinput_connect() will eventually be called to set up the device with the input layer since the HID_CONNECT_DEFAULT connect mask is used. During hidinput_connect() all input and output reports are processed and corresponding hid_inputs are allocated and configured via hidinput_configure_usages(). This process involves slot tagging report fields and configuring usages by setting relevant bits in the capability bitmaps. However it is possible that the capability bitmaps are not set at all leading to the subsequent hidinput_has_been_populated() check to fail leading to the freeing of the hid_input and the underlying input device. This becomes problematic because a malicious HID device like a ASUS ROG N-Key keyboard can trigger the above scenario via a specially crafted descriptor which then leads to a user-after-free when the name of the freed input device is written to later on after hid_hw_start(). Below, report 93 intentionally utilises the HID_UP_UNDEFINED Usage Page which is skipped during usage configuration, leading to the frees. 0x05, 0x0D, // Usage Page (Digitizer) 0x09, 0x05, // Usage (Touch Pad) 0xA1, 0x01, // Collection (Application) 0x85, 0x0D, // Report ID (13) 0x06, 0x00, 0xFF, // Usage Page (Vendor Defined 0xFF00) 0x09, 0xC5, // Usage (0xC5) 0x15, 0x00, // Logical Minimum (0) 0x26, 0xFF, 0x00, // Logical Maximum (255) 0x75, 0x08, // Report Size (8) 0x95, 0x04, // Report Count (4) 0xB1, 0x02, // Feature (Data,Var,Abs) 0x85, 0x5D, // Report ID (93) 0x06, 0x00, 0x00, // Usage Page (Undefined) 0x09, 0x01, // Usage (0x01) 0x15, 0x00, // Logical Minimum (0) 0x26, 0xFF, 0x00, // Logical Maximum (255) 0x75, 0x08, // Report Size (8) 0x95, 0x1B, // Report Count (27) 0x81, 0x02, // Input (Data,Var,Abs) 0xC0, // End Collection Below is the KASAN splat after triggering the UAF: [ 21.672709] ================================================================== [ 21.673700] BUG: KASAN: slab-use-after-free in asus_probe+0xeeb/0xf80 [ 21.673700] Write of size 8 at addr ffff88810a0ac000 by task kworker/1:2/54 [ 21.673700] [ 21.673700] CPU: 1 UID: 0 PID: 54 Comm: kworker/1:2 Not tainted 6.16.0-rc4-g9773391cf4dd-dirty #36 PREEMPT(voluntary) [ 21.673700] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.2-debian-1.16.2-1 04/01/2014 [ 21.673700] Call Trace: [ 21.673700] [ 21.673700] dump_stack_lvl+0x5f/0x80 [ 21.673700] print_report+0xd1/0x660 [ 21.673700] kasan_report+0xe5/0x120 [ 21.673700] __asan_report_store8_noabort+0x1b/0x30 [ 21.673700] asus_probe+0xeeb/0xf80 [ 21.673700] hid_device_probe+0x2ee/0x700 [ 21.673700] really_probe+0x1c6/0x6b0 [ 21.673700] __driver_probe_device+0x24f/0x310 [ 21.673700] driver_probe_device+0x4e/0x220 [...] [ 21.673700] [ 21.673700] Allocated by task 54: [ 21.673700] kasan_save_stack+0x3d/0x60 [ 21.673700] kasan_save_track+0x18/0x40 [ 21.673700] kasan_save_alloc_info+0x3b/0x50 [ 21.673700] __kasan_kmalloc+0x9c/0xa0 [ 21.673700] __kmalloc_cache_noprof+0x139/0x340 [ 21.673700] input_allocate_device+0x44/0x370 [ 21.673700] hidinput_connect+0xcb6/0x2630 [ 21.673700] hid_connect+0xf74/0x1d60 [ 21.673700] hid_hw_start+0x8c/0x110 [ 21.673700] asus_probe+0x5a3/0xf80 [ 21.673700] hid_device_probe+0x2ee/0x700 [ 21.673700] really_probe+0x1c6/0x6b0 [ 21.673700] __driver_probe_device+0x24f/0x310 [ 21.673700] driver_probe_device+0x4e/0x220 [...] [ 21.673700] [ 21.673700] Freed by task 54: [ 21.673700] kasan_save_stack+0x3d/0x60 [ 21.673700] kasan_save_track+0x18/0x40 [ 21.673700] kasan_save_free_info+0x3f/0x60 [ 21.673700] __kasan_slab_free+0x3c/0x50 [ 21.673700] kfre ---truncated---",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39835": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: xfs: do not propagate ENODATA disk errors into xattr code ENODATA (aka ENOATTR) has a very specific meaning in the xfs xattr code; namely, that the requested attribute name could not be found. However, a medium error from disk may also return ENODATA. At best, this medium error may escape to userspace as \"attribute not found\" when in fact it's an IO (disk) error. At worst, we may oops in xfs_attr_leaf_get() when we do: error = xfs_attr_leaf_hasname(args, &bp); if (error == -ENOATTR) { xfs_trans_brelse(args->trans, bp); return error; } because an ENODATA/ENOATTR error from disk leaves us with a null bp, and the xfs_trans_brelse will then null-deref it. As discussed on the list, we really need to modify the lower level IO functions to trap all disk errors and ensure that we don't let unique errors like this leak up into higher xfs functions - many like this should be remapped to EIO. However, this patch directly addresses a reported bug in the xattr code, and should be safe to backport to stable kernels. A larger-scope patch to handle more unique errors at lower levels can follow later. (Note, prior to 07120f1abdff we did not oops, but we did return the wrong error code to userspace.)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39801": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: usb: dwc3: Remove WARN_ON for device endpoint command timeouts This commit addresses a rarely observed endpoint command timeout which causes kernel panic due to warn when 'panic_on_warn' is enabled and unnecessary call trace prints when 'panic_on_warn' is disabled. It is seen during fast software-controlled connect/disconnect testcases. The following is one such endpoint command timeout that we observed: 1. Connect ======= ->dwc3_thread_interrupt ->dwc3_ep0_interrupt ->configfs_composite_setup ->composite_setup ->usb_ep_queue ->dwc3_gadget_ep0_queue ->__dwc3_gadget_ep0_queue ->__dwc3_ep0_do_control_data ->dwc3_send_gadget_ep_cmd 2. Disconnect ========== ->dwc3_thread_interrupt ->dwc3_gadget_disconnect_interrupt ->dwc3_ep0_reset_state ->dwc3_ep0_end_control_data ->dwc3_send_gadget_ep_cmd In the issue scenario, in Exynos platforms, we observed that control transfers for the previous connect have not yet been completed and end transfer command sent as a part of the disconnect sequence and processing of USB_ENDPOINT_HALT feature request from the host timeout. This maybe an expected scenario since the controller is processing EP commands sent as a part of the previous connect. It maybe better to remove WARN_ON in all places where device endpoint commands are sent to avoid unnecessary kernel panic due to warn.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39794": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ARM: tegra: Use I/O memcpy to write to IRAM Kasan crashes the kernel trying to check boundaries when using the normal memcpy.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39795": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: block: avoid possible overflow for chunk_sectors check in blk_stack_limits() In blk_stack_limits(), we check that the t->chunk_sectors value is a multiple of the t->physical_block_size value. However, by finding the chunk_sectors value in bytes, we may overflow the unsigned int which holds chunk_sectors, so change the check to be based on sectors.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39736": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mm/kmemleak: avoid deadlock by moving pr_warn() outside kmemleak_lock When netpoll is enabled, calling pr_warn_once() while holding kmemleak_lock in mem_pool_alloc() can cause a deadlock due to lock inversion with the netconsole subsystem. This occurs because pr_warn_once() may trigger netpoll, which eventually leads to __alloc_skb() and back into kmemleak code, attempting to reacquire kmemleak_lock. This is the path for the deadlock. mem_pool_alloc() -> raw_spin_lock_irqsave(&kmemleak_lock, flags); -> pr_warn_once() -> netconsole subsystem -> netpoll -> __alloc_skb -> __create_object -> raw_spin_lock_irqsave(&kmemleak_lock, flags); Fix this by setting a flag and issuing the pr_warn_once() after kmemleak_lock is released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39737": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mm/kmemleak: avoid soft lockup in __kmemleak_do_cleanup() A soft lockup warning was observed on a relative small system x86-64 system with 16 GB of memory when running a debug kernel with kmemleak enabled. watchdog: BUG: soft lockup - CPU#8 stuck for 33s! [kworker/8:1:134] The test system was running a workload with hot unplug happening in parallel. Then kemleak decided to disable itself due to its inability to allocate more kmemleak objects. The debug kernel has its CONFIG_DEBUG_KMEMLEAK_MEM_POOL_SIZE set to 40,000. The soft lockup happened in kmemleak_do_cleanup() when the existing kmemleak objects were being removed and deleted one-by-one in a loop via a workqueue. In this particular case, there are at least 40,000 objects that need to be processed and given the slowness of a debug kernel and the fact that a raw_spinlock has to be acquired and released in __delete_object(), it could take a while to properly handle all these objects. As kmemleak has been disabled in this case, the object removal and deletion process can be further optimized as locking isn't really needed. However, it is probably not worth the effort to optimize for such an edge case that should rarely happen. So the simple solution is to call cond_resched() at periodic interval in the iteration loop to avoid soft lockup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39745": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: rcutorture: Fix rcutorture_one_extend_check() splat in RT kernels For built with CONFIG_PREEMPT_RT=y kernels, running rcutorture tests resulted in the following splat: [ 68.797425] rcutorture_one_extend_check during change: Current 0x1 To add 0x1 To remove 0x0 preempt_count() 0x0 [ 68.797533] WARNING: CPU: 2 PID: 512 at kernel/rcu/rcutorture.c:1993 rcutorture_one_extend_check+0x419/0x560 [rcutorture] [ 68.797601] Call Trace: [ 68.797602] [ 68.797619] ? lockdep_softirqs_off+0xa5/0x160 [ 68.797631] rcutorture_one_extend+0x18e/0xcc0 [rcutorture 2466dbd2ff34dbaa36049cb323a80c3306ac997c] [ 68.797646] ? local_clock+0x19/0x40 [ 68.797659] rcu_torture_one_read+0xf0/0x280 [rcutorture 2466dbd2ff34dbaa36049cb323a80c3306ac997c] [ 68.797678] ? __pfx_rcu_torture_one_read+0x10/0x10 [rcutorture 2466dbd2ff34dbaa36049cb323a80c3306ac997c] [ 68.797804] ? __pfx_rcu_torture_timer+0x10/0x10 [rcutorture 2466dbd2ff34dbaa36049cb323a80c3306ac997c] [ 68.797815] rcu-torture: rcu_torture_reader task started [ 68.797824] rcu-torture: Creating rcu_torture_reader task [ 68.797824] rcu_torture_reader+0x238/0x580 [rcutorture 2466dbd2ff34dbaa36049cb323a80c3306ac997c] [ 68.797836] ? kvm_sched_clock_read+0x15/0x30 Disable BH does not change the SOFTIRQ corresponding bits in preempt_count() for RT kernels, this commit therefore use softirq_count() to check the if BH is disabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39746": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: ath10k: shutdown driver when hardware is unreliable In rare cases, ath10k may lose connection with the PCIe bus due to some unknown reasons, which could further lead to system crashes during resuming due to watchdog timeout: ath10k_pci 0000:01:00.0: wmi command 20486 timeout, restarting hardware ath10k_pci 0000:01:00.0: already restarting ath10k_pci 0000:01:00.0: failed to stop WMI vdev 0: -11 ath10k_pci 0000:01:00.0: failed to stop vdev 0: -11 ieee80211 phy0: PM: **** DPM device timeout **** Call Trace: panic+0x125/0x315 dpm_watchdog_set+0x54/0x54 dpm_watchdog_handler+0x57/0x57 call_timer_fn+0x31/0x13c At this point, all WMI commands will timeout and attempt to restart device. So set a threshold for consecutive restart failures. If the threshold is exceeded, consider the hardware is unreliable and all ath10k operations should be skipped to avoid system crash. fail_cont_count and pending_recovery are atomic variables, and do not involve complex conditional logic. Therefore, even if recovery check and reconfig complete are executed concurrently, the recovery mechanism will not be broken. Tested-on: QCA6174 hw3.2 PCI WLAN.RM.4.4.1-00288-QCARMSWPZ-1",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39748": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: bpf: Forget ranges when refining tnum after JSET Syzbot reported a kernel warning due to a range invariant violation on the following BPF program. 0: call bpf_get_netns_cookie 1: if r0 == 0 goto 2: if r0 & Oxffffffff goto The issue is on the path where we fall through both jumps. That path is unreachable at runtime: after insn 1, we know r0 != 0, but with the sign extension on the jset, we would only fallthrough insn 2 if r0 == 0. Unfortunately, is_branch_taken() isn't currently able to figure this out, so the verifier walks all branches. The verifier then refines the register bounds using the second condition and we end up with inconsistent bounds on this unreachable path: 1: if r0 == 0 goto r0: u64=[0x1, 0xffffffffffffffff] var_off=(0, 0xffffffffffffffff) 2: if r0 & 0xffffffff goto r0 before reg_bounds_sync: u64=[0x1, 0xffffffffffffffff] var_off=(0, 0) r0 after reg_bounds_sync: u64=[0x1, 0] var_off=(0, 0) Improving the range refinement for JSET to cover all cases is tricky. We also don't expect many users to rely on JSET given LLVM doesn't generate those instructions. So instead of improving the range refinement for JSETs, Eduard suggested we forget the ranges whenever we're narrowing tnums after a JSET. This patch implements that approach.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39752": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ARM: rockchip: fix kernel hang during smp initialization In order to bring up secondary CPUs main CPU write trampoline code to SRAM. The trampoline code is written while secondary CPUs are powered on (at least that true for RK3188 CPU). Sometimes that leads to kernel hang. Probably because secondary CPU execute trampoline code while kernel doesn't expect. The patch moves SRAM initialization step to the point where all secondary CPUs are powered down. That fixes rarely hangs on RK3188: [ 0.091568] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000 [ 0.091996] rockchip_smp_prepare_cpus: ncores 4",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39753": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: gfs2: Set .migrate_folio in gfs2_{rgrp,meta}_aops Clears up the warning added in 7ee3647243e5 (\"migrate: Remove call to ->writepage\") that occurs in various xfstests, causing \"something found in dmesg\" failures. [ 341.136573] gfs2_meta_aops does not implement migrate_folio [ 341.136953] WARNING: CPU: 1 PID: 36 at mm/migrate.c:944 move_to_new_folio+0x2f8/0x300",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39763": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ACPI: APEI: send SIGBUS to current task if synchronous memory error not recovered If a synchronous error is detected as a result of user-space process triggering a 2-bit uncorrected error, the CPU will take a synchronous error exception such as Synchronous External Abort (SEA) on Arm64. The kernel will queue a memory_failure() work which poisons the related page, unmaps the page, and then sends a SIGBUS to the process, so that a system wide panic can be avoided. However, no memory_failure() work will be queued when abnormal synchronous errors occur. These errors can include situations like invalid PA, unexpected severity, no memory failure config support, invalid GUID section, etc. In such a case, the user-space process will trigger SEA again. This loop can potentially exceed the platform firmware threshold or even trigger a kernel hard lockup, leading to a system reboot. Fix it by performing a force kill if no memory_failure() work is queued for synchronous errors. [ rjw: Changelog edits ]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39764": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: netfilter: ctnetlink: remove refcounting in expectation dumpers Same pattern as previous patch: do not keep the expectation object alive via refcount, only store a cookie value and then use that as the skip hint for dump resumption. AFAICS this has the same issue as the one resolved in the conntrack dumper, when we do if (!refcount_inc_not_zero(&exp->use)) to increment the refcount, there is a chance that exp == last, which causes a double-increment of the refcount and subsequent memory leak.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39765": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: timer: fix ida_free call while not allocated In the snd_utimer_create() function, if the kasprintf() function return NULL, snd_utimer_put_id() will be called, finally use ida_free() to free the unallocated id 0. the syzkaller reported the following information: ------------[ cut here ]------------ ida_free called for id=0 which is not allocated. WARNING: CPU: 1 PID: 1286 at lib/idr.c:592 ida_free+0x1fd/0x2f0 lib/idr.c:592 Modules linked in: CPU: 1 UID: 0 PID: 1286 Comm: syz-executor164 Not tainted 6.15.8 #3 PREEMPT(lazy) Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-4.fc42 04/01/2014 RIP: 0010:ida_free+0x1fd/0x2f0 lib/idr.c:592 Code: f8 fc 41 83 fc 3e 76 69 e8 70 b2 f8 (...) RSP: 0018:ffffc900007f79c8 EFLAGS: 00010282 RAX: 0000000000000000 RBX: 1ffff920000fef3b RCX: ffffffff872176a5 RDX: ffff88800369d200 RSI: 0000000000000000 RDI: ffff88800369d200 RBP: 0000000000000000 R08: ffffffff87ba60a5 R09: 0000000000000000 R10: 0000000000000001 R11: 0000000000000000 R12: 0000000000000000 R13: 0000000000000002 R14: 0000000000000000 R15: 0000000000000000 FS: 00007f6f1abc1740(0000) GS:ffff8880d76a0000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 00007f6f1ad7a784 CR3: 000000007a6e2000 CR4: 00000000000006f0 Call Trace: snd_utimer_put_id sound/core/timer.c:2043 [inline] [snd_timer] snd_utimer_create+0x59b/0x6a0 sound/core/timer.c:2184 [snd_timer] snd_utimer_ioctl_create sound/core/timer.c:2202 [inline] [snd_timer] __snd_timer_user_ioctl.isra.0+0x724/0x1340 sound/core/timer.c:2287 [snd_timer] snd_timer_user_ioctl+0x75/0xc0 sound/core/timer.c:2298 [snd_timer] vfs_ioctl fs/ioctl.c:51 [inline] __do_sys_ioctl fs/ioctl.c:907 [inline] __se_sys_ioctl fs/ioctl.c:893 [inline] __x64_sys_ioctl+0x198/0x200 fs/ioctl.c:893 do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline] do_syscall_64+0x7b/0x160 arch/x86/entry/syscall_64.c:94 entry_SYSCALL_64_after_hwframe+0x76/0x7e [...] The utimer->id should be set properly before the kasprintf() function, ensures the snd_utimer_put_id() function will free the allocated id.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39772": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/hisilicon/hibmc: fix the hibmc loaded failed bug When hibmc loaded failed, the driver use hibmc_unload to free the resource, but the mutexes in mode.config are not init, which will access an NULL pointer. Just change goto statement to return, because hibnc_hw_init() doesn't need to free anything.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39782": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: jbd2: prevent softlockup in jbd2_log_do_checkpoint() Both jbd2_log_do_checkpoint() and jbd2_journal_shrink_checkpoint_list() periodically release j_list_lock after processing a batch of buffers to avoid long hold times on the j_list_lock. However, since both functions contend for j_list_lock, the combined time spent waiting and processing can be significant. jbd2_journal_shrink_checkpoint_list() explicitly calls cond_resched() when need_resched() is true to avoid softlockups during prolonged operations. But jbd2_log_do_checkpoint() only exits its loop when need_resched() is true, relying on potentially sleeping functions like __flush_batch() or wait_on_buffer() to trigger rescheduling. If those functions do not sleep, the kernel may hit a softlockup. watchdog: BUG: soft lockup - CPU#3 stuck for 156s! [kworker/u129:2:373] CPU: 3 PID: 373 Comm: kworker/u129:2 Kdump: loaded Not tainted 6.6.0+ #10 Hardware name: Huawei TaiShan 2280 /BC11SPCD, BIOS 1.27 06/13/2017 Workqueue: writeback wb_workfn (flush-7:2) pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--) pc : native_queued_spin_lock_slowpath+0x358/0x418 lr : jbd2_log_do_checkpoint+0x31c/0x438 [jbd2] Call trace: native_queued_spin_lock_slowpath+0x358/0x418 jbd2_log_do_checkpoint+0x31c/0x438 [jbd2] __jbd2_log_wait_for_space+0xfc/0x2f8 [jbd2] add_transaction_credits+0x3bc/0x418 [jbd2] start_this_handle+0xf8/0x560 [jbd2] jbd2__journal_start+0x118/0x228 [jbd2] __ext4_journal_start_sb+0x110/0x188 [ext4] ext4_do_writepages+0x3dc/0x740 [ext4] ext4_writepages+0xa4/0x190 [ext4] do_writepages+0x94/0x228 __writeback_single_inode+0x48/0x318 writeback_sb_inodes+0x204/0x590 __writeback_inodes_wb+0x54/0xf8 wb_writeback+0x2cc/0x3d8 wb_do_writeback+0x2e0/0x2f8 wb_workfn+0x80/0x2a8 process_one_work+0x178/0x3e8 worker_thread+0x234/0x3b8 kthread+0xf0/0x108 ret_from_fork+0x10/0x20 So explicitly call cond_resched() in jbd2_log_do_checkpoint() to avoid softlockup.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2025-39784": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: PCI: Fix link speed calculation on retrain failure When pcie_failed_link_retrain() fails to retrain, it tries to revert to the previous link speed. However it calculates that speed from the Link Control 2 register without masking out non-speed bits first. PCIE_LNKCTL2_TLS2SPEED() converts such incorrect values to PCI_SPEED_UNKNOWN (0xff), which in turn causes a WARN splat in pcie_set_target_speed(): pci 0000:00:01.1: [1022:14ed] type 01 class 0x060400 PCIe Root Port pci 0000:00:01.1: broken device, retraining non-functional downstream link at 2.5GT/s pci 0000:00:01.1: retraining failed WARNING: CPU: 1 PID: 1 at drivers/pci/pcie/bwctrl.c:168 pcie_set_target_speed RDX: 0000000000000001 RSI: 00000000000000ff RDI: ffff9acd82efa000 pcie_failed_link_retrain pci_device_add pci_scan_single_device Mask out the non-speed bits in PCIE_LNKCTL2_TLS2SPEED() and PCIE_LNKCAP_SLS2SPEED() so they don't incorrectly return PCI_SPEED_UNKNOWN. [bhelgaas: commit log, add details from https://lore.kernel.org/r/1c92ef6bcb314ee6977839b46b393282e4f52e74.1750684771.git.lukas@wunner.de]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38732": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: netfilter: nf_reject: don't leak dst refcount for loopback packets recent patches to add a WARN() when replacing skb dst entry found an old bug: WARNING: include/linux/skbuff.h:1165 skb_dst_check_unset include/linux/skbuff.h:1164 [inline] WARNING: include/linux/skbuff.h:1165 skb_dst_set include/linux/skbuff.h:1210 [inline] WARNING: include/linux/skbuff.h:1165 nf_reject_fill_skb_dst+0x2a4/0x330 net/ipv4/netfilter/nf_reject_ipv4.c:234 [..] Call Trace: nf_send_unreach+0x17b/0x6e0 net/ipv4/netfilter/nf_reject_ipv4.c:325 nft_reject_inet_eval+0x4bc/0x690 net/netfilter/nft_reject_inet.c:27 expr_call_ops_eval net/netfilter/nf_tables_core.c:237 [inline] .. This is because blamed commit forgot about loopback packets. Such packets already have a dst_entry attached, even at PRE_ROUTING stage. Instead of checking hook just check if the skb already has a route attached to it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39676": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: qla4xxx: Prevent a potential error pointer dereference The qla4xxx_get_ep_fwdb() function is supposed to return NULL on error, but qla4xxx_ep_connect() returns error pointers. Propagating the error pointers will lead to an Oops in the caller, so change the error pointers to NULL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39678": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: platform/x86/amd/hsmp: Ensure sock->metric_tbl_addr is non-NULL If metric table address is not allocated, accessing metrics_bin will result in a NULL pointer dereference, so add a check.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39681": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: x86/cpu/hygon: Add missing resctrl_cpu_detect() in bsp_init helper Since 923f3a2b48bd (\"x86/resctrl: Query LLC monitoring properties once during boot\") resctrl_cpu_detect() has been moved from common CPU initialization code to the vendor-specific BSP init helper, while Hygon didn't put that call in their code. This triggers a division by zero fault during early booting stage on our machines with X86_FEATURE_CQM* supported, where get_rdt_mon_resources() tries to calculate mon_l3_config with uninitialized boot_cpu_data.x86_cache_occ_scale. Add the missing resctrl_cpu_detect() in the Hygon BSP init helper. [ bp: Massage commit message. ]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39701": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ACPI: pfr_update: Fix the driver update version check The security-version-number check should be used rather than the runtime version check for driver updates. Otherwise, the firmware update would fail when the update binary had a lower runtime version number than the current one. [ rjw: Changelog edits ]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39713": {
+    "cvss": 4.7,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: media: rainshadow-cec: fix TOCTOU race condition in rain_interrupt() In the interrupt handler rain_interrupt(), the buffer full check on rain->buf_len is performed before acquiring rain->buf_lock. This creates a Time-of-Check to Time-of-Use (TOCTOU) race condition, as rain->buf_len is concurrently accessed and modified in the work handler rain_irq_work_handler() under the same lock. Multiple interrupt invocations can race, with each reading buf_len before it becomes full and then proceeding. This can lead to both interrupts attempting to write to the buffer, incrementing buf_len beyond its capacity (DATA_SIZE) and causing a buffer overflow. Fix this bug by moving the spin_lock() to before the buffer full check. This ensures that the check and the subsequent buffer modification are performed atomically, preventing the race condition. An corresponding spin_unlock() is added to the overflow path to correctly release the lock. This possible bug was found by an experimental static analysis tool developed by our team.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39721": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: crypto: qat - flush misc workqueue during device shutdown Repeated loading and unloading of a device specific QAT driver, for example qat_4xxx, in a tight loop can lead to a crash due to a use-after-free scenario. This occurs when a power management (PM) interrupt triggers just before the device-specific driver (e.g., qat_4xxx.ko) is unloaded, while the core driver (intel_qat.ko) remains loaded. Since the driver uses a shared workqueue (`qat_misc_wq`) across all devices and owned by intel_qat.ko, a deferred routine from the device-specific driver may still be pending in the queue. If this routine executes after the driver is unloaded, it can dereference freed memory, resulting in a page fault and kernel crash like the following: BUG: unable to handle page fault for address: ffa000002e50a01c #PF: supervisor read access in kernel mode RIP: 0010:pm_bh_handler+0x1d2/0x250 [intel_qat] Call Trace: pm_bh_handler+0x1d2/0x250 [intel_qat] process_one_work+0x171/0x340 worker_thread+0x277/0x3a0 kthread+0xf0/0x120 ret_from_fork+0x2d/0x50 To prevent this, flush the misc workqueue during device shutdown to ensure that all pending work items are completed before the driver is unloaded. Note: This approach may slightly increase shutdown latency if the workqueue contains jobs from other devices, but it ensures correctness and stability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-39724": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: serial: 8250: fix panic due to PSLVERR When the PSLVERR_RESP_EN parameter is set to 1, the device generates an error response if an attempt is made to read an empty RBR (Receive Buffer Register) while the FIFO is enabled. In serial8250_do_startup(), calling serial_port_out(port, UART_LCR, UART_LCR_WLEN8) triggers dw8250_check_lcr(), which invokes dw8250_force_idle() and serial8250_clear_and_reinit_fifos(). The latter function enables the FIFO via serial_out(p, UART_FCR, p->fcr). Execution proceeds to the serial_port_in(port, UART_RX). This satisfies the PSLVERR trigger condition. When another CPU (e.g., using printk()) is accessing the UART (UART is busy), the current CPU fails the check (value & ~UART_LCR_SPAR) == (lcr & ~UART_LCR_SPAR) in dw8250_check_lcr(), causing it to enter dw8250_force_idle(). Put serial_port_out(port, UART_LCR, UART_LCR_WLEN8) under the port->lock to fix this issue. Panic backtrace: [ 0.442336] Oops - unknown exception [#1] [ 0.442343] epc : dw8250_serial_in32+0x1e/0x4a [ 0.442351] ra : serial8250_do_startup+0x2c8/0x88e ... [ 0.442416] console_on_rootfs+0x26/0x70",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38680": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: media: uvcvideo: Fix 1-byte out-of-bounds read in uvc_parse_format() The buffer length check before calling uvc_parse_format() only ensured that the buffer has at least 3 bytes (buflen > 2), buf the function accesses buffer[3], requiring at least 4 bytes. This can lead to an out-of-bounds read if the buffer has exactly 3 bytes. Fix it by checking that the buffer has at least 4 bytes in uvc_parse_format().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38681": {
+    "cvss": 4.7,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mm/ptdump: take the memory hotplug lock inside ptdump_walk_pgd() Memory hot remove unmaps and tears down various kernel page table regions as required. The ptdump code can race with concurrent modifications of the kernel page tables. When leaf entries are modified concurrently, the dump code may log stale or inconsistent information for a VA range, but this is otherwise not harmful. But when intermediate levels of kernel page table are freed, the dump code will continue to use memory that has been freed and potentially reallocated for another purpose. In such cases, the ptdump code may dereference bogus addresses, leading to a number of potential problems. To avoid the above mentioned race condition, platforms such as arm64, riscv and s390 take memory hotplug lock, while dumping kernel page table via the sysfs interface /sys/kernel/debug/kernel_page_tables. Similar race condition exists while checking for pages that might have been marked W+X via /sys/kernel/debug/kernel_page_tables/check_wx_pages which in turn calls ptdump_check_wx(). Instead of solving this race condition again, let's just move the memory hotplug lock inside generic ptdump_check_wx() which will benefit both the scenarios. Drop get_online_mems() and put_online_mems() combination from all existing platform ptdump code paths.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38683": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: hv_netvsc: Fix panic during namespace deletion with VF The existing code move the VF NIC to new namespace when NETDEV_REGISTER is received on netvsc NIC. During deletion of the namespace, default_device_exit_batch() >> default_device_exit_net() is called. When netvsc NIC is moved back and registered to the default namespace, it automatically brings VF NIC back to the default namespace. This will cause the default_device_exit_net() >> for_each_netdev_safe loop unable to detect the list end, and hit NULL ptr: [ 231.449420] mana 7870:00:00.0 enP30832s1: Moved VF to namespace with: eth0 [ 231.449656] BUG: kernel NULL pointer dereference, address: 0000000000000010 [ 231.450246] #PF: supervisor read access in kernel mode [ 231.450579] #PF: error_code(0x0000) - not-present page [ 231.450916] PGD 17b8a8067 P4D 0 [ 231.451163] Oops: Oops: 0000 [#1] SMP NOPTI [ 231.451450] CPU: 82 UID: 0 PID: 1394 Comm: kworker/u768:1 Not tainted 6.16.0-rc4+ #3 VOLUNTARY [ 231.452042] Hardware name: Microsoft Corporation Virtual Machine/Virtual Machine, BIOS Hyper-V UEFI Release v4.1 11/21/2024 [ 231.452692] Workqueue: netns cleanup_net [ 231.452947] RIP: 0010:default_device_exit_batch+0x16c/0x3f0 [ 231.453326] Code: c0 0c f5 b3 e8 d5 db fe ff 48 85 c0 74 15 48 c7 c2 f8 fd ca b2 be 10 00 00 00 48 8d 7d c0 e8 7b 77 25 00 49 8b 86 28 01 00 00 <48> 8b 50 10 4c 8b 2a 4c 8d 62 f0 49 83 ed 10 4c 39 e0 0f 84 d6 00 [ 231.454294] RSP: 0018:ff75fc7c9bf9fd00 EFLAGS: 00010246 [ 231.454610] RAX: 0000000000000000 RBX: 0000000000000002 RCX: 61c8864680b583eb [ 231.455094] RDX: ff1fa9f71462d800 RSI: ff75fc7c9bf9fd38 RDI: 0000000030766564 [ 231.455686] RBP: ff75fc7c9bf9fd78 R08: 0000000000000000 R09: 0000000000000000 [ 231.456126] R10: 0000000000000001 R11: 0000000000000004 R12: ff1fa9f70088e340 [ 231.456621] R13: ff1fa9f70088e340 R14: ffffffffb3f50c20 R15: ff1fa9f7103e6340 [ 231.457161] FS: 0000000000000000(0000) GS:ff1faa6783a08000(0000) knlGS:0000000000000000 [ 231.457707] CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 [ 231.458031] CR2: 0000000000000010 CR3: 0000000179ab2006 CR4: 0000000000b73ef0 [ 231.458434] Call Trace: [ 231.458600] [ 231.458777] ops_undo_list+0x100/0x220 [ 231.459015] cleanup_net+0x1b8/0x300 [ 231.459285] process_one_work+0x184/0x340 To fix it, move the ns change to a workqueue, and take rtnl_lock to avoid changing the netdev list when default_device_exit_net() is using it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38684": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/sched: ets: use old 'nbands' while purging unused classes Shuang reported sch_ets test-case [1] crashing in ets_class_qlen_notify() after recent changes from Lion [2]. The problem is: in ets_qdisc_change() we purge unused DWRR queues; the value of 'q->nbands' is the new one, and the cleanup should be done with the old one. The problem is here since my first attempts to fix ets_qdisc_change(), but it surfaced again after the recent qdisc len accounting fixes. Fix it purging idle DWRR queues before assigning a new value of 'q->nbands', so that all purge operations find a consistent configuration: - old 'q->nbands' because it's needed by ets_class_find() - old 'q->nstrict' because it's needed by ets_class_is_strict() BUG: kernel NULL pointer dereference, address: 0000000000000000 #PF: supervisor read access in kernel mode #PF: error_code(0x0000) - not-present page PGD 0 P4D 0 Oops: Oops: 0000 [#1] SMP NOPTI CPU: 62 UID: 0 PID: 39457 Comm: tc Kdump: loaded Not tainted 6.12.0-116.el10.x86_64 #1 PREEMPT(voluntary) Hardware name: Dell Inc. PowerEdge R640/06DKY5, BIOS 2.12.2 07/09/2021 RIP: 0010:__list_del_entry_valid_or_report+0x4/0x80 Code: ff 4c 39 c7 0f 84 39 19 8e ff b8 01 00 00 00 c3 cc cc cc cc 66 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa <48> 8b 17 48 8b 4f 08 48 85 d2 0f 84 56 19 8e ff 48 85 c9 0f 84 ab RSP: 0018:ffffba186009f400 EFLAGS: 00010202 RAX: 00000000000000d6 RBX: 0000000000000000 RCX: 0000000000000004 RDX: ffff9f0fa29b69c0 RSI: 0000000000000000 RDI: 0000000000000000 RBP: ffffffffc12c2400 R08: 0000000000000008 R09: 0000000000000004 R10: ffffffffffffffff R11: 0000000000000004 R12: 0000000000000000 R13: ffff9f0f8cfe0000 R14: 0000000000100005 R15: 0000000000000000 FS: 00007f2154f37480(0000) GS:ffff9f269c1c0000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 0000000000000000 CR3: 00000001530be001 CR4: 00000000007726f0 DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000 DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400 PKRU: 55555554 Call Trace: ets_class_qlen_notify+0x65/0x90 [sch_ets] qdisc_tree_reduce_backlog+0x74/0x110 ets_qdisc_change+0x630/0xa40 [sch_ets] __tc_modify_qdisc.constprop.0+0x216/0x7f0 tc_modify_qdisc+0x7c/0x120 rtnetlink_rcv_msg+0x145/0x3f0 netlink_rcv_skb+0x53/0x100 netlink_unicast+0x245/0x390 netlink_sendmsg+0x21b/0x470 ____sys_sendmsg+0x39d/0x3d0 ___sys_sendmsg+0x9a/0xe0 __sys_sendmsg+0x7a/0xd0 do_syscall_64+0x7d/0x160 entry_SYSCALL_64_after_hwframe+0x76/0x7e RIP: 0033:0x7f2155114084 Code: 89 02 b8 ff ff ff ff eb bb 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 00 f3 0f 1e fa 80 3d 25 f0 0c 00 00 74 13 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 54 c3 0f 1f 00 48 83 ec 28 89 54 24 1c 48 89 RSP: 002b:00007fff1fd7a988 EFLAGS: 00000202 ORIG_RAX: 000000000000002e RAX: ffffffffffffffda RBX: 0000560ec063e5e0 RCX: 00007f2155114084 RDX: 0000000000000000 RSI: 00007fff1fd7a9f0 RDI: 0000000000000003 RBP: 00007fff1fd7aa60 R08: 0000000000000010 R09: 000000000000003f R10: 0000560ee9b3a010 R11: 0000000000000202 R12: 00007fff1fd7aae0 R13: 000000006891ccde R14: 0000560ec063e5e0 R15: 00007fff1fd7aad0 [1] https://lore.kernel.org/netdev/e08c7f4a6882f260011909a868311c6e9b54f3e4.1639153474.git.dcaratti@redhat.com/ [2] https://lore.kernel.org/netdev/d912cbd7-193b-4269-9857-525bee8bbb6a@gmail.com/",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38691": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: pNFS: Fix uninited ptr deref in block/scsi layout The error occurs on the third attempt to encode extents. When function ext_tree_prepare_commit() reallocates a larger buffer to retry encoding extents, the \"layoutupdate_pages\" page array is initialized only after the retry loop. But ext_tree_free_commitdata() is called on every iteration and tries to put pages in the array, thus dereferencing uninitialized pointers. An additional problem is that there is no limit on the maximum possible buffer_size. When there are too many extents, the client may create a layoutcommit that is larger than the maximum possible RPC size accepted by the server. During testing, we observed two typical scenarios. First, one memory page for extents is enough when we work with small files, append data to the end of the file, or preallocate extents before writing. But when we fill a new large file without preallocating, the number of extents can be huge, and counting the number of written extents in ext_tree_encode_commit() does not help much. Since this number increases even more between unlocking and locking of ext_tree, the reallocated buffer may not be large enough again and again.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38693": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: media: dvb-frontends: w7090p: fix null-ptr-deref in w7090p_tuner_write_serpar and w7090p_tuner_read_serpar In w7090p_tuner_write_serpar, msg is controlled by user. When msg[0].buf is null and msg[0].len is zero, former checks on msg[0].buf would be passed. If accessing msg[0].buf[2] without sanity check, null pointer deref would happen. We add check on msg[0].len to prevent crash. Similar commit: commit 0ed554fd769a (\"media: dvb-usb: az6027: fix null-ptr-deref in az6027_i2c_xfer()\")",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38694": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: media: dvb-frontends: dib7090p: fix null-ptr-deref in dib7090p_rw_on_apb() In dib7090p_rw_on_apb, msg is controlled by user. When msg[0].buf is null and msg[0].len is zero, former checks on msg[0].buf would be passed. If accessing msg[0].buf[2] without sanity check, null pointer deref would happen. We add check on msg[0].len to prevent crash. Similar issue occurs when access msg[1].buf[0] and msg[1].buf[1]. Similar commit: commit 0ed554fd769a (\"media: dvb-usb: az6027: fix null-ptr-deref in az6027_i2c_xfer()\")",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38695": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: lpfc: Check for hdwq null ptr when cleaning up lpfc_vport structure If a call to lpfc_sli4_read_rev() from lpfc_sli4_hba_setup() fails, the resultant cleanup routine lpfc_sli4_vport_delete_fcp_xri_aborted() may occur before sli4_hba.hdwqs are allocated. This may result in a null pointer dereference when attempting to take the abts_io_buf_list_lock for the first hardware queue. Fix by adding a null ptr check on phba->sli4_hba.hdwq and early return because this situation means there must have been an error during port initialization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38700": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: libiscsi: Initialize iscsi_conn->dd_data only if memory is allocated In case of an ib_fast_reg_mr allocation failure during iSER setup, the machine hits a panic because iscsi_conn->dd_data is initialized unconditionally, even when no memory is allocated (dd_size == 0). This leads invalid pointer dereference during connection teardown. Fix by setting iscsi_conn->dd_data only if memory is actually allocated. Panic trace: ------------ iser: iser_create_fastreg_desc: Failed to allocate ib_fast_reg_mr err=-12 iser: iser_alloc_rx_descriptors: failed allocating rx descriptors / data buffers BUG: unable to handle page fault for address: fffffffffffffff8 RIP: 0010:swake_up_locked.part.5+0xa/0x40 Call Trace: complete+0x31/0x40 iscsi_iser_conn_stop+0x88/0xb0 [ib_iser] iscsi_stop_conn+0x66/0xc0 [scsi_transport_iscsi] iscsi_if_stop_conn+0x14a/0x150 [scsi_transport_iscsi] iscsi_if_rx+0x1135/0x1834 [scsi_transport_iscsi] ? netlink_lookup+0x12f/0x1b0 ? netlink_deliver_tap+0x2c/0x200 netlink_unicast+0x1ab/0x280 netlink_sendmsg+0x257/0x4f0 ? _copy_from_user+0x29/0x60 sock_sendmsg+0x5f/0x70",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38701": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ext4: do not BUG when INLINE_DATA_FL lacks system.data xattr A syzbot fuzzed image triggered a BUG_ON in ext4_update_inline_data() when an inode had the INLINE_DATA_FL flag set but was missing the system.data extended attribute. Since this can happen due to a maiciouly fuzzed file system, we shouldn't BUG, but rather, report it as a corrupted file system. Add similar replacements of BUG_ON with EXT4_ERROR_INODE() ii ext4_create_inline_data() and ext4_inline_data_truncate().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38706": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ASoC: core: Check for rtd == NULL in snd_soc_remove_pcm_runtime() snd_soc_remove_pcm_runtime() might be called with rtd == NULL which will leads to null pointer dereference. This was reproduced with topology loading and marking a link as ignore due to missing hardware component on the system. On module removal the soc_tplg_remove_link() would call snd_soc_remove_pcm_runtime() with rtd == NULL since the link was ignored, no runtime was created.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38721": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: netfilter: ctnetlink: fix refcount leak on table dump There is a reference count leak in ctnetlink_dump_table(): if (res < 0) { nf_conntrack_get(&ct->ct_general); // HERE cb->args[1] = (unsigned long)ct; ... While its very unlikely, its possible that ct == last. If this happens, then the refcount of ct was already incremented. This 2nd increment is never undone. This prevents the conntrack object from being released, which in turn keeps prevents cnet->count from dropping back to 0. This will then block the netns dismantle (or conntrack rmmod) as nf_conntrack_cleanup_net_list() will wait forever. This can be reproduced by running conntrack_resize.sh selftest in a loop. It takes ~20 minutes for me on a preemptible kernel on average before I see a runaway kworker spinning in nf_conntrack_cleanup_net_list. One fix would to change this to: if (res < 0) { if (ct != last) nf_conntrack_get(&ct->ct_general); But this reference counting isn't needed in the first place. We can just store a cookie value instead. A followup patch will do the same for ctnetlink_exp_dump_table, it looks to me as if this has the same problem and like ctnetlink_dump_table, we only need a 'skip hint', not the actual object so we can apply the same cookie strategy there as well.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38725": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: usb: asix_devices: add phy_mask for ax88772 mdio bus Without setting phy_mask for ax88772 mdio bus, current driver may create at most 32 mdio phy devices with phy address range from 0x00 ~ 0x1f. DLink DUB-E100 H/W Ver B1 is such a device. However, only one main phy device will bind to net phy driver. This is creating issue during system suspend/resume since phy_polling_mode() in phy_state_machine() will directly deference member of phydev->drv for non-main phy devices. Then NULL pointer dereference issue will occur. Due to only external phy or internal phy is necessary, add phy_mask for ax88772 mdio bus to workarnoud the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38729": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: usb-audio: Validate UAC3 power domain descriptors, too UAC3 power domain descriptors need to be verified with its variable bLength for avoiding the unexpected OOB accesses by malicious firmware, too.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38621": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: md: make rdev_addable usable for rcu mode Our testcase trigger panic: BUG: kernel NULL pointer dereference, address: 00000000000000e0 ... Oops: Oops: 0000 [#1] SMP NOPTI CPU: 2 UID: 0 PID: 85 Comm: kworker/2:1 Not tainted 6.16.0+ #94 PREEMPT(none) Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.1-2.fc37 04/01/2014 Workqueue: md_misc md_start_sync RIP: 0010:rdev_addable+0x4d/0xf0 ... Call Trace: md_start_sync+0x329/0x480 process_one_work+0x226/0x6d0 worker_thread+0x19e/0x340 kthread+0x10f/0x250 ret_from_fork+0x14d/0x180 ret_from_fork_asm+0x1a/0x30 Modules linked in: raid10 CR2: 00000000000000e0 ---[ end trace 0000000000000000 ]--- RIP: 0010:rdev_addable+0x4d/0xf0 md_spares_need_change in md_start_sync will call rdev_addable which protected by rcu_read_lock/rcu_read_unlock. This rcu context will help protect rdev won't be released, but rdev->mddev will be set to NULL before we call synchronize_rcu in md_kick_rdev_from_array. Fix this by using READ_ONCE and check does rdev->mddev still alive.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38622": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: drop UFO packets in udp_rcv_segment() When sending a packet with virtio_net_hdr to tun device, if the gso_type in virtio_net_hdr is SKB_GSO_UDP and the gso_size is less than udphdr size, below crash may happen. ------------[ cut here ]------------ kernel BUG at net/core/skbuff.c:4572! Oops: invalid opcode: 0000 [#1] SMP NOPTI CPU: 0 UID: 0 PID: 62 Comm: mytest Not tainted 6.16.0-rc7 #203 PREEMPT(voluntary) Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014 RIP: 0010:skb_pull_rcsum+0x8e/0xa0 Code: 00 00 5b c3 cc cc cc cc 8b 93 88 00 00 00 f7 da e8 37 44 38 00 f7 d8 89 83 88 00 00 00 48 8b 83 c8 00 00 00 5b c3 cc cc cc cc <0f> 0b 0f 0b 66 66 2e 0f 1f 84 00 000 RSP: 0018:ffffc900001fba38 EFLAGS: 00000297 RAX: 0000000000000004 RBX: ffff8880040c1000 RCX: ffffc900001fb948 RDX: ffff888003e6d700 RSI: 0000000000000008 RDI: ffff88800411a062 RBP: ffff8880040c1000 R08: 0000000000000000 R09: 0000000000000001 R10: ffff888003606c00 R11: 0000000000000001 R12: 0000000000000000 R13: ffff888004060900 R14: ffff888004050000 R15: ffff888004060900 FS: 000000002406d3c0(0000) GS:ffff888084a19000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 0000000020000040 CR3: 0000000004007000 CR4: 00000000000006f0 Call Trace: udp_queue_rcv_one_skb+0x176/0x4b0 net/ipv4/udp.c:2445 udp_queue_rcv_skb+0x155/0x1f0 net/ipv4/udp.c:2475 udp_unicast_rcv_skb+0x71/0x90 net/ipv4/udp.c:2626 __udp4_lib_rcv+0x433/0xb00 net/ipv4/udp.c:2690 ip_protocol_deliver_rcu+0xa6/0x160 net/ipv4/ip_input.c:205 ip_local_deliver_finish+0x72/0x90 net/ipv4/ip_input.c:233 ip_sublist_rcv_finish+0x5f/0x70 net/ipv4/ip_input.c:579 ip_sublist_rcv+0x122/0x1b0 net/ipv4/ip_input.c:636 ip_list_rcv+0xf7/0x130 net/ipv4/ip_input.c:670 __netif_receive_skb_list_core+0x21d/0x240 net/core/dev.c:6067 netif_receive_skb_list_internal+0x186/0x2b0 net/core/dev.c:6210 napi_complete_done+0x78/0x180 net/core/dev.c:6580 tun_get_user+0xa63/0x1120 drivers/net/tun.c:1909 tun_chr_write_iter+0x65/0xb0 drivers/net/tun.c:1984 vfs_write+0x300/0x420 fs/read_write.c:593 ksys_write+0x60/0xd0 fs/read_write.c:686 do_syscall_64+0x50/0x1c0 arch/x86/entry/syscall_64.c:63 To trigger gso segment in udp_queue_rcv_skb(), we should also set option UDP_ENCAP_ESPINUDP to enable udp_sk(sk)->encap_rcv. When the encap_rcv hook return 1 in udp_queue_rcv_one_skb(), udp_csum_pull_header() will try to pull udphdr, but the skb size has been segmented to gso size, which leads to this crash. Previous commit cf329aa42b66 (\"udp: cope with UDP GRO packet misdirection\") introduces segmentation in UDP receive path only for GRO, which was never intended to be used for UFO, so drop UFO packets in udp_rcv_segment().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38623": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: PCI: pnv_php: Fix surprise plug detection and recovery The existing PowerNV hotplug code did not handle surprise plug events correctly, leading to a complete failure of the hotplug system after device removal and a required reboot to detect new devices. This comes down to two issues: 1) When a device is surprise removed, often the bridge upstream port will cause a PE freeze on the PHB. If this freeze is not cleared, the MSI interrupts from the bridge hotplug notification logic will not be received by the kernel, stalling all plug events on all slots associated with the PE. 2) When a device is removed from a slot, regardless of surprise or programmatic removal, the associated PHB/PE ls left frozen. If this freeze is not cleared via a fundamental reset, skiboot is unable to clear the freeze and cannot retrain / rescan the slot. This also requires a reboot to clear the freeze and redetect the device in the slot. Issue the appropriate unfreeze and rescan commands on hotplug events, and don't oops on hotplug if pci_bus_to_OF_node() returns NULL. [bhelgaas: tidy comments]",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-38624": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: PCI: pnv_php: Clean up allocated IRQs on unplug When the root of a nested PCIe bridge configuration is unplugged, the pnv_php driver leaked the allocated IRQ resources for the child bridges' hotplug event notifications, resulting in a panic. Fix this by walking all child buses and deallocating all its IRQ resources before calling pci_hp_remove_devices(). Also modify the lifetime of the workqueue at struct pnv_php_slot::wq so that it is only destroyed in pnv_php_free_slot(), instead of pnv_php_disable_irq(). This is required since pnv_php_disable_irq() will now be called by workers triggered by hot unplug interrupts, so the workqueue needs to stay allocated. The abridged kernel panic that occurs without this patch is as follows: WARNING: CPU: 0 PID: 687 at kernel/irq/msi.c:292 msi_device_data_release+0x6c/0x9c CPU: 0 UID: 0 PID: 687 Comm: bash Not tainted 6.14.0-rc5+ #2 Call Trace: msi_device_data_release+0x34/0x9c (unreliable) release_nodes+0x64/0x13c devres_release_all+0xc0/0x140 device_del+0x2d4/0x46c pci_destroy_dev+0x5c/0x194 pci_hp_remove_devices+0x90/0x128 pci_hp_remove_devices+0x44/0x128 pnv_php_disable_slot+0x54/0xd4 power_write_file+0xf8/0x18c pci_slot_attr_store+0x40/0x5c sysfs_kf_write+0x64/0x78 kernfs_fop_write_iter+0x1b0/0x290 vfs_write+0x3bc/0x50c ksys_write+0x84/0x140 system_call_exception+0x124/0x230 system_call_vectored_common+0x15c/0x2ec [bhelgaas: tidy comments]",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-38629": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: usb: scarlett2: Fix missing NULL check scarlett2_input_select_ctl_info() sets up the string arrays allocated via kasprintf(), but it misses NULL checks, which may lead to NULL dereference Oops. Let's add the proper NULL check.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38641": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: btusb: Fix potential NULL dereference on kmalloc failure Avoid potential NULL pointer dereference by checking the return value of kmalloc and handling allocation failure properly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38642": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: mac80211: fix WARN_ON for monitor mode on some devices On devices without WANT_MONITOR_VIF (and probably without channel context support) we get a WARN_ON for changing the per-link setting of a monitor interface. Since we already skip AP_VLAN interfaces and MONITOR with WANT_MONITOR_VIF and/or NO_VIRTUAL_MONITOR should update the settings, catch this in the link change code instead of the warning.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38644": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: mac80211: reject TDLS operations when station is not associated syzbot triggered a WARN in ieee80211_tdls_oper() by sending NL80211_TDLS_ENABLE_LINK immediately after NL80211_CMD_CONNECT, before association completed and without prior TDLS setup. This left internal state like sdata->u.mgd.tdls_peer uninitialized, leading to a WARN_ON() in code paths that assumed it was valid. Reject the operation early if not in station mode or not associated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38645": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/mlx5: Check device memory pointer before usage Add a NULL check before accessing device memory to prevent a crash if dev->dm allocation in mlx5_init_once() fails.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38646": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: rtw89: avoid NULL dereference when RX problematic packet on unsupported 6 GHz band With a quite rare chance, RX report might be problematic to make SW think a packet is received on 6 GHz band even if the chip does not support 6 GHz band actually. Since SW won't initialize stuffs for unsupported bands, NULL dereference will happen then in the sequence, rtw89_vif_rx_stats_iter() -> rtw89_core_cancel_6ghz_probe_tx(). So, add a check to avoid it. The following is a crash log for this case. BUG: kernel NULL pointer dereference, address: 0000000000000032 #PF: supervisor read access in kernel mode #PF: error_code(0x0000) - not-present page PGD 0 P4D 0 Oops: 0000 [#1] PREEMPT SMP NOPTI CPU: 1 PID: 1907 Comm: irq/131-rtw89_p Tainted: G U 6.6.56-05896-g89f5fb0eb30b #1 (HASH:1400 4) Hardware name: Google Telith/Telith, BIOS Google_Telith.15217.747.0 11/12/2024 RIP: 0010:rtw89_vif_rx_stats_iter+0xd2/0x310 [rtw89_core] Code: 4c 89 7d c8 48 89 55 c0 49 8d 44 24 02 48 89 45 b8 45 31 ff eb 11 41 c6 45 3a 01 41 b7 01 4d 8b 6d 00 4d 39 f5 74 42 8b 43 10 <41> 33 45 32 0f b7 4b 14 66 41 33 4d 36 0f b7 c9 09 c1 74 d8 4d 85 RSP: 0018:ffff9f3080138ca0 EFLAGS: 00010246 RAX: 00000000b8bf5770 RBX: ffff91b5e8c639c0 RCX: 0000000000000011 RDX: ffff91b582de1be8 RSI: 0000000000000000 RDI: ffff91b5e8c639e6 RBP: ffff9f3080138d00 R08: 0000000000000000 R09: 0000000000000000 R10: ffff91b59de70000 R11: ffffffffc069be50 R12: ffff91b5e8c639e4 R13: 0000000000000000 R14: ffff91b5828020b8 R15: 0000000000000000 FS: 0000000000000000(0000) GS:ffff91b8efa40000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 0000000000000032 CR3: 00000002bf838000 CR4: 0000000000750ee0 PKRU: 55555554 Call Trace: ? __die_body+0x68/0xb0 ? page_fault_oops+0x379/0x3e0 ? exc_page_fault+0x4f/0xa0 ? asm_exc_page_fault+0x22/0x30 ? __pfx_rtw89_vif_rx_stats_iter+0x10/0x10 [rtw89_core (HASH:1400 5)] ? rtw89_vif_rx_stats_iter+0xd2/0x310 [rtw89_core (HASH:1400 5)] __iterate_interfaces+0x59/0x110 [mac80211 (HASH:1400 6)] ? __pfx_rtw89_vif_rx_stats_iter+0x10/0x10 [rtw89_core (HASH:1400 5)] ? __pfx_rtw89_vif_rx_stats_iter+0x10/0x10 [rtw89_core (HASH:1400 5)] ieee80211_iterate_active_interfaces_atomic+0x36/0x50 [mac80211 (HASH:1400 6)] rtw89_core_rx_to_mac80211+0xfd/0x1b0 [rtw89_core (HASH:1400 5)] rtw89_core_rx+0x43a/0x980 [rtw89_core (HASH:1400 5)]",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38664": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ice: Fix a null pointer dereference in ice_copy_and_init_pkg() Add check for the return value of devm_kmemdup() to prevent potential null pointer dereference.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38665": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: can: netlink: can_changelink(): fix NULL pointer deref of struct can_priv::do_set_mode Andrei Lalaev reported a NULL pointer deref when a CAN device is restarted from Bus Off and the driver does not implement the struct can_priv::do_set_mode callback. There are 2 code path that call struct can_priv::do_set_mode: - directly by a manual restart from the user space, via can_changelink() - delayed automatic restart after bus off (deactivated by default) To prevent the NULL pointer deference, refuse a manual restart or configure the automatic restart delay in can_changelink() and report the error via extack to user space. As an additional safety measure let can_restart() return an error if can_priv::do_set_mode is not set instead of dereferencing it unchecked.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38668": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: regulator: core: fix NULL dereference on unbind due to stale coupling data Failing to reset coupling_desc.n_coupled after freeing coupled_rdevs can lead to NULL pointer dereference when regulators are accessed post-unbind. This can happen during runtime PM or other regulator operations that rely on coupling metadata. For example, on ridesx4, unbinding the 'reg-dummy' platform device triggers a panic in regulator_lock_recursive() due to stale coupling state. Ensure n_coupled is set to 0 to prevent access to invalid pointers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38669": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Revert \"drm/gem-shmem: Use dma_buf from GEM object instance\" This reverts commit 1a148af06000e545e714fe3210af3d77ff903c11. The dma_buf field in struct drm_gem_object is not stable over the object instance's lifetime. The field becomes NULL when user space releases the final GEM handle on the buffer object. This resulted in a NULL-pointer deref. Workarounds in commit 5307dce878d4 (\"drm/gem: Acquire references on GEM handles for framebuffers\") and commit f6bfc9afc751 (\"drm/framebuffer: Acquire internal references on GEM handles\") only solved the problem partially. They especially don't work for buffer objects without a DRM framebuffer associated. Hence, this revert to going back to using .import_attach->dmabuf. v3: - cc stable",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38671": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: i2c: qup: jump out of the loop in case of timeout Original logic only sets the return value but doesn't jump out of the loop if the bus is kept active by a client. This is not expected. A malicious or buggy i2c client can hang the kernel in this case and should be avoided. This is observed during a long time test with a PCA953x GPIO extender. Fix it by changing the logic to not only sets the return value, but also jumps out of the loop and return to the caller with -ETIMEDOUT.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38673": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Revert \"drm/gem-framebuffer: Use dma_buf from GEM object instance\" This reverts commit cce16fcd7446dcff7480cd9d2b6417075ed81065. The dma_buf field in struct drm_gem_object is not stable over the object instance's lifetime. The field becomes NULL when user space releases the final GEM handle on the buffer object. This resulted in a NULL-pointer deref. Workarounds in commit 5307dce878d4 (\"drm/gem: Acquire references on GEM handles for framebuffers\") and commit f6bfc9afc751 (\"drm/framebuffer: Acquire internal references on GEM handles\") only solved the problem partially. They especially don't work for buffer objects without a DRM framebuffer associated. Hence, this revert to going back to using .import_attach->dmabuf. v3: - cc stable",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38674": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Revert \"drm/prime: Use dma_buf from GEM object instance\" This reverts commit f83a9b8c7fd0557b0c50784bfdc1bbe9140c9bf8. The dma_buf field in struct drm_gem_object is not stable over the object instance's lifetime. The field becomes NULL when user space releases the final GEM handle on the buffer object. This resulted in a NULL-pointer deref. Workarounds in commit 5307dce878d4 (\"drm/gem: Acquire references on GEM handles for framebuffers\") and commit f6bfc9afc751 (\"drm/framebuffer: Acquire internal references on GEM handles\") only solved the problem partially. They especially don't work for buffer objects without a DRM framebuffer associated. Hence, this revert to going back to using .import_attach->dmabuf. v3: - cc stable",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38557": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: HID: apple: validate feature-report field count to prevent NULL pointer dereference A malicious HID device with quirk APPLE_MAGIC_BACKLIGHT can trigger a NULL pointer dereference whilst the power feature-report is toggled and sent to the device in apple_magic_backlight_report_set(). The power feature-report is expected to have two data fields, but if the descriptor declares one field then accessing field[1] and dereferencing it in apple_magic_backlight_report_set() becomes invalid since field[1] will be NULL. An example of a minimal descriptor which can cause the crash is something like the following where the report with ID 3 (power report) only references a single 1-byte field. When hid core parses the descriptor it will encounter the final feature tag, allocate a hid_report (all members of field[] will be zeroed out), create field structure and populate it, increasing the maxfield to 1. The subsequent field[1] access and dereference causes the crash. Usage Page (Vendor Defined 0xFF00) Usage (0x0F) Collection (Application) Report ID (1) Usage (0x01) Logical Minimum (0) Logical Maximum (255) Report Size (8) Report Count (1) Feature (Data,Var,Abs) Usage (0x02) Logical Maximum (32767) Report Size (16) Report Count (1) Feature (Data,Var,Abs) Report ID (3) Usage (0x03) Logical Minimum (0) Logical Maximum (1) Report Size (8) Report Count (1) Feature (Data,Var,Abs) End Collection Here we see the KASAN splat when the kernel dereferences the NULL pointer and crashes: [ 15.164723] Oops: general protection fault, probably for non-canonical address 0xdffffc0000000006: 0000 [#1] SMP KASAN NOPTI [ 15.165691] KASAN: null-ptr-deref in range [0x0000000000000030-0x0000000000000037] [ 15.165691] CPU: 0 UID: 0 PID: 10 Comm: kworker/0:1 Not tainted 6.15.0 #31 PREEMPT(voluntary) [ 15.165691] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.2-debian-1.16.2-1 04/01/2014 [ 15.165691] RIP: 0010:apple_magic_backlight_report_set+0xbf/0x210 [ 15.165691] Call Trace: [ 15.165691] [ 15.165691] apple_probe+0x571/0xa20 [ 15.165691] hid_device_probe+0x2e2/0x6f0 [ 15.165691] really_probe+0x1ca/0x5c0 [ 15.165691] __driver_probe_device+0x24f/0x310 [ 15.165691] driver_probe_device+0x4a/0xd0 [ 15.165691] __device_attach_driver+0x169/0x220 [ 15.165691] bus_for_each_drv+0x118/0x1b0 [ 15.165691] __device_attach+0x1d5/0x380 [ 15.165691] device_initial_probe+0x12/0x20 [ 15.165691] bus_probe_device+0x13d/0x180 [ 15.165691] device_add+0xd87/0x1510 [...] To fix this issue we should validate the number of fields that the backlight and power reports have and if they do not have the required number of fields then bail.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38559": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: platform/x86/intel/pmt: fix a crashlog NULL pointer access Usage of the intel_pmt_read() for binary sysfs, requires a pcidev. The current use of the endpoint value is only valid for telemetry endpoint usage. Without the ep, the crashlog usage causes the following NULL pointer exception: BUG: kernel NULL pointer dereference, address: 0000000000000000 Oops: Oops: 0000 [#1] SMP NOPTI RIP: 0010:intel_pmt_read+0x3b/0x70 [pmt_class] Code: Call Trace: ? sysfs_kf_bin_read+0xc0/0xe0 kernfs_fop_read_iter+0xac/0x1a0 vfs_read+0x26d/0x350 ksys_read+0x6b/0xe0 __x64_sys_read+0x1d/0x30 x64_sys_call+0x1bc8/0x1d70 do_syscall_64+0x6d/0x110 Augment struct intel_pmt_entry with a pointer to the pcidev to avoid the NULL pointer exception.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38563": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: perf/core: Prevent VMA split of buffer mappings The perf mmap code is careful about mmap()'ing the user page with the ringbuffer and additionally the auxiliary buffer, when the event supports it. Once the first mapping is established, subsequent mapping have to use the same offset and the same size in both cases. The reference counting for the ringbuffer and the auxiliary buffer depends on this being correct. Though perf does not prevent that a related mapping is split via mmap(2), munmap(2) or mremap(2). A split of a VMA results in perf_mmap_open() calls, which take reference counts, but then the subsequent perf_mmap_close() calls are not longer fulfilling the offset and size checks. This leads to reference count leaks. As perf already has the requirement for subsequent mappings to match the initial mapping, the obvious consequence is that VMA splits, caused by resizing of a mapping or partial unmapping, have to be prevented. Implement the vm_operations_struct::may_split() callback and return unconditionally -EINVAL. That ensures that the mapping offsets and sizes cannot be changed after the fact. Remapping to a different fixed address with the same size is still possible as it takes the references for the new mapping and drops those of the old mapping.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38565": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: perf/core: Exit early on perf_mmap() fail When perf_mmap() fails to allocate a buffer, it still invokes the event_mapped() callback of the related event. On X86 this might increase the perf_rdpmc_allowed reference counter. But nothing undoes this as perf_mmap_close() is never called in this case, which causes another reference count leak. Return early on failure to prevent that.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38569": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: benet: fix BUG when creating VFs benet crashes as soon as SRIOV VFs are created: kernel BUG at mm/vmalloc.c:3457! Oops: invalid opcode: 0000 [#1] SMP KASAN NOPTI CPU: 4 UID: 0 PID: 7408 Comm: test.sh Kdump: loaded Not tainted 6.16.0+ #1 PREEMPT(voluntary) [...] RIP: 0010:vunmap+0x5f/0x70 [...] Call Trace: __iommu_dma_free+0xe8/0x1c0 be_cmd_set_mac_list+0x3fe/0x640 [be2net] be_cmd_set_mac+0xaf/0x110 [be2net] be_vf_eth_addr_config+0x19f/0x330 [be2net] be_vf_setup+0x4f7/0x990 [be2net] be_pci_sriov_configure+0x3a1/0x470 [be2net] sriov_numvfs_store+0x20b/0x380 kernfs_fop_write_iter+0x354/0x530 vfs_write+0x9b9/0xf60 ksys_write+0xf3/0x1d0 do_syscall_64+0x8c/0x3d0 be_cmd_set_mac_list() calls dma_free_coherent() under a spin_lock_bh. Fix it by freeing only after the lock has been released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38576": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: powerpc/eeh: Make EEH driver device hotplug safe Multiple race conditions existed between the PCIe hotplug driver and the EEH driver, leading to a variety of kernel oopses of the same general nature: A second class of oops is also seen when the underlying bus disappears during device recovery. Refactor the EEH module to be PCI rescan and remove safe. Also clean up a few minor formatting / readability issues.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38581": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: crypto: ccp - Fix crash when rebind ccp device for ccp.ko When CONFIG_CRYPTO_DEV_CCP_DEBUGFS is enabled, rebinding the ccp device causes the following crash: $ echo '0000:0a:00.2' > /sys/bus/pci/drivers/ccp/unbind $ echo '0000:0a:00.2' > /sys/bus/pci/drivers/ccp/bind [ 204.976930] BUG: kernel NULL pointer dereference, address: 0000000000000098 [ 204.978026] #PF: supervisor write access in kernel mode [ 204.979126] #PF: error_code(0x0002) - not-present page [ 204.980226] PGD 0 P4D 0 [ 204.981317] Oops: Oops: 0002 [#1] SMP NOPTI ... [ 204.997852] Call Trace: [ 204.999074] [ 205.000297] start_creating+0x9f/0x1c0 [ 205.001533] debugfs_create_dir+0x1f/0x170 [ 205.002769] ? srso_return_thunk+0x5/0x5f [ 205.004000] ccp5_debugfs_setup+0x87/0x170 [ccp] [ 205.005241] ccp5_init+0x8b2/0x960 [ccp] [ 205.006469] ccp_dev_init+0xd4/0x150 [ccp] [ 205.007709] sp_init+0x5f/0x80 [ccp] [ 205.008942] sp_pci_probe+0x283/0x2e0 [ccp] [ 205.010165] ? srso_return_thunk+0x5/0x5f [ 205.011376] local_pci_probe+0x4f/0xb0 [ 205.012584] pci_device_probe+0xdb/0x230 [ 205.013810] really_probe+0xed/0x380 [ 205.015024] __driver_probe_device+0x7e/0x160 [ 205.016240] device_driver_attach+0x2f/0x60 [ 205.017457] bind_store+0x7c/0xb0 [ 205.018663] drv_attr_store+0x28/0x40 [ 205.019868] sysfs_kf_write+0x5f/0x70 [ 205.021065] kernfs_fop_write_iter+0x145/0x1d0 [ 205.022267] vfs_write+0x308/0x440 [ 205.023453] ksys_write+0x6d/0xe0 [ 205.024616] __x64_sys_write+0x1e/0x30 [ 205.025778] x64_sys_call+0x16ba/0x2150 [ 205.026942] do_syscall_64+0x56/0x1e0 [ 205.028108] entry_SYSCALL_64_after_hwframe+0x76/0x7e [ 205.029276] RIP: 0033:0x7fbc36f10104 [ 205.030420] Code: 89 02 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 66 90 48 8d 05 e1 08 2e 00 8b 00 85 c0 75 13 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 54 f3 c3 66 90 41 54 55 49 89 d4 53 48 89 f5 This patch sets ccp_debugfs_dir to NULL after destroying it in ccp5_debugfs_destroy, allowing the directory dentry to be recreated when rebinding the ccp device. Tested on AMD Ryzen 7 1700X.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38587": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: fix possible infinite loop in fib6_info_uses_dev() fib6_info_uses_dev() seems to rely on RCU without an explicit protection. Like the prior fix in rt6_nlmsg_size(), we need to make sure fib6_del_route() or fib6_add_rt2node() have not removed the anchor from the list, or we risk an infinite loop.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38588": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: prevent infinite loop in rt6_nlmsg_size() While testing prior patch, I was able to trigger an infinite loop in rt6_nlmsg_size() in the following place: list_for_each_entry_rcu(sibling, &f6i->fib6_siblings, fib6_siblings) { rt6_nh_nlmsg_size(sibling->fib6_nh, &nexthop_len); } This is because fib6_del_route() and fib6_add_rt2node() uses list_del_rcu(), which can confuse rcu readers, because they might no longer see the head of the list. Restart the loop if f6i->fib6_nsiblings is zero.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38602": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: iwlwifi: Add missing check for alloc_ordered_workqueue Add check for the return value of alloc_ordered_workqueue since it may return NULL pointer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38605": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: ath12k: Pass ab pointer directly to ath12k_dp_tx_get_encap_type() In ath12k_dp_tx_get_encap_type(), the arvif parameter is only used to retrieve the ab pointer. In vdev delete sequence the arvif->ar could become NULL and that would trigger kernel panic. Since the caller ath12k_dp_tx() already has a valid ab pointer, pass it directly to avoid panic and unnecessary dereferencing. PC points to \"ath12k_dp_tx+0x228/0x988 [ath12k]\" LR points to \"ath12k_dp_tx+0xc8/0x988 [ath12k]\". The Backtrace obtained is as follows: ath12k_dp_tx+0x228/0x988 [ath12k] ath12k_mac_tx_check_max_limit+0x608/0x920 [ath12k] ieee80211_process_measurement_req+0x320/0x348 [mac80211] ieee80211_tx_dequeue+0x9ac/0x1518 [mac80211] ieee80211_tx_dequeue+0xb14/0x1518 [mac80211] ieee80211_tx_prepare_skb+0x224/0x254 [mac80211] ieee80211_xmit+0xec/0x100 [mac80211] __ieee80211_subif_start_xmit+0xc50/0xf40 [mac80211] ieee80211_subif_start_xmit+0x2e8/0x308 [mac80211] netdev_start_xmit+0x150/0x18c dev_hard_start_xmit+0x74/0xc0 Tested-on: QCN9274 hw2.0 PCI WLAN.WBE.1.3.1-00173-QCAHKSWPL_SILICONZ-1",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38606": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: ath12k: Avoid accessing uninitialized arvif->ar during beacon miss During beacon miss handling, ath12k driver iterates over active virtual interfaces (vifs) and attempts to access the radio object (ar) via arvif->deflink->ar. However, after commit aa80f12f3bed (\"wifi: ath12k: defer vdev creation for MLO\"), arvif is linked to a radio only after vdev creation, typically when a channel is assigned or a scan is requested. For P2P capable devices, a default P2P interface is created by wpa_supplicant along with regular station interfaces, these serve as dummy interfaces for P2P-capable stations, lack an associated netdev and initiate frequent scans to discover neighbor p2p devices. When a scan is initiated on such P2P vifs, driver selects destination radio (ar) based on scan frequency, creates a scan vdev, and attaches arvif to the radio. Once the scan completes or is aborted, the scan vdev is deleted, detaching arvif from the radio and leaving arvif->ar uninitialized. While handling beacon miss for station interfaces, P2P interface is also encountered in the vif iteration and ath12k_mac_handle_beacon_miss_iter() tries to dereference the uninitialized arvif->deflink->ar. Fix this by verifying that vdev is created for the arvif before accessing its ar during beacon miss handling and similar vif iterator callbacks. ========================================================================== wlp6s0: detected beacon loss from AP (missed 7 beacons) - probing KASAN: null-ptr-deref in range [0x0000000000000010-0x0000000000000017] CPU: 5 UID: 0 PID: 0 Comm: swapper/5 Not tainted 6.16.0-rc1-wt-ath+ #2 PREEMPT(full) RIP: 0010:ath12k_mac_handle_beacon_miss_iter+0xb5/0x1a0 [ath12k] Call Trace: __iterate_interfaces+0x11a/0x410 [mac80211] ieee80211_iterate_active_interfaces_atomic+0x61/0x140 [mac80211] ath12k_mac_handle_beacon_miss+0xa1/0xf0 [ath12k] ath12k_roam_event+0x393/0x560 [ath12k] ath12k_wmi_op_rx+0x1486/0x28c0 [ath12k] ath12k_htc_process_trailer.isra.0+0x2fb/0x620 [ath12k] ath12k_htc_rx_completion_handler+0x448/0x830 [ath12k] ath12k_ce_recv_process_cb+0x549/0x9e0 [ath12k] ath12k_ce_per_engine_service+0xbe/0xf0 [ath12k] ath12k_pci_ce_workqueue+0x69/0x120 [ath12k] process_one_work+0xe3a/0x1430 Tested-on: QCN9274 hw2.0 PCI WLAN.WBE.1.4.1-00199-QCAHKSWPL_SILICONZ-1 Tested-on: WCN7850 hw2.0 PCI WLAN.HMT.1.1.c5-00284.1-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38609": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: PM / devfreq: Check governor before using governor->name Commit 96ffcdf239de (\"PM / devfreq: Remove redundant governor_name from struct devfreq\") removes governor_name and uses governor->name to replace it. But devfreq->governor may be NULL and directly using devfreq->governor->name may cause null pointer exception. Move the check of governor to before using governor->name.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38535": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: phy: tegra: xusb: Fix unbalanced regulator disable in UTMI PHY mode When transitioning from USB_ROLE_DEVICE to USB_ROLE_NONE, the code assumed that the regulator should be disabled. However, if the regulator is marked as always-on, regulator_is_enabled() continues to return true, leading to an incorrect attempt to disable a regulator which is not enabled. This can result in warnings such as: [ 250.155624] WARNING: CPU: 1 PID: 7326 at drivers/regulator/core.c:3004 _regulator_disable+0xe4/0x1a0 [ 250.155652] unbalanced disables for VIN_SYS_5V0 To fix this, we move the regulator control logic into tegra186_xusb_padctl_id_override() function since it's directly related to the ID override state. The regulator is now only disabled when the role transitions from USB_ROLE_HOST to USB_ROLE_NONE, by checking the VBUS_ID register. This ensures that regulator enable/disable operations are properly balanced and only occur when actually transitioning to/from host mode.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38537": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: phy: Don't register LEDs for genphy If a PHY has no driver, the genphy driver is probed/removed directly in phy_attach/detach. If the PHY's ofnode has an \"leds\" subnode, then the LEDs will be (un)registered when probing/removing the genphy driver. This could occur if the leds are for a non-generic driver that isn't loaded for whatever reason. Synchronously removing the PHY device in phy_detach leads to the following deadlock: rtnl_lock() ndo_close() ... phy_detach() phy_remove() phy_leds_unregister() led_classdev_unregister() led_trigger_set() netdev_trigger_deactivate() unregister_netdevice_notifier() rtnl_lock() There is a corresponding deadlock on the open/register side of things (and that one is reported by lockdep), but it requires a race while this one is deterministic. Generic PHYs do not support LEDs anyway, so don't bother registering them.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38540": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: HID: quirks: Add quirk for 2 Chicony Electronics HP 5MP Cameras The Chicony Electronics HP 5MP Cameras (USB ID 04F2:B824 & 04F2:B82C) report a HID sensor interface that is not actually implemented. Attempting to access this non-functional sensor via iio_info causes system hangs as runtime PM tries to wake up an unresponsive sensor. Add these 2 devices to the HID ignore list since the sensor interface is non-functional by design and should not be exposed to userspace.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38543": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/tegra: nvdec: Fix dma_alloc_coherent error check Check for NULL return value with dma_alloc_coherent, in line with Robin's fix for vic.c in 'drm/tegra: vic: Fix DMA API misuse'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38546": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: atm: clip: Fix memory leak of struct clip_vcc. ioctl(ATMARP_MKIP) allocates struct clip_vcc and set it to vcc->user_back. The code assumes that vcc_destroy_socket() passes NULL skb to vcc->push() when the socket is close()d, and then clip_push() frees clip_vcc. However, ioctl(ATMARPD_CTRL) sets NULL to vcc->push() in atm_init_atmarp(), resulting in memory leak. Let's serialise two ioctl() by lock_sock() and check vcc->push() in atm_init_atmarp() to prevent memleak.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-10494": {
+    "cvss": 7.8,
+    "description": "An out of bounds read due to improper input validation in HeapObjMapImpl.cpp in NI LabVIEW may disclose information or result in arbitrary code execution. Successful exploitation requires an attacker to provide a user with a specially crafted VI. This vulnerability affects LabVIEW 2024 Q3 and prior versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-10495": {
+    "cvss": 7.8,
+    "description": "An out of bounds read due to improper input validation when loading the font table in fontmgr.cpp in NI LabVIEW may disclose information or result in arbitrary code execution. Successful exploitation requires an attacker to provide a user with a specially crafted VI. This vulnerability affects LabVIEW 2024 Q3 and prior versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-10496": {
+    "cvss": 7.8,
+    "description": "An out of bounds read due to improper input validation in BuildFontMap in fontmgr.cpp in NI LabVIEW may disclose information or result in arbitrary code execution. Successful exploitation requires an attacker to provide a user with a specially crafted VI. This vulnerability affects LabVIEW 2024 Q3 and prior versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
