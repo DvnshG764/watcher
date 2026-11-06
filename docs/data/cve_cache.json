@@ -88252,5 +88252,17 @@
     "description": "MacCMS v10 before 2026.1000.4054 contains an authentication bypass vulnerability that allows unauthenticated attackers to reset any member's password because check_msg() never compares msg_to. Attackers can request a recovery code to their own mailbox via user/findpass_msg, then submit it to user/findpass_reset with the victim's email or phone to take over the account.",
     "vendor": "maccmspro",
     "product": "maccms10"
+  },
+  "CVE-2025-25207": {
+    "cvss": 5.7,
+    "description": "The Authorino service in the Red Hat Connectivity Link is the authorization service for zero trust API security. Authorino allows the users with developer persona to add callbacks to be executed to HTTP endpoints once the authorization process is completed. It was found that an attacker with developer persona access can add a large number of those callbacks to be executed by Authorino and as the authentication policy is enforced by a single instance of the service, this leada to a Denial of Service in Authorino while processing the post-authorization callbacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-25208": {
+    "cvss": 5.7,
+    "description": "A Developer persona can bring down the Authorino service, preventing the evaluation of all AuthPolicies on the cluster",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
