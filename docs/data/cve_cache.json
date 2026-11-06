@@ -88228,5 +88228,29 @@
     "description": "A CORS misconfiguration in Nginx Proxy Manager v2.12.3 allows unauthorized domains to access sensitive data, particularly JWT tokens, due to improper validation of the Origin header. This misconfiguration enables attackers to intercept tokens using a simple browser script and exfiltrate them to a remote attacker-controlled server, potentially leading to unauthorized actions within the application.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-120491": {
+    "cvss": 5.4,
+    "description": "Wing FTP Server before 8.2.6 contains a stored cross-site scripting vulnerability that allows authenticated web-client users to inject script by sending a crafted nowpath parameter to webclient/makethumb.html. Attackers can break out of the directory CDATA section in admin_get_lastconn.html XML to forge a connection id, which executes in administrators' browsers when admin_connection_list.html auto-refreshes, enabling Lua console abuse.",
+    "vendor": "Wing FTP Software",
+    "product": "Wing FTP Server"
+  },
+  "CVE-2026-22765": {
+    "cvss": 8.8,
+    "description": "Dell Wyse Management Suite, versions prior to WMS 5.5, contain a Missing Authorization vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Elevation of Privileges.",
+    "vendor": "Dell",
+    "product": "Wyse Management Suite"
+  },
+  "CVE-2026-118569": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Fasttoggle allows Forceful Browsing. This issue affects Fasttoggle versions: from 0.0.0 to 4.1.1.",
+    "vendor": "Drupal",
+    "product": "Fasttoggle"
+  },
+  "CVE-2026-116214": {
+    "cvss": 9.1,
+    "description": "MacCMS v10 before 2026.1000.4054 contains an authentication bypass vulnerability that allows unauthenticated attackers to reset any member's password because check_msg() never compares msg_to. Attackers can request a recovery code to their own mailbox via user/findpass_msg, then submit it to user/findpass_reset with the victim's email or phone to take over the account.",
+    "vendor": "maccmspro",
+    "product": "maccms10"
   }
 }
