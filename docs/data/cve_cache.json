@@ -88912,5 +88912,281 @@
     "description": "A flaw was found in the GNU C Library. A recent fix for CVE-2023-4806 introduced the potential for a memory leak, which may result in an application crash.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2023-39327": {
+    "cvss": 4.3,
+    "description": "A flaw was found in OpenJPEG. Maliciously constructed pictures can cause the program to enter a large loop and continuously print warning messages on the terminal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39329": {
+    "cvss": 6.5,
+    "description": "A flaw was found in OpenJPEG. A resource exhaustion can occur in the opj_t1_decode_cblks function in tcd.c through a crafted image file, causing a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-5971": {
+    "cvss": 7.5,
+    "description": "A vulnerability was found in Undertow, where the chunked response hangs after the body was flushed. The response headers and body were sent but the client would continue waiting as Undertow does not send the expected 0\\r\\n termination of the chunked response. This results in uncontrolled resource consumption, leaving the server side to a denial of service attack. This happens only with Java 17 TLSv1.3 scenarios.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-6126": {
+    "cvss": 3.2,
+    "description": "A flaw was found in the cockpit package. This flaw allows an authenticated user to kill any process when enabling the pam_env's user_readenv option, which leads to a denial of service (DoS) attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-5953": {
+    "cvss": 5.7,
+    "description": "A denial of service vulnerability was found in the 389-ds-base LDAP server. This issue may allow an authenticated user to cause a server denial of service while attempting to log in with a user with a malformed hash in their password.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4727": {
+    "cvss": 7.5,
+    "description": "A flaw was found in dogtag-pki and pki-core. The token authentication scheme can be bypassed with a LDAP injection. By passing the query string parameter sessionID=*, an attacker can authenticate with an existing session saved in the LDAP directory server, which may lead to escalation of privilege.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3758": {
+    "cvss": 7.1,
+    "description": "A race condition flaw was found in sssd where the GPO policy is not consistently applied for authenticated users. This may lead to improper authorization issues, granting or denying access to resources inappropriately.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4001": {
+    "cvss": 6.8,
+    "description": "An authentication bypass flaw was found in GRUB due to the way that GRUB uses the UUID of a device to search for the configuration file that contains the password hash for the GRUB password protection feature. An attacker capable of attaching an external drive such as a USB stick containing a file system with a duplicate UUID (the same as in the \"/boot/\" file system) can bypass the GRUB password protection feature on UEFI systems, which enumerate removable drives before non-removable ones. This issue was introduced in a downstream patch in Red Hat's version of grub2 and does not affect the upstream package.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-42669": {
+    "cvss": 6.5,
+    "description": "A vulnerability was found in Samba's \"rpcecho\" development server, a non-Windows RPC server used to test Samba's DCE/RPC stack elements. This vulnerability stems from an RPC function that can be blocked indefinitely. The issue arises because the \"rpcecho\" service operates with only one worker in the main RPC task, allowing calls to the \"rpcecho\" server to be blocked for a specified time, causing service disruptions. This disruption is triggered by a \"sleep()\" call in the \"dcesrv_echo_TestSleep()\" function under specific conditions. Authenticated users or attackers can exploit this vulnerability to make calls to the \"rpcecho\" server, requesting it to block for a specified duration, effectively disrupting most services and leading to a complete denial of service on the AD DC. The DoS affects all other services as \"rpcecho\" runs in the main RPC task.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4910": {
+    "cvss": 5.5,
+    "description": "A flaw was found In 3Scale Admin Portal. If a user logs out from the personal tokens page and then presses the back button in the browser, the tokens page is rendered from the browser cache.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-42670": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Samba. It is susceptible to a vulnerability where multiple incompatible RPC listeners can be initiated, causing disruptions in the AD DC service. When Samba's RPC server experiences a high load or unresponsiveness, servers intended for non-AD DC purposes (for example, NT4-emulation \"classic DCs\") can erroneously start and compete for the same unix domain sockets. This issue leads to partial query responses from the AD DC, causing issues such as \"The procedure number is out of range\" when using tools like Active Directory Users. This flaw allows an attacker to disrupt AD DC services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3961": {
+    "cvss": 9.8,
+    "description": "A path traversal vulnerability was identified in Samba when processing client pipe names connecting to Unix domain sockets within a private directory. Samba typically uses this mechanism to connect SMB clients to remote procedure call (RPC) services like SAMR LSA or SPOOLSS, which Samba initiates on demand. However, due to inadequate sanitization of incoming client pipe names, allowing a client to send a pipe name containing Unix directory traversal characters (../). This could result in SMB clients connecting as root to Unix domain sockets outside the private directory. If an attacker or client managed to send a pipe name resolving to an external service using an existing Unix domain socket, it could potentially lead to unauthorized access to the service and consequential adverse events, including compromise or service crashes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3972": {
+    "cvss": 7.8,
+    "description": "A vulnerability was found in insights-client. This security issue occurs because of insecure file operations or unsafe handling of temporary files and directories that lead to local privilege escalation. Before the insights-client has been registered on the system by root, an unprivileged local user or attacker could create the /var/tmp/insights-client directory (owning the directory with read, write, and execute permissions) on the system. After the insights-client is registered by root, an attacker could then control the directory content that insights are using by putting malicious scripts into it and executing arbitrary code as root (trivially bypassing SELinux protections because insights processes are allowed to disable SELinux system-wide).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4692": {
+    "cvss": 7.8,
+    "description": "An out-of-bounds write flaw was found in grub2's NTFS filesystem driver. This issue may allow an attacker to present a specially crafted NTFS filesystem image, leading to grub's heap metadata corruption. In some circumstances, the attack may also corrupt the UEFI firmware heap metadata. As a result, arbitrary code execution and secure boot protection bypass may be achieved.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-43789": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in libXpm where a vulnerability exists due to a boundary condition, a local user can trigger an out-of-bounds read error and read contents of memory on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-43785": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in libX11 due to a boundary condition within the _XkbReadKeySyms() function. This flaw allows a local user to trigger an out-of-bounds read error and read the contents of memory on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-43786": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in libX11 due to an infinite loop within the PutSubImage() function. This flaw allows a local user to consume all available system resources and cause a denial of service condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-43787": {
+    "cvss": 7.8,
+    "description": "A vulnerability was found in libX11 due to an integer overflow within the XCreateImage() function. This flaw allows a local user to trigger an integer overflow and execute arbitrary code with elevated privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39189": {
+    "cvss": 6.0,
+    "description": "A flaw was found in the Netfilter subsystem in the Linux kernel. The nfnl_osf_add_callback function did not validate the user mode controlled opt_num field. This flaw allows a local privileged (CAP_NET_ADMIN) attacker to trigger an out-of-bounds read, leading to a crash or information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39192": {
+    "cvss": 6.0,
+    "description": "A flaw was found in the Netfilter subsystem in the Linux kernel. The xt_u32 module did not validate the fields in the xt_u32 structure. This flaw allows a local privileged attacker to trigger an out-of-bounds read by setting the size fields with a value beyond the array boundaries, leading to a crash or information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39193": {
+    "cvss": 6.0,
+    "description": "A flaw was found in the Netfilter subsystem in the Linux kernel. The sctp_mt_check did not validate the flag_count field. This flaw allows a local privileged (CAP_NET_ADMIN) attacker to trigger an out-of-bounds read, leading to a crash or information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39194": {
+    "cvss": 4.4,
+    "description": "A flaw was found in the XFRM subsystem in the Linux kernel. The specific flaw exists within the processing of state filters, which can result in a read past the end of an allocated buffer. This flaw allows a local privileged (CAP_NET_ADMIN) attacker to trigger an out-of-bounds read, potentially leading to an information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-42754": {
+    "cvss": 5.5,
+    "description": "A NULL pointer dereference flaw was found in the Linux kernel ipv4 stack. The socket buffer (skb) was assumed to be associated with a device before calling __ip_options_compile, which is not always the case if the skb is re-routed by ipvs. This issue may allow a local user with CAP_NET_ADMIN privileges to crash the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3971": {
+    "cvss": 5.4,
+    "description": "An HTML injection flaw was found in Controller in the user interface settings. This flaw allows an attacker to capture credentials by creating a custom login page by injecting HTML, resulting in a complete compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39191": {
+    "cvss": 8.2,
+    "description": "An improper input validation flaw was found in the eBPF subsystem in the Linux kernel. The issue occurs due to a lack of proper validation of dynamic pointers within user-supplied eBPF programs prior to executing them. This may allow an attacker with CAP_BPF privileges to escalate privileges and execute arbitrary code in the context of the kernel.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3428": {
+    "cvss": 5.5,
+    "description": "A heap-based buffer overflow vulnerability was found in coders/tiff.c in ImageMagick. This issue may allow a local attacker to trick the user into opening a specially crafted file, resulting in an application crash and denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3576": {
+    "cvss": 5.5,
+    "description": "A memory leak flaw was found in Libtiff's tiffcrop utility. This issue occurs when tiffcrop operates on a TIFF image file, allowing an attacker to pass a crafted TIFF image file to tiffcrop utility, which causes this memory leak issue, resulting an application crash, eventually leading to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-42753": {
+    "cvss": 7.8,
+    "description": "An array indexing vulnerability was found in the netfilter subsystem of the Linux kernel. A missing macro could lead to a miscalculation of the `h->nets` array offset, providing attackers with the primitive to arbitrarily increment/decrement a memory buffer out-of-bound. This issue may allow a local user to crash the system or potentially escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4806": {
+    "cvss": 5.9,
+    "description": "A flaw has been identified in glibc. In an extremely rare situation, the getaddrinfo function may access memory that has been freed, resulting in an application crash. This issue is only exploitable when a NSS module implements only the _nss_*_gethostbyname2_r and _nss_*_getcanonname_r hooks without implementing the _nss_*_gethostbyname3_r hook. The resolved name should return a large number of IPv6 and IPv4, and the call to the getaddrinfo function should have the AF_INET6 address family with AI_CANONNAME, AI_ALL and AI_V4MAPPED as flags.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3255": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the QEMU built-in VNC server while processing ClientCutText messages. A wrong exit condition may lead to an infinite loop when inflating an attacker controlled zlib buffer in the `inflate_buffer` function. This could allow a remote authenticated client who is able to send a clipboard to the VNC server to trigger a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3899": {
+    "cvss": 7.8,
+    "description": "A vulnerability was found in subscription-manager that allows local privilege escalation due to inadequate authorization. The D-Bus interface com.redhat.RHSM1 exposes a significant number of methods to all users that could change the state of the registration. By using the com.redhat.RHSM1.Config.SetAll() method, a low-privileged local user could tamper with the state of the registration, by unregistering the system or by changing the current entitlements. This flaw allows an attacker to set arbitrary configuration directives for /etc/rhsm/rhsm.conf, which can be abused to cause a local privilege escalation to an unconfined root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4042": {
+    "cvss": 5.5,
+    "description": "A flaw was found in ghostscript. The fix for CVE-2020-16305 in ghostscript was not included in RHSA-2021:1852-06 advisory as it was claimed to be. This issue only affects the ghostscript package as shipped with Red Hat Enterprise Linux 8.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4459": {
+    "cvss": 5.5,
+    "description": "A NULL pointer dereference flaw was found in vmxnet3_rq_cleanup in drivers/net/vmxnet3/vmxnet3_drv.c in the networking sub-component in vmxnet3 in the Linux Kernel. This issue may allow a local attacker with normal user privilege to cause a denial of service due to a missing sanity check during cleanup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39418": {
+    "cvss": 4.3,
+    "description": "A vulnerability was found in PostgreSQL with the use of the MERGE command, which fails to test new rows against row security policies defined for UPDATE and SELECT. If UPDATE and SELECT policies forbid some rows that INSERT policies do not forbid, a user could store such rows.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4273": {
+    "cvss": 6.7,
+    "description": "A flaw was found in the exFAT driver of the Linux kernel. The vulnerability exists in the implementation of the file name reconstruction function, which is responsible for reading file name entries from a directory index and merging file name parts belonging to one file into a single long file name. Since the file name characters are copied into a stack variable, a local privileged attacker could use this flaw to overflow the kernel stack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4132": {
+    "cvss": 5.5,
+    "description": "A use-after-free vulnerability was found in the siano smsusb module in the Linux kernel. The bug occurs during device initialization when the siano device is plugged in. This flaw allows a local user to crash the system, causing a denial of service condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4133": {
+    "cvss": 5.5,
+    "description": "A use-after-free vulnerability was found in the cxgb4 driver in the Linux kernel. The bug occurs when the cxgb4 device is detaching due to a possible rearming of the flower_stats_timer from the work queue. This flaw allows a local user to crash the system, causing a denial of service condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38559": {
+    "cvss": 5.5,
+    "description": "A buffer overflow flaw was found in base/gdevdevn.c:1973 in devn_pcx_write_rle() in ghostscript. This issue may allow a local attacker to cause a denial of service via outputting a crafted PDF file for a DEVN device with gs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38560": {
+    "cvss": 5.5,
+    "description": "An integer overflow flaw was found in pcl/pl/plfont.c:418 in pl_glyph_name in ghostscript. This issue may allow a local attacker to cause a denial of service via transforming a crafted PCL file to PDF format.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4004": {
+    "cvss": 7.8,
+    "description": "A use-after-free flaw was found in the Linux kernel's netfilter in the way a user triggers the nft_pipapo_remove function with the element, without a NFT_SET_EXT_KEY_END. This issue could allow a local user to crash the system or potentially escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3019": {
+    "cvss": 6.5,
+    "description": "A DMA reentrancy issue leading to a use-after-free error was found in the e1000e NIC emulation code in QEMU. This issue could allow a privileged guest user to crash the QEMU process on the host, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3567": {
+    "cvss": 7.1,
+    "description": "A use-after-free flaw was found in vcs_read in drivers/tty/vt/vc_screen.c in vc_screen in the Linux Kernel. This issue may allow an attacker with local user access to cause a system crash or leak internal kernel information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3745": {
+    "cvss": 5.5,
+    "description": "A heap-based buffer overflow issue was found in ImageMagick's PushCharPixel() function in quantum-private.h. This issue may allow a local attacker to trick the user into opening a specially crafted file, triggering an out-of-bounds read error and allowing an application to crash, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3750": {
+    "cvss": 5.3,
+    "description": "A flaw was found in libvirt. The virStoragePoolObjListSearch function does not return a locked pool as expected, resulting in a race condition and denial of service when attempting to lock the same object from another thread. This issue could allow clients connecting to the read-only socket to crash the libvirt daemon.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38252": {
+    "cvss": 5.5,
+    "description": "An out-of-bounds read flaw was found in w3m, in the Strnew_size function in Str.c. This issue may allow an attacker to cause a denial of service through a crafted HTML file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3108": {
+    "cvss": 4.7,
+    "description": "A flaw was found in the subsequent get_user_pages_fast in the Linux kernel’s interface for symmetric key cipher algorithms in the skcipher_recvmsg of crypto/algif_skcipher.c function. This flaw allows a local user to crash the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
