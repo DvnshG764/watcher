@@ -89332,5 +89332,113 @@
     "description": "A heap-based buffer overwrite vulnerability was found in GhostScript's lp8000_print_page() function in the gdevlp8k.c file. This flaw allows an attacker to trick a user into opening a crafted PDF file, triggering the heap buffer overflow that could lead to memory corruption or a denial of service.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2025-61189": {
+    "cvss": 6.3,
+    "description": "Jeecgboot versions 3.8.2 and earlier are affected by a path traversal vulnerability. The endpoint is /sys/comment/addFile. This vulnerability allows attackers to upload files with system-whitelisted extensions to the system directory /opt, instead of the /opt/upFiles directory specified by the web server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-55795": {
+    "cvss": 3.5,
+    "description": "The openml/openml.org web application version v2.0.20241110 uses incremental user IDs and insufficient email ownership verification during email update workflows. An authenticated attacker controlling a user account with a lower user ID can update their email address to that of another user with a higher user ID without proper verification. This results in the victim's email being reassigned to the attacker's account, causing the victim to be locked out immediately and unable to log in. The vulnerability leads to denial of service via account lockout but does not grant the attacker direct access to the victim's private data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56234": {
+    "cvss": 7.5,
+    "description": "AT_NA2000 from Nanda Automation Technology vendor has a denial-of-service vulnerability. For the processing of TCP RST packets, PLC AT_NA2000 has a wide acceptable range of sequence numbers. It does not require the sequence number to exactly match the next expected sequence value, just to be within the current receive window, which violates RFC5961. This flaw allows attackers to send multiple random TCP RST packets to hit the acceptable range of sequence numbers, thereby interrupting normal connections and causing a denial-of-service attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56795": {
+    "cvss": 9.0,
+    "description": "Mealie 3.0.1 and earlier is vulnerable to Stored Cross-Site Scripting (XSS) in the recipe creation functionality. Unsanitized user input in the \"note\" and \"text\" fields of the \"/api/recipes/{recipe_name}\" endpoint is rendered in the frontend without proper escaping leading to persistent XSS.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56807": {
+    "cvss": 6.1,
+    "description": "A cross-site scripting (XSS) vulnerability in FairSketch RISE Ultimate Project Manager & CRM 3.9.4 allows an administrator to store a JavaScript payload using the file explorer in the admin dashboard when creating new folders.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57197": {
+    "cvss": 6.0,
+    "description": "In the Payeer Android application 2.5.0, an improper access control vulnerability exists in the authentication flow for the PIN change feature. A local attacker with root access to the device can dynamically instrument the app to bypass the current PIN verification check and directly modify the authentication PIN. This allows unauthorized users to change PIN without knowing the original/current PIN.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-26278": {
+    "cvss": 7.5,
+    "description": "A prototype pollution in the lib.set function of dref v0.1.2 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-45326": {
+    "cvss": 6.5,
+    "description": "An issue in PocketVJ CP PocketVJ-CP-v3 pvj 3.9.1 allows remote attackers to execute arbitrary code via the submit_size.php component.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2025-51005": {
+    "cvss": 7.5,
+    "description": "A heap-buffer-overflow vulnerability exists in the tcpliveplay utility of the tcpreplay-4.5.1. When a crafted pcap file is processed, the program incorrectly handles memory in the checksum calculation logic at do_checksum_math_liveplay in tcpliveplay.c, leading to a possible denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52367": {
+    "cvss": 5.4,
+    "description": "Cross Site Scripting vulnerability in PivotX CMS v.3.0.0 RC 3 allows a remote attacker to execute arbitrary code via the subtitle field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57528": {
+    "cvss": 7.7,
+    "description": "An issue was discovered in Tenda AC6 US_AC6V1.0BR_V15.03.05.16_multi_TD01 allowing attackers to cause a denial of service via the funcname, funcpara1, funcpara2 parameters to the formSetCfm function (uri path: SetCfm).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56869": {
+    "cvss": 5.3,
+    "description": "Directory traversal vulnerability in Sync In server thru 1.1.1 allowing authenticated attackers to gain read and write access to the system via FilesManager.saveMultipart function in backend/src/applications/files/services/files-manager.service.ts, and FilesManager.compress function in backend/src/applications/files/services/files-manager.service.ts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57644": {
+    "cvss": 9.1,
+    "description": "Accela Automation Platform 22.2.3.0.230103 contains multiple vulnerabilities in the Test Script feature. An authenticated administrative user can execute arbitrary Java code on the server, resulting in remote code execution. In addition, improper input validation allows for arbitrary file write and server-side request forgery (SSRF), enabling interaction with internal or external systems. Successful exploitation can lead to full server compromise, unauthorized access to sensitive data, and further network exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-50255": {
+    "cvss": 7.8,
+    "description": "Cross Site Request Forgery (CSRF) vulnerability in Smartvista BackOffice SmartVista Suite 2.2.22 via crafted GET request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57295": {
+    "cvss": 8.0,
+    "description": "H3C devices running firmware version NX15V100R015 are vulnerable to unauthorized access due to insecure default credentials. The root user account has no password set, and the H3C user account uses the default password \"admin,\" both stored in the /etc/shadow file. Attackers with network access can exploit these credentials to gain unauthorized root-level access to the device via the administrative interface or other network services, potentially leading to privilege escalation, information disclosure, or arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56263": {
+    "cvss": 8.8,
+    "description": "by-night sms V1.0 has an Arbitrary File Upload vulnerability. The /api/sms/upload/headImg endpoint allows uploading arbitrary files. Users can upload files of any size and type.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-56264": {
+    "cvss": 7.5,
+    "description": "The /api/comment endpoint in zhangyd-c OneBlog 2.3.9 contains a denial-of-service vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-57631": {
+    "cvss": 9.8,
+    "description": "SQL Injection vulnerability in TDuckCloud v.5.1 allows a remote attacker to execute arbitrary code via the Add a file upload module",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
