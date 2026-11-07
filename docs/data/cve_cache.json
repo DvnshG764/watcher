@@ -89218,5 +89218,119 @@
     "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in impleCode eCommerce Product Catalog ecommerce-product-catalog allows Reflected XSS.This issue affects eCommerce Product Catalog: from n/a through 3.6.4.",
     "vendor": "impleCode",
     "product": "eCommerce Product Catalog"
+  },
+  "CVE-2023-2593": {
+    "cvss": 5.9,
+    "description": "A flaw exists within the Linux kernel's handling of new TCP connections. The issue results from the lack of memory release after its effective lifetime. This vulnerability allows an unauthenticated attacker to create a denial of service condition on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-2698": {
+    "cvss": 8.8,
+    "description": "A vulnerability was found in FreeIPA in how the initial implementation of MS-SFU by MIT Kerberos was missing a condition for granting the \"forwardable\" flag on S4U2Self tickets. Fixing this mistake required adding a special case for the check_allowed_to_delegate() function: If the target service argument is NULL, then it means the KDC is probing for general constrained delegation rules and not checking a specific S4U2Proxy request. In FreeIPA 4.11.0, the behavior of ipadb_match_acl() was modified to match the changes from upstream MIT Kerberos 1.20. However, a mistake resulting in this mechanism applies in cases where the target service argument is set AND where it is unset. This results in S4U2Proxy requests being accepted regardless of whether or not there is a matching service delegation rule.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-2905": {
+    "cvss": 6.2,
+    "description": "A security vulnerability has been discovered within rpm-ostree, pertaining to the /etc/shadow file in default builds having the world-readable bit enabled. This issue arises from the default permissions being set at a higher level than recommended, potentially exposing sensitive authentication data to unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39197": {
+    "cvss": 7.5,
+    "description": "An out-of-bounds read vulnerability was found in Netfilter Connection Tracking (conntrack) in the Linux kernel. This flaw allows a remote user to disclose sensitive information via the DCCP protocol.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5115": {
+    "cvss": 6.3,
+    "description": "An absolute path traversal attack exists in the Ansible automation platform. This flaw allows an attacker to craft a malicious Ansible role and make the victim execute the role. A symlink can be used to overwrite a file outside of the extraction path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5236": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Infinispan, which does not detect circular object references when unmarshalling. An authenticated attacker with sufficient permissions could insert a maliciously constructed object into the cache and use it to cause out of memory errors and achieve a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4091": {
+    "cvss": 6.5,
+    "description": "A vulnerability was discovered in Samba, where the flaw allows SMB clients to truncate files, even with read-only permissions when the Samba VFS module \"acl_xattr\" is configured with \"acl_xattr:ignore system acls = yes\". The SMB protocol allows opening files when the client requests read-only access but then implicitly truncates the opened file to 0 bytes if the client specifies a separate OVERWRITE create disposition request. The issue arises in configurations that bypass kernel file system permissions checks, relying solely on Samba's permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5088": {
+    "cvss": 7.0,
+    "description": "A bug in QEMU could cause a guest I/O operation otherwise addressed to an arbitrary disk offset to be targeted to offset 0 instead (potentially overwriting the VM's boot code). This could be used, for example, by L2 guests with a virtual disk (vdiskL2) stored on a virtual disk of an L1 (vdiskL1) hypervisor to read and/or write data to LBA 0 of vdiskL1, potentially gaining control of L1 at its next reboot.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3397": {
+    "cvss": 6.3,
+    "description": "A race condition occurred between the functions lmLogClose and txEnd in JFS, in the Linux Kernel, executed in different threads. This flaw allows a local attacker with normal user privileges to crash the system or leak internal kernel information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4732": {
+    "cvss": 4.7,
+    "description": "A flaw was found in pfn_swap_entry_to_page in memory management subsystem in the Linux Kernel. In this flaw, an attacker with a local user privilege may cause a denial of service problem due to a BUG statement referencing pmd_t x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-5157": {
+    "cvss": 7.5,
+    "description": "A vulnerability was found in MariaDB. An OpenVAS port scan on ports 3306 and 4567 allows a malicious remote client to cause a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4527": {
+    "cvss": 6.5,
+    "description": "A flaw was found in glibc. When the getaddrinfo function is called with the AF_UNSPEC address family and the system is configured with no-aaaa mode via /etc/resolv.conf, a DNS response via TCP larger than 2048 bytes can potentially disclose stack contents through the function returned address data, and may cause a crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4385": {
+    "cvss": 5.5,
+    "description": "A NULL pointer dereference flaw was found in dbFree in fs/jfs/jfs_dmap.c in the journaling file system (JFS) in the Linux Kernel. This issue may allow a local attacker to crash the system due to a missing sanity check.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4387": {
+    "cvss": 7.1,
+    "description": "A use-after-free flaw was found in vmxnet3_rq_alloc_rx_buf in drivers/net/vmxnet3/vmxnet3_drv.c in VMware's vmxnet3 ethernet NIC driver in the Linux Kernel. This issue could allow a local attacker to crash the system due to a double-free while cleaning up vmxnet3_rq_cleanup_all, which could also lead to a kernel information leak problem.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4147": {
+    "cvss": 7.8,
+    "description": "A use-after-free flaw was found in the Linux kernel’s Netfilter functionality when adding a rule with NFTA_RULE_CHAIN_ID. This flaw allows a local user to crash or escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3772": {
+    "cvss": 4.4,
+    "description": "A flaw was found in the Linux kernel’s IP framework for transforming packets (XFRM subsystem). This issue may allow a malicious user with CAP_NET_ADMIN privileges to directly dereference a NULL pointer in xfrm_update_ae_params(), leading to a possible kernel crash and denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3773": {
+    "cvss": 4.4,
+    "description": "A flaw was found in the Linux kernel’s IP framework for transforming packets (XFRM subsystem). This issue may allow a malicious user with CAP_NET_ADMIN privileges to cause a 4 byte out-of-bounds read of XFRMA_MTIMER_THRESH when parsing netlink attributes, leading to potential leakage of sensitive heap data to userspace.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3812": {
+    "cvss": 7.8,
+    "description": "An out-of-bounds memory access flaw was found in the Linux kernel’s TUN/TAP device driver functionality in how a user generates a malicious (too big) networking packet when napi frags is enabled. This flaw allows a local user to crash or potentially escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2020-27792": {
+    "cvss": 7.1,
+    "description": "A heap-based buffer overwrite vulnerability was found in GhostScript's lp8000_print_page() function in the gdevlp8k.c file. This flaw allows an attacker to trick a user into opening a crafted PDF file, triggering the heap buffer overflow that could lead to memory corruption or a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
