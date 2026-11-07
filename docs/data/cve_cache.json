@@ -88840,5 +88840,47 @@
     "description": "Craft CMS 4.0.0 before 4.18.9 and 5.0.0 before 5.11.2 contains an unauthenticated SQL injection vulnerability in the element search endpoint because the attribute parameter is concatenated into the query unsanitized and emulated PDO prepares allow stacked statements. Remote attackers can read and write the database, setting the admin flag or overwriting password hashes in the users table to gain administrator access.",
     "vendor": "craftcms",
     "product": "cms"
+  },
+  "CVE-2023-39328": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in OpenJPEG similar to CVE-2019-6988. This flaw allows an attacker to bypass existing protections and cause an application crash through a maliciously crafted file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39198": {
+    "cvss": 6.4,
+    "description": "A race condition was found in the QXL driver in the Linux kernel. The qxl_mode_dumb_create() function dereferences the qobj returned by the qxl_gem_object_create_with_handle(), but the handle is the only one holding a reference to it. This flaw allows an attacker to guess the returned handle value and trigger a use-after-free issue, potentially leading to a denial of service or privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4535": {
+    "cvss": 3.8,
+    "description": "An out-of-bounds read vulnerability was found in OpenSC packages within the MyEID driver when handling symmetric key encryption. Exploiting this flaw requires an attacker to have physical access to the computer and a specially crafted USB device or smart card. This flaw allows the attacker to manipulate APDU responses and potentially gain unauthorized access to sensitive data, compromising the system's security.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-43788": {
+    "cvss": 5.5,
+    "description": "A vulnerability was found in libXpm due to a boundary condition within the XpmCreateXpmImageFromBuffer() function. This flaw allows a local attacker to trigger an out-of-bounds read error and read the contents of memory on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-42755": {
+    "cvss": 5.5,
+    "description": "A flaw was found in the IPv4 Resource Reservation Protocol (RSVP) classifier in the Linux kernel. The xprt pointer may go beyond the linear part of the skb, leading to an out-of-bounds read in the `rsvp_classify` function. This issue may allow a local user to crash the system and cause a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3347": {
+    "cvss": 5.9,
+    "description": "A vulnerability was found in Samba's SMB2 packet signing mechanism. The SMB2 packet signing is not enforced if an admin configured \"server signing = required\" or for SMB2 connections to Domain Controllers where SMB2 packet signing is mandatory. This flaw allows an attacker to perform attacks, such as a man-in-the-middle attack, by intercepting the network traffic and modifying the SMB2 messages between client and server, affecting the integrity of the data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3106": {
+    "cvss": 7.8,
+    "description": "A NULL pointer dereference vulnerability was found in netlink_dump. This issue can occur when the Netlink socket receives the message(sendmsg) for the XFRM_MSG_GETSA, XFRM_MSG_GETPOLICY type message, and the DUMP flag is set and can cause a denial of service or possibly another unspecified impact. Due to the nature of the flaw, privilege escalation cannot be fully ruled out, although it is unlikely.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
