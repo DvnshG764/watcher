@@ -584,7 +584,7 @@
   "CVE-2026-106070": {
     "cvss": 3.7,
     "description": "A flaw in the Node.js `zlib.ZipFile` API can cause it to return bytes that do not belong to the requested entry after the local and central header validation fails. When `zipEntry.modified` is read on an archive whose local header does not match its central directory, either directly or while compacting the archive, the validation error is caught but the parsed local header is left cached without a content offset. A later content read then returns attacker-controlled bytes from the start of the file instead of rejecting the archive, and CRC-32 verification still passes because the attacker controls the central directory CRC. A Node.js-based scanner can therefore approve different content from what another ZIP implementation extracts from the same archive. This vulnerability affects Node.js **26.x**.",
-    "vendor": "Fortinet",
+    "vendor": "Check Point",
     "product": "node"
   },
   "CVE-2026-106073": {
@@ -10532,8 +10532,8 @@
   "CVE-2026-33767": {
     "cvss": 8.8,
     "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, in `objects/like.php`, the `getLike()` method constructs a SQL query using a prepared statement placeholder (`?`) for `users_id` but directly concatenates `$this->videos_id` into the query string without parameterization. An attacker who can control the `videos_id` value (via a crafted request) can inject arbitrary SQL, bypassing the partial prepared-statement protection. Commit 0215d3c4f1ee748b8880254967b51784b8ac4080 contains a patch.",
-    "vendor": "PHP",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "AVideo"
   },
   "CVE-2026-33770": {
     "cvss": 9.8,
@@ -10634,8 +10634,8 @@
   "CVE-2026-34374": {
     "cvss": 9.1,
     "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, the `Live_schedule::keyExists()` method constructs a SQL query by interpolating a stream key directly into the query string without parameterization. This method is called as a fallback from `LiveTransmition::keyExists()` when the initial parameterized lookup returns no results. Although the calling function correctly uses parameterized queries for its own lookup, the fallback path to `Live_schedule::keyExists()` undoes this protection entirely. This vulnerability is distinct from GHSA-pvw4-p2jm-chjm, which covers SQL injection via the `live_schedule_id` parameter in the reminder function. This finding targets the stream key lookup path used during RTMP publish authentication. As of time of publication, no patched versions are available.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "AVideo"
   },
   "CVE-2026-34375": {
     "cvss": 8.2,
@@ -14354,7 +14354,7 @@
   "CVE-2026-1459": {
     "cvss": 7.2,
     "description": "A post-authentication command injection vulnerability in the TR-369 certificate download CGI program of the Zyxel VMG3625-T50B firmware versions through 5.50(ABPM.9.7)C0 could allow an authenticated attacker with administrator privileges to execute operating system (OS) commands on an affected device.",
-    "vendor": "Zyxel",
+    "vendor": "Check Point",
     "product": "VMG3625-T50B firmware"
   },
   "CVE-2026-13355": {
@@ -16472,7 +16472,7 @@
   "CVE-2026-1581": {
     "cvss": 7.5,
     "description": "The wpForo Forum plugin for WordPress is vulnerable to time-based SQL Injection via the 'wpfob' parameter in all versions up to, and including, 2.4.14 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
-    "vendor": "tomdever",
+    "vendor": "Check Point",
     "product": "wpForo Forum"
   },
   "CVE-2026-106991": {
@@ -16814,7 +16814,7 @@
   "CVE-2026-2113": {
     "cvss": 7.3,
     "description": "A security vulnerability has been detected in yuan1994 tpadmin up to 1.3.12. This affects an unknown part in the library /public/static/admin/lib/webuploader/0.1.5/server/preview.php of the component WebUploader. The manipulation leads to deserialization. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used. This vulnerability only affects products that are no longer supported by the maintainer.",
-    "vendor": "PHP",
+    "vendor": "Check Point",
     "product": "tpadmin"
   },
   "CVE-2026-27971": {
@@ -61046,8 +61046,8 @@
   "CVE-2026-83515": {
     "cvss": 7.5,
     "description": "Use of uninitialized resource in RPC Runtime allows an unauthorized attacker to disclose information over a network.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "Windows 10 Version 1607"
   },
   "CVE-2026-83516": {
     "cvss": 7.5,
@@ -69950,8 +69950,8 @@
   "CVE-2026-87400": {
     "cvss": 6.9,
     "description": "Vulnerability in the Oracle WebCenter Content product of Oracle Fusion Middleware (component: Content Server). The supported version that is affected is 14.1.2.0.0. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Content. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Oracle WebCenter Content, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle WebCenter Content accessible data as well as unauthorized update, insert or delete access to some of Oracle WebCenter Content accessible data. CVSS 3.1 Base Score 6.9 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:L/A:N).",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "Oracle WebCenter Content"
   },
   "CVE-2026-91210": {
     "cvss": 6.5,
@@ -90298,5 +90298,491 @@
     "description": "Missing Authorization vulnerability in OnTheGoSystems WooCommerce Multilingual & Multicurrency woocommerce-multilingual.This issue affects WooCommerce Multilingual & Multicurrency: from n/a through 5.3.6.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-104080": {
+    "cvss": 7.8,
+    "description": "Control Web Panel (CWP) before webpanel_version 1.29 contains an OS command injection vulnerability in the loopback API /valid_token/ route that allows unauthenticated attackers to execute arbitrary commands as root by injecting shell metacharacters into the unvalidated 'user' parameter. Attackers can send a crafted request to the /valid_token/ route, which passes the parameter unescaped into a shell_exec() call.",
+    "vendor": "Check Point",
+    "product": "Control Web Panel"
+  },
+  "CVE-2026-77878": {
+    "cvss": 7.8,
+    "description": "Control Web Panel (CWP) before webpanel_version 1.29 contains an OS command injection vulnerability in the loopback API database restore route /v1/restoredatabase/, where the restoreDBBackup() handler passes an attacker-controlled file path from the POST body into a shell command without proper escaping. An attacker able to reach the route can inject arbitrary OS commands that execute as root.",
+    "vendor": "Check Point",
+    "product": "Control Web Panel"
+  },
+  "CVE-2026-73697": {
+    "cvss": 8.8,
+    "description": "Control Web Panel (CWP) before webpanel_version 1.16 contains an arbitrary file write and OS command injection vulnerability in the phpini_editor user panel module that allows attackers with access to the module to write attacker-controlled content to arbitrary paths and execute arbitrary OS commands. Attackers can exploit the acc=update action to write files via file_put_contents without path confinement and the acc=addlabelphpiniadv action to pass unsanitized input into shell_exec, achieving code execution in the user panel context.",
+    "vendor": "Check Point",
+    "product": "Control Web Panel"
+  },
+  "CVE-2026-77876": {
+    "cvss": 8.8,
+    "description": "Control Web Panel (CWP) before webpanel_version 1.16 contains an OS command injection vulnerability in the protected_directory user panel module that allows attackers to execute arbitrary commands by submitting unescaped input through the file POST parameter in the acc=deletedp action. Attackers can exploit this flaw, which passes attacker-controlled input directly into a shell_exec call, to achieve code execution in the user panel context.",
+    "vendor": "Check Point",
+    "product": "Control Web Panel"
+  },
+  "CVE-2026-77880": {
+    "cvss": 7.8,
+    "description": "Control Web Panel (CWP) before webpanel_version 1.16 contains an OS command injection vulnerability in the loopback API password change route /newpass/, which runs as root. An attacker can inject arbitrary OS commands by manipulating the POST 'user' parameter that is passed unescaped into a shell command, achieving remote code execution with root privileges.",
+    "vendor": "Check Point",
+    "product": "Control Web Panel"
+  },
+  "CVE-2026-101187": {
+    "cvss": 9.1,
+    "description": "A weakness has been identified in Ziroom ZHOME A0101 1.0.1.0. This vulnerability affects the function pop_usb_device of the file usr/lib/lua/luci/controller/api/zrUsb.lua of the component USB Device Management API. This manipulation of the argument path causes command injection. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "ZHOME A0101"
+  },
+  "CVE-2026-101263": {
+    "cvss": 9.1,
+    "description": "A vulnerability was found in Ziroom ZHOME A0101 1.0.1.0. This issue affects some unknown processing of the file /api/ZRQos/set_online_client. The manipulation of the argument mac results in command injection. It is possible to launch the attack remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "ZHOME A0101"
+  },
+  "CVE-2026-101264": {
+    "cvss": 9.1,
+    "description": "A vulnerability was determined in Ziroom ZHOME A0101 1.0.1.0. Impacted is an unknown function of the file /api/ZRnetwork/set_passwd. This manipulation of the argument password1 causes command injection. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "ZHOME A0101"
+  },
+  "CVE-2026-102793": {
+    "cvss": 9.1,
+    "description": "A flaw has been found in Ziroom ZHOME A0101 1.0.1.0. This vulnerability affects the function set_time_zone of the file /api/ZRFirmware/set_time_zone. This manipulation of the argument hostname/zonename causes command injection. It is possible to initiate the attack remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "ZHOME A0101"
+  },
+  "CVE-2026-102792": {
+    "cvss": 9.1,
+    "description": "A vulnerability was detected in Ziroom ZHOME A0101 1.0.1.0. This affects the function set_syslog of the file /api/ZRnetwork/set_syslog. The manipulation of the argument conloglevel/log_size results in command injection. The attack may be performed from remote. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "ZHOME A0101"
+  },
+  "CVE-2026-101260": {
+    "cvss": 9.1,
+    "description": "A vulnerability was detected in Ziroom ZHOME A0101 1.0.1.0. Affected by this issue is some unknown functionality of the file /api/ZRnetwork/firstLogin. Performing a manipulation of the argument firstLogin results in command injection. The attack is possible to be carried out remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "ZHOME A0101"
+  },
+  "CVE-2026-101262": {
+    "cvss": 9.1,
+    "description": "A vulnerability has been found in Ziroom ZHOME A0101 1.0.1.0. This vulnerability affects unknown code of the file /api/ZRQos/set_online_client. The manipulation of the argument ip leads to command injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "ZHOME A0101"
+  },
+  "CVE-2026-33352": {
+    "cvss": 9.8,
+    "description": "WWBN AVideo is an open source video platform. Prior to version 26.0, an unauthenticated SQL injection vulnerability exists in `objects/category.php` in the `getAllCategories()` method. The `doNotShowCats` request parameter is sanitized only by stripping single-quote characters (`str_replace(\"'\", '', ...)`), but this is trivially bypassed using a backslash escape technique to shift SQL string boundaries. The parameter is not covered by any of the application's global input filters in `objects/security.php`. Version 26.0 contains a patch for the issue.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-85155": {
+    "cvss": 7.5,
+    "description": "WWBN AVideo contains a SQL injection vulnerability in the sort column parameter of the get.json.php endpoint with APIName=channels that allows unauthenticated attackers to order results by arbitrary database columns including users.password and users.recoverPass. Attackers can exploit this ordering oracle to infer password hash values and recovery tokens, and trigger SQL errors that disclose the full query statement and database schema.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33651": {
+    "cvss": 8.1,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, the `remindMe.json.php` endpoint passes `$_REQUEST['live_schedule_id']` through multiple functions without sanitization until it reaches `Scheduler_commands::getAllActiveOrToRepeat()`, which directly concatenates it into a SQL `LIKE` clause. Although intermediate functions (`new Live_schedule()`, `getUsers_idOrCompany()`) apply `intval()` internally, they do so on local copies within `ObjectYPT::getFromDb()`, leaving the original tainted variable unchanged. Any authenticated user can perform time-based blind SQL injection to extract arbitrary database contents. Commit 75d45780728294ededa1e3f842f95295d3e7d144 contains a patch.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33723": {
+    "cvss": 7.1,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, the `Subscribe::save()` method in `objects/subscribe.php` concatenates the `$this->users_id` property directly into an INSERT SQL query without sanitization or parameterized binding. This property originates from `$_POST['user_id']` in both `subscribe.json.php` and `subscribeNotify.json.php`. An authenticated attacker can inject arbitrary SQL to extract sensitive data from any database table, including password hashes, API keys, and encryption salts. Commit 36dfae22059fbd66fd34bbc5568a838fc0efd66c contains a patch.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-28501": {
+    "cvss": 9.8,
+    "description": "WWBN AVideo is an open source video platform. Prior to version 24.0, an unauthenticated SQL Injection vulnerability exists in AVideo within the objects/videos.json.php and objects/video.php components. The application fails to properly sanitize the catName parameter when it is supplied via a JSON-formatted POST request body. Because JSON input is parsed and merged into $_REQUEST after global security checks are executed, the payload bypasses the existing sanitization mechanisms. This issue has been patched in version 24.0.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33485": {
+    "cvss": 7.5,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, the RTMP `on_publish` callback at `plugin/Live/on_publish.php` is accessible without authentication. The `$_POST['name']` parameter (stream key) is interpolated directly into SQL queries in two locations — `LiveTransmitionHistory::getLatest()` and `LiveTransmition::keyExists()` — without parameterized binding or escaping. An unauthenticated attacker can exploit time-based blind SQL injection to extract all database contents including user password hashes, email addresses, and other sensitive data. Commit af59eade82de645b20183cc3d74467a7eac76549 contains a patch.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-4544": {
+    "cvss": 2.4,
+    "description": "A vulnerability was determined in Wavlink WL-WN578W2 221110. This affects an unknown function of the file /cgi-bin/login.cgi of the component POST Request Handler. Executing a manipulation of the argument homepage/hostname/login_page can lead to cross site scripting. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "WL-WN578W2"
+  },
+  "CVE-2026-106808": {
+    "cvss": 7.5,
+    "description": "OpenAirInterface Core Network v2.2.1 has a stack-based buffer overflow vulnerability in the OAI CN5G UDM Nudm_UEAU Generate Authentication Data endpoint. The UDM passes attacker-controlled resynchronizationInfo.rand and auts values to conv::hex_str_to_uint8(), which converts arbitrary-length hex strings into fixed-size stack buffers without validating the destination size. An unauthenticated attacker with access to the SBI interface and a valid SUPI can submit an oversized value to overwrite adjacent stack memory, corrupt the stack canary, and terminate the UDM process.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-7056": {
+    "cvss": 8.8,
+    "description": "A vulnerability was detected in Tenda F456 1.0.0.5. Impacted is the function fromSafeUrlFilter of the file /goform/SafeUrlFilter of the component httpd. The manipulation of the argument page results in buffer overflow. The attack may be performed from remote. The exploit is now public and may be used.",
+    "vendor": "Check Point",
+    "product": "F456"
+  },
+  "CVE-2026-7054": {
+    "cvss": 8.8,
+    "description": "A weakness has been identified in Tenda F456 1.0.0.5. This vulnerability affects the function fromPptpUserAdd of the file /goform/PPTPDClient of the component httpd. Executing a manipulation of the argument opttype/usernamewith can lead to buffer overflow. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "F456"
+  },
+  "CVE-2026-7033": {
+    "cvss": 8.8,
+    "description": "A vulnerability has been found in Tenda F456 1.0.0.5. Affected by this vulnerability is the function fromSafeClientFilter of the file /goform/SafeClientFilter. Such manipulation of the argument menufacturer/Go leads to buffer overflow. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.",
+    "vendor": "Check Point",
+    "product": "F456"
+  },
+  "CVE-2026-7055": {
+    "cvss": 8.8,
+    "description": "A security vulnerability has been detected in Tenda F456 1.0.0.5. This issue affects the function fromVirtualSer of the file /goform/VirtualSer of the component httpd. The manipulation of the argument menufacturer/Go leads to buffer overflow. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "F456"
+  },
+  "CVE-2026-7053": {
+    "cvss": 8.8,
+    "description": "A security flaw has been discovered in Tenda F456 1.0.0.5. This affects the function frmL7ProtForm of the file /goform/L7Prot of the component httpd. Performing a manipulation of the argument page results in buffer overflow. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "F456"
+  },
+  "CVE-2026-90606": {
+    "cvss": 9.9,
+    "description": "A security vulnerability has been detected in Totolink A3002MU Hh-B20211125.1046. This issue affects the function formIpv6Setup of the file /boafrm/formIpv6Setup of the component boa. The manipulation of the argument static_ipv6 leads to buffer overflow. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "A3002MU"
+  },
+  "CVE-2026-93738": {
+    "cvss": 9.9,
+    "description": "A vulnerability was found in Totolink A3002MU Hh-B20211125.1046. This affects the function formSchedule of the file /boafrm/formSchedule. Performing a manipulation of the argument webpage results in buffer overflow. The attack is possible to be carried out remotely. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "A3002MU"
+  },
+  "CVE-2026-93741": {
+    "cvss": 10.0,
+    "description": "A security flaw has been discovered in Totolink A3002MU Hh-B20211125.1046. Affected by this vulnerability is the function formWlWds of the file /boafrm/formWlWds. The manipulation of the argument submit-url results in buffer overflow. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "A3002MU"
+  },
+  "CVE-2026-93740": {
+    "cvss": 10.0,
+    "description": "A vulnerability was identified in Totolink A3002MU Hh-B20211125.1046. Affected is the function formWlEncrypt of the file /boafrm/formWlEncrypt. The manipulation of the argument submit-url leads to buffer overflow. It is possible to initiate the attack remotely. The exploit is publicly available and might be used.",
+    "vendor": "Check Point",
+    "product": "A3002MU"
+  },
+  "CVE-2022-45503": {
+    "cvss": 7.5,
+    "description": "Tenda W6-S v1.0.0.4(510) was discovered to contain a stack overflow via the linkEn parameter at /goform/setAutoPing.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2022-45499": {
+    "cvss": 7.5,
+    "description": "Tenda W6-S v1.0.0.4(510) was discovered to contain a stack overflow via the wl_radio parameter at /goform/WifiMacFilterGet.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-67822": {
+    "cvss": 9.8,
+    "description": "Tenda W6-S 1.0.0.4(510) contains a stack-based buffer overflow vulnerability in the /goform/wifiSSIDset endpoint. The function formwrlSSIDset uses sprintf to copy user-controlled 'GO' and 'index' parameters into a 64-byte stack buffer without length restriction, leading to stack overflow.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2022-45501": {
+    "cvss": 7.5,
+    "description": "Tenda W6-S v1.0.0.4(510) was discovered to contain a stack overflow via the wl_radio parameter at /goform/wifiSSIDset.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-94952": {
+    "cvss": 9.8,
+    "description": "A stack-based buffer overflow vulnerability exists in the web management interface of TOTOLINK N150RT (NTR150) firmware V3.4.0-B20201030. It is reachable through the route /boafrm/formPortFw (port-forwarding configuration handler) and is triggered by the ip_subnet and fw_ip request parameters during the rule-addition flow.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-105285": {
+    "cvss": 10.0,
+    "description": "A security vulnerability has been detected in Totolink A3002MU 1.0.0-B20230403.1455. This affects an unknown function of the file /boafrm/formIpQoS of the component QoS Rule Handler. The manipulation of the argument addQos/comment/entry_name leads to stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "A3002MU"
+  },
+  "CVE-2026-38060": {
+    "cvss": 9.8,
+    "description": "Tenda 5G03 V05.03.02.04 (Version 1.0) is vulnerable to Command injection in the function action_unlock_sim via the pin parameter.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-38065": {
+    "cvss": 9.8,
+    "description": "Tenda 5G03 V05.03.02.04 (Version 1.0) is vulnerable to Command injection in the function action_ims_on_with_apn via the ims_apn parameter.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-38061": {
+    "cvss": 9.8,
+    "description": "Tenda 5G03 V05.03.02.04 (Version 1.0) is vulnerable to Command injection in the function action_set_volume via the volume parameter.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-38064": {
+    "cvss": 9.8,
+    "description": "Tenda 5G03 V05.03.02.04 (Version 1.0) is vulnerable to Command injection in the function action_dial_call via the dialNumber parameter.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-38063": {
+    "cvss": 9.8,
+    "description": "Tenda 5G03 V05.03.02.04 (Version 1.0) is vulnerable to Command injection in the function action_radio_on_with_ia_apn via the ia parameter.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-5153": {
+    "cvss": 6.3,
+    "description": "A flaw has been found in Tenda CH22 1.0.0.1. The affected element is the function FormWriteFacMac of the file /goform/WriteFacMac. Executing a manipulation of the argument mac can lead to command injection. The attack may be launched remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "CH22"
+  },
+  "CVE-2026-78063": {
+    "cvss": 7.4,
+    "description": "A security flaw has been discovered in Tenda CH22 1.0.0.1. The impacted element is the function formeditFileName of the file /goform/editFileName. The manipulation of the argument editNameMit results in command injection. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "CH22"
+  },
+  "CVE-2026-86166": {
+    "cvss": 8.8,
+    "description": "A vulnerability was determined in Tenda HG10 300001138. This issue affects the function formWanRedirect of the file /boaform/formWanRedirect of the component Boa Web Server. Executing a manipulation of the argument if can lead to buffer overflow. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized.",
+    "vendor": "Check Point",
+    "product": "HG10"
+  },
+  "CVE-2026-11528": {
+    "cvss": 8.8,
+    "description": "A vulnerability was found in Tenda AC18 15.03.05.05. The affected element is the function sub_45304 of the file /goform/getRebootStatus of the component Web Management Interface. The manipulation of the argument callback results in stack-based buffer overflow. The attack may be launched remotely. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "AC18"
+  },
+  "CVE-2026-15525": {
+    "cvss": 6.3,
+    "description": "A vulnerability was detected in kLOsk adloop up to 0.9.0. This vulnerability affects the function _validate_urls of the file src/adloop/ads/write.py. Performing a manipulation of the argument final_url results in server-side request forgery. The attack may be initiated remotely. The exploit is now public and may be used. Upgrading to version 0.10.0 is able to resolve this issue. The patch is named 217399723e3a2fb39389e5355d49ed80aaf9ea7c. Upgrading the affected component is advised.",
+    "vendor": "Check Point",
+    "product": "adloop"
+  },
+  "CVE-2026-9563": {
+    "cvss": 7.5,
+    "description": "In Eclipse Parsson published Maven Central artifacts before version 1.1.8, the JSON parser did not enforce a default maximum on the number of characters consumed while parsing a single JSON document. Applications that parse attacker- controlled JSON can be forced to consume excessive CPU and memory by processing very large documents, including large arrays, objects, strings, numbers, whitespace, or nested structures, resulting in a denial of service. Eclipse Parsson 1.1.8 introduces a configurable maximum parsing limit with a default limit of 15 million parser-consumed characters.",
+    "vendor": "Check Point",
+    "product": "Eclipse Parsson"
+  },
+  "CVE-2026-11816": {
+    "cvss": 8.1,
+    "description": "Keras versions prior to 3.14.0 are vulnerable to a path traversal issue in the archive extraction utilities located in `keras/src/utils/file_utils.py`. The functions `filter_safe_tarinfos()` and `filter_safe_zipinfos()` validate archive member paths against the process current working directory (CWD) instead of the actual extraction destination. When the process runs with CWD set to `/`, which is common in Docker containers, CI/CD runners, and Jupyter environments, the validation boundary becomes the filesystem root, allowing traversal paths to bypass the security check. Additionally, the zip filter contains a bug that causes an `AttributeError` when a blocked entry is encountered, leading to incomplete extraction. Furthermore, Python 3.11 installations lack the `filter=\"data\"` safety net, leaving them entirely reliant on the flawed CWD-based filter. Exploitation of this vulnerability can result in arbitrary file writes outside the intended extraction directory, enabling attackers to overwrite configuration files, inject malicious code, or corrupt machine learning datasets and pipelines.",
+    "vendor": "Check Point",
+    "product": "keras-team/keras"
+  },
+  "CVE-2026-54058": {
+    "cvss": 8.3,
+    "description": "Pillow is a Python imaging library. Prior to 12.3.0, when Pillow loads an uncompressed McIdas AREA image from a filename through the mmap raw codec path, attacker-controlled header words can set a row stride smaller than the natural row width, causing pixel access such as Image.tobytes(), getpixel, convert, or save to read beyond the mapped region and disclose adjacent process memory or fault. This issue is fixed in version 12.3.0.",
+    "vendor": "Check Point",
+    "product": "Pillow"
+  },
+  "CVE-2026-60081": {
+    "cvss": 7.5,
+    "description": "DBI::ProfileData versions before 1.651 for Perl do not limit the path index. The path index column of profile dump files is used to allocate an array of data for the parser. An unbounded value allows an attacker to specify a large index and consume available memory.",
+    "vendor": "Check Point",
+    "product": "DBI::ProfileData"
+  },
+  "CVE-2026-58250": {
+    "cvss": 7.5,
+    "description": "NATS Server is a high-performance server for NATS.io, the cloud and edge native messaging system. Prior to 2.12.8 and 2.11.17, an unauthenticated peer with network access to a leafnode listener with compression enabled could crash the server during the pre-authentication leafnode handshake by sending repeated leafnode INFO protocol messages before authentication and account setup completed. This issue is fixed in versions 2.12.8 and 2.11.17.",
+    "vendor": "Check Point",
+    "product": "nats-server"
+  },
+  "CVE-2026-55379": {
+    "cvss": 7.5,
+    "description": "Pillow is a Python imaging library. Prior to 12.3.0, PIL/BdfFontFile.py bdf_char() read the BBX width and height field from a BDF font file and passed attacker-controlled dimensions to Image.new() without calling Image._decompression_bomb_check(), bypassing Pillow's documented decompression bomb protection and allowing excessive memory allocation. This issue is fixed in version 12.3.0.",
+    "vendor": "Check Point",
+    "product": "Pillow"
+  },
+  "CVE-2026-40682": {
+    "cvss": 9.1,
+    "description": "XML External Entity (XXE) via Unsanitized Dictionary Parsing in Apache OpenNLP DictionaryEntryPersistor Versions Affected: before 2.5.9, before 3.0.0-M3 Description: The DictionaryEntryPersistor class initializes a static SAXParserFactory at class-load time without enabling FEATURE_SECURE_PROCESSING or disabling DTD processing. When create(InputStream, EntryInserter) is invoked, the only feature set on the XMLReader is namespace support — external entity resolution and DOCTYPE declarations remain fully enabled. An attacker who can supply a crafted dictionary file (e.g., a stop-word list or domain dictionary) containing a malicious DOCTYPE declaration can trigger local file disclosure via file:// entity references or server-side request forgery via http:// entity references during SAX parsing, before the application processes a single dictionary entry. This is inconsistent with the project's own XmlUtil.createSaxParser() helper, which correctly sets FEATURE_SECURE_PROCESSING and disallow-doctype-decl and is used by all other XML parsing paths in the codebase. The public Dictionary(InputStream) constructor delegates directly to this method and is the documented API for loading user-supplied dictionaries, making untrusted input a realistic scenario. Mitigation: 2.x users should upgrade to 2.5.9. 3.x users should upgrade to 3.0.0-M3. Users who cannot upgrade immediately should ensure that all dictionary files are sourced from trusted origins and should consider wrapping the Dictionary(InputStream) constructor with input validation that rejects any XML containing a DOCTYPE declaration before it reaches the parser.",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache OpenNLP"
+  },
+  "CVE-2026-9750": {
+    "cvss": 6.5,
+    "description": "An authenticated user can cause a MongoDB server to crash or return incorrect results by creating documents that interfere with internal metadata processing during query execution. This stems from insufficient separation between user-controlled document fields and internal metadata in certain execution paths.",
+    "vendor": "Check Point",
+    "product": "MongoDB Server"
+  },
+  "CVE-2026-0547": {
+    "cvss": 6.3,
+    "description": "A vulnerability was found in PHPGurukul Online Course Registration up to 3.1. This issue affects some unknown processing of the file /admin/edit-student-profile.php of the component Student Registration Page. The manipulation of the argument photo results in unrestricted upload. The attack may be launched remotely. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "Online Course Registration"
+  },
+  "CVE-2026-14560": {
+    "cvss": 10.0,
+    "description": "The teddy-bear-customize-addon WordPress plugin through 1.0.5 does not properly validate uploaded files, relying on a client-supplied content type and preserving the original filename, allowing unauthenticated attackers to upload arbitrary PHP files and execute code on the server.",
+    "vendor": "Check Point",
+    "product": "teddy-bear-customize-addon"
+  },
+  "CVE-2026-22584": {
+    "cvss": 9.8,
+    "description": "Improper Control of Generation of Code ('Code Injection') vulnerability in Salesforce Uni2TS on MacOS, Windows, Linux allows Leverage Executable Code in Non-Executable Files.This issue affects Uni2TS: through 1.2.0.",
+    "vendor": "Check Point",
+    "product": "Uni2TS"
+  },
+  "CVE-2026-59196": {
+    "cvss": 7.1,
+    "description": "pnpm is a package manager. Prior to 10.34.4 and 11.7.0, a crafted lockfile alias could be joined directly under a hoisted node_modules directory. Traversal aliases could escape that directory, while reserved aliases such as .bin or .pnpm could overwrite pnpm-owned layout. This vulnerability is fixed in 10.34.4 and 11.7.0.",
+    "vendor": "Check Point",
+    "product": "pnpm"
+  },
+  "CVE-2026-120344": {
+    "cvss": 10.0,
+    "description": "A vulnerability has been found in WAVLINK WN551X3-A M51X3_V251020-WO-182e965. This affects the function system of the file /bin/ioos of the component WireGuard CLI Group Handler. Such manipulation of the argument group_name leads to os command injection. The attack may be performed from remote. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN551X3-A"
+  },
+  "CVE-2026-120345": {
+    "cvss": 10.0,
+    "description": "A vulnerability was found in WAVLINK WN551X3-A M51X3_V251020-WO-182e965. This impacts the function sub_41a430 of the file /bin/ioos of the component DNS Resolution Handler. Performing a manipulation of the argument data results in os command injection. It is possible to initiate the attack remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN551X3-A"
+  },
+  "CVE-2026-107656": {
+    "cvss": 9.6,
+    "description": "An authentication bypass using an alternate path or channel vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.6, FortiSandbox 4.4.0 through 4.4.9, FortiSandbox 4.2 all versions, FortiSandbox PaaS 5.0.0 through 5.0.6, FortiSandbox PaaS 4.4 all versions, FortiSandbox PaaS 4.2 all versions may allow attacker to execute unauthorized code or commands via crafted HTTP requests",
+    "vendor": "Check Point",
+    "product": "FortiSandbox"
+  },
+  "CVE-2026-120322": {
+    "cvss": 9.9,
+    "description": "A vulnerability was identified in Termix-SSH Termix up to 2.9.2. This issue affects some unknown processing of the file /plugin-api/file-manager/transferToHost. The manipulation of the argument destPath leads to path traversal. The attack may be initiated remotely. The exploit is publicly available and might be used. The shortcut was removed in the standalone File Manager plugin v1.0.0 (transfer engine now always writes over SFTP) and in core v26.10.0. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "Termix"
+  },
+  "CVE-2026-120196": {
+    "cvss": 9.9,
+    "description": "A vulnerability was detected in WAVLINK WN579X3-D V250402. This affects the function port_forward of the file /cgi-bin/wapi.cgi. The manipulation of the argument Name results in os command injection. The attack may be performed from remote. The exploit is now public and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN579X3-D"
+  },
+  "CVE-2026-120276": {
+    "cvss": 10.0,
+    "description": "A weakness has been identified in WAVLINK WN536AX6-A V260507_2.0.0. This vulnerability affects the function sub_416760 of the file /bin/ioos of the component Web Management Interface. This manipulation of the argument group_name causes os command injection. It is possible to initiate the attack remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN536AX6-A"
+  },
+  "CVE-2026-120279": {
+    "cvss": 10.0,
+    "description": "A flaw has been found in WAVLINK WN536AX6-A V260507. The affected element is an unknown function of the file /protocol.csp of the component openvpn_cli Handler. Executing a manipulation of the argument file_id can lead to os command injection. The attack can be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN536AX6-A"
+  },
+  "CVE-2026-120277": {
+    "cvss": 10.0,
+    "description": "A security vulnerability has been detected in WAVLINK WN536AX6-A V260507_2.0.0. This issue affects the function sub_41a1d8 of the file /bin/ioos of the component WireGuard CLI Group Handler. Such manipulation of the argument group_name leads to os command injection. It is possible to launch the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN536AX6-A"
+  },
+  "CVE-2026-120282": {
+    "cvss": 9.9,
+    "description": "A vulnerability was determined in WAVLINK WN536AX6-A V260507. This impacts the function host_black of the file /protocol.csp. This manipulation of the argument mac causes os command injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN536AX6-A"
+  },
+  "CVE-2026-120280": {
+    "cvss": 10.0,
+    "description": "A vulnerability has been found in WAVLINK WN536AX6-A V260507. The impacted element is the function wireguard_cli_group handler of the file /protocol.csp of the component WireGuard. The manipulation of the argument group_id/group_name leads to os command injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN536AX6-A"
+  },
+  "CVE-2026-120240": {
+    "cvss": 9.9,
+    "description": "A vulnerability was determined in WAVLINK WN553X1-B V260403_2.0.0. This issue affects the function sub_41A748 of the file /bin/ioos of the component WireGuard CLI Group Handler. Executing a manipulation of the argument group_id/group_name can lead to os command injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN553X1-B"
+  },
+  "CVE-2026-120231": {
+    "cvss": 9.9,
+    "description": "A vulnerability was determined in WAVLINK WN553X1-B V260403_2.0.0. The affected element is the function sub_416568 of the file /bin/ioos of the component OpenVPN CLI Handler. This manipulation of the argument file_id causes os command injection. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN553X1-B"
+  },
+  "CVE-2026-120229": {
+    "cvss": 9.1,
+    "description": "A vulnerability has been found in WAVLINK WN553X1-B 260403_2.0.0. This issue affects the function sub_416B50 of the file /bin/ioos. The manipulation of the argument file_id leads to os command injection. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN553X1-B"
+  },
+  "CVE-2026-120228": {
+    "cvss": 9.9,
+    "description": "A flaw has been found in WAVLINK WN553X1-B V260403_2.0.0. This vulnerability affects the function sub_416D88 of the file /bin/ioos of the component ioos Service. Executing a manipulation of the argument group_id/group_name can lead to os command injection. The attack can be executed remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN553X1-B"
+  },
+  "CVE-2026-120239": {
+    "cvss": 9.9,
+    "description": "A vulnerability was found in WAVLINK WN553X1-B V260403_2.0.0. This vulnerability affects the function sub_419DA8 of the file /bin/ioos of the component WireGuard CLI Handler. Performing a manipulation of the argument file_id results in os command injection. The attack is possible to be carried out remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN553X1-B"
+  },
+  "CVE-2026-120238": {
+    "cvss": 9.9,
+    "description": "A vulnerability has been found in WAVLINK WN553X1-B 260403_2.0.0. This affects the function sub_4162A8 of the file /bin/ioos of the component ovpn_file Handler. Such manipulation of the argument file_id leads to os command injection. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WN553X1-B"
+  },
+  "CVE-2026-120195": {
+    "cvss": 10.0,
+    "description": "A security vulnerability has been detected in WAVLINK WL-WN579A3-A 2026-03-10-94f93d4. The impacted element is the function set_wzdgwMesh of the file /cgi-bin/adm.cgi of the component Initial Setup Wizard. The manipulation of the argument wlan_ssid leads to os command injection. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Check Point",
+    "product": "WL-WN579A3-A"
+  },
+  "CVE-2026-116508": {
+    "cvss": 10.0,
+    "description": "A security flaw has been discovered in TOTOLINK A950RG 4.1.2cu.5268_B20221104. Affected by this issue is the function sub_402340 of the file infostat.cgi of the component Device-Information CGI. Performing a manipulation of the argument CONTENT_LENGTH results in stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "A950RG"
+  },
+  "CVE-2026-116504": {
+    "cvss": 9.9,
+    "description": "A vulnerability has been found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This affects the function setCloudUpgradeFW of the file lib/cste_modules/upgrade.so of the component Cloud Upgrade. The manipulation of the argument FileName leads to command injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.",
+    "vendor": "Check Point",
+    "product": "A950RG"
+  },
+  "CVE-2026-116505": {
+    "cvss": 9.1,
+    "description": "A vulnerability was found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This impacts the function getDeviceInfo of the file /var/lib/misc/udhcpd.leases of the component device-information Handler. The manipulation of the argument MAC address results in command injection. The attack can be launched remotely. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "A950RG"
+  },
+  "CVE-2026-33829": {
+    "cvss": 4.3,
+    "description": "Exposure of sensitive information to an unauthorized actor in Windows Snipping Tool allows an unauthorized attacker to perform spoofing over a network.",
+    "vendor": "Check Point",
+    "product": "Windows 10 Version 1607"
+  },
+  "CVE-2026-58255": {
+    "cvss": 8.8,
+    "description": "Cronicle is a multi-server task scheduler and runner, with a web based front-end UI. Prior to 0.9.121, a non-administrator user or scoped API key with `create_events` and `run_events` privileges can inject top-level `uid` and `gid` fields through `/api/app/create_event` or `/api/app/update_event`. In `lib/api.js`, `requireValidEventData` uses `validateOptionalParams` as a partial allow-list that silently passes unknown keys, storing the injected fields verbatim. In `lib/job.js`, `launchJob` copies the whole event into the job, and a plugin `uid` overrides the event `uid` only when the plugin defines one. The default `shellplug` and `urlplug` plugins do not define a `uid`, so the event-controlled identity survives into child-process launch. On a root-daemon installation, this lets a low-privileged user run jobs as arbitrary users, including root, bypassing the otherwise administrator-only run-as-user control. This API-side event injection is distinct from the job-output `uid`/`gid` injection addressed by CVE-2026-39401. This issue is fixed in version 0.9.121.",
+    "vendor": "Check Point",
+    "product": "Cronicle"
+  },
+  "CVE-2026-31071": {
+    "cvss": 9.1,
+    "description": "API endpoints in LalanaChami Pharmacy Management System (commit 5c3d028) lack authentication middleware. Unauthenticated remote attackers can exploit this to dump all user records (including bcrypt password hashes) via /api/user/getUserData, modify drug inventory, and access private medical prescription data via /api/doctorOder.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-124040": {
+    "cvss": 8.1,
+    "description": "CivetWeb through 1.16, when built with USE_HTTP2 and enable_http2 on, contains a use-after-free vulnerability in handle_http2() that retains freed :method and :path pointers. Unauthenticated remote attackers can send a later HEADERS frame omitting these pseudo-headers to influence request method or path seen by access rules, or crash the server.",
+    "vendor": "civetweb",
+    "product": "civetweb"
   }
 }
