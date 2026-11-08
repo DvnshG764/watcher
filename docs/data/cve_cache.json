@@ -90280,5 +90280,17 @@
     "description": "A flaw was found in GnuTLS. The Minerva attack is a cryptographic vulnerability that exploits deterministic behavior in systems like GnuTLS, leading to side-channel leaks. In specific scenarios, such as when using the GNUTLS_PRIVKEY_FLAG_REPRODUCIBLE flag, it can result in a noticeable step in nonce size from 513 to 512 bits, exposing a potential timing side-channel.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-121265": {
+    "cvss": null,
+    "description": "SQL::Abstract versions before 2.000003 for Perl allow SQL injection via an arrayref column value in insert and update. With the array_datatypes option off, which is the default, insert(), update() and values() treat an arrayref column value as literal SQL. Its first element goes into the SQL text unescaped and the rest become bind values. A JSON array, or a repeated form field decoded as an arrayref, is such a value. An application that passes request data as column values to insert or update with the default options allows SQL injection. Releases before 2.000003 also treat an arrayref in generate() as literal SQL, including through AUTOLOAD when allow_autoload is on, whatever array_datatypes is set to.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123753": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
