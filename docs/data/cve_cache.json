@@ -90850,5 +90850,23 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-118066": {
+    "cvss": 9.1,
+    "description": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Authentication Bypass via Account Takeover in all versions up to, and including, 5.7.6. This is due to the `OsModel::build_conditions_query()` function in `lib/models/model.php` comparing WHERE-clause values against the literal strings `'IS NULL'` and `'IS NOT NULL'` and concatenating a match directly into SQL without binding it as a parameter, a flaw that neither `sanitize_text_field()` nor the 5.7.5 `is_scalar()` hardening guard closes, since both pass the scalar sentinel through unchanged. This makes it possible for unauthenticated attackers to send `params[password_reset_token]=IS NOT NULL` to the public `customer_cabinet__change_password` AJAX route to match every non-null `account_nonse` value, resolving to the lowest-id customer and overwriting that customer's password to an attacker-chosen value — granting full access to their bookings, orders, and PII, and, when the `wp_users_as_customers` option is enabled, takeover of the linked WordPress subscriber or customer-role account. The attacker can first identify the target customer's email by sending `params[order_intent_key]=IS NOT NULL` to the public `steps__start_from_order_intent` route, which returns the name and email from the first matching order intent, and can then self-arm the required 15-minute password-reset freshness window by triggering a reset for that customer directly.",
+    "vendor": "latepoint",
+    "product": "Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress"
+  },
+  "CVE-2026-118267": {
+    "cvss": 8.1,
+    "description": "The WP Data Access – App Builder for Tables, Forms, Dashboards, Charts & Maps plugin for WordPress is vulnerable to Incorrect Authorization leading to Privilege Escalation in all versions up to, and including, 5.5.89 This is due to the plugin's write endpoints (`wpda/app/update`, `wpda/app/delete`, `wpda/app/insert`) passing the attacker-supplied `key` and `val` parameters directly to `$wpdadb->update`, `$wpdadb->delete`, and `$wpdadb->insert` without enforcing the container's row-filter (`defaultWhere`) or per-column allow-list (`isSelected`) restrictions that are correctly applied on the read endpoints. This makes it possible for authenticated attackers, with Subscriber-level access and above, to write to arbitrary rows and columns outside the configured restrictions — including overwriting the `user_pass` field of the WordPress administrator account in `wp_users` — and subsequently authenticate as the administrator, achieving full site takeover. Exploitation requires an administrator to have published a Data App that enables write transactions (update, delete, or insert) for Subscriber-level or anonymous users, which is an explicitly advertised use-case of the plugin. Exploitation by unauthenticated attackers requires that the administrator has published a Data App whose rest_api.authorization is 'anonymous' and whose container has transactions.update (or delete/insert) enabled. On a default installation, where that is not configured, the vulnerability requires attackers with subscriber-level access and above.",
+    "vendor": "peterschulznl",
+    "product": "WP Data Access – App Builder for Tables, Forms, Dashboards, Charts & Maps"
+  },
+  "CVE-2026-16062": {
+    "cvss": 6.6,
+    "description": "The Event Booking Manager for WooCommerce WordPress plugin before 5.3.7 does not prevent the deserialization of user-controlled input in some of its event content fields, allowing users with Contributor-level access and above to inject PHP objects. No POP chain is present in the Event Booking Manager for WooCommerce WordPress plugin before 5.3.7 itself, but if one is present via another installed Event Booking Manager for WooCommerce WordPress plugin before 5.3.7 or , this could lead to actions such as arbitrary file deletion, sensitive data retrieval, or remote code execution. This is an incomplete fix of the Event Booking Manager for WooCommerce WordPress plugin before 5.3.7's earlier object-injection advisories.",
+    "vendor": "Unknown",
+    "product": "Event Booking Manager for WooCommerce"
   }
 }
