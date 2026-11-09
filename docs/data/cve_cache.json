@@ -90898,5 +90898,17 @@
     "description": "A possible unauthorized memory access flaw was found in the Linux kernel's cpu_entry_area mapping of X86 CPU data to memory, where a user may guess the location of exception stacks or other important data. Based on the previous CVE-2023-0597, the 'Randomize per-cpu entry area' feature was implemented in /arch/x86/mm/cpu_entry_area.c, which works through the init_cea_offsets() function when KASLR is enabled. However, despite this feature, there is still a risk of per-cpu entry area leaks. This issue could allow a local user to gain access to some important data with memory in an expected location and potentially escalate their privileges on the system.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-116567": {
+    "cvss": 7.5,
+    "description": "FreeSWITCH is a Software Defined Telecom Stack enabling the digital transformation from proprietary telecom switches to a software implementation that runs on any commodity hardware. Prior to 1.11.2, rtmp_handle_control() rendered an RTMP user-control message into a 200-byte stack buffer using an unbounded sprintf loop controlled by the wire message length. A body of roughly 70 bytes or more overflowed the stack before any RTMP login, because the handshake authenticates neither side. The flaw affects deployments that build and load mod_rtmp, which is disabled in the stock build and configuration but commonly exposes a listener on TCP port 1935 when enabled. One unauthenticated message can crash FreeSWITCH and end every active call; the constrained ASCII hex output has not yielded control-flow hijacking. This issue is fixed in version 1.11.2.",
+    "vendor": "signalwire",
+    "product": "freeswitch"
+  },
+  "CVE-2025-48583": {
+    "cvss": 7.8,
+    "description": "In multiple functions of BaseBundle.java, there is a possible way to execute arbitrary code due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Google",
+    "product": "Android"
   }
 }
