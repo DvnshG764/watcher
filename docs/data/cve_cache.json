@@ -90289,9 +90289,9 @@
   },
   "CVE-2026-123753": {
     "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "description": "Server-Side Request Forgery (SSRF) vulnerability in Apache Axis2/Java. An unauthenticated caller could supply a non-anonymous WS-Addressing wsa:ReplyTo or wsa:FaultTo address, and Axis2 would open a connection to that address to deliver the response or fault, allowing requests to internal hosts and delivery of response content to a host of the caller's choosing. From 2.0.2, decoupled responses are refused unless allowNonAnonymousResponseEndpoints is enabled, and enabled endpoints are restricted by scheme and screened at both the header-parsing and transport-selection layers. This issue affects Apache Axis2/Java: through 2.0.1. Users are recommended to upgrade to version 2.0.2, which fixes the issue.",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache Axis2/Java"
   },
   "CVE-2024-44006": {
     "cvss": 8.8,
@@ -90916,5 +90916,11 @@
     "description": "The Welcart e-Commerce WordPress plugin before 2.11.32 does not properly sanitise a value taken from an imported CSV file before using it in a SQL statement, allowing users with the Editor role and above (including its custom shop-management roles) to perform SQL injection attacks.",
     "vendor": "Unknown",
     "product": "Welcart e-Commerce"
+  },
+  "CVE-2024-45434": {
+    "cvss": 9.8,
+    "description": "OpenSynergy BlueSDK (aka Blue SDK) through 6.x has a Use-After-Free. The specific flaw exists within the BlueSDK Bluetooth stack. The issue results from the lack of validating the existence of an object before performing operations on the object (aka use after free). An attacker can leverage this to achieve remote code execution in the context of a user account under which the Bluetooth process runs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
