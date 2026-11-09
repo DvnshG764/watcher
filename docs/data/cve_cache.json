@@ -13772,7 +13772,7 @@
   "CVE-2026-23520": {
     "cvss": 9.1,
     "description": "Arcane provides modern docker management. Prior to 1.13.0, Arcane has a command injection in the updater service. Arcane’s updater service supported lifecycle labels com.getarcaneapp.arcane.lifecycle.pre-update and com.getarcaneapp.arcane.lifecycle.post-update that allowed defining a command to run before or after a container update. The label value is passed directly to /bin/sh -c without sanitization or validation. Because any authenticated user (not limited to administrators) can create projects through the API, an attacker can create a project that specifies one of these lifecycle labels with a malicious command. When an administrator later triggers a container update (either manually or via scheduled update checks), Arcane reads the lifecycle label and executes its value as a shell command inside the container. This vulnerability is fixed in 1.13.0.",
-    "vendor": "getarcaneapp",
+    "vendor": "Check Point",
     "product": "arcane"
   },
   "CVE-2026-26831": {
@@ -17822,7 +17822,7 @@
   "CVE-2026-44551": {
     "cvss": 9.1,
     "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the LDAP authentication endpoint does not validate that the submitted password is non-empty before performing a Simple Bind against the LDAP server. The LdapForm Pydantic model accepts password: str with no minimum length constraint, so an empty string passes validation. The subsequent Connection.bind() call succeeds on vulnerable LDAP servers, and the application issues a full session token for the target user. This vulnerability is fixed in 0.9.0.",
-    "vendor": "open-webui",
+    "vendor": "Check Point",
     "product": "open-webui"
   },
   "CVE-2026-53519": {
@@ -22590,7 +22590,7 @@
     "product": "Cloud NGFW"
   },
   "CVE-2024-53704": {
-    "cvss": 8.2,
+    "cvss": 9.8,
     "description": "SonicWall SonicOS contains an improper authentication vulnerability in the SSLVPN authentication mechanism that allows a remote attacker to bypass authentication.",
     "vendor": "SonicWall",
     "product": "SonicOS"
@@ -65120,8 +65120,8 @@
   "CVE-2026-70482": {
     "cvss": 8.8,
     "description": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.8.0 until 0.11.0, when ENABLE_OAUTH_TOKEN_EXCHANGE=True, /oauth/{provider}/token/exchange accepts a raw provider access token and validates it by calling the provider userinfo endpoint without confirming which OAuth client the token was issued to. Anyone holding an access token minted for any client registered with the same provider could exchange it for an Open WebUI session as that token user, including applications the operator does not control and has never authorized. This issue is fixed in 0.11.0.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "open-webui"
   },
   "CVE-2026-7769": {
     "cvss": 8.1,
@@ -88208,7 +88208,7 @@
   "CVE-2026-123158": {
     "cvss": 8.1,
     "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
-    "vendor": "OpenBSD",
+    "vendor": "Check Point",
     "product": "OpenSSH"
   },
   "CVE-2026-102334": {
@@ -91100,7 +91100,7 @@
   "CVE-2026-124450": {
     "cvss": 9.9,
     "description": "OpenEMR before 8.3.0 contains a broken access control and path traversal vulnerability in the fax/sms module disposeDocument action via an unvalidated file_path parameter. Authenticated low-privilege users can read sqlconf.php to recover database credentials and write arbitrary files as the web user, enabling remote code execution.",
-    "vendor": "openemr",
+    "vendor": "PHP",
     "product": "openemr"
   },
   "CVE-2026-118378": {
@@ -91118,7 +91118,7 @@
   "CVE-2026-115878": {
     "cvss": 7.8,
     "description": "Stanza is a Stanford NLP Python library for tokenization, sentence segmentation, NER, and parsing of many human languages. From 1.14.0 until 1.15.0, loading an attacker-supplied lemmatizer checkpoint can execute arbitrary code because stanza/models/lemma/trainer.py stores pos_dict as gzip-compressed pickle bytes and Trainer.load passes the decompressed stream to unrestricted pickle.loads. The outer torch.load call uses weights_only=True, but the nested bytes are treated as a primitive and are not inspected by that allowlist. The path is reachable during pipeline construction through a caller-influenced lemma_model_path, before inference begins. This issue is fixed in version 1.15.0.",
-    "vendor": "stanfordnlp",
+    "vendor": "Check Point",
     "product": "stanza"
   },
   "CVE-2026-118650": {
@@ -91136,7 +91136,7 @@
   "CVE-2026-108360": {
     "cvss": 6.4,
     "description": "PhpSpreadsheet is a pure PHP library for reading and writing spreadsheet files. Prior to 1.30.7, 2.1.19, 2.4.8, 3.10.8, and 5.10.0, Worksheet\\Drawing::setPath validates only the initial external-image URL with setIsWhitelisted when setAllowExternalImages is enabled. The HTTP stream context permits PHP to follow a redirect without applying the callback to the redirected URL, so a permitted image host can redirect the server to an internal address and cause a blind GET request. The response body is not returned to the attacker because the reader validates the downloaded content as an image and removes the temporary file, but internal GET-driven endpoints, network reachability, and cloud metadata endpoints may be reached. This issue is fixed in versions 1.30.7, 2.1.19, 2.4.8, 3.10.8, and 5.10.0.",
-    "vendor": "PHPOffice",
+    "vendor": "PHP",
     "product": "PhpSpreadsheet"
   },
   "CVE-2026-116580": {
@@ -91180,5 +91180,113 @@
     "description": "filelock is a platform-independent file lock for Python. From 3.20.4 until 4.0.9, ReadWriteLock and AsyncReadWriteLock versions from 3.20.4 resolve the lock path and pass it to SQLite without rejecting a final symbolic link, allowing another local user who can create names in the lock directory to redirect database creation and locking or split mutual exclusion between targets. This issue is fixed in version 4.0.9.",
     "vendor": "tox-dev",
     "product": "filelock"
+  },
+  "CVE-2021-20031": {
+    "cvss": 6.1,
+    "description": "A Host Header Redirection vulnerability in SonicOS potentially allows a remote attacker to redirect firewall management users to arbitrary web domains.",
+    "vendor": "SonicWall",
+    "product": "SonicOS"
+  },
+  "CVE-2022-22274": {
+    "cvss": 9.8,
+    "description": "A Stack-based buffer overflow vulnerability in the SonicOS via HTTP request allows a remote unauthenticated attacker to cause Denial of Service (DoS) or potentially results in code execution in the firewall.",
+    "vendor": "SonicWall",
+    "product": "SonicOS"
+  },
+  "CVE-2023-0656": {
+    "cvss": 7.5,
+    "description": "A Stack-based buffer overflow vulnerability in the SonicOS allows a remote unauthenticated attacker to cause Denial of Service (DoS), which could cause an impacted firewall to crash.",
+    "vendor": "SonicWall",
+    "product": "SonicOS"
+  },
+  "CVE-2025-12203": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in givanz Vvveb up to 1.0.7.3. This issue affects the function sanitizeFileName of the file system/functions.php of the component Code Editor. Executing a manipulation of the argument File can lead to path traversal. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. This patch is called b0fa7ff74a3539c6d37000db152caad572e4c39b. Applying a patch is advised to resolve this issue.",
+    "vendor": "Check Point",
+    "product": "Vvveb"
+  },
+  "CVE-2026-112904": {
+    "cvss": 8.7,
+    "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. In versions 1.0.8.6 and prior, the nextRestore() and nextBackup() functions in the backup controller accept a file GET parameter and concatenate it directly to DIR_BACKUP without calling sanitizeFileName(). This allows an authenticated administrator to read arbitrary files on the server (via nextRestore) and write SQL dump content to arbitrary locations (via nextBackup). This is inconsistent with the sibling functions restore(), delete(), and download() which all correctly call sanitizeFileName() first. This issue has been patched via commit aa29cb0.",
+    "vendor": "Check Point",
+    "product": "Vvveb"
+  },
+  "CVE-2026-55231": {
+    "cvss": 7.2,
+    "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. Prior to version 1.0.8.6, a flawed central path sanitizer lets an authenticated admin-panel user who holds backup access (default role site_admin or higher) read and delete arbitrary files on a server. An attacker can recover database credentials from config/db.php, read host files such as /etc/passwd, and delete config/db.php to push a site back into install mode for a full takeover. This issue has been patched in version 1.0.8.6.",
+    "vendor": "Check Point",
+    "product": "Vvveb"
+  },
+  "CVE-2026-54613": {
+    "cvss": 5.4,
+    "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. Prior to 1.0.8.5, getThemeFolder() in admin/controller/editor/revisions.php returns the attacker-controlled theme parameter without sanitization, and backupFolder() concatenates it beneath DIR_THEMES before editor/revisions/load or editor/revisions/delete operates on a named .html file. sanitizeBackupFileName() strips traversal characters only from the separate file parameter and does not protect the theme directory component. An authenticated user with the default Editor role and editor/* permission can submit traversal sequences that redirect file_get_contents() or unlink() to a reachable backup subdirectory outside the web root. A valid admin session and CSRF token are required, the read is limited to .html files in backup directories, and deletion additionally requires filesystem write permission. This can disclose sensitive exported site content or remove backup data. This issue is fixed in version 1.0.8.5.",
+    "vendor": "Check Point",
+    "product": "Vvveb"
+  },
+  "CVE-2026-45626": {
+    "cvss": 6.3,
+    "description": "Arcane is an interface for managing Docker containers, images, networks, and volumes. In 1.18.1 and earlier, GET /environments/{id}/volumes/{volumeName}/browse accepts a path query parameter that is passed to a shell command (sh -c \"find … | while …\") inside an Arcane helper container. The path sanitiser blocks ../ traversal but does not strip Bourne-shell metacharacters such as $() or backticks, and strconv.Quote only escapes Go string metacharacters, not shell substitution sequences. Any authenticated user with access to a browseable volume can execute arbitrary commands inside the helper container; command output is reflected back in the 500 error body.",
+    "vendor": "Check Point",
+    "product": "arcane"
+  },
+  "CVE-2026-121930": {
+    "cvss": 9.1,
+    "description": "A weakness has been identified in Linksys WRT54GL 4.30.18. The affected element is the function system of the file apply.cgi of the component Ping Diagnostic. This manipulation of the argument ping_ip causes os command injection. The attack can be initiated remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Check Point",
+    "product": "WRT54GL"
+  },
+  "CVE-2026-121931": {
+    "cvss": 9.1,
+    "description": "A security vulnerability has been detected in Linksys WRT54GL 4.30.18. The impacted element is the function system of the file apply.cgi of the component Traceroute Diagnostic Function. Such manipulation of the argument traceroute_ip leads to os command injection. The attack can be launched remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Check Point",
+    "product": "WRT54GL"
+  },
+  "CVE-2026-121600": {
+    "cvss": 9.9,
+    "description": "A flaw has been found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. Affected by this vulnerability is the function setMacFilterRules of the file /cgi-bin/cstecgi.cgi of the component MAC Filter Handler. This manipulation of the argument addEffect causes stack-based buffer overflow. The attack can be initiated remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "A950RG"
+  },
+  "CVE-2026-121598": {
+    "cvss": 9.9,
+    "description": "A security vulnerability has been detected in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This impacts the function strcpy of the file /cgi-bin/cstecgi.cgi of the component Basic Wireless Configuration Handler. The manipulation of the argument wepkey leads to stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "A950RG"
+  },
+  "CVE-2026-70206": {
+    "cvss": 6.5,
+    "description": "Out-of-bounds read in Microsoft Office Word allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Check Point",
+    "product": "Microsoft 365 Apps for Enterprise"
+  },
+  "CVE-2019-20504": {
+    "cvss": null,
+    "description": "service/krashrpt.php in Quest KACE K1000 Systems Management Appliance before 6.4 SP3 (6.4.120822) allows a remote attacker to execute code via shell metacharacters in the kuid parameter.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-8450": {
+    "cvss": 9.1,
+    "description": "HTTP::Daemon versions before 6.17 for Perl allow OS command injection via send_file(). send_file() opens its string argument with Perl's 2-arg open(). The 2-arg form interprets magic prefixes: '| cmd' and 'cmd |' open a pipe to a subprocess, '> path' and '>> path' open the path for write or append. Untrusted input passed to send_file() can run OS commands at the daemon process UID. The read-pipe form ('cmd |') also leaks subprocess stdout into the HTTP response body. The write-mode forms can create or truncate files at attacker chosen paths.",
+    "vendor": "Check Point",
+    "product": "HTTP::Daemon"
+  },
+  "CVE-2026-114133": {
+    "cvss": 5.4,
+    "description": "Nuxt is an open-source web development framework for Vue.js. From 3.13.0 until 4.6.2, the server-island renderer serializes raw useHeadSafe entry input into the island response without preserving the safe-input marker, and NuxtIsland later inserts that input into the page head as an ordinary entry. An application that passes attacker-controlled data to useHeadSafe in a .server.vue component or page, or in a component rendered through NuxtIsland, can therefore render values normally removed by the allowlist, including event-handler attributes or executable script content, resulting in stored cross-site scripting in the application origin. This issue is fixed in version 4.6.2 .",
+    "vendor": "Check Point",
+    "product": "nuxt"
+  },
+  "CVE-2026-45669": {
+    "cvss": 5.3,
+    "description": "Nuxt is an open-source web development framework for Vue.js. From versions 3.4.3 to before 3.21.6 and 4.0.0-alpha.1 to before 4.4.6, navigateTo() with external: true generates a server-side HTML redirect body containing a tag. The destination URL is only sanitized by replacing \" with %22, leaving <, >, &, and ' unencoded. An attacker who can influence the URL passed to navigateTo(url, { external: true }) can break out of the content=\"…\" attribute and inject arbitrary HTML/JavaScript that executes under the application's origin. This issue has been patched in versions 3.21.6 and 4.4.6.",
+    "vendor": "Check Point",
+    "product": "nuxt"
+  },
+  "CVE-2026-15631": {
+    "cvss": 8.7,
+    "description": "Impact: @fastify/http-proxy versions from 9.4.0 up to and including 11.5.0 fail to validate the resolved WebSocket destination path against the configured rewrite prefix. The WebSocket routing path in WebSocketProxy.findUpstream resolves the destination via the WHATWG URL constructor, which collapses dot segments, so a crafted upgrade request with path traversal sequences can escape the rewrite prefix and reach upstream endpoints that were not meant to be exposed by the proxy. This is a variant of CVE-2021-21322 in a code path that never went through the HTTP fix in fastify/reply-from. Exploitation requires a non-normalizing WebSocket client, since browsers and the ws package normalize the request path before sending, but raw HTTP clients or downstream proxies that forward the request target unchanged make the attack reachable in production topologies. Patches: upgrade to @fastify/http-proxy 11.6.0. Workarounds: none.",
+    "vendor": "@fastify/http-proxy",
+    "product": "@fastify/http-proxy"
   }
 }
