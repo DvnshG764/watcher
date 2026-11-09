@@ -66878,8 +66878,8 @@
   "CVE-2026-114140": {
     "cvss": 8.8,
     "description": "The nbconvert tool, jupyter nbconvert, converts Jupyter notebooks to various other formats via Jinja templates. From 5.4.0 until 7.17.2, ExtractOutputPreprocessor in nbconvert/preprocessors/extractoutput.py joins the attacker-controlled cell output metadata filename to output_files_dir without limiting the result to the intended directory. When a victim converts a malicious notebook with the markdown, LaTeX, reStructuredText, or AsciiDoc exporter, path traversal in the output filename can write attacker-controlled output data to arbitrary locations accessible to the victim. Running the notebook cell again replaces the malicious output metadata, but merely converting the supplied notebook does not. This issue is fixed in version 7.17.2.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "jupyter",
+    "product": "nbconvert"
   },
   "CVE-2026-114144": {
     "cvss": 7.5,
@@ -91078,5 +91078,107 @@
     "description": "The workflow component in Liferay Portal 7.3.2 through 7.4.3.111, and Liferay DXP 2023.Q4.0 through 2023.Q4.5, 2023.Q3.1 through 2023.Q3.8, 7.4 GA through update 92 and 7.3 GA through update 36 does not properly check user permissions before updating a workflow definition, which allows remote non-authenticated users to modify workflow definitions and execute arbitrary code (RCE) via the headless API.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-26189": {
+    "cvss": 5.9,
+    "description": "Trivy Action runs Trivy as GitHub action to scan a Docker container image for vulnerabilities. A command injection vulnerability exists in `aquasecurity/trivy-action` versions 0.31.0 through 0.33.1 due to improper handling of action inputs when exporting environment variables. The action writes `export VAR= ` lines to `trivy_envs.txt` based on user-supplied inputs and subsequently sources this file in `entrypoint.sh`. Because input values are written without appropriate shell escaping, attacker-controlled input containing shell metacharacters (e.g., `$(...)`, backticks, or other command substitution syntax) may be evaluated during the sourcing process. This can result in arbitrary command execution within the GitHub Actions runner context. Version 0.34.0 contains a patch for this issue. The vulnerability is exploitable when a consuming workflow passes attacker-controlled data into any action input that is written to `trivy_envs.txt`. Access to user input is required by the malicious actor. Workflows that do not pass attacker-controlled data into `trivy-action` inputs, workflows that upgrade to a patched version that properly escapes shell values or eliminates the `source ./trivy_envs.txt` pattern, and workflows where user input is not accessible are not affected.",
+    "vendor": "aquasecurity",
+    "product": "trivy-action"
+  },
+  "CVE-2026-109372": {
+    "cvss": 8.7,
+    "description": "ZITADEL 4.x before 4.19.2 and 3.x through 3.4.15 contains an authentication bypass in the SAML identity-provider intent callback, which verifies the assertion signature using the provider named in the request URL but resolves the user from the login intent without checking they match. Attackers with organization-administrator permission can register a SAML provider with their own signing key to obtain authenticated sessions as any user linked to another SAML provider on the instance, including in other organizations.",
+    "vendor": "zitadel",
+    "product": "zitadel"
+  },
+  "CVE-2026-118669": {
+    "cvss": 8.4,
+    "description": "OAuthLib is an implementation of the OAuth request-signing logic for Python 3.6+. Prior to 4.0.0, the client_credentials and Resource Owner Password Credentials token grant handlers can authenticate request.client as one confidential client while retaining an attacker-supplied request.client_id for validate_grant_type and validate_scopes. A lower-privilege authenticated client can therefore cause grant and scope authorization to use another client's identity when an application validator relies on the documented client_id argument, potentially issuing tokens with unauthorized grants or scopes. Validators that authorize exclusively from request.client may not be affected. This issue is fixed in version 4.0.0.",
+    "vendor": "oauthlib",
+    "product": "oauthlib"
+  },
+  "CVE-2026-124450": {
+    "cvss": 9.9,
+    "description": "OpenEMR before 8.3.0 contains a broken access control and path traversal vulnerability in the fax/sms module disposeDocument action via an unvalidated file_path parameter. Authenticated low-privilege users can read sqlconf.php to recover database credentials and write arbitrary files as the web user, enabling remote code execution.",
+    "vendor": "openemr",
+    "product": "openemr"
+  },
+  "CVE-2026-118378": {
+    "cvss": 7.8,
+    "description": "Tabularis before 0.28.0 contains an SQL injection vulnerability in its SQLite driver that allows MCP clients to execute stacked statements by supplying a crafted table_name to the describe_table tool. Attackers, including AI agents steered by untrusted content, can close the quoted PRAGMA argument and append statements to read, modify, or drop SQLite data, bypassing read-only mode and write approval.",
+    "vendor": "TabularisDB",
+    "product": "tabularis"
+  },
+  "CVE-2026-11800": {
+    "cvss": 8.1,
+    "description": "A flaw was found in Keycloak. This JWT algorithm confusion vulnerability in the JWT Authorization Grant flow allows an attacker with valid client credentials to bypass signature verification. By forging an assertion, the attacker can create unauthorized access tokens. This enables the attacker to impersonate any federated user linked to the affected Identity Provider, leading to unauthorized access and potential privilege escalation.",
+    "vendor": "Red Hat",
+    "product": "Red Hat build of Keycloak 26.6"
+  },
+  "CVE-2026-115878": {
+    "cvss": 7.8,
+    "description": "Stanza is a Stanford NLP Python library for tokenization, sentence segmentation, NER, and parsing of many human languages. From 1.14.0 until 1.15.0, loading an attacker-supplied lemmatizer checkpoint can execute arbitrary code because stanza/models/lemma/trainer.py stores pos_dict as gzip-compressed pickle bytes and Trainer.load passes the decompressed stream to unrestricted pickle.loads. The outer torch.load call uses weights_only=True, but the nested bytes are treated as a primitive and are not inspected by that allowlist. The path is reachable during pipeline construction through a caller-influenced lemma_model_path, before inference begins. This issue is fixed in version 1.15.0.",
+    "vendor": "stanfordnlp",
+    "product": "stanza"
+  },
+  "CVE-2026-118650": {
+    "cvss": 7.5,
+    "description": "Echo is a Go web framework. Prior to 4.16.0 and 5.4.0, a globally mounted middleware.Static instance can interpret an encoded request path differently from Echo's router because the router matches the still-encoded path while the static handler uses the decoded URL.Path. The advisory demonstrates an encoded slash resolving to a file under the static root through the global static middleware, but the source is internally inconsistent about whether a route or group guard protects the corresponding literal path in that global-mount configuration. This issue is fixed in 4.16.0 and 5.4.0.",
+    "vendor": "labstack",
+    "product": "echo"
+  },
+  "CVE-2026-106451": {
+    "cvss": 7.3,
+    "description": "yawkat LZ4 Java provides LZ4 compression for Java. From 1.7.0 until 1.11.4, net.jpountz.util.Native.load() uses File.createTempFile to create an exclusive temporary .lck file but derives the native-library path by removing the suffix, then FileOutputStream opens that predictable path without exclusive creation, allowing another local user with access to the same shared temporary directory to create or replace the library file before System.load() uses it. Successful exploitation depends on shared-directory permissions, host protections, and winning the race, and can execute native code as the victim; hardened systems may instead cause library loading to fail and fall back to Java implementations. Configurations using a system library, a private java.io.tmpdir, or Java-only implementations are not affected. This issue is fixed in version 1.11.4.",
+    "vendor": "yawkat",
+    "product": "lz4-java"
+  },
+  "CVE-2026-108360": {
+    "cvss": 6.4,
+    "description": "PhpSpreadsheet is a pure PHP library for reading and writing spreadsheet files. Prior to 1.30.7, 2.1.19, 2.4.8, 3.10.8, and 5.10.0, Worksheet\\Drawing::setPath validates only the initial external-image URL with setIsWhitelisted when setAllowExternalImages is enabled. The HTTP stream context permits PHP to follow a redirect without applying the callback to the redirected URL, so a permitted image host can redirect the server to an internal address and cause a blind GET request. The response body is not returned to the attacker because the reader validates the downloaded content as an image and removes the temporary file, but internal GET-driven endpoints, network reachability, and cloud metadata endpoints may be reached. This issue is fixed in versions 1.30.7, 2.1.19, 2.4.8, 3.10.8, and 5.10.0.",
+    "vendor": "PHPOffice",
+    "product": "PhpSpreadsheet"
+  },
+  "CVE-2026-116580": {
+    "cvss": 7.3,
+    "description": "Seroval facilitates JavaScript value stringification, including complex structures beyond JSON.stringify capabilities. Prior to 1.6.8, fromJSON rebuilds an AsyncIteratorFactoryInstance by calling source.on(listener) without requiring source to be a genuine internal stream. With untrusted Seroval input and an application plugin that returns a callable value or an object exposing an on method, a crafted node can reuse an identifier so the deserializer invokes the plugin-produced value. This is an incomplete-fix variant of CVE-2026-59940. The resulting confidentiality, integrity, or availability impact depends on the behavior exposed by the application plugin. This issue is fixed in version 1.6.8.",
+    "vendor": "lxsmnsyc",
+    "product": "seroval"
+  },
+  "CVE-2026-104851": {
+    "cvss": 8.8,
+    "description": "fsspec is a specification and Python implementation framework for filesystem interfaces. From 0.9.0 until 2026.6.0, fsspec.implementations.reference.ReferenceFileSystem evaluates fields from Kerchunk reference JSON documents through unrestricted jinja2.Template(...).render(...) calls in _process_references1._render_jinja, _process_templates, and _process_gen in fsspec/implementations/reference.py. A document supplied inline or fetched from an attacker-controlled URL can provide template expressions that execute Python code when the reference filesystem is opened, including through consumers such as xarray, before referenced data is read. The _process_gen path is reached whenever a document includes a gen array, while the other paths depend on template-related options and values. This issue is fixed in version 2026.6.0.",
+    "vendor": "fsspec",
+    "product": "filesystem_spec"
+  },
+  "CVE-2026-107720": {
+    "cvss": 7.4,
+    "description": "fast-jwt provides fast JSON Web Token (JWT) implementation. Prior to 6.3.1, fast-jwt createVerifier accepts an unsigned JWT when key is an empty string or null and algorithms is a non-empty allowlist. Falsy synchronous keys bypass prepareKeyOrSecret, allowedAlgorithms remains active, hasKey is false, and the empty signature avoids the verifySignature gate. An attacker can therefore submit a token containing arbitrary claims without possessing a signing key, resulting in authentication or authorization bypass. Claim validators still run, and non-empty keys, an empty key without algorithms, and the async key resolver path do not have this behavior. This issue is fixed in version 6.3.1.",
+    "vendor": "nearform",
+    "product": "fast-jwt"
+  },
+  "CVE-2026-124552": {
+    "cvss": 4.8,
+    "description": "Webmin through 2.670 contains a stored cross-site scripting vulnerability in the Shorewall and Shorewall6 modules' list.cgi, which renders table fields and COMMENT lines unescaped. Authenticated users with table edit permission can store JavaScript via savecmt.cgi or table entries that executes when other users, including root, view the list page.",
+    "vendor": "webmin",
+    "product": "webmin"
+  },
+  "CVE-2026-110634": {
+    "cvss": 9.8,
+    "description": "git-diff before 2.0.7 contains an OS command injection vulnerability that allows attackers to execute shell commands by supplying crafted strings to the gitDiff API. Attackers who control a diffed document string can embed $(cmd) or backtick substitutions that shelljs.exec evaluates, running commands with Node.js process privileges.",
+    "vendor": "danday74",
+    "product": "git-diff"
+  },
+  "CVE-2026-119200": {
+    "cvss": 6.5,
+    "description": "Nuxt is an open-source web development framework for Vue.js. From 4.6.0 until 4.6.3, Nuxt resolves literal or percent-encoded dot segments before rendering a page while Nitro routing, server/middleware checks, and server route rules evaluate the unresolved path. A request such as /%2e/admin can therefore render app/pages/admin.vue and its server-rendered data while checks keyed to /admin, redirects, or per-route security headers do not apply. API handlers, appMiddleware, Nuxt 3, and Nuxt 4.0.0 through 4.5.x are not affected, and exploitation requires a client that sends dot segments without browser normalization. This issue is fixed in version 4.6.3.",
+    "vendor": "nuxt",
+    "product": "nuxt"
+  },
+  "CVE-2026-112936": {
+    "cvss": 6.1,
+    "description": "filelock is a platform-independent file lock for Python. From 3.20.4 until 4.0.9, ReadWriteLock and AsyncReadWriteLock versions from 3.20.4 resolve the lock path and pass it to SQLite without rejecting a final symbolic link, allowing another local user who can create names in the lock directory to redirect database creation and locking or split mutual exclusion between targets. This issue is fixed in version 4.0.9.",
+    "vendor": "tox-dev",
+    "product": "filelock"
   }
 }
