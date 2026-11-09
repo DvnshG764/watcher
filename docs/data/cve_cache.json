@@ -90874,5 +90874,29 @@
     "description": "Unrestricted Upload of File with Dangerous Type vulnerability in add-ons.org Drag and Drop File Upload for Elementor Forms drag-and-drop-file-upload-for-elementor-forms allows Upload a Web Shell to a Web Server.This issue affects Drag and Drop File Upload for Elementor Forms: from n/a through <= 1.5.3.",
     "vendor": "add-ons.org",
     "product": "Drag and Drop File Upload for Elementor Forms"
+  },
+  "CVE-2023-32253": {
+    "cvss": 5.9,
+    "description": "A flaw was found in the Linux kernel's ksmbd component. A deadlock is triggered by sending multiple concurrent session setup requests, possibly leading to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-32255": {
+    "cvss": 5.3,
+    "description": "A flaw was found in the Linux kernel's ksmbd component. A memory leak can occur if a client sends a session setup request with an unknown NTLMSSP message type, potentially leading to resource exhaustion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-32251": {
+    "cvss": 3.7,
+    "description": "A vulnerability has been identified in the Linux kernel's ksmbd component (kernel SMB/CIFS server). A security control designed to prevent dictionary attacks, which introduces a 5-second delay during session setup, can be bypassed through the use of asynchronous requests. This bypass negates the intended anti-brute-force protection, potentially allowing attackers to conduct dictionary attacks more efficiently against user credentials or other authentication mechanisms.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3640": {
+    "cvss": 7.8,
+    "description": "A possible unauthorized memory access flaw was found in the Linux kernel's cpu_entry_area mapping of X86 CPU data to memory, where a user may guess the location of exception stacks or other important data. Based on the previous CVE-2023-0597, the 'Randomize per-cpu entry area' feature was implemented in /arch/x86/mm/cpu_entry_area.c, which works through the init_cea_offsets() function when KASLR is enabled. However, despite this feature, there is still a risk of per-cpu entry area leaks. This issue could allow a local user to gain access to some important data with memory in an expected location and potentially escalate their privileges on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
