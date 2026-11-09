@@ -90854,7 +90854,7 @@
   "CVE-2026-118066": {
     "cvss": 9.1,
     "description": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Authentication Bypass via Account Takeover in all versions up to, and including, 5.7.6. This is due to the `OsModel::build_conditions_query()` function in `lib/models/model.php` comparing WHERE-clause values against the literal strings `'IS NULL'` and `'IS NOT NULL'` and concatenating a match directly into SQL without binding it as a parameter, a flaw that neither `sanitize_text_field()` nor the 5.7.5 `is_scalar()` hardening guard closes, since both pass the scalar sentinel through unchanged. This makes it possible for unauthenticated attackers to send `params[password_reset_token]=IS NOT NULL` to the public `customer_cabinet__change_password` AJAX route to match every non-null `account_nonse` value, resolving to the lowest-id customer and overwriting that customer's password to an attacker-chosen value — granting full access to their bookings, orders, and PII, and, when the `wp_users_as_customers` option is enabled, takeover of the linked WordPress subscriber or customer-role account. The attacker can first identify the target customer's email by sending `params[order_intent_key]=IS NOT NULL` to the public `steps__start_from_order_intent` route, which returns the name and email from the first matching order intent, and can then self-arm the required 15-minute password-reset freshness window by triggering a reset for that customer directly.",
-    "vendor": "latepoint",
+    "vendor": "PHP",
     "product": "Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress"
   },
   "CVE-2026-118267": {
@@ -90866,7 +90866,13 @@
   "CVE-2026-16062": {
     "cvss": 6.6,
     "description": "The Event Booking Manager for WooCommerce WordPress plugin before 5.3.7 does not prevent the deserialization of user-controlled input in some of its event content fields, allowing users with Contributor-level access and above to inject PHP objects. No POP chain is present in the Event Booking Manager for WooCommerce WordPress plugin before 5.3.7 itself, but if one is present via another installed Event Booking Manager for WooCommerce WordPress plugin before 5.3.7 or , this could lead to actions such as arbitrary file deletion, sensitive data retrieval, or remote code execution. This is an incomplete fix of the Event Booking Manager for WooCommerce WordPress plugin before 5.3.7's earlier object-injection advisories.",
-    "vendor": "Unknown",
+    "vendor": "PHP",
     "product": "Event Booking Manager for WooCommerce"
+  },
+  "CVE-2025-49387": {
+    "cvss": 10.0,
+    "description": "Unrestricted Upload of File with Dangerous Type vulnerability in add-ons.org Drag and Drop File Upload for Elementor Forms drag-and-drop-file-upload-for-elementor-forms allows Upload a Web Shell to a Web Server.This issue affects Drag and Drop File Upload for Elementor Forms: from n/a through <= 1.5.3.",
+    "vendor": "add-ons.org",
+    "product": "Drag and Drop File Upload for Elementor Forms"
   }
 }
