@@ -59779,9 +59779,9 @@
   },
   "CVE-2026-116779": {
     "cvss": 9.8,
-    "description": "FreeSWITCH is a Software Defined Telecom Stack enabling the digital transformation from proprietary telecom switches to a software implementation that runs on any commodity hardware. Prior to 1.11.3, sofia_presence_handle_sip_i_message() split the To user of an inbound SIP MESSAGE on a plus sign and treated the left side as a chat protocol selector. Selecting the api chat proto reached switch_api_execute(), allowing a peer whose MESSAGE was accepted to run FreeSWITCH API commands, including operating-system command sinks, with the daemon's privileges. Inbound chat is enabled on the stock internal and external profiles, and any authenticated profile account is sufficient; stock directory users without password material can also remove that barrier in affected configurations. The flaw permits configuration and credential disclosure, arbitrary call control, and command execution, and exploitation has been observed in the wild. This issue is fixed in version 1.11.3.",
-    "vendor": "signalwire",
-    "product": "freeswitch"
+    "description": "SignalWire FreeSwitch contains a code injection vulnerability that permits configuration and credential disclosure, arbitrary call control, and command execution.",
+    "vendor": "SignalWire",
+    "product": "FreeSwitch"
   },
   "CVE-2026-19971": {
     "cvss": 4.7,
@@ -88207,7 +88207,7 @@
   },
   "CVE-2026-123158": {
     "cvss": 8.1,
-    "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
+    "description": "OpenBSD OpenSSH on Linux contains an unexpected status code or return value vulnerability that could allow for authentication bypass.",
     "vendor": "Check Point",
     "product": "OpenSSH"
   },
@@ -91606,5 +91606,17 @@
     "description": "A buffer overflow vulnerability in SonicOS allows a remote attacker to cause a Denial of Service (DoS) by sending a specially crafted request. This vulnerability affects SonicOS Gen5, Gen6, Gen7 platforms, and SonicOSv virtual firewalls.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2024-33396": {
+    "cvss": 8.4,
+    "description": "An issue in karmada-io karmada v1.9.0 and before allows a local attacker to execute arbitrary code via a crafted command to get the token component. NOTE: The maintainer states that the behavior is intended design and notes that the researcher advisory does not provide evidence of arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102895": {
+    "cvss": 9.8,
+    "description": "GPUStack contains an improper authentication vulnerability which could allow unauthenticated administrative access, including user and model changes, persistent administrator API-key creation, disclosure of worker and cloud-provider secrets, and code execution through POST /v2/inference-backends/from-yaml.",
+    "vendor": "GPUStack",
+    "product": "GPUStack"
   }
 }
