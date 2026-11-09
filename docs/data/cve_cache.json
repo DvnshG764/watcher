@@ -90802,5 +90802,23 @@
     "description": "A CSRF issue was discovered in the administrative web GUI in Blu-Castle BCUM221E 1.0.0P220507. This can be exploited via a URL, an image load, an XMLHttpRequest, etc. and can result in exposure of data or unintended code execution.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2025-63785": {
+    "cvss": 6.1,
+    "description": "A DOM-based Cross-Site Scripting (XSS) vulnerability exists in the text editor feature of the Onlook web application 0.2.32. This vulnerability occurs because user-supplied input is not properly sanitized before being directly injected into the DOM via innerHTML when editing a text element. An attacker can exploit this to inject malicious HTML and script code, which is then executed within the context of the preview iframe, allowing for the execution of arbitrary scripts in the user's session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-25621": {
+    "cvss": 7.8,
+    "description": "containerd is an open-source container runtime. Versions 0.1.0 through 1.7.28, 2.0.0-beta.0 through 2.0.6, 2.1.0-beta.0 through 2.1.4 and 2.2.0-beta.0 through 2.2.0-rc.1 have an overly broad default permission vulnerability. Directory paths `/var/lib/containerd`, `/run/containerd/io.containerd.grpc.v1.cri` and `/run/containerd/io.containerd.sandbox.controller.v1.shim` were all created with incorrect permissions. This issue is fixed in versions 1.7.29, 2.0.7, 2.1.5 and 2.2.0. Workarounds include updating system administrator permissions so the host can manually chmod the directories to not have group or world accessible permissions, or to run containerd in rootless mode.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-56426": {
+    "cvss": 7.5,
+    "description": "An issue was discovered in Samsung Mobile Processor and Wearable Processor Exynos 980, 990, 850, 1080, 2100, 1280, 2200, 1330, 1380, 1480, 2400, W920, W930, W1000. The lack of a length check leads to out-of-bounds writes via malformed USB packets to the target.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
