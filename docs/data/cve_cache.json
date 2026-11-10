@@ -75668,8 +75668,8 @@
   "CVE-2026-50256": {
     "cvss": 7.8,
     "description": "A stack-based buffer overflow flaw was found in the X.Org X server and Xwayland. A mismatch between the X server and the libXfont2 library's maximum font name length can cause a stack buffer overflow during font alias resolution. The server allocates a 256 byte stack buffer but libXfont2's alias target name length is 1024 bytes. A font alias name between 257 and 1023 bytes causes the X server to copy that name into the undersized stack buffer without further checks. This may be used to crash the server, or for privilege escalation if the X server runs as root.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 10"
   },
   "CVE-2026-50257": {
     "cvss": 7.8,
@@ -75680,8 +75680,8 @@
   "CVE-2026-50258": {
     "cvss": 7.8,
     "description": "A stack-based buffer overflow flaw was found in the X.Org X server and Xwayland. The X server has multiple stack buffers sized XkbMaxShiftLevel * XkbNumKbdGroups but CheckKeyTypes() does not verify or clamp non-canonical key types to XkbMaxShiftLevel. A client can change key types to excessive shift levels and trigger stack overflows. This is caused by an incomplete fix of CVE-2025-26597. This may be used to crash the server, or for privilege escalation if the X server runs as root.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 10"
   },
   "CVE-2026-50259": {
     "cvss": 7.8,
@@ -75704,8 +75704,8 @@
   "CVE-2026-50264": {
     "cvss": 7.8,
     "description": "An out-of-bounds write flaw was found in the X.Org X server and Xwayland in DRIGetBuffers/DRIGetBuffersWithFormat. A client that requests multiple DRI2BufferBackLeft attachments and one DRI2BufferFrontLeft can trigger an out-of-bounds heap write. This may be used to crash the server, or for privilege escalation if the X server runs as root.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 10"
   },
   "CVE-2026-3012": {
     "cvss": 6.8,
@@ -94306,5 +94306,29 @@
     "description": "High 10 Nov 2026 10 Nov 2026 CPAI-2026-17408 Microsoft CVE-2026-119886 CVE-2026-119886 Microsoft Windows Telephony Service Elevation of Privilege (CVE-2026-119886)",
     "vendor": "Check Point",
     "product": "Unknown"
+  },
+  "CVE-2025-58747": {
+    "cvss": 6.1,
+    "description": "Dify is an LLM application development platform. In Dify versions through 1.9.1, the MCP OAuth component is vulnerable to cross-site scripting when a victim connects to an attacker-controlled remote MCP server. The vulnerability exists in the OAuth flow implementation where the authorization_url provided by a remote MCP server is directly passed to window.open without validation or sanitization. An attacker can craft a malicious MCP server that returns a JavaScript URI (such as javascript:alert(1)) in the authorization_url field, which is then executed when the victim attempts to connect to the MCP server. This allows the attacker to execute arbitrary JavaScript in the context of the Dify application.",
+    "vendor": "langgenius",
+    "product": "dify"
+  },
+  "CVE-2026-88806": {
+    "cvss": 7.5,
+    "description": "A malicious X server could exploit a buffer overflow in libX11 before 1.8.14 during handling of XkbGetMap overflowing the key_sym_map.",
+    "vendor": "x.org",
+    "product": "libX11"
+  },
+  "CVE-2026-88807": {
+    "cvss": 8.9,
+    "description": "A heap overflow in libXrender before 0.9.13 in RenderQueryPictFormats could be used by malicious X servers to inject code into attached X clients.",
+    "vendor": "X.org",
+    "product": "libXrender"
+  },
+  "CVE-2026-65110": {
+    "cvss": 7.8,
+    "description": "NVIDIA Megatron-LM contains a vulnerability in checkpoint loading where, an attacker could cause an RCE by convincing a user to load a maliciously crafted file. A successful exploit of this vulnerability might lead to code execution, escalation of privileges, information disclosure, and data tampering.",
+    "vendor": "NVIDIA",
+    "product": "Megatron-LM"
   }
 }
