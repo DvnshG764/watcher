@@ -63121,7 +63121,7 @@
   },
   "CVE-2026-116606": {
     "cvss": 9.3,
-    "description": "An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration.",
+    "description": "Barracuda Networks Email Security Gateway (ESG) contains an authentication bypass using an alternate path or channel that could allow an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration. This vulnerability can be chained with CVE-2026-111560.",
     "vendor": "Barracuda Networks",
     "product": "Barracuda Email Security Gateway (ESG)"
   },
@@ -65978,8 +65978,8 @@
   "CVE-2026-114656": {
     "cvss": 9.3,
     "description": "Traefik before 2.11.58 and 3.7.13 contains an authentication bypass vulnerability that allows unauthenticated clients to skip client-certificate checks because negated Host matchers are counted as served domains. Attackers can reach backends protected by RequireAndVerifyClientCert when a router rule with !Host() creates a TLS options conflict that falls back to the default options.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "traefik",
+    "product": "traefik"
   },
   "CVE-2026-114715": {
     "cvss": 8.1,
@@ -90787,7 +90787,7 @@
   },
   "CVE-2026-111560": {
     "cvss": 8.6,
-    "description": "Improper neutralization of shell metacharacters in the timezone configuration field in certain Barracuda appliance products using common Barracuda code allows an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed.",
+    "description": "Barracuda Networks Email Security Gateway (ESG), Load Balancer, Application Delivery Controller (ADC), Message Archiver (BMA), WAF Control Center (WCC), Web Application Firewall (WAF), and Web Security Gateway (WSG) contain an OS command injection vulnerability. This vulnerability could allow an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed. This vulnerability can be chained with CVE-2026-116606",
     "vendor": "Barracuda Networks",
     "product": "Barracuda Email Security Gateway (ESG)"
   },
@@ -92335,7 +92335,7 @@
   },
   "CVE-2026-125350": {
     "cvss": null,
-    "description": "Use after free in XML in Google Chrome prior to 157.0.8103.50 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "description": "Google Chromium contains a use-after-free vulnerability in the XML component that could allow a remote attacker to execute arbitrary code inside the sandbox via a specially crafted webpage. This vulnerability could affect multiple web browsers that utilize Chromium, including, but not limited to, Google Chrome, Microsoft Edge, and Opera.",
     "vendor": "Google",
     "product": "Chrome"
   },
@@ -94334,6 +94334,60 @@
   "CVE-2025-40022": {
     "cvss": null,
     "description": "In the Linux kernel, the following vulnerability has been resolved: crypto: af_alg - Fix incorrect boolean values in af_alg_ctx Commit 1b34cbbf4f01 (\"crypto: af_alg - Disallow concurrent writes in af_alg_sendmsg\") changed some fields from bool to 1-bit bitfields of type u32. However, some assignments to these fields, specifically 'more' and 'merge', assign values greater than 1. These relied on C's implicit conversion to bool, such that zero becomes false and nonzero becomes true. With a 1-bit bitfields of type u32 instead, mod 2 of the value is taken instead, resulting in 0 being assigned in some cases when 1 was intended. Fix this by restoring the bool type.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124194": {
+    "cvss": 6.5,
+    "description": "Microsoft Office Outlook contains a missing user interaction for potentially unsafe action vulnerability that allows an unauthorized attacker to perform spoofing over a network.",
+    "vendor": "Microsoft",
+    "product": "Microsoft 365 Apps for Enterprise"
+  },
+  "CVE-2026-111793": {
+    "cvss": 4.3,
+    "description": "Openwave Messaging Limited Webtop Media Transcoder contains an incorrect resource transfer between spheres vulnerability that may allow an authenticated user to process and convert unintended document types if bypassing the Webmail experience.",
+    "vendor": "Openwave Messaging (Ireland) Limited",
+    "product": "Webtop Media Transcoder"
+  },
+  "CVE-2026-20320": {
+    "cvss": 7.5,
+    "description": "Cisco BroadWorks contains an improper restriction of XML external entity reference vulnerability that could allow an unauthenticated, remote attacker to read sensitive configuration information on an affected system.",
+    "vendor": "Cisco",
+    "product": "BroadWorks"
+  },
+  "CVE-2025-10891": {
+    "cvss": 8.8,
+    "description": "Integer overflow in V8 in Google Chrome prior to 140.0.7339.207 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Google",
+    "product": "Chrome"
+  },
+  "CVE-2026-125757": {
+    "cvss": 9.1,
+    "description": "mailcow: dockerized before 2026-11 contains a server-side template injection vulnerability that allows domain administrators to execute commands in the shared rspamd container by storing a malicious domain-wide footer. Attackers can embed a Jinja macro with an os.execute default value, rendered by the rspamd MOO_FOOTER prefilter, to read or inject mail for every tenant and disable filtering.",
+    "vendor": "mailcow",
+    "product": "mailcow: dockerized"
+  },
+  "CVE-2026-110468": {
+    "cvss": 10.0,
+    "description": "WidzialniCMS is vulnerable to Unrestricted File Upload in the /panel/controllers/save_photo.php endpoint. Due to a client-controlled permission check parameter and insufficient validation of the currentpath parameter, an unauthenticated attacker can upload arbitrary files to any locations on the server, leading to Remote Code Execution. This issue has been fixed in version 2.5.",
+    "vendor": "Fundacja Widzialni",
+    "product": "WidzialniCMS"
+  },
+  "CVE-2026-105761": {
+    "cvss": 7.1,
+    "description": "Dify is an open-source LLM app development platform. Prior to 1.16.0, the PUT /console/api/apps/<app_id>/server endpoint in api/controllers/console/app/mcp_server.py used AppMCPServerController.put() to retrieve an AppMCPServer by the client-supplied server ID without verifying that the server belonged to the requested application and tenant. An authenticated workspace member could therefore change another application's MCP server status and parameters, potentially redirecting data or disabling the service. This issue is fixed in version 1.16.0.",
+    "vendor": "langgenius",
+    "product": "dify"
+  },
+  "CVE-2026-100204": {
+    "cvss": 7.0,
+    "description": "Use after free in HEIF Image Extensions allows an unauthorized attacker to execute code locally.",
+    "vendor": "Microsoft",
+    "product": "HEIF Image Extension"
+  },
+  "CVE-2026-111760": {
+    "cvss": null,
+    "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
   }
