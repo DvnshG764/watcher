@@ -1362,7 +1362,7 @@
     "product": "GS1900 Series Switches"
   },
   "CVE-2025-39964": {
-    "cvss": 7.8,
+    "cvss": 5.5,
     "description": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket causing data to be unpredictably interleaved and creating inconsistencies in the socket's internal state.",
     "vendor": "Linux",
     "product": "Kernel"
@@ -92350,5 +92350,1013 @@
     "description": "Inappropriate implementation in Blink in Google Chrome prior to 108.0.5359.71 allowed a remote attacker to perform arbitrary read/write via a crafted HTML page. (Chromium security severity: High)",
     "vendor": "Google",
     "product": "Chrome"
+  },
+  "CVE-2022-4980": {
+    "cvss": 9.3,
+    "description": "General Bytes Crypto Application Server (CAS) beginning with version 20201208 prior to 20220531.38 (backport) and 20220725.22 (mainline) contains an authentication bypass in the admin web interface. An unauthenticated attacker could invoke the same URL used by the product's default-installation / first-admin creation page and create a new administrative account remotely. By gaining admin privileges, the attacker can change the ATM configuration resulting in redirected funds. Public vendor advisories and multiple independent writeups describe the vulnerability as a call to the page used for initial/default installation / first administration user creation; General Bytes has not publicly published the exact endpoint/parameter name. The issue was actively exploited in the wild against cloud-hosted and standalone CAS deployments (scanning exposed CAS instances on ports 7777/443), and publicly acknowledged by the General Bytes in September 2022.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-50238": {
+    "cvss": 7.4,
+    "description": "The on-endpoint Microsoft vulnerable driver blocklist is not fully synchronized with the online Microsoft recommended driver block rules. Some entries present on the online list have been excluded from the on-endpoint blocklist longer than the expected periodic monthly Windows updates. It is possible to fully synchronize the driver blocklist using WDAC policies. NOTE: The vendor explains that Windows Update provides a smaller, compatibility-focused driver blocklist for general users, while the full XML list is available for advanced users and organizations to customize at the risk of usability issues.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-39888": {
+    "cvss": 4.3,
+    "description": "Improper access control vulnerability in retrieveExternalProxy in MiscPolicy prior to SMR Nov-2022 Release 1 allows local attacker to access to Proxy information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-54678": {
+    "cvss": 8.2,
+    "description": "A vulnerability has been identified in SIMATIC PCS neo V4.1 (All versions), SIMATIC PCS neo V5.0 (All versions), SIMATIC PCS neo V6.0 (All versions < V6.0 SP1 Update 1), SIMATIC S7-PLCSIM V17 (All versions), SIMATIC STEP 7 V17 (All versions < V17 Update 9), SIMATIC STEP 7 V18 (All versions < V18 Update 6), SIMATIC STEP 7 V19 (All versions < V19 Update 4), SIMATIC STEP 7 V20 (All versions < V20 Update 4), SIMATIC WinCC V17 (All versions < V17 Update 9), SIMATIC WinCC V18 (All versions < V18 Update 6), SIMATIC WinCC V19 (All versions < V19 Update 4), SIMATIC WinCC V20 (All versions < V20 Update 4), SIMOCODE ES V17 (All versions), SIMOCODE ES V18 (All versions), SIMOCODE ES V19 (All versions), SIMOCODE ES V20 (All versions), SIMOTION SCOUT TIA V5.4 (All versions < V17 Update 9), SIMOTION SCOUT TIA V5.5 (All versions < V18 Update 6), SIMOTION SCOUT TIA V5.6 (All versions < V19 Update 4), SIMOTION SCOUT TIA V5.7 (All versions < V20 Update 4), SINAMICS Startdrive V17 (All versions), SINAMICS Startdrive V18 (All versions), SINAMICS Startdrive V19 (All versions), SINAMICS Startdrive V20 (All versions), SIRIUS Safety ES V17 (TIA Portal) (All versions), SIRIUS Safety ES V18 (TIA Portal) (All versions), SIRIUS Safety ES V19 (TIA Portal) (All versions), SIRIUS Safety ES V20 (TIA Portal) (All versions), SIRIUS Soft Starter ES V17 (TIA Portal) (All versions), SIRIUS Soft Starter ES V18 (TIA Portal) (All versions), SIRIUS Soft Starter ES V19 (TIA Portal) (All versions), SIRIUS Soft Starter ES V20 (TIA Portal) (All versions), TIA Portal Cloud V17 (All versions < V6.0.0.0), TIA Portal Cloud V18 (All versions < V6.3.0.2), TIA Portal Cloud V19 (All versions < V5.2.1.1), TIA Portal Cloud V20 (All versions < V5.2.2.2), TIA Portal Test Suite V20 (All versions < V20 Update 4). Affected products do not properly sanitize Interprocess Communication input received through a Windows Named Pipe accessible to all local users. This could allow an authenticated local attacker to cause a type confusion and execute arbitrary code within the affected application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-30033": {
+    "cvss": 7.8,
+    "description": "The affected setup component is vulnerable to DLL hijacking. This could allow an attacker to execute arbitrary code when a legitimate user installs an application that uses the affected setup component.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-40759": {
+    "cvss": 7.8,
+    "description": "A vulnerability has been identified in SIMATIC S7-PLCSIM V17 (All versions), SIMATIC STEP 7 V17 (All versions < V17 Update 9), SIMATIC STEP 7 V18 (All versions < V18 Update 6), SIMATIC STEP 7 V19 (All versions < V19 Update 4), SIMATIC STEP 7 V20 (All versions < V20 Update 4), SIMATIC WinCC V17 (All versions < V17 Update 9), SIMATIC WinCC V18 (All versions < V18 Update 6), SIMATIC WinCC V19 (All versions < V19 Update 4), SIMATIC WinCC V20 (All versions < V20 Update 4), SIMOCODE ES V17 (All versions), SIMOCODE ES V18 (All versions), SIMOCODE ES V19 (All versions), SIMOCODE ES V20 (All versions), SIMOTION SCOUT TIA V5.4 (All versions), SIMOTION SCOUT TIA V5.5 (All versions), SIMOTION SCOUT TIA V5.6 (All versions < V5.6 SP1 HF7), SIMOTION SCOUT TIA V5.7 (All versions), SINAMICS Startdrive V17 (All versions), SINAMICS Startdrive V18 (All versions), SINAMICS Startdrive V19 (All versions), SINAMICS Startdrive V20 (All versions), SIRIUS Safety ES V17 (TIA Portal) (All versions), SIRIUS Safety ES V18 (TIA Portal) (All versions), SIRIUS Safety ES V19 (TIA Portal) (All versions), SIRIUS Safety ES V20 (TIA Portal) (All versions), SIRIUS Soft Starter ES V17 (TIA Portal) (All versions), SIRIUS Soft Starter ES V18 (TIA Portal) (All versions), SIRIUS Soft Starter ES V19 (TIA Portal) (All versions), SIRIUS Soft Starter ES V20 (TIA Portal) (All versions), TIA Portal Cloud V17 (All versions < V6.0.0.0), TIA Portal Cloud V18 (All versions < V6.3.0.2), TIA Portal Cloud V19 (All versions < V5.2.1.1), TIA Portal Cloud V20 (All versions < V5.2.2.2). Affected products do not properly sanitize stored security properties when parsing project files. This could allow an attacker to cause a type confusion and execute arbitrary code within the affected application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-40742": {
+    "cvss": 5.3,
+    "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions < V11.0), SIPROTEC 5 6MD85 (CP300) (All versions < V11.0), SIPROTEC 5 6MD86 (CP300) (All versions < V11.0), SIPROTEC 5 6MD89 (CP300) (All versions < V11.0), SIPROTEC 5 6MD89 (CP300) V9.6x (All versions < V11.0), SIPROTEC 5 6MU85 (CP300) (All versions < V11.0), SIPROTEC 5 7KE85 (CP300) (All versions < V11.0), SIPROTEC 5 7SA82 (CP100) (All versions < V8.91), SIPROTEC 5 7SA82 (CP150) (All versions < V11.0), SIPROTEC 5 7SA86 (CP300) (All versions < V11.0), SIPROTEC 5 7SA87 (CP300) (All versions < V11.0), SIPROTEC 5 7SD82 (CP100) (All versions < V8.91), SIPROTEC 5 7SD82 (CP150) (All versions < V11.0), SIPROTEC 5 7SD86 (CP300) (All versions < V11.0), SIPROTEC 5 7SD87 (CP300) (All versions < V11.0), SIPROTEC 5 7SJ81 (CP100) (All versions < V8.91), SIPROTEC 5 7SJ81 (CP150) (All versions < V11.0), SIPROTEC 5 7SJ82 (CP100) (All versions < V8.91), SIPROTEC 5 7SJ82 (CP150) (All versions < V11.0), SIPROTEC 5 7SJ85 (CP300) (All versions < V11.0), SIPROTEC 5 7SJ86 (CP300) (All versions < V11.0), SIPROTEC 5 7SK82 (CP100) (All versions < V8.91), SIPROTEC 5 7SK82 (CP150) (All versions < V11.0), SIPROTEC 5 7SK85 (CP300) (All versions < V11.0), SIPROTEC 5 7SL82 (CP100) (All versions < V8.91), SIPROTEC 5 7SL82 (CP150) (All versions < V11.0), SIPROTEC 5 7SL86 (CP300) (All versions < V11.0), SIPROTEC 5 7SL87 (CP300) (All versions < V11.0), SIPROTEC 5 7SS85 (CP300) (All versions < V11.0), SIPROTEC 5 7ST85 (CP300) (All versions < V11.0), SIPROTEC 5 7ST86 (CP300) (All versions < V11.0), SIPROTEC 5 7SX82 (CP150) (All versions < V11.0), SIPROTEC 5 7SX85 (CP300) (All versions < V11.0), SIPROTEC 5 7SY82 (CP150) (All versions < V11.0), SIPROTEC 5 7UM85 (CP300) (All versions < V11.0), SIPROTEC 5 7UT82 (CP100) (All versions < V8.91), SIPROTEC 5 7UT82 (CP150) (All versions < V11.0), SIPROTEC 5 7UT85 (CP300) (All versions < V11.0), SIPROTEC 5 7UT86 (CP300) (All versions < V11.0), SIPROTEC 5 7UT87 (CP300) (All versions < V11.0), SIPROTEC 5 7VE85 (CP300) (All versions < V11.0), SIPROTEC 5 7VK87 (CP300) (All versions < V11.0), SIPROTEC 5 7VU85 (CP300) (All versions < V11.0), SIPROTEC 5 Compact 7SX800 (CP050) (All versions < V11.0). The affected devices include session identifiers in URL requests for certain functionalities. This could allow an attacker to retrieve sensitive session data from browser history, logs, or other storage mechanisms, potentially leading to unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-49849": {
+    "cvss": 7.8,
+    "description": "A vulnerability has been identified in SIMATIC S7-PLCSIM V16 (All versions), SIMATIC S7-PLCSIM V17 (All versions), SIMATIC STEP 7 Safety V16 (All versions), SIMATIC STEP 7 Safety V17 (All versions < V17 Update 9), SIMATIC STEP 7 Safety V18 (All versions < V18 Update 6), SIMATIC STEP 7 Safety V19 (All versions < V19 Update 4), SIMATIC STEP 7 V16 (All versions), SIMATIC STEP 7 V17 (All versions < V17 Update 9), SIMATIC STEP 7 V18 (All versions < V18 Update 6), SIMATIC STEP 7 V19 (All versions < V19 Update 4), SIMATIC WinCC Unified V16 (All versions), SIMATIC WinCC Unified V17 (All versions < V17 Update 9), SIMATIC WinCC Unified V18 (All versions < V18 Update 6), SIMATIC WinCC Unified V19 (All versions < V19 Update 4), SIMATIC WinCC V16 (All versions), SIMATIC WinCC V17 (All versions < V17 Update 9), SIMATIC WinCC V18 (All versions < V18 Update 6), SIMATIC WinCC V19 (All versions < V19 Update 4), SIMOCODE ES V16 (All versions), SIMOCODE ES V17 (All versions), SIMOCODE ES V18 (All versions), SIMOCODE ES V19 (All versions), SIMOTION SCOUT TIA V5.4 (All versions < V17 Update 9), SIMOTION SCOUT TIA V5.5 (All versions < V18 Update 6), SIMOTION SCOUT TIA V5.6 (All versions < V19 Update 4), SINAMICS Startdrive V16 (All versions), SINAMICS Startdrive V17 (All versions), SINAMICS Startdrive V18 (All versions), SINAMICS Startdrive V19 (All versions), SIRIUS Safety ES V17 (TIA Portal) (All versions), SIRIUS Safety ES V18 (TIA Portal) (All versions < V18 Update 6), SIRIUS Safety ES V19 (TIA Portal) (All versions), SIRIUS Soft Starter ES V17 (TIA Portal) (All versions), SIRIUS Soft Starter ES V18 (TIA Portal) (All versions), SIRIUS Soft Starter ES V19 (TIA Portal) (All versions), TIA Portal Cloud V16 (All versions), TIA Portal Cloud V17 (All versions < V6.0.0.0), TIA Portal Cloud V18 (All versions < V6.3.0.2), TIA Portal Cloud V19 (All versions < V5.2.1.1). Affected products do not properly sanitize user-controllable input when parsing log files. This could allow an attacker to cause a type confusion and execute arbitrary code within the affected application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38283": {
+    "cvss": 5.3,
+    "description": "In OpenBGPD before 8.1, incorrect handling of BGP update data (length of path attributes) set by a potentially distant remote actor may cause the system to incorrectly reset a session. This is fixed in OpenBSD 7.3 errata 006.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38029": {
+    "cvss": 9.8,
+    "description": "Saho’s attendance devices ADM100 and ADM-100FP has insufficient filtering for special characters and file type within their file uploading function. A unauthenticate remote attacker authenticated can upload and execute arbitrary files to perform arbitrary system commands or disrupt service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38030": {
+    "cvss": 7.5,
+    "description": "Saho’s attendance devices ADM100 and ADM-100FP have a vulnerability of missing authentication for critical functions. An unauthenticated remote attacker can execute system commands in partial website URLs to read sensitive device information without permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39062": {
+    "cvss": 6.1,
+    "description": "Cross Site Scripting vulnerability in Spipu HTML2PDF before v.5.2.8 allows a remote attacker to execute arbitrary code via a crafted script to the forms.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2023-39578": {
+    "cvss": 4.8,
+    "description": "A stored cross-site scripting (XSS) vulnerability in the Create function of Zenario CMS v9.4 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Menu navigation text field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-36741": {
+    "cvss": 7.5,
+    "description": "Microsoft Edge (Chromium-based) Elevation of Privilege Vulnerability",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-40530": {
+    "cvss": 4.7,
+    "description": "Improper authorization in handler for custom URL scheme issue in 'Skylark' App for Android 6.2.13 and earlier and 'Skylark' App for iOS 6.2.13 and earlier allows an attacker to lead a user to access an arbitrary website via another application installed on the user's device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-46884": {
+    "cvss": 8.8,
+    "description": "A potential use-after-free vulnerability existed in SVG Images if the Refresh Driver was destroyed at an inopportune time. This could have lead to memory corruption or a potentially exploitable crash. *Note*: This advisory was added on December 13th, 2022 after discovering it was inadvertently left out of the original advisory. The fix was included in the original release of Firefox 106. This vulnerability affects Firefox < 106.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-34971": {
+    "cvss": 8.8,
+    "description": "An inadequate encryption strength vulnerability has been reported to affect QNAP operating systems. If exploited, the vulnerability possibly allows local network clients to decrypt the data using brute force attacks via unspecified vectors. We have already fixed the vulnerability in the following versions: QTS 5.0.1.2425 build 20230609 and later QTS 5.1.0.2444 build 20230629 and later QTS 4.5.4.2467 build 20230718 and later QuTS hero h5.1.0.2424 build 20230609 and later QuTS hero h4.5.4.2476 build 20230728 and later",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-34972": {
+    "cvss": 6.5,
+    "description": "A cleartext transmission of sensitive information vulnerability has been reported to affect QNAP operating systems. If exploited, the vulnerability possibly allows local network clients to read the contents of unexpected sensitive data via unspecified vectors. We have already fixed the vulnerability in the following versions: QTS 5.0.1.2425 build 20230609 and later QTS 5.1.0.2444 build 20230629 and later QuTS hero h5.1.0.2424 build 20230609 and later",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-34973": {
+    "cvss": 5.3,
+    "description": "An insufficient entropy vulnerability has been reported to affect QNAP operating systems. If exploited, the vulnerability possibly allows remote users to predict secret via unspecified vectors. We have already fixed the vulnerability in the following versions: QTS 5.0.1.2425 build 20230609 and later QTS 5.1.0.2444 build 20230629 and later QuTS hero h5.1.0.2424 build 20230609 and later",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39801": {
+    "cvss": 4.6,
+    "description": "A lack of exception handling in the Renault Easy Link Multimedia System Software Version 283C35519R allows attackers to cause a Denial of Service (DoS) via supplying crafted WMA files when connecting a device to the vehicle's USB plug and play feature.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-40612": {
+    "cvss": 8.0,
+    "description": "In OpenMNS Horizon 31.0.8 and versions earlier than 32.0.2, the file editor which is accessible to any user with ROLE_FILESYSTEM_EDITOR privileges is vulnerable to XXE injection attacks. The solution is to upgrade to Meridian 2023.1.5 or Horizon 32.0.2 or newer. Meridian and Horizon installation instructions state that they are intended for installation within an organization's private networks and should not be directly accessible from the Internet. OpenNMS thanks Erik Wynter for reporting this issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-3742": {
+    "cvss": 6.7,
+    "description": "A potential vulnerability was discovered in LCFC BIOS for some Lenovo consumer notebook models that could allow a local attacker with elevated privileges to execute arbitrary code due to improper buffer validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-3743": {
+    "cvss": 4.4,
+    "description": "A potential vulnerability was discovered in LCFC BIOS for some Lenovo consumer notebook models that could allow a local attacker with elevated privileges under certain conditions the ability to enumerate Embedded Controller (EC) commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-3744": {
+    "cvss": 6.7,
+    "description": "A potential vulnerability was discovered in LCFC BIOS for some Lenovo consumer notebook models that could allow a local attacker with elevated privileges to unlock UEFI variables due to a hard-coded SMI handler credential.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-3745": {
+    "cvss": 4.4,
+    "description": "A potential vulnerability was discovered in LCFC BIOS for some Lenovo consumer notebook models that could allow a local attacker with elevated privileges to view incoming and returned data from SMI.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-3746": {
+    "cvss": 6.7,
+    "description": "A potential vulnerability was discovered in LCFC BIOS for some Lenovo consumer notebook models that could allow a local attacker with elevated privileges to cause some peripherals to work abnormally due to an exposed Embedded Controller (EC) interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-44729": {
+    "cvss": 7.1,
+    "description": "Server-Side Request Forgery (SSRF) vulnerability in Apache Software Foundation Apache XML Graphics Batik.This issue affects Apache XML Graphics Batik: 1.16. On version 1.16, a malicious SVG could trigger loading external resources by default, causing resource consumption or in some cases even information disclosure. Users are recommended to upgrade to version 1.17 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-44730": {
+    "cvss": 4.4,
+    "description": "Server-Side Request Forgery (SSRF) vulnerability in Apache Software Foundation Apache XML Graphics Batik.This issue affects Apache XML Graphics Batik: 1.16. A malicious SVG can probe user profile / data and send it directly as parameter to a URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-33850": {
+    "cvss": 7.5,
+    "description": "IBM GSKit-Crypto could allow a remote attacker to obtain sensitive information, caused by a timing-based side channel in the RSA Decryption implementation. By sending an overly large number of trial messages for decryption, an attacker could exploit this vulnerability to obtain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-46751": {
+    "cvss": 8.2,
+    "description": "Improper Restriction of XML External Entity Reference, XML Injection (aka Blind XPath Injection) vulnerability in Apache Software Foundation Apache Ivy.This issue affects any version of Apache Ivy prior to 2.5.2. When Apache Ivy prior to 2.5.2 parses XML files - either its own configuration, Ivy files or Apache Maven POMs - it will allow downloading external document type definitions and expand any entity references contained therein when used. This can be used to exfiltrate data, access resources only the machine running Ivy has access to or disturb the execution of Ivy in different ways. Starting with Ivy 2.5.2 DTD processing is disabled by default except when parsing Maven POMs where the default is to allow DTD processing but only to include a DTD snippet shipping with Ivy that is needed to deal with existing Maven POMs that are not valid XML files but are nevertheless accepted by Maven. Access can be be made more lenient via newly introduced system properties where needed. Users of Ivy prior to version 2.5.2 can use Java system properties to restrict processing of external DTDs, see the section about \"JAXP Properties for External Access restrictions\" inside Oracle's \"Java API for XML Processing (JAXP) Security Guide\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-37369": {
+    "cvss": 7.5,
+    "description": "In Qt before 5.15.15, 6.x before 6.2.9, and 6.3.x through 6.5.x before 6.5.2, there can be an application crash in QXmlStreamReader via a crafted XML string that triggers a situation in which a prefix is greater than a length.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-2110": {
+    "cvss": 7.1,
+    "description": "Improper path handling in Obsidian desktop before 1.2.8 on Windows, Linux and macOS allows a crafted webpage to access local files and exfiltrate them to remote web servers via \"app://local/ \". This vulnerability can be exploited if a user opens a malicious markdown file in Obsidian, or copies text from a malicious webpage and paste it into Obsidian.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-34412": {
+    "cvss": 4.8,
+    "description": "A vulnerability in Red Lion Europe mbNET/mbNET.rokey and Helmholz REX 200 and REX 250 devices with firmware lower 7.3.2 allows an authenticated remote attacker with high privileges to inject malicious HTML or JavaScript code (XSS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4894": {
+    "cvss": 7.3,
+    "description": "Certain HP and Samsung Printer software packages may potentially be vulnerable to elevation of privilege due to Uncontrolled Search Path Element.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-40021": {
+    "cvss": 5.3,
+    "description": "Oppia is an online learning platform. When comparing a received CSRF token against the expected token, Oppia uses the string equality operator (`==`), which is not safe against timing attacks. By repeatedly submitting invalid tokens, an attacker can brute-force the expected CSRF token character by character. Once they have recovered the token, they can then submit a forged request on behalf of a logged-in user and execute privileged actions on that user's behalf. In particular the function to validate received CSRF tokens is at `oppia.core.controllers.base.CsrfTokenManager.is_csrf_token_valid`. An attacker who can lure a logged-in Oppia user to a malicious website can perform any change on Oppia that the user is authorized to do, including changing profile information; creating, deleting, and changing explorations; etc. Note that the attacker cannot change a user's login credentials. An attack would need to complete within 1 second because every second, the time used in computing the token changes. This issue has been addressed in commit `b89bf80837` which has been included in release `3.3.2-hotfix-2`. Users are advised to upgrade. There are no known workarounds for this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4345": {
+    "cvss": 6.5,
+    "description": "Broadcom RAID Controller web interface is vulnerable client-side control bypass leads to unauthorized data access for low privileged user",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4338": {
+    "cvss": 9.8,
+    "description": "Broadcom RAID Controller web interface is vulnerable due to insecure default of HTTP configuration that does not provide X-Content-Type-Options Headers",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4339": {
+    "cvss": 7.5,
+    "description": "Broadcom RAID Controller web interface is vulnerable to exposure of private keys used for CIM stored with insecure file permissions",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4340": {
+    "cvss": 9.8,
+    "description": "Broadcom RAID Controller is vulnerable to Privilege escalation by taking advantage of the Session prints in the log file",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4341": {
+    "cvss": 9.8,
+    "description": "Broadcom RAID Controller is vulnerable to Privilege escalation to root due to creation of insecure folders by Web GUI",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4342": {
+    "cvss": 9.8,
+    "description": "Broadcom RAID Controller web interface is vulnerable due to insecure defaults of lacking HTTP strict-transport-security policy",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4343": {
+    "cvss": 7.5,
+    "description": "Broadcom RAID Controller web interface is vulnerable due to exposure of sensitive password information in the URL as a URL search parameter",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4344": {
+    "cvss": 9.8,
+    "description": "Broadcom RAID Controller web interface is vulnerable to insufficient randomness due to improper use of ssl.rnd to setup CIM connection",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-40291": {
+    "cvss": 6.8,
+    "description": "Harman Infotainment 20190525031613 allows root access via SSH over a USB-to-Ethernet dongle with a password that is an internal project name.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-3160": {
+    "cvss": 7.8,
+    "description": "The vulnerability potentially allows an attacker to misuse ESET’s file operations during the module update to delete or move files without having proper permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39380": {
+    "cvss": 7.5,
+    "description": "Permission control vulnerability in the audio module. Successful exploitation of this vulnerability may cause audio devices to perform abnormally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39381": {
+    "cvss": 7.5,
+    "description": "Input verification vulnerability in the storage module. Successful exploitation of this vulnerability may cause the device to restart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39382": {
+    "cvss": 7.5,
+    "description": "Input verification vulnerability in the audio module. Successful exploitation of this vulnerability may cause virtual machines (VMs) to restart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39383": {
+    "cvss": 7.5,
+    "description": "Vulnerability of input parameters being not strictly verified in the AMS module. Successful exploitation of this vulnerability may compromise apps' data security.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39384": {
+    "cvss": 7.5,
+    "description": "Vulnerability of incomplete permission verification in the input method module. Successful exploitation of this vulnerability may cause features to perform abnormally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39388": {
+    "cvss": 7.5,
+    "description": "Vulnerability of input parameters being not strictly verified in the PMS module. Successful exploitation of this vulnerability may cause home screen unavailability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39389": {
+    "cvss": 7.5,
+    "description": "Vulnerability of input parameters being not strictly verified in the PMS module. Successful exploitation of this vulnerability may cause home screen unavailability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39392": {
+    "cvss": 7.5,
+    "description": "Vulnerability of insecure signatures in the OsuLogin module. Successful exploitation of this vulnerability may cause OsuLogin to be maliciously modified and overwritten.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39393": {
+    "cvss": 7.5,
+    "description": "Vulnerability of insecure signatures in the ServiceWifiResources module. Successful exploitation of this vulnerability may cause ServiceWifiResources to be maliciously modified and overwritten.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39396": {
+    "cvss": 7.5,
+    "description": "Deserialization vulnerability in the input module. Successful exploitation of this vulnerability may affect availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39405": {
+    "cvss": 9.8,
+    "description": "Vulnerability of out-of-bounds parameter read/write in the Wi-Fi module. Successful exploitation of this vulnerability may cause other apps to be executed with escalated privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39385": {
+    "cvss": 9.1,
+    "description": "Vulnerability of configuration defects in the media module of certain products.. Successful exploitation of this vulnerability may cause unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39386": {
+    "cvss": 7.5,
+    "description": "Vulnerability of input parameters being not strictly verified in the PMS module. Successful exploitation of this vulnerability may cause newly installed apps to fail to restart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39387": {
+    "cvss": 5.3,
+    "description": "Vulnerability of permission control in the window management module. Successful exploitation of this vulnerability may cause malicious pop-up windows.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39390": {
+    "cvss": 7.5,
+    "description": "Vulnerability of input parameter verification in certain APIs in the window management module. Successful exploitation of this vulnerability may cause the device to restart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39391": {
+    "cvss": 7.5,
+    "description": "Vulnerability of system file information leakage in the USB Service module. Successful exploitation of this vulnerability may affect confidentiality.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39394": {
+    "cvss": 7.5,
+    "description": "Vulnerability of API privilege escalation in the wifienhance module. Successful exploitation of this vulnerability may cause the arp list to be modified.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39397": {
+    "cvss": 7.5,
+    "description": "Input parameter verification vulnerability in the communication system. Successful exploitation of this vulnerability may affect availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39398": {
+    "cvss": 9.1,
+    "description": "Parameter verification vulnerability in the installd module. Successful exploitation of this vulnerability may cause sandbox files to be read and written without authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39399": {
+    "cvss": 9.1,
+    "description": "Parameter verification vulnerability in the installd module. Successful exploitation of this vulnerability may cause sandbox files to be read and written without authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39400": {
+    "cvss": 9.1,
+    "description": "Parameter verification vulnerability in the installd module. Successful exploitation of this vulnerability may cause sandbox files to be read and written without authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39401": {
+    "cvss": 9.1,
+    "description": "Parameter verification vulnerability in the installd module. Successful exploitation of this vulnerability may cause sandbox files to be read and written without authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39402": {
+    "cvss": 9.1,
+    "description": "Parameter verification vulnerability in the installd module. Successful exploitation of this vulnerability may cause sandbox files to be read and written without authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39403": {
+    "cvss": 9.1,
+    "description": "Parameter verification vulnerability in the installd module. Successful exploitation of this vulnerability may cause sandbox files to be read and written without authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39404": {
+    "cvss": 7.5,
+    "description": "Vulnerability of input parameter verification in certain APIs in the window management module. Successful exploitation of this vulnerability may cause the device to restart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39406": {
+    "cvss": 7.5,
+    "description": "Permission control vulnerability in the XLayout component. Successful exploitation of this vulnerability may cause apps to forcibly restart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-27861": {
+    "cvss": 6.1,
+    "description": "Unauth. Open Redirect vulnerability in Arscode Ninja Popups plugin <= 4.7.5 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-44629": {
+    "cvss": 4.8,
+    "description": "Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Catalyst Connect Catalyst Connect Zoho CRM Client Portal plugin <= 2.0.0 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-35085": {
+    "cvss": 9.8,
+    "description": "An integer overflow vulnerability in all UniFi Access Points and Switches, excluding the Switch Flex Mini, with SNMP Monitoring and default settings enabled could allow a Remote Code Execution (RCE). Affected Products: All UniFi Access Points (Version 6.5.50 and earlier) All UniFi Switches (Version 6.5.32 and earlier) -USW Flex Mini excluded. Mitigation: Update UniFi Access Points to Version 6.5.62 or later. Update the UniFi Switches to Version 6.5.59 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-38034": {
+    "cvss": 9.8,
+    "description": "A command injection vulnerability in the DHCP Client function of all UniFi Access Points and Switches, excluding the Switch Flex Mini, could allow a Remote Code Execution (RCE). Affected Products: All UniFi Access Points (Version 6.5.53 and earlier) All UniFi Switches (Version 6.5.32 and earlier) -USW Flex Mini excluded. Mitigation: Update UniFi Access Points to Version 6.5.62 or later. Update UniFi Switches to Version 6.5.59 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-40235": {
+    "cvss": 6.5,
+    "description": "An NTLM Hash Disclosure was discovered in ArchiMate Archi before 5.1.0. When parsing the XMLNS value of an ArchiMate project file, if the namespace does not match the expected ArchiMate URL, the parser will access the provided resource. If the provided resource is a UNC path pointing to a share server that does not accept a guest account, the host will try to authenticate on the share by using the current user's session. NOTE: this issue occurs because Archi uses an unsafe configuration of the Eclipse Modeling Framework.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-47185": {
+    "cvss": 7.5,
+    "description": "Improper input validation vulnerability on the range header in Apache Software Foundation Apache Traffic Server.This issue affects Apache Traffic Server: through 9.2.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-37861": {
+    "cvss": 8.8,
+    "description": "In PHOENIX CONTACTs WP 6xxx series web panels in versions prior to 4.0.10 an authenticated remote attacker can execute code with root permissions with a specially crafted HTTP POST when uploading a certificate to the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-37862": {
+    "cvss": 8.2,
+    "description": "In PHOENIX CONTACTs WP 6xxx series web panels in versions prior to 4.0.10 an unauthenticated remote attacker can access upload-functions of the HTTP API. This might cause certificate errors for SSL-connections and might result in a partial denial-of-service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-37863": {
+    "cvss": 7.2,
+    "description": "In PHOENIX CONTACTs WP 6xxx series web panels in versions prior to 4.0.10 a remote attacker with SNMPv2 write privileges may use an a special SNMP request to gain full access to the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-37864": {
+    "cvss": 7.2,
+    "description": "In PHOENIX CONTACTs WP 6xxx series web panels in versions prior to 4.0.10 a remote attacker with SNMPv2 write privileges may use an a special SNMP request to gain full access to the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-24477": {
+    "cvss": 7.0,
+    "description": "In certain conditions, depending on timing and the usage of the Chrome web browser, Guardian/CMC versions before 22.6.2 do not always completely invalidate the user session upon logout. Thus an authenticated local attacker may gain acces to the original user's session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4955": {
+    "cvss": 6.5,
+    "description": "Inappropriate implementation in DevTools in Google Chrome prior to 108.0.5359.71 allowed an attacker who convinced a user to install a malicious extension to bypass file access restrictions via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-34453": {
+    "cvss": 7.1,
+    "description": "Dell XtremIO X2 XMS versions prior to 6-4-1.11 contain an improper access control vulnerability. A remote read only user could potentially exploit this vulnerability to perform add/delete QoS policies which are disabled by default.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-26838": {
+    "cvss": 6.5,
+    "description": "Path traversal vulnerability in Importing Mobile Device Data of Cybozu Remote Service 3.1.2 allows a remote authenticated attacker to cause a denial-of-service (DoS) condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-2346": {
+    "cvss": 4.3,
+    "description": "In affected versions of Octopus Deploy it is possible for a low privileged guest user to interact with extension endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-2416": {
+    "cvss": 4.3,
+    "description": "In affected versions of Octopus Deploy it is possible for a low privileged guest user to craft a request that allows enumeration/recon of an environment.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4907": {
+    "cvss": 8.8,
+    "description": "Uninitialized Use in FFmpeg in Google Chrome prior to 108.0.5359.71 allowed a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4908": {
+    "cvss": 4.3,
+    "description": "Inappropriate implementation in iFrame Sandbox in Google Chrome prior to 107.0.5304.62 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4909": {
+    "cvss": 6.3,
+    "description": "Inappropriate implementation in XML in Google Chrome prior to 107.0.5304.62 allowed a remote attacker to potentially perform an ASLR bypass via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4910": {
+    "cvss": 5.4,
+    "description": "Inappropriate implementation in Autofill in Google Chrome prior to 107.0.5304.62 allowed a remote attacker to bypass navigation restrictions via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4911": {
+    "cvss": 6.5,
+    "description": "Insufficient data validation in DevTools in Google Chrome prior to 106.0.5249.62 allowed a remote attacker to bypass content security policy via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4912": {
+    "cvss": 8.8,
+    "description": "Type Confusion in MathML in Google Chrome prior to 105.0.5195.52 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4913": {
+    "cvss": 6.5,
+    "description": "Inappropriate implementation in Extensions in Google Chrome prior to 105.0.5195.52 allowed a remote attacker who had compromised the renderer process to spoof extension storage via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4914": {
+    "cvss": 8.8,
+    "description": "Heap buffer overflow in PrintPreview in Google Chrome prior to 104.0.5112.79 allowed an attacker who convinced a user to install a malicious extension to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4915": {
+    "cvss": 6.5,
+    "description": "Inappropriate implementation in URL Formatting in Google Chrome prior to 103.0.5060.134 allowed a remote attacker to perform domain spoofing via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4916": {
+    "cvss": 8.8,
+    "description": "Use after free in Media in Google Chrome prior to 103.0.5060.53 allowed a remote attacker to perform arbitrary read/write via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4917": {
+    "cvss": 4.3,
+    "description": "Incorrect security UI in Notifications in Google Chrome on Android prior to 103.0.5060.53 allowed a remote attacker to obscure the full screen notification via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4918": {
+    "cvss": 8.8,
+    "description": "Use after free in UI in Google Chrome prior to 102.0.5005.61 allowed a remote attacker to perform arbitrary read/write via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4919": {
+    "cvss": 8.8,
+    "description": "Use after free in Base Internals in Google Chrome prior to 101.0.4951.41 allowed a remote attacker to perform arbitrary read/write via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4920": {
+    "cvss": 9.6,
+    "description": "Heap buffer overflow in Blink in Google Chrome prior to 101.0.4951.41 allowed a remote attacker who convinced a user to engage in specific UI gestures to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4921": {
+    "cvss": 8.8,
+    "description": "Use after free in Accessibility in Google Chrome prior to 99.0.4844.51 allowed a remote attacker who convinced a user to engage in specific UI gestures to perform arbitrary read/write via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4922": {
+    "cvss": 6.5,
+    "description": "Inappropriate implementation in Blink in Google Chrome prior to 99.0.4844.51 allowed a remote attacker to perform UI spoofing via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4923": {
+    "cvss": 3.1,
+    "description": "Inappropriate implementation in Omnibox in Google Chrome prior to 99.0.4844.51 allowed an attacker in a privileged network position to perform a man-in-the-middle attack via malicious network traffic. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4924": {
+    "cvss": 9.6,
+    "description": "Use after free in WebRTC in Google Chrome prior to 97.0.4692.71 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4925": {
+    "cvss": 6.5,
+    "description": "Insufficient validation of untrusted input in QUIC in Google Chrome prior to 97.0.4692.71 allowed a remote attacker to perform header splitting via malicious network traffic. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4926": {
+    "cvss": 6.5,
+    "description": "Insufficient policy enforcement in Intents in Google Chrome on Android prior to 109.0.5414.119 allowed a remote attacker to bypass same origin policy via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-43701": {
+    "cvss": 7.8,
+    "description": "When the installation directory does not have sufficiently restrictive file permissions, an attacker can modify files in the installation directory to cause execution of malicious code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-43702": {
+    "cvss": 7.8,
+    "description": "When the directory containing the installer does not have sufficiently restrictive file permissions, an attacker can modify (or replace) the installer to execute malicious code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-43703": {
+    "cvss": 7.8,
+    "description": "An installer that loads or executes files using an unconstrained search path may be vulnerable to substitute files under control of an attacker being loaded or executed instead of the intended files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-2502": {
+    "cvss": 7.5,
+    "description": "A vulnerability exists in the HCI IEC 60870-5-104 function included in certain versions of the RTU500 series product. The vulnerability can only be exploited, if the HCI 60870-5-104 is configured with support for IEC 62351-5 and the CMU contains the license feature ‘Advanced security’ which must be ordered separately. If these preconditions are fulfilled, an attacker could exploit the vulnerability by sending a specially crafted message to the RTU500, causing the targeted RTU500 CMU to reboot. The vulnerability is caused by a missing input data validation which eventually if exploited causes an internal buffer to overflow in the HCI IEC 60870-5-104 function.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4608": {
+    "cvss": 7.5,
+    "description": "A vulnerability exists in HCI IEC 60870-5-104 function included in certain versions of the RTU500 series product. The vulnerability can only be exploited, if the HCI 60870-5-104 is configured with support for IEC 62351-3. After session resumption interval is expired an RTU500 initiated update of session parameters causes an unexpected restart due to a stack overflow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-30280": {
+    "cvss": 8.8,
+    "description": "/SecurityManagement/html/createuser.jsf in Nokia NetAct 22 allows CSRF. A remote attacker is able to create users with arbitrary privileges, even administrative privileges. The application (even if it implements a CSRF token for the random GET request) does not ever verify a CSRF token. With a little help of social engineering/phishing (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker's choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-28733": {
+    "cvss": 8.1,
+    "description": "Integer underflow in grub_net_recv_ip4_packets; A malicious crafted IP packet can lead to an integer underflow in grub_net_recv_ip4_packets() function on rsm->total_len value. Under certain circumstances the total_len value may end up wrapping around to a small integer number which will be used in memory allocation. If the attack succeeds in such way, subsequent operations can write past the end of the buffer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-28734": {
+    "cvss": 7.0,
+    "description": "Out-of-bounds write when handling split HTTP headers; When handling split HTTP headers, GRUB2 HTTP code accidentally moves its internal data buffer point by one position. This can lead to a out-of-bound write further when parsing the HTTP request, writing a NULL byte past the buffer. It's conceivable that an attacker controlled set of packets can lead to corruption of the GRUB2's internal memory metadata.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-28735": {
+    "cvss": 7.8,
+    "description": "The GRUB2's shim_lock verifier allows non-kernel files to be loaded on shim-powered secure boot systems. Allowing such files to be loaded may lead to unverified code and modules to be loaded in GRUB2 breaking the secure boot trust-chain.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-28736": {
+    "cvss": 7.8,
+    "description": "There's a use-after-free vulnerability in grub_cmd_chainloader() function; The chainloader command is used to boot up operating systems that doesn't support multiboot and do not have direct support from GRUB2. When executing chainloader more than once a use-after-free vulnerability is triggered. If an attacker can control the GRUB2's memory allocation pattern sensitive data may be exposed and arbitrary code execution can be achieved.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-28737": {
+    "cvss": 7.8,
+    "description": "There's a possible overflow in handle_image() when shim tries to load and execute crafted EFI executables; The handle_image() function takes into account the SizeOfRawData field from each section to be loaded. An attacker can leverage this to perform out-of-bound writes into memory. Arbitrary code execution is not discarded in such scenario.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4146": {
+    "cvss": 9.8,
+    "description": "Expression Language Injection vulnerability in Hitachi Replication Manager on Windows, Linux, Solaris allows Code Injection.This issue affects Hitachi Replication Manager: before 8.8.5-02.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45828": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in NooTheme Noo Timetable plugin <= 2.1.3 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-34155": {
+    "cvss": 8.8,
+    "description": "Improper Authentication vulnerability in miniOrange OAuth Single Sign On – SSO (OAuth Client) plugin allows Authentication Bypass.This issue affects OAuth Single Sign On – SSO (OAuth Client): from n/a through 6.23.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-41409": {
+    "cvss": 7.5,
+    "description": "Integer overflow vulnerability in pcre2test before 10.41 allows attackers to cause a denial of service or other unspecified impacts via negative input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-47421": {
+    "cvss": 4.8,
+    "description": "Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Repute InfoSystems ARMember (free), Repute InfoSystems ARMember (premium) plugins.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4952": {
+    "cvss": 7.5,
+    "description": "A vulnerability has been found in OmniSharp csharp-language-server-protocol up to 0.19.6 and classified as problematic. This vulnerability affects the function CreateSerializerSettings of the file src/JsonRpc/Serialization/SerializerBase.cs of the component JSON Serializer. The manipulation leads to resource consumption. Upgrading to version 0.19.7 is able to address this issue. The patch is identified as 7fd2219f194a9ef2a8901bb131c5fa12272305ce. It is recommended to upgrade the affected component. VDB-234238 is the identifier assigned to this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-47172": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in HasThemes ShopLentor plugin <= 2.6.2 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-36424": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Nikola Loncar Easy Appointments plugin <= 3.11.9 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-38062": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Metagauss Download Theme plugin <= 1.0.9 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-42009": {
+    "cvss": 8.8,
+    "description": "SpringEL injection in the server agent in Apache Ambari version 2.7.0 to 2.7.6 allows a malicious authenticated user to execute arbitrary code remotely. Users are recommended to upgrade to 2.7.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45855": {
+    "cvss": 8.8,
+    "description": "SpringEL injection in the metrics source in Apache Ambari version 2.7.0 to 2.7.6 allows a malicious authenticated user to execute arbitrary code remotely. Users are recommended to upgrade to 2.7.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-46651": {
+    "cvss": 6.5,
+    "description": "Apache Airflow, versions before 2.6.3, is affected by a vulnerability that allows an unauthorized actor to gain access to sensitive information in Connection edit view. This vulnerability is considered low since it requires someone with access to Connection resources specifically updating the connection to exploit it. Users should upgrade to version 2.6.3 or later which has removed the vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-22302": {
+    "cvss": 3.3,
+    "description": "A clear text storage of sensitive information (CWE-312) vulnerability in both FortiGate version 6.4.0 through 6.4.1, 6.2.0 through 6.2.9 and 6.0.0 through 6.0.13 and FortiAuthenticator version 5.5.0 and all versions of 6.1 and 6.0 may allow a local unauthorized party to retrieve the Fortinet private keys used to establish secure communication with both Apple Push Notification and Google Cloud Messaging services, via accessing the files on the filesystem.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2022-23447": {
+    "cvss": 7.5,
+    "description": "An improper limitation of a pathname to a restricted directory ('Path Traversal') vulnerability [CWE-22] in FortiExtender management interface 7.0.0 through 7.0.3, 4.2.0 through 4.2.4, 4.1.1 through 4.1.8, 4.0.0 through 4.0.2, 3.3.0 through 3.3.2, 3.2.1 through 3.2.3, 5.3 all versions may allow an unauthenticated and remote attacker to retrieve arbitrary files from the underlying filesystem via specially crafted web requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-47593": {
+    "cvss": 6.5,
+    "description": "Auth. (subscriber+) SQL Injection (SQLi) vulnerability in RapidLoad RapidLoad Power-Up for Autoptimize plugin <= 1.6.35 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-46850": {
+    "cvss": 8.1,
+    "description": "Auth. (author+) Broken Access Control vulnerability leading to Arbitrary File Deletion in Nabil Lemsieh Easy Media Replace plugin <= 0.1.3 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-47164": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in MagePeople Team Event Manager and Tickets Selling Plugin for WooCommerce plugin <= 3.7.7 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-47180": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Kopa Theme Kopa Framework plugin <= 1.3.5 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45079": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Softaculous Loginizer plugin <= 1.7.5 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-47436": {
+    "cvss": 4.8,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in MantraBrain Yatra allows Stored XSS.This issue affects Yatra: from n/a through 2.1.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45084": {
+    "cvss": 6.1,
+    "description": "Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in Softaculous Loginizer plugin <= 1.7.5 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45839": {
+    "cvss": 5.4,
+    "description": "Auth. (contributor+) Stored Cross-Site Scripting (XSS) vulnerability in WHA WHA Puzzle plugin <= 1.0.9 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45836": {
+    "cvss": 6.1,
+    "description": "Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in W3 Eden, Inc. Download Manager plugin <= 3.2.59 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-43480": {
+    "cvss": 4.8,
+    "description": "Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Magneticlab Sàrl Homepage Pop-up plugin <= 1.2.5 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-47605": {
+    "cvss": 7.2,
+    "description": "Auth. SQL Injection') vulnerability in Kunal Nagar Custom 404 Pro plugin <= 3.7.0 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-23790": {
+    "cvss": 6.1,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Firmanet Software and Technology Customer Relation Manager allows Cross-Site Scripting (XSS). This issue affects Customer Relation Manager: before 2022.03.13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-23791": {
+    "cvss": 6.1,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Firmanet Software and Technology Customer Relation Manager allows Cross-Site Scripting (XSS). This issue affects Customer Relation Manager: before 2022.03.13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-38074": {
+    "cvss": 8.8,
+    "description": "SQL Injection vulnerability in VeronaLabs WP Statistics plugin <= 13.2.10 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-3760": {
+    "cvss": 9.8,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Mia Technology Mia-Med. This issue affects Mia-Med: before 1.0.0.58.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-2178": {
+    "cvss": 6.1,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Saysis Computer Starcities allows Cross-Site Scripting (XSS). This issue affects Starcities: before 1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45068": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Mercado Pago Mercado Pago payments for WooCommerce plugin <= 6.3.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45804": {
+    "cvss": 5.4,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in RoboSoft Photo Gallery, Images, Slider in Rbs Image Gallery plugin <= 3.2.9 leading to galleries hierarchy change, included plugin deactivate & activate.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-2504": {
+    "cvss": 9.8,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in SDD Computer Software SDD-Baro allows SQL Injection. This issue affects SDD-Baro: before 2.8.432.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45085": {
+    "cvss": 6.5,
+    "description": "Server-Side Request Forgery (SSRF) vulnerability in Group Arge Energy and Control Systems Smartpower Web allows : Server Side Request Forgery. This issue affects Smartpower Web: before 23.01.01.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45088": {
+    "cvss": 9.8,
+    "description": "Improper Input Validation vulnerability in Group Arge Energy and Control Systems Smartpower Web allows PHP Local File Inclusion. This issue affects Smartpower Web: before 23.01.01.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2022-45089": {
+    "cvss": 8.8,
+    "description": "Improper Input Validation vulnerability in Group Arge Energy and Control Systems Smartpower Web allows SQL Injection. This issue affects Smartpower Web: before 23.01.01.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45090": {
+    "cvss": 8.8,
+    "description": "Improper Input Validation vulnerability in Group Arge Energy and Control Systems Smartpower Web allows SQL Injection. This issue affects Smartpower Web: before 23.01.01.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45091": {
+    "cvss": 5.4,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Group Arge Energy and Control Systems Smartpower Web allows Cross-Site Scripting (XSS). This issue affects Smartpower Web: before 23.01.01.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4557": {
+    "cvss": 9.8,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Group Arge Energy and Control Systems Smartpower Web allows SQL Injection. This issue affects Smartpower Web: before 23.01.01.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-40692": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in WP Sunshine Sunshine Photo Cart plugin <= 2.9.13 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-45807": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) in WPVibes WP Mail Log plugin <= 1.0.1 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-46815": {
+    "cvss": 8.8,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Lauri Karisola / WP Trio Conditional Shipping for WooCommerce plugin <= 2.3.1 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-21758": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: mcast: add RCU protection to mld_newpack() mld_newpack() can be called without RTNL or RCU being held. Note that we no longer can use sock_alloc_send_skb() because ipv6.igmp_sk uses GFP_KERNEL allocations which can sleep. Instead use alloc_skb() and charge the net->ipv6.igmp_sk socket under RCU protection.",
+    "vendor": "Linux",
+    "product": "Linux"
+  },
+  "CVE-2025-21760": {
+    "cvss": 8.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ndisc: extend RCU protection in ndisc_send_skb() ndisc_send_skb() can be called without RTNL or RCU held. Acquire rcu_read_lock() earlier, so that we can use dev_net_rcu() and avoid a potential UAF.",
+    "vendor": "Linux",
+    "product": "Linux"
+  },
+  "CVE-2026-116111": {
+    "cvss": 6.3,
+    "description": "A vulnerability was determined in 2K Games Civilization V 1.0.3.144. Impacted is the function loadstring of the component Lua Sandbox. Executing a manipulation can lead to type confusion. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "2K Games",
+    "product": "Civilization V"
+  },
+  "CVE-2026-125399": {
+    "cvss": 8.0,
+    "description": "Fluxion before 6.39 contains an OS command injection vulnerability in the fluxion.sh target scanner, which decodes access point ESSIDs with eval after escaping only single quotes. Attackers within Wi-Fi range can broadcast an access point with a crafted SSID to execute commands as root when the operator scans or selects it.",
+    "vendor": "FluxionNetwork",
+    "product": "fluxion"
+  },
+  "CVE-2026-117017": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125439": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117368": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125394": {
+    "cvss": 5.4,
+    "description": "FreeRDP before 3.33.0 contains a heap use-after-free vulnerability in update_gdi_patblt(), update_gdi_polygon_cb() and update_gdi_mem3blt() that retain stale brush cache pointers. A malicious RDP server can resend CACHE_BRUSH to the same slot then send PATBLT, causing clients to read freed heap memory, disclosing data or crashing.",
+    "vendor": "FreeRDP",
+    "product": "FreeRDP"
   }
 }
