@@ -92335,9 +92335,9 @@
   },
   "CVE-2026-125350": {
     "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "description": "Use after free in XML in Google Chrome prior to 157.0.8103.50 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Google",
+    "product": "Chrome"
   },
   "CVE-2022-31474": {
     "cvss": 7.5,
@@ -94330,5 +94330,11 @@
     "description": "NVIDIA Megatron-LM contains a vulnerability in checkpoint loading where, an attacker could cause an RCE by convincing a user to load a maliciously crafted file. A successful exploit of this vulnerability might lead to code execution, escalation of privileges, information disclosure, and data tampering.",
     "vendor": "Check Point",
     "product": "Megatron-LM"
+  },
+  "CVE-2025-40022": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: crypto: af_alg - Fix incorrect boolean values in af_alg_ctx Commit 1b34cbbf4f01 (\"crypto: af_alg - Disallow concurrent writes in af_alg_sendmsg\") changed some fields from bool to 1-bit bitfields of type u32. However, some assignments to these fields, specifically 'more' and 'merge', assign values greater than 1. These relied on C's implicit conversion to bool, such that zero becomes false and nonzero becomes true. With a 1-bit bitfields of type u32 instead, mod 2 of the value is taken instead, resulting in 0 being assigned in some cases when 1 was intended. Fix this by restoring the bool type.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
