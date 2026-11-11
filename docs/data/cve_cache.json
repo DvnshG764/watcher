@@ -342,7 +342,7 @@
     "product": "AC8"
   },
   "CVE-2026-31255": {
-    "cvss": 5.4,
+    "cvss": 9.8,
     "description": "A command injection vulnerability exists in Tenda AC18 V15.03.05.05_multi. The vulnerability is located in the /goform/SetSambaCfg interface, where improper handling of the guestuser parameter allows attackers to execute arbitrary system commands.",
     "vendor": "Check Point",
     "product": "Unknown"
@@ -101880,10 +101880,10 @@
     "product": "Cloud NGFW"
   },
   "CVE-2026-0323": {
-    "cvss": null,
+    "cvss": 1.1,
     "description": "CVE-2026-0323 Checkov by Prisma Cloud: Server-Side Request Forgery Vulnerability (Severity: LOW)",
     "vendor": "Palo Alto",
-    "product": "Unknown"
+    "product": "Checkov by Prisma Cloud"
   },
   "CVE-2026-0330": {
     "cvss": 6.1,
@@ -101898,10 +101898,10 @@
     "product": "Cloud NGFW"
   },
   "CVE-2026-0324": {
-    "cvss": null,
+    "cvss": 5.9,
     "description": "CVE-2026-0324 GlobalProtect App: Incorrect Privilege Management Vulnerability in OPSWAT MetaDefender Endpoint Security SDK on Windows (Severity: MEDIUM)",
     "vendor": "Palo Alto",
-    "product": "Unknown"
+    "product": "MetaDefender Endpoint Security SDK"
   },
   "CVE-2026-0326": {
     "cvss": 1.7,
@@ -104944,5 +104944,611 @@
     "description": "A flaw was found in cockpit-files. A local unprivileged attacker can exploit a race condition during directory creation with owner assignment. By controlling a writable parent directory, the attacker can replace a newly created directory with a symbolic link (symlink) before the ownership change operation (chown) is applied. This allows the attacker to redirect the ownership change to an arbitrary file, potentially leading to information disclosure or unauthorized modification of sensitive files.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-42792": {
+    "cvss": 7.5,
+    "description": "Improper Handling of Exceptional Conditions vulnerability in Erlang OTP erts (epmd) allows an unauthenticated remote attacker to permanently terminate the Erlang Port Mapper Daemon (epmd) via connection slot exhaustion. The do_accept function in erts/epmd/src/epmd_srv.c calls epmd_cleanup_exit() when accept(2) returns EMFILE (per-process file descriptor limit reached) or ENFILE (system-wide file descriptor limit reached), rather than treating these as recoverable conditions. An attacker can exhaust epmd's file descriptor slots by holding many TCP connections open while periodically sending a single byte to reset the idle timeout, then causing accept(2) to return EMFILE, which kills the daemon. epmd has no per-source-IP connection cap, making the attack feasible from a single source. On Debian/Ubuntu default packaging the impact is amplified: the systemd unit inherits a low file descriptor soft limit, and repeated daemon deaths trigger systemd's start-rate-limit, permanently failing both epmd.service and epmd.socket and requiring manual operator intervention to recover. This issue affects OTP from OTP 17.0 before OTP 27.3.4.15, OTP 28.5.0.4, and OTP 29.0.4, corresponding to erts from 6.0 before 15.2.7.11, 16.4.0.4, and 17.0.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-54890": {
+    "cvss": 7.5,
+    "description": "Integer Underflow (Wrap or Wraparound) vulnerability in erlang otp erlang/otp (erts modules), erlang otp erts (erts modules) allows Forced Integer Overflow, Excessive Allocation. This vulnerability is associated with program files erts/emulator/beam/external.c, emulator/beam/external.c. The BIT_BINARY_EXT tag (77) handler in the External Term Format (ETF) decoder accepts an encoding with both length and trailing-bits fields set to zero. The subsequent computation of the bitstring size underflows an unsigned integer, producing a value of roughly 2^64 that is then passed as a memory allocation size. The allocator aborts the entire node with a message such as Cannot allocate 2305843009213693951 bytes of memory (of type \"binary\"). The crash is a VM-level abort, not an Erlang-level exception. It cannot be intercepted by supervision trees, by try/catch, or by passing the [safe] option to binary_to_term/2 (which only restricts atom creation and does not perform structural validation of binary encodings). Any application that decodes ETF from untrusted sources via binary_to_term/1,2 or enif_binary_to_term() is exposed. The Erlang distribution protocol also decodes incoming terms through the same code path, but distribution is expected to run on trusted networks per the OTP Secure Coding Guidelines (DSG-011). This issue affects OTP from OTP 27.0 before OTP 27.3.4.15, OTP 28.5.0.4, and OTP 29.0.4, corresponding to erts from 15.0 before 15.2.7.11, 16.4.0.4, and 17.0.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55737": {
+    "cvss": 7.5,
+    "description": "Signed to Unsigned Conversion Error and Out-of-bounds Write vulnerability in Erlang OTP erts allows an attacker who can supply a crafted Erlang external term format (ETF) binary to binary_to_term/1 to corrupt the BEAM heap pointer and crash the virtual machine. When decoding a LARGE_TUPLE_EXT term, the validation pass decoded_size() in erts/emulator/beam/external.c reads the 32-bit arity field as unsigned (get_uint32()), while the decode pass dec_term() reads the same field as a signed 32-bit integer (get_int32()) into an int. An arity wire value of 0x80000000 passes validation as 2147483648 but decodes as -2147483648, so the subsequent hp += n moves the heap allocation pointer backward. Neither pass enforces the runtime tuple-arity limit MAX_ARITYVAL. The result is an out-of-bounds heap write; in practice the VM detects an impossible heap size and aborts, denying service. The required padding is large when uncompressed but the compressed-ETF envelope shrinks it to a small payload on the wire. This issue affects OTP from OTP 25.0 before OTP 27.3.4.15, OTP 28.5.0.4, and OTP 29.0.4, corresponding to erts from 13.0 before 15.2.7.11, 16.4.0.4, and 17.0.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53422": {
+    "cvss": 4.3,
+    "description": "Observable Response Discrepancy vulnerability in Erlang OTP ssh (ssh_sftpd module) allows an authenticated SFTP user to enumerate the existence of files and directories outside the configured root directory. The SSH_FXP_REALPATH handler in ssh_sftpd calls relate_file_name/3 with Canonicalize=false, unlike every other SFTP operation handler. This allows .. components in the requested path to bypass the is_within_root/2 check without being resolved. The un-canonicalized path then enters resolve_symlinks/2, which walks up the directory tree above the configured root and issues read_link() syscalls on arbitrary filesystem paths. An authenticated SFTP client can exploit this by sending a REALPATH request with a crafted traversal path. The server response differs depending on whether the target path exists on the host filesystem (SSH_FXP_NAME when the path resolves successfully, SSH_FX_NO_SUCH_FILE when it does not). This creates a path-existence oracle that an attacker can use to enumerate the filesystem structure outside the configured root, including the existence of sensitive files, directories, and mount points. The vulnerability leaks only the existence of paths. No file contents, credentials, or write access are obtainable through this issue alone. The information gained may assist further attacks when combined with other vulnerabilities. This vulnerability is associated with program files lib/ssh/src/ssh_sftpd.erl and program routine ssh_sftpd:handle_op/4. This issue affects OTP from OTP 17.0 before OTP 27.3.4.14, OTP 28.5.0.3, and OTP 29.0.3, corresponding to ssh from 3.0.1 before 5.2.11.9, 5.5.2.2, and 6.0.2. Whether OTP before OTP 17.0, corresponding to ssh before 3.0.1, is affected is unknown.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-54886": {
+    "cvss": 4.3,
+    "description": "Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability in Erlang OTP ssh (ssh_sftpd module) allows an authenticated SFTP user to render an SFTP channel permanently unresponsive. The handle_data/4 function in ssh_sftpd contains a catch-all clause that accepts channel data of any type. When channel data with a non-zero type code (SSH_MSG_CHANNEL_EXTENDED_DATA) arrives with an empty pending buffer and a payload at or below the SFTP packet size limit, the clause tail-calls itself with identical arguments, creating an infinite loop. The SFTP protocol operates exclusively on normal channel data (type 0). Extended data (non-zero type) is meaningless for SFTP and is never sent by conforming clients. However, the SSH protocol permits any channel participant to send extended data on an open channel, so an authenticated SFTP client can trigger the loop by sending SSH_MSG_CHANNEL_EXTENDED_DATA with any data_type_code and any non-empty payload at or below the size limit. The targeted ssh_sftpd process enters an infinite tail-recursive loop. It never processes another message, its message queue grows without bound, and it can only be stopped by killing the process. BEAM's reduction-based scheduler preemption continues to function, so other processes on the node are not starved, but each stuck channel process consumes its full CPU time share continuously and accumulates unbounded message queue memory. Opening many channels amplifies the CPU and memory impact. Erlang/OTP SSH configurations using the default max_channels setting (infinity) allow an authenticated user to open unlimited channels per connection, amplifying the attack without requiring multiple TCP connections or authentications. No file contents, credentials, or write access are obtainable through this issue. The impact is limited to denial of service on targeted SFTP channels, with secondary CPU degradation and memory growth. This vulnerability is associated with program file lib/ssh/src/ssh_sftpd.erl and program routine ssh_sftpd:handle_data/4. This issue affects OTP from OTP 17.0 before OTP 27.3.4.14, OTP 28.5.0.3, and OTP 29.0.3, corresponding to ssh from 3.0.1 before 5.2.11.9, 5.5.2.2, and 6.0.2. Whether OTP before OTP 17.0, corresponding to ssh before 3.0.1, is affected is unknown.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-54887": {
+    "cvss": 4.8,
+    "description": "Use of Default Cryptographic Key vulnerability in Erlang/OTP ssl (DTLS server) allows predictable DTLS cookie computation during the startup window, enabling source address verification bypass. On DTLS server startup, dtls_server_connection:initial_hello/3 initializes previous_cookie_secret to the empty binary (<<>>) instead of a random value. Because HMAC with an empty key is deterministic, anyone who observes the plaintext ClientHello can compute dtls_handshake:cookie(<<>>, IP, Port, Hello) and forge a valid DTLS cookie before the first rotation of the cookie secret. The DTLS cookie (RFC 6347 §4.2.1) is a denial-of-service mitigation that prevents spoofed source IPs from forcing the server to allocate state and perform expensive cryptographic operations; it is not an authentication mechanism. During the window from server startup until the first secret rotation (0 to 15 seconds), an attacker who can observe the plaintext ClientHello can bypass the source address verification, enabling DTLS handshake amplification with spoofed source addresses. This vulnerability is associated with program file lib/ssl/src/dtls_server_connection.erl and program routine dtls_server_connection:initial_hello/3. This issue affects OTP from OTP 20.0 before OTP 27.3.4.14, OTP 28.5.0.3, and OTP 29.0.3, corresponding to ssl from 8.2 before 11.2.12.10, 11.6.0.3, and 11.7.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48858": {
+    "cvss": 6.5,
+    "description": "Server-Side Request Forgery (SSRF) vulnerability in Erlang/OTP ftp (ftp_internal module) allows FTP bounce attacks and SSRF via an unvalidated PASV response IP address. The ftp_internal:handle_ctrl_result/2 PASV handler (mode=passive, ipfamily=inet, ftp_extension=false) extracts the IP address from the server's 227 response and passes it directly to gen_tcp:connect/4 without validating it against the control connection peer address. The adjacent EPSV handlers correctly call peername(CSock) to derive the IP from the control connection, but the PASV handler does not. A malicious or compromised FTP server can redirect the client's data connection to an arbitrary internal host and port. On read operations (ftp:ls/1,2, ftp:nlist/1,2, ftp:recv/2,3), data from the redirected target is returned to the caller. On write operations (ftp:send/2,3, ftp:append/2,3), file content is sent to the redirected target. This enables SSRF against internal hosts, cloud metadata endpoints, and FTP bounce attacks against third-party hosts. The vulnerable path is the default configuration (mode=passive, ipfamily=inet, ftp_extension=false). RFC 2577 section 3 explicitly recommends validating the PASV response IP against the control connection peer. The ftp application is deprecated and scheduled for removal in OTP-30. This vulnerability is associated with program files lib/inets/src/ftp/ftp_internal.erl (inets 5.10.4 through 6.5, OTP 17.4 through 20.3) and lib/ftp/src/ftp_internal.erl (ftp 1.0 and later, OTP 21.0 and later). This issue affects OTP from OTP 17.4 before OTP 27.3.4.13, OTP 28.5.0.2, and OTP 29.0.2, corresponding to inets from 5.10.4 before 7.0, and ftp from 1.0 before 1.2.3.1, 1.2.4.1, and 1.2.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42791": {
+    "cvss": 3.7,
+    "description": "Improper Certificate Validation vulnerability in Erlang OTP public_key (pubkey_ocsp module) allows forged OCSP responses signed with an expired responder certificate to be accepted as valid. OCSP response verification in pubkey_ocsp:verify_response/5 and pubkey_ocsp:is_authorized_responder/3 in lib/public_key/src/pubkey_ocsp.erl does not check the validity period (notBefore/notAfter) of the OCSP responder certificate. An attacker who has obtained the private key of an expired CA-designated OCSP responder certificate can forge OCSP responses that Erlang/OTP accepts as valid. This affects TLS clients using OCSP stapling via the ssl application: a malicious or compromised server can present a revoked TLS certificate together with a forged OCSP response signed by an expired responder key, and the client will accept the revoked certificate as valid. It also affects applications calling public_key:pkix_ocsp_validate/5 directly, where the impact depends on the use case — server-side client certificate validation using this API may allow authentication bypass with a revoked client certificate. This issue affects OTP from OTP 27.0 before OTP 27.3.4.12, OTP 28.5.0.1, and OTP 29.0.1, corresponding to public_key from 1.16 before 1.17.1.3, 1.20.3.1, and 1.21.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42790": {
+    "cvss": 8.1,
+    "description": "Improper Certificate Validation vulnerability in Erlang OTP public_key (pubkey_cert and public_key modules) allows a DNS nameConstraints bypass via subject CommonName fallback in TLS hostname verification. Two flaws combine to allow a subordinate CA whose DNS nameConstraints are restricted (e.g. permitted;DNS:allowed.example.com) to issue a leaf certificate that an OTP TLS client accepts as a valid identity for an out-of-scope hostname (e.g. victim.example.com): First, pubkey_cert:validate_names/6 in lib/public_key/src/pubkey_cert.erl only checks SAN DNS entries against nameConstraints. Per RFC 5280, a permitted DNS subtree only restricts certificates that contain a DNS-typed name. A leaf with no subjectAltName therefore trivially satisfies any permitted;DNS:... constraint regardless of its subject commonName. Second, public_key:pkix_verify_hostname/3 in lib/public_key/src/public_key.erl falls back to the subject commonName when no subjectAltName is present, extracting id-at-commonName attributes as presented IDs and matching them against the reference hostname. The strict pkix_verify_hostname_match_fun(https) matcher does not suppress this fallback. The result is that path validation accepts a CN-only leaf under a DNS-constrained intermediate (no SAN means the nameConstraints are not triggered), and hostname verification then accepts it via the CN fallback. The bypass is reachable from stock ssl:connect with verify_peer, a trusted CA, SNI, and the canonical strict https hostname matcher. This issue affects OTP from OTP 19.3 before OTP 26.2.5.21, OTP 27.3.4.12, OTP 28.5.0.1, and OTP 29.0.1, corresponding to public_key from 1.4 before 1.15.1.7, 1.17.1.3, 1.20.3.1, and 1.21.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-36956": {
+    "cvss": 8.8,
+    "description": "A Cross-Site Request Forgery (CSRF) vulnerability exists in the web management interface of the Dbit N300 T1 Pro wireless router V1.0.0. The router fails to implement proper CSRF protection mechanisms such as anti-CSRF tokens or strict Origin/Referer validation for administrative API endpoints. An attacker can craft a malicious webpage that sends forged HTTP requests to configuration endpoints such as /api/setWlan. If an authenticated administrator visits the malicious webpage, the victim's browser automatically includes the valid session cookie in the request, allowing the router to process the request as a legitimate administrative action.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30769": {
+    "cvss": 7.8,
+    "description": "An issue in the TVicPort64.sys component of EnTech Taiwan TVicPort Product v4.0, File v5.2.1.0 allows attackers to escalate privileges via sending crafted IOCTL 0x80002008 requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31256": {
+    "cvss": 7.5,
+    "description": "A null pointer dereference vulnerability exists in the RTSP service of the MERCURY MIPC252W 1.0.5 Build 230306 Rel.79931n. During the processing of a SETUP request for the path rtsp:// :554/stream1/track2, the device fails to properly validate the Transport header field. When this header is improperly constructed, the RTSP service can dereference a NULL pointer during request parsing. Successful exploitation causes the device to crash and automatically reboot.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35901": {
+    "cvss": 4.4,
+    "description": "A handling issue in the RTSP service of the Mercury MIPC252W 1.0.5 Build 230306 Rel.79931n allows an authenticated attacker to trigger session termination by repeatedly sending SETUP requests for the same media track within a single RTSP session. This causes the server to reset the RTSP connection, leading to a denial-of-service condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35902": {
+    "cvss": 6.2,
+    "description": "The RTSP service of MERCURY IP camera MIPC252W 1.0.5 Build 230306 has an issue handling failed Digest authentication attempts. By repeatedly sending RTSP requests with invalid authentication parameters, an unauthenticated attacker can cause the RTSP service to enter a persistent authentication failure state, preventing legitimate clients from authenticating and leading to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35903": {
+    "cvss": 9.8,
+    "description": "MERCURY MIPC252W IP camera 1.0.5 Build 230306 Rel.79931n contains an improper authentication vulnerability in the RTSP service. After successful Digest authentication in an initial DESCRIBE request, the device does not verify the Digest response parameter in subsequent RTSP requests within the same session. As a result, RTSP methods such as SETUP, PLAY, and TEARDOWN can be processed even when the Authorization header contains an empty or invalid response value, as long as the nonce and session identifier correspond to a previously authenticated session. This allows an attacker with network access to reuse session parameters and issue unauthorized RTSP control commands without computing a valid Digest response.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31160": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the provider parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31165": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the pppoeServiceName parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31171": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the url parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31172": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the user parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31174": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the informEnable parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31175": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the stunEnable parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31176": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the stun_user parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31177": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the stunMinAlive parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31178": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the stunMaxAlive parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31179": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the stunPort parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31181": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the stunServerAddr parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31162": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the ttlWay parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31163": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the dhcpMtu parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31166": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the hour parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31167": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the mode parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31173": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the interval parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-37748": {
+    "cvss": 7.2,
+    "description": "Visitor Management System 1.0 by sanjay1313 is vulnerable to Unrestricted File Upload in vms/php/admin_user_insert.php and vms/php/update_1.php. The move_uploaded_file() function is called without any MIME type, extension, or content validation, allowing an authenticated admin to upload a PHP webshell and achieve Remote Code Execution on the server.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-38835": {
+    "cvss": 9.8,
+    "description": "Tenda W30E V2.0 V16.01.0.21 was found to contain a command injection vulnerability in the formSetUSBPartitionUmount function via the usbPartitionName parameter. This vulnerability allows attackers to execute arbitrary commands via a crafted request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-29645": {
+    "cvss": 7.5,
+    "description": "NEMU (OpenXiangShan/NEMU) before v2025.12.r2 contains an improper instruction-validation flaw in its RISC-V Vector (RVV) decoder. The decoder does not correctly validate the funct3 field when decoding vsetvli/vsetivli/vsetvl, allowing certain invalid OP-V instruction encodings to be misinterpreted and executed as vset* configuration instructions rather than raising an illegal-instruction exception. This can be exploited by providing crafted RISC-V binaries to cause incorrect trap behavior, architectural state corruption/divergence, and potential denial of service in systems that rely on NEMU for correct execution or sandboxing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-29649": {
+    "cvss": 9.8,
+    "description": "NEMU contains an implementation flaw in its RISC-V Hypervisor CSR handling where henvcfg[7:4] (CBIE/CBCFE/CBZE-related fields) is incorrectly masked/updated based on menvcfg[7:4], so a machine-mode write to menvcfg can implicitly modify the hypervisor's environment configuration. This can lead to incorrect enforcement of virtualization configuration and may cause unexpected traps or denial of service when executing cache-block management instructions in virtualized contexts (V=1).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-29646": {
+    "cvss": 9.8,
+    "description": "In OpenXiangShan NEMU prior to 55295c4, when running with RVH (Hypervisor extension) enabled, a VS-mode guest write to the supervisor interrupt-enable CSR (sie) may be handled incorrectly and can influence machine-level interrupt enable state (mie). This breaks privilege/virtualization isolation and can lead to denial of service or privilege-boundary violation in environments relying on NEMU for correct interrupt virtualization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30459": {
+    "cvss": 7.1,
+    "description": "An issue in the Forgot Password feature of Daylight Studio FuelCMS v1.5.2 allows unauthenticated attackers to obtain the password reset token of a victim user via a crafted link placed in a valid e-mail message.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-37341": {
+    "cvss": 7.2,
+    "description": "SourceCodester Vehicle Parking Area Management System v1.0 is vulnerable to SQL Injection in the file /parking/manage_category.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37344": {
+    "cvss": 7.2,
+    "description": "SourceCodester Vehicle Parking Area Management System v1.0 is vulnerable to SQL Injection in the file /parking/manage_location.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37345": {
+    "cvss": 9.8,
+    "description": "SourceCodester Vehicle Parking Area Management System v1.0 is vulnerable to SQL Injection in the file /parking/manage_park.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37346": {
+    "cvss": 4.7,
+    "description": "SourceCodester Payroll Management and Information System v1.0 is vulnerable to SQL Injection in the file /payroll/view_account.php?emp_id=.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37347": {
+    "cvss": 9.1,
+    "description": "SourceCodester Payroll Management and Information System v1.0 is vulnerable to SQL Injection in the file /payroll/view_employee.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37591": {
+    "cvss": 2.7,
+    "description": "Sourcecodester Storage Unit Rental Management System v1.0 is vulnerable to SQL injection in the file /storage/admin/tenants/view_details.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37598": {
+    "cvss": 2.7,
+    "description": "SourceCodester Patient Appointment Scheduler System v1.0 is vulnerable to arbitrary code execution (RCE) via /scheduler/classes/SystemSettings.php?f=update_settings.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37600": {
+    "cvss": 2.7,
+    "description": "SourceCodester Patient Appointment Scheduler System v1.0 is vulnerable to SQL Injection in the file /scheduler/admin/appointments/view_details.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37602": {
+    "cvss": 2.7,
+    "description": "SourceCodester Patient Appointment Scheduler System v1.0 is vulnerable to SQL Injection in the file /scheduler/admin/user/manage_user.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-38529": {
+    "cvss": 8.8,
+    "description": "A Broken Object-Level Authorization (BOLA) in the /Settings/UserController.php endpoint of Webkul Krayin CRM v2.2.x allows authenticated attackers to arbitrarily reset user passwords and perform a full account takeover via supplying a crafted HTTP request.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-38530": {
+    "cvss": 8.1,
+    "description": "A Broken Object-Level Authorization (BOLA) in the /Controllers/Lead/LeadController.php endpoint of Webkul Krayin CRM v2.2.x allows authenticated attackers to arbitrarily read, modify, and permanently delete any lead owned by other users via supplying a crafted GET request.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-38532": {
+    "cvss": 8.1,
+    "description": "A Broken Object-Level Authorization (BOLA) in the /Contact/Persons/PersonController.php endpoint of Webkul Krayin CRM v2.2.x allows authenticated attackers to arbitrarily read, modify, and permanently delete any contact owned by other users via supplying a crafted GET request.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-38533": {
+    "cvss": 6.5,
+    "description": "An improper authorization vulnerability in the /api/v1/users/{id} endpoint of Snipe-IT v8.4.0 allows authenticated attackers with the users.edit permission to modify sensitive authentication and account-state fields of other non-admin users via supplying a crafted PUT request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-36919": {
+    "cvss": 2.7,
+    "description": "Sourcecodester Online Reviewer System v1.0 is vulnerale to SQL Injection in the file /system/system/admins/assessments/examproper/exam-update.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-36922": {
+    "cvss": 2.7,
+    "description": "Sourcecodester Cab Management System v1.0 is vulnerable to SQL injection in the file /cms/admin/categories/view_category.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-36946": {
+    "cvss": 2.7,
+    "description": "Sourcecodester Computer and Mobile Repair Shop Management System v1.0 is vulnerable to SQL injection in the file /rsms/admin/inquiries/view_details.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-36947": {
+    "cvss": 2.7,
+    "description": "Sourcecodester Computer and Mobile Repair Shop Management System v1.0 is vulnerable to SQL Injection in the file /rsms/admin/services/view_service.php.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-23780": {
+    "cvss": 8.8,
+    "description": "An issue was discovered in BMC Control-M/MFT 9.0.20 through 9.0.22. A SQL injection vulnerability in the MFT API's debug interface allows an authenticated attacker to inject malicious queries due to improper input validation and unsafe dynamic SQL handling. Successful exploitation can enable arbitrary file read/write operations and potentially lead to remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-23782": {
+    "cvss": 7.5,
+    "description": "An issue was discovered in BMC Control-M/MFT 9.0.20 through 9.0.22. An API management endpoint allows unauthenticated users to obtain both an API identifier and its corresponding secret value. With these exposed secrets, an attacker could invoke privileged API operations, potentially leading to unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31262": {
+    "cvss": 6.1,
+    "description": "Cross Site Scripting vulnerability in Altenar Sportsbook Software Platform (SB2) v.2.0 allows a remote attacker to obtain sensitive information and execute arbitrary code via the URL parameter",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-36232": {
+    "cvss": 9.8,
+    "description": "A SQL injection vulnerability was found in the instructorClasses.php file of itsourcecode Online Student Enrollment System v1.0. The reason for this issue is that the 'classId' parameter from $_GET['classId'] is directly concatenated into the SQL query without any sanitization or validation.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-36233": {
+    "cvss": 9.8,
+    "description": "A SQL injection vulnerability was found in the assignInstructorSubjects.php file of itsourcecode Online Student Enrollment System v1.0. The reason for this issue is that attackers can inject malicious code via the parameter \"subjcode\" and use it directly in SQL queries without the need for appropriate cleaning or validation.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-36234": {
+    "cvss": 9.8,
+    "description": "itsourcecode Online Student Enrollment System v1.0 is vulnerable to SQL Injection in newCourse.php via the 'coursename' parameter.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-36236": {
+    "cvss": 9.8,
+    "description": "SourceCodester Engineers Online Portal v1.0 is vulnerable to SQL Injection in update_password.php via the new_password parameter.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-23781": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in BMC Control-M/MFT 9.0.20 through 9.0.22. A set of default debug user credentials is hardcoded in cleartext within the application package. If left unchanged, these credentials can be easily obtained and may allow unauthorized access to the MFT API debug interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31170": {
+    "cvss": 9.8,
+    "description": "An issue was discovered in ToToLink A3300R firmware v17.0.0cu.557_B20221024 allowing attackers to execute arbitrary commands via the stun-pass parameter to /cgi-bin/cstecgi.cgi.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30079": {
+    "cvss": 9.8,
+    "description": "In OpenAirInterface V2.2.0 AMF, Out of sequence messages causes incorrect state transition during UE registration procedure. This allows authentication to be bypassed completely. If a SecurityModeComplete message is sent after InitialUERegistration, a registration reject is received followed by a registration accept! This leads the UE to be registered without proper authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30460": {
+    "cvss": 8.8,
+    "description": "Daylight Studio FuelCMS v1.5.2 was discovered to contain an authenticated remote code execution (RCE) vulnerability in the Blocks module.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31150": {
+    "cvss": 4.3,
+    "description": "Incorrect access control in Kaleris YMS v7.2.2.1 allows authenticated attackers with only the shipping/receiving role to view the truck's dashboard resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31350": {
+    "cvss": 5.4,
+    "description": "An authenticated stored cross-site scripting (XSS) vulnerability in Feehi CMS v2.1.1 allows attackers to execute arbitrary web scripts or HTML via injecting a crafted payload into the Page Sign parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0522": {
+    "cvss": 8.8,
+    "description": "A local file inclusion vulnerability in the upload/download flow of the VertiGIS FM application allows authenticated attackers to read arbitrary files from the server by manipulating a file's path during its upload. When the file is subsequently downloaded, the file in the attacker controlled path is returned. Due to the application's ASP.NET architecture, this could potentially lead to remote code execution when the \"web.config\" file is obtained. Furthermore, the application resolves UNC paths which may enable NTLM-relaying attacks. This issue affects VertiGIS FM: 10.5.00119 (0d29d428).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30287": {
+    "cvss": 8.4,
+    "description": "An arbitrary file overwrite vulnerability in Deep Thought Industries ACE Scanner PDF Scanner v1.4.5 allows attackers to overwrite critical internal files via the file import process, leading to arbitrary code execution or information exposure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30289": {
+    "cvss": 8.4,
+    "description": "An arbitrary file overwrite vulnerability in Tinybeans Private Family Album App v5.9.5-prod allows attackers to overwrite critical internal files via the file import process, leading to arbitrary code execution or information exposure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30523": {
+    "cvss": 6.5,
+    "description": "A Business Logic vulnerability exists in SourceCodester Loan Management System v1.0 due to the lack of proper input validation. The application allows administrators to define \"Loan Plans\" which determine the duration of a loan (in months). However, the backend fails to validate that the duration must be a positive integer. An attacker can submit a negative value for the months parameter. The system accepts this invalid data and creates a loan plan with a negative duration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30526": {
+    "cvss": 6.1,
+    "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in SourceCodester Zoo Management System v1.0. The vulnerability is located in the login page, specifically within the msg parameter. The application reflects the content of the msg parameter back to the user without proper HTML encoding or sanitization. This allows remote attackers to inject arbitrary web script or HTML via a crafted URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30573": {
+    "cvss": 7.5,
+    "description": "A Business Logic vulnerability exists in SourceCodester Pharmacy Product Management System 1.0. The vulnerability is located in the add-sales.php file. The application fails to validate the \"txtprice\" and \"txttotalcost\" parameters, allowing attackers to submit negative values for sales transactions. This leads to incorrect financial calculations, corruption of sales reports, and potential financial loss.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-31027": {
+    "cvss": 9.8,
+    "description": "TOTOlink A3600R v5.9c.4959 contains a buffer overflow vulnerability in the setAppEasyWizardConfig interface of /lib/cste_modules/app.so. The vulnerability occurs because the rootSsid parameter is not properly validated for length, allowing remote attackers to trigger a buffer overflow, potentially leading to arbitrary code execution or denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-25834": {
+    "cvss": 6.5,
+    "description": "Mbed TLS v3.3.0 up to 3.6.5 and 4.0.0 allows Algorithm Downgrade.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-25833": {
+    "cvss": 7.5,
+    "description": "Mbed TLS 3.5.0 to 3.6.5 fixed in 3.6.6 and 4.1.0 has a buffer overflow in the x509_inet_pton_ipv6() function",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-25835": {
+    "cvss": 7.7,
+    "description": "Mbed TLS before 3.6.6 and TF-PSA-Crypto before 1.1.0 misuse seeds in a Pseudo-Random Number Generator (PRNG).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-29871": {
+    "cvss": 7.5,
+    "description": "A path traversal vulnerability exists in the awesome-llm-apps project in commit e46690f99c3f08be80a9877fab52acacf7ab8251 (2026-01-19) in the Beifong AI News and Podcast Agent backend in FastAPI backend, stream-audio endpoint, in file routers/podcast_router.py, in function stream_audio. The stream-audio endpoint accepts a user-controlled path parameter that is concatenated into a filesystem path without proper validation or restriction. An unauthenticated remote attacker can exploit this vulnerability to read arbitrary files from the server filesystem, potentially disclosing sensitive information such as configuration files and credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30303": {
+    "cvss": 9.8,
+    "description": "The command auto-approval module in Axon Code contains an OS Command Injection vulnerability, rendering its whitelist security mechanism ineffective. The vulnerability stems from the incorrect use of an incompatible command parser (the Unix-based shell-quote library) to analyze commands on the Windows platform, coupled with a failure to correctly handle Windows CMD-specific escape sequences (^). Attackers can exploit this discrepancy between the parsing logic and the execution environment by constructing payloads such as git log ^\" & malicious_command ^\". The Axon Code parser is deceived by the escape characters, misinterpreting the malicious command connector (&) as being within a protected string argument and thus auto-approving the command. However, the underlying Windows CMD interpreter ignores the escaped quotes, parsing and executing the subsequent malicious command directly. This allows attackers to achieve arbitrary Remote Code Execution (RCE) after bypassing what appears to be a legitimate Git whitelist check.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30304": {
+    "cvss": 9.6,
+    "description": "In its design for automatic terminal command execution, AI Code offers two options: Execute safe commands and execute all commands. The description for the former states that commands determined by the model to be safe will be automatically executed, whereas if the model judges a command to be potentially destructive, it still requires user approval. However, this design is highly susceptible to prompt injection attacks. An attacker can employ a generic template to wrap any malicious command and mislead the model into misclassifying it as a 'safe' command, thereby bypassing the user approval requirement and resulting in arbitrary command execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30689": {
+    "cvss": 4.3,
+    "description": "In Blog.Core through bcb4d17, the getinfobytoken API interface contains improper access control that leads to sensitive data exposure. Unauthorized parties can obtain sensitive administrator account information via a valid token, threatening system security. NOTE: Blog.Admin is related front-end code that does not offer an API service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30302": {
+    "cvss": 10.0,
+    "description": "The command auto-approval module in CodeRider-Kilo contains an OS Command Injection vulnerability, rendering its whitelist security mechanism ineffective. The vulnerability stems from the incorrect use of an incompatible command parser (the Unix-based shell-quote library) to analyze commands on the Windows platform, coupled with a failure to correctly handle Windows CMD-specific escape sequences (^). Attackers can exploit this discrepancy between the parsing logic and the execution environment by constructing payloads such as git log ^\" & malicious_command ^\". The CodeRider-Kilo parser is deceived by the escape characters, misinterpreting the malicious command connector (&) as being within a protected string argument and thus auto-approving the command. However, the underlying Windows CMD interpreter ignores the escaped quotes, parsing and executing the subsequent malicious command directly. This allows attackers to achieve arbitrary Remote Code Execution (RCE) after bypassing what appears to be a legitimate Git whitelist check.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30527": {
+    "cvss": 5.4,
+    "description": "A Stored Cross-Site Scripting (XSS) vulnerability exists in SourceCodester Online Food Ordering System v1.0 in the Category management module within the admin panel. The application fails to properly sanitize user input supplied to the \"Category Name\" field when creating or updating a category. When an administrator or user visits the Category list page (or any page where this category is rendered), the injected JavaScript executes immediately in their browser.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-30529": {
+    "cvss": 8.8,
+    "description": "A SQL Injection vulnerability exists in SourceCodester Online Food Ordering System v1.0 in the Actions.php file (specifically the save_user action). The application fails to properly sanitize user input supplied to the \"username\" parameter. This allows an authenticated attacker to inject malicious SQL commands.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30531": {
+    "cvss": 8.8,
+    "description": "A SQL Injection vulnerability exists in SourceCodester Online Food Ordering System v1.0 in the Actions.php file (specifically the save_category action). The application fails to properly sanitize user input supplied to the \"name\" parameter. This allows an authenticated attacker to inject malicious SQL commands.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30532": {
+    "cvss": 9.8,
+    "description": "A SQL Injection vulnerability exists in SourceCodester Online Food Ordering System v1.0 in the admin/view_product.php file via the \"id\" parameter.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30534": {
+    "cvss": 8.3,
+    "description": "A SQL Injection vulnerability exists in SourceCodester Online Food Ordering System v1.0 in admin/manage_category.php via the \"id\" parameter.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30569": {
+    "cvss": 6.1,
+    "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in SourceCodester Sales and Inventory System 1.0. The vulnerability is located in the view_stock_availability.php file via the \"limit\" parameter. The application fails to sanitize the input, allowing remote attackers to inject arbitrary web script or HTML via a crafted URL.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30570": {
+    "cvss": 6.1,
+    "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in SourceCodester Sales and Inventory System 1.0 in the view_sales.php file via the \"limit\" parameter. The application fails to sanitize the input, allowing remote attackers to inject arbitrary web script or HTML via a crafted URL",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30571": {
+    "cvss": 6.1,
+    "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in SourceCodester Sales and Inventory System 1.0 in the view_category.php file via the \"limit\" parameter. The application fails to sanitize the input, allowing remote attackers to inject arbitrary web script or HTML via a crafted URL.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30574": {
+    "cvss": 7.5,
+    "description": "A Business Logic vulnerability exists in SourceCodester Pharmacy Product Management System 1.0 in the add-sales.php file. The application fails to verify if the requested sales quantity (txtqty) exceeds the available stock level. An attacker can manipulate the request to purchase a quantity that is significantly higher than the actual available stock.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30575": {
+    "cvss": 7.5,
+    "description": "A Business Logic vulnerability exists in SourceCodester Pharmacy Product Management System 1.0 in the add-stock.php file. The application fails to validate the \"txtqty\" parameter during stock entry, allowing negative values to be processed. This causes the system to decrease the inventory level instead of increasing it, leading to inventory corruption and potential Denial of Service by depleting stock records.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30576": {
+    "cvss": 7.5,
+    "description": "A Business Logic vulnerability exists in SourceCodester Pharmacy Product Management System 1.0 in the add-stock.php file. The application fails to validate the \"txtprice\" and \"txttotalcost\" parameters during stock entry, allowing negative financial values to be submitted. This leads to corruption of financial records, allowing attackers to manipulate inventory asset values and procurement costs.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30567": {
+    "cvss": 6.1,
+    "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in SourceCodester Sales and Inventory System 1.0 in the view_product.php file via the \"limit\" parameter. The application fails to sanitize the input, allowing remote attackers to inject arbitrary web script or HTML via a crafted URL.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-30568": {
+    "cvss": 4.8,
+    "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in SourceCodester Sales and Inventory System 1.0 in in the view_purchase.php file via the \"limit\" parameter. The application fails to sanitize the input, allowing remote attackers to inject arbitrary web script or HTML via a crafted URL.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-43500": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: rxrpc: Also unshare DATA/RESPONSE packets when paged frags are present The DATA-packet handler in rxrpc_input_call_event() and the RESPONSE handler in rxrpc_verify_response() copy the skb to a linear one before calling into the security ops only when skb_cloned() is true. An skb that is not cloned but still carries externally-owned paged fragments (e.g. SKBFL_SHARED_FRAG set by splice() into a UDP socket via __ip_append_data, or a chained skb_has_frag_list()) falls through to the in-place decryption path, which binds the frag pages directly into the AEAD/skcipher SGL via skb_to_sgvec(). Extend the gate to also unshare when skb_has_frag_list() or skb_has_shared_frag() is true. This catches the splice-loopback vector and other externally-shared frag sources while preserving the zero-copy fast path for skbs whose frags are kernel-private (e.g. NIC page_pool RX, GRO). The OOM/trace handling already in place is reused.",
+    "vendor": "Linux",
+    "product": "Linux"
+  },
+  "CVE-2026-42600": {
+    "cvss": 4.9,
+    "description": "MinIO is a high-performance object storage system. From RELEASE.2022-07-24T01-54-52Z to before RELEASE.2026-04-14T21-32-45Z, A path traversal vulnerability in MinIO's ReadMultiple internode storage-REST endpoint allows a caller holding the cluster root JWT to read files from outside the configured drive roots, bounded only by the MinIO process UID. The attacker sends POST minio/storage/{drivePath}/v63/rmpl with a msgpack-encoded body carrying ../ sequences in the Bucket field. The server opens the resulting path via os.OpenFile with O_RDONLY|O_NOATIME and returns its contents in the msgpack response stream. This vulnerability is fixed in RELEASE.2026-04-14T21-32-45Z.",
+    "vendor": "minio",
+    "product": "minio"
+  },
+  "CVE-2026-119948": {
+    "cvss": 7.5,
+    "description": "Stack-based buffer overflow in Windows Active Directory allows an authorized attacker to execute code over a network.",
+    "vendor": "Microsoft",
+    "product": "Windows 10 Version 1607"
+  },
+  "CVE-2026-19803": {
+    "cvss": 9.8,
+    "description": "The Printcart Store – Web to Print Product Designer for WooCommerce plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 2.13.2. This is due to the `nbu_crop_image` AJAX handler accepting a user-supplied `url` parameter that `Nbdesigner_IO::convert_url_to_path()` concatenates onto the uploads base directory without normalizing or stripping `../` sequences, and then deriving both the output directory and output file extension via `pathinfo()` from the same attacker-controlled path — with no `stripImage()` call before `writeImage()` is invoked. This makes it possible for unauthenticated attackers to write attacker-controlled PHP content to arbitrary locations outside the uploads directory, resulting in remote code execution when the written file is subsequently requested. This vulnerability is only exploitable when the `nbdesigner_upload_popup_style` site option is set to `a` (Advanced Upload Popup), which causes the handler to be registered for unauthenticated requests; however, the required `save-design` nonce is printed on the fully public frontend `upload-design-file` page, making it trivially obtainable by any anonymous visitor once that configuration is active.",
+    "vendor": "printcart",
+    "product": "Printcart Store – Web to Print Product Designer for WooCommerce"
+  },
+  "CVE-2026-126170": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112174": {
+    "cvss": 9.3,
+    "description": "Local privilege escalation vulnerability in Iperius Backup 8.8.3, due to insufficient separation between the graphical user interface running with elevated privileges and local users with low privileges. When the backup service is configured to run persistently with Administrator privileges, a local attacker with low privileges can use the native Windows dialogues exposed by the application to run programmes that inherit its elevated context. This allows commands to be executed with SYSTEM or Administrator privileges, depending on the application’s context, and compromises the affected Windows system.",
+    "vendor": "Enter",
+    "product": "Iperius Backup"
   }
 }
