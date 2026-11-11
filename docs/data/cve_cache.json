@@ -101674,5 +101674,95 @@
     "description": "OS command injection in Ivanti Sentry before versions 11.0.0, 10.8.3, and 10.7.4 as well as in Ivanti EPMM before versions 12.11.0.0, 12.10.0.1, and 12.9.0.3 allows a remote authenticated attacker with admin privileges to achieve remote code execution.",
     "vendor": "Ivanti",
     "product": "Sentry"
+  },
+  "CVE-2026-56403": {
+    "cvss": 6.9,
+    "description": "libexpat before 2.8.2 has an integer overflow in storeAtts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56404": {
+    "cvss": 6.9,
+    "description": "libexpat before 2.8.2 has an integer overflow in addBinding.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56405": {
+    "cvss": 6.9,
+    "description": "libexpat before 2.8.2 has an integer overflow in getAttributeId.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56406": {
+    "cvss": 6.9,
+    "description": "libexpat before 2.8.2 has an integer overflow in XML_ParseBuffer because it lacked a check that was present in XML_Parse.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56407": {
+    "cvss": 6.9,
+    "description": "libexpat before 2.8.2 has an integer overflow in doProlog that is related to storeEntityValue and entity textLen.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56408": {
+    "cvss": 6.9,
+    "description": "libexpat before 2.8.2 has an integer overflow in copyString.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56409": {
+    "cvss": 6.5,
+    "description": "xmlwf in libexpat before 2.8.2 has an integer overflow for the output filename when -d outputDir is used.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56410": {
+    "cvss": 6.9,
+    "description": "xmlwf in libexpat before 2.8.2 has an integer overflow in resolveSystemId.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56411": {
+    "cvss": 6.9,
+    "description": "xmlwf in libexpat before 2.8.2 has an integer overflow in endDoctypeDecl via NOTATION declarations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56131": {
+    "cvss": 4.9,
+    "description": "libexpat before 2.8.2 lacks handler call depth tracking for calls to XML_ResumeParser from within handlers in cases of a policy violation. Thus, a use-after-free can occur (similar to the CVE-2026-50219 situation).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56132": {
+    "cvss": 6.9,
+    "description": "In libexpat before 2.8.2, there is a heap-based buffer overflow in doProlog in xmlparse.c because scaffold backing array reallocation is mishandled when there is data-structure sharing across parsers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52910": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: bpf: Free reuseport cBPF prog after RCU grace period. Eulgyu Kim reported the splat below with a repro. [0] The repro sets up a UDP reuseport group with a cBPF prog and replaces it with a new one while another thread is sending a UDP packet to the group. The reuseport prog is freed by sk_reuseport_prog_free(). bpf_prog_put() is called for \"e\"BPF prog to destruct through multiple stages while cBPF prog is freed immediately by bpf_release_orig_filter() and bpf_prog_free(). If a reuseport prog is detached from the setsockopt() path (reuseport_attach_prog() or reuseport_detach_prog()), sk_reuseport_prog_free() is called without waiting for RCU readers to complete, resulting in various bugs. Let's defer freeing the reuseport cBPF prog after one RCU grace period. Note \"e\"BPF prog is safe as is unless the fast path starts to touch fields destroyed in bpf_prog_put_deferred() and __bpf_prog_put_noref(). [0]: BUG: KASAN: vmalloc-out-of-bounds in reuseport_select_sock+0xedc/0x1220 net/core/sock_reuseport.c:596 Read of size 4 at addr ffffc9000051e004 by task slowme/10208 CPU: 6 UID: 1000 PID: 10208 Comm: slowme Not tainted 7.0.0-geb7ac95ff75e #32 PREEMPT(full) Hardware name: QEMU Ubuntu 24.04 PC v2 (i440FX + PIIX, arch_caps fix, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014 Call Trace: dump_stack_lvl+0xe8/0x150 lib/dump_stack.c:120 print_address_description mm/kasan/report.c:378 [inline] print_report+0xca/0x240 mm/kasan/report.c:482 kasan_report+0x118/0x150 mm/kasan/report.c:595 reuseport_select_sock+0xedc/0x1220 net/core/sock_reuseport.c:596 udp4_lib_lookup2+0x3bc/0x950 net/ipv4/udp.c:495 __udp4_lib_lookup+0x768/0xe20 net/ipv4/udp.c:723 __udp4_lib_lookup_skb+0x297/0x390 net/ipv4/udp.c:752 __udp4_lib_rcv+0x1312/0x2620 net/ipv4/udp.c:2752 ip_protocol_deliver_rcu+0x282/0x440 net/ipv4/ip_input.c:207 ip_local_deliver_finish+0x3bb/0x6f0 net/ipv4/ip_input.c:241 NF_HOOK+0x30c/0x3a0 include/linux/netfilter.h:318 NF_HOOK+0x30c/0x3a0 include/linux/netfilter.h:318 __netif_receive_skb_one_core net/core/dev.c:6181 [inline] __netif_receive_skb net/core/dev.c:6294 [inline] process_backlog+0xaa4/0x1960 net/core/dev.c:6645 __napi_poll+0xae/0x340 net/core/dev.c:7709 napi_poll net/core/dev.c:7772 [inline] net_rx_action+0x5d7/0xf50 net/core/dev.c:7929 handle_softirqs+0x22b/0x870 kernel/softirq.c:622 do_softirq+0x76/0xd0 kernel/softirq.c:523 __local_bh_enable_ip+0xf8/0x130 kernel/softirq.c:450 local_bh_enable include/linux/bottom_half.h:33 [inline] rcu_read_unlock_bh include/linux/rcupdate.h:924 [inline] __dev_queue_xmit+0x1dd7/0x3710 net/core/dev.c:4890 neigh_output include/net/neighbour.h:556 [inline] ip_finish_output2+0xca9/0x1070 net/ipv4/ip_output.c:237 NF_HOOK_COND include/linux/netfilter.h:307 [inline] ip_output+0x29f/0x450 net/ipv4/ip_output.c:438 ip_send_skb+0x45/0xc0 net/ipv4/ip_output.c:1508 udp_send_skb+0xb04/0x1510 net/ipv4/udp.c:1195 udp_sendmsg+0x1a71/0x2350 net/ipv4/udp.c:1485 sock_sendmsg_nosec net/socket.c:727 [inline] __sock_sendmsg net/socket.c:742 [inline] __sys_sendto+0x554/0x680 net/socket.c:2206 __do_sys_sendto net/socket.c:2213 [inline] __se_sys_sendto net/socket.c:2209 [inline] __x64_sys_sendto+0xde/0x100 net/socket.c:2209 do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline] do_syscall_64+0x160/0xf80 arch/x86/entry/syscall_64.c:94 entry_SYSCALL_64_after_hwframe+0x77/0x7f RIP: 0033:0x415a2d Code: b3 66 2e 0f 1f 84 00 00 00 00 00 66 90 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 b8 ff ff ff f7 d8 64 89 01 48 RSP: 002b:00007f6bc31e41e8 EFLAGS: 00000212 ORIG_RAX: 000000000000002c RAX: ffffffffffffffda RBX: 00007f6bc31e4cdc RCX: 0000000000415a2d RDX: 0000000000000001 RSI: 00007f6bc31e421f RDI: 0000000000000003 RBP: 00007f6bc31e4240 R08: 00007f6bc31e4220 R09: 0000000000000010 R10: 0000000000000000 R11: ---truncated---",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-15661": {
+    "cvss": 6.5,
+    "description": "libssh2 through 1.11.1, fixed in commit 2dae302, contains an out-of-bounds heap read vulnerability in the sftp_symlink() function in src/sftp.c that allows a malicious SSH server or man-in-the-middle attacker to disclose heap memory contents or cause a crash by sending a crafted SSH_FXP_NAME response. Attackers can supply a link_len value larger than the actual packet data in SSH_FXP_NAME responses for SFTP READLINK and REALPATH operations, triggering a heap buffer over-read of up to target_len minus one bytes due to the missing validation of available packet buffer size before the memcpy operation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12528": {
+    "cvss": 5.4,
+    "description": "A flaw was found in 389 Directory Server in the __aclp__normalize_acltxt() function of aclparse.c. A malformed ACI (Access Control Instruction) string can trigger heap-buffer-overflow writes and reads during ACI parsing. The function fails to validate that the ACI keyword has sufficient length after whitespace stripping, leading to a 1-byte out-of-bounds write and subsequent out-of-bounds reads. An authenticated user with write access to the aci attribute could send a crafted ACI value to silently corrupt heap memory in the directory server process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48859": {
+    "cvss": 5.3,
+    "description": "Observable Timing Discrepancy vulnerability in Erlang/OTP ssh (ssh_auth, ssh_options modules) allows unauthenticated remote username enumeration via timing side-channel in password authentication. When the SSH daemon is configured with the user_passwords or password option, ssh_auth:check_password/3 performs a PBKDF2-SHA256 computation with 600,000 iterations (~300ms) for valid usernames, but returns immediately (~0ms) for invalid usernames via the ssh_options:get_password_option/2 path. This timing difference is detectable in a single authentication attempt and allows an unauthenticated attacker to distinguish valid from invalid usernames. The user_passwords and password options are documented as intended for test purposes; the recommended alternative is pwdfun, which is not affected by this vulnerability. This vulnerability is associated with program files lib/ssh/src/ssh_auth.erl and lib/ssh/src/ssh_options.erl. This issue affects OTP from OTP 29.0 before OTP 29.0.2, corresponding to ssh from 6.0 before 6.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
