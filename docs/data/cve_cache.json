@@ -93342,10 +93342,10 @@
     "product": "Unknown"
   },
   "CVE-2026-125439": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 5.3,
+    "description": "Missing Authorization vulnerability in Kit Kit (formerly ConvertKit) convertkit allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Kit (formerly ConvertKit): from n/a through 3.5.0.",
+    "vendor": "Kit",
+    "product": "Kit (formerly ConvertKit)"
   },
   "CVE-2026-117368": {
     "cvss": null,
@@ -101648,6 +101648,12 @@
   "CVE-2026-9669": {
     "cvss": 8.2,
     "description": "bz2.BZ2Decompressor objects could be reused after a decompression error. If an application caught the resulting OSError and retried with the same decompressor, crafted input could cause the decompressor to resume from an invalid internal state and perform out-of-bounds writes to a stack buffer. This could crash the process when processing untrusted data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-0604": {
+    "cvss": 5.4,
+    "description": "A flaw was found in Keycloak. When an Active Directory user resets their password, the system updates it without performing an LDAP bind to validate the new credentials against AD. This vulnerability allows users whose AD accounts are expired or disabled to regain access in Keycloak, bypassing AD restrictions. The issue enables authentication bypass and could allow unauthorized access under certain conditions.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
