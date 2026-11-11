@@ -101856,28 +101856,28 @@
     "product": "Unknown"
   },
   "CVE-2026-0325": {
-    "cvss": null,
+    "cvss": 1.3,
     "description": "CVE-2026-0325 PAN-OS: GlobalProtect Authorization Bypass Vulnerability (Severity: LOW)",
     "vendor": "Palo Alto",
-    "product": "Unknown"
+    "product": "Cloud NGFW"
   },
   "CVE-2026-0327": {
-    "cvss": null,
+    "cvss": 2.3,
     "description": "CVE-2026-0327 PAN-OS: Privilege Escalation Vulnerability in GlobalProtect (Severity: LOW)",
     "vendor": "Palo Alto",
-    "product": "Unknown"
+    "product": "Cloud NGFW"
   },
   "CVE-2026-0331": {
-    "cvss": null,
+    "cvss": 6.6,
     "description": "CVE-2026-0331 PAN-OS: Sensitive Information Disclosure Vulnerability (Severity: MEDIUM)",
     "vendor": "Palo Alto",
-    "product": "Unknown"
+    "product": "Cloud NGFW"
   },
   "CVE-2026-0328": {
-    "cvss": null,
+    "cvss": 2.7,
     "description": "CVE-2026-0328 PAN-OS: User Impersonation through GlobalProtect Portal (Severity: LOW)",
     "vendor": "Palo Alto",
-    "product": "Unknown"
+    "product": "Cloud NGFW"
   },
   "CVE-2026-0323": {
     "cvss": null,
@@ -101886,16 +101886,16 @@
     "product": "Unknown"
   },
   "CVE-2026-0330": {
-    "cvss": null,
+    "cvss": 6.1,
     "description": "CVE-2026-0330 PAN-OS: Authenticated Remote Code Execution (RCE) in Panorama (Severity: MEDIUM)",
     "vendor": "Palo Alto",
-    "product": "Unknown"
+    "product": "Cloud NGFW"
   },
   "CVE-2026-0329": {
-    "cvss": null,
+    "cvss": 4.6,
     "description": "CVE-2026-0329 PAN-OS: Buffer Overflow Vulnerability (Severity: MEDIUM)",
     "vendor": "Palo Alto",
-    "product": "Unknown"
+    "product": "Cloud NGFW"
   },
   "CVE-2026-0324": {
     "cvss": null,
@@ -101904,10 +101904,10 @@
     "product": "Unknown"
   },
   "CVE-2026-0326": {
-    "cvss": null,
+    "cvss": 1.7,
     "description": "CVE-2026-0326 PAN-OS: Buffer Overflow Vulnerability in Protocol and Service Processing (Severity: LOW)",
     "vendor": "Palo Alto",
-    "product": "Unknown"
+    "product": "Cloud NGFW"
   },
   "CVE-2026-17039": {
     "cvss": 3.1,
@@ -104708,6 +104708,240 @@
   "CVE-2026-66338": {
     "cvss": 7.2,
     "description": "A flaw was found in libsoup. The chunked transfer encoding parser uses a permissive parsing function for chunk sizes that silently accepts inputs violating RFC 9112, including leading whitespace, plus sign prefixes, and trailing invalid characters. When libsoup operates behind a strict frontend proxy, this parsing differential can be exploited to smuggle HTTP requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35189": {
+    "cvss": 5.3,
+    "description": "Issue summary: A certificate with many nameRelativeToCRLIssuer CRL distribution points causes disproportionate heap growth when OpenSSL caches X.509 extensions. Impact summary: Receiving a crafted certificate from a malicious peer can lead to significant memory pressure and possible Denial of Service in clients or in servers that solicit client certificates. CWE: CWE-770: Allocation of Resources Without Limits or Throttling Description: A certificate or a set of certificates that fits under the limit for size of certificates accepted from the peer (~100 KiB) can result in allocation of several hundred MiB of resident memory on the receiving side during a normal TLS handshake. This may be enough to crash the client or server, if multiple concurrent connections lead to similarly large memory allocations. The fix postpones processing of the CRL distribution points extensions in certificates to the time when the processed value is required for CRL processing. This avoids keeping large memory allocations for a long time when such certificates are received. FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-54872": {
+    "cvss": 3.7,
+    "description": "Issue summary: The generic elliptic-curve scalar multiplication used for ECDSA and SM2 signature operations with curves that do not have a dedicated implementation leaks information about the secret nonce through timing. Impact summary: An attacker able to measure signing times may learn information about the per-signature secret nonce, which over many signatures can, via a lattice / Hidden Number Problem attack, lead to recovery of the private key. CWE: CWE-208: Observable Timing Discrepancy Description: The generic elliptic-curve scalar multiplication used for curves that do not have a dedicated constant-time implementation pads the secret scalar with non-constant-time BIGNUM operations, so the time taken depends on the value of the secret scalar derived from the ECDSA and SM2 nonce. The leak is very small; observing it requires a large number of measurements. The effect is largest for curves whose group order lies on a machine-word boundary, such as brainpoolP384r1. Applications using ECDSA signing over the Brainpool and other generic prime curves, and SM2 signing on platforms that use the generic implementation, are vulnerable to this issue. The NIST curves P-256, P-384 and P-521 use dedicated constant-time implementations and are not affected. FIPS Impact: no The FIPS modules are not affected: the approved NIST curves used in the FIPS provider have dedicated constant-time implementations and do not use the affected code path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75805": {
+    "cvss": 5.3,
+    "description": "Issue summary: A CMP client that requests certificate revocation on the basis of a PKCS#10 CSR may dereference a NULL pointer and terminate abnormally when processing a crafted revocation response. Impact summary: The NULL pointer dereference happens on a read which leads to a crash and a Denial of Service for the affected client application. CWE: CWE-476: NULL-pointer dereference Description: A CMP client revoking a certificate has to tell the server which certificate to revoke, and may do so by supplying a PKCS#10 CSR instead of the certificate itself or its issuer name and serial number. This is 'openssl cmp -cmd rr -csr ' on the command line, or OSSL_CMP_exec_RR_ses() with the certificate supplied via OSSL_CMP_CTX_set1_p10CSR() through the API. A CSR does not contain the issuer name and serial number of the certificate, so the client does not send them. A server may optionally name the certificate it revoked in its response, and the client then compares that name against what it sent. Having sent neither an issuer name nor a serial number, it has nothing to compare against, and a server returning a specially crafted name causes the client to read from a NULL pointer and crash. The revocation response is checked for valid message protection before the affected code is reached, so an attacker must be a malicious or compromised CMP server, or a man-in-the-middle in possession of the secret used for message protection. Clients that identify the certificate to be revoked by a certificate or by issuer and serial number rather than by a PKCS#10 CSR are not affected. FIPS impact: no No FIPS modules are affected by this issue, as the CMP protocol implementation is outside the OpenSSL FIPS module boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75806": {
+    "cvss": 5.3,
+    "description": "Issue summary: An established DTLS 1.2 association using an AEAD cipher suite can be terminated by a single unauthenticated datagram whose encrypted fragment is shorter than the mandatory explicit IV and authentication tag overhead. Impact summary: An attacker who can send a datagram that is routed to an existing DTLS 1.2 association can tear that association down without knowing any key material. This is a Denial of Service limited to the targeted association. There is no memory safety or confidentiality impact. CWE: CWE-1284: Improper Validation of Specified Quantity in Input Description: In TLS 1.2 and DTLS 1.2 every record protected by an AEAD cipher suite carries an explicit IV followed by the ciphertext and an authentication tag. When decrypting such a record the record layer passed the record length to the cipher implementation before checking that the record was long enough to contain the explicit IV and the tag. For a record shorter than that overhead the cipher implementation rejected the impossible length, and the record layer treated this as an internal failure and raised a fatal internal_error alert instead of treating the record as one that failed authentication. In TLS 1.2 the same record causes a fatal internal_error alert instead of the expected bad_record_mac alert. Since any undecryptable record already terminates a TLS connection, this is a protocol conformance issue rather than a security issue in TLS. The fix validates the record length against the explicit IV and tag length before any AEAD processing, so that TLS reports bad_record_mac and DTLS silently discards the record. FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77696": {
+    "cvss": 3.7,
+    "description": "Issue summary: SM2 signature generation uses non-constant-time arithmetic on secret values, forming a timing side-channel. Impact summary: An attacker able to measure SM2 signing times may learn information about the per-signature secret nonce, which over many signatures can, via a lattice / Hidden Number Problem attack, lead to recovery of the private key. CWE: CWE-208: Observable Timing Discrepancy Description: SM2 signature generation computes the signature value using variable-time BIGNUM operations on the secret nonce and the private key, so the time taken to produce an SM2 signature depends on these secret values, forming a timing side-channel. Applications performing SM2 signature generation are affected on all platforms. FIPS Impact: no SM2 is not a FIPS algorithm.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84782": {
+    "cvss": 8.2,
+    "description": "Issue summary: The DTLS retransmission logic does not correctly handle a handshake message write that is suspended part-way through. The retransmitted message can be read past the message buffer and the retransmission overwrites the internal state the suspended write needs to resume correctly. Impact summary: The retransmitted message can disclose a heap memory to the peer as plaintext handshake data or cause a crash and a Denial of Service when the read reaches an unmapped memory region. CWE: CWE-125: Out-of-bounds Read Description: DTLS handshake messages can be written out in multiple fragments, and a write can suspend mid-message (returning WANT_WRITE) if the underlying transport temporarily cannot accept more data. While such a write is suspended, the DTLS retransmission timer may independently fire and ask the retransmission logic to resend an earlier, already-acknowledged-as-sent message from its retransmit queue. The retransmission logic reused the same internal buffer and position tracking as the message that was still being written, without resetting the position back to the start of the message being retransmitted. As a result the retransmission was read starting from wherever the suspended write had left off, producing a mislabelled message whose body was leftover bytes from the other, larger message still in flight - content that was never meant to be sent at that point, and which could run past the end of the allocated buffer. Separately, even when the retransmission is positioned correctly, allowing it to run to completion while another write is suspended overwrites the same shared bookkeeping that the suspended write depends on to resume. When the application later resumes the suspended write (via a subsequent SSL_read(), SSL_write(), SSL_accept(), or SSL_connect() call), it finds that bookkeeping in a state inconsistent with the message and aborts the process in a debugging build. The fix resets the retransmission's read position to the start of the message before resending, and skips retransmission entirely whenever a handshake write is still suspended, deferring to the next call that resumes it instead. FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-51019": {
+    "cvss": 8.8,
+    "description": "Akaunting before 2.1.31 contains an OS command injection vulnerability in the module installation and update flow where the alias parameter is passed unvalidated to shell command execution. Authenticated users with admin panel access can inject shell metacharacters into the alias parameter to execute arbitrary commands on the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12264": {
+    "cvss": 8.8,
+    "description": "Zoho Corporation ManageEngine DDI Central versions 6200 and below are vulnerable to arbitrary file write via HA Failover Config sync upload leading to code execution as root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12265": {
+    "cvss": 8.8,
+    "description": "Zoho Corporation ManageEngine DDI Central versions 6200 and below are vulnerable to insufficient access control in HA failover endpoint leading to destructive PostgreSQL database operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96760": {
+    "cvss": 9.8,
+    "description": "Authlib (v1.8.0 and below) contains a signature verification bypass vulnerability. The JsonWebSignature.deserialize_json() method accepts a JSON Serialization JWS object and returns the payload as successfully verified without checking for a signature and without requiring a cryptographic key.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97025": {
+    "cvss": 3.2,
+    "description": "Flatpak writes the OCI repository authentication token with world-readable permissions (0644) in the system-helper's cache directory, allowing other local users on a multi-user system to read the token and impersonate the authenticated user against the OCI repository. Only OCI-based sources (e.g. as used by Fedora) are affected; libostree-based sources such as Flathub are not.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97026": {
+    "cvss": 3.9,
+    "description": "Flatpak creates temporary child repository directories under the user cache with world-writable permissions (0777). On multi-user systems with a permissive umask, other local users could read or modify the temporary directory used while installing apps or runtimes, potentially causing installation failures (denial of service); tampered content would fail signature/digest verification rather than being trusted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97027": {
+    "cvss": 3.6,
+    "description": "Flatpak passes through arbitrary vendor-extension keys unmodified when exporting an application's Desktop Entry (.desktop) and D-Bus Service (.service) files, instead of validating against an allowlist. A malicious Flatpak app can use this to cause denial of service (e.g. forced application restart loops) or to influence host D-Bus/systemd activation behavior beyond what the sandbox is intended to permit.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-42002": {
+    "cvss": 8.4,
+    "description": "A code injection vulnerability has been discovered in the Robot Operating System 2 (ROS 2) 'ros2topic' command-line tool, affecting all ROS 2 distributions from Crystal Clemmys up to and including Lyrical Luth and Rolling Ridley. The vulnerability lies in the 'hz' verb, which reports the publishing rate of a topic and accepts a user-provided Python expression via the --filter option. This input is passed directly to the eval() function without sanitization, allowing a local user to craft and execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58386": {
+    "cvss": 6.5,
+    "description": "ZoneMinder versions 1.37.0 before 1.38.0 contain a path traversal vulnerability in the files view that allows authenticated users to read arbitrary files. The path parameter is not properly validated before being passed to output_file, enabling attackers with Events view permission to access sensitive files like configuration files containing database credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96282": {
+    "cvss": 3.1,
+    "description": "A malicious Flatpak extension can probe the host filesystem to determine what files and directories exist at arbitrary paths, and host directory listings can be disclosed to sandboxed applications using the extension. Additionally, unvalidated extension metadata can cause extension content to be mounted at unintended locations inside the sandbox.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96283": {
+    "cvss": 3.3,
+    "description": "By calling org.freedesktop.Flatpak.SystemHelper.CancelPull on another user's pull, the pull is not actually cancelled but removed from internal tracking, making it impossible for the owning user to stop it. Ongoing pulls cannot be stopped.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96284": {
+    "cvss": 2.5,
+    "description": "A malicious user can get read-access to files in the flatpak-system-helper context if a system OCI repository is configured, because the OCI code paths in the system helper follow symlinks when importing OCI images that are under the user's control.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92905": {
+    "cvss": 5.3,
+    "description": "Zoho Corporation ManageEngine EventLog Analyzer and Log360 versions below 13071 are vulnerable to a denial-of-service (DoS) vulnerability in the log collector component.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71463": {
+    "cvss": 2.7,
+    "description": "Notification template Jinja AST whitelist only inspects static Getattr nodes. Dynamic subscripts (job['job'+'_env']) and {% if job.id > 100 %} conditional gating bypass both the AST check and the test-render (stub has small job.id). At runtime, the gated branch executes and exceptions write full tracebacks into notification body, which is POSTed to attacker-controlled webhook URL. Leaks install paths, Python version, source line numbers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71464": {
+    "cvss": 3.1,
+    "description": "LaunchConfigurationBaseSerializer.scm_branch has no validate_scm_branch() leading-dash check, unlike Project/JobTemplate/JobLaunch serializers. Schedule and WFJT Node accept --upload-pack=/bin/id as scm_branch. Currently blocked at runtime by jobs.py:1502 ValueError check (defense-in-depth), but the API validation gap means sole reliance on a task-layer guard. Refactoring that guard away would promote this to RCE.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71465": {
+    "cvss": 3.1,
+    "description": "RunAdHocCommand.build_args() appends limit as bare positional (args.append(limit)) instead of using args.extend(['-l', limit]) like RunJob. A limit beginning with - is parsed as an ansible CLI option. Currently limited to short-circuit flags (--version, --help) since injected element displaces required pattern positional. Would escalate if ansible-core ever defaults pattern.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96546": {
+    "cvss": 2.5,
+    "description": "A one-byte out-of-bounds heap read flaw was found in GIMP's uncompressed DDS image loader. When a user opens an uncompressed DDS image, the file-dds plug-in performs an unconditional one-byte look-ahead after processing the final pixel. This may cause the plug-in to crash if the byte immediately following the pixel buffer is inaccessible; no information disclosure or code execution has been demonstrated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65634": {
+    "cvss": 8.2,
+    "description": "Inefficient algorithmic complexity in the Erlang/OTP asn1 OBJECT IDENTIFIER decoder allows a remote unauthenticated attacker to cause denial of service by sending a crafted OID during the TLS handshake. The BER OID decoder asn1rtt_ber:dec_subidentifiers/3 in lib/asn1/src/asn1rtt_ber.erl and the equivalent PER helper asn1rtt_per_common:dec_subidentifiers/3 in lib/asn1/src/asn1rtt_per_common.erl accumulate a base-128 subidentifier into an unbounded integer using (Av bsl 7) + H per continuation byte. Each shift and addition on the growing accumulator is linear in the number of bits already accumulated, giving quadratic total work in the size of a single subidentifier. The JER helper asn1rtt_jer:json2oid/1 in lib/asn1/src/asn1rtt_jer.erl exhibits the same class of unbounded-integer parsing when decoding a dot-separated OID from JSON. A DER-encoded OBJECT IDENTIFIER with one very large arc (approximately 262 KB of continuation bytes) consumes roughly 13 seconds of CPU on typical hardware. The vulnerable decoder is generated into every ASN.1 module that contains an OBJECT IDENTIFIER, including OTP-PUB-KEY which is reached during X.509 certificate parsing via public_key:pkix_decode_cert/2. This decoder runs before any signature or trust chain verification, so any Erlang service that parses peer TLS certificates is exposed: the default for TLS clients (which always parse the server certificate) and for mutual-TLS servers (which parse client certificates). This vulnerability is associated with program files lib/asn1/src/asn1rtt_ber.erl, lib/asn1/src/asn1rtt_per_common.erl and lib/asn1/src/asn1rtt_jer.erl and program routines asn1rtt_ber:dec_subidentifiers/3, asn1rtt_per_common:dec_subidentifiers/3 and asn1rtt_jer:json2oid/1. This issue affects OTP from OTP 17.0 before OTP 27.3.4.18, OTP 28.5.0.7, and OTP 29.1.1, corresponding to asn1 from 3.0 before 5.3.4.3, 5.4.3.1, and 5.5.2. Whether OTP before OTP 17.0, corresponding to asn1 before 3.0, is affected is unknown.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68956": {
+    "cvss": 7.1,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in Erlang/OTP ssh allows an authenticated remote attacker to exhaust node memory by repeatedly opening session channels that are never assigned a handler. The \"session\" clause of ssh_connection:handle_msg/4 checks only minimal_remote_max_packet_size before calling setup_session/5, which unconditionally builds a #channel{} record and stores it in the ETS channel cache. The max_channels daemon option is consulted only by ssh_channel_sup:max_num_channels_not_exceeded/2, which counts supervisor children, so a channel that never gets a shell, exec, or subsystem handler is invisible to the limit and setting the option to a finite value does not mitigate the attack. RFC 4254 section 5.1 permits many session channels per connection, and each record costs only a few hundred bytes, so a single authenticated connection can accumulate channels until the node runs out of memory and the emulator terminates, affecting every application on it. No file contents, credentials, or write access are obtainable. This issue affects OTP from OTP 18.1.2 before OTP 27.3.4.18, OTP 28.5.0.7, and OTP 29.1.1, corresponding to ssh from 4.1.1 before 5.2.11.13, 5.5.2.6, and 6.0.6. Whether OTP before OTP 18.1.2, corresponding to ssh before 4.1.1, is affected is unknown.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94218": {
+    "cvss": 3.1,
+    "description": "A flaw was found in the authentication session management of Keycloak, an identity and access management solution. The issue occurs when an administrator enforces a stronger authentication flow, such as mandatory two-factor authentication (2FA) setup, through a client policy. A user can bypass this requirement by manually visiting a specific session restart web link during the login process. This action clears the internal markers that track the required security steps, allowing the user to log in with only a password and gain access without completing the mandated 2FA setup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75939": {
+    "cvss": 7.4,
+    "description": "A flaw was found in openshift/oc-mirror. The tool incorrectly verifies PGP (Pretty Good Privacy) release image signatures by checking for signature errors before the entire signed body is processed, leading to a bypass of the signature verification. A remote attacker, by intercepting or manipulating network traffic to the signature endpoint, could exploit this to craft a PGP message with a valid Red Hat release key ID but a forged signature. This enables the `oc-mirror` tool to accept and mirror a malicious release payload into a disconnected registry, potentially compromising the integrity of software deployments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94184": {
+    "cvss": 5.3,
+    "description": "A stack-based buffer overflow flaw was found in fetchmail when built with NTLM support. A malicious or compromised mail server advertising NTLM authentication can send a crafted Type 2 challenge that causes fetchmail to write past a fixed stack buffer while building the NTLM authenticate response. This may lead to remote code execution depending on stack-frame layout, or to authentication failure or process termination under memory hardening.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93990": {
+    "cvss": 7.5,
+    "description": "Expat before 2.8.5 fails to validate that a high surrogate in UTF-16 input is followed by a low surrogate, allowing malformed UTF-16 sequences to be accepted. Attackers can supply UTF-16 encoded XML containing lone high surrogates that consume the following code unit, causing Expat to pass unpaired surrogates to applications built with XML_UNICODE and to silently replace input characters in other builds.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-10841": {
+    "cvss": 6.5,
+    "description": "IBM WebSphere Application Server 8.5 and 9.0, and IBM WebSphere Application Server - Liberty 17.0.0.3 through 26.0.0.8 are vulnerable to HTTP request smuggling.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91142": {
+    "cvss": 3.6,
+    "description": "A flaw was found in Cockpit. An authenticated local user with a large user identifier (UID) can cause unauthorized modification and disclosure of login records. On 32-bit systems, an integer overflow during session accounting allows the user's login process to read or overwrite the legacy log entries of other accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92745": {
+    "cvss": 5.0,
+    "description": "A flaw was found in cockpit-machines. This vulnerability allows a local attacker with the ability to inspect process metadata to disclose a sensitive Red Hat Subscription Management (RHSM) offline token. The token is exposed when it is passed as a command-line argument to a helper script during the token validation process. Successful exploitation could lead to the compromise of confidentiality, as the exposed token can be used to request access tokens.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92747": {
+    "cvss": 5.0,
+    "description": "A flaw was found in `cockpit-machines`. This vulnerability allows a local attacker with the ability to inspect running processes to expose sensitive guest virtual machine (VM) credentials, such as `rootPassword` and `userPassword`. This occurs when the `install_machine.py` script passes these credentials as a JSON command-line argument during VM creation or installation. The exposure is limited to the period when the installation workflow is active and depends on host process-visibility policies.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92768": {
+    "cvss": 5.5,
+    "description": "A flaw was found in cockpit-machines. This vulnerability allows a local attacker to expose sensitive Virtual Machine (VM) credentials, including plaintext passwords, by inspecting process command-line arguments during VM creation or installation. The cockpit-machines component passes password values directly on the command line, making them visible to other local users on systems where process arguments are not restricted. Successful exploitation leads to information disclosure, potentially compromising VM access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17262": {
+    "cvss": 5.5,
+    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a local attacker to cause a denial of service due to improper validation of FTP authentication commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18869": {
+    "cvss": 6.4,
+    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote authenticated attacker to bypass security restrictions and access internal network services due to improper validation of FTP PORT and EPRT commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91202": {
+    "cvss": 6.1,
+    "description": "A flaw was found in cockpit-files. A low-privileged local user can exploit this vulnerability by crafting a directory containing a symbolic link (symlink) and then using the privileged \"Paste as owner\" function. This allows for arbitrary file ownership changes outside the intended pasted directory, leading to a compromise of data integrity. In some cases, this could also lead to reduced confidentiality if the new ownership grants unauthorized read access. Exploitation requires user interaction to select a non-original owner during the paste operation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91203": {
+    "cvss": 6.0,
+    "description": "A flaw was found in cockpit-files. This vulnerability allows a local attacker to exploit a timing issue, known as a symlink race condition, during privileged file operations such as changing file ownership or permissions. By manipulating directory entries and winning this race, the attacker can redirect these operations to unintended files. This could lead to unauthorized changes in file ownership and permissions on arbitrary files, potentially compromising system integrity and availability by altering system or application states or rendering services unusable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91205": {
+    "cvss": 6.0,
+    "description": "A flaw was found in cockpit-files. A local unprivileged attacker can exploit a race condition during directory creation with owner assignment. By controlling a writable parent directory, the attacker can replace a newly created directory with a symbolic link (symlink) before the ownership change operation (chown) is applied. This allows the attacker to redirect the ownership change to an arbitrary file, potentially leading to information disclosure or unauthorized modification of sensitive files.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
