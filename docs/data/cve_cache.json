@@ -101764,5 +101764,149 @@
     "description": "Observable Timing Discrepancy vulnerability in Erlang/OTP ssh (ssh_auth, ssh_options modules) allows unauthenticated remote username enumeration via timing side-channel in password authentication. When the SSH daemon is configured with the user_passwords or password option, ssh_auth:check_password/3 performs a PBKDF2-SHA256 computation with 600,000 iterations (~300ms) for valid usernames, but returns immediately (~0ms) for invalid usernames via the ssh_options:get_password_option/2 path. This timing difference is detectable in a single authentication attempt and allows an unauthenticated attacker to distinguish valid from invalid usernames. The user_passwords and password options are documented as intended for test purposes; the recommended alternative is pwdfun, which is not affected by this vulnerability. This vulnerability is associated with program files lib/ssh/src/ssh_auth.erl and lib/ssh/src/ssh_options.erl. This issue affects OTP from OTP 29.0 before OTP 29.0.2, corresponding to ssh from 6.0 before 6.0.1.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-52912": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: netfilter: nf_queue: hold bridge skb->dev while queued br_pass_frame_up() rewrites skb->dev from the ingress port to the bridge master before queueing bridge LOCAL_IN packets. NFQUEUE only holds references on state.in/out and bridge physdevs, so a queued bridge packet can retain a freed bridge master in skb->dev until reinjection. When the verdict is reinjected later, br_netif_receive_skb() re-enters the receive path with skb->dev still pointing at the freed bridge master, triggering a use-after-free. Store skb->dev in the queue entry, hold a reference on it for the queue lifetime, and use the saved device when dropping queued packets during NETDEV_DOWN handling.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52921": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: netfilter: ipset: stop hash:* range iteration at end The following hash set variants: hash:ip,mark hash:ip,port hash:ip,port,ip hash:ip,port,net iterate IPv4 ranges with a 32-bit iterator. The iterator must stop once the last address in the requested range has been processed. Advancing it once more can move the traversal state past the end of the request, so a later retry may continue from an unintended position. Handle the iterator increment explicitly at the end of the loop and stop once the upper bound has been processed. This keeps the existing retry behaviour intact for valid ranges while preventing traversal from continuing past the original boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52925": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: vrf: Fix a potential NPD when removing a port from a VRF RCU readers that identified a net device as a VRF port using netif_is_l3_slave() assume that a subsequent call to netdev_master_upper_dev_get_rcu() will return a VRF device. They then continue to dereference its l3mdev operations. This assumption is not always correct and can result in a NPD [1]. There is no RCU synchronization when removing a port from a VRF, so it is possible for an RCU reader to see a new master device (e.g., a bridge) that does not have l3mdev operations. Fix by adding RCU synchronization after clearing the IFF_L3MDEV_SLAVE flag. Skip this synchronization when a net device is removed from a VRF as part of its deletion and when the VRF device itself is deleted. In the latter case an RCU grace period will pass by the time RTNL is released. [1] BUG: kernel NULL pointer dereference, address: 0000000000000000 [...] RIP: 0010:l3mdev_fib_table_rcu (net/l3mdev/l3mdev.c:181) [...] Call Trace: l3mdev_fib_table_by_index (net/l3mdev/l3mdev.c:201 net/l3mdev/l3mdev.c:189) __inet_bind (net/ipv4/af_inet.c:499 (discriminator 3)) inet_bind_sk (net/ipv4/af_inet.c:469) __sys_bind (./include/linux/file.h:62 (discriminator 1) ./include/linux/file.h:83 (discriminator 1) net/socket.c:1951 (discriminator 1)) __x64_sys_bind (net/socket.c:1969 (discriminator 1) net/socket.c:1967 (discriminator 1) net/socket.c:1967 (discriminator 1)) do_syscall_64 (arch/x86/entry/syscall_64.c:63 (discriminator 1) arch/x86/entry/syscall_64.c:94 (discriminator 1)) entry_SYSCALL_64_after_hwframe (arch/x86/entry/entry_64.S:130)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52928": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: af_unix: Reject SIOCATMARK on non-stream sockets SIOCATMARK reports whether the receive queue is at the urgent mark for MSG_OOB. In AF_UNIX, MSG_OOB is supported only for SOCK_STREAM sockets. SOCK_DGRAM and SOCK_SEQPACKET reject MSG_OOB in sendmsg() and recvmsg(), so they should not support SIOCATMARK either. Return -EOPNOTSUPP for non-stream sockets before checking the receive queue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52930": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipc/shm: serialize orphan cleanup with shm_nattch updates shm_destroy_orphaned() walks the shm idr under shm_ids(ns).rwsem, but that does not serialize all fields tested by shm_may_destroy(). In particular, shm_nattch is updated while holding shm_perm.lock, and attach paths can do that without holding the rwsem. Do not decide that an orphaned segment is unused before taking the object lock. Move the shm_may_destroy() check under shm_perm.lock, matching the other destroy paths, and unlock the segment when it no longer qualifies for removal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52933": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: io_uring/poll: fix signed comparison in io_poll_get_ownership() io_poll_get_ownership() uses a signed comparison to check whether poll_refs has reached the threshold for the slowpath: if (unlikely(atomic_read(&req->poll_refs) >= IO_POLL_REF_BIAS)) atomic_read() returns int (signed). When IO_POLL_CANCEL_FLAG (BIT(31)) is set in poll_refs, the value becomes negative in signed arithmetic, so the >= 128 comparison always evaluates to false and the slowpath is never taken. Fix this by casting the atomic_read() result to unsigned int before the comparison, so that the cancel flag is treated as a large positive value and correctly triggers the slowpath.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52941": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/smc: avoid NULL deref of conn->lnk in smc_msg_event tracepoint The smc_msg_event tracepoint class, shared by smc_tx_sendmsg and smc_rx_recvmsg, unconditionally dereferences smc->conn.lnk: __string(name, smc->conn.lnk->ibname) conn->lnk is only set for SMC-R; for SMC-D it is NULL. Other code on these paths already handles this (e.g. !conn->lnk in SMC_STAT_RMB_TX_SIZE_SMALL()). With the tracepoint enabled, the first sendmsg()/recvmsg() on an SMC-D socket crashes: Oops: general protection fault, probably for non-canonical address KASAN: null-ptr-deref in range [...] RIP: 0010:strlen+0x1e/0xa0 Call Trace: trace_event_raw_event_smc_msg_event (net/smc/smc_tracepoint.h:44) smc_rx_recvmsg (net/smc/smc_rx.c:515) smc_recvmsg (net/smc/af_smc.c:2859) __sys_recvfrom (net/socket.c:2315) __x64_sys_recvfrom (net/socket.c:2326) do_syscall_64 The faulting address 0x3e0 is offsetof(struct smc_link, ibname), confirming the NULL ->lnk deref. Enabling the tracepoint requires root, but the trigger itself is unprivileged: socket(AF_SMC, ...) has no capability check, and SMC-D negotiation needs no admin step on s390 or on x86 with the loopback ISM device loaded. Log an empty device name for SMC-D instead of dereferencing NULL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52942": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: netfilter: nf_log: validate MAC header was set before dumping it The fallback path of dump_mac_header() guards the MAC header access only with \"skb->mac_header != skb->network_header\", without checking skb_mac_header_was_set(). When the MAC header is unset, mac_header is 0xffff, so the test passes and skb_mac_header(skb) returns skb->head + 0xffff, ~64 KiB past the buffer; the loop then reads dev->hard_header_len bytes out of bounds into the kernel log. This is reachable via the netdev logger: nf_log_unknown_packet() calls dump_mac_header() unconditionally, and an skb sent through AF_PACKET with PACKET_QDISC_BYPASS reaches the egress hook with mac_header still unset (__dev_queue_xmit(), which would reset it, is bypassed). Add the skb_mac_header_was_set() check the ARPHRD_ETHER path already uses, and replace the open-coded MAC header length test with skb_mac_header_len(). Only skbs with an unset MAC header are affected; valid ones are dumped as before. BUG: KASAN: slab-out-of-bounds in dump_mac_header (net/netfilter/nf_log_syslog.c:831) Read of size 1 at addr ffff88800ea49d3f by task exploit/148 Call Trace: kasan_report (mm/kasan/report.c:595) dump_mac_header (net/netfilter/nf_log_syslog.c:831) nf_log_netdev_packet (net/netfilter/nf_log_syslog.c:938 net/netfilter/nf_log_syslog.c:963) nf_log_packet (net/netfilter/nf_log.c:260) nft_log_eval (net/netfilter/nft_log.c:60) nft_do_chain (net/netfilter/nf_tables_core.c:285) nft_do_chain_netdev (net/netfilter/nft_chain_filter.c:307) nf_hook_slow (net/netfilter/core.c:619) nf_hook_direct_egress (net/packet/af_packet.c:257) packet_xmit (net/packet/af_packet.c:280) packet_sendmsg (net/packet/af_packet.c:3114) __sys_sendto (net/socket.c:2265)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52943": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: skbuff: fix missing zerocopy reference in pskb_carve helpers pskb_carve_inside_header() and pskb_carve_inside_nonlinear() both copy the old skb_shared_info header into a new buffer via memcpy(), which includes the destructor_arg pointer (uarg) for MSG_ZEROCOPY skbs. Neither function calls net_zcopy_get() for the new shinfo, creating an unaccounted holder: every skb_shared_info with destructor_arg set will call skb_zcopy_clear() once when freed, but the corresponding net_zcopy_get() was never called for the new copy. Repeated calls drive uarg->refcnt to zero prematurely, freeing ubuf_info_msgzc while TX skbs still hold live destructor_arg pointers. KASAN reports use-after-free on a freed ubuf_info_msgzc: BUG: KASAN: slab-use-after-free in skb_release_data+0x77b/0x810 Read of size 8 at addr ffff88801574d3e8 by task poc/220 Call Trace: skb_release_data+0x77b/0x810 kfree_skb_list_reason+0x13e/0x610 skb_release_data+0x4cd/0x810 sk_skb_reason_drop+0xf3/0x340 skb_queue_purge_reason+0x282/0x440 rds_tcp_inc_free+0x1e/0x30 rds_recvmsg+0x354/0x1780 __sys_recvmsg+0xdf/0x180 Allocated by task 219: msg_zerocopy_realloc+0x157/0x7b0 tcp_sendmsg_locked+0x2892/0x3ba0 Freed by task 219: ip_recv_error+0x74a/0xb10 tcp_recvmsg+0x475/0x530 The skb consuming the late access still referenced the same uarg via shinfo->destructor_arg copied by pskb_carve_inside_nonlinear() without a refcount bump. This has been verified to be reliably exploitable: a working proof-of-concept achieves full root privilege escalation from an unprivileged local user on a default kernel configuration. The fix follows the pattern of pskb_expand_head() which has the same memcpy/cloned structure. For pskb_carve_inside_header(), net_zcopy_get() is placed after skb_orphan_frags() succeeds, so the orphan error path needs no cleanup. For pskb_carve_inside_nonlinear(), net_zcopy_get() is placed after all failure points and just before skb_release_data(), so no error path needs cleanup at all -- matching pskb_expand_head() more closely and avoiding the need for a balancing net_zcopy_put().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55654": {
+    "cvss": 3.7,
+    "description": "A flaw was found in OpenSSH. This vulnerability, a heap out-of-bounds read, occurs during the cleanup of GSSAPI (Generic Security Service Application Programming Interface) indicators when a trailing NULL termination is missing in the auth-indicators array. A remote attacker, under specific configurations involving GSSAPI authentication and a Kerberos environment, could exploit this to cause the SSH authentication path to crash or abort. This leads to a denial of service (DoS), impacting the availability of the SSH service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12969": {
+    "cvss": 5.3,
+    "description": "An out-of-bounds read vulnerability exists in dnsmasq's find_soa() function in src/rfc1035.c. When parsing NS section records, extract_name() is called with extrabytes=0, failing to validate that 10 additional bytes exist for fixed-length DNS record fields. A remote attacker controlling a DNS zone can exploit this via a crafted NXDOMAIN response to cause a 10-byte heap out-of-bounds read, potentially accessing stale data from prior transactions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56412": {
+    "cvss": 5.9,
+    "description": "libexpat before 2.8.2 does not consider XML_TOK_DATA_CHARS in doCdataSection and thus lacks handler call depth tracking for various calls from within handlers in cases of a policy violation. Thus, a use-after-free can occur. NOTE: this issue exists because of an incomplete fix for CVE-2026-50219.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8035": {
+    "cvss": 5.5,
+    "description": "Improper input validation in the NI-PAL kernel driver may allow a local authenticated user to cause a denial of service by triggering a crash due to a NULL pointer dereference. This vulnerability affects NI-PAL 26.3.0 and prior versions on Windows and Linux.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-2630": {
+    "cvss": 7.8,
+    "description": "There is a DLL hijacking vulnerability due to an uncontrolled search path that exists in NI LabVIEW. This vulnerability may result in arbitrary code execution. Successful exploitation requires an attacker to insert a malicious DLL into the uncontrolled search path. This vulnerability affects NI LabVIEW 2025 Q1 and prior versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4570": {
+    "cvss": 8.8,
+    "description": "An improper access restriction in NI MeasurementLink Python services could allow an attacker on an adjacent network to reach services exposed on localhost. These services were previously thought to be unreachable outside of the node. This affects measurement plug-ins written in Python using version 1.1.0 and all previous versions of the ni-measurementlink-service Python package.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0325": {
+    "cvss": null,
+    "description": "CVE-2026-0325 PAN-OS: GlobalProtect Authorization Bypass Vulnerability (Severity: LOW)",
+    "vendor": "Palo Alto",
+    "product": "Unknown"
+  },
+  "CVE-2026-0327": {
+    "cvss": null,
+    "description": "CVE-2026-0327 PAN-OS: Privilege Escalation Vulnerability in GlobalProtect (Severity: LOW)",
+    "vendor": "Palo Alto",
+    "product": "Unknown"
+  },
+  "CVE-2026-0331": {
+    "cvss": null,
+    "description": "CVE-2026-0331 PAN-OS: Sensitive Information Disclosure Vulnerability (Severity: MEDIUM)",
+    "vendor": "Palo Alto",
+    "product": "Unknown"
+  },
+  "CVE-2026-0328": {
+    "cvss": null,
+    "description": "CVE-2026-0328 PAN-OS: User Impersonation through GlobalProtect Portal (Severity: LOW)",
+    "vendor": "Palo Alto",
+    "product": "Unknown"
+  },
+  "CVE-2026-0323": {
+    "cvss": null,
+    "description": "CVE-2026-0323 Checkov by Prisma Cloud: Server-Side Request Forgery Vulnerability (Severity: LOW)",
+    "vendor": "Palo Alto",
+    "product": "Unknown"
+  },
+  "CVE-2026-0330": {
+    "cvss": null,
+    "description": "CVE-2026-0330 PAN-OS: Authenticated Remote Code Execution (RCE) in Panorama (Severity: MEDIUM)",
+    "vendor": "Palo Alto",
+    "product": "Unknown"
+  },
+  "CVE-2026-0329": {
+    "cvss": null,
+    "description": "CVE-2026-0329 PAN-OS: Buffer Overflow Vulnerability (Severity: MEDIUM)",
+    "vendor": "Palo Alto",
+    "product": "Unknown"
+  },
+  "CVE-2026-0324": {
+    "cvss": null,
+    "description": "CVE-2026-0324 GlobalProtect App: Incorrect Privilege Management Vulnerability in OPSWAT MetaDefender Endpoint Security SDK on Windows (Severity: MEDIUM)",
+    "vendor": "Palo Alto",
+    "product": "Unknown"
+  },
+  "CVE-2026-0326": {
+    "cvss": null,
+    "description": "CVE-2026-0326 PAN-OS: Buffer Overflow Vulnerability in Protocol and Service Processing (Severity: LOW)",
+    "vendor": "Palo Alto",
+    "product": "Unknown"
   }
 }
