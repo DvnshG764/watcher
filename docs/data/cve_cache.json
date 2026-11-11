@@ -101566,5 +101566,89 @@
     "description": "it's possible for an attacker to gain administrative access without having any kind of account on the targeted site and perform unauthorized actions. This is due to improper logic flow on the user registration process.",
     "vendor": "cozmoslabs",
     "product": "User Profile Builder"
+  },
+  "CVE-2026-46315": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: io_uring/waitid: clear waitid info before copying it to userspace IORING_OP_WAITID stores its result fields in struct io_waitid::info and later copies them to userspace siginfo. The prep path initializes the request arguments, but it does not initialize info itself. If the wait operation completes without reporting a child event, the common wait code can return without writing wo_info. In that case io_waitid_finish() still copies iw->info to userspace, exposing stale bytes from the reused io_kiocb command storage. Clear the result storage during prep so the io_uring path matches the regular waitid syscall, which uses a zero-initialized struct waitid_info.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-46323": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: gro: don't merge zcopy skbs skb_gro_receive() can currently copy frags between the source and GRO skb, without checking the zerocopy status, and in particular the SKBFL_MANAGED_FRAG_REFS flag. When SKBFL_MANAGED_FRAG_REFS is set, the skb doesn't hold a reference on the pages in shinfo->frags. Appending those frags to another skb's frags without fixing up the page refcount can lead to UAF. When either the last skb in the GRO chain (the one we would append frags to) or the source skb is zerocopy, don't merge the skbs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11786": {
+    "cvss": 6.5,
+    "description": "A flaw was found in 389 Directory Server. The LDIF parser reads past the end of a heap buffer when processing attribute types with trailing semicolons during database import, causing an out-of-bounds read detectable under memory instrumentation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11792": {
+    "cvss": 3.3,
+    "description": "A heap buffer overflow flaw was found in 389 Directory Server. When audit logging is enabled, the create_masked_entry_string() function in auditlog.c copies a fixed-length password mask into a precisely-sized heap buffer without checking available space. If a short cleartext password is logged (requiring non-default CLEAR password storage or a compromised replication peer), the copy overflows the buffer, corrupting heap memory and audit log output.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11793": {
+    "cvss": 4.9,
+    "description": "A stack buffer overflow flaw was found in 389 Directory Server. The checkPrefix() function in pw.c copies an attacker-controlled algorithm ID into a 256-byte stack buffer without bounds checking when parsing reversible-encrypted attribute values. An attacker with Directory Manager privileges can crash the LDAP server by storing a crafted credential with an oversized algorithm ID. FORTIFY_SOURCE mitigates this to denial of service only.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40404": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Universal Disk Format File System Driver (UDFS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40409": {
+    "cvss": 7.8,
+    "description": "Numeric truncation error in Windows Universal Disk Format File System Driver (UDFS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44815": {
+    "cvss": 8.8,
+    "description": "Stack-based buffer overflow in Windows DHCP Client allows an unauthorized attacker to elevate privileges over an adjacent network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45490": {
+    "cvss": 7.8,
+    "description": "Improper authorization in .NET allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45491": {
+    "cvss": 5.5,
+    "description": "Improper link resolution before file access ('link following') in .NET allows an unauthorized attacker to perform tampering locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45591": {
+    "cvss": 7.5,
+    "description": "Uncontrolled resource consumption in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-46306": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: flow_dissector: do not dissect PPPoE PFC frames RFC 2516 Section 7 states that Protocol Field Compression (PFC) is NOT RECOMMENDED for PPPoE. In practice, pppd does not support negotiating PFC for PPPoE sessions, and the flow dissector driver has assumed an uncompressed frame until the blamed commit. During the review process of that commit [1], support for PFC is suggested. However, having a compressed (1-byte) protocol field means the subsequent PPP payload is shifted by one byte, causing 4-byte misalignment for the network header and an unaligned access exception on some architectures. The exception can be reproduced by sending a PPPoE PFC frame to an ethernet interface of a MIPS board, with RPS enabled, even if no PPPoE session is active on that interface: $ 0 : 00000000 80c40000 00000000 85144817 $ 4 : 00000008 00000100 80a75758 81dc9bb8 $ 8 : 00000010 8087ae2c 0000003d 00000000 $12 : 000000e0 00000039 00000000 00000000 $16 : 85043240 80a75758 81dc9bb8 00006488 $20 : 0000002f 00000007 85144810 80a70000 $24 : 81d1bda0 00000000 $28 : 81dc8000 81dc9aa8 00000000 805ead08 Hi : 00009d51 Lo : 2163358a epc : 805e91f0 __skb_flow_dissect+0x1b0/0x1b50 ra : 805ead08 __skb_get_hash_net+0x74/0x12c Status: 11000403 KERNEL EXL IE Cause : 40800010 (ExcCode 04) BadVA : 85144817 PrId : 0001992f (MIPS 1004Kc) Call Trace: [<805e91f0>] __skb_flow_dissect+0x1b0/0x1b50 [<805ead08>] __skb_get_hash_net+0x74/0x12c [<805ef330>] get_rps_cpu+0x1b8/0x3fc [<805fca70>] netif_receive_skb_list_internal+0x324/0x364 [<805fd120>] napi_complete_done+0x68/0x2a4 [<8058de5c>] mtk_napi_rx+0x228/0xfec [<805fd398>] __napi_poll+0x3c/0x1c4 [<805fd754>] napi_threaded_poll_loop+0x234/0x29c [<805fd848>] napi_threaded_poll+0x8c/0xb0 [<80053544>] kthread+0x104/0x12c [<80002bd8>] ret_from_kernel_thread+0x14/0x1c Code: 02d51821 1060045b 00000000 <8c640000> 3084000f 2c820005 144001a2 00042080 8e220000 To reduce the attack surface and maintain performance, do not process PPPoE PFC frames. [1] https://lore.kernel.org/r/20220630231016.GA392@debian.home",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-46309": {
+    "cvss": 7.0,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/xe/uapi: Reject coh_none PAT index for CPU cached memory in madvise Add validation in xe_vm_madvise_ioctl() to reject PAT indices with XE_COH_NONE coherency mode when applied to CPU cached memory. Using coh_none with CPU cached buffers is a security issue. When the kernel clears pages before reallocation, the clear operation stays in CPU cache (dirty). GPU with coh_none can bypass CPU caches and read stale sensitive data directly from DRAM, potentially leaking data from previously freed pages of other processes. This aligns with the existing validation in vm_bind path (xe_vm_bind_ioctl_validate_bo). v2(Matthew brost) - Add fixes - Move one debug print to better place v3(Matthew Auld) - Should be drm/xe/uapi - More Cc v4(Shuicheng Lin) - Fix kmem leak issues by the way v5 - Remove kmem leak because it has been merged by another patch v6 - Remove the fix which is not related to current fix v7 - No change v8 - Rebase v9 - Limit the restrictions to iGPU v10 - No change (cherry picked from commit 016ccdb674b8c899940b3944952c96a6a490d10a)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-9669": {
+    "cvss": 8.2,
+    "description": "bz2.BZ2Decompressor objects could be reused after a decompression error. If an application caught the resulting OSError and retried with the same decompressor, crafted input could cause the decompressor to resume from an invalid internal state and perform out-of-bounds writes to a stack buffer. This could crash the process when processing untrusted data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
