@@ -101656,5 +101656,23 @@
     "description": "A flaw was found in Keycloak. When an Active Directory user resets their password, the system updates it without performing an LDAP bind to validate the new credentials against AD. This vulnerability allows users whose AD accounts are expired or disabled to regain access in Keycloak, bypassing AD restrictions. The issue enables authentication bypass and could allow unauthorized access under certain conditions.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-115252": {
+    "cvss": 10.0,
+    "description": "The Confection WordPress Cable WordPress plugin from 0.4.0 to 0.4.7 does not perform any capability or nonce checks before saving its settings and writing one of them, unmodified, into a standalone PHP file that it then serves, allowing unauthenticated users to execute arbitrary PHP code on the server.",
+    "vendor": "Unknown",
+    "product": "Confection WordPress Cable"
+  },
+  "CVE-2026-121529": {
+    "cvss": 9.1,
+    "description": "A origin validation error vulnerability in Fortinet FortiClientMac 7.4.0 through 7.4.7, FortiClientWindows 7.4.0 through 7.4.7, FortiClientWindows 7.2.0 through 7.2.14, FortiClientWindowsPAM 7.4.7, FortiClientWindowsPAM 7.2.14 may allow an unauthorized remote attacker to execute unauthorized code or commands. Successful exploitation requires interaction with the victim.",
+    "vendor": "Fortinet",
+    "product": "FortiClientMac"
+  },
+  "CVE-2026-105425": {
+    "cvss": 7.2,
+    "description": "OS command injection in Ivanti Sentry before versions 11.0.0, 10.8.3, and 10.7.4 as well as in Ivanti EPMM before versions 12.11.0.0, 12.10.0.1, and 12.9.0.3 allows a remote authenticated attacker with admin privileges to achieve remote code execution.",
+    "vendor": "Ivanti",
+    "product": "Sentry"
   }
 }
