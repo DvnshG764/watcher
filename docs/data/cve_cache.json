@@ -101464,5 +101464,35 @@
     "description": "In the Linux kernel, the following vulnerability has been resolved: isofs: validate Rock Ridge CE continuation extent against volume size rock_continue() reads rs->cont_extent verbatim from the Rock Ridge CE record and passes it to sb_bread() without checking that the block number is within the mounted ISO 9660 volume. commit e595447e177b (\"[PATCH] rock.c: handle corrupted directories\") added cont_offset and cont_size rejection for the CE continuation but did not validate the extent block number itself. commit f54e18f1b831 (\"isofs: Fix infinite looping over CE entries\") later capped the CE chain length at RR_MAX_CE_ENTRIES = 32 but again left the block number unchecked. With a crafted ISO mounted via udisks2 (desktop optical auto-mount) or via CAP_SYS_ADMIN mount, rs->cont_extent can therefore point at an out-of-range block or at blocks belonging to an adjacent filesystem on the same block device. sb_bread() on an out-of-range block returns NULL cleanly via the block layer EIO path, so there is no memory-safety violation. For in-range reads of adjacent- filesystem data, the CE buffer is parsed as Rock Ridge records and only the text of SL sub-records reaches userspace through readlink(), which makes the info-leak channel narrow and difficult to exploit; still, rejecting the malformed CE outright matches the rejection shape already present in the same function for cont_offset and cont_size. Add an ISOFS_SB(sb)->s_nzones bounds check to rock_continue() next to the existing offset/size rejection, printing the same corrupted-directory-entry notice.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-62850": {
+    "cvss": 5.3,
+    "description": "FreeScout is a self-hosted help desk and shared mailbox. Prior to 1.8.225, the administrative tools.php maintenance endpoint is reachable without an appropriate authentication or access-control boundary. Response differences for attacker-controlled path values disclose whether arbitrary directories and files exist on the server. The same endpoint validates application-key and database-password candidates without rate limiting, per-session throttling, or a CAPTCHA, allowing unrestricted guessing attempts against application secrets. This issue is fixed in version 1.8.225.",
+    "vendor": "freescout-help-desk",
+    "product": "freescout"
+  },
+  "CVE-2026-19697": {
+    "cvss": 6.8,
+    "description": "The GutenKit WordPress plugin before 2.5.0 does not sanitise uploaded SVG files on all of the upload paths it enables, allowing users with the file upload capability, such as Author, to upload a malicious SVG and perform Stored Cross-Site Scripting attacks against any user opening it, including administrators.",
+    "vendor": "Unknown",
+    "product": "GutenKit"
+  },
+  "CVE-2026-123270": {
+    "cvss": 9.8,
+    "description": "Redpanda Connect versions 4.39 to 4.110 contain a missing authentication vulnerability that enables unauthenticated remote code execution (RCE). In streams mode, the management HTTP API is exposed on `0.0.0.0:4195`, but authentication is disabled by default and there is no authentication gate protecting the stream CRUD routes. An unauthenticated attacker with network access to TCP/4195 can `POST` a malicious pipeline definition to `/streams/{id}` that includes code-executing processors such as `command`, `subprocess`, `ffi`, or unsafe `sql_raw`, thereby achieving arbitrary RCE on the host with the permissions of the Redpanda Connect service account. Because pipelines can also return command output in-band via HTTP, this vulnerability enables full host compromise, credential theft, and data exfiltration with no user interaction or credentials required. Starting with v4.111, the API endpoint was reconfigured as opt-in, so this and later versions are no longer vulnerable by default. However, RCE remains achievable on v4.111 and later if the management API is manually enabled via the `--bind-http` flag.",
+    "vendor": "Redpanda Data",
+    "product": "Connect"
+  },
+  "CVE-2026-116747": {
+    "cvss": 8.1,
+    "description": "Kener 3.0.0 before 4.1.10 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge session tokens by using the hardcoded DUMMY_SECRET fallback key. When KENER_SECRET_KEY is empty or unset, attackers knowing an administrator email can sign a kener-user cookie to access /manage/api with full administrative privileges or forge password-reset tokens.",
+    "vendor": "rajnandan1",
+    "product": "kener"
+  },
+  "CVE-2026-92998": {
+    "cvss": 8.6,
+    "description": "The Click n Chat (Chat Widget Integration) WordPress plugin before 1.1.3 does not sanitise sort parameters before using them in a SQL ORDER BY clause, allowing unauthenticated attackers to perform SQL injection attacks.",
+    "vendor": "Unknown",
+    "product": "Click n Chat (Chat Widget Integration)"
   }
 }
