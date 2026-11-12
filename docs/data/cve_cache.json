@@ -112060,5 +112060,65 @@
     "description": "A critical remote code execution (RCE) vulnerability has been reported in PTC Windchill and PTC FlexPLM. The vulnerability may be exploited through the deserialization of untrusted data.",
     "vendor": "PTC",
     "product": "Windchill"
+  },
+  "CVE-2026-5435": {
+    "cvss": 7.3,
+    "description": "The deprecated functions ns_printrrf, ns_printrr and fp_nquery in the GNU C Library version 2.2 and newer fail to enforce the caller-supplied buffer length, and can result in an out-of-bounds write when printing TSIG records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-38651": {
+    "cvss": 8.2,
+    "description": "Authentication Bypass vulnerability exists in Netmaker versions prior to 1.5.0. The VerifyHostToken function in logic/jwts.go fails to validate the JWT signature when verifying host tokens. An attacker can forge a JWT signed with any arbitrary key and use it to impersonate any host in the network, gaining access to sensitive information",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41373": {
+    "cvss": 6.1,
+    "description": "OpenClaw before 2026.3.31 contains an incomplete host-env-security-policy.json that fails to restrict compiler binary environment variables, allowing untrusted models to substitute CC, CXX, CARGO_BUILD_RUSTC, and CMAKE_C_COMPILER via environment overrides. Attackers with approved host-exec requests can override compiler binaries to execute arbitrary code during build processes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41374": {
+    "cvss": 5.3,
+    "description": "OpenClaw before 2026.3.31 performs Discord audio preflight transcription before validating member authorization, allowing unauthenticated attackers to consume resources. Remote attackers can trigger audio preflight processing without member allowlist validation to cause resource exhaustion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7141": {
+    "cvss": 5.6,
+    "description": "A vulnerability was found in vLLM up to 0.19.0. The affected element is the function has_mamba_layers of the file vllm/v1/kv_cache_interface.py of the component KV Block Handler. Performing a manipulation results in uninitialized resource. It is possible to initiate the attack remotely. The attack is considered to have high complexity. The exploitability is described as difficult. The exploit has been made public and could be used. The existence of this vulnerability is still disputed at present. The proposed patch did not fix the issue. A 3rd party explains: \"The divergence could be explained by a benign and expected vLLM behavior where vLLM server could group concurrent requests together resulting in different input shapes based on varying request arrival time. The differences in grouped input shapes could call different kernels with could produce difference results due to rounding and differences in order of operations. There is an environment variable VLLM_BATCH_INVARIANT=1 for users that desire to have deterministic output with temperature 0.0.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31687": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: gpio: omap: do not register driver in probe() Commit 11a78b794496 (\"ARM: OMAP: MPUIO wake updates\") registers the omap_mpuio_driver from omap_mpuio_init(), which is called from omap_gpio_probe(). However, it neither makes sense to register drivers from probe() callbacks of other drivers, nor does the driver core allow registering drivers with a device lock already being held. The latter was revealed by commit dc23806a7c47 (\"driver core: enforce device_lock for driver_match_device()\") leading to a potential deadlock condition described in [1]. Additionally, the omap_mpuio_driver is never unregistered from the driver core, even if the module is unloaded. Hence, register the omap_mpuio_driver from the module initcall and unregister it in module_exit().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31689": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: EDAC/mc: Fix error path ordering in edac_mc_alloc() When the mci->pvt_info allocation in edac_mc_alloc() fails, the error path will call put_device() which will end up calling the device's release function. However, the init ordering is wrong such that device_initialize() happens *after* the failed allocation and thus the device itself and the release function pointer are not initialized yet when they're called: MCE: In-kernel MCE decoding enabled. ------------[ cut here ]------------ kobject: '(null)': is not initialized, yet kobject_put() is being called. WARNING: lib/kobject.c:734 at kobject_put, CPU#22: systemd-udevd CPU: 22 UID: 0 PID: 538 Comm: systemd-udevd Not tainted 7.0.0-rc1+ #2 PREEMPT(full) RIP: 0010:kobject_put Call Trace: edac_mc_alloc+0xbe/0xe0 [edac_core] amd64_edac_init+0x7a4/0xff0 [amd64_edac] ? __pfx_amd64_edac_init+0x10/0x10 [amd64_edac] do_one_initcall ... Reorder the calling sequence so that the device is initialized and thus the release function pointer is properly set before it can be used. This was found by Claude while reviewing another EDAC patch.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31690": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: firmware: thead: Fix buffer overflow and use standard endian macros Addresses two issues in the TH1520 AON firmware protocol driver: 1. Fix a potential buffer overflow where the code used unsafe pointer arithmetic to access the 'mode' field through the 'resource' pointer with an offset. This was flagged by Smatch static checker as: \"buffer overflow 'data' 2 <= 3\" 2. Replace custom RPC_SET_BE* and RPC_GET_BE* macros with standard kernel endianness conversion macros (cpu_to_be16, etc.) for better portability and maintainability. The functionality was re-tested with the GPU power-up sequence, confirming the GPU powers up correctly and the driver probes successfully. [ 12.702370] powervr ffef400000.gpu: [drm] loaded firmware powervr/rogue_36.52.104.182_v1.fw [ 12.711043] powervr ffef400000.gpu: [drm] FW version v1.0 (build 6645434 OS) [ 12.719787] [drm] Initialized powervr 1.0.0 for ffef400000.gpu on minor 0",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-5362": {
+    "cvss": 5.4,
+    "description": "An authenticated attacker with permission to edit document content can store crafted HTML/JavaScript in a Document embed editable and cause script execution when the published page is rendered. This issue affects pimcore: v12.3.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4329": {
+    "cvss": 6.1,
+    "description": "The Product list Widget for Woocommerce WordPress plugin before 3.4.0 does not sanitise and escape a parameter before outputting it back in the page, leading to a Reflected Cross-Site Scripting which could be used against both unauthenticated and authenticated users (such as high privilege one like admin).",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
