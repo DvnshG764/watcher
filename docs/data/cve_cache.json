@@ -111512,7 +111512,7 @@
   "CVE-2026-121653": {
     "cvss": 9.8,
     "description": "SQL injection in the Core of Ivanti Endpoint Manager before version 2024 SU8 allows a remote unauthenticated attacker to achieve remote code execution.",
-    "vendor": "ivanti",
+    "vendor": "Ivanti",
     "product": "Endpoint Manager"
   },
   "CVE-2026-126147": {
@@ -111532,5 +111532,17 @@
     "description": "Signal K Server is a server application that runs on a central hub in a boat. From 2.0.0 until 2.34.0 for Signal K Server and from 1.0.0 until 1.5.3 for @signalk/resources-provider, the v2 REST route GET /signalk/v2/api/resources/:resourceType/:resourceId accepts an unsafe resourceId that can escape the intended resource directory. The route passes the attacker-controlled resourceId through src/api/resources/index.ts to FileStore.getResource() in packages/resources-provider-plugin/src/filestorage.ts without adequate path containment, allowing arbitrary JSON files reachable by the server to be read. Related PUT and DELETE resource operations can write or delete files outside the storage root. Deployments with allow_readonly enabled permit anonymous reads, while other deployments require a readonly user token. Reading security.json exposes the HS256 JWT signing secret and password hashes, allowing an attacker to forge an administrator token. Administrative access to POST /skServer/providers can then create an Execute provider that runs commands with the server process privileges and persists its configuration across restarts. This issue is fixed in Signal K Server 2.34.0 and @signalk/resources-provider 1.5.3.",
     "vendor": "SignalK",
     "product": "signalk-server"
+  },
+  "CVE-2025-2399": {
+    "cvss": 5.9,
+    "description": "Improper Validation of Specified Index, Position, or Offset in Input vulnerability in Mitsubishi Electric CNC M800V Series M800VW and M800VS, M80V Series M80V and M80VW, M800 Series M800W and M800S, M80 Series M80 and M80W, E80 Series E80, C80 Series C80, and M700V Series M750VW, M720VW, 730VW, M720VS, M730VS, and M750VS, M70V Series M70V, E70 Series E70 allows a remote attacker to cause an out-of-bounds read, resulting in a denial-of-service condition by sending specially crafted packets to TCP port 683.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-47541": {
+    "cvss": 7.5,
+    "description": "Insertion of Sensitive Information Into Sent Data vulnerability in WPFunnels Team Mail Mint mail-mint allows Retrieve Embedded Sensitive Data.This issue affects Mail Mint: from n/a through 1.17.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
