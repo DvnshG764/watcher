@@ -111484,5 +111484,17 @@
     "description": "Munin munin-httpd 2.99.1 through 2.999.18 contains a path traversal vulnerability in the static file handler of Munin::Master::HTML::handle_request that allows unauthenticated attackers to read files outside the static directory. Attackers can request /static/../ to bypass the '/../' substring check and read munin.conf and plugin-conf.d files containing monitored service credentials.",
     "vendor": "munin-monitoring",
     "product": "munin"
+  },
+  "CVE-2023-41175": {
+    "cvss": 6.5,
+    "description": "A vulnerability was found in libtiff due to multiple potential integer overflows in raw2tiff.c. This flaw allows remote attackers to cause a denial of service or possibly execute an arbitrary code via a crafted tiff image, which triggers a heap-based buffer overflow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119618": {
+    "cvss": null,
+    "description": "Concurrent Execution using Shared Resource with Improper Synchronization vulnerability in Apache HTTP Server's mod_http2 in assign_headers() can lead to RCE. This issue affects Apache HTTP Server: from 2.4.55 through 2.4.70. Affected releases of mod_h2 from GitHub: from 2.0.8 through 2.0.42.",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache HTTP Server"
   }
 }
