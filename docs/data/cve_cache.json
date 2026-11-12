@@ -112160,7 +112160,7 @@
   "CVE-2026-126537": {
     "cvss": 9.1,
     "description": "The Ninja Forms - File Uploads add-on for WordPress is vulnerable to Arbitrary File Deletion (and arbitrary file read via S3/Dropbox/Google Drive exfiltration) in versions up to, and including, 3.3.36. The flaw spans NF_FU_Fields_Upload::process() in includes/fields/upload.php — which returns early (leaving the client-supplied files[] intact) whenever a public submission carries a nonempty extra.saveProgress — and NF_FU_External_Abstracts_Service::process_upload() in includes/external/abstracts/service.php, whose authoritative-path reload only fires when the client sends upload_id. By omitting upload_id, an attacker's data[file_path] survives into the Background Upload queue and is used by both upload_file_to_s3() (as SourceFile) and the maybe_delete_server_file() unlink() call in includes/external/abstracts/backgroundupload.php, with no canonicalization or upload-directory containment check (the plugin's own is_path_within_upload_dir() helper is only applied on admin paths). This makes it possible for unauthenticated attackers to delete arbitrary files on the affected site's server which may make remote code execution possible — specifically, deleting wp-config.php forces WordPress into its setup screen, enabling full site takeover.",
-    "vendor": "SaturdayDrive",
+    "vendor": "PHP",
     "product": "Ninja Forms - File Uploads"
   },
   "CVE-2026-104246": {
@@ -112184,7 +112184,7 @@
   "CVE-2026-111190": {
     "cvss": 8.1,
     "description": "The ARForms plugin for WordPress is vulnerable to arbitrary file upload in all versions up to, and including, 7.2.4 via its form file-upload handler. The name of the stored file is taken from an attacker-controlled request header and is not adequately restricted to safe file types, and the plugin's file-type and content-safety checks can be evaded, allowing files that contain executable PHP code to be written to a publicly accessible directory. This makes it possible for unauthenticated attackers to upload malicious files to the affected site's server, which may make remote code execution possible. Exploitation requires a published form containing a File field to be publicly accessible on the site.",
-    "vendor": "Unknown",
+    "vendor": "PHP",
     "product": "ARforms"
   },
   "CVE-2026-12413": {
@@ -112198,5 +112198,17 @@
     "description": "Missing authorization in the JSON-RPC web services interface of Extreme Networks Switch Engine (EXOS) allows an authenticated, low-privileged (read-only) user to execute CLI show commands that are restricted to that role through the command line interface. Successful exploitation results in disclosure of sensitive information, including the device configuration and the password hashes of local accounts. Configuration, enable, and debug commands are not affected. Disclosed password hashes can be attacked offline, and a weak password could lead to administrative access to the device. This issue is fixed in Switch Engine 33.7.1-patch1-11, 33.1.100.133-patch1-9, and 32.7.4.15-patch1-11. Extreme Networks would like to thank Toàn Lê (GitHub: https://github.com/toanln-cov) for responsibly disclosing this vulnerability and for working with our PSIRT team through coordinated disclosure.",
     "vendor": "Extreme Networks",
     "product": "Switch Engine (EXOS)"
+  },
+  "CVE-2023-39970": {
+    "cvss": 9.8,
+    "description": "Unrestricted Upload of File with Dangerous Type vulnerability in AcyMailing component for Joomla. It allows remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-39974": {
+    "cvss": 5.3,
+    "description": "Exposure of Sensitive Information vulnerability in AcyMailing Enterprise component for Joomla. It allows unauthorized actors to get the number of subscribers in a specific list.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
