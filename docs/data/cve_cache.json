@@ -111406,5 +111406,83 @@
     "description": "Ollama before 0.17.1 contains a heap out-of-bounds read vulnerability in the GGUF model loader. The /api/create endpoint accepts an attacker-supplied GGUF file in which the declared tensor offset and size exceed the file's actual length; during quantization in fs/ggml/gguf.go and server/quantization.go (WriteTo()), the server reads past the allocated heap buffer. The leaked memory contents may include environment variables, API keys, system prompts, and concurrent users' conversation data, and can be exfiltrated by uploading the resulting model artifact through the /api/push endpoint to an attacker-controlled registry. The /api/create and /api/push endpoints have no authentication in the upstream distribution. Default deployments bind to 127.0.0.1, but the documented OLLAMA_HOST=0.0.0.0 configuration is widely used in practice (large public-internet exposure observed).",
     "vendor": "ollama",
     "product": "ollama"
+  },
+  "CVE-2001-1593": {
+    "cvss": 2.1,
+    "description": "The tempname_ensure function in lib/routines.h in a2ps 4.14 and earlier, as used by the spy_user function and possibly other functions, allows local users to modify arbitrary files via a symlink attack on a temporary file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2001-1587": {
+    "cvss": 5.0,
+    "description": "NWFTPD.nlm before 5.01w in the FTP server in Novell NetWare allows remote attackers to cause a denial of service (abend) via an anonymous STOU command.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2001-1420": {
+    "cvss": 5.0,
+    "description": "AOL Instant Messenger (AIM) 4.7 allows remote attackers to cause a denial of service (application crash) via a long filename, possibly caused by a buffer overflow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2001-1411": {
+    "cvss": 7.2,
+    "description": "Format string vulnerability in gm4 (aka m4) on Mac OS X may allow local users to gain privileges if gm4 is called by setuid programs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2001-1334": {
+    "cvss": 5.0,
+    "description": "Block_render_url.class in PHPSlash 0.6.1 allows remote attackers with PHPSlash administrator privileges to read arbitrary files by creating a block and specifying the target file as the source URL.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2001-1165": {
+    "cvss": 4.6,
+    "description": "Intego FileGuard 4.0 uses weak encryption to store user information and passwords, which allows local users to gain privileges by decrypting the information, e.g., with the Disengage tool.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2001-1171": {
+    "cvss": 7.2,
+    "description": "Check Point Firewall-1 3.0b through 4.0 SP1 follows symlinks and creates a world-writable temporary .cpp file when compiling Policy rules, which could allow local users to gain privileges or modify the firewall policy.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2001-1174": {
+    "cvss": 7.5,
+    "description": "Buffer overflow in Elm 2.5.5 and earlier allows remote attackers to execute arbitrary code via a long Message-ID header.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2001-1175": {
+    "cvss": 7.2,
+    "description": "vipw in the util-linux package before 2.10 causes /etc/shadow to be world-readable in some cases, which would make it easier for local users to perform brute force password guessing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2001-1222": {
+    "cvss": 5.0,
+    "description": "Plesk Server Administrator (PSA) 1.0 allows remote attackers to obtain PHP source code via an HTTP request containing the target's IP address and a valid account name for the domain.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2001-0891": {
+    "cvss": 7.2,
+    "description": "Format string vulnerability in NQS daemon (nqsdaemon) in NQE 3.3.0.16 for CRAY UNICOS and SGI IRIX allows a local user to gain root privileges by using qsub to submit a batch job whose name contains formatting characters.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105016": {
+    "cvss": 9.8,
+    "description": "Heap-based buffer overflow in Microsoft QUIC allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Microsoft",
+    "product": ".NET 10.0 runtime"
+  },
+  "CVE-2026-125357": {
+    "cvss": 5.3,
+    "description": "Munin munin-httpd 2.99.1 through 2.999.18 contains a path traversal vulnerability in the static file handler of Munin::Master::HTML::handle_request that allows unauthenticated attackers to read files outside the static directory. Attackers can request /static/../ to bypass the '/../' substring check and read munin.conf and plugin-conf.d files containing monitored service credentials.",
+    "vendor": "munin-monitoring",
+    "product": "munin"
   }
 }
