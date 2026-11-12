@@ -111496,5 +111496,41 @@
     "description": "Concurrent Execution using Shared Resource with Improper Synchronization vulnerability in Apache HTTP Server's mod_http2 in assign_headers() can lead to RCE. This issue affects Apache HTTP Server: from 2.4.55 through 2.4.70. Affected releases of mod_h2 from GitHub: from 2.0.8 through 2.0.42.",
     "vendor": "Apache Software Foundation",
     "product": "Apache HTTP Server"
+  },
+  "CVE-2026-126148": {
+    "cvss": 9.8,
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6 may allow an unauthenticated attacker to execute unauthorized code or commands via crafted HA join-request packets.",
+    "vendor": "Fortinet",
+    "product": "FortiMail"
+  },
+  "CVE-2026-126497": {
+    "cvss": 7.8,
+    "description": "LibreCAD through 2.2.1.6 contains a heap-based out-of-bounds write vulnerability in the bundled libdxfrw dwgReader18::parseDataPage() function due to unchecked buffer size and page offsets. Attackers can craft an AC1018 (R2004) DWG file with malicious startOffset values that cause decompress18 to write past the heap buffer when opened, causing crashes and potential code execution.",
+    "vendor": "LibreCAD",
+    "product": "LibreCAD"
+  },
+  "CVE-2026-121653": {
+    "cvss": 9.8,
+    "description": "SQL injection in the Core of Ivanti Endpoint Manager before version 2024 SU8 allows a remote unauthenticated attacker to achieve remote code execution.",
+    "vendor": "ivanti",
+    "product": "Endpoint Manager"
+  },
+  "CVE-2026-126147": {
+    "cvss": 9.8,
+    "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized code or commands via crafted requests.",
+    "vendor": "Fortinet",
+    "product": "FortiMail"
+  },
+  "CVE-2026-119958": {
+    "cvss": 9.8,
+    "description": "Out-of-bounds write in Windows LDAP - Lightweight Directory Access Protocol allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Microsoft",
+    "product": "Windows 10 Version 1607"
+  },
+  "CVE-2026-123807": {
+    "cvss": 9.8,
+    "description": "Signal K Server is a server application that runs on a central hub in a boat. From 2.0.0 until 2.34.0 for Signal K Server and from 1.0.0 until 1.5.3 for @signalk/resources-provider, the v2 REST route GET /signalk/v2/api/resources/:resourceType/:resourceId accepts an unsafe resourceId that can escape the intended resource directory. The route passes the attacker-controlled resourceId through src/api/resources/index.ts to FileStore.getResource() in packages/resources-provider-plugin/src/filestorage.ts without adequate path containment, allowing arbitrary JSON files reachable by the server to be read. Related PUT and DELETE resource operations can write or delete files outside the storage root. Deployments with allow_readonly enabled permit anonymous reads, while other deployments require a readonly user token. Reading security.json exposes the HS256 JWT signing secret and password hashes, allowing an attacker to forge an administrator token. Administrative access to POST /skServer/providers can then create an Execute provider that runs commands with the server process privileges and persists its configuration across restarts. This issue is fixed in Signal K Server 2.34.0 and @signalk/resources-provider 1.5.3.",
+    "vendor": "SignalK",
+    "product": "signalk-server"
   }
 }
