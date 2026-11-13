@@ -112330,5 +112330,377 @@
     "description": "In the Linux kernel, the following vulnerability has been resolved: net: ti: icssg-prueth: fix missing data copy and wrong recycle in ZC RX dispatch emac_dispatch_skb_zc() allocates a new skb via napi_alloc_skb() but never copies the packet data from the XDP buffer into it. The skb is passed up the stack containing uninitialized heap memory instead of the actual received packet, leaking kernel heap contents to userspace. Copy the received packet data from the XDP buffer into the skb using skb_copy_to_linear_data(). Additionally, remove the skb_mark_for_recycle() call since the skb is backed by the NAPI page frag allocator, not page_pool. Marking a non-page_pool skb for recycle causes the free path to return pages to a page_pool that does not own them, corrupting page_pool state. The non-ZC path (emac_rx_packet) does not have these issues because it uses napi_build_skb() to wrap the existing page_pool page directly, requiring no copy, and correctly marks for recycle since the page comes from page_pool_dev_alloc_pages().",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-6322": {
+    "cvss": 7.5,
+    "description": "fast-uri normalize() decoded percent-encoded authority delimiters inside the host component and then re-emitted them as raw delimiters during serialization. A host that combined an allowed domain, an encoded at-sign, and a different domain was re-emitted with the at-sign as a raw userinfo separator, changing the URI's authority to the second domain. Applications that normalize untrusted URLs before host allowlist checks, redirect validation, or outbound request routing can be steered to a different authority than the input appeared to specify. Versions <= 3.1.1 are affected. Update to 3.1.2 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42438": {
+    "cvss": 7.7,
+    "description": "OpenClaw versions 2026.4.9 before 2026.4.10 contain a sender policy bypass vulnerability in the outbound host-media attachment read helper that allows unauthorized local file disclosure. Attackers with denied read access via toolsBySender or group policy can trigger host-media attachment loading to bypass sender and group-scoped authorization boundaries and retrieve readable local files through the outbound media path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42439": {
+    "cvss": 8.5,
+    "description": "OpenClaw before 2026.4.10 contains a server-side request forgery policy bypass vulnerability in the browser tabs action select and close routes. Attackers can bypass configured browser SSRF policy protections by exploiting the /tabs/action endpoint to perform unauthorized tab navigation operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43526": {
+    "cvss": 9.3,
+    "description": "OpenClaw before 2026.4.12 contains a server-side request forgery vulnerability in QQBot reply media URL handling that allows attackers to fetch arbitrary content. Attackers can exploit this by providing malicious media URLs that trigger SSRF requests, with fetched bytes subsequently re-uploaded through the channel.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43527": {
+    "cvss": 7.7,
+    "description": "OpenClaw before 2026.4.14 contains a server-side request forgery vulnerability in browser SSRF policy that allows private-network navigation by default. Attackers can exploit this misconfiguration to access internal services or metadata endpoints through browser-driven requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43528": {
+    "cvss": 6.5,
+    "description": "OpenClaw before 2026.4.14 contains a redaction bypass vulnerability that allows authenticated gateway clients to receive unredacted secrets through sourceConfig and runtimeConfig alias fields. Attackers with config read access can exploit this to obtain provider API keys, gateway authentication material, and channel credentials that should have been redacted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43530": {
+    "cvss": 8.8,
+    "description": "OpenClaw versions 2026.2.23 before 2026.4.12 contain a weakened exec approval binding vulnerability in busybox and toybox applet execution that allows attackers to obscure which applet would actually run. Attackers can exploit opaque multi-call binaries to bypass exec approval mechanisms and weaken risk classification of unsafe applet invocations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43531": {
+    "cvss": 8.8,
+    "description": "OpenClaw before 2026.4.9 contains an environment variable injection vulnerability allowing malicious workspace .env files to set runtime-control variables. Attackers can inject variables affecting update sources, gateway URLs, ClawHub resolution, and browser executable paths to compromise application behavior.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43532": {
+    "cvss": 7.7,
+    "description": "OpenClaw versions 2026.4.7 before 2026.4.10 fail to normalize Discord event cover image parameters in sandbox media processing. Attackers can bypass media normalization to inject host-local media references into channel action paths expecting normalized media.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43533": {
+    "cvss": 8.6,
+    "description": "OpenClaw before 2026.4.10 contains an arbitrary file read vulnerability in QQBot media tags that allows attackers to reference host-local paths outside the intended media storage boundary. Attackers can craft malicious reply text containing media tags to disclose arbitrary local files through outbound media handling.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43534": {
+    "cvss": 9.8,
+    "description": "OpenClaw before 2026.4.10 contains an input validation vulnerability that allows external hook metadata to be enqueued as trusted system events. Attackers can supply malicious hook names to escalate untrusted input into higher-trust agent context.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43535": {
+    "cvss": 8.1,
+    "description": "OpenClaw before 2026.4.14 contains an authorization context reuse vulnerability in collect-mode queue batches that allows messages from different senders to inherit the final sender's authorization context. Attackers can exploit this by sending multiple queued messages to drain batches using a more privileged sender's context, causing earlier messages to execute with elevated permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43566": {
+    "cvss": 9.8,
+    "description": "OpenClaw versions 2026.4.7 before 2026.4.14 contain a privilege escalation vulnerability where heartbeat owner downgrade logic skips webhook wake events carrying untrusted content. Attackers can exploit this by sending untrusted webhook wake events to preserve owner-like execution context when the run should have been downgraded.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43567": {
+    "cvss": 6.5,
+    "description": "OpenClaw before 2026.4.10 contains a path traversal vulnerability in the screen_record tool's outPath parameter that bypasses workspace-only filesystem guards. Attackers can exploit this by specifying an outPath outside the workspace boundary to write files to unintended locations on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43568": {
+    "cvss": 6.5,
+    "description": "OpenClaw versions 2026.4.5 before 2026.4.10 contain a privilege escalation vulnerability allowing write-scoped operators to modify persistent memory dreaming settings. Attackers with write-scoped gateway access can toggle admin-class configuration mutations through the /dreaming endpoint to escalate privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43569": {
+    "cvss": 8.8,
+    "description": "OpenClaw before 2026.4.9 contains an authentication bypass vulnerability allowing untrusted workspace plugins to be auto-enabled during non-interactive onboarding when provider auth choices are shadowed. Attackers can exploit this by crafting malicious workspace plugins that are automatically selected and enabled during authentication setup without explicit user consent.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43570": {
+    "cvss": 6.5,
+    "description": "OpenClaw versions 2026.3.22 before 2026.4.5 contain a symlink traversal vulnerability in remote marketplace repository path handling that allows attackers to escape the expected repository root. Attackers can exploit this by providing crafted symlink paths to access files outside the intended repository directory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43571": {
+    "cvss": 8.8,
+    "description": "OpenClaw before 2026.4.10 contains a plugin trust bypass vulnerability that allows channel setup catalog lookups to resolve workspace plugin shadows before bundled channel plugins. Attackers can exploit this by crafting malicious workspace plugins that bypass intended trust gates during setup-time plugin loading.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-29199": {
+    "cvss": 8.1,
+    "description": "phpBB before 3.3.16 is vulnerable to Host Header Injection that can lead to password rest link poisoning. When force_server_vars is disabled, the servers hostname may be extracted from the HTTP Host header which is used to generate the password reset link URL. An attacker who can manipulate the Host header (e.g. through misconfigured host setup or missing header validation by the webserver) can cause password reset emails to contain a link pointing to an attacker-controlled domain, potentially leading to account takeover.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37458": {
+    "cvss": 6.5,
+    "description": "Missing input validation in the MP_REACH_NLRI component of FRRouting (FRR) stable/10.0 to stable/10.6 allows authenticated attackers to cause a Denial of Service (DoS) via supplying a crafted UPDATE message.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-38751": {
+    "cvss": 7.2,
+    "description": "OpenSTAManager version 2.10 and earlier contains an arbitrary file upload vulnerability in the module update functionality (modules/aggiornamenti/upload_modules.php)",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-42151": {
+    "cvss": 7.5,
+    "description": "Prometheus is an open-source monitoring system and time series database. Prior to versions 3.5.3 and 3.11.3, the client_secret field in the Azure AD remote write OAuth configuration (storage/remote/azuread) was typed as string instead of Secret. Prometheus redacts fields of type Secret when serving the configuration via the /-/config HTTP API endpoint. Because the field was a plain string, the Azure OAuth client secret was exposed in plaintext to any user or process with access to that endpoint. This issue has been patched in versions 3.5.3 and 3.11.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42154": {
+    "cvss": 7.5,
+    "description": "Prometheus is an open-source monitoring system and time series database. Prior to versions 3.5.3 and 3.11.3, the remote read endpoint (/api/v1/read) does not validate the declared decoded length in a snappy-compressed request body before allocating memory. An unauthenticated attacker can send a small payload that causes a huge heap allocation per request. Under concurrent load this can exhaust available memory and crash the Prometheus process. This issue has been patched in versions 3.5.3 and 3.11.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42226": {
+    "cvss": 7.5,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.33 and 2.17.5, the dynamic-node-parameters endpoints did not verify whether the authenticated caller was authorized to use a supplied credential reference. An authenticated user with access to a shared workflow could supply a foreign credential ID in the request body, causing the backend to decrypt and use that credential in a helper execution path where the caller also controls the destination URL. This allowed the caller to force the backend to authenticate against attacker-controlled infrastructure using a credential belonging to another user, effectively exfiltrating a reusable API key. The issue is not limited to any single node type; any node that resolves credentials dynamically through these endpoints may be affected. This issue has been patched in versions 1.123.33, 2.17.5, and 2.18.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42227": {
+    "cvss": 6.5,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, an authenticated user with a valid API key scoped to variable:list could read variables from projects they are not a member of by supplying an arbitrary projectId query parameter to the public API variables endpoint. The handler queried the variables repository directly without enforcing project membership checks, bypassing the authorization-aware service layer used by the internal enterprise controller. If variables were misused to store sensitive information such as credentials or tokens, they should be rotated immediately. This issue only affects licensed enterprise or team deployments with multiple projects and the variables feature enabled. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42228": {
+    "cvss": 6.5,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, the /chat WebSocket endpoint used by the Chat Trigger node's Hosted Chat feature did not verify that an incoming connection was authorized to interact with the target execution. An unauthenticated remote attacker who could identify a valid execution ID for a workflow in a waiting state could attach to that execution, receive the pending prompt intended for the legitimate user, and submit arbitrary input to resume or influence downstream workflow behavior. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42230": {
+    "cvss": 6.1,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, the /mcp-oauth/register endpoint accepted OAuth client registrations without authentication, allowing arbitrary redirect_uri values to be registered. When a user denies the MCP OAuth consent dialog, the handleDeny handler redirects the user to the registered redirect_uri without validation, enabling an open redirect to an attacker-controlled URL. An attacker can craft a phishing link and send it to a victim; if the victim clicks \"Deny\" on the consent page, they are silently redirected to an external site. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42231": {
+    "cvss": 8.8,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, a flaw in the xml2js library used to parse XML request bodies in n8n's webhook handler allowed prototype pollution via a crafted XML payload. An authenticated user with permission to create or modify workflows could exploit this to pollute the JavaScript object prototype and, by chaining the pollution with the Git node's SSH operations, achieve remote code execution on the n8n host. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42232": {
+    "cvss": 8.8,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, an authenticated user with permission to create or modify workflows could achieve global prototype pollution via the XML Node leading to RCE when combined with other nodes exploiting the prototype pollution. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42233": {
+    "cvss": 9.8,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, a flaw in the Oracle Database node's select operation allowed user-controlled input passed into the Limit field via expressions to be interpolated directly into the SQL query without sanitization or parameterization. In workflows where external input is passed into the Limit field (e.g., from a webhook), an attacker could inject arbitrary SQL and exfiltrate data from the connected Oracle database. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42234": {
+    "cvss": 8.8,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, an authenticated user with permission to create or modify workflows containing a Python Code Node could escape the sandbox and achieve arbitrary code execution on the task runner container. This issue only affects instances where the Python Task Runner is enabled. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42235": {
+    "cvss": 9.6,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, an unauthenticated attacker could register a malicious MCP OAuth client with a crafted client_name. If a victim user authorized the OAuth consent dialog and a second user subsequently revoked that access, a toast notification would render the injected script. Clicking the link would execute arbitrary JavaScript in the victim's authenticated n8n browser session, enabling credential and session token theft, workflow manipulation, or privilege escalation. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42236": {
+    "cvss": 7.5,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, the MCP OAuth client registration endpoint accepted unauthenticated requests and stored client data without adequate resource controls. An unauthenticated remote attacker could exhaust server memory resources by sending large registration payloads, rendering the n8n instance unavailable. The MCP enable/disable toggle gates MCP access but did not restrict client registrations, meaning the endpoint is reachable regardless of whether MCP access is enabled on the instance. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42237": {
+    "cvss": 8.8,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 1.123.32, 2.17.4, and 2.18.1, the fix for GHSA-f3f2-mcxc-pwjx did not cover the Snowflake node or the legacy MySQL v1 node. Both nodes construct SQL queries by directly interpolating user-controlled table names, column names, and update keys into query strings without identifier escaping, enabling SQL injection against the connected database. This issue has been patched in versions 1.123.32, 2.17.4, and 2.18.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43964": {
+    "cvss": 7.5,
+    "description": "Postfix before 3.8.16, 3.9 before 3.9.10, and 3.10 before 3.10.9 sometimes allows a buffer over-read and process crash via an enhanced status code that lacks text after the third number.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6321": {
+    "cvss": 7.5,
+    "description": "fast-uri decoded percent-encoded path separators and dot segments before applying dot-segment removal in its normalize() and equal() functions. Encoded path data was treated like real slashes and parent-directory references, so distinct URIs could collapse onto the same normalized path. Applications that normalize or compare attacker-controlled URLs to enforce path-based policy can be bypassed, with a path that appears confined under an allowed prefix normalizing to a different location. Versions <= 3.1.0 are affected. Update to 3.1.1 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7768": {
+    "cvss": 7.5,
+    "description": "@fastify/accepts-serializer cached serializer-selection results keyed by the request Accept header without a size limit or eviction policy. A remote unauthenticated client could send many distinct but matching Accept header variants to make the cache grow unbounded, eventually exhausting the Node.js heap and crashing the process. Versions <= 6.0.3 are affected. Update to 6.0.4 or later, which bounds the cache via an LRU with a default size of 100 entries, configurable through the new cacheSize plugin option.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43058": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: media: vidtv: fix pass-by-value structs causing MSAN warnings vidtv_ts_null_write_into() and vidtv_ts_pcr_write_into() take their argument structs by value, causing MSAN to report uninit-value warnings. While only vidtv_ts_null_write_into() has triggered a report so far, both functions share the same issue. Fix by passing both structs by const pointer instead, avoiding the stack copy of the struct along with its MSAN shadow and origin metadata. The functions do not modify the structs, which is enforced by the const qualifier.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6525": {
+    "cvss": 5.5,
+    "description": "IEEE 802.11 protocol dissector crash in Wireshark 4.6.0 to 4.6.4",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43044": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: crypto: caam - fix DMA corruption on long hmac keys When a key longer than block size is supplied, it is copied and then hashed into the real key. The memory allocated for the copy needs to be rounded to DMA cache alignment, as otherwise the hashed key may corrupt neighbouring memory. The rounding was performed, but never actually used for the allocation. Fix this by replacing kmemdup with kmalloc for a larger buffer, followed by memcpy.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43045": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mshv: Fix error handling in mshv_region_pin The current error handling has two issues: First, pin_user_pages_fast() can return a short pin count (less than requested but greater than zero) when it cannot pin all requested pages. This is treated as success, leading to partially pinned regions being used, which causes memory corruption. Second, when an error occurs mid-loop, already pinned pages from the current batch are not properly accounted for before calling mshv_region_invalidate_pages(), causing a page reference leak. Treat short pins as errors and fix partial batch accounting before cleanup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43046": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: btrfs: reject root items with drop_progress and zero drop_level [BUG] When recovering relocation at mount time, merge_reloc_root() and btrfs_drop_snapshot() both use BUG_ON(level == 0) to guard against an impossible state: a non-zero drop_progress combined with a zero drop_level in a root_item, which can be triggered: ------------[ cut here ]------------ kernel BUG at fs/btrfs/relocation.c:1545! Oops: invalid opcode: 0000 [#1] SMP KASAN NOPTI CPU: 1 UID: 0 PID: 283 ... Tainted: 6.18.0+ #16 PREEMPT(voluntary) Tainted: [O]=OOT_MODULE, [E]=UNSIGNED_MODULE Hardware name: QEMU Ubuntu 24.04 PC v2, BIOS 1.16.3-debian-1.16.3-2 RIP: 0010:merge_reloc_root+0x1266/0x1650 fs/btrfs/relocation.c:1545 Code: ffff0000 00004589 d7e9acfa ffffe8a1 79bafebe 02000000 Call Trace: merge_reloc_roots+0x295/0x890 fs/btrfs/relocation.c:1861 btrfs_recover_relocation+0xd6e/0x11d0 fs/btrfs/relocation.c:4195 btrfs_start_pre_rw_mount+0xa4d/0x1810 fs/btrfs/disk-io.c:3130 open_ctree+0x5824/0x5fe0 fs/btrfs/disk-io.c:3640 btrfs_fill_super fs/btrfs/super.c:987 [inline] btrfs_get_tree_super fs/btrfs/super.c:1951 [inline] btrfs_get_tree_subvol fs/btrfs/super.c:2094 [inline] btrfs_get_tree+0x111c/0x2190 fs/btrfs/super.c:2128 vfs_get_tree+0x9a/0x370 fs/super.c:1758 fc_mount fs/namespace.c:1199 [inline] do_new_mount_fc fs/namespace.c:3642 [inline] do_new_mount fs/namespace.c:3718 [inline] path_mount+0x5b8/0x1ea0 fs/namespace.c:4028 do_mount fs/namespace.c:4041 [inline] __do_sys_mount fs/namespace.c:4229 [inline] __se_sys_mount fs/namespace.c:4206 [inline] __x64_sys_mount+0x282/0x320 fs/namespace.c:4206 ... RIP: 0033:0x7f969c9a8fde Code: 0f1f4000 48c7c2b0 fffffff7 d8648902 b8ffffff ffc3660f ---[ end trace 0000000000000000 ]--- The bug is reproducible on 7.0.0-rc2-next-20260310 with our dynamic metadata fuzzing tool that corrupts btrfs metadata at runtime. [CAUSE] A non-zero drop_progress.objectid means an interrupted btrfs_drop_snapshot() left a resume point on disk, and in that case drop_level must be greater than 0 because the checkpoint is only saved at internal node levels. Although this invariant is enforced when the kernel writes the root item, it is not validated when the root item is read back from disk. That allows on-disk corruption to provide an invalid state with drop_progress.objectid != 0 and drop_level == 0. When relocation recovery later processes such a root item, merge_reloc_root() reads drop_level and hits BUG_ON(level == 0). The same invalid metadata can also trigger the corresponding BUG_ON() in btrfs_drop_snapshot(). [FIX] Fix this by validating the root_item invariant in tree-checker when reading root items from disk: if drop_progress.objectid is non-zero, drop_level must also be non-zero. Reject such malformed metadata with -EUCLEAN before it reaches merge_reloc_root() or btrfs_drop_snapshot() and triggers the BUG_ON. After the fix, the same corruption is correctly rejected by tree-checker and the BUG_ON is no longer triggered.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-43047": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: HID: multitouch: Check to ensure report responses match the request It is possible for a malicious (or clumsy) device to respond to a specific report's feature request using a completely different report ID. This can cause confusion in the HID core resulting in nasty side-effects such as OOB writes. Add a check to ensure that the report ID in the response, matches the one that was requested. If it doesn't, omit reporting the raw event and return early.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43051": {
+    "cvss": 8.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: HID: wacom: fix out-of-bounds read in wacom_intuos_bt_irq The wacom_intuos_bt_irq() function processes Bluetooth HID reports without sufficient bounds checking. A maliciously crafted short report can trigger an out-of-bounds read when copying data into the wacom structure. Specifically, report 0x03 requires at least 22 bytes to safely read the processed data and battery status, while report 0x04 (which falls through to 0x03) requires 32 bytes. Add explicit length checks for these report IDs and log a warning if a short report is received.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43055": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: target: file: Use kzalloc_flex for aio_cmd The target_core_file doesn't initialize the aio_cmd->iocb for the ki_write_stream. When a write command fd_execute_rw_aio() is executed, we may get a bogus ki_write_stream value, causing unintended write failure status when checking iocb->ki_write_stream > max_write_streams in the block device. Let's just use kzalloc_flex when allocating the aio_cmd and let ki_write_stream=0 to fix this issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43056": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: mana: fix use-after-free in add_adev() error path If auxiliary_device_add() fails, add_adev() jumps to add_fail and calls auxiliary_device_uninit(adev). The auxiliary device has its release callback set to adev_release(), which frees the containing struct mana_adev. Since adev is embedded in struct mana_adev, the subsequent fall-through to init_fail and access to adev->id may result in a use-after-free. Fix this by saving the allocated auxiliary device id in a local variable before calling auxiliary_device_add(), and use that saved id in the cleanup path after auxiliary_device_uninit().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43504": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in Prosody before 0.12.6 and 1.0.0 through 13.0.0 before 13.0.5, when mod_proxy65 is enabled. Because mod_proxy65 mishandles access control in a paused scenario, relaying of unauthenticated traffic can occur.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43505": {
+    "cvss": 6.5,
+    "description": "An issue was discovered in Prosody before 0.12.6 and 1.0.0 through 13.0.0 before 13.0.5, when mod_proxy65 is enabled. Because mod_proxy65 mishandles access control in the activation scenario, relaying of unauthenticated traffic can occur.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43506": {
+    "cvss": 7.5,
+    "description": "An issue was discovered in Prosody before 0.12.6 and 1.0.0 through 13.0.0 before 13.0.5. A Denial of Service can occur via memory exhaustion caused by memory leaks from unauthenticated connections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43507": {
+    "cvss": 7.5,
+    "description": "An issue was discovered in Prosody before 0.12.6 and 1.0.0 through 13.0.0 before 13.0.5. A Denial of Service can occur via memory exhaustion caused by XML parsing resource amplification from unauthenticated connections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-37503": {
+    "cvss": 4.8,
+    "description": "Cross-Site Scripting (XSS) in V2Board thru 1.7.4. The custom_html field in theme configuration is rendered using Blade unescaped output in public/theme/v2board/dashboard.blade.php. An admin can inject arbitrary JavaScript via the saveThemeConfig API. All site visitors execute the payload, enabling cookie theft, session hijacking, or phishing.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37504": {
+    "cvss": 7.5,
+    "description": "Sensitive server_token exposed via GET parameter in V2Board thru 1.7.4. In app/Http/Controllers/Server/UniProxyController.php, the server authentication token is accepted via GET parameter transmission. The token appears in URLs such as /api/v1/server/UniProxy/user?token=SECRET, causing it to be recorded in web server access logs, browser history, HTTP Referer headers, and proxy/CDN logs. An attacker who gains access to any log source can extract the token and impersonate a proxy server node, potentially intercepting all user traffic.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-37505": {
+    "cvss": 4.9,
+    "description": "SQL Injection via ORDER BY clause in V2Board thru 1.7.4. In app/Http/Controllers/Admin/UserController.php, the sort parameter from user input is passed directly to User::orderBy($sort, $sortType) without validation. An authenticated admin can sort users by any database column including password, remember_token, and other sensitive fields, enabling information disclosure through ordering analysis.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-7585": {
+    "cvss": 4.3,
+    "description": "A vulnerability was determined in Open5GS up to 2.7.7. The impacted element is the function amf_nudm_sdm_handle_provisioned of the file /src/amf/nudm-handler.c of the component AMF. Executing a manipulation can lead to denial of service. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7586": {
+    "cvss": 4.3,
+    "description": "A weakness has been identified in Open5GS up to 2.7.7. Affected is the function ogs_id_get_value of the file /src/amf/nudm-handler.c of the component AMF. This manipulation causes denial of service. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7587": {
+    "cvss": 4.3,
+    "description": "A vulnerability has been found in Open5GS up to 2.7.7. This vulnerability affects the function amf_nsmf_pdusession_handle_update_sm_context of the file /src/amf/nsmf-handler.c of the component AMF. The manipulation leads to denial of service. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-37457": {
+    "cvss": 7.5,
+    "description": "An off-by-one out-of-bounds write vulnerability in the bgp_flowspec_op_decode() function (bgpd/bgp_flowspec_util.c) of FRRouting (FRR) stable/10.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted FlowSpec component.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32591": {
+    "cvss": 5.5,
+    "description": "A flaw was found in Red Hat Quay's Proxy Cache configuration feature. When an organization administrator configures an upstream registry for proxy caching, Quay makes a network connection to the specified registry hostname without verifying that it points to a legitimate external service. An attacker with organization administrator privileges could supply a crafted hostname to force the Quay server to make requests to internal network services, cloud infrastructure endpoints, or other resources that should not be accessible from the Quay application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-69985": {
+    "cvss": 9.8,
+    "description": "FUXA 1.2.8 and prior contains an Authentication Bypass vulnerability leading to Remote Code Execution (RCE). The vulnerability exists in the server/api/jwt-helper.js middleware, which improperly trusts the HTTP \"Referer\" header to validate internal requests. A remote unauthenticated attacker can bypass JWT authentication by spoofing the Referer header to match the server's host. Successful exploitation allows the attacker to access the protected /api/runscript endpoint and execute arbitrary Node.js code on the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-60021": {
+    "cvss": 9.8,
+    "description": "Remote command injection vulnerability in heap profiler builtin service in Apache bRPC ((all versions < 1.15.0)) on all platforms allows attacker to inject remote command. Root Cause: The bRPC heap profiler built-in service (/pprof/heap) does not validate the user-provided extra_options parameter and executes it as a command-line argument. Attackers can execute remote commands using the extra_options parameter.. Affected scenarios: Use the built-in bRPC heap profiler service to perform jemalloc memory profiling. How to Fix: we provide two methods, you can choose one of them: 1. Upgrade bRPC to version 1.15.0. 2. Apply this patch ( https://github.com/apache/brpc/pull/3101 ) manually.",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache bRPC"
+  },
+  "CVE-2026-27175": {
+    "cvss": 9.8,
+    "description": "MajorDoMo (aka Major Domestic Module) is vulnerable to unauthenticated OS command injection via rc/index.php. The $param variable from user input is interpolated into a command string within double quotes without sanitization via escapeshellarg(). The command is inserted into a database queue by safe_exec(), which performs no sanitization. The cycle_execs.php script, which is web-accessible without authentication, retrieves queued commands and passes them directly to exec(). An attacker can exploit a race condition by first triggering cycle_execs.php (which purges the queue and enters a polling loop), then injecting a malicious command via the rc endpoint while the worker is polling. The injected shell metacharacters expand inside double quotes, achieving remote code execution within one second.",
+    "vendor": "sergejey",
+    "product": "MajorDoMo"
+  },
+  "CVE-2025-4283": {
+    "cvss": 7.3,
+    "description": "A vulnerability was found in SourceCodester/oretnom23 Stock Management System 1.0 and classified as critical. This issue affects some unknown processing of the file /classes/Login.php?f=login. The manipulation of the argument Username leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.",
+    "vendor": "SourceCodester",
+    "product": "Stock Management System"
   }
 }
