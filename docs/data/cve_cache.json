@@ -112702,5 +112702,47 @@
     "description": "A vulnerability was found in SourceCodester/oretnom23 Stock Management System 1.0 and classified as critical. This issue affects some unknown processing of the file /classes/Login.php?f=login. The manipulation of the argument Username leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.",
     "vendor": "PHP",
     "product": "Stock Management System"
+  },
+  "CVE-2026-110697": {
+    "cvss": 9.9,
+    "description": "A flaw was found in Quay where the robot account listing function constructs a SQL LIKE pattern from user-controlled namespace names without escaping wildcard metacharacters. An attacker who creates a namespace containing an underscore character can match and retrieve robot accounts and their decrypted authentication tokens from other tenants' namespaces, leading to cross-tenant credential theft and unauthorized image operations.",
+    "vendor": "Project Quay",
+    "product": "quay"
+  },
+  "CVE-2026-123039": {
+    "cvss": 7.8,
+    "description": "The Gaia OS DynamicCLI daemon runs as root and listens on a world-writable local socket (/tmp/dynamic_socket) without authenticating connecting processes. An authenticated local user can send a command to the socket and have it executed as root.",
+    "vendor": "checkpoint",
+    "product": "Quantum Security Gateway"
+  },
+  "CVE-2026-107360": {
+    "cvss": 9.6,
+    "description": "A flaw was found in rubygem-safemode. Compound assignment expressions in sandboxed code are evaluated without mediating method calls through the Jail allow-list. An authenticated attacker who can supply template content can invoke arbitrary no-argument methods on objects exposed to the template renderer without Jail mediation, including destructive operations such as host deletion and disclosure of non-allow-listed object state.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Satellite 6.16 for RHEL 8"
+  },
+  "CVE-2026-126997": {
+    "cvss": 7.3,
+    "description": "A vulnerability was identified in JeecgBoot up to 3.9.6. This affects the function RestTemplate.exchange of the file org/jeecg/modules/airag/flow/c/a.class of the component flow-run Endpoint. The manipulation leads to server-side request forgery. Remote exploitation of the attack is possible. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "JeecgBoot"
+  },
+  "CVE-2026-120490": {
+    "cvss": 3.8,
+    "description": "On Scalable Platforms, an administrator with permissions to edit and install the Access Control Policy and NAT rules can create a NAT rule that redirects traffic to the Gateway's Sync interface, bypassing the built-in Sync protection. This could allow the administrator to execute operating system commands and write files on the Gateway with superuser privileges.",
+    "vendor": "checkpoint",
+    "product": "Scalable Platforms (ElasticXL, Maestro, Chassis)"
+  },
+  "CVE-2026-119302": {
+    "cvss": 6.5,
+    "description": "The NotificationX WordPress plugin before 3.3.7 does not perform any capability, authentication or nonce check on its notification preview path, allowing unauthenticated users to disclose the content of private, draft, pending and password-protected posts and to execute arbitrary registered shortcodes by supplying crafted preview data on any front-end request.",
+    "vendor": "Unknown",
+    "product": "NotificationX"
+  },
+  "CVE-2026-64858": {
+    "cvss": 5.3,
+    "description": "vulnerability-operator scans SBOMs and Images for vulnerabilities. Prior to version 0.28.16, an unauthenticated information-disclosure vulnerability exposes all vulnerability scan reports served by the operator. The /report/ HTTP endpoint mounts a raw http.FileServer over the reports directory (default /reports) with no authentication, authorization, or middleware. Any client that can reach the operator's HTTP port (default 8080) can list and download every JSON vulnerability report, disclosing CVE IDs, affected package names/versions, and container image identifiers for every workload scanned in the cluster. This issue has been patched in version 0.28.16.",
+    "vendor": "ckotzbauer",
+    "product": "vulnerability-operator"
   }
 }
