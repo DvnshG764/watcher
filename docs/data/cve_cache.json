@@ -112711,9 +112711,9 @@
   },
   "CVE-2026-123039": {
     "cvss": 7.8,
-    "description": "The Gaia OS DynamicCLI daemon runs as root and listens on a world-writable local socket (/tmp/dynamic_socket) without authenticating connecting processes. An authenticated local user can send a command to the socket and have it executed as root.",
+    "description": "Check Point Firewall, Multi-Domain Security Management Server, Scalable Platforms, Security Gateway, and Security Management Server contain an incorrect permissions assignment for critical resources vulnerability when the Gaia OS DynamicCLI daemon runs as root and listens on a world-writable local socket without authenticating connecting processes. An authenticated local user can send a command to the socket and have it executed as root.",
     "vendor": "Check Point",
-    "product": "Quantum Security Gateway"
+    "product": "Multiple Products"
   },
   "CVE-2026-107360": {
     "cvss": 9.6,
@@ -112806,7 +112806,7 @@
     "product": "Unknown"
   },
   "CVE-2025-4637": {
-    "cvss": 8.7,
+    "cvss": 7.5,
     "description": "Divide By Zero vulnerability in davisking dlib allows remote attackers to cause a denial of service via a crafted file. .This issue affects dlib: before <19.24.7.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -112816,5 +112816,17 @@
     "description": "Type confusion in PostgreSQL allows an object creator to execute arbitrary code as the operating system user running the database, via ALTER ... SET DATA TYPE primarily. Other DDL attack routes exist, such as \"ALTER TABLE ... ADD COLUMN; ROLLBACK; ALTER TABLE ... ADD COLUMN\". The system had inadequate tracking of typed values, and values were not self-identifying. Stale values could appear in data dictionary entries, PL/pgSQL variables, and many other parts of the system. PostgreSQL Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
     "vendor": "Unknown",
     "product": "PostgreSQL"
+  },
+  "CVE-2026-24799": {
+    "cvss": 5.6,
+    "description": "Out-of-bounds Write, Buffer Copy without Checking Size of Input ('Classic Buffer Overflow') vulnerability in davisking dlib (dlib/external/zlib modules). This vulnerability is associated with program files inflate.C. This issue affects dlib: before v19.24.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114713": {
+    "cvss": 8.6,
+    "description": "UnrealIRCd UnrealIRCd contains an improper neutralization of delimiters vulnerability that allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority.",
+    "vendor": "UnrealIRCd",
+    "product": "UnrealIRCd"
   }
 }
