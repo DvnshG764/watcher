@@ -112792,5 +112792,11 @@
     "description": "ChatWiki before 2.10.0 contains a missing authentication vulnerability in the GET /manage/getLibRawFileOnePage route that allows unauthenticated attackers to read other tenants' documents. Attackers can enumerate sequential admin_user_id and file id query parameters, bypassing the ownership check, to retrieve PDF-rendered pages of any tenant's knowledge-base documents.",
     "vendor": "zhimaAi",
     "product": "chatwiki"
+  },
+  "CVE-2026-33344": {
+    "cvss": 8.1,
+    "description": "Dagu is a workflow engine with a built-in Web user interface. From version 2.0.0 to before version 2.3.1, the fix for CVE-2026-27598 added ValidateDAGName to CreateNewDAG and rewrote generateFilePath to use filepath.Base. This patched the CREATE path. The remaining API endpoints - GET, DELETE, RENAME, EXECUTE - all pass the {fileName} URL path parameter to locateDAG without calling ValidateDAGName. %2F-encoded forward slashes in the {fileName} segment traverse outside the DAGs directory. This issue has been patched in version 2.3.1.",
+    "vendor": "dagu-org",
+    "product": "dagu"
   }
 }
