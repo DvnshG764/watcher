@@ -112756,5 +112756,29 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-112522": {
+    "cvss": 6.5,
+    "description": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2. Processing a maliciously crafted file may lead to unexpected app termination.",
+    "vendor": "Apple",
+    "product": "iOS and iPadOS"
+  },
+  "CVE-2026-118764": {
+    "cvss": 6.9,
+    "description": "minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Starting in 7.0.0 and prior to 11.0.1, src/index.ts implements firstPhasePreProcess() so that, at optimizationLevel 2 or higher, it repeatedly expands attacker-controlled **/.. pattern segments inside a fixpoint loop, allowing generated globParts entries to be processed and expanded again. secondPhasePreProcess() then compares the expanded entries pairwise, so a short malicious glob can cause excessive CPU and memory consumption during pattern compilation. This issue is fixed in version 11.0.1.",
+    "vendor": "isaacs",
+    "product": "minimatch"
+  },
+  "CVE-2026-119077": {
+    "cvss": 9.8,
+    "description": "The ELEX WordPress HelpDesk & Customer Ticketing System plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 3.3.9 via the 'form (specifically the attacker-controlled ticket_label field inside the url-encoded form string)' parameter parameter. This is due to missing server-side authentication and the absence of a class allowlist on deserialization, with the only guard being a nonce publicly emitted on any page carrying the [wsdesk_support] shortcode. This makes it possible for unauthenticated attackers to execute code on the server. A successful exploit requires a single anonymous GET to any public page carrying the [wsdesk_support] shortcode to harvest the publicly emitted wsdesk_nonce value, after which a single unauthenticated POST completes the attack.",
+    "vendor": "elextensions",
+    "product": "ELEX WordPress HelpDesk & Customer Ticketing System"
+  },
+  "CVE-2026-113408": {
+    "cvss": 3.3,
+    "description": "Path traversal in Git allows writing to arbitrary file via cloning and committing to bad repository",
+    "vendor": "Git",
+    "product": "Git"
   }
 }
