@@ -112222,5 +112222,113 @@
     "description": "A transient execution vulnerability in some AMD processors may allow an attacker to infer data in the L1D cache, potentially resulting in the leakage of sensitive information across privileged boundaries.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-31783": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: spi: amlogic: spifc-a4: unregister ECC engine on probe failure and remove() callback aml_sfc_probe() registers the on-host NAND ECC engine, but teardown was missing from both probe unwind and remove-time cleanup. Add a devm cleanup action after successful registration so nand_ecc_unregister_on_host_hw_engine() runs automatically on probe failures and during device removal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-31785": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/xe/xe_pagefault: Disallow writes to read-only VMAs The page fault handler should reject write/atomic access to read only VMAs. Add code to handle this in xe_pagefault_service after the VMA lookup. v2: - Apply max line length (Matthew) (cherry picked from commit 714ee6754ac5fa3dc078856a196a6b124cd797a0)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42476": {
+    "cvss": 7.1,
+    "description": "Two heap-based out-of-bounds read vulnerabilities in the STL ASCII file parser in Open CASCADE Technology (OCCT) V8_0_0_rc5 exist in RWStl_Reader::ReadAscii because buffers returned by Standard_ReadLineBuffer::ReadLine() are not properly length-validated before strncasecmp or direct byte access. User-assisted attackers can trigger these issues by persuading a victim to open a crafted STL file with extremely short lines, resulting in a denial of service or possible information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43004": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: spi: stm32-ospi: Fix resource leak in remove() callback The remove() callback returned early if pm_runtime_resume_and_get() failed, skipping the cleanup of spi controller and other resources. Remove the early return so cleanup completes regardless of PM resume result.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43005": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: hwmon: (tps53679) Fix array access with zero-length block read i2c_smbus_read_block_data() can return 0, indicating a zero-length read. When this happens, tps53679_identify_chip() accesses buf[ret - 1] which is buf[-1], reading one byte before the buffer on the stack. Fix by changing the check from \"ret < 0\" to \"ret <= 0\", treating a zero-length read as an error (-EIO), which prevents the out-of-bounds array access. Also fix a typo in the adjacent comment: \"if present\" instead of duplicate \"if\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43006": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: io_uring/rsrc: reject zero-length fixed buffer import validate_fixed_range() admits buf_addr at the exact end of the registered region when len is zero, because the check uses strict greater-than (buf_end > imu->ubuf + imu->len). io_import_fixed() then computes offset == imu->len, which causes the bvec skip logic to advance past the last bio_vec entry and read bv_offset from out-of-bounds slab memory. Return early from io_import_fixed() when len is zero. A zero-length import has no data to transfer and should not walk the bvec array at all. BUG: KASAN: slab-out-of-bounds in io_import_reg_buf+0x697/0x7f0 Read of size 4 at addr ffff888002bcc254 by task poc/103 Call Trace: io_import_reg_buf+0x697/0x7f0 io_write_fixed+0xd9/0x250 __io_issue_sqe+0xad/0x710 io_issue_sqe+0x7d/0x1100 io_submit_sqes+0x86a/0x23c0 __do_sys_io_uring_enter+0xa98/0x1590 Allocated by task 103: The buggy address is located 12 bytes to the right of allocated 584-byte region [ffff888002bcc000, ffff888002bcc248)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43007": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: accel/qaic: Handle DBC deactivation if the owner went away When a DBC is released, the device sends a QAIC_TRANS_DEACTIVATE_FROM_DEV transaction to the host over the QAIC_CONTROL MHI channel. QAIC handles this by calling decode_deactivate() to release the resources allocated for that DBC. Since that handling is done in the qaic_manage_ioctl() context, if the user goes away before receiving and handling the deactivation, the host will be out-of-sync with the DBCs available for use, and the DBC resources will not be freed unless the device is removed. If another user loads and requests to activate a network, then the device assigns the same DBC to that network, QAIC will \"indefinitely\" wait for dbc->in_use = false, leading the user process to hang. As a solution to this, handle QAIC_TRANS_DEACTIVATE_FROM_DEV transactions that are received after the user has gone away.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43008": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: gpio: qixis-fpga: Fix error handling for devm_regmap_init_mmio() devm_regmap_init_mmio() returns an ERR_PTR() on failure, not NULL. The original code checked for NULL which would never trigger on error, potentially leading to an invalid pointer dereference. Use IS_ERR() and PTR_ERR() to properly handle the error case.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43014": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: macb: properly unregister fixed rate clocks The additional resources allocated with clk_register_fixed_rate() need to be released with clk_unregister_fixed_rate(), otherwise they are lost.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43015": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: macb: fix clk handling on PCI glue driver removal platform_device_unregister() may still want to use the registered clks during runtime resume callback. Note that there is a commit d82d5303c4c5 (\"net: macb: fix use after free on rmmod\") that addressed the similar problem of clk vs platform device unregistration but just moved the bug to another place. Save the pointers to clks into local variables for reuse after platform device is unregistered. BUG: KASAN: use-after-free in clk_prepare+0x5a/0x60 Read of size 8 at addr ffff888104f85e00 by task modprobe/597 CPU: 2 PID: 597 Comm: modprobe Not tainted 6.1.164+ #114 Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS rel-1.16.1-0-g3208b098f51a-prebuilt.qemu.org 04/01/2014 Call Trace: dump_stack_lvl+0x8d/0xba print_report+0x17f/0x496 kasan_report+0xd9/0x180 clk_prepare+0x5a/0x60 macb_runtime_resume+0x13d/0x410 [macb] pm_generic_runtime_resume+0x97/0xd0 __rpm_callback+0xc8/0x4d0 rpm_callback+0xf6/0x230 rpm_resume+0xeeb/0x1a70 __pm_runtime_resume+0xb4/0x170 bus_remove_device+0x2e3/0x4b0 device_del+0x5b3/0xdc0 platform_device_del+0x4e/0x280 platform_device_unregister+0x11/0x50 pci_device_remove+0xae/0x210 device_remove+0xcb/0x180 device_release_driver_internal+0x529/0x770 driver_detach+0xd4/0x1a0 bus_remove_driver+0x135/0x260 driver_unregister+0x72/0xb0 pci_unregister_driver+0x26/0x220 __do_sys_delete_module+0x32e/0x550 do_syscall_64+0x35/0x80 entry_SYSCALL_64_after_hwframe+0x6e/0xd8 Allocated by task 519: kasan_save_stack+0x2c/0x50 kasan_set_track+0x21/0x30 __kasan_kmalloc+0x8e/0x90 __clk_register+0x458/0x2890 clk_hw_register+0x1a/0x60 __clk_hw_register_fixed_rate+0x255/0x410 clk_register_fixed_rate+0x3c/0xa0 macb_probe+0x1d8/0x42e [macb_pci] local_pci_probe+0xd7/0x190 pci_device_probe+0x252/0x600 really_probe+0x255/0x7f0 __driver_probe_device+0x1ee/0x330 driver_probe_device+0x4c/0x1f0 __driver_attach+0x1df/0x4e0 bus_for_each_dev+0x15d/0x1f0 bus_add_driver+0x486/0x5e0 driver_register+0x23a/0x3d0 do_one_initcall+0xfd/0x4d0 do_init_module+0x18b/0x5a0 load_module+0x5663/0x7950 __do_sys_finit_module+0x101/0x180 do_syscall_64+0x35/0x80 entry_SYSCALL_64_after_hwframe+0x6e/0xd8 Freed by task 597: kasan_save_stack+0x2c/0x50 kasan_set_track+0x21/0x30 kasan_save_free_info+0x2a/0x50 __kasan_slab_free+0x106/0x180 __kmem_cache_free+0xbc/0x320 clk_unregister+0x6de/0x8d0 macb_remove+0x73/0xc0 [macb_pci] pci_device_remove+0xae/0x210 device_remove+0xcb/0x180 device_release_driver_internal+0x529/0x770 driver_detach+0xd4/0x1a0 bus_remove_driver+0x135/0x260 driver_unregister+0x72/0xb0 pci_unregister_driver+0x26/0x220 __do_sys_delete_module+0x32e/0x550 do_syscall_64+0x35/0x80 entry_SYSCALL_64_after_hwframe+0x6e/0xd8",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43018": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: hci_event: fix potential UAF in hci_le_remote_conn_param_req_evt hci_conn lookup and field access must be covered by hdev lock in hci_le_remote_conn_param_req_evt, otherwise it's possible it is freed concurrently. Extend the hci_dev_lock critical section to cover all conn usage.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43019": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: hci_conn: fix potential UAF in set_cig_params_sync hci_conn lookup and field access must be covered by hdev lock in set_cig_params_sync, otherwise it's possible it is freed concurrently. Take hdev lock to prevent hci_conn from being deleted or modified concurrently. Just RCU lock is not suitable here, as we also want to avoid \"tearing\" in the configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43023": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: SCO: fix race conditions in sco_sock_connect() sco_sock_connect() checks sk_state and sk_type without holding the socket lock. Two concurrent connect() syscalls on the same socket can both pass the check and enter sco_connect(), leading to use-after-free. The buggy scenario involves three participants and was confirmed with additional logging instrumentation: Thread A (connect): HCI disconnect: Thread B (connect): sco_sock_connect(sk) sco_sock_connect(sk) sk_state==BT_OPEN sk_state==BT_OPEN (pass, no lock) (pass, no lock) sco_connect(sk): sco_connect(sk): hci_dev_lock hci_dev_lock hci_connect_sco <- blocked -> hcon1 sco_conn_add->conn1 lock_sock(sk) sco_chan_add: conn1->sk = sk sk->conn = conn1 sk_state=BT_CONNECT release_sock hci_dev_unlock hci_dev_lock sco_conn_del: lock_sock(sk) sco_chan_del: sk->conn=NULL conn1->sk=NULL sk_state= BT_CLOSED SOCK_ZAPPED release_sock hci_dev_unlock (unblocked) hci_connect_sco -> hcon2 sco_conn_add -> conn2 lock_sock(sk) sco_chan_add: sk->conn=conn2 sk_state= BT_CONNECT // zombie sk! release_sock hci_dev_unlock Thread B revives a BT_CLOSED + SOCK_ZAPPED socket back to BT_CONNECT. Subsequent cleanup triggers double sock_put() and use-after-free. Meanwhile conn1 is leaked as it was orphaned when sco_conn_del() cleared the association. Fix this by: - Moving lock_sock() before the sk_state/sk_type checks in sco_sock_connect() to serialize concurrent connect attempts - Fixing the sk_type != SOCK_SEQPACKET check to actually return the error instead of just assigning it - Adding a state re-check in sco_connect() after lock_sock() to catch state changes during the window between the locks - Adding sco_pi(sk)->conn check in sco_chan_add() to prevent double-attach of a socket to multiple connections - Adding hci_conn_drop() on sco_chan_add failure to prevent HCI connection leaks",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43029": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mptcp: fix soft lockup in mptcp_recvmsg() syzbot reported a soft lockup in mptcp_recvmsg() [0]. When receiving data with MSG_PEEK | MSG_WAITALL flags, the skb is not removed from the sk_receive_queue. This causes sk_wait_data() to always find available data and never perform actual waiting, leading to a soft lockup. Fix this by adding a 'last' parameter to track the last peeked skb. This allows sk_wait_data() to make informed waiting decisions and prevent infinite loops when MSG_PEEK is used. [0]: watchdog: BUG: soft lockup - CPU#2 stuck for 156s! [server:1963] Modules linked in: CPU: 2 UID: 0 PID: 1963 Comm: server Not tainted 6.19.0-rc8 #61 PREEMPT(none) Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014 RIP: 0010:sk_wait_data+0x15/0x190 Code: 80 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 41 56 41 55 41 54 49 89 f4 55 48 89 d5 53 48 89 fb <48> 83 ec 30 65 48 8b 05 17 a4 6b 01 48 89 44 24 28 31 c0 65 48 8b RSP: 0018:ffffc90000603ca0 EFLAGS: 00000246 RAX: 0000000000000000 RBX: ffff888102bf0800 RCX: 0000000000000001 RDX: 0000000000000000 RSI: ffffc90000603d18 RDI: ffff888102bf0800 RBP: 0000000000000000 R08: 0000000000000002 R09: 0000000000000101 R10: 0000000000000000 R11: 0000000000000075 R12: ffffc90000603d18 R13: ffff888102bf0800 R14: ffff888102bf0800 R15: 0000000000000000 FS: 00007f6e38b8c4c0(0000) GS:ffff8881b877e000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 000055aa7bff1680 CR3: 0000000105cbe000 CR4: 00000000000006f0 Call Trace: mptcp_recvmsg+0x547/0x8c0 net/mptcp/protocol.c:2329 inet_recvmsg+0x11f/0x130 net/ipv4/af_inet.c:891 sock_recvmsg+0x94/0xc0 net/socket.c:1100 __sys_recvfrom+0xb2/0x130 net/socket.c:2256 __x64_sys_recvfrom+0x1f/0x30 net/socket.c:2267 do_syscall_64+0x59/0x2d0 arch/x86/entry/syscall_64.c:94 entry_SYSCALL_64_after_hwframe+0x76/0x7e arch/x86/entry/entry_64.S:131 RIP: 0033:0x7f6e386a4a1d Code: 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 8d 05 f1 de 2c 00 41 89 ca 8b 00 85 c0 75 20 45 31 c9 45 31 c0 b8 2d 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 6b f3 c3 66 0f 1f 84 00 00 00 00 00 41 56 41 RSP: 002b:00007ffc3c4bb078 EFLAGS: 00000246 ORIG_RAX: 000000000000002d RAX: ffffffffffffffda RBX: 000000000000861e RCX: 00007f6e386a4a1d RDX: 00000000000003ff RSI: 00007ffc3c4bb150 RDI: 0000000000000004 RBP: 00007ffc3c4bb570 R08: 0000000000000000 R09: 0000000000000000 R10: 0000000000000103 R11: 0000000000000246 R12: 00005605dbc00be0 R13: 00007ffc3c4bb650 R14: 0000000000000000 R15: 0000000000000000",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43031": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: xilinx: axienet: Fix BQL accounting for multi-BD TX packets When a TX packet spans multiple buffer descriptors (scatter-gather), axienet_free_tx_chain sums the per-BD actual length from descriptor status into a caller-provided accumulator. That sum is reset on each NAPI poll. If the BDs for a single packet complete across different polls, the earlier bytes are lost and never credited to BQL. This causes BQL to think bytes are permanently in-flight, eventually stalling the TX queue. The SKB pointer is stored only on the last BD of a packet. When that BD completes, use skb->len for the byte count instead of summing per-BD status lengths. This matches netdev_sent_queue(), which debits skb->len, and naturally survives across polls because no partial packet contributes to the accumulator.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43032": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: NFC: pn533: bound the UART receive buffer pn532_receive_buf() appends every incoming byte to dev->recv_skb and only resets the buffer after pn532_uart_rx_is_frame() recognizes a complete frame. A continuous stream of bytes without a valid PN532 frame header therefore keeps growing the skb until skb_put_u8() hits the tail limit. Drop the accumulated partial frame once the fixed receive buffer is full so malformed UART traffic cannot grow the skb past PN532_UART_SKB_BUFF_LEN.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43037": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ip6_tunnel: clear skb2->cb[] in ip4ip6_err() Oskar Kjos reported the following problem. ip4ip6_err() calls icmp_send() on a cloned skb whose cb[] was written by the IPv6 receive path as struct inet6_skb_parm. icmp_send() passes IPCB(skb2) to __ip_options_echo(), which interprets that cb[] region as struct inet_skb_parm (IPv4). The layouts differ: inet6_skb_parm.nhoff at offset 14 overlaps inet_skb_parm.opt.rr, producing a non-zero rr value. __ip_options_echo() then reads optlen from attacker-controlled packet data at sptr[rr+1] and copies that many bytes into dopt->__data, a fixed 40-byte stack buffer (IP_OPTIONS_DATA_FIXED_SIZE). To fix this we clear skb2->cb[], as suggested by Oskar Kjos. Also add minimal IPv4 header validation (version == 4, ihl >= 5).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43039": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: ti: icssg-prueth: fix missing data copy and wrong recycle in ZC RX dispatch emac_dispatch_skb_zc() allocates a new skb via napi_alloc_skb() but never copies the packet data from the XDP buffer into it. The skb is passed up the stack containing uninitialized heap memory instead of the actual received packet, leaking kernel heap contents to userspace. Copy the received packet data from the XDP buffer into the skb using skb_copy_to_linear_data(). Additionally, remove the skb_mark_for_recycle() call since the skb is backed by the NAPI page frag allocator, not page_pool. Marking a non-page_pool skb for recycle causes the free path to return pages to a page_pool that does not own them, corrupting page_pool state. The non-ZC path (emac_rx_packet) does not have these issues because it uses napi_build_skb() to wrap the existing page_pool page directly, requiring no copy, and correctly marks for recycle since the page comes from page_pool_dev_alloc_pages().",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
