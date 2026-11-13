@@ -112780,5 +112780,17 @@
     "description": "Path traversal in Git allows writing to arbitrary file via cloning and committing to bad repository",
     "vendor": "Git",
     "product": "Git"
+  },
+  "CVE-2026-65600": {
+    "cvss": 7.8,
+    "description": "Traefik versions <= v2.11.51, >= v3.6.0 <= v3.6.22, and >= v3.7.0 <= v3.7.6 contain an authentication bypass via path traversal in the ReplacePathRegex middleware. When ReplacePathRegex is configured with a regex that captures user-controlled path segments without a mandatory path separator (e.g. regex \"^/api(.*)\", replacement \"/$1\"), the middleware forwards the replaced path to the backend without validating that it matches its normalized form. An unauthenticated remote attacker can send a crafted request (e.g. GET /api../admin) that produces an un-normalized path such as /../admin, which a backend that normalizes paths resolves to a protected route, bypassing authentication middleware. Fixed in v2.11.52, v3.6.23, and v3.7.7.",
+    "vendor": "traefik",
+    "product": "traefik"
+  },
+  "CVE-2026-124027": {
+    "cvss": 7.5,
+    "description": "ChatWiki before 2.10.0 contains a missing authentication vulnerability in the GET /manage/getLibRawFileOnePage route that allows unauthenticated attackers to read other tenants' documents. Attackers can enumerate sequential admin_user_id and file id query parameters, bypassing the ownership check, to retrieve PDF-rendered pages of any tenant's knowledge-base documents.",
+    "vendor": "zhimaAi",
+    "product": "chatwiki"
   }
 }
