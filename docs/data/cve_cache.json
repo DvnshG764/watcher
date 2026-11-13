@@ -112712,7 +112712,7 @@
   "CVE-2026-123039": {
     "cvss": 7.8,
     "description": "The Gaia OS DynamicCLI daemon runs as root and listens on a world-writable local socket (/tmp/dynamic_socket) without authenticating connecting processes. An authenticated local user can send a command to the socket and have it executed as root.",
-    "vendor": "checkpoint",
+    "vendor": "Check Point",
     "product": "Quantum Security Gateway"
   },
   "CVE-2026-107360": {
@@ -112730,7 +112730,7 @@
   "CVE-2026-120490": {
     "cvss": 3.8,
     "description": "On Scalable Platforms, an administrator with permissions to edit and install the Access Control Policy and NAT rules can create a NAT rule that redirects traffic to the Gateway's Sync interface, bypassing the built-in Sync protection. This could allow the administrator to execute operating system commands and write files on the Gateway with superuser privileges.",
-    "vendor": "checkpoint",
+    "vendor": "Check Point",
     "product": "Scalable Platforms (ElasticXL, Maestro, Chassis)"
   },
   "CVE-2026-119302": {
@@ -112744,5 +112744,11 @@
     "description": "vulnerability-operator scans SBOMs and Images for vulnerabilities. Prior to version 0.28.16, an unauthenticated information-disclosure vulnerability exposes all vulnerability scan reports served by the operator. The /report/ HTTP endpoint mounts a raw http.FileServer over the reports directory (default /reports) with no authentication, authorization, or middleware. Any client that can reach the operator's HTTP port (default 8080) can list and download every JSON vulnerability report, disclosing CVE IDs, affected package names/versions, and container image identifiers for every workload scanned in the cluster. This issue has been patched in version 0.28.16.",
     "vendor": "ckotzbauer",
     "product": "vulnerability-operator"
+  },
+  "CVE-2026-28517": {
+    "cvss": 9.3,
+    "description": "openDCIM version 23.04, through commit 4467e9c4, contains an OS command injection vulnerability in report_network_map.php. The application retrieves the 'dot' configuration parameter from the database and passes it directly to exec() without validation or sanitization. If an attacker can modify the fac_Config.dot value, arbitrary commands may be executed in the context of the web server process.",
+    "vendor": "openDCIM",
+    "product": "openDCIM"
   }
 }
