@@ -17364,7 +17364,7 @@
     "product": "OpenCATS"
   },
   "CVE-2026-40281": {
-    "cvss": 10.0,
+    "cvss": 9.1,
     "description": "Gotenberg is a Docker-powered stateless API for PDF files. In versions 8.30.1 and earlier, the metadata write endpoint validates metadata keys for control characters but leaves metadata values unsanitized. A newline character in a metadata value splits the ExifTool stdin line into two separate arguments, allowing injection of arbitrary ExifTool pseudo-tags such as -FileName, -Directory, -SymLink, and -HardLink. This is a bypass of the incomplete key-sanitization fix introduced in v8.30.1. An unauthenticated attacker can rename or move any PDF being processed to an arbitrary path in the container filesystem, overwrite arbitrary files, or create symlinks and hard links at arbitrary paths.",
     "vendor": "gotenberg",
     "product": "gotenberg"
@@ -17892,7 +17892,7 @@
     "product": "WordPress"
   },
   "CVE-2026-41640": {
-    "cvss": 7.5,
+    "cvss": 8.8,
     "description": "NocoBase is an AI-powered no-code/low-code platform for building business applications and enterprise solutions. Prior to version 2.0.39, the queryParentSQL() function in the core database package constructs a recursive CTE query by joining nodeIds with string concatenation instead of using parameterized queries. The nodeIds array contains primary key values read from database rows. An attacker who can create a record with a malicious string primary key can inject arbitrary SQL when any subsequent request triggers recursive eager loading on that collection. This issue has been patched in version 2.0.39.",
     "vendor": "nocobase",
     "product": "nocobase"
@@ -113248,5 +113248,119 @@
     "description": "Zipline before 4.6.5 contains a TOCTOU race condition in the POST /api/setup endpoint that allows unauthenticated attackers to create multiple SUPERADMIN accounts by racing concurrent requests before the firstSetup flag is reset. Attackers can send simultaneous requests with spoofed X-Forwarded-For headers during the argon2 hashing window to gain full administrative control of the instance.",
     "vendor": "diced",
     "product": "zipline"
+  },
+  "CVE-2026-43263": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: media: chips-media: wave5: Fix Null reference while testing fluster When multi instances are created/destroyed, many interrupts happens and structures for decoder are removed. \"struct vpu_instance\" this structure is shared for all flow in the decoder, so if the structure is not protected by lock, Null dereference could happens sometimes. IRQ Handler was spilt to two phases and Lock was added as well.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43268": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: hfsplus: pretend special inodes as regular files Since commit af153bb63a33 (\"vfs: catch invalid modes in may_open()\") requires any inode be one of S_IFDIR/S_IFLNK/S_IFREG/S_IFCHR/S_IFBLK/ S_IFIFO/S_IFSOCK type, use S_IFREG for special inodes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43269": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/atmel-hlcdc: fix memory leak from the atomic_destroy_state callback After several commits, the slab memory increases. Some drm_crtc_commit objects are not freed. The atomic_destroy_state callback only put the framebuffer. Use the __drm_atomic_helper_plane_destroy_state() function to put all the objects that are no longer needed. It has been seen after hours of usage of a graphics application or using kmemleak: unreferenced object 0xc63a6580 (size 64): comm \"egt_basic\", pid 171, jiffies 4294940784 hex dump (first 32 bytes): 40 50 34 c5 01 00 00 00 ff ff ff ff 8c 65 3a c6 @P4..........e:. 8c 65 3a c6 ff ff ff ff 98 65 3a c6 98 65 3a c6 .e:......e:..e:. backtrace (crc c25aa925): kmemleak_alloc+0x34/0x3c __kmalloc_cache_noprof+0x150/0x1a4 drm_atomic_helper_setup_commit+0x1e8/0x7bc drm_atomic_helper_commit+0x3c/0x15c drm_atomic_commit+0xc0/0xf4 drm_atomic_helper_set_config+0x84/0xb8 drm_mode_setcrtc+0x32c/0x810 drm_ioctl+0x20c/0x488 sys_ioctl+0x14c/0xc20 ret_fast_syscall+0x0/0x54",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43270": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: media: mtk-mdp: Fix a reference leak bug in mtk_mdp_remove() In mtk_mdp_probe(), vpu_get_plat_device() increases the reference count of the returned platform device. Add platform_device_put() to prevent reference leak.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43272": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ring-buffer: Fix possible dereference of uninitialized pointer There is a pointer head_page in rb_meta_validate_events() which is not initialized at the beginning of a function. This pointer can be dereferenced if there is a failure during reader page validation. In this case the control is passed to \"invalid\" label where the pointer is dereferenced in a loop. To fix the issue initialize orig_head and head_page before calling rb_validate_buffer. Found by Linux Verification Center (linuxtesting.org) with SVACE.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43274": {
+    "cvss": 8.4,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mailbox: mchp-ipc-sbi: fix out-of-bounds access in mchp_ipc_get_cluster_aggr_irq() The cluster_cfg array is dynamically allocated to hold per-CPU configuration structures, with its size based on the number of online CPUs. Previously, this array was indexed using hartid, which may be non-contiguous or exceed the bounds of the array, leading to out-of-bounds access. Switch to using cpuid as the index, as it is guaranteed to be within the valid range provided by for_each_online_cpu().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43275": {
+    "cvss": 4.7,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: ufs: core: Flush exception handling work when RPM level is zero Ensure that the exception event handling work is explicitly flushed during suspend when the runtime power management level is set to UFS_PM_LVL_0. When the RPM level is zero, the device power mode and link state both remain active. Previously, the UFS core driver bypassed flushing exception event handling jobs in this configuration. This created a race condition where the driver could attempt to access the host controller to handle an exception after the system had already entered a deep power-down state, resulting in a system crash. Explicitly flush this work and disable auto BKOPs before the suspend callback proceeds. This guarantees that pending exception tasks complete and prevents illegal hardware access during the power-down sequence.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43278": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: dm: clear cloned request bio pointer when last clone bio completes Stale rq->bio values have been observed to cause double-initialization of cloned bios in request-based device-mapper targets, leading to use-after-free and double-free scenarios. One such case occurs when using dm-multipath on top of a PCIe NVMe namespace, where cloned request bios are freed during blk_complete_request(), but rq->bio is left intact. Subsequent clone teardown then attempts to free the same bios again via blk_rq_unprep_clone(). The resulting double-free path looks like: nvme_pci_complete_batch() nvme_complete_batch() blk_mq_end_request_batch() blk_complete_request() // called on a DM clone request bio_endio() // first free of all clone bios ... rq->end_io() // end_clone_request() dm_complete_request(tio->orig) dm_softirq_done() dm_done() dm_end_request() blk_rq_unprep_clone() // second free of clone bios Fix this by clearing the clone request's bio pointer when the last cloned bio completes, ensuring that later teardown paths do not attempt to free already-released bios.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43279": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: usb-audio: Add sanity check for OOB writes at silencing At silencing the playback URB packets in the implicit fb mode before the actual playback, we blindly assume that the received packets fit with the buffer size. But when the setup in the capture stream differs from the playback stream (e.g. due to the USB core limitation of max packet size), such an inconsistency may lead to OOB writes to the buffer, resulting in a crash. For addressing it, add a sanity check of the transfer buffer size at prepare_silent_urb(), and stop the data copy if the received data overflows. Also, report back the transfer error properly from there, too. Note that this doesn't fix the root cause of the playback error itself, but this merely covers the kernel Oops.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43280": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/xe: Add bounds check on pat_index to prevent OOB kernel read in madvise When user provides a bogus pat_index value through the madvise IOCTL, the xe_pat_index_get_coh_mode() function performs an array access without validating bounds. This allows a malicious user to trigger an out-of-bounds kernel read from the xe->pat.table array. The vulnerability exists because the validation in madvise_args_are_sane() directly calls xe_pat_index_get_coh_mode(xe, args->pat_index.val) without first checking if pat_index is within [0, xe->pat.n_entries). Although xe_pat_index_get_coh_mode() has a WARN_ON to catch this in debug builds, it still performs the unsafe array access in production kernels. v2(Matthew Auld) - Using array_index_nospec() to mitigate spectre attacks when the value is used v3(Matthew Auld) - Put the declarations at the start of the block (cherry picked from commit 944a3329b05510d55c69c2ef455136e2fc02de29)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43282": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: RDMA/ionic: Fix potential NULL pointer dereference in ionic_query_port The function ionic_query_port() calls ib_device_get_netdev() without checking the return value which could lead to NULL pointer dereference, Fix it by checking the return value and return -ENODEV if the 'ndev' is NULL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43283": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: ethernet: ec_bhf: Fix dma_free_coherent() dma handle dma_free_coherent() in error path takes priv->rx_buf.alloc_len as the dma handle. This would lead to improper unmapping of the buffer. Change the dma handle to priv->rx_buf.alloc_phys.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-29080": {
+    "cvss": 8.8,
+    "description": "A SQL injection vulnerability in `FilterEngine.create_sqla_query()` allows any authenticated Rucio user to execute arbitrary SQL against the backend database through the DID search endpoint (`GET /dids/ /dids/search`). On Oracle deployments attacker-controlled filter keys and values are interpolated directly into `sqlalchemy.text()` via Python `.format()`, completely bypassing parameterization. This enables full database compromise including extraction of authentication tokens, password hashes, and all managed data identifiers. This affects versions 1.27.0 and later before 35.8.5, 38.5.5, 39.4.2, and 40.1.1. The vulnerability exists in `lib/rucio/core/did_meta_plugins/filter_engine.py` within the `create_sqla_query()` method. When the database dialect is Oracle, filter expressions for JSON metadata columns are constructed using `text()` with Python string formatting. Both `key` and `value` are attacker-controlled strings derived from HTTP query parameters. The `text()` function creates a raw SQL fragment — it does **not** escape or parameterize its contents. Any authenticated Rucio user can exploit this through the DID search API to execute arbitrary SQL against the backend database. This can expose all managed data identifiers and sensitive tables such as identities, tokens, accounts, rse_settings, and rules, and may allow modification of database contents. The issue affects Oracle deployments using the default json_meta plugin and does not affect PostgreSQL or MySQL deployments using that plugin. This vulnerability has been fixed in versions 35.8.5, 38.5.5, 39.4.2, and 40.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44112": {
+    "cvss": 9.6,
+    "description": "OpenClaw before 2026.4.22 contains a time-of-check/time-of-use race condition in OpenShell sandbox filesystem writes that allows attackers to redirect writes outside the intended mount root. Attackers can exploit symlink swaps during filesystem operations to bypass sandbox restrictions and write files outside the local mount root.",
+    "vendor": "OpenClaw",
+    "product": "OpenClaw"
+  },
+  "CVE-2026-115934": {
+    "cvss": 9.8,
+    "description": "An unauthenticated SQL injection can occur on the front end of any site that uses craft.search to perform a search, allowing stacked query execution and enabling escalation to an administrator. Note that this only affects MySQL/MariaDB. Impact * SQL injection — The attribute parameter is concatenated into the query unsanitized, and because PDO runs with emulated prepares, stacked statements execute. This gives unauthenticated read and write access to the application database. * Privilege escalation to administrator — The write primitive was used to set the admin flag on user ID 1 in the users table, confirmed by reading the value back. Craft short-circuits its permission checks on this single column, so no further changes were needed. The same primitive can overwrite any account’s password hash. Update to the patched versions (4.18.9 and 5.11.2) to get the fix. If you cannot update immediately, you can block front-end requests with %5Battribute%5D and [attribute] anywhere in the query string as a temporary mitigation.",
+    "vendor": "craftcms",
+    "product": "cms"
+  },
+  "CVE-2026-124020": {
+    "cvss": 8.1,
+    "description": "Control Web Panel (CWP) before webpanel_version 1.30.6 contains a host header injection vulnerability that allows unauthenticated attackers to manipulate the password-recovery reset URL by injecting the HTTP Host header into the /v1/lostpass/ route's token generation process. Attackers can lure an automated mail-security scanner into visiting the poisoned reset link to exfiltrate the live recovery token, replay it at /login/index.php?acc=newpass to set a new password, and subsequently abuse the File Manager and Crontab modules to achieve command execution as the targeted hosting account.",
+    "vendor": "Control Web Panel",
+    "product": "Control Web Panel"
+  },
+  "CVE-2026-112652": {
+    "cvss": 5.5,
+    "description": "A logic issue was addressed with improved state management. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2, visionOS 27.2. An malicious app may be able to bypass certificate validation.",
+    "vendor": "Apple",
+    "product": "iOS and iPadOS"
+  },
+  "CVE-2026-101107": {
+    "cvss": 8.0,
+    "description": "An OS command Injection issue exists in Air Terminal 6 provided by SoftBank Corp. Arbitrary commands may be executed with the root privilege by a user who can log in to the web management console of the affected product.",
+    "vendor": "SoftBank Corp.",
+    "product": "Air Terminal 6"
+  },
+  "CVE-2026-126539": {
+    "cvss": 8.1,
+    "description": "Directus before 12.1.0 contains an authorization bypass vulnerability that allows unauthenticated attackers to skip permission checks by sending a failed auth message on public-mode WebSocket connections. Attackers can send an invalid token so handleAuthRequest sets accountability to null, then read, create, update or delete records in any user-defined collection.",
+    "vendor": "directus",
+    "product": "directus"
   }
 }
