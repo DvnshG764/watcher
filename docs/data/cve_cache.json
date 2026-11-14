@@ -113362,5 +113362,359 @@
     "description": "Directus before 12.1.0 contains an authorization bypass vulnerability that allows unauthenticated attackers to skip permission checks by sending a failed auth message on public-mode WebSocket connections. Attackers can send an invalid token so handleAuthRequest sets accountability to null, then read, create, update or delete records in any user-defined collection.",
     "vendor": "directus",
     "product": "directus"
+  },
+  "CVE-2026-8119": {
+    "cvss": 5.5,
+    "description": "A vulnerability was detected in Open5GS up to 2.7.7. Impacted is the function ogs_sbi_stream_find_by_id in the library /lib/sbi/nghttp2-server.c of the component NSSF. Performing a manipulation results in denial of service. Attacking locally is a requirement. The exploit is now public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8120": {
+    "cvss": 6.5,
+    "description": "A flaw has been found in Open5GS up to 2.7.7. The affected element is the function nssf_nnrf_nsselection_handle_get_from_amf_or_vnssf of the file /src/nssf/nnssf-handler.c of the component NSSF. Executing a manipulation can lead to denial of service. The attack can be executed remotely. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8121": {
+    "cvss": 6.5,
+    "description": "A vulnerability has been found in Open5GS up to 2.7.7. The impacted element is the function ogs_sbi_parse_plmn_list in the library /lib/sbi/conv.c of the component NSSF. The manipulation leads to denial of service. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8122": {
+    "cvss": 6.5,
+    "description": "A vulnerability was found in Open5GS up to 2.7.7. This affects the function ogs_sbi_discovery_option_add_service_names in the library /lib/sbi/message.c of the component NSSF. The manipulation results in denial of service. The attack may be performed from remote. The exploit has been made public and could be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8123": {
+    "cvss": 6.5,
+    "description": "A vulnerability was determined in Open5GS up to 2.7.7. This impacts the function ogs_sbi_discovery_option_add_snssais in the library /lib/sbi/message.c of the component NSSF. This manipulation causes denial of service. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8124": {
+    "cvss": 5.5,
+    "description": "A security vulnerability has been detected in GPAC up to 26.02.0. This affects the function sidx_box_read of the file src/isomedia/box_code_base.c. The manipulation leads to allocation of resources. The attack must be carried out locally. The exploit has been disclosed publicly and may be used. The identifier of the patch is 442e2299530138d8f874fd885c565ba98a6318ba. It is suggested to install a patch to address this issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41498": {
+    "cvss": 3.3,
+    "description": "Kimai is an open-source time tracking application. Prior to version 2.54.0, the Team API endpoints use #[IsGranted('edit_team')] instead of #[IsGranted('edit', 'team')], causing Symfony TeamVoter to abstain from voting. This removes entity-level ownership checks on team operations, allowing any user with the edit_team permission to modify any team, not just teams they are authorized to manage. This issue has been patched in version 2.54.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41500": {
+    "cvss": 9.8,
+    "description": "electerm is an open-sourced terminal/ssh/sftp/telnet/serialport/RDP/VNC/Spice/ftp client. Prior to version 3.3.8, a command injection vulnerability exists in github.com/elcterm/electerm/npm/install.js:150. The runMac() function appends attacker-controlled remote releaseInfo.name directly into an exec(\"open ...\") command without validation. This issue has been patched in version 3.3.8.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41501": {
+    "cvss": 9.8,
+    "description": "electerm is an open-sourced terminal/ssh/sftp/telnet/serialport/RDP/VNC/Spice/ftp client. Prior to version 3.3.8, a command injection vulnerability exists in github.com/elcterm/electerm/npm/install.js:130. The runLinux() function appends attacker-controlled remote version strings directly into an exec(\"rm -rf ...\") command without validation. This issue has been patched in version 3.3.8.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42264": {
+    "cvss": 9.1,
+    "description": "Axios is a promise based HTTP client for the browser and Node.js. From version 1.0.0 to before version 1.15.2, fFive config properties (auth, baseURL, socketPath, beforeRedirect, and insecureHTTPParser) in the HTTP adapter are read via direct property access without hasOwnProperty guards, making them exploitable as prototype pollution gadgets. When Object.prototype is polluted by another dependency in the same process, axios silently picks up these polluted values on every outbound HTTP request. This issue has been patched in version 1.15.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42267": {
+    "cvss": 5.7,
+    "description": "Kimai is an open-source time tracking application. From version 2.27.0 to before version 2.54.0, any ROLE_USER can create a tag with a formula string as its name (e.g. =SUM(54+51)) via POST /api/tags and assign it to a timesheet. When an admin exports timesheets to XLSX, ArrayFormatter.formatValue() joins tag names with implode() and returns the result unchanged. OpenSpout promotes any =-prefixed string to a FormulaCell, writing SUM(54+51) into the XLSX archive. Excel evaluates the formula when the file is opened. This issue has been patched in version 2.54.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43940": {
+    "cvss": 8.4,
+    "description": "electerm is an open-sourced terminal/ssh/sftp/telnet/serialport/RDP/VNC/Spice/ftp client. Prior to version 3.7.16, the runWidget function in src/app/widgets/load-widget.js constructs a file path by directly concatenating user‑supplied widget identifiers without any sanitisation. Because runWidget is exposed to the renderer process via an asynchronous IPC handler with no input validation, an attacker who achieves JavaScript execution inside the renderer (for example, through a malicious plugin or a cross‑site scripting flaw in the built‑in webview) can abuse a path traversal (../) to load and execute an arbitrary JavaScript file anywhere on the victim’s filesystem. This gives the attacker local code execution with the full privileges of the electerm process, leading to complete system compromise. This issue has been patched in version 3.7.16.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43941": {
+    "cvss": 9.6,
+    "description": "electerm is an open-sourced terminal/ssh/sftp/telnet/serialport/RDP/VNC/Spice/ftp client. In versions 3.8.15 and prior, Electerm's terminal hyperlink handler passes any URL clicked in the terminal directly to shell.openExternal without any protocol validation. An attacker who controls terminal output (e.g., via a malicious SSH server, compromised remote host, or malicious plugin rendering terminal content) can thus achieve arbitrary code execution or local file access on the victim's machine, requiring only that the victim clicks a displayed link. At time of publication, there are no publicly available patches.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43942": {
+    "cvss": 5.5,
+    "description": "electerm is an open-sourced terminal/ssh/sftp/telnet/serialport/RDP/VNC/Spice/ftp client. In versions 3.8.15 and prior, the getConstants() IPC handler in src/app/lib/ipc-sync.js serialises the entire process.env object and sends it to the renderer. The data is stored as window.pre.env and is accessible from any JavaScript running in the renderer (e.g., via the DevTools console or a compromised webview context). An attacker who achieves any JavaScript execution within the renderer can trivially exfiltrate these secrets to a remote server, leading to cloud account compromise, supply chain attacks, and lateral movement. At time of publication, there are no publicly available patches.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43943": {
+    "cvss": 7.8,
+    "description": "electerm is an open-sourced terminal/ssh/sftp/telnet/serialport/RDP/VNC/Spice/ftp client. Prior to version 3.7.9, a code execution (RCE) vulnerability exists in electerm's SFTP open with system editor or \"Edit with custom editor\" feature. When a user opts to edit a file using open with system editor or open with a custom editor, the filename is passed directly into a command line without sanitization. A malicious actor controlling the SSH server or user OS can exploit this by crafting a filename containing shell metacharacters. If a victim subsequently attempts to edit this file, the injected commands are executed on their machine with the user's privileges. This could allow the attacker to run arbitrary code, install malware, or move laterally within the network. This issue has been patched in version 3.7.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43944": {
+    "cvss": 9.6,
+    "description": "electerm is an open-sourced terminal/ssh/sftp/telnet/serialport/RDP/VNC/Spice/ftp client. From versions 3.0.6 to before 3.8.15, electerm is vulnerable to arbitrary local code execution via deep links, CLI --opts, or crafted shortcuts. Exploit requires clicking a crafted electerm://... link or opening a crafted shortcut/command that launches electerm with attacker-controlled opts. This issue has been patched in version 3.8.15.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44298": {
+    "cvss": 4.9,
+    "description": "Kimai is an open-source time tracking application. From version 2.32.0 to before version 2.56.0, users with the role System-Admin (ROLE_SYSTE_ADMIN) and the permission upload_invoice_template can upload PDF invoice templates, which can call pdfContext.setOption('associated_files', ...) inside the sandboxed Twig render. This is forwarded to mPDF's SetAssociatedFiles(), whose writer calls file_get_contents($entry['path']) during PDF output and embeds the bytes as a FlateDecode stream in the PDF. Any file readable by the PHP worker is returned to the attacker inside the rendered invoice. This issue has been patched in version 2.56.0.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2022-45899": {
+    "cvss": 6.5,
+    "description": "Nokia Broadcast Message Center (BMC) before 13.1 allows an unauthenticated remote attacker to do OS command injection as root via shell metacharacters in the Log Scanner Search Pattern field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42276": {
+    "cvss": 4.3,
+    "description": "Onyx is an open-source AI platform. Prior to versions 3.0.9, 3.1.6, and 3.2.6, the POST /chat/stop-chat-session/{chat_session_id} endpoint lets any authenticated user stop any other user's active chat session. The endpoint checks authentication but never verifies the session belongs to the caller. An attacker who knows a chat session UUID can kill another user's LLM generation mid-stream. This issue has been patched in versions 3.0.9, 3.1.6, and 3.2.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42277": {
+    "cvss": 6.5,
+    "description": "Onyx is an open-source AI platform. Prior to versions 3.0.9, 3.1.6, and 3.2.6, the GET /chat/file/{file_id} endpoint allows any authenticated user to download any other user's uploaded files by providing the file UUID. The endpoint verifies the caller is authenticated but never checks that the file belongs to them. An attacker who knows or obtains a file UUID can access confidential documents, chat attachments, and other files uploaded by any user in the system. This issue has been patched in versions 3.0.9, 3.1.6, and 3.2.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41413": {
+    "cvss": 7.7,
+    "description": "Istio is an open platform to connect, manage, and secure microservices. Prior to versions 1.28.6 and 1.29.2, when a RequestAuthentication resource is created with a jwksUri pointing to an internal service, istiod makes an unauthenticated HTTP GET request to that URL without filtering out localhost or link local ips. This can result in sensitive data being distributed to Envoy proxies via xDS configuration. This issue has been patched in versions 1.28.6 and 1.29.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4430": {
+    "cvss": 7.8,
+    "description": "Out-of-bounds write vulnerability in The Document Foundation LibreOffice via crafted OOXML documents with mismatched encryption salt parameters. This issue affects LibreOffice: from 26.2 before 26.2.3, from 25.8 before 25.8.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28201": {
+    "cvss": 7.8,
+    "description": "An improper input validation, together with an overly permissive default CORS configuration in Open Notebook v1.8.1 allows remote attacker to trick a legitimate user to alter or delete arbitrary database entries via specially crafted malicious URL. Depending on the deployment, data exfiltration is also possible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33587": {
+    "cvss": 10.0,
+    "description": "Lack of user input sanitisation in Open Notebook v1.8.3 allows the application user to execute Python code (and subsequently OS commands) on the docker container via Server-Side Template Injection (SSTI) for user-created transformations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33588": {
+    "cvss": 8.1,
+    "description": "Lack of user input validation in the file upload functionality of Open Notebook v1.8.3 allows the application user to create or modify files on the docker container via path traversal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33589": {
+    "cvss": 6.5,
+    "description": "Lack of user input validation in the file upload functionality of Open Notebook v1.8.3 allows the application user to access local files content from the docker container via path traversal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41644": {
+    "cvss": 7.1,
+    "description": "monetr is a budgeting application for recurring expenses. Prior to version 1.12.5, a server-side request forgery (SSRF) vulnerability in monetr's Lunch Flow integration allowed any authenticated user on a self-hosted instance to cause the monetr server to issue HTTP GET requests to arbitrary URLs supplied by the caller, with the response body from non-200 upstream responses reflected back in the API error message. This issue has been patched in version 1.12.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8080": {
+    "cvss": 5.4,
+    "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in misp allows Stored XSS. This issue affects MISP before 2.5.37. A stored cross-site scripting vulnerability exists in the template element attribute handling logic. The application accepted arbitrary values for the TemplateElementAttribute type and category fields without validating them against the known MISP attribute type and category definitions. An attacker with permission to create or modify template element attributes could store a crafted type value. This affects the old templating (not more accessible in 2.5.37) engine from MISP which will be removed in 2.5.38",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-37709": {
+    "cvss": 9.8,
+    "description": "Insecure Permissions vulnerability in grokability snipe-it v.8.4.0 and before and fixed after 2026-03-10 commit 676a9958 allows a remote attacker to execute arbitrary code via the app/Http/Controllers/Api/UploadedFilesController.php component",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-42215": {
+    "cvss": 8.8,
+    "description": "GitPython is a python library used to interact with Git repositories. From version 3.1.30 to before version 3.1.47, GitPython blocks dangerous Git options such as --upload-pack and --receive-pack by default, but the equivalent Python kwargs upload_pack and receive_pack bypass that check. If an application passes attacker-controlled kwargs into Repo.clone_from(), Remote.fetch(), Remote.pull(), or Remote.push(), this leads to arbitrary command execution even when allow_unsafe_options is left at its default value of False. This issue has been patched in version 3.1.47.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42284": {
+    "cvss": 9.8,
+    "description": "GitPython is a python library used to interact with Git repositories. Prior to version 3.1.47, _clone() validates multi_options as the original list, then executes shlex.split(\" \".join(multi_options)). A string like \"--branch main --config core.hooksPath=/x\" passes validation (starts with --branch), but after split becomes [\"--branch\", \"main\", \"--config\", \"core.hooksPath=/x\"]. Git applies the config and executes attacker hooks during clone. This issue has been patched in version 3.1.47.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44243": {
+    "cvss": 7.1,
+    "description": "GitPython is a python library used to interact with Git repositories. Prior to version 3.1.48, a vulnerability in GitPython allows attackers who can supply a crafted reference path to an application using GitPython to write, overwrite, move, or delete files outside the repository’s .git directory via insufficient validation of reference paths in reference creation, rename, and delete operations. This issue has been patched in version 3.1.48.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44244": {
+    "cvss": 7.8,
+    "description": "GitPython is a python library used to interact with Git repositories. Prior to version 3.1.49, GitConfigParser.set_value() passes values to Python's configparser without validating for newlines. GitPython's own _write() converts embedded newlines into indented continuation lines (e.g. \\n becomes \\n\\t), but Git still accepts an indented [core] stanza as a section header — so the injected core.hooksPath becomes effective configuration. Any Git operation that invokes hooks (commit, merge, checkout) will then execute scripts from the attacker-controlled path. This issue has been patched in version 3.1.49.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44742": {
+    "cvss": 6.1,
+    "description": "Postorius through 1.3.13 does not escape HTML in the message subject when rendering it in the Held messages pop-up, as exploited in the wild in May 2026.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-39817": {
+    "cvss": 5.9,
+    "description": "The \"go tool pack\" subcommand (usually used only by the compiler as an internal tool with known-good inputs) does not sanitize output filenames. Extracting a malicious archive file with the \"pack\" subcommand can write files to arbitrary locations on the filesystem.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-39819": {
+    "cvss": 5.3,
+    "description": "The \"go bug\" command writes to two files with predictable names in the system temporary directory (for example, \"/tmp\"). An attacker with access to the temporary directory can create a symlink in one of these names, causing \"go bug\" to overwrite the target of the symlink.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42501": {
+    "cvss": 7.5,
+    "description": "A malicious module proxy can exploit a flaw in the go command's validation of module checksums to bypass checksum database validation. This vulnerability affects any user using an untrusted module proxy (GOMODPROXY) or checksum database (GOSUMDB). A malicious module proxy can serve altered versions of the Go toolchain. When selecting a different version of the Go toolchain than the currently installed toolchain (due to the GOTOOLCHAIN environment variable, or a go.work or go.mod with a toolchain line), the go command will download and execute a toolchain provided by the module proxy. A malicious module proxy can bypass checksum database validation for this downloaded toolchain. Since this vulnerability affects the security of toolchain downloads, setting GOTOOLCHAIN to a fixed version is not sufficient. You must upgrade your base Go toolchain. The go tool always validates the hash of a toolchain before executing it, so fixed versions will refuse to execute any cached, altered versions of the toolchain. The go tool trusts go.sum files to contain accurate hashes of the current module's dependencies. A malicious proxy exploiting this vulnerability to serve an altered module will have caused an incorrect hash to be recorded in the go.sum. Users who have configured a non-trusted GOPROXY can determine if they have been affected by running \"rm go.sum ; go mod tidy ; go mod verify\", which will revalidate all dependencies of the current module. The specific flaw in more detail: The go command consults the checksum database to validate downloaded modules, when a module is not listed in the go.sum file. It verifies that the module hash reported by the checksum database matches the hash of the downloaded module. If, however, the checksum database returns a successful response that contains no entry for the module, the go command incorrectly permitted validation to succeed. A module proxy may mirror or proxy the checksum database, in which case the go command will not connect to the checksum database directly. Checksums reported by the checksum database are cryptographically signed, so a malicious proxy cannot alter the reported checksum for a module. However, a proxy which returns an empty checksum response, or a checksum response for an unrelated module, could cause the go command to proceed as if a downloaded module has been validated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-29090": {
+    "cvss": 8.8,
+    "description": "### Summary A SQL injection vulnerability exists in Rucio versions 1.30.0 and later before 35.8.5, 38.5.5, 39.4.2, and 40.1.1, in `FilterEngine.create_postgres_query()`. This allows any authenticated Rucio user to execute arbitrary SQL against the PostgreSQL metadata database through the DID search endpoint (`GET /dids/ /dids/search`). When the `postgres_meta` metadata plugin is configured, attacker-controlled filter keys and values are interpolated directly into raw SQL strings via Python `.format()`, then passed to `psycopg3`'s `sql.SQL()` which treats the string as trusted SQL syntax. Depending on the database privileges assigned to the service account, exploitation can expose sensitive tables, modify or delete metadata, access server-side files, or achieve code execution through PostgreSQL features such as COPY ... FROM PROGRAM. This issue affects deployments that explicitly use the postgres_meta metadata plugin. This vulnerability has been fixed in versions 35.8.5, 38.5.5, 39.4.2, and 40.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43575": {
+    "cvss": 9.8,
+    "description": "OpenClaw versions 2026.2.21 before 2026.4.10 contain an authentication bypass vulnerability in the sandbox noVNC helper route that exposes interactive browser session credentials. Attackers can access the noVNC helper route without bridge authentication to gain unauthorized access to the interactive browser session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43576": {
+    "cvss": 7.7,
+    "description": "OpenClaw before 2026.4.5 contains a server-side request forgery vulnerability in the CDP /json/version WebSocket endpoint that allows attackers to pivot to untrusted second-hop targets. The webSocketDebuggerUrl response field is not properly validated, enabling attackers to redirect connections to arbitrary hosts and perform SSRF-style attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43577": {
+    "cvss": 6.5,
+    "description": "OpenClaw before 2026.4.9 contains a file read vulnerability allowing attackers to bypass navigation guards through browser act/evaluate interactions. Attackers can pivot into the local CDP origin and create or read disallowed file:// pages despite direct navigation policy restrictions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43578": {
+    "cvss": 9.1,
+    "description": "OpenClaw versions 2026.3.31 before 2026.4.10 contain a privilege escalation vulnerability where heartbeat owner downgrade detection misses local background async exec completion events. Attackers can exploit this by providing untrusted completion content to leave a run in a more privileged context than intended.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43579": {
+    "cvss": 6.5,
+    "description": "OpenClaw before 2026.4.10 contains an insufficient access control vulnerability in Nostr plugin HTTP profile routes that allows operators with write permissions to persist profile configuration without requiring admin authority. Attackers with operator.write scope can modify Nostr profile settings through unprotected mutation endpoints to gain unauthorized configuration persistence.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43580": {
+    "cvss": 7.7,
+    "description": "OpenClaw before 2026.4.10 contains an incomplete navigation guard vulnerability that allows attackers to trigger navigation without complete SSRF policy enforcement. Browser press/type style interactions, including pressKey and type submit flows, can bypass post-action security checks to execute unauthorized navigation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43581": {
+    "cvss": 9.6,
+    "description": "OpenClaw before 2026.4.10 contains an improper network binding vulnerability in the sandbox browser CDP relay that exposes Chrome DevTools Protocol on 0.0.0.0. Attackers can access the DevTools protocol outside intended local sandbox boundaries by exploiting the overly broad binding configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43582": {
+    "cvss": 6.3,
+    "description": "OpenClaw before 2026.4.10 contains a server-side request forgery vulnerability in browser navigation policy that allows attackers to bypass hostname validation through DNS rebinding attacks. Attackers can exploit inconsistent hostname resolution between validation and actual network requests to pivot to internal resources via unallowlisted hostname URLs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43583": {
+    "cvss": 6.5,
+    "description": "OpenClaw versions 2026.4.10 before 2026.4.14 fail to persist session context during delivery queue recovery for media replay. Attackers can exploit recovered queued outbound media to bypass group tool policy enforcement and weaken channel media restrictions after service restart or recovery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43584": {
+    "cvss": 8.8,
+    "description": "OpenClaw before 2026.4.10 contains an insufficient environment variable denylist vulnerability in its exec environment policy that allows operator-supplied overrides of high-risk interpreter startup variables including VIMINIT, EXINIT, LUA_INIT, and HOSTALIASES. Attackers can exploit this by manipulating these environment variables to influence downstream execution behavior or network connectivity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43585": {
+    "cvss": 9.8,
+    "description": "OpenClaw before 2026.4.15 captures resolved bearer-auth configuration at startup, allowing revoked tokens to remain valid after SecretRef rotation. Gateway HTTP and WebSocket handlers fail to re-resolve authentication per-request, enabling attackers to use rotated-out bearer tokens for unauthorized gateway access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44109": {
+    "cvss": 9.8,
+    "description": "OpenClaw before 2026.4.15 contains an authentication bypass vulnerability in Feishu webhook and card-action validation that allows unauthenticated requests to reach command dispatch. Missing encryptKey configuration and blank callback tokens fail open instead of rejecting requests, enabling attackers to bypass signature verification and replay protection to execute arbitrary commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44110": {
+    "cvss": 8.8,
+    "description": "OpenClaw before 2026.4.15 contains an authorization bypass vulnerability in Matrix room control-command authorization that trusts DM pairing-store entries. Attackers with DM-paired sender IDs can execute room control commands without being in configured allowlists by posting in bot rooms, potentially enabling privileged OpenClaw behavior.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44111": {
+    "cvss": 4.3,
+    "description": "OpenClaw before 2026.4.15 contains an arbitrary file read vulnerability in the QMD backend memory_get function that allows callers to read any Markdown files within the workspace root. Attackers with access to the memory tool can bypass path restrictions by providing arbitrary workspace Markdown paths to read files outside canonical memory locations or indexed QMD result sets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44113": {
+    "cvss": 7.7,
+    "description": "OpenClaw before 2026.4.22 contains a time-of-check/time-of-use race condition in the OpenShell filesystem bridge that allows attackers to read files outside the intended mount root. Attackers can exploit symlink swaps during filesystem operations to bypass sandbox restrictions and access unauthorized file contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44114": {
+    "cvss": 7.8,
+    "description": "OpenClaw before 2026.4.20 fails to properly reserve the OPENCLAW_ runtime-control environment namespace in workspace dotenv files, allowing attackers to override critical runtime variables. Malicious workspaces can set variables like OPENCLAW_GIT_DIR to manipulate trusted OpenClaw runtime behavior during source-update or installer flows.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44115": {
+    "cvss": 8.8,
+    "description": "OpenClaw before 2026.4.22 contains an exec allowlist analysis vulnerability allowing shell expansion hiding in unquoted heredoc bodies. Attackers can bypass allowlist validation by embedding shell expansion tokens in heredoc bodies to execute unapproved commands at runtime.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44116": {
+    "cvss": 8.6,
+    "description": "OpenClaw before 2026.4.22 contains a server-side request forgery vulnerability in the Zalo plugin's sendPhoto function that fails to validate outbound photo URLs through the SSRF guard. Attackers can bypass SSRF protection by providing malicious photo URLs to the Zalo Bot API, enabling unauthorized access to internal resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44117": {
+    "cvss": 5.8,
+    "description": "OpenClaw before 2026.4.20 contains a server-side request forgery vulnerability in QQBot direct media upload that skips URL validation. Attackers can bypass SSRF protections by sending crafted image URLs to uploadC2CMedia and uploadGroupMedia endpoints to relay unintended requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44118": {
+    "cvss": 7.8,
+    "description": "OpenClaw before 2026.4.22 derives loopback MCP owner context from spoofable server-issued bearer tokens in request headers. Non-owner loopback clients can present themselves as owner to bypass owner-gated operations by manipulating the sender-owner header metadata.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41417": {
+    "cvss": 5.3,
+    "description": "Netty allows request-line validation to be bypassed when a `DefaultHttpRequest` or `DefaultFullHttpRequest` is created first and its URI is later changed via `setUri()`. The constructors reject CRLF and whitespace characters that would break the start-line, but `setUri()` does not apply the same validation. `HttpRequestEncoder` and `RtspEncoder` then write the URI into the request line verbatim. If attacker-controlled input reaches `setUri()`, this enables CRLF injection and insertion of additional HTTP or RTSP requests, leading to HTTP request smuggling or desynchronization on the HTTP side and request injection on the RTSP side. This issue is fixed in versions 4.2.13.Final and 4.1.133.Final.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
