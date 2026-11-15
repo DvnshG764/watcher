@@ -116074,5 +116074,11 @@
     "description": "When authentication caching is enabled on DefaultLdapRealm, after a user logs in successfully once, subsequent logins for that user succeed with any password. A cached authentication skips the LDAP bind, and the AllowAllCredentialsMatcher installed by default in DefaultLdapRealm accepts any credentials, allowing an attacker who knows a valid username to authenticate as that user. This issue affects all Apache Shiro versions through 3.0.0, only when using DefaultLdapRealm (or JndiLdapRealm) with authenticationCachingEnabled set to true, which is not the default. Mitigation: Upgrade to version 3.0.1 or later, which fixes the issue by no longer installing AllowAllCredentialsMatcher by default. Alternatively, disable authentication caching on the LDAP realm (this is the default), or configure a credentials matcher, such as SimpleCredentialsMatcher, that verifies credentials against the cached authentication info.",
     "vendor": "Apache Software Foundation",
     "product": "Apache Shiro"
+  },
+  "CVE-2026-57739": {
+    "cvss": 9.3,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Datasolution AcyMailing SMTP Newsletter acymailing allows Blind SQL Injection.This issue affects AcyMailing SMTP Newsletter: from n/a through 10.11.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
