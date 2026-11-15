@@ -10142,8 +10142,8 @@
   "CVE-2026-34571": {
     "cvss": 9.0,
     "description": "CI4MS is a CodeIgniter 4-based CMS skeleton that delivers a production-ready, modular architecture with RBAC authorization and theme support. Prior to version 0.31.0.0, a Stored Cross-Site Scripting (Stored XSS) vulnerability exists in the backend user management functionality. The application fails to properly sanitize user-controlled input before rendering it in the administrative interface, allowing attackers to inject persistent JavaScript code. This results in automatic execution whenever backend users access the affected page, enabling session hijacking, privilege escalation, and full administrative account compromise. This issue has been patched in version 0.31.0.0.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "ci4ms"
   },
   "CVE-2026-34572": {
     "cvss": 8.8,
@@ -10442,8 +10442,8 @@
   "CVE-2026-33766": {
     "cvss": 6.5,
     "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, `isSSRFSafeURL()` validates URLs against private/reserved IP ranges before fetching, but `url_get_contents()` follows HTTP redirects without re-validating the redirect target. An attacker can bypass SSRF protection by redirecting from a public URL to an internal target. Commit 8b7e9dad359d5fac69e0cbbb370250e0b284bc12 contains a patch.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "AVideo"
   },
   "CVE-2026-4953": {
     "cvss": 7.3,
@@ -13004,7 +13004,7 @@
   "CVE-2026-26198": {
     "cvss": 9.8,
     "description": "Ormar is a async mini ORM for Python. In versions 0.9.9 through 0.22.0, when performing aggregate queries, Ormar ORM constructs SQL expressions by passing user-supplied column names directly into `sqlalchemy.text()` without any validation or sanitization. The `min()` and `max()` methods in the `QuerySet` class accept arbitrary string input as the column parameter. While `sum()` and `avg()` are partially protected by an `is_numeric` type check that rejects non-existent fields, `min()` and `max()` skip this validation entirely. As a result, an attacker-controlled string is embedded as raw SQL inside the aggregate function call. Any unauthorized user can exploit this vulnerability to read the entire database contents, including tables unrelated to the queried model, by injecting a subquery as the column parameter. Version 0.23.0 contains a patch.",
-    "vendor": "collerek",
+    "vendor": "Check Point",
     "product": "ormar"
   },
   "CVE-2026-19089": {
@@ -13136,7 +13136,7 @@
   "CVE-2026-25596": {
     "cvss": 4.8,
     "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. A Stored Cross-Site Scripting (XSS) vulnerability exists in InvoicePlane 1.7.0 via the Product Unit Name fields. An authenticated administrator can inject malicious JavaScript that executes when any administrator views an invoice containing a product with the malicious unit. Version 1.7.1 patches the issue.",
-    "vendor": "InvoicePlane",
+    "vendor": "Check Point",
     "product": "InvoicePlane"
   },
   "CVE-2026-10134": {
@@ -13316,7 +13316,7 @@
   "CVE-2026-25594": {
     "cvss": 4.8,
     "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. A Stored Cross-Site Scripting (XSS) vulnerability exists in InvoicePlane 1.7.0 via the Family Name field. The `family_name` value is rendered without HTML encoding inside the family dropdown on the product form. When an administrator creates a family with a malicious name, the payload executes in the browser of any administrator who visits the product form. Version 1.7.1 patches the issue.",
-    "vendor": "InvoicePlane",
+    "vendor": "Check Point",
     "product": "InvoicePlane"
   },
   "CVE-2026-17543": {
@@ -13694,7 +13694,7 @@
   "CVE-2026-25595": {
     "cvss": 4.8,
     "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. A Stored Cross-Site Scripting (XSS) vulnerability exists in InvoicePlane 1.7.0 via the Invoice Number field. An authenticated administrator can inject malicious JavaScript that executes when any administrator views the affected invoice or visits the dashboard. Version 1.7.1 patches the issue.",
-    "vendor": "InvoicePlane",
+    "vendor": "Check Point",
     "product": "InvoicePlane"
   },
   "CVE-2026-27876": {
@@ -17630,7 +17630,7 @@
   "CVE-2026-52806": {
     "cvss": 9.9,
     "description": "Gogs is an open source self-hosted Git service. Prior to 0.14.3, Gogs allows authenticated users to achieve Remote Code Execution (RCE) on the server by creating a pull request with a specially crafted branch name that injects the --exec flag into the git rebase command during the \"Rebase before merging\" merge operation. This vulnerability is fixed in 0.14.3.",
-    "vendor": "gogs",
+    "vendor": "Check Point",
     "product": "gogs"
   },
   "CVE-2026-24477": {
@@ -17708,7 +17708,7 @@
   "CVE-2026-40280": {
     "cvss": 7.8,
     "description": "Gotenberg is an API-based document conversion tool. In versions 8.30.1 and earlier, the default private-IP deny-lists for the --webhook-deny-list and --api-download-from-deny-list flags use a case-sensitive regular expression (^https?://) to match URL schemes. Because Go's net/url.Parse() normalizes the scheme to lowercase before establishing the outbound TCP connection, an attacker can bypass the deny-list by simply capitalizing part of the URL scheme (e.g., HTTP://, HTTPS://, or Http://). This allows unauthenticated requests to reach internal network services, including private IP ranges, loopback addresses, and cloud instance metadata endpoints such as HTTP://169.254.169.254/latest/meta-data/. This bypasses the same security control that was patched in CVE-2026-27018. This issue has been fixed in version 8.31.0.",
-    "vendor": "gotenberg",
+    "vendor": "Check Point",
     "product": "gotenberg"
   },
   "CVE-2026-54069": {
@@ -18830,7 +18830,7 @@
   "CVE-2026-42596": {
     "cvss": 9.4,
     "description": "Gotenberg is a Docker-powered stateless API for PDF files. Prior to 8.31.0, the default deny-lists used by Gotenberg's downloadFrom feature and webhook feature are bypassable. Because the filter is regex-based and case-sensitive, an unauthenticated attacker can supply URLs such as http://[::ffff:127.0.0.1]:... and reach loopback or private HTTP services that the default deny-list is intended to block. This crosses a real security boundary because an external caller can force the server to make outbound requests to internal-only targets. This vulnerability is fixed in 8.31.0.",
-    "vendor": "gotenberg",
+    "vendor": "Check Point",
     "product": "gotenberg"
   },
   "CVE-2026-33057": {
@@ -51872,8 +51872,8 @@
   "CVE-2026-41304": {
     "cvss": 9.8,
     "description": "WWBN AVideo is an open source video platform. In versions 29.0 and below, the `cloneServer.json.php` endpoint in the CloneSite plugin constructs shell commands using user-controlled input (`url` parameter) without proper sanitization. The input is directly concatenated into a `wget` command executed via `exec()`, allowing command injection. An attacker can inject arbitrary shell commands by breaking out of the intended URL context using shell metacharacters (e.g., `;`). This leads to Remote Code Execution (RCE) on the server. Commit 473c609fc2defdea8b937b00e86ce88eba1f15bb contains a fix.",
-    "vendor": "PHP",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "AVideo"
   },
   "CVE-2026-41146": {
     "cvss": 8.7,
@@ -52616,8 +52616,8 @@
   "CVE-2026-41062": {
     "cvss": 6.5,
     "description": "WWBN AVideo is an open source video platform. In versions 29.0 and below, the directory traversal fix introduced in commit 2375eb5e0 for `objects/aVideoEncoderReceiveImage.json.php` only checks the URL path component (via `parse_url($url, PHP_URL_PATH)`) for `..` sequences. However, the downstream function `try_get_contents_from_local()` in `objects/functionsFile.php` uses `explode('/videos/', $url)` on the **full URL string** including the query string. An attacker can place the `/videos/../../` traversal payload in the query string to bypass the security check and read arbitrary files from the server filesystem. Commit bd11c16ec894698e54e2cdae25026c61ad1ed441 contains an updated fix.",
-    "vendor": "PHP",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "AVideo"
   },
   "CVE-2026-4296": {
     "cvss": 8.8,
@@ -80624,8 +80624,8 @@
   "CVE-2026-1678": {
     "cvss": 9.8,
     "description": "dns_unpack_name() caches the buffer tailroom once and reuses it while appending DNS labels. As the buffer grows, the cached size becomes incorrect, and the final null terminator can be written past the buffer. With assertions disabled (default), a malicious DNS response can trigger an out-of-bounds write when CONFIG_DNS_RESOLVER is enabled.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "Zephyr"
   },
   "CVE-2025-55095": {
     "cvss": 7.0,
@@ -113794,5 +113794,755 @@
     "description": "Use after free in Passwords in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
     "vendor": "Google",
     "product": "Chrome"
+  },
+  "CVE-2026-18199": {
+    "cvss": 8.8,
+    "description": "Zohocorp ManageEngine Password Manager Pro versions before 13236 and PAM360 versions before 8601 are vulnerable to an authenticated Remote Code Execution vulnerability.",
+    "vendor": "Check Point",
+    "product": "ManageEngine Password Manager Pro"
+  },
+  "CVE-2026-54052": {
+    "cvss": 9.9,
+    "description": "n8n-MCP is an MCP server that provides AI assistants access to n8n node documentation, properties, and operations. Prior to 2.56.1, in HTTP mode with multi-tenancy enabled through ENABLE_MULTI_TENANT=true, n8n-mcp's local workflow version history backups were not isolated per tenant, allowing an authenticated tenant to read workflow version snapshots belonging to other tenants and delete or destroy other tenants' stored backups, including full node definitions, credential references, and authorization headers. This issue is fixed in version 2.56.1.",
+    "vendor": "Check Point",
+    "product": "n8n-mcp"
+  },
+  "CVE-2026-85736": {
+    "cvss": 8.1,
+    "description": "Chartbrew is an open-source web application that can connect directly to databases and APIs and use the data to create charts. Prior to 5.2.3, connection creation or update stored attacker-chosen absolute SSL and SSH file paths, and later connection cleanup passed those stored paths to fs.unlink without a path restriction. The vulnerable surface is data-connection certificate and SSH-key cleanup when a connection is removed. A user with createOwn and deleteOwn permissions on their own team stores a target path in a connection and then deletes the connection to trigger cleanup; default self-signup grants teamOwner these permissions. The cleanup routine treats the stored SSL or SSH path as a managed certificate path and unlinks the referenced file; duplicateConnection provides a second advisory-identified trigger. The attacker must be able to create or update and then delete a connection on their own team. The default container runs Chartbrew as uid 0, while deployments with a less-privileged process are limited by that process's deletion permissions. The attacker can delete files such as /code/.env or application source, causing integrity loss and service disruption. This issue is fixed in version 5.2.3.",
+    "vendor": "Check Point",
+    "product": "chartbrew"
+  },
+  "CVE-2026-62856": {
+    "cvss": 7.7,
+    "description": "FreeScout is a self-hosted help desk and shared mailbox application. Prior to version 1.8.226, the polycast/receive endpoint fails to escape SQL LIKE wildcards in supplied channel names, while channel authorization applies only to names with specific prefixes. An unauthenticated attacker with a guest session and valid CSRF token can submit a wildcard channel name to retrieve matching notification events intended for other users. Notification payload generation lacks a corresponding access check, exposing conversation message content, identifiers, URLs, and notification HTML across users and mailboxes. This issue is fixed in version 1.8.226.",
+    "vendor": "Check Point",
+    "product": "freescout"
+  },
+  "CVE-2026-102650": {
+    "cvss": 7.5,
+    "description": "Nuxt Content is the file-based CMS for Nuxt applications, powered by Markdown and Vue components. From 3.0.0 until 3.15.2, the unauthenticated POST /__nuxt_content/:collection/query endpoint accepts an attacker-controlled sql field in src/runtime/api/query.post.ts and permits expensive SQLite expressions. Version 3.0.0 performed no query validation; in affected releases using assertSafeQuery in src/runtime/internal/security.ts, the reported validation gap rejects a short list of SQL command keywords in WHERE clauses but permits function calls including randomblob(), zeroblob(), hex(), and length(). The query reaches the synchronous better-sqlite3 sink in src/runtime/internal/database.server.ts, allowing a single remote request to consume substantial CPU and memory while blocking the Node.js event loop and all concurrent request handling. Fully static prerendered deployments that do not expose the server endpoint are not affected. This issue is fixed in version 3.15.2.",
+    "vendor": "Check Point",
+    "product": "content"
+  },
+  "CVE-2026-85726": {
+    "cvss": 7.5,
+    "description": "Chartbrew is an open-source web application that can connect directly to databases and APIs and use the data to create charts. Prior to 5.2.3, a date-typed MongoDB variable placed inside a quoted query placeholder was inserted as an unescaped string, unlike the safely escaped or coerced string, number, and Boolean branches. The vulnerable surface is mongoDB-backed public, shareable, or embedded charts processed by date-variable substitution. An unauthenticated user supplies a crafted URL filter to a public, shareable, or embedded MongoDB chart whose query places a date-typed variable in a quoted literal. The crafted date value breaks out of the quoted literal and changes query logic; the chart's returned row count becomes a Boolean oracle for character-by-character field extraction. The chart must be externally reachable and use the vulnerable date-in-quoted-placeholder branch. Extraction is read-only and limited to one queried collection per request, and it requires neither an account nor a known field value. The blind oracle can disclose any field in the queried collection, including secrets the chart does not display. This issue is fixed in version 5.2.3.",
+    "vendor": "Check Point",
+    "product": "chartbrew"
+  },
+  "CVE-2026-63438": {
+    "cvss": 9.8,
+    "description": "2FAuth is a web app to manage Two-Factor Authentication (2FA) accounts and generate their security codes. Prior to 8.0.0, when AUTHENTICATION_GUARD=reverse-proxy-guard accepts authentication headers from a client that did not pass through a trusted proxy, RemoteUserProvider::retrieveById() creates an account for an unknown REMOTE_USER, promotes the first created account to administrator, and synchronizes the account email from the configured mail header. An unauthenticated remote client can therefore create an administrator on a fresh instance or impersonate and redirect email for a known account, exposing 2FA secrets and administrative functions. This issue is fixed in version 8.0.0.",
+    "vendor": "Bubka",
+    "product": "2FAuth"
+  },
+  "CVE-2026-123966": {
+    "cvss": 10.0,
+    "description": "A vulnerability was determined in Tenda AC19 16.03.10.07. Affected by this issue is the function saveParentControlInfo of the file /goform/saveParentControlInfo. This manipulation of the argument deviceId causes heap-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized.",
+    "vendor": "Check Point",
+    "product": "AC19"
+  },
+  "CVE-2026-102359": {
+    "cvss": 7.5,
+    "description": "Kroki creates diagrams from textual descriptions. Prior to 0.31.2, the TikZ backend's tikz/tikz2svg guard used when KROKI_SAFE_MODE is enabled blocks only \\verbatiminput while allowing native TeX file-read primitives including \\openin, \\read, \\input, and \\include. TeX Live's permissive openin_any setting remains active, so an unauthenticated actor can submit crafted LaTeX to POST /tikz/svg or the generic diagram API and cause the renderer to read any file accessible to the Kroki container user. The file contents are rendered into the returned SVG, which may disclose mounted secrets, configuration data, credentials, private keys, or process environment data. The -no-shell-escape option prevents shell execution but does not restrict these native file operations. This issue is fixed in version 0.31.2.",
+    "vendor": "Check Point",
+    "product": "kroki"
+  },
+  "CVE-2026-62345": {
+    "cvss": 7.6,
+    "description": "Wanderer is a self-hosted trail database for saving and sharing adventures. Prior to 0.19.3, an authenticated user can store a crafted waypoint.icon value that createMarkerFromWaypoint() passes into FontawesomeMarker, where insertAdjacentHTML inserts the unvalidated value into map marker markup. Opening the affected trail map executes attacker-controlled script in the viewer's browser, which can expose session tokens or perform actions as the victim. Federated waypoint data can also reach the sink without a local account on the receiving instance. This issue is fixed in version 0.19.3.",
+    "vendor": "Check Point",
+    "product": "wanderer"
+  },
+  "CVE-2026-54349": {
+    "cvss": 9.8,
+    "description": "Chartbrew is an open-source web application that can connect directly to databases and APIs and use the data to create charts. Prior to 5.2.1, SQL dashboard-variable substitution used attacker-controlled JavaScript replacement strings unsafely across SQL connectors and separately failed to escape backslashes for MySQL and MariaDB quoted contexts. The vulnerable surface is public and embedded dashboard/chart requests that call applyMysqlOrPostgresVariables. An unauthenticated user sends crafted URL filter values to a public or embedded chart backed by a stored SQL query. Replacement-string dollar sequences can alter SQL independently of the database engine, while MySQL and MariaDB backslash handling provides a second quoted-string escape path. The target must expose a public or embedded chart using URL-controlled variables in a SQL query; only the backslash branch is specific to MySQL and MariaDB. Injected SQL can read, modify, or delete data available to the configured database account. This issue is fixed in version 5.2.1.",
+    "vendor": "Check Point",
+    "product": "chartbrew"
+  },
+  "CVE-2026-62346": {
+    "cvss": 7.6,
+    "description": "Wanderer is a self-hosted trail database for saving and sharing adventures. Prior to 0.19.3, an authenticated local user can submit crafted waypoint.name and waypoint.icon values that the trail elevation graph interpolates into an innerHTML template in web/src/lib/vendor/maplibre-elevation-profile/elevationprofile.ts without HTML encoding or icon validation. A victim viewing the elevation profile executes the attacker-controlled script in their browser. Separately, federated waypoints can deliver the same malicious fields across instances without requiring the attacker to have a local account on the receiving instance. The script can expose session data or perform actions in the victim's context. This issue is fixed in version 0.19.3.",
+    "vendor": "Check Point",
+    "product": "wanderer"
+  },
+  "CVE-2026-57566": {
+    "cvss": 9.3,
+    "description": "Readest is a modern, feature-rich ebook reader designed for seamless cross-platform access and an intuitive reading experience. Prior to 0.11.10, the unauthenticated /api/opds/proxy route in apps/readest-app/src/app/api/opds/proxy/route.ts accepted an attacker-controlled URL and fetched it server-side without restricting the scheme, blocking private, loopback, link-local, or metadata hosts, or revalidating destinations during automatic redirect following. The route also accepted caller-controlled outbound headers and Authorization values and reflected the upstream status and response body. A remote attacker could use the service as an open request proxy and, on Node, Docker, or other self-hosted deployments with internal-network access, retrieve cloud metadata or internal-service responses. Cloudflare Workers deployments restrict access to link-local and private destinations, which reduces the internal-network impact there, but the unauthenticated public fetch-and-reflect behavior remains. This issue is fixed in version 0.11.10.",
+    "vendor": "Check Point",
+    "product": "readest"
+  },
+  "CVE-2026-42592": {
+    "cvss": 5.3,
+    "description": "Gotenberg is a Docker-powered stateless API for PDF files. Prior to 8.32.0, FilterOutboundURL resolves the hostname, checks the resolved IPs against the private-address deny-list, and returns only the error. It discards the resolved addresses. Chromium later performs its own DNS resolution when it navigates to the URL. An attacker who controls DNS for a hostname with a short TTL returns a public IP on the first query (Gotenberg allows) and a private IP on the second query (Chromium connects to the attacker-chosen internal address). The CDP Fetch.requestPaused handler re-checks the URL but runs its own DNS resolution, leaving a timing window before Chromium's actual TCP connect. The rendered internal service response returns to the caller as a PDF. This vulnerability is fixed in 8.32.0.",
+    "vendor": "Check Point",
+    "product": "gotenberg"
+  },
+  "CVE-2026-39383": {
+    "cvss": 6.9,
+    "description": "Gotenberg is an API-based document conversion tool. In version 8.29.1, an unauthenticated attacker with network access can force the server to make outbound HTTP POST requests to arbitrary internal or external destinations by supplying a crafted URL in the Gotenberg-Webhook-Url request header. The FilterDeadline function in filter.go is intended to gate outbound URLs, but when both the allow-list and deny-list are empty (the default configuration), it returns nil unconditionally and permits any URL. This is a blind SSRF: Gotenberg POSTs the converted document to the webhook URL and only checks whether the response status code is an error, but never returns the target's response body to the attacker. An attacker can use this to probe internal network infrastructure by observing whether the error callback is invoked, force POST requests against internal services that perform side effects, and confirm reachability of cloud metadata endpoints. The retryable HTTP client issues up to 4 automatic retries per request, amplifying each probe. This issue has been fixed in version 8.31.0. As a workaround, configure the GOTENBERG_API_WEBHOOK_ALLOW_LIST environment variable to restrict webhook URLs to known receivers, or set GOTENBERG_API_WEBHOOK_DENY_LIST to block RFC-1918 and link-local address ranges.",
+    "vendor": "Check Point",
+    "product": "gotenberg"
+  },
+  "CVE-2026-42595": {
+    "cvss": 8.6,
+    "description": "Gotenberg is a Docker-powered stateless API for PDF files. Prior to 8.32.0, Gotenberg's Chromium URL-to-PDF endpoint (/forms/chromium/convert/url) has no default protection against HTTP/HTTPS-based SSRF. The default deny-list regex only blocks file:// URIs. An unauthenticated attacker can point Chromium at any internal IP — including loopback, RFC 1918 ranges, and cloud metadata endpoints — and receive the response rendered as a PDF. Additionally, even when operators configure a custom deny-list, the protection is bypassed via HTTP redirects. Gotenberg's Chromium instance follows 302 redirects from an attacker-controlled external URL to internal targets without re-validating the redirect destination against the deny-list. This vulnerability is fixed in 8.32.0.",
+    "vendor": "Check Point",
+    "product": "gotenberg"
+  },
+  "CVE-2026-27018": {
+    "cvss": 7.8,
+    "description": "Gotenberg is an API for converting document formats. Prior to version 8.29.0, the fix introduced for CVE-2024-21527 can be bypassed using mixed-case or uppercase URL schemes. This issue has been patched in version 8.29.0.",
+    "vendor": "Check Point",
+    "product": "gotenberg"
+  },
+  "CVE-2026-26194": {
+    "cvss": 8.8,
+    "description": "Gogs is an open source self-hosted Git service. Prior to version 0.14.2, there's a security issue in gogs where deleting a release can fail if a user controlled tag name is passed to git without the right separator, this lets git options get injected and mess with the process. This issue has been patched in version 0.14.2.",
+    "vendor": "Check Point",
+    "product": "gogs"
+  },
+  "CVE-2026-26829": {
+    "cvss": 7.5,
+    "description": "A NULL pointer dereference in the safe_atou64 function (src/misc.c) of owntone-server through commit c4d57aa allows attackers to cause a Denial of Service (DoS) via sending a series of crafted HTTP requests to the server.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26828": {
+    "cvss": 7.5,
+    "description": "A NULL pointer dereference in the daap_reply_playlists function (src/httpd_daap.c) of owntone-server commit 3d1652d allows attackers to cause a Denial of Service (DoS) via sending a crafted DAAP request to the server",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-22171": {
+    "cvss": 8.2,
+    "description": "OpenClaw versions prior to 2026.2.19 contain a path traversal vulnerability in the Feishu media download flow where untrusted media keys are interpolated directly into temporary file paths in extensions/feishu/src/media.ts. An attacker who can control Feishu media key values returned to the client can use traversal segments to escape os.tmpdir() and write arbitrary files within the OpenClaw process permissions.",
+    "vendor": "Check Point",
+    "product": "OpenClaw"
+  },
+  "CVE-2026-3689": {
+    "cvss": 6.5,
+    "description": "OpenClaw Canvas Path Traversal Information Disclosure Vulnerability. This vulnerability allows remote attackers to disclose sensitive information on affected installations of OpenClaw. Authentication is required to exploit this vulnerability. The specific flaw exists within the handling of the path parameters provided to the canvas gateway endpoint. The issue results from the lack of proper validation of a user-supplied path prior to using it in file operations. An attacker can leverage this vulnerability to disclose information in the context of the service account. Was ZDI-CAN-29312.",
+    "vendor": "Check Point",
+    "product": "OpenClaw"
+  },
+  "CVE-2026-26706": {
+    "cvss": 9.8,
+    "description": "sourcecodester Pharmacy Point of Sale System v1.0 is vulnerable to SQL Injection in /pharmacy/view_receipt.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26708": {
+    "cvss": 9.8,
+    "description": "sourcecodester Pharmacy Point of Sale System v1.0 is vulnerable to SQL Injection in /pharmacy/manage_user.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26890": {
+    "cvss": 2.7,
+    "description": "Sourcecodester Pharmacy Point of Sale System v1.0 is vulnerable to SQL Injection in /pharmacy/manage_product.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26707": {
+    "cvss": 9.8,
+    "description": "sourcecodester Pharmacy Point of Sale System v1.0 is vulnerable to SQL Injection in /pharmacy/view_supplier.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26887": {
+    "cvss": 2.7,
+    "description": "Sourcecodester Pharmacy Point of Sale System v1.0 is vulnerable to SQL Injection in /pharmacy/manage_supplier.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26705": {
+    "cvss": 9.8,
+    "description": "sourcecodester Pharmacy Point of Sale System v1.0 is vulnerable to SQL Injection in /pharmacy/view_product.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26889": {
+    "cvss": 2.7,
+    "description": "Sourcecodester Pharmacy Point of Sale System v1.0 is vulnerable to SQL Injection in /pharmacy/manage_category.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-33407": {
+    "cvss": 8.3,
+    "description": "Wallos is an open-source, self-hostable personal subscription tracker. Prior to version 4.7.0, Wallos endpoints/logos/search.php accepts HTTP_PROXY and HTTPS_PROXY environment variables without validation, enabling SSRF via proxy hijacking. The server performs DNS resolution on user-supplied search terms, which can be controlled by attackers to trigger outbound requests to arbitrary domains. This issue has been patched in version 4.7.0.",
+    "vendor": "Check Point",
+    "product": "Wallos"
+  },
+  "CVE-2026-30840": {
+    "cvss": 8.8,
+    "description": "Wallos is an open-source, self-hostable personal subscription tracker. Prior to version 4.6.2, there is a server-side request forgery vulnerability in notification testers. This issue has been patched in version 4.6.2.",
+    "vendor": "Check Point",
+    "product": "Wallos"
+  },
+  "CVE-2026-33399": {
+    "cvss": 7.7,
+    "description": "Wallos is an open-source, self-hostable personal subscription tracker. Prior to version 4.7.0, the SSRF fix applied in version 4.6.2 for CVE-2026-30839 and CVE-2026-30840 is incomplete. The validate_webhook_url_for_ssrf() protection was added to the test* notification endpoints but not to the corresponding save* endpoints. An authenticated user can save an internal/private IP address as a notification URL, and when the cron job sendnotifications.php executes, the request is sent to the internal IP without any SSRF validation. This issue has been patched in version 4.7.0.",
+    "vendor": "Check Point",
+    "product": "Wallos"
+  },
+  "CVE-2026-30839": {
+    "cvss": 5.3,
+    "description": "Wallos is an open-source, self-hostable personal subscription tracker. Prior to version 4.6.2, testwebhooknotifications.php does not validate the target URL against private/reserved IP ranges, enabling full-read SSRF. The server response is returned to the caller. This issue has been patched in version 4.6.2.",
+    "vendor": "Check Point",
+    "product": "Wallos"
+  },
+  "CVE-2026-33401": {
+    "cvss": 7.1,
+    "description": "Wallos is an open-source, self-hostable personal subscription tracker. Prior to version 4.7.0, the patch introduced in commit e8a513591 (CVE-2026-30840) added SSRF protection to notification test endpoints but left three additional attack surfaces unprotected: the AI Ollama host parameter, the AI recommendations endpoint, and the notification cron job. An authenticated user can reach internal network services, cloud metadata endpoints (AWS IMDSv1, GCP, Azure IMDS), or localhost-bound services by supplying a crafted URL to any of these endpoints. This issue has been patched in version 4.7.0.",
+    "vendor": "Check Point",
+    "product": "Wallos"
+  },
+  "CVE-2026-43879": {
+    "cvss": 5.4,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 29.0, an authenticated user can configure their own donation-notification webhook URL to point at internal/loopback/metadata hosts (e.g. http://127.0.0.1:8080/..., http://169.254.169.254/latest/..., RFC1918 addresses). When any other user (including a second account owned by the same attacker) donates even a trivial amount via plugin/CustomizeUser/donate.json.php, the AVideo server issues a curl POST to the attacker-supplied URL, resulting in a blind SSRF. The handler uses only isValidURL() (which is a format check) and does not call the codebase's own isSSRFSafeURL() helper. Additionally, CURLOPT_FOLLOWLOCATION is enabled with no per-hop revalidation, so even if the stored URL were validated, an HTTP 307 from an attacker-controlled host could redirect the POST to internal targets. Commit aaacd48f29f1ff71d1eb5fc81d37605f593cefa9 contains an updated fix.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33502": {
+    "cvss": 9.3,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, an unauthenticated server-side request forgery vulnerability in `plugin/Live/test.php` allows any remote user to make the AVideo server send HTTP requests to arbitrary URLs. This can be used to probe localhost/internal services and, when reachable, access internal HTTP resources or cloud metadata endpoints. Commit 1e6cf03e93b5a5318204b010ea28440b0d9a5ab3 contains a patch.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-34740": {
+    "cvss": 6.5,
+    "description": "WWBN AVideo is an open source video platform. In versions 26.0 and prior, the EPG (Electronic Program Guide) link feature in AVideo allows authenticated users with upload permissions to store arbitrary URLs that the server fetches on every EPG page visit. The URL is validated only with PHP's FILTER_VALIDATE_URL, which accepts internal network addresses. Although AVideo has a dedicated isSSRFSafeURL() function for preventing SSRF, it is not called in this code path. This results in a stored server-side request forgery vulnerability that can be used to scan internal networks, access cloud metadata services, and interact with internal services. At time of publication, there are no publicly available patches.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33294": {
+    "cvss": 5.0,
+    "description": "WWBN AVideo is an open source video platform. Prior to version 26.0, the BulkEmbed plugin's save endpoint (`plugin/BulkEmbed/save.json.php`) fetches user-supplied thumbnail URLs via `url_get_contents()` without SSRF protection. Unlike all six other URL-fetching endpoints in AVideo that were hardened with `isSSRFSafeURL()`, this code path was missed. An authenticated attacker can force the server to make HTTP requests to internal network resources and retrieve the responses by viewing the saved video thumbnail. Version 26.0 fixes the issue.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33237": {
+    "cvss": 5.5,
+    "description": "WWBN AVideo is an open source video platform. Prior to version 26.0, the Scheduler plugin's `run()` function in `plugin/Scheduler/Scheduler.php` calls `url_get_contents()` with an admin-configurable `callbackURL` that is validated only by `isValidURL()` (URL format check). Unlike other AVideo endpoints that were recently patched for SSRF (GHSA-9x67-f2v7-63rw, GHSA-h39h-7cvg-q7j6), the Scheduler's callback URL is never passed through `isSSRFSafeURL()`, which blocks requests to RFC-1918 private addresses, loopback, and cloud metadata endpoints. An admin can configure a scheduled task with an internal network `callbackURL` to perform SSRF against cloud infrastructure metadata services or internal APIs not otherwise reachable from the internet. Version 26.0 contains a patch for the issue.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33480": {
+    "cvss": 8.6,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, the `isSSRFSafeURL()` function in AVideo can be bypassed using IPv4-mapped IPv6 addresses (`::ffff:x.x.x.x`). The unauthenticated `plugin/LiveLinks/proxy.php` endpoint uses this function to validate URLs before fetching them with curl, but the IPv4-mapped IPv6 prefix passes all checks, allowing an attacker to access cloud metadata services, internal networks, and localhost services. Commit 75ce8a579a58c9d4c7aafe453fbced002cb8f373 contains a patch.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-82648": {
+    "cvss": 7.1,
+    "description": "WWBN AVideo contains a server-side request forgery filter bypass vulnerability in the isSSRFSafeURL function that fails to normalize NAT64 addresses written in hexadecimal form. Attackers can bypass SSRF protections by supplying hex-encoded NAT64 addresses like 64:ff9b::a9fe:a9fe to reach cloud metadata services and loopback interfaces.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33351": {
+    "cvss": 9.1,
+    "description": "WWBN AVideo is an open source video platform. Prior to version 26.0, a Server-Side Request Forgery (SSRF) vulnerability exists in `plugin/Live/standAloneFiles/saveDVR.json.php`. When the AVideo Live plugin is deployed in standalone mode (the intended configuration for this file), the `$_REQUEST['webSiteRootURL']` parameter is used directly to construct a URL that is fetched server-side via `file_get_contents()`. No authentication, origin validation, or URL allowlisting is performed. Version 26.0 contains a patch for the issue.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33039": {
+    "cvss": 8.6,
+    "description": "WWBN AVideo is an open source video platform. In versions 25.0 and below, the plugin/LiveLinks/proxy.php endpoint validates user-supplied URLs against internal/private networks using isSSRFSafeURL(), but only checks the initial URL. When the initial URL responds with an HTTP redirect (Location header), the redirect target is fetched via fakeBrowser() without re-validation, allowing an attacker to reach internal services (cloud metadata, RFC1918 addresses) through an attacker-controlled redirect. This issue is fixed in version 26.0.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-27005": {
+    "cvss": 8.8,
+    "description": "Chartbrew is an open-source web application that can connect directly to databases and APIs and use the data to create charts. Prior to version 4.8.3, an unauthenticated attacker can inject arbitrary SQL into queries executed against databases connected to Chartbrew (MySQL, PostgreSQL). This allows reading, modifying, or deleting data in those databases depending on the database user's privileges. This issue has been patched in version 4.8.3.",
+    "vendor": "Check Point",
+    "product": "chartbrew"
+  },
+  "CVE-2026-26698": {
+    "cvss": 4.9,
+    "description": "code-projects Simple Student Alumni System v1.0 is vulnerable to SQL Injection in /TracerStudy/modal_edit.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26697": {
+    "cvss": 4.9,
+    "description": "code-projects Simple Student Alumni System v1.0 is vulnerable to SQL Injection in /TracerStudy/recordteacher_view.php?teacherID=.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26694": {
+    "cvss": 9.8,
+    "description": "code-projects Simple Student Alumni System v1.0 is vulnerale to SQL Injection in /TracerStudy/modal_view.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26696": {
+    "cvss": 9.8,
+    "description": "code-projects Simple Student Alumni System v1.0 is vulnerable to SQL Injection in /TracerStudy/recordteacher_edit.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26695": {
+    "cvss": 9.8,
+    "description": "code-projects Simple Student Alumni System v1.0 is vulnerable to SQL Injection in /TracerStudy/recordstudent_edit.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26703": {
+    "cvss": 9.8,
+    "description": "sourcecodester Personnel Property Equipment System v1.0 is vulnerable to SQL Injection in /ppes/admin/advance_search.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26701": {
+    "cvss": 9.8,
+    "description": "sourcecodester Personnel Property Equipment System v1.0 is vulnerable to SQL Injection in /ppes/admin/edit_tecnical_user.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-26702": {
+    "cvss": 9.8,
+    "description": "sourcecodester Personnel Property Equipment System v1.0 is vulnerable to SQL Injection in /ppes/admin/myitem_reuse.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-33482": {
+    "cvss": 8.1,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, the `sanitizeFFmpegCommand()` function in `plugin/API/standAlone/functions.php` is designed to prevent OS command injection in ffmpeg commands by stripping dangerous shell metacharacters (`&&`, `;`, `|`, `` ` ``, `<`, `>`). However, it fails to strip `$()` (bash command substitution syntax). Since the sanitized command is executed inside a double-quoted `sh -c` context in `execAsync()`, an attacker who can craft a valid encrypted payload can achieve arbitrary command execution on the standalone encoder server. Commit 25c8ab90269e3a01fb4cf205b40a373487f022e1 contains a patch.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-41064": {
+    "cvss": 9.3,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 29.0, an incomplete fix for AVideo's `test.php` adds `escapeshellarg` for wget but leaves the `file_get_contents` and `curl` code paths unsanitized, and the URL validation regex `/^http/` accepts strings like `httpevil[.]com`. Commit 78bccae74634ead68aa6528d631c9ec4fd7aa536 contains an updated fix.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33319": {
+    "cvss": 5.9,
+    "description": "WWBN AVideo is an open source video platform. Prior to version 26.0, the `uploadVideoToLinkedIn()` method in the SocialMediaPublisher plugin constructs a shell command by directly interpolating an upload URL received from LinkedIn's API response, without sanitization via `escapeshellarg()`. If an attacker can influence the LinkedIn API response (via MITM, compromised OAuth token, or API compromise), they can inject arbitrary OS commands that execute as the web server user. Version 26.0 contains a fix for the issue.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2023-32073": {
+    "cvss": 8.8,
+    "description": "WWBN AVideo is an open source video platform. In versions 12.4 and prior, a command injection vulnerability exists at `plugin/CloneSite/cloneClient.json.php` which allows Remote Code Execution if you CloneSite Plugin. This is a bypass to the fix for CVE-2023-30854, which affects WWBN AVideo up to version 12.3. This issue is patched in commit 1df4af01f80d56ff2c4c43b89d0bac151e7fb6e3.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33648": {
+    "cvss": 8.8,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, the restreamer endpoint constructs a log file path by embedding user-controlled `users_id` and `liveTransmitionHistory_id` values from the JSON request body without any sanitization. This log file path is then concatenated directly into shell commands passed to `exec()`, allowing an authenticated user to achieve arbitrary command execution on the server via shell metacharacters such as `$()` or backticks. Commit 99b865413172045fef6a98b5e9bfc7b24da11678 contains a patch.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-26709": {
+    "cvss": 9.8,
+    "description": "code-projects Simple Gym Management System v1.0 is vulnerable to SQL Injection in /gym/trainer_search.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-33292": {
+    "cvss": 7.5,
+    "description": "WWBN AVideo is an open source video platform. Prior to version 26.0, the HLS streaming endpoint (`view/hls.php`) is vulnerable to a path traversal attack that allows an unauthenticated attacker to stream any private or paid video on the platform. The `videoDirectory` GET parameter is used in two divergent code paths — one for authorization (which truncates at the first `/` segment) and one for file access (which preserves `..` traversal sequences) — creating a split-oracle condition where authorization is checked against one video while content is served from another. Version 26.0 contains a fix for the issue.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-84478": {
+    "cvss": 7.3,
+    "description": "WWBN AVideo contains a path traversal vulnerability in the API get_api_login_code endpoint that allows unauthenticated attackers to delete arbitrary .log files by supplying directory traversal sequences in the code parameter. Attackers can exploit this to destroy audit logs and probe for file existence on the server, with the vulnerability enabling both file deletion and information disclosure about the filesystem.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-46337": {
+    "cvss": 6.9,
+    "description": "WWBN AVideo is an open source video platform. In 29.0 and earlier, an unauthenticated remote attacker can read arbitrary image files anywhere on disk that the PHP user can open — including private user-profile photos that the application's normal serving wrappers gate behind ACLs, admin-uploaded thumbnails, encrypted-video poster frames, and image content under sibling-app directories reachable via .. traversal. The endpoint requires no authentication.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33493": {
+    "cvss": 7.1,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, the `objects/import.json.php` endpoint accepts a user-controlled `fileURI` POST parameter with only a regex check that the value ends in `.mp4`. Unlike `objects/listFiles.json.php`, which was hardened with a `realpath()` + directory prefix check to restrict paths to the `videos/` directory, `import.json.php` performs no directory restriction. This allows an authenticated user with upload permission to: (1) steal any other user's private video files by importing them into their own account, (2) read `.txt`/`.html`/`.htm` files adjacent to any `.mp4` file on the filesystem, and (3) delete `.mp4` and adjacent text files if writable by the web server process. Commit e110ff542acdd7e3b81bdd02b8402b9f6a61ad78 contains a patch.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2026-33681": {
+    "cvss": 7.2,
+    "description": "WWBN AVideo is an open source video platform. In versions up to and including 26.0, the `objects/pluginRunDatabaseScript.json.php` endpoint accepts a `name` parameter via POST and passes it to `Plugin::getDatabaseFileName()` without any path traversal sanitization. This allows an authenticated admin (or an attacker via CSRF) to traverse outside the plugin directory and execute the contents of any `install/install.sql` file on the filesystem as raw SQL queries against the application database. Commit 81b591c509835505cb9f298aa1162ac64c4152cb contains a patch.",
+    "vendor": "Check Point",
+    "product": "AVideo"
+  },
+  "CVE-2018-10573": {
+    "cvss": null,
+    "description": "interface/fax/fax_dispatch.php in OpenEMR before 5.0.1 allows remote authenticated users to bypass intended access restrictions via the scan parameter.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-24890": {
+    "cvss": 8.1,
+    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0, an authorization bypass vulnerability in the patient portal signature endpoint allows authenticated portal users to upload and overwrite provider signatures by setting `type=admin-signature` and specifying any provider user ID. This could potentially lead to signature forgery on medical documents, legal compliance violations, and fraud. The issue occurs when portal users are allowed to modify provider signatures without proper authorization checks. Version 8.0.0 fixes the issue.",
+    "vendor": "Check Point",
+    "product": "openemr"
+  },
+  "CVE-2018-10572": {
+    "cvss": null,
+    "description": "interface/patient_file/letter.php in OpenEMR before 5.0.1 allows remote authenticated users to bypass intended access restrictions via the newtemplatename and form_body parameters.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-25476": {
+    "cvss": 7.5,
+    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0, the session expiration check in `library/auth.inc.php` runs only when `skip_timeout_reset` is not present in the request. When `skip_timeout_reset=1` is sent, the entire block that calls `SessionTracker::isSessionExpired()` and forces logout on timeout is skipped. As a result, any request that includes this parameter (e.g. from auto-refresh pages like the Patient Flow Board) never runs the expiration check: expired sessions can continue to access data indefinitely, abandoned workstations stay active, and an attacker with a stolen session cookie can keep sending `skip_timeout_reset=1` to avoid being logged out. Version 8.0.0 fixes the issue.",
+    "vendor": "Check Point",
+    "product": "openemr"
+  },
+  "CVE-2026-33302": {
+    "cvss": 7.3,
+    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to 8.0.0.2, the module ACL function `AclMain::zhAclCheck()` only checks for the presence of any \"allow\" (user or group). It never checks for explicit \"deny\" (allowed=0). As a result, administrators cannot revoke access by setting a user or group to \"deny\"; if the user is in a group that has \"allow,\" access is granted regardless of explicit denies. Version 8.0.0.2 fixes the issue.",
+    "vendor": "Check Point",
+    "product": "openemr"
+  },
+  "CVE-2026-25164": {
+    "cvss": 8.1,
+    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0, the REST API route table in `apis/routes/_rest_routes_standard.inc.php` does not call `RestConfig::request_authorization_check()` for the document and insurance routes. Other patient routes in the same file (e.g. encounters, patients/med) call it with the appropriate ACL. As a result, any valid API bearer token can access or modify every patient's documents and insurance data, regardless of the token’s OpenEMR ACLs—effectively exposing all document and insurance PHI to any authenticated API client. Version 8.0.0 patches the issue.",
+    "vendor": "Check Point",
+    "product": "openemr"
+  },
+  "CVE-2026-39391": {
+    "cvss": 4.8,
+    "description": "CI4MS is a CodeIgniter 4-based CMS skeleton that delivers a production-ready, modular architecture with RBAC authorization and theme support. Prior to 0.31.4.0, the blacklist (ban) note parameter in UserController::ajax_blackList_post() is stored in the database without sanitization and rendered into an HTML data-note attribute without escaping. An admin with blacklist privileges can inject arbitrary JavaScript that executes in the browser of any other admin who views the user management page. This vulnerability is fixed in 0.31.4.0.",
+    "vendor": "Check Point",
+    "product": "ci4ms"
+  },
+  "CVE-2026-39392": {
+    "cvss": 5.5,
+    "description": "CI4MS is a CodeIgniter 4-based CMS skeleton that delivers a production-ready, modular architecture with RBAC authorization and theme support. Prior to 0.31.4.0, the Pages module does not apply the html_purify validation rule to content fields during create and update operations, while the Blog module does. Page content is stored unsanitized in the database and rendered as raw HTML on the public frontend via echo $pageInfo->content. An authenticated admin with page-editing privileges can inject arbitrary JavaScript that executes in the browser of every public visitor viewing the page. This vulnerability is fixed in 0.31.4.0.",
+    "vendor": "Check Point",
+    "product": "ci4ms"
+  },
+  "CVE-2026-34558": {
+    "cvss": 9.1,
+    "description": "CI4MS is a CodeIgniter 4-based CMS skeleton that delivers a production-ready, modular architecture with RBAC authorization and theme support. Prior to version 0.31.0.0, the application fails to properly sanitize user-controlled input within the Methods Management functionality when creating or managing application methods/pages. Multiple input fields accept attacker-controlled JavaScript payloads that are stored server-side without sanitization or output encoding. These stored values are later rendered directly into administrative interfaces and global navigation components without proper encoding, resulting in Stored DOM-Based Cross-Site Scripting (XSS). This issue has been patched in version 0.31.0.0.",
+    "vendor": "Check Point",
+    "product": "ci4ms"
+  },
+  "CVE-2026-33735": {
+    "cvss": 7.4,
+    "description": "MyTube is a self-hosted downloader and player for several video websites Prior to version 1.8.69, an authorization bypass in the `/api/settings/import-database` endpoint allows attackers with low-privilege credentials to upload and replace the application's SQLite database entirely, leading to a full compromise of the application. The bypass is relevant for other POST routes as well. Version 1.8.69 fixes the issue.",
+    "vendor": "Check Point",
+    "product": "MyTube"
+  },
+  "CVE-2026-26711": {
+    "cvss": 9.8,
+    "description": "code-projects Simple Food Order System v1.0 is vulnerable to SQL Injection in /food/view-ticket.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-4319": {
+    "cvss": 7.3,
+    "description": "A vulnerability was identified in code-projects Simple Food Order System 1.0. Affected by this vulnerability is an unknown functionality of the file /routers/add-item.php. Such manipulation of the argument price leads to sql injection. The attack can be launched remotely. The exploit is publicly available and might be used.",
+    "vendor": "Check Point",
+    "product": "Simple Food Order System"
+  },
+  "CVE-2026-5019": {
+    "cvss": 7.3,
+    "description": "A security vulnerability has been detected in code-projects Simple Food Order System 1.0. Affected by this vulnerability is an unknown functionality of the file all-orders.php of the component Parameter Handler. The manipulation of the argument Status leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "Simple Food Order System"
+  },
+  "CVE-2026-26710": {
+    "cvss": 9.8,
+    "description": "code-projects Simple Food Order System v1.0 is vulnerable to SQL Injection in /food/routers/edit-orders.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-5017": {
+    "cvss": 7.3,
+    "description": "A security flaw has been discovered in code-projects Simple Food Order System 1.0. This impacts an unknown function of the file /all-tickets.php of the component Parameter Handler. Performing a manipulation of the argument Status results in sql injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "Simple Food Order System"
+  },
+  "CVE-2026-26713": {
+    "cvss": 9.8,
+    "description": "code-projects Simple Food Order System v1.0 is vulnerable to SQL Injection in /food/routers/cancel-order.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-4164": {
+    "cvss": 9.8,
+    "description": "A flaw has been found in Wavlink WL-WN578W2 221110. Impacted is the function Delete_Mac_list/SetName/GuestWifi of the file /cgi-bin/wireless.cgi of the component POST Request Handler. Executing a manipulation can lead to command injection. It is possible to launch the attack remotely. The exploit has been published and may be used. It is recommended to upgrade the affected component.",
+    "vendor": "Check Point",
+    "product": "WL-WN578W2"
+  },
+  "CVE-2026-4543": {
+    "cvss": 6.3,
+    "description": "A vulnerability was found in Wavlink WL-WN578W2 221110. The impacted element is an unknown function of the file /cgi-bin/firewall.cgi of the component POST Request Handler. Performing a manipulation of the argument dmz_flag/del_flag results in command injection. It is possible to initiate the attack remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "WL-WN578W2"
+  },
+  "CVE-2026-3760": {
+    "cvss": 7.3,
+    "description": "A vulnerability was detected in itsourcecode University Management System 1.0. This vulnerability affects unknown code of the file /view_result.php. Performing a manipulation of the argument seme results in sql injection. The attack is possible to be carried out remotely. The exploit is now public and may be used.",
+    "vendor": "Check Point",
+    "product": "University Management System"
+  },
+  "CVE-2026-3747": {
+    "cvss": 7.3,
+    "description": "A vulnerability was identified in itsourcecode University Management System 1.0. Affected by this issue is some unknown functionality of the file /add_result.php. Such manipulation of the argument subject leads to sql injection. The attack may be launched remotely. The exploit is publicly available and might be used.",
+    "vendor": "Check Point",
+    "product": "University Management System"
+  },
+  "CVE-2024-6952": {
+    "cvss": 6.3,
+    "description": "A vulnerability has been found in itsourcecode University Management System 1.0 and classified as critical. This vulnerability affects unknown code of the file /view_single_result.php?vr=123321&vn=mirage. The manipulation of the argument seme leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-272074 is the identifier assigned to this vulnerability.",
+    "vendor": "Check Point",
+    "product": "University Management System"
+  },
+  "CVE-2026-3944": {
+    "cvss": 7.3,
+    "description": "A vulnerability was determined in itsourcecode University Management System 1.0. This vulnerability affects unknown code of the file /att_add.php. This manipulation of the argument Name causes sql injection. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized.",
+    "vendor": "Check Point",
+    "product": "University Management System"
+  },
+  "CVE-2024-6956": {
+    "cvss": 6.3,
+    "description": "A vulnerability was found in itsourcecode University Management System 1.0. It has been rated as critical. Affected by this issue is some unknown functionality of the file /view_cgpa.php. The manipulation of the argument VR/VN leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-272078 is the identifier assigned to this vulnerability.",
+    "vendor": "Check Point",
+    "product": "University Management System"
+  },
+  "CVE-2026-3379": {
+    "cvss": 8.8,
+    "description": "A vulnerability has been found in Tenda F453 1.0.0.3. This vulnerability affects the function fromSetIpBind of the file /goform/SetIpBind. The manipulation of the argument page leads to buffer overflow. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.",
+    "vendor": "Check Point",
+    "product": "F453"
+  },
+  "CVE-2026-3273": {
+    "cvss": 8.8,
+    "description": "A vulnerability was identified in Tenda F453 1.0.0.3. Affected by this vulnerability is the function formWrlsafeset of the file /goform/AdvSetWrlsafeset of the component httpd. Such manipulation of the argument mit_ssid_index leads to buffer overflow. The attack can be executed remotely. The exploit is publicly available and might be used.",
+    "vendor": "Check Point",
+    "product": "F453"
+  },
+  "CVE-2026-3166": {
+    "cvss": 8.8,
+    "description": "A vulnerability was identified in Tenda F453 1.0.0.3. The affected element is the function fromRouteStatic of the file /goform/RouteStatic of the component httpd. Such manipulation of the argument page leads to buffer overflow. The attack can be launched remotely. The exploit is publicly available and might be used.",
+    "vendor": "Check Point",
+    "product": "F453"
+  },
+  "CVE-2026-3376": {
+    "cvss": 8.8,
+    "description": "A security vulnerability has been detected in Tenda F453 1.0.0.3. Affected by this vulnerability is the function fromSafeMacFilter of the file /goform/SafeMacFilter. Such manipulation of the argument page leads to buffer overflow. It is possible to launch the attack remotely. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "F453"
+  },
+  "CVE-2026-4553": {
+    "cvss": 8.8,
+    "description": "A vulnerability was identified in Tenda F453 1.0.0.3. Impacted is the function fromNatlimit of the file /goform/Natlimit of the component Parameters Handler. The manipulation of the argument page leads to stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit is publicly available and might be used.",
+    "vendor": "Check Point",
+    "product": "F453"
+  },
+  "CVE-2026-4552": {
+    "cvss": 8.8,
+    "description": "A vulnerability was determined in Tenda F453 1.0.0.3. This issue affects the function fromVirtualSer of the file /goform/VirtualSer of the component Parameters Handler. Executing a manipulation of the argument page can lead to stack-based buffer overflow. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized.",
+    "vendor": "Check Point",
+    "product": "F453"
+  },
+  "CVE-2026-3380": {
+    "cvss": 8.8,
+    "description": "A vulnerability was found in Tenda F453 1.0.0.3. This issue affects the function frmL7ImForm of the file /goform/L7Im. The manipulation of the argument page results in buffer overflow. The attack may be launched remotely. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "F453"
+  },
+  "CVE-2026-3791": {
+    "cvss": 6.3,
+    "description": "A vulnerability has been found in SourceCodester Sales and Inventory System 1.0. Affected by this issue is some unknown functionality of the file dashboard.php of the component Search. The manipulation of the argument searchtxt leads to sql injection. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used.",
+    "vendor": "Check Point",
+    "product": "Sales and Inventory System"
+  },
+  "CVE-2026-4777": {
+    "cvss": 6.3,
+    "description": "A security flaw has been discovered in SourceCodester Sales and Inventory System 1.0. This affects an unknown part of the file view_supplier.php of the component POST Parameter Handler. The manipulation of the argument searchtxt results in sql injection. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Check Point",
+    "product": "Sales and Inventory System"
+  },
+  "CVE-2026-3793": {
+    "cvss": 6.3,
+    "description": "A vulnerability was determined in SourceCodester Sales and Inventory System 1.0. This vulnerability affects unknown code of the file sales_invoice1.php of the component GET Parameter Handler. This manipulation of the argument sellid causes sql injection. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized.",
+    "vendor": "Check Point",
+    "product": "Sales and Inventory System"
+  },
+  "CVE-2026-3790": {
+    "cvss": 6.3,
+    "description": "A flaw has been found in SourceCodester Sales and Inventory System 1.0. Affected by this vulnerability is an unknown functionality of the file check_supplier_details.php of the component POST Parameter Handler. Executing a manipulation of the argument stock_name1 can lead to sql injection. The attack can be executed remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "Sales and Inventory System"
+  },
+  "CVE-2026-4223": {
+    "cvss": 7.3,
+    "description": "A vulnerability was identified in itsourcecode Payroll Management System 1.0. This issue affects some unknown processing of the file /manage_employee.php. Such manipulation of the argument ID leads to sql injection. The attack can be executed remotely. The exploit is publicly available and might be used.",
+    "vendor": "Check Point",
+    "product": "Payroll Management System"
+  },
+  "CVE-2026-4172": {
+    "cvss": 7.2,
+    "description": "A vulnerability was detected in TRENDnet TEW-632BRP 1.010B32. This affects an unknown part of the file /ping_response.cgi of the component HTTP POST Request Handler. The manipulation of the argument ping_ipaddr results in stack-based buffer overflow. The attack may be performed from remote. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Check Point",
+    "product": "TEW-632BRP"
+  },
+  "CVE-2026-4188": {
+    "cvss": 8.8,
+    "description": "A security flaw has been discovered in D-Link DIR-619L 2.06B01. The affected element is the function formSchedule of the file /goform/formSchedule of the component boa. Performing a manipulation of the argument curTime results in stack-based buffer overflow. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Check Point",
+    "product": "DIR-619L"
+  },
+  "CVE-2026-3486": {
+    "cvss": 4.7,
+    "description": "A vulnerability has been found in itsourcecode College Management System 1.0. This vulnerability affects unknown code of the file /admin/student-fee.php. Such manipulation of the argument roll_no leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.",
+    "vendor": "Check Point",
+    "product": "College Management System"
+  },
+  "CVE-2026-3152": {
+    "cvss": 7.3,
+    "description": "A flaw has been found in itsourcecode College Management System 1.0. This issue affects some unknown processing of the file /admin/teacher-salary.php. This manipulation of the argument teacher_id causes sql injection. It is possible to initiate the attack remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "College Management System"
+  },
+  "CVE-2026-3767": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in itsourcecode sanitize or validate this input 1.0. Affected is an unknown function of the file /admin/teacher-attendance.php. Executing a manipulation of the argument teacher_id can lead to sql injection. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "sanitize or validate this input"
+  },
+  "CVE-2026-3149": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in itsourcecode College Management System 1.0. Affected by this issue is some unknown functionality of the file /admin/asign-single-student-subjects.php. Executing a manipulation of the argument course_code can lead to sql injection. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "College Management System"
+  },
+  "CVE-2026-3487": {
+    "cvss": 4.7,
+    "description": "A vulnerability was found in itsourcecode College Management System 1.0. This issue affects some unknown processing of the file /admin/class-result.php. Performing a manipulation of the argument course_code results in sql injection. The attack can be initiated remotely. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "College Management System"
+  },
+  "CVE-2026-3789": {
+    "cvss": 6.3,
+    "description": "A vulnerability was detected in Bytedesk up to 1.3.9. Affected is the function getModels of the file source-code/src/main/java/com/bytedesk/ai/springai/providers/gitee/SpringAIGiteeRestService.java of the component SpringAIGiteeRestController. Performing a manipulation of the argument apiUrl results in server-side request forgery. Remote exploitation of the attack is possible. The exploit is now public and may be used. Upgrading to version 1.4.5.4 is able to address this issue. The patch is named 975e39e4dd527596987559f56c5f9f973f64eff7. Upgrading the affected component is advised.",
+    "vendor": "Check Point",
+    "product": "Bytedesk"
+  },
+  "CVE-2026-3788": {
+    "cvss": 6.3,
+    "description": "A security vulnerability has been detected in Bytedesk up to 1.3.9. This impacts the function getModels of the file source-code/src/main/java/com/bytedesk/ai/springai/providers/openrouter/SpringAIOpenrouterRestService.java of the component SpringAIOpenrouterRestController. Such manipulation of the argument apiUrl leads to server-side request forgery. The attack may be launched remotely. The exploit has been disclosed publicly and may be used. Upgrading to version 1.4.5.4 will fix this issue. The name of the patch is 975e39e4dd527596987559f56c5f9f973f64eff7. It is recommended to upgrade the affected component.",
+    "vendor": "Check Point",
+    "product": "Bytedesk"
+  },
+  "CVE-2024-2556": {
+    "cvss": 6.3,
+    "description": "A vulnerability was found in SourceCodester Employee Task Management System 1.0. It has been classified as critical. This affects an unknown part of the file attendance-info.php. The manipulation of the argument user_id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-257055.",
+    "vendor": "Check Point",
+    "product": "Employee Task Management System"
+  },
+  "CVE-2024-33247": {
+    "cvss": 8.8,
+    "description": "Sourcecodester Employee Task Management System v1.0 is vulnerable to SQL Injection via admin-manage-user.php.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-3752": {
+    "cvss": 4.7,
+    "description": "A flaw has been found in SourceCodester Employee Task Management System up to 1.0. The affected element is an unknown function of the file /daily-task-report.php of the component GET Parameter Handler. This manipulation of the argument Date causes sql injection. It is possible to initiate the attack remotely. The exploit has been published and may be used.",
+    "vendor": "Check Point",
+    "product": "Employee Task Management System"
+  },
+  "CVE-2026-11557": {
+    "cvss": 8.8,
+    "description": "A weakness has been identified in Tenda F451 1.0.0.7/1.0.0.9. The affected element is the function fromNatlimit of the file /goform/Natlimit of the component Web Management Interface. Executing a manipulation of the argument page can lead to stack-based buffer overflow. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "F451"
+  },
+  "CVE-2026-3679": {
+    "cvss": 8.8,
+    "description": "A vulnerability was identified in Tenda FH451 1.0.0.9. Affected by this vulnerability is the function formQuickIndex of the file /goform/QuickIndex. Such manipulation of the argument mit_linktype/PPPOEPassword leads to stack-based buffer overflow. It is possible to launch the attack remotely. The exploit is publicly available and might be used.",
+    "vendor": "Check Point",
+    "product": "FH451"
+  },
+  "CVE-2026-3806": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in SourceCodester/janobe Resort Reservation System 1.0. This issue affects some unknown processing of the file /room_rates.php. This manipulation of the argument q causes sql injection. The attack can be initiated remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Check Point",
+    "product": "Resort Reservation System"
+  },
+  "CVE-2026-3771": {
+    "cvss": 6.3,
+    "description": "A vulnerability has been found in SourceCodester/janobe Resort Reservation System 1.0. This vulnerability affects unknown code of the file /accomodation.php. Such manipulation of the argument q leads to sql injection. The attack may be performed from remote. The exploit has been disclosed to the public and may be used.",
+    "vendor": "Check Point",
+    "product": "Resort Reservation System"
+  },
+  "CVE-2026-5067": {
+    "cvss": 9.8,
+    "description": "A remote, unauthenticated attacker can trigger memory corruption in Zephyr's HTTP server WebSocket upgrade path by sending a crafted Sec-WebSocket-Key header. The HTTP/1 header parser copies the header into a fixed-size buffer using a bounded copy that does not guarantee NUL termination when the input length reaches the buffer size. During upgrade handling the buffer is copied to a local stack buffer and passed to strlen(); if no NUL exists in-bounds, strlen() reads beyond the stack buffer and subsequent concatenation with the WebSocket magic string can write out of bounds. This leads to out-of-bounds read and write on stack memory, resulting in crash (denial of service) and potentially code execution. The path is reachable when CONFIG_HTTP_SERVER_WEBSOCKET is enabled.",
+    "vendor": "Check Point",
+    "product": "Zephyr"
+  },
+  "CVE-2026-3759": {
+    "cvss": 7.3,
+    "description": "A security vulnerability has been detected in projectworlds Online Art Gallery Shop 1.0. This affects an unknown part of the file /admin/adminHome.php. Such manipulation of the argument reach_nm leads to sql injection. The attack can be executed remotely. The exploit has been disclosed publicly and may be used.",
+    "vendor": "Check Point",
+    "product": "Online Art Gallery Shop"
+  },
+  "CVE-2026-3704": {
+    "cvss": 4.7,
+    "description": "A vulnerability has been found in Wavlink NU516U1 251208. This vulnerability affects the function sub_405B2C of the file /cgi-bin/firewall.cgi of the component Incomplete Fix CVE-2025-10959. The manipulation leads to command injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. It is recommended to upgrade the affected component. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.",
+    "vendor": "Check Point",
+    "product": "NU516U1"
+  },
+  "CVE-2026-26281": {
+    "cvss": 4.4,
+    "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. A stored cross-site scripting (XSS) vulnerability in the Sumex invoice view allows an authenticated user with client and invoice management privileges to execute arbitrary JavaScript in the browser of any user viewing the invoice. This can lead to session hijacking, data theft, or other malicious actions on behalf of the victim user. Version 1.7.1 patches the issue.",
+    "vendor": "Check Point",
+    "product": "InvoicePlane"
+  },
+  "CVE-2019-7223": {
+    "cvss": null,
+    "description": "InvoicePlane 1.5 has stored XSS via the index.php/invoices/ajax/save invoice_password parameter, aka the \"PDF password\" field to the \"Create Invoice\" option. The XSS payload is rendered at an index.php/invoices/view/## URI. NOTE: this is different from CVE-2018-12255.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-24745": {
+    "cvss": 5.7,
+    "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. A Stored Cross-Site Scripting (XSS) vulnerability occurs in the upload Login Logo functions of InvoicePlane version 1.7.0. In the Upload Login Logo, the application allows uploading svg files. Although administrator privileges are required to exploit it, this is still considered a critical vulnerability as it can cause actions such as unauthorized modification of application data, creation of persistent backdoors through stored malicious scripts, and full compromise of the application's integrity. Version 1.7.1 patches the issue.",
+    "vendor": "Check Point",
+    "product": "InvoicePlane"
+  },
+  "CVE-2026-24746": {
+    "cvss": 5.7,
+    "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. A Stored Cross-Site Scripting (XSS) vulnerability occurs in the Edit Quotes functions of InvoicePlane version 1.7.0. In the Editing Quotes function, the application does not validate user input at the quote_number parameter. Although administrator privileges are required to exploit it, this is still considered a critical vulnerability as it can cause actions such as unauthorized modification of application data, creation of persistent backdoors through stored malicious scripts, and full compromise of the application's integrity. Version 1.7.1 patches the issue.",
+    "vendor": "Check Point",
+    "product": "InvoicePlane"
+  },
+  "CVE-2026-24744": {
+    "cvss": 5.7,
+    "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. A Stored Cross-Site Scripting (XSS) vulnerability occurs in the Edit Invoices functions of InvoicePlane version 1.7.0. When editing invoices, the application does not validate user input at the `invoice_number` parameter. Although administrator privileges are required to exploit it, this is still considered a critical vulnerability as it can cause actions such as unauthorized modification of application data, creation of persistent backdoors through stored malicious scripts, and full compromise of the application's integrity. Version 1.7.1 patches the issue.",
+    "vendor": "Check Point",
+    "product": "InvoicePlane"
+  },
+  "CVE-2026-24743": {
+    "cvss": 5.7,
+    "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. A Stored Cross-Site Scripting (XSS) vulnerability occurs in the upload Invoice Logo functions of InvoicePlane version 1.7.0. The Upload Invoice Logo function allows the application to upload svg files. Although administrator privileges are required to exploit it, this is still considered a critical vulnerability as it can cause actions such as unauthorized modification of application data, creation of persistent backdoors through stored malicious scripts, and full compromise of the application's integrity. Version 1.7.1 patches the issue.",
+    "vendor": "Check Point",
+    "product": "InvoicePlane"
+  },
+  "CVE-2026-85293": {
+    "cvss": 4.8,
+    "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. In version 1.7.2-beta-1, InvoicePlane stores client_email values without enforcing email syntax and renders them unescaped inside double-quoted value attributes in the invoice mailer form and quote mailer form. An administrator who can edit a client can store attribute-breaking input, and, when the mailer is configured, JavaScript executes when another authenticated administrator opens the related mailer page. The script runs in the InvoicePlane origin and can perform same-origin actions with the victim's session. This issue is fixed in version 1.7.2.",
+    "vendor": "Check Point",
+    "product": "InvoicePlane"
+  },
+  "CVE-2026-25728": {
+    "cvss": 9.3,
+    "description": "ClipBucket v5 is an open source video sharing platform. Prior to 5.5.3 - #40, a Time-of-Check to Time-of-Use (TOCTOU) race condition vulnerability exists in ClipBucket's avatar and background image upload functionality. The application moves uploaded files to a web-accessible location before validating them, creating a window where an attacker can execute arbitrary PHP code before the file is deleted. The uploaded file was moved to a web-accessible path via move_uploaded_file(), then validated via ValidateImage(). If validation failed, the file was deleted via @unlink(). This vulnerability is fixed in 5.5.3 - #40.",
+    "vendor": "Check Point",
+    "product": "clipbucket-v5"
   }
 }
