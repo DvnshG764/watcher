@@ -14580,7 +14580,7 @@
     "product": "Red Hat build of Keycloak 26.4"
   },
   "CVE-2026-27886": {
-    "cvss": 9.2,
+    "cvss": 7.5,
     "description": "Strapi is an open source headless content management system. Strapi versions starting in 4.0.0 and prior to 5.37.0 did not sufficiently sanitize query parameters when filtering content via relational fields. An unauthenticated attacker could use the `where` query parameter on any publicly-accessible content-type with an `updatedBy` (or other admin-relation) field to perform a boolean-oracle attack against private fields on the joined `admin_users` table, including the `resetPasswordToken` field. Extracting an admin reset token via this oracle made full administrative account takeover possible without authentication. When a filter such as `where[updatedBy][resetPasswordToken][$startsWith]=a` was applied to a public Content API endpoint, the underlying query generation performed a `LEFT JOIN` against the `admin_users` table and emitted a `WHERE` clause referencing the joined column. The query parameter sanitization layer did not block operator chains that traversed into relational target schemas the caller had no read permission on, allowing the response count to be used as a one-bit oracle on any admin-table field. The patch in version 5.37.0 introduces explicit query-parameter sanitization at the controller and service boundary via three new primitives: `strictParam`, `addQueryParams`, and `addBodyParams`. Operator chains that traverse into restricted relational targets are now rejected before reaching the database.",
     "vendor": "Check Point",
     "product": "strapi"
@@ -48204,7 +48204,7 @@
     "product": "Unknown"
   },
   "CVE-2026-63826": {
-    "cvss": null,
+    "cvss": 7.8,
     "description": "In the Linux kernel, the following vulnerability has been resolved: fbdev: fix use-after-free in store_modes() store_modes() replaces a framebuffer's modelist with modes from userspace. On success it frees the old modelist with fb_destroy_modelist(). Two fields still point into that freed list. One pointer is fb_display[i].mode, the mode a console is using. fbcon_new_modelist() moves these pointers to the new list. It only does so for consoles still mapped to the framebuffer. An unmapped console is skipped and keeps its stale pointer. Unbinding fbcon, for example, sets con2fb_map[i] to -1 but leaves fb_display[i].mode set. An FBIOPUT_VSCREENINFO ioctl with FB_ACTIVATE_INV_MODE later reaches fbcon_mode_deleted(). That function reads the stale fb_display[i].mode through fb_mode_is_equal(). The read is a use-after-free. The other pointer is fb_info->mode, the current mode. It is set through the mode sysfs attribute. store_modes() does not update fb_info->mode, so it is left pointing into the freed list. show_mode(), the attribute's read handler, dereferences the stale fb_info->mode through mode_string(). The read is a use-after-free. Clear both pointers before freeing the list. Commit a1f305893074 (\"fbcon: Set fb_display[i]->mode to NULL when the mode is released\") added the helper fbcon_delete_modelist(). It clears every fb_display[i].mode that points into a given list. So far it is called only from the unregister path. Call it from store_modes() too, and set fb_info->mode to NULL.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -48258,7 +48258,7 @@
     "product": "Unknown"
   },
   "CVE-2026-63871": {
-    "cvss": null,
+    "cvss": 4.7,
     "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: ISO: Fix data-race on iso_pi fields in hci_get_route calls iso_connect_bis(), iso_connect_cis(), iso_listen_bis(), and iso_conn_big_sync() call hci_get_route() using iso_pi(sk)->dst, iso_pi(sk)->src, and iso_pi(sk)->src_type without holding lock_sock(). These fields may be modified concurrently by connect() or setsockopt() on the same socket, resulting in data-races reported by KCSAN. Fix this by snapshotting the required fields under lock_sock() before calling hci_get_route(). BUG: KCSAN: data-race in memcmp+0x45/0xb0 race at unknown origin, with read to 0xffff8880122135cf of 1 bytes by task 333 on cpu 1: memcmp+0x45/0xb0 hci_get_route+0x27e/0x490 iso_connect_cis+0x4c/0xa10 iso_sock_connect+0x60e/0xb30 __sys_connect_file+0xbd/0xe0 __sys_connect+0xe0/0x110 __x64_sys_connect+0x40/0x50 x64_sys_call+0xcad/0x1c60 do_syscall_64+0x133/0x590 entry_SYSCALL_64_after_hwframe+0x77/0x7f",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63528,13 +63528,13 @@
     "product": "Unknown"
   },
   "CVE-2026-64454": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: usb: dwc3: run gadget disconnect from sleepable suspend context dwc3_gadget_suspend() takes dwc->lock with IRQs disabled and then calls dwc3_disconnect_gadget(). For async callbacks that helper only uses plain spin_unlock()/spin_lock(), so the gadget ->disconnect() callback still runs with IRQs disabled and any sleepable callback trips Lockdep. This issue was found by our static analysis tool and then manually reviewed against the current tree. The grounded PoC kept the dwc3_gadget_suspend() -> dwc3_disconnect_gadget() -> gadget_driver->disconnect() chain, and Lockdep reported: BUG: sleeping function called from invalid context gadget_disconnect+0x21/0x39 [vuln_msv] dwc3_gadget_suspend.constprop.0+0x2b/0x42 [vuln_msv] Keep the disconnect callback selection in one common helper, but add a sleepable suspend-side wrapper which snapshots the callback under dwc->lock and then runs it after spin_unlock_irqrestore(). The regular event path still uses the existing spin_unlock()/spin_lock() window.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64455": {
-    "cvss": null,
+    "cvss": 7.8,
     "description": "In the Linux kernel, the following vulnerability has been resolved: USB: chaoskey: Fix slab-use-after-free in chaoskey_release() The chaoskey driver has a use-after-free bug in its release routine. If the user closes the device file after the USB device has been unplugged, a debugging log statement will try to access the usb_interface structure after it has been deallocated: BUG: KASAN: slab-use-after-free in dev_driver_string (drivers/base/core.c:2406) Read of size 8 at addr ffff888168e8a0b8 by task chaoskey_raw_re/10106 Hardware name: QEMU Ubuntu 24.04 PC v2 (i440FX + PIIX, arch_caps fix, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014 Call Trace: dump_stack_lvl (lib/dump_stack.c:94 lib/dump_stack.c:120) print_report (mm/kasan/report.c:378 mm/kasan/report.c:482) kasan_report (mm/kasan/report.c:595) dev_driver_string (drivers/base/core.c:2406) __dynamic_dev_dbg (lib/dynamic_debug.c:906) chaoskey_release (drivers/usb/misc/chaoskey.c:323) __fput (fs/file_table.c:510) fput_close_sync (fs/file_table.c:615) __x64_sys_close (fs/open.c:1507 fs/open.c:1492 fs/open.c:1492) do_syscall_64 (arch/x86/entry/syscall_64.c:63 arch/x86/entry/syscall_64.c:94) entry_SYSCALL_64_after_hwframe (arch/x86/entry/entry_64.S:121) The driver's last reference to the interface structure is dropped in the chaoskey_free() routine, so the code must not use the interface -- even in a debugging statement -- after that routine returns. (Exception: If we know that another reference is held by someone else, such as the device core while the disconnect routine runs, there's no problem. Thanks to Johan Hovold for pointing this out.) Since the bad access is part of an unimportant debugging statement, we can fix the problem simply by removing the whole statement.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63546,13 +63546,13 @@
     "product": "Unknown"
   },
   "CVE-2026-64457": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: virtio_pci: fix vq info pointer lookup via wrong index Unbinding a virtio balloon device: echo virtio0 > /sys/bus/virtio/drivers/virtio_balloon/unbind triggers a NULL pointer dereference. The dmesg says: BUG: kernel NULL pointer dereference, address: 0000000000000008 [...] RIP: 0010:__list_del_entry_valid_or_report+0x5/0xf0 Call Trace: vp_del_vqs+0x121/0x230 remove_common+0x135/0x150 virtballoon_remove+0xee/0x100 virtio_dev_remove+0x3b/0x80 device_release_driver_internal+0x187/0x2c0 unbind_store+0xb9/0xe0 kernfs_fop_write_iter.llvm.11660790530567441834+0xf6/0x180 vfs_write+0x2a9/0x3b0 ksys_write+0x5c/0xd0 do_syscall_64+0x54/0x230 entry_SYSCALL_64_after_hwframe+0x29/0x31 [...] The virtio_balloon device registers 5 queues (inflate, deflate, stats, free_page, reporting) but only the first two are unconditional. The stats, free_page and reporting queues are each conditional on their respective feature bits. When any of these features are absent, the corresponding vqs_info entry has name == NULL, creating holes in the array. The root cause is an indexing mismatch introduced when vq info storage was changed to be passed as an argument. vp_find_vqs_msix() and vp_find_vqs_intx() store the info pointer at vp_dev->vqs[i], where 'i' is the caller's sparse array index. However, the virtqueue itself gets vq->index assigned from queue_idx, a dense index that skips NULL entries. When holes exist, 'i' and queue_idx diverge. Later, vp_del_vqs() looks up info via vp_dev->vqs[vq->index] using the dense index into the sparsely-populated array, and hits NULL. Fix this by storing info at vp_dev->vqs[queue_idx] instead of vp_dev->vqs[i], so the store index matches the lookup index (vq->index). Apply the fix to both the MSIX and INTX paths.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64458": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: mm/damon/ops-common: handle extreme intervals in damon_hot_score() Fix three issues in damon_hot_score() that comes from wrong handling of extreme (zero or too high) monitoring intervals user setup. When the user sets sampling interval zero, damon_max_nr_accesses(), which is called from damon_hot_score(), causes a divide-by-zero. Needless to say, it is a problem. When the user sets the aggregation interval zero, the function returns zero. It is wrong, since the real maximum nr_acceses in the setup should be one. Worse yet, it can cause another divide-by-zero from its caller, damon_hot_score(), since it uses damon_max_nr_accesses() return value as a denominator. When the user sets the aggregation interval very high, damon_hot_score() could return a value out of [0, DAMOS_MAX_SCORE] range. Since the return value is used as an index to the regions_score_histogram array, which is DAMOS_MAX_SCORE+1 size, it causes out of bounds array access. The issues can be relatively easily reproduced like below. The sysfs write permission is required, though. # ./damo start --damos_action lru_prio --damos_quota_space 100M \\ --damos_quota_interval 1s # cd /sys/kernel/mm/damon/admin/kdamonds/0 # echo 0 > contexts/0/monitoring_attrs/intervals/sample_us # echo 0 > contexts/0/monitoring_attrs/intervals/aggr_us # echo commit > state # dmesg [...] [ 131.329762] Oops: divide error: 0000 [#1] SMP NOPTI [...] [ 131.336089] RIP: 0010:damon_hot_score+0x27/0xd0 [...] Fix the divide-by-zero intervals problems by explicitly handling the zero intervals in damon_max_nr_accesses(). Fix the out-of-bound array access by applying [0, DAMOS_MAX_SCORE] bounds before returning from damon_hot_score(). The issue was discovered [1] by Sashiko.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63570,7 +63570,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64461": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: PCI: mediatek: Fix IRQ domain leak when port fails to enable When mtk_pcie_enable_port() fails, mtk_pcie_port_free() removes the port from pcie->ports and frees the port structure. However, the IRQ domains set up earlier by mtk_pcie_init_irq_domain() are never freed. Fix this by refactoring mtk_pcie_irq_teardown() into a per-port helper, mtk_pcie_irq_teardown_port(), and calling it from mtk_pcie_setup() when mtk_pcie_enable_port() fails. Since the IRQ teardown must only happen in the probe error path (during resume, child devices may have active MSI mappings and the NOIRQ context prohibits sleeping locks), mtk_pcie_enable_port() is changed to return an error code so callers can distinguish the two paths and act accordingly. This issue was reported by Sashiko while reviewing the EcoNet EN7528 SoC support series.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63582,19 +63582,19 @@
     "product": "Unknown"
   },
   "CVE-2026-64464": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: xhci: sideband: fix ring sg table pages leak xhci_ring_to_sgtable() allocates a temporary pages array and uses it to build the returned sg_table with sg_alloc_table_from_pages(). The error paths free the pages array, but the success path returns the sg_table without freeing it. This leaks the temporary array every time a sideband client gets an endpoint or event ring buffer. Free the pages array after sg_alloc_table_from_pages() succeeds. The returned sg_table has its own scatterlist entries and does not depend on the temporary array after construction.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64465": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: usb: xhci: Fix sleep in atomic context in xhci_free_streams() When a USB device with active stream endpoints is disconnected, xhci_free_streams() is called from the hub_event workqueue to free the stream resources. It calls xhci_free_stream_info() while holding xhci->lock with irqs disabled. xhci_free_stream_info() invokes xhci_free_stream_ctx(), which calls dma_free_coherent() for large stream context arrays. dma_free_coherent() can sleep (e.g. via vunmap), triggering a BUG when called from atomic context. Call trace: dma_free_attrs+0x174/0x220 xhci_free_stream_info+0xd0/0x11c xhci_free_streams+0x278/0x37c usb_free_streams+0x98/0xc0 usb_unbind_interface+0x1b8/0x2f8 device_release_driver_internal+0x1d4/0x2cc device_release_driver+0x18/0x28 bus_remove_device+0x160/0x1a4 device_del+0x1ec/0x350 usb_disable_device+0x98/0x214 usb_disconnect+0xf0/0x35c hub_event+0xab4/0x19ec process_one_work+0x278/0x63c Fix this by saving the stream_info pointers and clearing the ep references under the lock, then calling xhci_free_stream_info() outside the lock where sleeping is allowed.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64466": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: rust_binder: clear freeze listener on node removal Generally userspace is supposed to explicitly clear freeze listeners before they drop the refcount on the node ref to zero, but there's nothing forcing that. Currently, in this scenario the freeze listener remains in the freeze_listeners rbtree and in the remote node's freeze listener list, even though the ref for which the listener is registered is gone. This could potentially lead to a memory leak due to a refcount cycle. Thus, remove the freeze listener in this scenario.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63618,31 +63618,31 @@
     "product": "Unknown"
   },
   "CVE-2026-64470": {
-    "cvss": null,
+    "cvss": 7.8,
     "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: btusb: fix use-after-free on marvell probe failure Make sure to stop any TX URBs submitted during Marvell OOB wakeup configuration on later probe failures to avoid use-after-free in the completion callback. This issue was reported by Sashiko while reviewing a fix for a wakeup source leak in the btusb probe errors paths.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64471": {
-    "cvss": null,
+    "cvss": 7.8,
     "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: btusb: fix use-after-free on registration failure Make sure to release the sibling interfaces in case controller registration fails to avoid use-after-free and double-free when they are eventually disconnected. This issue was reported by Sashiko while reviewing a fix for a wakeup source leak in the btusb probe errors paths.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64472": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: vfio/mlx5: Fix racy bitfields and tighten struct layout Bitfield operations are not atomic, they use a read-modify-write pattern, therefore we should be careful not to pack bitfields that can be concurrently updated into the same storage unit. This split takes a binary approach: flags that are only modified pre/post open/close remain bitfields, flags modified from user action, including actions that reach across to another device (ex. reset) use dedicated storage units. Note mlx5_vhca_page_tracker.status is relocated to fill the alignment hole this split exposes. Bitfield justifications: migrate_cap: written only in mlx5vf_cmd_set_migratable() at probe chunk_mode: written only in mlx5vf_cmd_set_migratable() at probe mig_state_cap: written only in mlx5vf_cmd_set_migratable() at probe Dedicated storage units: mdev_detach: written in the VF attach/detach event notifier mlx5fv_vf_event() at runtime log_active: written in mlx5vf_start_page_tracker()/ mlx5vf_stop_page_tracker() during runtime dirty tracking deferred_reset: written in mlx5vf_state_mutex_unlock()/ mlx5vf_pci_aer_reset_done() during runtime reset handling is_err: set by tracker error handling and dirty-log polling at runtime object_changed: set by tracker event handling and cleared by dirty-log polling at runtime",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64473": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: vfio: Remove device debugfs before releasing devres VFIO device debugfs files created with debugfs_create_devm_seqfile() store a devres allocated debugfs_devm_entry as inode private data. vfio_unregister_group_dev() currently calls vfio_device_del() before vfio_device_debugfs_exit(), but device_del() releases devres. This can leave debugfs entries visible with stale inode private data while unregister waits for userspace references to drain. Remove the per-device debugfs tree before vfio_device_del(). The debugfs view is diagnostic only, so losing it at the start of unregister is preferable to preserving entries whose backing storage may already have been released. Complete the teardown by clearing the per-device debugfs root after removal. This matches the global debugfs root cleanup and prevents future users from mistaking a removed dentry for a live debugfs tree during the remainder of unregister.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64474": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: vfio: prevent infinite loop in vfio_mig_get_next_state() on blocked arc vfio_mig_get_next_state() walks vfio_from_fsm_table[] one step at a time, looping to skip optional states the device does not support until *next_fsm is supported. A blocked transition is encoded as VFIO_DEVICE_STATE_ERROR, which the trailing return reports as -EINVAL. The skip loop does not account for the ERROR sentinel. state_flags_table[ERROR] is ~0U and vfio_from_fsm_table[ERROR][*] is ERROR, so once *next_fsm becomes ERROR the loop condition stays true and *next_fsm never changes. The blocked arcs STOP_COPY -> PRE_COPY and STOP_COPY -> PRE_COPY_P2P map to ERROR yet pass the support check on a precopy-capable device, causing the loop to spin forever while holding the driver state mutex. This can result in a soft lockup, and a panic with softlockup_panic set. Terminate the skip loop on the ERROR sentinel so a blocked transition falls through to the existing return and reports -EINVAL.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63654,31 +63654,31 @@
     "product": "Unknown"
   },
   "CVE-2026-64476": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: vfio/pci: Latch disable_idle_d3 per device When disable_idle_d3 was introduced in vfio-pci, it directly manipulated the device power state with pci_set_power_state(). There were no refcounts to maintain or balanced operations, we could unconditionally bring the device to D0 and conditionally move it to D3hot. Therefore the module parameter was made writable. Later, in commit c61302aa48f7 (\"vfio/pci: Move module parameters to vfio_pci.c\"), as part of the vfio-pci-core split, the writable aspect of the module parameter was nullified. The parameter value could still be changed through sysfs, but the vfio-pci driver latched the values into vfio-pci-core globals at module init. Loading the vfio-pci module, or unloading and reloading, with non-default or different values could change the globals relative to existing devices bound to vfio-pci variant drivers. Runtime PM was introduced in commit 7ab5e10eda02 (\"vfio/pci: Move the unused device into low power state with runtime PM\"), which marks the point where power states became refcounted. PM get and put operations need to be balanced, but the same module operations noted above can change the global variables relative to those devices already bound to vfio-pci variant drivers. This introduces a window where PM operations can now become unbalanced. To resolve this with a narrow footprint for stable backports, the disable_idle_d3 flag is latched into the vfio_pci_core_device at the time of initialization, such that the device always operates with a consistent value. NB. vfio_pci_dev_set_try_reset() now unconditionally raises the runtime PM usage count around bus reset to account for disable_idle_d3 becoming a per-device rather than global flag. When this flag is set, the additional get/put pair is harmless and allows continued use of the shared vfio_pci_dev_set_pm_runtime_get() helper.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64477": {
-    "cvss": null,
+    "cvss": 7.1,
     "description": "In the Linux kernel, the following vulnerability has been resolved: x86,fs/resctrl: Prevent out-of-bounds access while offlining CPU when SNC enabled The architecture updates the cpu_mask in a domain's header to track which online CPUs are associated with the domain. When this mask becomes empty the architecture initiates offline of the domain that includes calling on resctrl fs to offline the domain. If it is a monitoring domain in which LLC occupancy is tracked resctrl fs forces the limbo handler to clear all busy RMID state associated with the domain. The limbo handler always reads the current event value associated with a busy RMID irrespective of it being checked as part of regular \"is it still busy\" check or whether it will be forced released anyway. When reading an RMID on a system with SNC enabled the \"logical RMID\" is converted to the \"physical RMID\" and this conversion requires the NUMA node ID of the resctrl monitoring domain that is in turn determined by querying the NUMA node ID of any CPU belonging to the monitoring domain. When the monitoring domain is going offline its cpu_mask is empty causing the NUMA node ID query via cpu_to_node() to be done with \"nr_cpu_ids\" as argument resulting in an out-of-bounds access. Refactor the limbo handler to skip reading the RMID when the RMID will just be forced to no longer be dirty in the domain anyway. Add a safety check to the architecture's RMID reader to protect against this scenario.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64478": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: usb-audio: avoid kobject path lookup in DualSense match The DualSense jack-detection input handler verifies that a matching input device belongs to the same physical controller by building kobject path strings for both the input device and the USB audio device, then comparing the path prefix. This was observed when a weak physical connection caused the controller to rapidly disconnect and reconnect. During that repeated hotplug, snd_dualsense_ih_match() can run while the controller's USB device is being disconnected. kobject_get_path() walks ancestor kobjects and dereferences their names; if the USB device kobject name is no longer valid, this can fault in strlen(): RIP: 0010:strlen+0x10/0x30 Call Trace: kobject_get_path+0x34/0x150 snd_dualsense_ih_match+0x49/0xd0 [snd_usb_audio] input_register_device+0x566/0x6a0 ps_probe+0xb89/0x1590 [hid_playstation] The same ownership check can be done without building kobject path strings. The input device is parented below the HID device, USB interface and USB device, so walking the input device parent chain and comparing against the mixer USB device preserves the check without dereferencing kobject names during disconnect.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64479": {
-    "cvss": null,
+    "cvss": 3.3,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: seq: Fix uninitialised heap leak in snd_seq_event_dup() snd_seq_event_dup() copies an incoming event into a pool cell and, in the UMP-enabled build, clears the trailing cell->ump.raw.extra word that the memcpy() did not cover. The guard deciding whether to clear it compares the copied size against sizeof(cell->event): memcpy(&cell->ump, event, size); if (size < sizeof(cell->event)) cell->ump.raw.extra = 0; For a legacy (non-UMP) event, size == sizeof(struct snd_seq_event) == sizeof(cell->event), so the condition is false and the extra word keeps stale data. The cell pool is allocated with kvmalloc() (not zeroed) and cells are reused via a free list, so that word holds uninitialised heap or leftover event data. When such a cell is delivered to a UMP client (client->midi_version > 0) that set SNDRV_SEQ_FILTER_NO_CONVERT -- so the legacy event reaches it unconverted -- snd_seq_read() reads it out as the larger struct snd_seq_ump_event and copies the stale word to user space, a 4-byte kernel heap infoleak to an unprivileged /dev/snd/seq client. Compare against sizeof(cell->ump) instead, so the trailing word is zeroed for every event shorter than the UMP cell.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64480": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: ice1712: check snd_ctl_new1() return value snd_ctl_new1() can return NULL when memory allocation fails. The ice1712 driver calls snd_ctl_new1() without checking the return value before dereferencing the pointer in multiple places (ice1712.c, ice1724.c, aureon.c), which can lead to NULL pointer dereferences. Add NULL checks after snd_ctl_new1() calls and return -ENOMEM if any fails.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63714,7 +63714,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64487": {
-    "cvss": null,
+    "cvss": 7.1,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: caiaq: fix out-of-bounds read in the Traktor Kontrol S4 input parser snd_usb_caiaq_tks4_dispatch() decodes the Traktor Kontrol S4 input stream in fixed 16-byte (TKS4_MSGBLOCK_SIZE) message blocks. On every iteration it advances buf and subtracts the block size while looping on \"while (len)\". len is urb->actual_length. That value is supplied by the device and is not guaranteed to be a multiple of 16. When a final short block leaves len between 1 and 15, the loop runs once more, reads up to buf[15], and then does \"len -= TKS4_MSGBLOCK_SIZE\". As len is unsigned this underflows to a huge value. The loop then keeps iterating and walking buf far past the end of the 512-byte ep4_in_buf, reading out of bounds until a bogus block id happens to be hit. Iterate only while a full message block is available. This stops the unsigned underflow and silently drops any trailing partial block, which carries no complete control value anyway. The sibling endpoint-4 parsers are not affected. The Traktor Kontrol X1 and Maschine arms in snd_usb_caiaq_ep4_reply_dispatch() floor urb->actual_length before dispatching.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63816,37 +63816,37 @@
     "product": "Unknown"
   },
   "CVE-2026-64504": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: iio: accel: bmc150: clamp the device-reported FIFO frame count __bmc150_accel_fifo_flush() copies the number of samples the device reports in its hardware FIFO into an on-stack buffer u16 buffer[BMC150_ACCEL_FIFO_LENGTH * 3]; which is sized for at most BMC150_ACCEL_FIFO_LENGTH (32) samples. The frame count is read from the FIFO_STATUS register and only masked to its 7 valid bits: count = val & 0x7F; so it can be 0..127. The only other limit applied to it is the optional caller-supplied sample budget: if (samples && count > samples) count = samples; which does not constrain count on the flush-all path (samples == 0), and leaves it well above 32 whenever samples is larger. count samples are then transferred into buffer[]: bmc150_accel_fifo_transfer(data, (u8 *)buffer, count); bmc150_accel_fifo_transfer() reads count * 6 bytes through regmap, so a malfunctioning, malicious or counterfeit accelerometer (or an attacker tampering with the I2C/SPI bus) that reports up to 127 frames writes up to 762 bytes into the 192-byte buffer: a stack out-of-bounds write of up to 570 bytes that clobbers the stack canary, saved registers and the return address. Clamp count to BMC150_ACCEL_FIFO_LENGTH, the number of samples buffer[] is sized for, before the transfer, mirroring the watermark clamp already done in bmc150_accel_set_watermark(). A well-formed flush reports at most BMC150_ACCEL_FIFO_LENGTH frames, so legitimate devices are unaffected.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64505": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: usb: gadget: function: rndis: add length check for header Add a length check for the rndis header in rndis_rm_hdr, to ensure that MessageType, MessageLength, DataOffset, and DataLength fields are present before they are accessed.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64506": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: rtw89: correct drop logic for malformed AMPDU frames The previous commit aims to fix issue caused by malformed AMPDU frames. But the drop logic fails to deal with the first AMPDU packet paired with certain range of sequence number, and leads to unexpected packet drop. It is more likely to encounter this failure when there are busy traffic during rekey process and could lead to disconnection from the AP. Fix this by adding a initial state judgement and only reset status during pairwise rekey.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64507": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: x86/bugs: Enable IBPB flush on BPF JIT allocation Enable hardening against JIT spraying when Spectre-v2 mitigations are in use. Specifically, issue an IBPB flush on BPF JIT memory reuse. Skip enabling the IBPB flush if the BPF dispatcher is already using a retpoline sequence. This hardening applies only when BPF-JIT is in use. Guard the enabling under CONFIG_BPF_JIT so that bugs.c still builds with CONFIG_BPF_JIT=n.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64508": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: bpf: Support for hardening against JIT spraying The BPF JIT allocator packs many small programs into larger executable allocations and reuses space within those allocations as programs are loaded and freed. When fresh code is written into space that a previous program occupied, an indirect jump into the new program can reuse a branch prediction left behind by the old one. Flush the indirect branch predictors before reusing JIT memory so that indirect jumps into a newly written program don't reuse predictions from an old program that occupied the same space. Introduce bpf_arch_pred_flush_enabled static key and bpf_arch_pred_flush static call for flushing the branch predictors on JIT memory reuse. Architectures that need a flush, can update it to a predictor flush function. By default, its a NOP and does not emit any CALL. Allocations larger than a pack are not covered by this flush. That is safe because cBPF programs (the unprivileged attack surface) are bounded well below a pack size. Issue a warning if this assumption is ever violated while the flush is active.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64509": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: rust: block: fix GenDisk cleanup paths GenDiskBuilder::build() still has fallible work after __blk_mq_alloc_disk(), but its error path only recovers the foreign queue data. That leaks the temporary gendisk and request_queue until later teardown. If the caller moved the last Arc > into build(), the leaked queue can retain blk-mq state after the tag set is dropped. Fix the pre-registration failure path by dropping the temporary gendisk reference with put_disk() before recovering queue_data, so disk_release() can tear down the owned queue. Also pair GenDisk::drop() with put_disk() after del_gendisk(). Once a Rust GenDisk has been added with device_add_disk(), del_gendisk() only unregisters it; the final gendisk reference still has to be dropped to complete the release path.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63858,7 +63858,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64511": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ACPI: NFIT: core: Fix possible NULL pointer dereference After commit 9b311b7313d6 (\"ACPI: NFIT: Install Notify() handler before getting NFIT table\"), acpi_nfit_probe() installs an ACPI notify handler for the NFIT device before checking the presence of the NFIT table. If that table is not there, 0 is returned without allocating the acpi_desc object and setting the driver data pointer of the NFIT device. If the platform firmware triggers an NFIT_NOTIFY_UC_MEMORY_ERROR notification on the NFIT device at that point, acpi_nfit_uc_error_notify() will dereference a NULL pointer. Prevent that from occurring by adding an acpi_desc check against NULL to acpi_nfit_uc_error_notify().",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -114568,5 +114568,1385 @@
     "description": "A vulnerability has been found in sigoden dufs up to 0.46.0. This affects an unknown part of the file src/server.rs of the component WebDAV COPY Operation Handler. The manipulation leads to incorrect authorization. The attack is possible to be carried out remotely. Upgrading to version 0.47.0 is able to mitigate this issue. The identifier of the patch is fba13dffb9c65b5e5e26419f64de709200277a04. It is advisable to upgrade the affected component.",
     "vendor": "sigoden",
     "product": "dufs"
+  },
+  "CVE-2026-70710": {
+    "cvss": 8.8,
+    "description": "Vulnerability in the Oracle Sales Foundation product of Oracle E-Business Suite (component: Security API). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Sales Foundation. Successful attacks of this vulnerability can result in takeover of Oracle Sales Foundation. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70711": {
+    "cvss": 3.6,
+    "description": "Vulnerability in the Oracle Hyperion Calculation Manager product of Oracle Hyperion (component: Security). The supported version that is affected is 11.2.25.0.000. Difficult to exploit vulnerability allows unauthenticated attacker with logon to the infrastructure where Oracle Hyperion Calculation Manager executes to compromise Oracle Hyperion Calculation Manager. Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Oracle Hyperion Calculation Manager accessible data as well as unauthorized read access to a subset of Oracle Hyperion Calculation Manager accessible data. CVSS 3.1 Base Score 3.6 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70712": {
+    "cvss": 6.4,
+    "description": "Vulnerability in the Oracle Agile Engineering Data Management product of Oracle Supply Chain (component: Install). The supported version that is affected is 6.2.1. Difficult to exploit vulnerability allows high privileged attacker with logon to the infrastructure where Oracle Agile Engineering Data Management executes to compromise Oracle Agile Engineering Data Management. Successful attacks of this vulnerability can result in takeover of Oracle Agile Engineering Data Management. CVSS 3.1 Base Score 6.4 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70713": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle iSetup product of Oracle E-Business Suite (component: General Ledger Update Transform, Reports). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle iSetup. Successful attacks of this vulnerability can result in takeover of Oracle iSetup. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70714": {
+    "cvss": 4.1,
+    "description": "Vulnerability in the Oracle Hyperion Calculation Manager product of Oracle Hyperion (component: Security). The supported version that is affected is 11.2.25.0.000. Difficult to exploit vulnerability allows high privileged attacker with logon to the infrastructure where Oracle Hyperion Calculation Manager executes to compromise Oracle Hyperion Calculation Manager. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Hyperion Calculation Manager accessible data. CVSS 3.1 Base Score 4.1 (Integrity impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70715": {
+    "cvss": 6.8,
+    "description": "Vulnerability in Oracle Autonomous Health Framework (component: Trace File Analyzer). Supported versions that are affected are 26-26.1.0, 26.2.0, 26.3.1, 26.5.0 and 26.5.2. Easily exploitable vulnerability allows unauthenticated attacker with access to the physical communication segment attached to the hardware where the Oracle Autonomous Health Framework executes to compromise Oracle Autonomous Health Framework. Successful attacks of this vulnerability can result in takeover of Oracle Autonomous Health Framework. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50735": {
+    "cvss": 6.8,
+    "description": "pglogical's apply worker does not sufficiently validate the length of certain fields in incoming replication protocol messages before copying them, resulting in an out-of-bounds read. A party acting as the publisher for a subscription, for example a non-PostgreSQL endpoint that speaks the pglogical replication protocol, can return crafted messages that cause the subscriber's apply worker to read beyond the bounds of an allocated buffer, disclosing adjacent process memory or crashing the worker. To exploit the issue an attacker must be able to direct a subscription at an endpoint they control. In default installations this requires privileges normally reserved for a superuser, so the issue is most relevant to managed deployments where the ability to create subscriptions has been delegated to non-superuser roles.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15425": {
+    "cvss": 6.4,
+    "description": "The Yoast SEO – Advanced SEO with real-time guidance and built-in AI plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Post Slug (post_name) in all versions up to, and including, 28.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires pretty permalinks to be enabled, as the exploit chain depends on get_permalink() embedding the stored percent-encoded post_name in the generated URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59514": {
+    "cvss": 9.3,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in BuddyBoss Buddyboss Platform buddyboss-platform allows Blind SQL Injection.This issue affects Buddyboss Platform: from n/a through 3.0.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-61900": {
+    "cvss": 10.0,
+    "description": "Joomla Extension - jdownloads.com - Unauthenticated arbitrary file upload in jDownloads < 4.1.6 - The Joomla extension JDownloads is vulnerable to an unauthenticated file upload, leading to full RCE.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63821": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: rtw88: usb: fix memory leaks on USB write failures When rtw_usb_write_port() fails to submit a USB Request Block (URB) (e.g., due to device disconnect or ENOMEM), the completion callback is never executed. Currently, the driver ignores the return value of rtw_usb_write_port() in rtw_usb_write_data() and rtw_usb_tx_agg_skb(). Because these functions rely on the completion callback to free the socket buffers (skbs) and the transaction control block (txcb), a submission failure results in: 1. A memory leak of the allocated skb in rtw_usb_write_data(). 2. A memory leak of the txcb structure and all aggregated skbs in rtw_usb_tx_agg_skb(). Fix this by checking the return value of rtw_usb_write_port(). If it fails, explicitly free the skb in rtw_usb_write_data(), and properly purge the tx_ack_queue and free the txcb in rtw_usb_tx_agg_skb(). The issue was discovered in practice during device disconnect/reconnect scenarios and memory pressure conditions. Tested by verifying normal TX operation continues after the fix without regressions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63822": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: ath11k: fix warning when unbinding If there is an error during some initialization related to firmware, the buffers dp->tx_ring[i].tx_status are released. However this is released again when the device is unbinded (ath11k_pci), and we get: WARNING: CPU: 0 PID: 6231 at mm/slub.c:4368 free_large_kmalloc+0x57/0x90 Call Trace: free_large_kmalloc ath11k_dp_free ath11k_core_deinit ath11k_pci_remove ... The issue is always reproducible from a VM because the MSI addressing initialization is failing. In order to fix the issue, just set the buffers to NULL after releasing in order to avoid the double free.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63827": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: apparmor: fix use-after-free in rawdata dedup loop aa_replace_profiles() walks ns->rawdata_list to dedup the incoming policy blob against entries already attached to existing profiles. Per the kernel-doc on struct aa_loaddata, list membership does not hold a reference: profiles hold pcount, and when the last pcount drops, do_ploaddata_rmfs() is queued on a workqueue that takes ns->lock and removes the entry. Between dropping the last pcount and the workqueue running, an entry remains on the list with pcount == 0. aa_get_profile_loaddata() is an unconditional kref_get() on pcount, so when the dedup loop hits such an entry, refcount hardening reports refcount_t: addition on 0; use-after-free. inside aa_replace_profiles(), and the poisoned counter then trips \"saturated\" and \"underflow\" warnings on the subsequent uses of the same loaddata. Before commit a0b7091c4de4 (\"apparmor: fix race on rawdata dereference\") the dedup path used a get_unless_zero-style helper on a single counter, so the existing \"if (tmp)\" guard was meaningful. The split-refcount refactor introduced aa_get_profile_loaddata(), which has plain kref_get() semantics, and the guard quietly became a no-op. Introduce aa_get_profile_loaddata_not0(), matching the existing _not0 convention used by aa_get_profile_not0(), and use it for the rawdata_list dedup lookup so dying entries are skipped. Reproduced on x86_64 with v7.1-rc5 in QEMU+KVM running Ubuntu 24.04 + stress-ng 0.17.06: stress-ng --apparmor 1 --klog-check --timeout 60s Without this patch the three refcount_t warnings fire within a few seconds. With it the same 60 s run is clean. Coverage is a smoke-test only; a longer soak with CONFIG_KASAN, CONFIG_KCSAN and CONFIG_PROVE_LOCKING would be welcome from anyone with the cycles.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63835": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: batman-adv: v: prevent OGM aggregation on disabled hardif When an interface gets disabled, the worker is correctly disabled by batadv_hardif_disable_interface() -> ... -> batadv_v_ogm_iface_disable(). In this process, the skb aggr_list is also freed. But batadv_v_ogm_send_meshif() can still queue new skbs (via batadv_v_ogm_queue_on_if()) to the aggr_list. This will only stop after all cores can no longer find the RCU protected list of hard interfaces. These queued skbs will never be freed or consumed by batadv_v_ogm_aggr_work. The batadv_v_ogm_iface_disable() function must block batadv_v_ogm_queue_on_if() to avoid leak of skbs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63836": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: batman-adv: tp_meter: avoid divide-by-zero for dec_cwnd The cwnd is always MSS <= cwnd <= 0x20000000. But the calculation in batadv_tp_update_cwnd() assumes unsigned 32 bit arithmetics. ((mss * 8) ** 2) / (cwnd * 8) In case cwnd is actually 0x20000000, it will be shifted by 3 bit to the left end up at 0x100000000 or U32_MAX + 1. It will therefore wrap around and be 0 - resulting in: ((mss * 8) ** 2) / 0 This is of course invalid and cannot be calculated. The calculation should must be simplified to avoid this overflow: (mss ** 2) * 8 / cwnd It will keep the precision enhancement from the scaling (by 8) but avoid the overflow in the divisor. In theory, there could still be an overflow in the dividend. It is at the moment fixed to BATADV_TP_PLEN in batadv_tp_recv_ack() - so it is not an imminent problem. But allowing it to use the whole u32 bit range, would mean that it can still use up to 67 bits. To keep this calculation safe for 32 bit arithmetic, mss must never use more than floor((32 - 3) / 2) bits - or in other words: must never be larger than 16383.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63837": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: ena: PHC: Check return code before setting timestamp output ena_phc_gettimex64() is setting the output parameter regardless of whether ena_com_phc_get_timestamp() succeeded or failed. When ena_com_phc_get_timestamp() returns an error, the timestamp parameter may contain uninitialized stack memory (e.g., when PHC is disabled or in blocked state) or invalid hardware values. Passing these to userspace via the PTP ioctl is both a security issue (information leak) and a correctness bug. Fix by checking the return code after releasing the lock and only setting the output timestamp on success.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63838": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ASoC: rsnd: Fix potential out-of-bounds access of component_dais[] component_dais[RSND_MAX_COMPONENT] is initially zero-initialized and later populated in rsnd_dai_of_node(). However, the existing boundary check: if (i >= RSND_MAX_COMPONENT) does not guarantee that the last valid element remains zero. As a result, the loop can rely on component_dais[RSND_MAX_COMPONENT] being zero, which may lead to an out-of-bounds access. Found by Linux Verification Center (linuxtesting.org) with SVACE.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63839": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: platform/x86: lenovo-wmi-helpers: Fix memory leak in lwmi_dev_evaluate_int() lwmi_dev_evaluate_int() leaks output.pointer when retval == NULL (found by sashiko.dev [1]). Fix it by moving `ret_obj = output.pointer' outside of the `if (retval)' block so that it is always freed by the __free cleanup callback. No functional change intended.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63857": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net: airoha: Do not read uninitialized fragment address in airoha_dev_xmit() The transmit loop in airoha_dev_xmit() reads fragment address and length during its final iteration, when the loop index equals skb_shinfo(skb)->nr_frags, at which point the fragment data is uninitialized. While these values are never consumed, the read itself is unsafe and may trigger a page fault. Fix this by avoiding the fragment read on the last iteration. Additionally, move the skb pointer from the first to the last used packet descriptor, so that airoha_qdma_tx_napi_poll() defers freeing the skb until the final descriptor is processed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63882": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: drm/amdkfd: fix NULL pointer bug in svm_range_set_attr The process_info could be NULL if user doesn't call kfd_ioctl_acquire_vm before calling kfd_ioctl_svm. (cherry picked from commit 83a26c812e0529eb040d31a76f73e33e637243d4)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63883": {
+    "cvss": 7.3,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: serial: qcom_geni: fix kfifo underflow when flush precedes DMA completion IRQ When uart_flush_buffer() runs before the DMA completion IRQ is delivered, the following race can occur (all steps serialized by uart_port_lock): 1. DMA starts: tx_remaining = N, kfifo contains N bytes 2. DMA completes in hardware; IRQ is pending but not yet delivered 3. uart_flush_buffer() acquires the port lock and calls kfifo_reset(), making kfifo_len() = 0 while tx_remaining remains N 4. uart_flush_buffer() releases the port lock 5. DMA IRQ fires; handle_tx_dma() acquires the port lock and calls uart_xmit_advance(uport, tx_remaining) on an empty kfifo uart_xmit_advance() increments kfifo->out by tx_remaining. Since kfifo_reset() already set both in and out to 0, out wraps past in, causing kfifo_len() to return UART_XMIT_SIZE - tx_remaining. The next start_tx_dma() call then submits a DMA transfer of stale buffer data. Fix this by snapshotting kfifo_len() at the start of handle_tx_dma() and skipping uart_xmit_advance() when fifo_len < tx_remaining, which indicates the kfifo was reset by a preceding flush.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63890": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: scsi: fcoe: Reject FIP descriptors with zero fip_dlen in CVL walker drivers/scsi/fcoe/fcoe_ctlr.c::fcoe_ctlr_recv_clr_vlink() advanced the descriptor cursor by an attacker-supplied fip_dlen without ever requiring dlen >= sizeof(struct fip_desc) in the default branch. The named descriptor cases (FIP_DT_MAC, FIP_DT_NAME, FIP_DT_VN_ID) checked their per-type minimum lengths, but a FIP_DT_NON_CRITICAL descriptor (fip_dtype >= 128, which the standard requires receivers to silently ignore) skipped that check entirely. An unauthenticated L2 peer on the FCoE control VLAN could hang fcoe_ctlr_recv_work on an fcoe, qedf, or bnx2fc initiator indefinitely by emitting one FIP CVL frame whose single descriptor had fip_dtype == FIP_DT_NON_CRITICAL and fip_dlen == 0: the cursor advanced zero bytes per iteration and the loop condition rlen >= sizeof(*desc) stayed true forever, blocking every subsequent FIP frame on that controller. Tighten the outer dlen guard to also reject dlen < sizeof(struct fip_desc), so a malformed descriptor whose length cannot even cover the descriptor header is rejected before the switch. This is the same lower-bound the named cases already apply and is the minimum scope that closes the loop.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63891": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: thunderbolt: property: Cap recursion depth in __tb_property_parse_dir() A DIRECTORY entry's value field is used as the dir_offset for a recursive call into __tb_property_parse_dir() with no depth counter. A crafted peer that chains DIRECTORY entries into a back-reference loop drives the parser until the kernel stack is exhausted and the guard page fires. Any untrusted XDomain peer (cable, dock, in-line inspector, adjacent host) that reaches the PROPERTIES_REQUEST control-plane exchange can trigger this without authentication. Thread a depth counter through tb_property_parse() and __tb_property_parse_dir(), and reject blocks that exceed TB_PROPERTY_MAX_DEPTH = 8. That is comfortably larger than any observed legitimate XDomain layout. Operators who do not need XDomain host-to-host discovery can disable the path entirely with thunderbolt.xdomain=0 on the kernel command line.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63896": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: usb: gadget: composite: fix integer underflow in WebUSB GET_URL handling The WebUSB GET_URL handler in composite_setup() narrows landing_page_length to fit the host-supplied wLength using landing_page_length = w_length - WEBUSB_URL_DESCRIPTOR_HEADER_LENGTH + landing_page_offset; If wLength is smaller than WEBUSB_URL_DESCRIPTOR_HEADER_LENGTH the unsigned subtraction wraps, and the subsequent memcpy(url_descriptor->URL, cdev->landing_page + landing_page_offset, landing_page_length - landing_page_offset); ends up copying close to UINT_MAX bytes from cdev->landing_page into cdev->req->buf. KASAN reports a slab-out-of-bounds in composite_setup on the kmalloc-2k gadget_info allocation, and FORTIFY_SOURCE traps the memcpy as a 4294967293-byte field-spanning write into url_descriptor->URL (size 252). A USB host can reach this from a single SETUP packet against any gadget that has webusb/use=1 and a landingPage configured. Handle the small-wLength case before the math: when the host requested fewer bytes than the URL descriptor header, only the header is meaningful and no URL bytes need to be copied. Setting landing_page_length to landing_page_offset makes the existing memcpy a no-op and leaves the descriptor returned to the host unchanged for all larger wLength values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63969": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: fix possible infinite loop in rt6_fill_node() Sashiko reported this issue [1]. Apply the same fix as commit f8d8ce1b515a (\"ipv6: fix possible infinite loop in fib6_info_uses_dev()\"). Writers holding tb6_lock can list_del_rcu(&rt->fib6_siblings) without waiting for RCU readers; rt->fib6_siblings.next then still points into the old ring and this softirq-side walker never reaches &rt->fib6_siblings, causing a CPU stall. fib6_del_route() always WRITE_ONCE()s rt->fib6_nsiblings to 0 before list_del_rcu(), so an inside-loop check is a reliable detach signal. [1] https://sashiko.dev/#/patchset/20260526020227.4857-1-jiayuan.chen%40linux.dev",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63976": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: l2cap: clear chan->ident on ECRED reconfiguration success l2cap_ecred_reconf_rsp() returns early on success without clearing chan->ident. Every other L2CAP response handler (l2cap_ecred_conn_rsp, l2cap_le_connect_rsp, l2cap_config_rsp) clears chan->ident after a successful transaction to prevent the channel from matching subsequent responses with the recycled ident value. A remote attacker that completed a reconfiguration as the peer can replay a failure response with the stale ident, causing the kernel to match and destroy the already-established channel via l2cap_chan_del(chan, ECONNRESET). Clear chan->ident for all matching channels on success, and harden the failure path by using l2cap_chan_hold_unless_zero() consistent with other L2CAP handlers (l2cap_le_command_rej, __l2cap_get_chan_by_ident).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63977": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: dpll: zl3073x: use __dpll_device_change_ntf() and remove change_work The change_work was introduced to send device change notifications from DPLL device callbacks without deadlocking on dpll_lock, since the callbacks are already invoked under that lock. Now that __dpll_device_change_ntf() is exported for callers that already hold dpll_lock, use it directly and remove the change_work infrastructure entirely. This eliminates a race condition where change_work could be re-scheduled after cancel_work_sync() during device teardown, potentially causing the handler to dereference a freed or NULL dpll_dev pointer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63978": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/handshake: Drain pending requests at net namespace exit The arguments to list_splice_init() in handshake_net_exit() are reversed. The call moves the local empty \"requests\" list onto hn->hn_requests, leaving the local list empty, so the subsequent drain loop runs zero iterations. Pending handshake requests that had not yet been accepted are not torn down when the net namespace is destroyed; each one keeps a reference on a socket file and on the handshake_req allocation. Pass the source and destination in the documented order (list_splice_init(list, head) moves list onto head) so the pending list is transferred to the local scratch list and drained through handshake_complete(). Fixing the splice direction exposes a list-corruption race. After the splice each req->hr_list still has non-empty link pointers, threading the stack-local scratch list rather than hn_requests. A concurrent handshake_req_cancel() -- for example, from sunrpc's TLS timeout on a kernel socket whose netns reference was not taken -- finds the request through the rhashtable, calls remove_pending(), and sees !list_empty(&req->hr_list). __remove_pending_locked() then list_del_init()s an entry off the scratch list while the drain iterates, corrupting it. The same call arriving after the drain loop has run list_del() on an entry hits LIST_POISON instead. Have remove_pending() check HANDSHAKE_F_NET_DRAINING under hn_lock and report not-found when drain is in progress. The drain has already taken ownership; handshake_complete()'s existing test_and_set on HANDSHAKE_F_REQ_COMPLETED still arbitrates between drain and cancel for who calls the consumer's hp_done. Use list_del_init() rather than list_del() in the drain so req->hr_list does not carry LIST_POISON after drain releases the entry. The DRAINING guard in remove_pending() makes cancel return false, but cancel still falls through to test_and_set_bit on HANDSHAKE_F_REQ_COMPLETED and drops the request's hr_file reference. Without another pin, if that is the last reference, sk_destruct frees the request while it is still linked on the drain loop's local list. Pin each request's hr_file under hn_lock before releasing the list, and drop that drain pin after the loop finishes with the request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63979": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/handshake: hand off the pinned file reference to accept_doit handshake_req_next() removes the request from the per-net pending list and drops hn_lock before handshake_nl_accept_doit() reads req->hr_sk->sk_socket and dereferences sock->file (once in FD_PREPARE() and again in get_file()). In that window a consumer running tls_handshake_cancel() followed by sockfd_put() (svc_sock_free) or __fput_sync() (xs_reset_transport) releases sock->file. sock_release() then runs sock_orphan(), zeroing sk_socket, and frees the struct socket. The accept-side code either reads NULL through sk_socket or chases freed memory. The submit-side sock_hold() does not prevent this. sk_refcnt protects struct sock, but struct socket and sock->file are independently refcounted via the file descriptor the consumer owns. Pinning sk leaves sock and sock->file unprotected. Retarget the accept-side dereferences at req->hr_file, which was pinned at submit time, instead of req->hr_sk->sk_socket->file. Pinning on its own is not sufficient: a consumer that cancels between handshake_req_next() returning and accept_doit reaching FD_PREPARE() takes the !remove_pending() branch in handshake_req_cancel() and drops hr_file before the accept side takes its own reference. Hand off an additional file reference inside handshake_req_next(), under hn_lock, so the accept side operates on a reference that no concurrent handshake_req_cancel() can revoke. FD_PREPARE() consumes that handed-off reference, either by transferring it to the new fd in fd_publish() or by dropping it in the cleanup destructor on error; the explicit get_file() that previously balanced FD_PREPARE() is therefore redundant and goes away. Update handshake_req_cancel_test2 and _test3 to simulate the FD_PREPARE() consumption with an fput() so the kunit file-count assertions stay balanced.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63980": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/handshake: Use spin_lock_bh for hn_lock nvmet_tcp_state_change(), a socket callback that runs in BH context, can reach handshake_req_cancel() via nvmet_tcp_schedule_release_queue() and tls_handshake_cancel(). handshake_req_cancel() acquires hn->hn_lock with plain spin_lock(). If a process-context thread on the same CPU holds hn->hn_lock when a softirq invokes the cancel path, the lock attempt deadlocks. This is the only caller that invokes tls_handshake_cancel() from BH context; every other consumer calls it from process context. Deferring the cancel to process context in the NVMe target is not straightforward: nvmet_tcp_schedule_release_queue() must call tls_handshake_cancel() atomically with its state transition to DISCONNECTING. If the cancel were deferred, the handshake completion callback could fire in the window before the cancel runs, observe the unexpected state, and return without dropping its kref on the queue. Reworking that interlock is considerably more invasive than hardening the handshake lock. Convert all hn->hn_lock acquisitions from spin_lock/spin_unlock to spin_lock_bh/spin_unlock_bh so the lock is never taken with softirqs enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63981": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/sched: act_mirred: Fix blockcast recursion bypass leading to stack overflow tcf_mirred_act() checks sched_mirred_nest against MIRRED_NEST_LIMIT (4) to prevent deep recursion. However, when the action uses blockcast (tcfm_blockid != 0), the function returns at the tcf_blockcast() call BEFORE reaching the counter increment. As a result, the recursion counter never advances and the limit check is entirely bypassed. When two devices share a TC egress block with a mirred blockcast rule, a packet egressing on device A is mirrored to device B via blockcast; device B's egress TC re-enters tcf_mirred_act() via blockcast and mirrors back to A, creating an unbounded recursion loop: tcf_mirred_act -> tcf_blockcast -> tcf_mirred_to_dev -> dev_queue_xmit -> sch_handle_egress -> tcf_classify -> tcf_mirred_act -> (repeat) This recursion continues until the kernel stack overflows. The bug is reachable from an unprivileged user via unshare(CLONE_NEWUSER | CLONE_NEWNET): user namespaces grant CAP_NET_ADMIN in the new network namespace, which is sufficient to create dummy devices, attach clsact qdiscs with shared blocks, and install mirred blockcast filters. BUG: TASK stack guard page was hit at ffffc90000b7fff8 Oops: stack guard page: 0000 [#1] SMP KASAN NOPTI CPU: 2 UID: 1000 PID: 169 Comm: poc Not tainted 7.0.0-rc7-next-20260410 RIP: 0010:xas_find+0x17/0x480 Call Trace: xa_find+0x17b/0x1d0 tcf_mirred_act+0x640/0x1060 tcf_action_exec+0x400/0x530 basic_classify+0x128/0x1d0 tcf_classify+0xd83/0x1150 tc_run+0x328/0x620 __dev_queue_xmit+0x797/0x3100 tcf_mirred_to_dev+0x7b1/0xf70 tcf_mirred_act+0x68a/0x1060 [repeating ~30+ times until stack overflow] Kernel panic - not syncing: Fatal exception in interrupt Fix this by incrementing sched_mirred_nest before calling tcf_blockcast() and decrementing it on return, mirroring the non-blockcast path. This ensures subsequent recursive entries see the updated counter and are correctly limited by MIRRED_NEST_LIMIT.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63982": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/sched: Fix ethx:ingress -> ethy:egress -> ethx:ingress mirred loop When mirred redirects to ingress (from either ingress or egress) the loop state from sched_mirred_dev array dev is lost because of 1) the packet deferral into the backlog and 2) the fact the sched_mirred_dev array is cleared. In such cases, if there was a loop we won't discover it. Here's a simple test to reproduce: ip a add dev port0 10.10.10.11/24 tc qdisc add dev port0 clsact tc filter add dev port0 egress protocol ip \\ prio 10 matchall action mirred ingress redirect dev port1 tc qdisc add dev port1 clsact tc filter add dev port1 ingress protocol ip \\ prio 10 matchall action mirred egress redirect dev port0 ping -c 1 -W0.01 10.10.10.10",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63983": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/sched: fix packet loop on netem when duplicate is on When netem duplicates a packet it re-enqueues the copy at the root qdisc. If another netem sits in the tree the copy can be duplicated again, recursing until the stack or memory is exhausted. The original duplication guard temporarily zeroed q->duplicate around the re-enqueue, but that does not cover all cases because it is per-qdisc state shared across all concurrent enqueue paths and is not safe without additional locking. Use the skb tc_depth field introduced in an earlier patch: - increment it on the duplicate before re-enqueue - skip duplication for any skb whose tc_depth is already non-zero. This marks the packet itself rather than mutating qdisc state, therefore it is safe regardless of tree topology or concurrency.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63984": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: rpl: fix hdrlen overflow in ipv6_rpl_srh_decompress() ipv6_rpl_srh_decompress() computes: outhdr->hdrlen = (((n + 1) * sizeof(struct in6_addr)) >> 3); hdrlen is __u8. For n >= 127 the result exceeds 255 and silently truncates. With n=127 (cmpri=15, cmpre=15, pad=0, hdrlen=16): (128 * 16) >> 3 = 256, truncated to 0 as __u8 The caller in ipv6_rpl_srh_rcv() then places the compressed header at buf + ((ohdr->hdrlen + 1) << 3). With hdrlen=0 this is buf + 8, but the decompressed region occupies buf[0..2055] (8-byte header plus 128 full addresses). The compressed header overlaps the decompressed data, and ipv6_rpl_srh_compress() writes into this overlap, corrupting the routing header of the forwarded packet. The existing guard at exthdrs.c:546 checks (n + 1) > 255, which prevents n+1 from overflowing unsigned char (the segments_left field), but does not prevent the computed hdrlen from overflowing __u8. n=127 passes because 128 <= 255, yet hdrlen=256 does not fit. Tighten the bound to (n + 1) > 127. This caps n at 126, giving hdrlen = (127 * 16) >> 3 = 254, which fits in __u8. The compressed header then lands at buf + ((254 + 1) << 3) = buf + 2040, exactly past the decompressed region (buf[0..2039]). No overlap. 127 segments is well beyond any realistic RPL deployment.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-9165": {
+    "cvss": 7.7,
+    "description": "A flaw was found in Red Hat Advanced Cluster Security for Kubernetes (RHACS). Central does not limit the depth of GraphQL queries served on the authenticated GraphQL API. An authenticated user with a valid API token can send deeply nested queries that cause excessive resource consumption in Central, resulting in a denial of service for the management plane.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-54825": {
+    "cvss": 9.3,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in TMS wpDataTables wpdatatables allows Blind SQL Injection.This issue affects wpDataTables: from n/a through 7.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-54831": {
+    "cvss": 9.3,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in AyeCode Ltd GeoDirectory geodirectory allows Blind SQL Injection.This issue affects GeoDirectory: from n/a through 2.8.162.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-10609": {
+    "cvss": 6.8,
+    "description": "A missing authorization flaw was found in the OpenShift Cluster Logging Operator. The operator creates and forwards ServiceAccount tokens to output destinations without verifying that the ClusterLogForwarder creator has permission to use those credentials, allowing a delegated editor to exfiltrate SA tokens and escalate privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-46448": {
+    "cvss": 8.5,
+    "description": "In OpenStack Nova before 33.0.2, the server create API does not strip certain hint data. The resulting instance has no Placement allocation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-9271": {
+    "cvss": 6.8,
+    "description": "The KeepInMind Dashboard Notes WordPress plugin through 0.8.5 does not properly sanitize note content submitted through its REST API, allowing users with a low-privileged role (such as Contributor, where an administrator has enabled it) to store CSS that redresses the administrator dashboard for credential phishing and denial of service; the fix released in 0.8.4.2 addressed only the editor interface and left the REST write path exploitable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2017-20251": {
+    "cvss": 9.8,
+    "description": "WordPress Insert PHP plugin versions before 2.5.1 contain a PHP code injection vulnerability that allows unauthenticated attackers to execute arbitrary PHP code by injecting malicious shortcodes through the WordPress REST API. Attackers can send POST requests to the wp-json/wp/v2/posts endpoint with crafted content containing insert_php shortcodes to include and execute remote PHP files on the server.",
+    "vendor": "PHP",
+    "product": "Unknown"
+  },
+  "CVE-2026-4391": {
+    "cvss": 5.3,
+    "description": "A security vulnerability has been detected in TeamSpeak 3 Server up to 3.13.8. This vulnerability affects unknown code of the component ECC Key Parser. Such manipulation leads to heap-based buffer overflow. The attack may be launched remotely. Upgrading to version 3.13.9 is able to resolve this issue. It is suggested to upgrade the affected component. The vendor explains: \"We have just released TeamSpeak 3 Server 3.13.9 to address a remaining variant of CVE-2026-4391, affecting ECC key parsing during the connection handshake. The original fix released with 3.13.8 did not cover this additional variant, which could allow an unauthenticated remote attacker to crash the server using specially crafted input.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8724": {
+    "cvss": 7.2,
+    "description": "A security flaw has been discovered in Dataease 2.10.20. Impacted is the function SqlparserUtils.transFilter of the file SqlparserUtils.java of the component Data Dashboard. The manipulation results in sql injection. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8728": {
+    "cvss": 6.5,
+    "description": "A security vulnerability has been detected in Open5GS up to 2.7.7. The impacted element is the function ogs_sbi_discovery_option_parse_plmn_list in the library /lib/sbi/conv.c of the component NRF. Such manipulation of the argument target-plmn-list leads to denial of service. The attack can be executed remotely. The exploit has been disclosed publicly and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8729": {
+    "cvss": 6.5,
+    "description": "A vulnerability was detected in Open5GS up to 2.7.7. This affects an unknown function in the library /lib/sbi/message.c of the component NRF. Performing a manipulation of the argument service-names/snssais results in denial of service. The attack is possible to be carried out remotely. The exploit is now public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8730": {
+    "cvss": 6.5,
+    "description": "A flaw has been found in Open5GS up to 2.7.6. This impacts the function ogs_sbi_nf_instance_set_id in the library /lib/sbi/context.c of the component NRF. Executing a manipulation of the argument nfInstanceId can lead to denial of service. The attack may be performed from remote. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8731": {
+    "cvss": 6.5,
+    "description": "A vulnerability has been found in Open5GS up to 2.7.7. Affected is the function ogs_sbi_client_add in the library /lib/sbi/client.c of the component NRF. The manipulation of the argument client_pool leads to denial of service. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8741": {
+    "cvss": 3.1,
+    "description": "A vulnerability has been found in EMQX up to 6.2.0. This affects an unknown function of the file apps/emqx/src/emqx_persistent_session_ds.erl of the component QoS 2 PUBLISH Packet Handler. Such manipulation leads to race condition. The attack may be performed from remote. A high complexity level is associated with this attack. The exploitability is reported as difficult. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8743": {
+    "cvss": 6.3,
+    "description": "A vulnerability was found in Open5GS up to 2.7.6. This impacts the function ran_ue_find_by_amf_ue_ngap_id of the file src/amf/context.c of the component AMF/MME. Performing a manipulation results in improper authorization. It is possible to initiate the attack remotely. The exploit has been made public and could be used. The patch is named 5746b8576cfceec18ed87eb7d8cf11b1fb4cd8b1. It is suggested to install a patch to address this issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8744": {
+    "cvss": 6.5,
+    "description": "A vulnerability was determined in Open5GS up to 2.7.7. Affected is the function ogs_sbi_subscription_data_add/ogs_sbi_nf_service_add in the library /lib/sbi/context.c of the component NRF. Executing a manipulation can lead to denial of service. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized. This patch is called 819db11a08b9736a3576c4f99ceb28f7eb99523a. A patch should be applied to remediate this issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8745": {
+    "cvss": 6.5,
+    "description": "A vulnerability was identified in Open5GS up to 2.7.7. Affected by this vulnerability is the function ogs_timer_add in the library /src/ausf/nausf-handler.c of the component AUSF. The manipulation leads to denial of service. The attack can be initiated remotely. The exploit is publicly available and might be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8746": {
+    "cvss": 6.5,
+    "description": "A security flaw has been discovered in Open5GS up to 2.7.7. Affected by this issue is the function discover_handler in the library /lib/sbi/nghttp2-server.c of the component NRF. The manipulation results in use after free. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-46483": {
+    "cvss": 7.0,
+    "description": "Vim is an open source, command line text editor. Prior to 9.2.0479, a command injection vulnerability exists in tar#Vimuntar() in runtime/autoload/tar.vim when decompressing .tgz archives on Unix-like systems. The function builds :!gunzip and :!gzip -d commands using shellescape(tartail) without the {special} flag, allowing a crafted archive filename to trigger Vim cmdline-special expansion and execute shell commands in the user's context. This vulnerability is fixed in 9.2.0479.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45803": {
+    "cvss": 3.5,
+    "description": "`gh` is GitHub’s official command line tool. From 1.6.0 to before 2.92.0, a security vulnerability has been identified in GitHub CLI that could allow terminal escape sequence injection when users view GitHub Actions workflow logs using gh run view --log or gh run view --log-failed. The vulnerability stems from the way GitHub CLI handles raw Actions log output. The gh run view --log and gh run view --log-failed commands stream workflow log lines to stdout or the configured pager without sanitizing terminal control sequences. An attacker who can influence GitHub Actions log content, for example via a PR triggered workflow, can embed escape sequences that are replayed in the user's terminal when they inspect the run. Depending on the victim's terminal emulator, injected sequences could change the window title, manipulate on screen content, or in some terminal emulators (such as screen) potentially execute arbitrary commands. This vulnerability is fixed in 2.92.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41181": {
+    "cvss": 5.8,
+    "description": "Traefik is an HTTP reverse proxy and load balancer. Prior to 2.11.44, 3.6.15, and 3.7.0-rc.3, there is an information disclosure vulnerability in Traefik's errors (custom error pages) middleware. When the backend returns a response matching the configured status range, the middleware forwards the original request's complete header set, including Authorization, Cookie, and other authentication material, to the separate error page service rather than only the minimal context needed to render the error page. This behavior is undocumented: the documentation states only that Host is forwarded by default, so operators are not warned that sensitive credentials are shared across service boundaries. Deployments using the errors middleware with a distinct error page service may inadvertently expose end-user credentials to infrastructure that was not intended to receive them. This vulnerability is fixed in 2.11.44, 3.6.15, and 3.7.0-rc.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44774": {
+    "cvss": 9.9,
+    "description": "Traefik is an HTTP reverse proxy and load balancer. Prior to 2.11.46, 3.6.17, and 3.7.1, Traefik's Kubernetes Gateway API provider allows a tenant with HTTPRoute creation permissions to expose the REST provider handler, bypassing the providers.rest.insecure=false setting. The Gateway provider accepts any TraefikService backend reference whose name ends with @internal, making it possible to route traffic to rest@internal in addition to the intended api@internal. In shared Gateway deployments where the REST provider is enabled, this allows a low-privileged actor to gain live dynamic configuration write access to Traefik, enabling unauthorized reconfiguration of routers and services. This vulnerability is fixed in 2.11.46, 3.6.17, and 3.7.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8695": {
+    "cvss": 9.8,
+    "description": "radare2 6.1.5 contains a use-after-free vulnerability in the gdbr_threads_list() function that allows remote attackers to trigger memory corruption by sending a valid qfThreadInfo response followed by a malformed qsThreadInfo response. Attackers can exploit this vulnerability through GDB remote debugging to cause a denial of service or potentially achieve code execution by manipulating thread list processing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4053": {
+    "cvss": 4.3,
+    "description": "Mattermost versions 11.5.x <= 11.5.1, 10.11.x <= 10.11.13 fail to enforce the PostEditTimeLimit on non-message post fields which allows an authenticated user to modify post file attachments, props, and pin status after the edit window has expired via the post patch and update API endpoints.. Mattermost Advisory ID: MMSA-2026-00631",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4054": {
+    "cvss": 6.5,
+    "description": "Mattermost versions 11.5.x <= 11.5.1, 10.11.x <= 10.11.13, 11.4.x <= 11.4.3 Fail to validate the response body of proxied images, which allows a remote attacker to enact client-side DoS via an SVG file served from an attacker-controlled origin under a non-SVG Content-Type header (e.g. image/png) embedded in an og:image meta tag or Markdown image link.. Mattermost Advisory ID: MMSA-2026-00630",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44550": {
+    "cvss": 5.0,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, FolderForm uses model_config = ConfigDict(extra='allow'), which permits arbitrary fields to pass through Pydantic validation and be included in model_dump(exclude_unset=True). In insert_new_folder, the server-assigned user_id is placed at the start of the dict and then overwritten by the spread of form data. Because FolderModel declares user_id: str as a real field (not just a form extra), any attacker-supplied user_id in the POST body is accepted by the model and persisted on the Folder row. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44552": {
+    "cvss": 8.7,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the tool_servers and terminal_servers keys in utils/tools.py do use a prefix. When two or more Open WebUI instances share a Redis database (a supported and documented deployment pattern, e.g., for multi-region deployments, blue-green setups, or cluster topologies), the unprefixed keys collide. An admin on Instance A writing to tool_servers overwrites the value read by Instance B — causing Instance B's users to receive Instance A's tool server configuration. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44553": {
+    "cvss": 8.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, administrative role changes and user deletions do not iterate SESSION_POOL to disconnect affected sessions. As a result, a user whose admin role has been revoked retains admin privileges within their existing Socket.IO session for as long as they keep the connection alive (via automatic heartbeats). The gap is exclusive to the Socket.IO session cache. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44554": {
+    "cvss": 8.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the POST /api/v1/retrieval/process/web endpoint accepts a user-supplied collection_name and an overwrite query parameter (default: True). It performs no authorization check on whether the calling user owns or has write access to the target collection. When overwrite=True, save_docs_to_vector_db calls VECTOR_DB_CLIENT.delete_collection() on the target collection before writing new content. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44555": {
+    "cvss": 7.6,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, Open WebUI supports model composition via base_model_id: a user-defined model (e.g., \"Cheap Assistant\") can reference an existing base model (e.g., \"gpt-4-turbo-restricted\") that provides the actual inference capability. When a user queries the composed model, the access control pipeline verifies the user has access to the composed model but never re-verifies access to the chained base model. Additionally, the model creation and import endpoints accept arbitrary base_model_id values without checking that the caller has access to that base model. Combined, this allows any user with the default model creation permission to create a model that chains to a restricted base model — and then invoke it, causing the server to dispatch the request to the restricted base model using the admin-configured API key. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44556": {
+    "cvss": 7.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the /responses endpoint in the OpenAI router accepts any authenticated user and forwards requests directly to upstream LLM providers without enforcing per-model access control. While the primary chat completion endpoint (generate_chat_completion) checks model ownership, group membership, and AccessGrants before allowing a request, the /responses proxy only validates that the user has a valid session via get_verified_user. This allows any authenticated user to interact with any model configured on the instance by sending a POST request to /api/openai/responses with an arbitrary model ID. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44557": {
+    "cvss": 4.3,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the _validate_collection_access function uses an incomplete allowlist that only enforces ownership checks for collections matching user-memory-* and file-* patterns. All other collection names pass through unchecked — including the system-level knowledge-bases meta-collection, which stores the IDs, names, and descriptions of every knowledge base on the instance. Any authenticated user can query this meta-collection directly via the retrieval query endpoints to obtain a global index of all knowledge bases across all users. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44558": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the channel router does not call filter_allowed_access_grants on either create or update paths. A non-admin user who can create group channels (or who owns a channel) can submit arbitrary access grants — including public wildcard grants — and those grants are stored verbatim, bypassing the admin's permission framework. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44559": {
+    "cvss": 4.3,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the GET /api/v1/channels/{id}/members endpoint only checks membership for group and dm channel types (lines 467-469). For standard channels — including private ones — there is no channel_has_access check before returning the member list. Any authenticated user who knows a private channel's UUID can enumerate all users with access to that channel. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44560": {
+    "cvss": 6.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the type: \"file\" (non-full-context), type: \"text\" with collection_name, and bare collection_name/collection_names paths in the get_sources_from_items function perform vector store queries without any authorization check, allowing users to extract content from files and knowledge bases they do not have access to. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44561": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the is_user_channel_member function checks whether a ChannelMember row exists but does not check the is_active field. When a user is deactivated from a group or DM channel (removed by the channel owner, or leaves voluntarily), their membership row persists with is_active=False and status='left'. Because the authorization check ignores this field, the deactivated user retains full read and write access to the channel via direct API calls. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44562": {
+    "cvss": 6.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the POST /api/v1/models/import endpoint allows users with the workspace.models_import permission to overwrite any existing model in the database, regardless of ownership. When an imported model's ID matches an existing model, the endpoint merges the attacker's payload over the existing model data and writes it to the database with no ownership or access grant validation. Additionally, filter_allowed_access_grants is never called, bypassing the access grant restrictions enforced on all other model mutation endpoints. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44563": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the /api/generate, /api/embed, /api/embeddings, and /api/show endpoints accept any model name from the user and forward the request to the Ollama backend without checking whether the user is authorized to access that model. These endpoints only require get_verified_user (any authenticated non-pending user) and validate that the model exists in the full unfiltered model list, but never check AccessGrants.has_access(). This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44564": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the ydoc:document:update Socket.IO event handler checks whether the sender is a member of the document's Socket.IO room (line 678) but does not verify that the sender has write permission. Users with read-only access join the document room via ydoc:document:join, which only requires read permission (line 520). Once in the room, the user can emit ydoc:document:update events that modify the in-memory Yjs document state and are broadcast to all other collaborators in real time. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44568": {
+    "cvss": 4.8,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the AccountPending.svelte component renders the admin-configured \"Pending User Overlay Content\" using marked.parse() inside {@html} with an incorrect DOMPurify application order. An admin can inject arbitrary JavaScript into the Pending User Overlay Content that executes in the browser context of any pending user who views the overlay page. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45331": {
+    "cvss": 8.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, validate_url() in backend/open_webui/retrieval/web/utils.py calls validators.ipv6(ip, private=True), but the validators library does NOT implement the private keyword for IPv6 — the call raises a ValidationError (which is falsy in a boolean context), so every IPv6 address passes the filter. In addition, IPv4-mapped IPv6 (::ffff:10.0.0.1) bypasses the IPv4 check entirely, and several reserved IPv4 ranges (0.0.0.0/8, 100.64.0.0/10, 192.0.0.0/24, etc.) are not blocked. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45339": {
+    "cvss": 6.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, Open WebUI allows admins to restrict which API endpoints an API key can access. When an API key is restricted from /api/v1/messages, requests using the Authorization: Bearer sk-... header are correctly blocked with 403. However, the same key sent via the x-api-key header bypasses the restriction entirely — the request is authenticated, the model is invoked, and a full response is returned. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45349": {
+    "cvss": 7.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, a user just needs to use the API endpoint: /api/chat/completions with their own API key (generated in OWUI) and the Chat ID of another user to continue the conversation of the other user. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45399": {
+    "cvss": 7.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, any authenticated user with low privileges can enumerate active background tasks across the system and stop tasks belonging to other users via the GET /api/tasks and POST /api/tasks/stop/{task_id} methods. This allows a casual user to disrupt system-wide chat usage by continuously canceling other users' active tasks. This is a real authorization vulnerability affecting integrity and usability in multi-user deployments. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45671": {
+    "cvss": 8.0,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, any authenticated user can permanently delete files owned by other users via DELETE /api/v1/files/{id} when the target file is referenced in any shared chat. The has_access_to_file() authorization gate unconditionally grants access through its shared-chat branch. It checks neither the requesting user's identity nor the type of operation being performed. File UUIDs (which would otherwise be impractical to guess) are disclosed to any user with read access to a knowledge base via GET /api/v1/knowledge/{id}/files. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45675": {
+    "cvss": 8.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, the LDAP and OAuth authentication flows use a TOCTOU (Time-of-Check-Time-of-Use) pattern for first-user admin role assignment. The regular signup handler (signup_handler in auths.py, line 663) was explicitly patched to prevent this race with the comment \"Insert with default role first to avoid TOCTOU race\", but the LDAP and OAuth code paths were never updated with the same fix. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45385": {
+    "cvss": 4.3,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.5, an IDOR vulnerability exists in the Channels feature of Open WebUI, allowing any channel member to modify messages sent by other members (including administrators) within the same channel. In the update_message_by_id function, for group or dm type channels, only the caller's membership in the channel is checked via the is_user_channel_member function, without verifying message ownership. This allows any channel member to modify messages sent by other members within the same channel. This vulnerability is fixed in 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45386": {
+    "cvss": 4.3,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.5, Pin/Unpin is a write operation (modifies the message's is_pinned , pinned_by, pinned_at fields), but in standard channels it only checks read permission, allowing users with read-only access to pin/unpin any message. This vulnerability is fixed in 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45387": {
+    "cvss": 4.3,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.5, when setting model permissions so that a group has read access to it, intending for other users to use it, those users also can read the model's system prompt. However users may consider their system prompt confidential, so this is considered a security issue. This vulnerability is fixed in 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45395": {
+    "cvss": 7.2,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.5, the tool update endpoint (POST /api/v1/tools/id/{id}/update) is missing the workspace.tools permission check that is present on the tool create endpoint. This allows a user who has been explicitly denied tool management capabilities ( and who the administrator considers untrusted for code execution ) to replace a tool's server-side Python content and trigger execution, bypassing the intended workspace.tools security boundary. This vulnerability is fixed in 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45396": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.5, the POST /api/v1/evaluations/feedback endpoint in Open WebUI v0.9.2 is vulnerable to mass assignment via FeedbackForm, which uses model_config = ConfigDict(extra='allow'). Due to an insecure dictionary merge order in insert_new_feedback(), an authenticated attacker can inject a user_id field in the request body that overwrites the server-derived value, creating feedback records attributed to any arbitrary user. This corrupts the model evaluation leaderboard (Elo ratings) and enables identity spoofing. This vulnerability is fixed in 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45398": {
+    "cvss": 7.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.5, _validate_collection_access() checks the user-memory-* and file-* collection name prefixes but does not check knowledge base collections, which use raw UUIDs as collection names. Any authenticated user who knows a private knowledge base UUID can read its content through the retrieval query endpoints, even though the knowledge API correctly denies that user access. The same gap affects the retrieval write endpoints (/process/text, /process/file, /process/files/batch, /process/web, /process/youtube), allowing an attacker to inject content into or overwrite another user's knowledge base. This vulnerability is fixed in 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45400": {
+    "cvss": 8.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.5, a parsing difference between the urlparse and requests libraries led to an SSRF bypass vulnerability. This vulnerability is fixed in 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45401": {
+    "cvss": 8.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.5, the validate_url() function in backend/open_webui/retrieval/web/utils.py only validates the initial URL submitted by the caller. The HTTP clients used downstream (sync requests, async aiohttp, langchain's WebBaseLoader) follow HTTP 3xx redirects by default and do not re-validate the redirect target against the private-IP / metadata-IP block list. Any authenticated user can therefore submit a public URL that 302-redirects to an internal address (e.g. 127.0.0.1, 169.254.169.254, RFC1918) and read the internal response body via the /api/v1/retrieval/process/web endpoint, the /api/v1/images/... endpoints, the /api/chat/completions endpoint with an image_url content part, and any other route that calls these helpers. This vulnerability is fixed in 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45402": {
+    "cvss": 8.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.5, multiple endpoints accept a user-supplied file_id and attach the referenced file to a resource the caller controls (folder knowledge, knowledge-base contents) without verifying that the caller owns or has been granted access to the file. The file's content then becomes reachable through the downstream RAG / file-content paths, allowing any authenticated user to exfiltrate any other user's private file — and on the knowledge-base path, also to overwrite it — given knowledge of the file's UUID. This affects backend/open_webui/routers/folders.py (POST /api/v1/folders/{id}/update), backend/open_webui/routers/knowledge.py (add_file_to_knowledge_by_id), and backend/open_webui/routers/knowledge.py (add_files_to_knowledge_by_id_batch). This vulnerability is fixed in 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45672": {
+    "cvss": 8.8,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.8.12, the /api/v1/utils/code/execute endpoint executes arbitrary Python code via Jupyter for any verified user, even when the admin has set ENABLE_CODE_EXECUTION=false. The feature gate is not enforced on the API endpoint — the configuration says \"disabled\" but code still executes. This vulnerability is fixed in 0.8.12.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8696": {
+    "cvss": 9.8,
+    "description": "radare2 6.1.5 contains a use-after-free vulnerability in the gdbr_pids_list() function within the GDB client core that allows remote attackers to cause a denial of service or potentially execute arbitrary code by sending malformed thread information responses. Attackers can trigger the vulnerability by causing qsThreadInfo to fail after qfThreadInfo successfully allocates RDebugPid structures, resulting in double-free memory corruption when the error path attempts to clean up the list.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44549": {
+    "cvss": 8.7,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.8.0, Excel file attachments are previewed in an unsafe way. A crafted XLSX file payload can be used to cause the sheetjs function sheet_to_html to embed an XSS payload into the generated HTML. This is subsequently added to the DOM unsanitized via @html causing the payload to trigger. This vulnerability is fixed in 0.8.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44565": {
+    "cvss": 8.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.6.10, when uploading an audio file, the name of the file is derived from the original HTTP upload request and is not validated or sanitized. This allows for users to upload files with names containing dot-segments in the file path and traverse out of the intended uploads directory. Effectively, users can upload files anywhere on the filesystem the user running the web server has permission. This vulnerability is fixed in 0.6.10.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44566": {
+    "cvss": 9.8,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.1.124, when attaching files to a promp, the name of the file is derived from the original HTTP upload request and is not validated or sanitized. This allows for users to upload files with names containing dot-segments in the file path and traverse out of the intended uploads directory. Effectively, users can upload files anywhere on the filesystem the user running the web server has permission. This vulnerability is fixed in 0.1.124.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44567": {
+    "cvss": 7.3,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.1.124, the API does not properly validate that the user has an authorized user role of user. By default, when Open WebUI is configured with new sign-ups enabled, the default user role is set to pending. In this configuration, an administrator is required to go into the Admin management panel following a new user registration and reconfigure the user to have a role of either user or admin before that user is able to access the web application. This vulnerability is fixed in 0.1.124.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44569": {
+    "cvss": 7.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.6.19, there's an IDOR in the channels message management system that allows authenticated users to modify or delete any message within channels they have read access to. The vulnerability exists in the message update and delete endpoints, which implement channel-level authorization but completely lack message ownership validation. While the frontend correctly implements ownership checks (showing edit/delete buttons only for message owners or admins), the backend APIs bypass these protections by only validating channel access permissions without verifying that the requesting user owns the target message. This creates a client-side security control bypass where attackers can directly call the APIs to modify other users' messages. This vulnerability is fixed in 0.6.19.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44570": {
+    "cvss": 8.3,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.6.19, authorization controls surrounding the memories API were inconsistent, resulting in the ability of a standard user to delete, restore, and view the contents of other users' memories. Using a newly created non-admin user with no existing memories, it is possible to view existing memories via POST /api/v1/memories/query. Similarly, even if a non-admin user cannot modify another user's memory data via POST /api/v1/memories/{memory_id}/update, the endpoint's response improperly leaks the content of that memory if a valid memory_id is known. The DELETE /api/v1/memories/{memory_id} can also be used by any user to delete an existing memory. Deleted memories can then be restored by calling the POST /api/v1/memories/{memory_id}/update endpoint again. This vulnerability is fixed in 0.6.19.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44571": {
+    "cvss": 6.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.8.6, in standard channels (i.e., channels whose channel.type is neither group nor dm), the endpoint POST /api/v1/channels/{channel_id}/messages/{message_id}/update can be accessed with read permission only. When access_control is set to None, the authorization check has_access(..., type=\"read\") evaluates to True, allowing users who are not the message owner to update messages. As a result, unauthorized modification of other users’ messages is possible. This vulnerability is fixed in 0.8.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45299": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.8.0, the profile_image_url field on the user profile update form accepted arbitrary data: URI values without MIME-type validation, resulting in a XSS vulnerability. This vulnerability is fixed in 0.8.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45301": {
+    "cvss": 8.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.3.16, a missing permission check in all files related API endpoints allows any authenticated user to list, access and delete every file uploaded by every user to the platform. This vulnerability is fixed in 0.3.16.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45303": {
+    "cvss": 7.7,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.6.5, through the HTML rendering view, scripts can be injected and executed. The frontend provides a function to visualize the HTML content of a current chat. The content is embedded in an iFrame with the allow-scripts allow-forms allow-same-origin sandbox directive. This means that the content is placed in a sandbox but with permission to execute scripts and access the parent’s data (e.g., local storage). As a result, only a few functions are restricted (e.g., displaying an alert box), but in effect, the sandbox attribute is largely nullified. This vulnerability is fixed in 0.6.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45314": {
+    "cvss": 6.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.3, the channel webhook create/update flow accepts arbitrary profile_image_url values, including data:image/svg+xml;base64,... payloads. The profile image endpoint then decodes and serves this SVG as image/svg+xml without sanitization, allowing attacker-controlled script handlers (for example onload) to execute when the profile-image URL is opened in the browser. This vulnerability is fixed in 0.9.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45315": {
+    "cvss": 8.7,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.3, the audio transcription upload endpoint takes the file extension from the user-supplied filename and saves the file under CACHE_DIR/audio/transcriptions/.. The /cache/{path} route serves these files via FileResponse, which sets Content-Type from the on-disk extension and emits no Content-Disposition. A verified user with the default-on chat.stt permission can upload a polyglot WAV+HTML file named pwn.html and trick any other user into opening the resulting URL — the response comes back as text/html and any embedded",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45316": {
+    "cvss": 3.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.3, the POST /api/v1/notes/{id}/pin endpoint performs a write operation (toggling the is_pinned field) but only checks for read permission. Users with read-only access to a shared note can pin/unpin it, which is a state-modifying action that should require write permission. This vulnerability is fixed in 0.9.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45317": {
+    "cvss": 4.6,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.3, an application-wide Cross-Site Request Forgery (CSRF) vulnerability was found Open-WebUl's image uploading functionality. An attacker can set an image URL to a malicious endpoint, allowing them to perform actions on behalf of a victim user. Any authenticated user can exploit this vulnerability, and any user who views the compromised image (e.g., a profile picture) will unknowingly send a GET request to the attacker-controlled URL. This can lead to cookie theft, denial of service (DoS), or other malicious actions. This vulnerability is fixed in 0.9.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45318": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.3, his advisory tracks a regression of the original Excel-preview XSS (CVE-2026-44549). The same root cause — XLSX.utils.sheet_to_html() output rendered via {@html excelHtml} without DOMPurify — was reintroduced sometime after v0.8.0 and is exploitable again This vulnerability is fixed in 0.9.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45338": {
+    "cvss": 7.7,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.9.0, a Server-Side Request Forgery (SSRF) vulnerability exists in _process_picture_url() in backend/open_webui/utils/oauth.py (line ~1338). The function fetches arbitrary URLs from OAuth picture claims without applying validate_url(), allowing an attacker to force the server to make HTTP requests to internal resources and exfiltrate the full response. This vulnerability is fixed in 0.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45345": {
+    "cvss": 6.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.5.7, a user can modify another user's model even if its visibility is set to Private. By changing the access permissions during editing, unauthorized access can be gained. This vulnerability is fixed in 0.5.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45346": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.6.31, there is a Cross-Site Scripting vulnerability in Open WebUI SVG renderer implementation. This vulnerability is fixed in 0.6.31.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45347": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.5.11, there is a blind server side request forgery (SSRF) via the PDF generate function. In the PDF export, user inputs are interpreted as HTML and embedded into the PDF. According to tests, scripts and some potentially dangerous tags (iFrame, Object, etc.) are blocked, preventing server-side content from being read through this vulnerability. However, an image tag can be used to force a server-side request (SSRF), as shown in the following below. This vulnerability is fixed in 0.5.11.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45350": {
+    "cvss": 7.1,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.8.6, there is a vulnerability in chat completion API, which allows attackers to bypass tool restrictions, potentially enabling unauthorized actions or access. In the chat_completion API, the parameters tool_ids and tool_servers are supplied by the user. These parameters are used to create a tools_dict by the middleware. This is then used by get_tool_by_id to retrieve the appropriate tool. However, there is no checks in that ensures the user that uses the API has permission to use the tool, meaning that a user can invoke any server tool by supplying the correct tool_id or tool_servers parameters via the chat completion API. Moreover, the authentication token stored in the server would be used when invoking the tool, so the tool will be invoked with the server privilege. This vulnerability is fixed in 0.8.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45351": {
+    "cvss": 6.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.8.9, when a regular user [non-admin] logs into the application, a http://IP:8080/api/models? web request is initiated by the application and in response, it reveals the system prompt of available models set by admin on models pages in workspace affecting the confidentiality of application. This vulnerability is fixed in 0.8.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45365": {
+    "cvss": 5.4,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.8.11, an internal-only bypass_filter parameter is exposed on the /openai/chat/completions and /ollama/api/chat HTTP endpoints via FastAPI query string binding, allowing any authenticated user to append ?bypass_filter=true and bypass model access control checks to invoke admin-restricted models. This vulnerability is fixed in 0.8.11.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45666": {
+    "cvss": 6.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.8.11, the API /api/v1/notes/{note_id} endpoint lacks proper authorization checks, allowing authenticated users to retrieve notes belonging to other users by guessing or enumerating UUIDs. This results in unauthorized disclosure of potentially sensitive or private user data. This vulnerability is fixed in 0.8.11.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45667": {
+    "cvss": 6.5,
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to 0.8.0, GET /api/v1/memories/ef is accessible without authentication and executes request.app.state.EMBEDDING_FUNCTION(...). This allows any unauthenticated caller to trigger embedding generation which can lead to direct cost exposure if a paid provider is used. This vulnerability is fixed in 0.8.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1184": {
+    "cvss": 7.5,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 11.9 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an unauthenticated user to cause denial of service by uploading a specially crafted file due to improper validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1322": {
+    "cvss": 8.1,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 16.0 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user with a read_api scoped OAuth application to create issues and add comments to issues in private projects due to improper authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1338": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.10 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user with developer-role permissions to delete protected container registry tags due to improper authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1659": {
+    "cvss": 7.5,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 9.0 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an unauthenticated user to cause denial of service by sending specially crafted requests due to insufficient input validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-2900": {
+    "cvss": 2.7,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 16.10 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that when instance-level approval rule editing prevention was enabled, could have allowed an authenticated user with Maintainer permissions to modify or delete project approval rules due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-3073": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.6 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user with developer-role permissions to bypass PyPI package protection rules and upload restricted packages due to improper authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-3074": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 16.7 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an unauthenticated user to download private debugging symbols from inaccessible projects due to improper access control.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-3160": {
+    "cvss": 5.8,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.7 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user to view Jira issues outside the configured project scope due to an integration filter functioning only as a display control rather than enforcing access boundaries as specified.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-3607": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.3 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user with developer-role permissions to bypass package protection rules due to improper access control.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4524": {
+    "cvss": 6.5,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.9.1 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user to access confidential issue content in public projects without proper authorization due to improper authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4527": {
+    "cvss": 6.5,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 11.10 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an unauthenticated user to create unauthorized Jira subscriptions for a targeted user's namespace via a specially crafted link due to missing CSRF protection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6063": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 11.10 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that under certain conditions could have allowed an authenticated user with developer-role permissions to remove code owner approval rules from merge requests due to improper access control.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6073": {
+    "cvss": 5.4,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 18.7 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user to execute arbitrary JavaScript in other users' browsers due to improper input sanitization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6335": {
+    "cvss": 5.4,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.11 before 18.11.3 that under certain conditions could have allowed an authenticated user to execute arbitrary code in another user's browser session due to improper sanitization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6883": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 15.7 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user to bypass merge request approval requirements due to improper cleanup of orphaned policy records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7377": {
+    "cvss": 5.4,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 18.7 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that, in customizable analytics dashboards, could have allowed an authenticated user to execute arbitrary JavaScript in the context of other users' browsers due to improper input sanitization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7471": {
+    "cvss": 3.5,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 18.8 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user with control of a virtual registry upstream to make requests to internal hosts due to improper validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7481": {
+    "cvss": 5.4,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 16.4 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user with developer-role permissions to execute arbitrary JavaScript in other users' browsers due to improper input sanitization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8144": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 15.1 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user with project membership to enumerate private group members due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8280": {
+    "cvss": 6.5,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 8.3 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user to cause denial of service through excessive memory consumption due to improper input validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6472": {
+    "cvss": 5.4,
+    "description": "Missing authorization in PostgreSQL CREATE TYPE allows an object creator to hijack other queries that use search_path to find user-defined types, including extension-defined types. That is to say, the victim will execute arbitrary SQL functions of the attacker's choice. Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6473": {
+    "cvss": 8.8,
+    "description": "Integer wraparound in multiple PostgreSQL server features allows an unprivileged database user to cause the server to undersize an allocation and write out-of-bounds. This may execute arbitrary code as the operating system user running the database. In applications that pass gigabyte-scale user inputs to the relevant database functions, the application input provider may achieve a segmentation fault. Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6474": {
+    "cvss": 4.3,
+    "description": "Externally-controlled format string in PostgreSQL timeofday() function allows an attacker to retrieve portions of server memory, via crafted timezone zones. Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6475": {
+    "cvss": 8.8,
+    "description": "Symlink following in PostgreSQL pg_basebackup plain format and in pg_rewind allows an origin superuser to overwrite local files, e.g. /var/lib/postgres/.bashrc, that hijack the operating system account. It will remain the case that starting the server after these commands implicitly trusts the origin superuser, due to features like shared_preload_libraries. Hence, the attack has practical implications only if one takes relevant action between these commands and server start, like moving the files to a different VM or snapshotting the VM. Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6476": {
+    "cvss": 7.2,
+    "description": "SQL injection in PostgreSQL pg_createsubscriber allows an attacker with pg_create_subscription rights to execute arbitrary SQL as a superuser. The attack takes effect when pg_createsubscriber next runs. Within major versions 17 and 18, minor versions before PostgreSQL 18.4 and 17.10 are affected. Versions before PostgreSQL 17 are unaffected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6477": {
+    "cvss": 8.8,
+    "description": "Use of inherently dangerous function PQfn(..., result_is_int=0, ...) in PostgreSQL libpq lo_export(), lo_read(), lo_lseek64(), and lo_tell64() functions allows the server superuser to overwrite a client stack buffer with an arbitrarily-large response. Like gets(), PQfn(..., result_is_int=0, ...) stores arbitrary-length, server-determined data into a buffer of unspecified size. Because both the \\lo_export command in psql and pg_dump call lo_read(), the server superuser can overwrite pg_dump or psql stack memory. Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6478": {
+    "cvss": 6.5,
+    "description": "Covert timing channel in comparison of MD5-hashed password in PostgreSQL authentication allows an attacker to recover user credentials sufficient to authenticate. This does not affect scram-sha-256 passwords, the default in all supported releases. However, current databases may have MD5-hashed passwords originating in upgrades from PostgreSQL 13 or earlier. Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6479": {
+    "cvss": 7.5,
+    "description": "Uncontrolled recursion in PostgreSQL SSL and GSS negotiation allows an attacker able to connect to a PostgreSQL AF_UNIX socket to achieve sustained denial of service. If SSL and GSS are both disabled, an attacker can do the same via access to a PostgreSQL TCP socket. Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6575": {
+    "cvss": 4.3,
+    "description": "Buffer over-read in PostgreSQL function pg_restore_attribute_stats() accepts array values of unmatched length, which causes query planning to read past end of one array. This allows a table maintainer to infer memory values past that array end. Within major version 18, minor versions before PostgreSQL 18.4 are affected. Versions before PostgreSQL 18 are unaffected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6637": {
+    "cvss": 8.8,
+    "description": "Stack buffer overflow in PostgreSQL module \"refint\" allows an unprivileged database user to execute arbitrary code as the operating system user running the database. A distinct attack is possible if the application declares a user-controlled column as a \"refint\" cascade primary key and facilitates user-controlled updates to that column. In that case, a SQL injection allows a primary key update value provider to execute arbitrary SQL as the database user performing the primary key update. Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6638": {
+    "cvss": 8.8,
+    "description": "SQL injection in PostgreSQL logical replication ALTER SUBSCRIPTION ... REFRESH PUBLICATION allows a subscriber table creator to execute arbitrary SQL with the subscription's publication-side credentials. The attack takes effect at the next REFRESH PUBLICATION. Within major versions 16, 17, and 18, minor versions before PostgreSQL 18.4, 17.10, and 16.14 are affected. Versions before PostgreSQL 16 are unaffected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42186": {
+    "cvss": 7.5,
+    "description": "OpenBao is an open source identity-based secrets management system. Prior to 2.5.3, when OpenBao's initial namespace deletion fails, subsequent retries fail to properly remove all data before marking the namespace as deleted. This can affect any outstanding leases as well as potentially leaving unrelated storage entries around. This vulnerability is fixed in 2.5.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44484": {
+    "cvss": 9.8,
+    "description": "PyTorch Lightning is a deep learning framework to pretrain and finetune AI models. Versions 2.6.2 and 2.6.2 have introduced functionality consistent with a credential harvesting mechanism.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40893": {
+    "cvss": 8.2,
+    "description": "Gotenberg is a Docker-powered stateless API for PDF files. Prior to 8.31.0, Gotenberg only checks if the tag is exactly FileName, so System:FileName slips right through and ExifTool happily renames the file. This allows remote attackers to move, rename, and change permissions for arbitrary files. This vulnerability is fixed in 8.31.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42283": {
+    "cvss": 7.8,
+    "description": "DevSpace is a client-only developer tool for cloud-native development with Kubernetes. Prior to 6.3.21, DevSpace's UI server WebSocket accepts connections from all origins by default, and therefore several endpoints are exposed via this WebSocket. When a developer runs the DevSpace UI and at the same time uses a browser to access the internet, a malicious website they visit can use their browser to establish a cross-origin WebSocket connection to ws://127.0.0.1:8090. This vulnerability is fixed in 6.3.21.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42590": {
+    "cvss": 8.2,
+    "description": "Gotenberg is a Docker-powered stateless API for PDF files. Prior to 8.30.0, The ExifTool metadata write blocklist in Gotenberg can be bypassed using ExifTool's group-prefix syntax, enabling arbitrary file rename, move, hardlink, and symlink creation on the server. ExifTool supports group-prefix syntax where File:FileName is processed identically to FileName -- the prefix is stripped by SetNewValue in Writer.pl before tag matching. The safeKeyPattern regex (^[a-zA-Z0-9\\-_.:]+$) allows colons, so prefixed tag names pass validation. Any prefix works: File:FileName, System:Directory, a:HardLink, etc. Additionally, FilePermissions, FileUserID, and FileGroupID pseudo-tags are not blocked at all and can modify file attributes without any prefix. This vulnerability is fixed in 8.30.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42591": {
+    "cvss": 8.2,
+    "description": "Gotenberg is a Docker-powered stateless API for PDF files. Prior to 8.32.0, the LibreOffice conversion endpoint (/forms/libreoffice/convert) passes uploaded documents directly to LibreOffice without inspecting their content. LibreOffice then fetches any embedded external URLs on its own, completely bypassing the SSRF filters. This vulnerability is fixed in 8.32.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42593": {
+    "cvss": 5.3,
+    "description": "Gotenberg is a Docker-powered stateless API for PDF files. Prior to 8.32.0, pdfengines/merge, pdfengines/split, libreoffice/convert, chromium/convert/url, chromium/convert/html, and chromium/convert/markdown accept stampSource=pdf + stampExpression=/path and watermarkSource=pdf + watermarkExpression=/path from anonymous callers. The dedicated stamp/watermark routes require an uploaded file when the source type is image or pdf; these six routes only overwrite the expression when a file is uploaded, leaving the user-controlled path intact when no file is attached. pdfcpu opens the path and composites its pages onto the output PDF, which returns to the caller. An attacker reads any PDF the Gotenberg process can access on the container filesystem. This vulnerability is fixed in 8.32.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42594": {
+    "cvss": 7.5,
+    "description": "Gotenberg is a Docker-powered stateless API for PDF files. Prior to 8.32.0, the webhook middleware spawns a goroutine that holds a reference to the request's echo.Context after the synchronous handler returns ErrAsyncProcess and Echo recycles the context back to its sync.Pool. When a concurrent request claims the recycled context, c.Reset() clears the store. If the webhook goroutine reaches hardTimeoutMiddleware at that moment, an unchecked type assertion on a nil store entry panics outside any recover() scope, crashing the Gotenberg process. Any anonymous caller reaches the webhook path (default webhook-deny-list filters only the webhook destination, not the submitter). A single-source stress of ~24 webhook requests plus ~60 GET /version requests crashes the process in about two seconds. This vulnerability is fixed in 8.32.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42597": {
+    "cvss": 5.9,
+    "description": "Gotenberg is a Docker-powered stateless API for PDF files. Prior to 8.32.0, the /forms/chromium/convert/url and /forms/chromium/screenshot/url routes accept url=file:///tmp/... from anonymous callers. The default Chromium deny-list intentionally exempts file:///tmp/ so HTML/Markdown routes can load their own request-local assets, and those routes apply a per-request AllowedFilePrefixes guard to scope the read. The URL routes never set AllowedFilePrefixes, so the scope guard silently skips. Alice enumerates /tmp/, walks Gotenberg's per-request working directories, and reads the raw source files of other in-flight conversions as rendered PDF output. This vulnerability is fixed in 8.32.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44501": {
+    "cvss": 7.1,
+    "description": "DataHub is an open-source metadata platform. Prior to 1.5.0.3, The DataHub frontend (datahub-frontend-react) deserializes attacker-controlled Java objects from the REDIRECT_URL HTTP cookie during the OIDC callback flow, with no integrity protection (no HMAC, no encryption). This is a Deserialization of Untrusted Data vulnerability (CWE-502) affecting the GET /callback/oidc endpoint. Successful exploitation requires a valid user account in the configured OIDC identity provider This vulnerability is fixed in 1.5.0.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41888": {
+    "cvss": 6.5,
+    "description": "Distribution is a toolkit to pack, ship, store, and deliver container content. Prior to 3.1.1, tag deletion via the DELETE /v2/ /manifests/ endpoint bypasses the storage.delete.enabled: false configuration, allowing any API client to remove tags from repositories even when the operator has explicitly disabled deletion. This vulnerability is fixed in 3.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42572": {
+    "cvss": 6.5,
+    "description": "Hatchet is a platform for orchestrating background tasks, AI agents, and durable workflows at scale. Prior to 0.83.39, a missing authorization directive on the GET /api/v1/stable/dags/tasks endpoint caused Hatchet's tenant-membership check to be skipped for this route. A user authenticated to any tenant on the same Hatchet instance could query the endpoint with another tenant's UUID and a DAG UUID belonging to that tenant, and receive task metadata for that DAG. This vulnerability is fixed in 0.83.39.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44283": {
+    "cvss": 4.3,
+    "description": "etcd is a distributed key-value store for the data of a distributed system. Prior to 3.4.44, 3.5.30, and 3.6.11, a vulnerability in etcd allows read access via PrevKv, or lease attachment in Put requests within transaction operations, to bypass RBAC authorization checks. An authenticated user without sufficient read or lease-related permissions may be able to access unauthorized data or attach leases by invoking transaction operations with these features enabled. This vulnerability is fixed in 3.4.44, 3.5.30, and 3.6.11.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44671": {
+    "cvss": 7.5,
+    "description": "ZITADEL is an open source identity management platform. From 2.71.11 to before 3.4.10 and 4.15.0, a vulnerability was discovered in Zitadel's LDAP identity provider implementation, which fails to properly escape user-provided usernames before incorporating them into LDAP search filters. This allows unauthenticated attackers to perform LDAP Filter Injection during the login process. While this vulnerability does not allow for a full authentication bypass, an attacker can use LDAP metacharacters (such as *, (, )) to perform blind LDAP injection. By observing the different failure (or success) responses, an attacker can systematically enumerate valid usernames and extract sensitive attribute data from the connected LDAP directory. This vulnerability is fixed in 3.4.10 and 4.15.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4873": {
+    "cvss": 5.9,
+    "description": "A vulnerability exists where a connection requiring TLS incorrectly reuses an existing unencrypted connection from the same connection pool. If an initial transfer is made in clear-text (via IMAP, SMTP, or POP3), a subsequent request to that same host bypasses the TLS requirement and instead transmit data unencrypted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-5545": {
+    "cvss": 6.5,
+    "description": "libcurl might in some circumstances reuse the wrong connection when asked to do an authenticated HTTP(S) request after a Negotiate-authenticated one, when both use the same host. libcurl features a pool of recent connections so that subsequent requests can reuse an existing connection to avoid overhead. When reusing a connection a range of criteria must be met. Due to a logical error in the code, a request that was issued by an application could wrongfully reuse an existing connection to the same server that was authenticated using different credentials. An application that first uses Negotiate authentication to a server with `user1:password1` and then does another operation to the same server asking for any authentication method but for `user2:password2` (while the previous connection is still alive) - the second request gets confused and wrongly reuses the same connection and sends the new request over that connection thinking it uses a mix of user1's and user2's credentials when it is in fact still using the connection authenticated for user1...",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-5773": {
+    "cvss": 7.5,
+    "description": "libcurl might in some circumstances reuse the wrong connection for SMB(S) transfers. libcurl features a pool of recent connections so that subsequent requests can reuse an existing connection to avoid overhead. When reusing a connection a range of criteria must be met. Due to a logical error in the code, a network transfer operation that was requested by an application could wrongfully reuse an existing SMB connection to the same server that was using a different \"share\" than the new subsequent transfer should. This could in unlucky situations lead to the download of the wrong file or the upload of a file to the wrong place. When this happens, the same credentials are used and the server name is the same.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6253": {
+    "cvss": 5.9,
+    "description": "curl might erroneously pass on credentials for a first proxy to a second proxy. This can happen when the following conditions are true: 1. curl is setup to use specific different proxies for different URL schemes 2. the first proxy needs credentials 3. the second proxy uses no credentials 4. while using the first proxy (using say `http://`), curl is asked to follow a redirect to a URL using another scheme (say `https://`), accessed using a second, different, proxy",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6276": {
+    "cvss": 7.5,
+    "description": "Using libcurl, when a custom `Host:` header is first set for an HTTP request and a second request is subsequently done using the same *easy handle* but without the custom `Host:` header set, the second request would use stale information and pass on cookies meant for the first host in the second request. Leak them.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6429": {
+    "cvss": 5.3,
+    "description": "When asked to both use a `.netrc` file for credentials and to follow HTTP redirects, libcurl could leak the password used for the first host to the followed-to host under certain circumstances.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7009": {
+    "cvss": 5.3,
+    "description": "When curl is told to use the Certificate Status Request TLS extension, often referred to as *OCSP stapling*, to verify that the server certificate is valid, it fails to detect OCSP problems and instead wrongly consider the response as fine.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-7168": {
+    "cvss": 5.3,
+    "description": "Successfully using libcurl to do a transfer over a specific HTTP proxy (`proxyA`) with **Digest** authentication and then changing the proxy host to a second one (`proxyB`) for a second transfer, reusing the same handle, makes libcurl wrongly pass on the `Proxy-Authorization:` header field meant for `proxyA`, to `proxyB`.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42290": {
+    "cvss": 7.8,
+    "description": "protobufjs-cli is the command line add-on for protobuf.js. Prior to 1.2.1 and 2.0.2, pbts invoked JSDoc by building a shell command string from input file paths and executing it through child_process.exec. File paths containing shell metacharacters could therefore be interpreted by the shell instead of being passed to JSDoc as plain arguments. This vulnerability is fixed in 1.2.1 and 2.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44288": {
+    "cvss": 5.3,
+    "description": "protobufjs compiles protobuf definitions into JavaScript (JS) functions. Prior to 7.5.6 and 8.0.2, protobufjs includes a minimal UTF-8 decoder that accepted overlong UTF-8 byte sequences and decoded them to their canonical characters instead of replacing them. An attacker who can provide protobuf binary data decoded through the affected UTF-8 path may be able to bypass application-level checks that inspect raw bytes before protobuf string decoding. For example, bytes that do not contain certain ASCII characters could decode to strings containing those characters. This vulnerability is fixed in 7.5.6 and 8.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44289": {
+    "cvss": 7.5,
+    "description": "protobufjs compiles protobuf definitions into JavaScript (JS) functions. Prior to 7.5.6 and 8.0.2, protobufjs could recurse without a depth limit while decoding nested protobuf data. This affected both skipping unknown group fields and generated decoding of nested message fields. A crafted protobuf binary payload could cause the JavaScript call stack to be exhausted during decoding. This vulnerability is fixed in 7.5.6 and 8.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44290": {
+    "cvss": 7.5,
+    "description": "protobufjs compiles protobuf definitions into JavaScript (JS) functions. Prior to 7.5.6 and 8.0.2, protobufjs allowed certain schema option paths to traverse through inherited object properties while applying options. A crafted protobuf schema or JSON descriptor could cause option handling to write to properties on global JavaScript constructors, corrupting process-wide built-in functionality. This vulnerability is fixed in 7.5.6 and 8.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44291": {
+    "cvss": 8.1,
+    "description": "protobufjs compiles protobuf definitions into JavaScript (JS) functions. Prior to 7.5.6 and 8.0.2, protobufjs used plain objects with inherited prototypes for internal type lookup tables used by generated encode and decode functions. If Object.prototype had already been polluted, those lookup tables could resolve attacker-controlled inherited properties as valid protobuf type information. This could cause attacker-controlled strings to be emitted into generated JavaScript code. This vulnerability is fixed in 7.5.6 and 8.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44292": {
+    "cvss": 5.3,
+    "description": "protobufjs compiles protobuf definitions into JavaScript (JS) functions. Prior to 7.5.6 and 8.0.2, protobufjs generated message constructors copied enumerable properties from a provided properties object without filtering the __proto__ key. If an application constructed a message from an attacker-controlled plain object, an own enumerable __proto__ property could alter the prototype of that individual message instance. This vulnerability is fixed in 7.5.6 and 8.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44293": {
+    "cvss": 8.8,
+    "description": "protobufjs compiles protobuf definitions into JavaScript (JS) functions. Prior to 7.5.6 and 8.0.2, protobufjs generated JavaScript for toObject conversion could include an unsafe expression derived from a schema-controlled bytes field default value. A crafted descriptor with a non-string default value for a bytes field could cause attacker-controlled code to be emitted into the generated conversion function. This vulnerability is fixed in 7.5.6 and 8.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44294": {
+    "cvss": 5.3,
+    "description": "protobufjs compiles protobuf definitions into JavaScript (JS) functions. Prior to 7.5.6 and 8.0.2, protobufjs generated JavaScript property accessors from schema-controlled field and oneof names. Certain control characters in field names were not escaped before being embedded into generated function bodies. A crafted schema or JSON descriptor could therefore cause generated encode, decode, verify, or conversion functions to fail during compilation. This vulnerability is fixed in 7.5.6 and 8.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44295": {
+    "cvss": 8.7,
+    "description": "protobufjs-cli is the command line add-on for protobuf.js. Prior to 1.2.1 and 2.0.2, pbjs static code generation could emit unsafe JavaScript identifiers derived from schema-controlled names. When generating static JavaScript from a crafted schema or JSON descriptor, certain namespace, enum, service, or derived full names could be written into the generated output without sufficient sanitization. This vulnerability is fixed in 1.2.1 and 2.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44431": {
+    "cvss": 5.3,
+    "description": "urllib3 is an HTTP client library for Python. From 1.23 to before 2.7.0, cross-origin redirects followed from the low-level API via ProxyManager.connection_from_url().urlopen(..., assert_same_host=False) still forward these sensitive headers. This vulnerability is fixed in 2.7.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44432": {
+    "cvss": 7.5,
+    "description": "urllib3 is an HTTP client library for Python. From 2.6.0 to before 2.7.0, urllib3 could decompress the whole response instead of the requested portion (1) during the second HTTPResponse.read(amt=N) call when the response was decompressed using the official Brotli library or (2) when HTTPResponse.drain_conn() was called after the response had been read and decompressed partially (compression algorithm did not matter here). These issues could cause urllib3 to fully decode a small amount of highly compressed data in a single operation. This could result in excessive resource consumption (high CPU usage and massive memory allocation for the decompressed data) on the client side. This vulnerability is fixed in 2.7.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45740": {
+    "cvss": 7.5,
+    "description": "protobufjs compiles protobuf definitions into JavaScript (JS) functions. Prior to 7.5.8 and 8.2.0, protobufjs could recurse without a depth limit while expanding nested JSON descriptors through Root.fromJSON() and Namespace.addJSON(). A crafted JSON descriptor with deeply nested namespace definitions could cause the JavaScript call stack to be exhausted during descriptor loading. This vulnerability is fixed in 7.5.8 and 8.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41132": {
+    "cvss": 7.4,
+    "description": "CKAN is an open-source DMS (data management system) for powering data hubs and data portals. Prior to 2.10.10 and 2.11.5, the configured SMTP server may be spoofed with any certificate (e.g. self-signed), leaving credentials and all emails sent open to MITM attacks. This vulnerability is fixed in 2.10.10 and 2.11.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41255": {
+    "cvss": 6.1,
+    "description": "CKAN is an open-source DMS (data management system) for powering data hubs and data portals. Prior to 2.10.10 and 2.11.5, Access to the views via tokens or unauthenticated requests marked the endpoint as not requiring CSRF protection. The marking was a member variable in flask-wtf.csrf.CSRFProtect(), which was stored as a module level variable in the flask_app middleware. This API was never intended for request level changes, it is primarily a decorator for static configuration. An unauthenticated request could hit a protected endpoint, exempting it from CSRF protection for the life of the particular server process. (e.g. one worker of uwsgi). This vulnerability is fixed in 2.10.10 and 2.11.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42032": {
+    "cvss": 9.1,
+    "description": "CKAN is an open-source DMS (data management system) for powering data hubs and data portals. Prior to 2.10.10 and 2.11.5, a vulnerability in datastore_search_sql allowed attackers to bypass authorization in order to gain access to private resources and PostgreSQL system information This vulnerability is fixed in 2.10.10 and 2.11.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42577": {
+    "cvss": 7.5,
+    "description": "Netty is an asynchronous, event-driven network application framework. From 4.2.0.Final to 4.2.13.Final , Netty's epoll transport fails to detect and close TCP connections that receive a RST after being half-closed, leading to stale channels that are never cleaned up and, in some code paths, a 100% CPU busy-loop in the event loop thread. This vulnerability is fixed in 4.2.13.Final.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42578": {
+    "cvss": 7.5,
+    "description": "Netty is an asynchronous, event-driven network application framework. Prior to 4.2.13.Final and 4.1.133.Final, Netty's HttpProxyHandler constructs HTTP CONNECT requests with header validation explicitly disabled. The newInitialMessage() method creates headers using DefaultHttpHeadersFactory.headersFactory().withValidation(false), then adds user-provided outboundHeaders without any CRLF validation. This allows an attacker who can influence the outbound headers to inject arbitrary HTTP headers into the CONNECT request sent to the proxy server. This vulnerability is fixed in 4.2.13.Final and 4.1.133.Final.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42579": {
+    "cvss": 9.1,
+    "description": "Netty is an asynchronous, event-driven network application framework. Prior to 4.2.13.Final and 4.1.133.Final, Netty's DNS codec does not enforce RFC 1035 domain name constraints during either encoding or decoding. This creates a bidirectional attack surface: malicious DNS responses can exploit the decoder, and user-influenced hostnames can exploit the encoder. This vulnerability is fixed in 4.2.13.Final and 4.1.133.Final.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42581": {
+    "cvss": 9.8,
+    "description": "Netty is an asynchronous, event-driven network application framework. Prior to 4.2.13.Final and 4.1.133.Final, HttpObjectDecoder strips a conflicting Content-Length header when a request carries both Transfer-Encoding: chunked and Content-Length, but only for HTTP/1.1 messages. The guard is absent for HTTP/1.0. An attacker that sends an HTTP/1.0 request with both headers causes Netty to decode the body as chunked while leaving Content-Length intact in the forwarded HttpMessage. Any downstream proxy or handler that trusts Content-Length over Transfer-Encoding will disagree on message boundaries, enabling request smuggling. This vulnerability is fixed in 4.2.13.Final and 4.1.133.Final.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42304": {
+    "cvss": 7.5,
+    "description": "Twisted is an event-based framework for internet applications, supporting Python 3.6+. Prior to 26.4.0rc2, the twisted.names module is vulnerable to a Denial of Service (DoS) attack via resource exhaustion during DNS name decompression. A remote, unauthenticated attacker can exploit this by sending a crafted TCP DNS packet containing deeply chained compression pointers. This flaw bypasses previous loop-prevention logic, causing the single-threaded Twisted reactor to hang while processing millions of recursive lookups, effectively freezing the server. This vulnerability is fixed in 26.4.0rc2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44379": {
+    "cvss": 5.3,
+    "description": "MISP is an open source threat intelligence and sharing platform. Prior to 2.5.37, MISP Collections did not enforce RFC 4122 UUID validation on the uuid field. As a result, a user able to create or modify Collection records could submit malformed UUID values, potentially causing integrity issues or unexpected behaviour in code paths that assume Collection UUIDs are valid identifiers. This vulnerability is fixed in 2.5.37.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44380": {
+    "cvss": 7.2,
+    "description": "MISP is an open source threat intelligence and sharing platform. Prior to 2.5.37, an improper access control vulnerability in the authentication key reset functionality allowed an authenticated organization administrator to reset authentication keys belonging to site administrator accounts within the same organization. Because non-site administrators were not explicitly prevented from accessing or resetting site administrator auth keys, an attacker with organization administrator privileges could potentially obtain a newly generated auth key for a higher-privileged account and use it to escalate privileges. This vulnerability is fixed in 2.5.37.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44423": {
+    "cvss": 6.5,
+    "description": "ShellHub is a centralized SSH gateway. Prior to 0.24.2, GET /api/sessions/:uid returns the full session object for any authenticated caller, without scoping by the caller's tenant. An authenticated user can read session records (SSH username, device UID, remote IP, terminal type, authenticated flag, timestamps) belonging to any other namespace. This vulnerability is fixed in 0.24.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44424": {
+    "cvss": 6.5,
+    "description": "ShellHub is a centralized SSH gateway. Prior to 0.24.2, GET /api/devices/:uid returns the full device object whenever the caller is authenticated, without verifying that the device belongs to the caller's namespace (tenant). Any authenticated user (JWT or API Key) who knows or can guess a device UID can read device metadata from any other namespace. This vulnerability is fixed in 0.24.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44425": {
+    "cvss": 5.4,
+    "description": "ShellHub is a centralized SSH gateway. Prior to 0.24.2, the device list endpoint accepts user-controlled identifiers in the the name field of each filter property in the base64-encoded filter query parameter and the sort_by query parameter, which are then passed directly as BSON/SQL keys in the database layer without validation. Any authenticated user can craft payloads that cause the aggregation / query to fail and the API to return HTTP 500 with no body, with no rate limiting applied. This vulnerability is fixed in 0.24.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44426": {
+    "cvss": 6.5,
+    "description": "ShellHub is a centralized SSH gateway. Prior to 0.24.2, GET /api/namespaces/:tenant returns the full namespace object — including the members list (user IDs, e-mails, roles), settings, and device counts — to any caller authenticated by an API Key, for any tenant, regardless of the API Key's own tenant scope. The handler conditionally skips the membership check when the user ID (X-ID) is absent, which is exactly the case for API Key authentication. This vulnerability is fixed in 0.24.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35417": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Win32K - GRFX allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35418": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Cloud Files Mini Filter Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35419": {
+    "cvss": 5.5,
+    "description": "Out-of-bounds read in Windows DWM Core Library allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35421": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows GDI allows an unauthorized attacker to execute code locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35422": {
+    "cvss": 6.5,
+    "description": "Authentication bypass using an alternate path or channel in Windows TCP/IP allows an authorized attacker to bypass a security feature over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35423": {
+    "cvss": 5.4,
+    "description": "Out-of-bounds read in Telnet Client allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35424": {
+    "cvss": 7.5,
+    "description": "Missing release of memory after effective lifetime in Windows Internet Key Exchange (IKE) Protocol allows an unauthorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40377": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Cryptographic Services allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40380": {
+    "cvss": 6.2,
+    "description": "Heap-based buffer overflow in Volume Manager Extension Driver allows an authorized attacker to execute code with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40382": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Telephony Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40397": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Common Log File System Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40398": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Remote Desktop allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40399": {
+    "cvss": 7.8,
+    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows TCP/IP allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40401": {
+    "cvss": 7.1,
+    "description": "Windows TCP/IP Denial of Service Vulnerability",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40402": {
+    "cvss": 9.3,
+    "description": "Use after free in Windows Hyper-V allows an unauthorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40403": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Win32K - GRFX allows an authorized attacker to execute code locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40405": {
+    "cvss": 7.5,
+    "description": "Null pointer dereference in Windows TCP/IP allows an unauthorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40406": {
+    "cvss": 7.5,
+    "description": "Use after free in Windows TCP/IP allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40407": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Common Log File System Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40408": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Kernel-Mode Drivers allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40410": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows SMB Client allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40413": {
+    "cvss": 7.4,
+    "description": "Windows TCP/IP Denial of Service Vulnerability",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40414": {
+    "cvss": 7.4,
+    "description": "Windows TCP/IP Denial of Service Vulnerability",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40415": {
+    "cvss": 8.1,
+    "description": "Use after free in Windows TCP/IP allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41088": {
+    "cvss": 7.8,
+    "description": "Access of resource using incompatible type ('type confusion') in Windows Ancillary Function Driver for WinSock allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41096": {
+    "cvss": 9.8,
+    "description": "Heap-based buffer overflow in Microsoft Windows DNS allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41097": {
+    "cvss": 6.7,
+    "description": "Reliance on a component that is not updateable in Windows Secure Boot allows an authorized attacker to bypass a security feature locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42048": {
+    "cvss": 9.6,
+    "description": "Langflow is a tool for building and deploying AI-powered agents and workflows. Prior to 1.9.0, Langflow is vulnerable to Path Traversal in the Knowledge Bases API (DELETE /api/v1/knowledge_bases). This occurs because user-supplied knowledge base names are concatenated directly into file paths without proper sanitization or boundary validation. An authenticated attacker can exploit this flaw to delete arbitrary directories anywhere on the server's filesystem, leading to data loss and potential service disruption. This vulnerability is fixed in 1.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42825": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Telephony Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-42896": {
+    "cvss": 7.8,
+    "description": "Integer overflow or wraparound in Windows DWM Core Library allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44166": {
+    "cvss": 7.6,
+    "description": "Pocketbase is an open source web backend written in go. Prior to 0.22.42 and 0.37.4, in some situations, if an attacker knows the email address of the victim they can create and link an unverified PocketBase user in advance by authenticating with one of the OAuth2 app providers, e.g. \"A\". When the victim gets invited or decides to sign up to your app on their own with provider \"B\" (PocketBase OAuth2 auth requires to be with a different provider because we don't allow multiple OAuth2 accounts from the same provider to be associated to a single PocketBase user), the user created previously by the attacker will be autolinked, upgraded to \"verified\" and its old password reset. This vulnerability is fixed in 0.22.42 and 0.37.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44222": {
+    "cvss": 7.5,
+    "description": "vLLM is an inference and serving engine for large language models (LLMs). From 0.6.1 to before 0.20.0, there is a a Token Injection vulnerability in vLLM’s multimodal processing. Unauthenticated, text-only prompts that spell special tokens are interpreted as control. Image and video placeholder sequences supplied without matching data cause vLLM to index into empty grids during input-position computation, raising an unhandled IndexError and terminating the worker or degrading availability. Multimodal paths that rely on image_grid_thw/video_grid_thw are affected. This vulnerability is fixed in 0.20.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44223": {
+    "cvss": 6.5,
+    "description": "vLLM is an inference and serving engine for large language models (LLMs). From 0.18.0 to before 0.20.0, the extract_hidden_states speculative decoding proposer in vLLM returns a tensor with an incorrect shape after the first decode step, causing a RuntimeError that crashes the EngineCore process. The crash is triggered when any request in the batch uses sampling penalty parameters (repetition_penalty, frequency_penalty, or presence_penalty). A single request with a penalty parameter (e.g., \"repetition_penalty\": 1.1) is sufficient to crash the server. This vulnerability is fixed in 0.20.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45185": {
+    "cvss": 9.8,
+    "description": "Exim before 4.99.3, in certain GnuTLS configurations, has a remotely reachable use-after-free in the BDAT body parsing path. It is triggered when a client sends a TLS close_notify mid-body during a CHUNKING transfer, followed by a final cleartext byte on the same TCP connection. This can lead to heap corruption. An unauthenticated network attacker exploiting this vulnerability could execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44403": {
+    "cvss": 7.2,
+    "description": "Wing FTP Server before 8.1.3 contains an authenticated remote code execution vulnerability in the session serialization mechanism that allows authenticated administrators to inject arbitrary Lua code through the domain admin mydirectory field. Attackers can exploit unsafe serialization of session values into Lua source code without proper escaping of closing delimiters, causing the injected code to be executed when the poisoned session is loaded via loadfile().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44245": {
+    "cvss": 6.1,
+    "description": "Kyverno is a policy engine designed for cloud native platform engineering teams. Prior to 2.5.2, Vue 3's v-html directive is the framework-documented mechanism for injecting raw HTML, and it intentionally disables the auto-escaping that {{ }} interpolation provides. The PropertyCard.vue component uses v-html for the else branch of the URL check, meaning any non-URL string value flows directly into the DOM as HTML. The isURL() guard only filters values that parse as http: or https: URLs, so any HTML payload not starting with those schemes bypasses it entirely. The data originates from Kubernetes PolicyReport .results[].properties fields, which are arbitrary string maps populated by policy engines and potentially by any principal with write access to PolicyReport objects in the cluster. This vulnerability is fixed in 2.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
