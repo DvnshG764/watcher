@@ -18312,7 +18312,7 @@
     "product": "vBulletin"
   },
   "CVE-2026-42031": {
-    "cvss": 8.3,
+    "cvss": 9.8,
     "description": "CKAN is an open-source DMS (data management system) for powering data hubs and data portals. Prior to 2.10.10 and 2.11.5, a vulnerability in datastore_search_sql allowed attackers to inject SQL in order to gain access to private resources and PostgreSQL system information This vulnerability is fixed in 2.10.10 and 2.11.5.",
     "vendor": "ckan",
     "product": "ckan"
@@ -18402,7 +18402,7 @@
     "product": "siyuan"
   },
   "CVE-2026-44381": {
-    "cvss": 9.3,
+    "cvss": 5.3,
     "description": "MISP is an open source threat intelligence and sharing platform. Prior to 2.5.37, a SQL injection vulnerability existed in the handling of user-controlled ordering parameters in the event and shadow attribute listing endpoints. The affected code accepted order or sort values from request parameters and incorporated them into database query ordering clauses without sufficient validation of the requested field name. An attacker with access to the affected endpoints could craft a malicious ordering parameter to manipulate the generated SQL query. Depending on database permissions and query context, this could potentially allow unauthorized access to data, modification of query behavior, or other database-level impact. This vulnerability is fixed in 2.5.37.",
     "vendor": "MISP",
     "product": "MISP"
@@ -18864,7 +18864,7 @@
     "product": "Frontend File Manager Plugin"
   },
   "CVE-2026-56292": {
-    "cvss": 9.2,
+    "cvss": 7.5,
     "description": "Joomla Extension - acymailing.com - SQL Injection in AcyMailing extension < 10.11.1 - A SQLi vulnerability in AcyMailing component < 10.11.1 for Joomla was discovered. Exploiting this flaw can lead to unauthorized database access and data leakage.",
     "vendor": "acymailing.com",
     "product": "acymailing.com AcyMailing extension for Joomla"
@@ -19296,7 +19296,7 @@
     "product": "JoomSport"
   },
   "CVE-2026-44343": {
-    "cvss": 9.3,
+    "cvss": 9.8,
     "description": "WGDashboard is a dashboard for WireGuard VPN. Prior to 4.3.2, there are critical vulnerabilities affecting WGDashboard that, if exploited, could allow unauthorized parties to access the host file system without authentication. This vulnerability is fixed in 4.3.2.",
     "vendor": "WGDashboard",
     "product": "WGDashboard"
@@ -114544,5 +114544,29 @@
     "description": "ClipBucket v5 is an open source video sharing platform. Prior to 5.5.3 - #40, a Time-of-Check to Time-of-Use (TOCTOU) race condition vulnerability exists in ClipBucket's avatar and background image upload functionality. The application moves uploaded files to a web-accessible location before validating them, creating a window where an attacker can execute arbitrary PHP code before the file is deleted. The uploaded file was moved to a web-accessible path via move_uploaded_file(), then validated via ValidateImage(). If validation failed, the file was deleted via @unlink(). This vulnerability is fixed in 5.5.3 - #40.",
     "vendor": "Check Point",
     "product": "clipbucket-v5"
+  },
+  "CVE-2026-42266": {
+    "cvss": 8.8,
+    "description": "JupyterLab is an extensible environment for interactive and reproducible computing, based on the Jupyter Notebook Architecture. From 4.0.0 to 4.5.6, the allow-list of extensions that can be installed from PyPI Extension Manager (allowed_extensions_uris) is not correctly enforced by JupyterLab. The PyPI Extension Manager was not contained to packages listed on the default PyPI index. This vulnerability is fixed in 4.5.7.",
+    "vendor": "jupyterlab",
+    "product": "jupyterlab"
+  },
+  "CVE-2026-129352": {
+    "cvss": 9.1,
+    "description": "A vulnerability was detected in TRENDnet TEW-657BRM 1.00.1. This issue affects some unknown processing of the file /usr/sbin/upgrade_flash.cgi. Performing a manipulation of the argument boundary results in stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit is now public and may be used. The vendor explains: \"\"I am not able to confirm if such vulnerability exists as the product has been EOL for more than 15 years. We will send out an announcement letting customers know.\"",
+    "vendor": "TRENDnet",
+    "product": "TEW-657BRM"
+  },
+  "CVE-2026-129351": {
+    "cvss": 10.0,
+    "description": "A security vulnerability has been detected in TRENDnet TEW-657BRM 1.00.1. This vulnerability affects the function sprintf of the file /setup.cgi of the component mini_httpd. Such manipulation leads to out-of-bounds write. The attack can be executed remotely. The exploit has been disclosed publicly and may be used. The vendor explains: \"\"I am not able to confirm if such vulnerability exists as the product has been EOL for more than 15 years. We will send out an announcement letting customers know.\" This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "TRENDnet",
+    "product": "TEW-657BRM"
+  },
+  "CVE-2026-129355": {
+    "cvss": 6.5,
+    "description": "A vulnerability has been found in sigoden dufs up to 0.46.0. This affects an unknown part of the file src/server.rs of the component WebDAV COPY Operation Handler. The manipulation leads to incorrect authorization. The attack is possible to be carried out remotely. Upgrading to version 0.47.0 is able to mitigate this issue. The identifier of the patch is fba13dffb9c65b5e5e26419f64de709200277a04. It is advisable to upgrade the affected component.",
+    "vendor": "sigoden",
+    "product": "dufs"
   }
 }
