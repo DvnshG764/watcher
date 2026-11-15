@@ -19368,10 +19368,10 @@
     "product": "EPICS Base"
   },
   "CVE-2026-114552": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 6.5,
+    "description": "MailEnable parseObjectResponse XML External Entity Processing Information Disclosure Vulnerability. This vulnerability allows remote attackers to disclose sensitive information on affected installations of MailEnable. Authentication is required to exploit this vulnerability. The specific flaw exists within the implementation of the parseObjectResponse method. The issue results from the lack of proper restriction of XML External Entity (XXE) references. An attacker can leverage this vulnerability to disclose information in the context of the service account. Was ZDI-CAN-29137.",
+    "vendor": "MailEnable",
+    "product": "MailEnable"
   },
   "CVE-2026-114551": {
     "cvss": null,
@@ -113716,5 +113716,29 @@
     "description": "Netty allows request-line validation to be bypassed when a `DefaultHttpRequest` or `DefaultFullHttpRequest` is created first and its URI is later changed via `setUri()`. The constructors reject CRLF and whitespace characters that would break the start-line, but `setUri()` does not apply the same validation. `HttpRequestEncoder` and `RtspEncoder` then write the URI into the request line verbatim. If attacker-controlled input reaches `setUri()`, this enables CRLF injection and insertion of additional HTTP or RTSP requests, leading to HTTP request smuggling or desynchronization on the HTTP side and request injection on the RTSP side. This issue is fixed in versions 4.2.13.Final and 4.1.133.Final.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-124002": {
+    "cvss": 9.8,
+    "description": "XWEB EVO versions 5.2.3 through before 5.7.0 contains a pre-authentication OS command injection vulnerability that allows unauthenticated remote attackers to execute arbitrary OS commands by injecting shell metacharacters into the username field of login.lua, cleanout.lua, or api.lua before the password check occurs. Attackers can exploit this flaw combined with the setuid-root wlua interpreter to execute commands with root privileges, achieving full system compromise. This product line reached it's end of service date in March 2026.",
+    "vendor": "Copeland",
+    "product": "XWEB EVO"
+  },
+  "CVE-2026-123751": {
+    "cvss": 9.8,
+    "description": "The WP Duplicate WordPress plugin through 1.1.11 does not properly verify a request authentication value and does not validate the path or type of uploaded files, making it possible for unauthenticated attackers to write arbitrary files to the server and achieve remote code execution. This vulnerability is being actively exploited in the wild.",
+    "vendor": "Unknown",
+    "product": "WP Duplicate"
+  },
+  "CVE-2026-105211": {
+    "cvss": 8.1,
+    "description": "ZITADEL before 4.17.1 contains an authentication bypass vulnerability in Login V2 that allows unauthenticated attackers to take over accounts by obtaining OTP codes via the returnCode delivery type. Attackers knowing a login name of a victim with OTP-Email and OTP-SMS enrolled can read both codes from server-action responses to gain MFA-authenticated sessions, including administrator takeover.",
+    "vendor": "zitadel",
+    "product": "zitadel"
+  },
+  "CVE-2026-105642": {
+    "cvss": 8.8,
+    "description": "Ghost is a Node.js content management system. From 6.56.0 until 6.67.0, an image processing library bundled with Ghost contained a vulnerability in its SVG handling. Any staff user, including Contributors, could create a bookmark card for an attacker-controlled website, resulting in arbitrary commands being run on the Ghost server. This issue is fixed in version 6.67.0.",
+    "vendor": "TryGhost",
+    "product": "Ghost"
   }
 }
