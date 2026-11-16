@@ -302,13 +302,21 @@
 
           <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-200/70 dark:border-slate-700/50">
             <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Vendors (Multi-Select)</label>
+            <button onclick="toggleVendorFilter('vendor', 'Juniper')" id="btn-vendor-juniper" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Juniper</button>
             <button onclick="toggleVendorFilter('vendor', 'Cisco')" id="btn-vendor-cisco" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Cisco</button>
+            <button onclick="toggleVendorFilter('vendor', 'Check Point')" id="btn-vendor-checkpoint" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Check Point</button>
             <button onclick="toggleVendorFilter('vendor', 'Fortinet')" id="btn-vendor-fortinet" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Fortinet</button>
             <button onclick="toggleVendorFilter('vendor', 'Palo Alto')" id="btn-vendor-paloalto" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Palo Alto</button>
-            <button onclick="toggleVendorFilter('vendor', 'Check Point')" id="btn-vendor-checkpoint" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Check Point</button>
-            <button onclick="toggleVendorFilter('vendor', 'Ivanti')" id="btn-vendor-ivanti" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Ivanti</button>
+            <button onclick="toggleVendorFilter('vendor', 'F5')" id="btn-vendor-f5" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">F5</button>
+            <button onclick="toggleVendorFilter('vendor', 'Forescout')" id="btn-vendor-forescout" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Forescout</button>
+            <button onclick="toggleVendorFilter('vendor', 'Citrix')" id="btn-vendor-citrix" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Citrix</button>
             <button onclick="toggleVendorFilter('vendor', 'NetScaler')" id="btn-vendor-netscaler" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">NetScaler</button>
-            <button onclick="toggleVendorFilter('vendor', 'PHP')" id="btn-vendor-php" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">PHP</button>
+            <button onclick="toggleVendorFilter('vendor', 'Arbor')" id="btn-vendor-arbor" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Arbor</button>
+            <button onclick="toggleVendorFilter('vendor', 'Illumio')" id="btn-vendor-illumio" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Illumio</button>
+            <button onclick="toggleVendorFilter('vendor', 'CyberArk')" id="btn-vendor-cyberark" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">CyberArk</button>
+            <button onclick="toggleVendorFilter('vendor', 'Netskope')" id="btn-vendor-netskope" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Netskope</button>
+            <button onclick="toggleVendorFilter('vendor', 'Zscaler')" id="btn-vendor-zscaler" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Zscaler</button>
+            <button onclick="toggleVendorFilter('vendor', 'Akamai')" id="btn-vendor-akamai" class="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Akamai</button>
           </div>
         </div>
 
@@ -325,13 +333,21 @@
           <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-200/70 dark:border-slate-700/50">
             <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Filter by Vendor</label>
             <div id="news-vendor-pills" class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleNewsVendorFilter('Juniper')" id="btn-news-vendor-juniper" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Juniper</button>
               <button onclick="toggleNewsVendorFilter('Cisco')" id="btn-news-vendor-cisco" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Cisco</button>
+              <button onclick="toggleNewsVendorFilter('Check Point')" id="btn-news-vendor-checkpoint" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Check Point</button>
               <button onclick="toggleNewsVendorFilter('Fortinet')" id="btn-news-vendor-fortinet" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Fortinet</button>
               <button onclick="toggleNewsVendorFilter('Palo Alto')" id="btn-news-vendor-paloalto" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Palo Alto</button>
-              <button onclick="toggleNewsVendorFilter('Check Point')" id="btn-news-vendor-checkpoint" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Check Point</button>
-              <button onclick="toggleNewsVendorFilter('Ivanti')" id="btn-news-vendor-ivanti" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Ivanti</button>
+              <button onclick="toggleNewsVendorFilter('F5')" id="btn-news-vendor-f5" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">F5</button>
+              <button onclick="toggleNewsVendorFilter('Forescout')" id="btn-news-vendor-forescout" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Forescout</button>
+              <button onclick="toggleNewsVendorFilter('Citrix')" id="btn-news-vendor-citrix" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Citrix</button>
               <button onclick="toggleNewsVendorFilter('NetScaler')" id="btn-news-vendor-netscaler" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">NetScaler</button>
-              <button onclick="toggleNewsVendorFilter('PHP')" id="btn-news-vendor-php" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">PHP</button>
+              <button onclick="toggleNewsVendorFilter('Arbor')" id="btn-news-vendor-arbor" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Arbor</button>
+              <button onclick="toggleNewsVendorFilter('Illumio')" id="btn-news-vendor-illumio" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Illumio</button>
+              <button onclick="toggleNewsVendorFilter('CyberArk')" id="btn-news-vendor-cyberark" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">CyberArk</button>
+              <button onclick="toggleNewsVendorFilter('Netskope')" id="btn-news-vendor-netskope" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Netskope</button>
+              <button onclick="toggleNewsVendorFilter('Zscaler')" id="btn-news-vendor-zscaler" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Zscaler</button>
+              <button onclick="toggleNewsVendorFilter('Akamai')" id="btn-news-vendor-akamai" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Akamai</button>
             </div>
           </div>
         </div>
@@ -363,10 +379,6 @@
                 <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
                 <span id="btn-copy-text">Copy Brief</span>
               </button>
-              <button onclick="toggleTeamsWebhookBox()" class="px-4 py-2.5 rounded-xl neu-glass-card text-slate-700 dark:text-slate-200 hover:border-indigo-500/50 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer">
-                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
-                <span>Send to Teams</span>
-              </button>
             </div>
           </div>
 
@@ -392,13 +404,21 @@
 
             <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200/40 dark:border-slate-800/60">
               <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Vendors</label>
+              <button onclick="toggleBriefFilter('vendor', 'Juniper')" id="btn-brief-vendor-juniper" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Juniper</button>
               <button onclick="toggleBriefFilter('vendor', 'Cisco')" id="btn-brief-vendor-cisco" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Cisco</button>
+              <button onclick="toggleBriefFilter('vendor', 'Check Point')" id="btn-brief-vendor-checkpoint" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Check Point</button>
               <button onclick="toggleBriefFilter('vendor', 'Fortinet')" id="btn-brief-vendor-fortinet" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Fortinet</button>
               <button onclick="toggleBriefFilter('vendor', 'Palo Alto')" id="btn-brief-vendor-paloalto" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Palo Alto</button>
-              <button onclick="toggleBriefFilter('vendor', 'Check Point')" id="btn-brief-vendor-checkpoint" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Check Point</button>
-              <button onclick="toggleBriefFilter('vendor', 'Ivanti')" id="btn-brief-vendor-ivanti" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Ivanti</button>
+              <button onclick="toggleBriefFilter('vendor', 'F5')" id="btn-brief-vendor-f5" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">F5</button>
+              <button onclick="toggleBriefFilter('vendor', 'Forescout')" id="btn-brief-vendor-forescout" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Forescout</button>
+              <button onclick="toggleBriefFilter('vendor', 'Citrix')" id="btn-brief-vendor-citrix" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Citrix</button>
               <button onclick="toggleBriefFilter('vendor', 'NetScaler')" id="btn-brief-vendor-netscaler" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">NetScaler</button>
-              <button onclick="toggleBriefFilter('vendor', 'PHP')" id="btn-brief-vendor-php" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">PHP</button>
+              <button onclick="toggleBriefFilter('vendor', 'Arbor')" id="btn-brief-vendor-arbor" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Arbor</button>
+              <button onclick="toggleBriefFilter('vendor', 'Illumio')" id="btn-brief-vendor-illumio" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Illumio</button>
+              <button onclick="toggleBriefFilter('vendor', 'CyberArk')" id="btn-brief-vendor-cyberark" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">CyberArk</button>
+              <button onclick="toggleBriefFilter('vendor', 'Netskope')" id="btn-brief-vendor-netskope" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Netskope</button>
+              <button onclick="toggleBriefFilter('vendor', 'Zscaler')" id="btn-brief-vendor-zscaler" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Zscaler</button>
+              <button onclick="toggleBriefFilter('vendor', 'Akamai')" id="btn-brief-vendor-akamai" class="px-3 py-1 rounded-xl text-xs font-bold border border-slate-300/60 dark:border-slate-700/70 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 transition-all cursor-pointer">Akamai</button>
             </div>
           </div>
 
@@ -412,17 +432,7 @@
             <div id="custom-cve-rows" class="flex flex-wrap items-center gap-3"></div>
           </div>
 
-          <!-- Teams Webhook Bar -->
-          <div id="teams-webhook-panel" class="hidden pt-4 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2.5">
-            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">Microsoft Teams Incoming Webhook URL</label>
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
-              <div class="neu-inset rounded-xl flex-1 flex items-center px-3 py-2">
-                <input type="url" id="teams-webhook-url" placeholder="https://your-tenant.webhook.office.com/webhookb2/..." class="w-full bg-transparent text-xs font-mono focus:outline-none text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500" />
-              </div>
-              <button id="btn-dispatch-teams" onclick="sendBriefToTeams()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-500/20 shrink-0 cursor-pointer transition-all">Dispatch to Channel</button>
-            </div>
-            <p id="teams-status-msg" class="text-[11px] font-medium hidden"></p>
-          </div>
+
 
           <div id="brief-invalid-banner" class="hidden rounded-xl px-4 py-2.5 bg-rose-500/10 border border-rose-500/30 text-xs text-rose-600 dark:text-rose-300 font-medium"></div>
         </div>
