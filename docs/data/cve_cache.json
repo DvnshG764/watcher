@@ -3530,8 +3530,8 @@
   "CVE-2026-39418": {
     "cvss": 7.4,
     "description": "MaxKB is an open-source AI assistant for enterprise. In versions 2.7.1 and below, sandbox network protection can be bypassed by using socket.sendto() with the MSG_FASTOPEN flag. This allows authenticated user with tool-editing permissions to reach internal services that are explicitly blocked by the sandbox's banned hosts configuration. MaxKB's sandbox uses LD_PRELOAD to hook the connect() function and block connections to banned IPs, but Linux's sendto() with the MSG_FASTOPEN flag can establish TCP connections directly through the kernel without ever calling connect(), completely bypassing the IP validation. Although sendto is listed in the syscall() wrapper, this is ineffective because glibc invokes the kernel syscall directly rather than routing through the hooked syscall() function. This issue has been fixed in version 2.8.0.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "1Panel-dev",
+    "product": "MaxKB"
   },
   "CVE-2026-39420": {
     "cvss": 7.4,
@@ -76532,7 +76532,7 @@
   "CVE-2026-122006": {
     "cvss": 9.8,
     "description": "The activestorage gem before 8.1.4.1 for Ruby on Rails, when ImageMagick attachment processing occurs, can allow server read and write operations (e.g., reading secret_key_base) because the ImageMagick analyzer runs when a file is attached, and there is not an ImageMagick security policy to block unintended functionality.",
-    "vendor": "rubyonrails",
+    "vendor": "Check Point",
     "product": "Active Storage"
   },
   "CVE-2026-13584": {
@@ -104318,8 +104318,8 @@
   "CVE-2026-72868": {
     "cvss": 9.9,
     "description": "Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.29.13, apps/dokploy/server/api/routers/destination.ts interpolates the accessKey, secretAccessKey, region, endpoint, provider, and bucket fields from destination.testConnection into an rclone ls command executed through child_process.exec. The `withPermission(\"destination\", \"create\")` path permits a low-privileged organization member to reach the mutation, close a quoted argument with a crafted field, and execute arbitrary commands in the root Dokploy container, which has access to the host Docker socket. This issue is fixed in version 0.29.13.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "dokploy"
   },
   "CVE-2026-18942": {
     "cvss": 5.5,
@@ -111530,7 +111530,7 @@
   "CVE-2026-123807": {
     "cvss": 9.8,
     "description": "Signal K Server is a server application that runs on a central hub in a boat. From 2.0.0 until 2.34.0 for Signal K Server and from 1.0.0 until 1.5.3 for @signalk/resources-provider, the v2 REST route GET /signalk/v2/api/resources/:resourceType/:resourceId accepts an unsafe resourceId that can escape the intended resource directory. The route passes the attacker-controlled resourceId through src/api/resources/index.ts to FileStore.getResource() in packages/resources-provider-plugin/src/filestorage.ts without adequate path containment, allowing arbitrary JSON files reachable by the server to be read. Related PUT and DELETE resource operations can write or delete files outside the storage root. Deployments with allow_readonly enabled permit anonymous reads, while other deployments require a readonly user token. Reading security.json exposes the HS256 JWT signing secret and password hashes, allowing an attacker to forge an administrator token. Administrative access to POST /skServer/providers can then create an Execute provider that runs commands with the server process privileges and persists its configuration across restarts. This issue is fixed in Signal K Server 2.34.0 and @signalk/resources-provider 1.5.3.",
-    "vendor": "SignalK",
+    "vendor": "Check Point",
     "product": "signalk-server"
   },
   "CVE-2025-2399": {
@@ -112826,7 +112826,7 @@
   "CVE-2026-114713": {
     "cvss": 8.6,
     "description": "UnrealIRCd UnrealIRCd contains an improper neutralization of delimiters vulnerability that allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority.",
-    "vendor": "UnrealIRCd",
+    "vendor": "Check Point",
     "product": "UnrealIRCd"
   },
   "CVE-2026-22341": {
@@ -116236,5 +116236,35 @@
     "description": "A vulnerability was identified in Linux Foundation Magma up to 1.9.0. Impacted is the function handleReact of the file nms/server/main/routes.ts of the component NMS. Such manipulation leads to cross site scripting. It is possible to launch the attack remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
     "vendor": "Linux Foundation",
     "product": "Magma"
+  },
+  "CVE-2026-56779": {
+    "cvss": 6.4,
+    "description": "MaxKB before 2.10.0 contains a server-side request forgery vulnerability in tool creation and update endpoints that allows authenticated users to make arbitrary server requests by supplying unvalidated downloadCallbackUrl and download_url parameters. Attackers with default workspace USER role can exploit this to access internal network services by providing malicious URLs to the ToolSerializer endpoints.",
+    "vendor": "1Panel-dev",
+    "product": "MaxKB"
+  },
+  "CVE-2026-64670": {
+    "cvss": 9.3,
+    "description": "Waline is a comment system with backend support. In versions 3.15.2 and prior, @waline/client renders the comment editor's live preview with marked and no sanitizer (utils/markdown.ts), and the preview is injected with v-html. When a comment is edited, the editor is seeded with the comment's raw, un-sanitized body (orig). Only administrators and the comment owner can edit. So an administrator who clicks Edit on an attacker's comment renders that attacker's raw HTML in their own session: an unauthenticated commenter achieves privilege-escalation stored XSS against a moderator with a single Edit click. At time of publication, there are no publicly available patches.",
+    "vendor": "Check Point",
+    "product": "waline"
+  },
+  "CVE-2026-63011": {
+    "cvss": 9.4,
+    "description": "Group-Office is an enterprise customer relationship management and groupware tool. Prior to versions 6.8.167, 25.0.102, and 26.0.27, the Contact/labels JMAP endpoint in GroupOffice accepts a fully attacker-controlled template string (tpl parameter) that is passed without restriction to TemplateParser::parse(). When the template contains an [assign] block whose expression includes a {{...}} variable reference, the engine calls eval() on the expanded expression after running it through a validateExpression() guard. The guard double-quotes unrecognized tokens, but PHP 7+ allows a string enclosed in parentheses to be invoked as a function (\"system\")(\"id\") is valid PHP and calls system(\"id\"). A single authenticated HTTP request is sufficient to execute arbitrary OS commands as the web server user (www-data). This issue has been patched in versions 6.8.167, 25.0.102, and 26.0.27.",
+    "vendor": "Check Point",
+    "product": "groupoffice"
+  },
+  "CVE-2026-64671": {
+    "cvss": 7.2,
+    "description": "Waline is a comment system with backend support. In versions 3.15.2 and prior, the @waline/client UserList widget builds its DOM by concatenating server-returned commenter fields directly into root.innerHTML with no HTML escaping. The commenter nick and link are stored and returned verbatim by the server (only the comment body is sanitized), and the link field is never sent to the spam filter. So an unauthenticated visitor who posts a comment with link = x\"> achieves stored cross-site scripting that executes, with no interaction, in the browser of every visitor to a page that embeds the UserList widget. At time of publication, there are no publicly available patches.",
+    "vendor": "Check Point",
+    "product": "waline"
+  },
+  "CVE-2026-72871": {
+    "cvss": 7.5,
+    "description": "Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.29.13, the unauthenticated /api/providers/github/setup route in apps/dokploy/pages/api/providers/github/setup.ts trusts gh_init organizationId and userId values from the state parameter and calls createGithub in packages/server/src/services/github.ts, allowing an attacker to insert a GitHub App provider containing client_secret, webhook_secret, and PEM private key material into another organization. This issue is fixed in version 0.29.13.",
+    "vendor": "Check Point",
+    "product": "dokploy"
   }
 }
