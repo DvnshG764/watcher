@@ -116200,5 +116200,29 @@
     "description": "A race condition was addressed with improved locking. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. An app may be able to cause unexpected system termination or corrupt kernel memory.",
     "vendor": "Apple",
     "product": "iOS and iPadOS"
+  },
+  "CVE-2024-6648": {
+    "cvss": 8.7,
+    "description": "Absolute Path Traversal vulnerability in AP Page Builder versions prior to 4.0.0 could allow an unauthenticated remote user to modify the 'product_item_path' within the 'config' JSON file, allowing them to read any file on the system.",
+    "vendor": "Apollo Theme",
+    "product": "AP Page Builder"
+  },
+  "CVE-2026-63645": {
+    "cvss": 7.5,
+    "description": "OpenObserve is a cloud-native observability platform. Prior to 0.90.3, OpenObserve registers the /config/runtime endpoint without authentication and serializes the complete server configuration after applying the hide_sensitive_fields keyword filter. The filter does not recognize dsn or creds field names, so meta_postgres_dsn, meta_postgres_ro_dsn, meta_ddl_dsn, and usage_reporting_creds can be returned in plaintext to an unauthenticated network client. PostgreSQL deployments can expose database credentials, and the same response can disclose the root administrator email address, internal NATS address, filesystem layout, and other deployment details. This issue is fixed in version 0.90.3.",
+    "vendor": "openobserve",
+    "product": "openobserve"
+  },
+  "CVE-2024-8275": {
+    "cvss": 9.8,
+    "description": "The The Events Calendar plugin for WordPress is vulnerable to SQL Injection via the 'order' parameter of the 'tribe_has_next_event' function in all versions up to, and including, 6.6.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Only sites that have manually added tribe_has_next_event() will be vulnerable to this SQL injection.",
+    "vendor": "stellarwp",
+    "product": "The Events Calendar"
+  },
+  "CVE-2024-34444": {
+    "cvss": 7.1,
+    "description": "Missing Authorization vulnerability in ThemePunch OHG Slider Revolution.This issue affects Slider Revolution: from n/a before 6.7.0.",
+    "vendor": "ThemePunch OHG",
+    "product": "Slider Revolution"
   }
 }
