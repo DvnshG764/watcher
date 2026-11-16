@@ -116122,5 +116122,17 @@
     "description": "Vulnerability in Oracle Autonomous Health Framework (component: Trace File Analyzer). Supported versions that are affected are 26-26.1.0, 26.2.0, 26.3.1, 26.5.0 and 26.5.2. Easily exploitable vulnerability allows high privileged attacker with logon to the infrastructure where Oracle Autonomous Health Framework executes to compromise Oracle Autonomous Health Framework. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Oracle Autonomous Health Framework, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Autonomous Health Framework accessible data and unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Autonomous Health Framework. CVSS 3.1 Base Score 7.4 (Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:C/C:N/I:H/A:H).",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-119485": {
+    "cvss": 5.3,
+    "description": "Missing Authorization vulnerability in weDevs Dokan dokan-lite allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Dokan: from n/a through 5.3.2.",
+    "vendor": "weDevs",
+    "product": "Dokan"
+  },
+  "CVE-2024-56337": {
+    "cvss": 9.8,
+    "description": "Time-of-check Time-of-use (TOCTOU) Race Condition vulnerability in Apache Tomcat. This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.1, from 10.1.0-M1 through 10.1.33, from 9.0.0.M1 through 9.0.97. The following versions were EOL at the time the CVE was created but are known to be affected: 8.5.0 though 8.5.100. Other, older, EOL versions may also be affected. The mitigation for CVE-2024-50379 was incomplete. Users running Tomcat on a case insensitive file system with the default servlet write enabled (readonly initialisation parameter set to the non-default value of false) may need additional configuration to fully mitigate CVE-2024-50379 depending on which version of Java they are using with Tomcat: - running on Java 8 or Java 11: the system property sun.io.useCanonCaches must be explicitly set to false (it defaults to true) - running on Java 17: the system property sun.io.useCanonCaches, if set, must be set to false (it defaults to false) - running on Java 21 onwards: no further configuration is required (the system property and the problematic cache have been removed) Tomcat 11.0.3, 10.1.35 and 9.0.99 onwards will include checks that sun.io.useCanonCaches is set appropriately before allowing the default servlet to be write enabled on a case insensitive file system. Tomcat will also set sun.io.useCanonCaches to false by default where it can.",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache Tomcat"
   }
 }
