@@ -116298,7 +116298,7 @@
     "product": "bolo-solo"
   },
   "CVE-2026-125423": {
-    "cvss": null,
+    "cvss": 8.8,
     "description": "A repository created with auto-init accepted pushes before its initialization had finished, and the initial commit was built in a checkout of whatever the repository already contained. A user who is allowed to create repositories could push a crafted tree during that window so that writing the README followed a symbolic link and overwrote a server-side git hook, which runs commands as the Gitea system user. The initial commit is now built in a freshly initialized directory, and a new repository only becomes ready, and accepts pushes, once its initialization is complete.",
     "vendor": "Gitea",
     "product": "Gitea"
@@ -120650,6 +120650,1794 @@
   "CVE-2026-101665": {
     "cvss": 8.1,
     "description": "Vulnerability in the Oracle Mobile Field Service product of Oracle E-Business Suite (component: Admin UI). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Mobile Field Service. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Mobile Field Service accessible data as well as unauthorized access to critical data or complete access to all Oracle Mobile Field Service accessible data. CVSS 3.1 Base Score 8.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124501": {
+    "cvss": 7.3,
+    "description": "A weakness has been identified in Tidelift moto up to 5.2.4. Affected is an unknown function of the file moto/batch/models.py of the component AWS Batch Emulation. This manipulation of the argument privileged/volumes causes improper privilege management. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124502": {
+    "cvss": 4.3,
+    "description": "A security vulnerability has been detected in yungifez Skuul School Management System up to 2.6.3. Affected by this vulnerability is the function GraduationController::resetGraduation of the file app/Http/Controllers/GraduationController.php of the component Delete Handler. Such manipulation of the argument student leads to missing authorization. The attack can be executed remotely. The exploit has been disclosed publicly and may be used. Upgrading to version 3.0.0 addresses this issue. The name of the patch is b42f2c80a8e5e01ca6e607bbd97f137ede368ac9. The affected component should be upgraded.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124506": {
+    "cvss": 4.3,
+    "description": "A vulnerability has been found in Dianping CAT 3.0.0/3.1.0/4.0-RC1. This vulnerability affects the function Model.getDomain of the file WEB-INF/tags/hourlyReport.tag of the component Report Handler. The manipulation of the argument domain leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124507": {
+    "cvss": 5.3,
+    "description": "A vulnerability was found in conductor-oss conductor up to 3.32.4/3.33.0/3.34.0-rc3/4.0.0-alpha.1. This issue affects the function WorkflowSystemTask.start of the file PlannerContextFetchTask.java of the component PLANNER_CONTEXT_FETCH Task Handler. The manipulation of the argument url results in server-side request forgery. It is possible to launch the attack remotely. The exploit has been made public and could be used. The researcher claims to have submitted a GHSA on the repository of the project.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124554": {
+    "cvss": 7.3,
+    "description": "A security flaw has been discovered in JeecgBoot 3.9.5. This affects an unknown part of the file /jeecg-boot/drag/onlDragDatasetHead/getAllChartData of the component JimuBI. Performing a manipulation of the argument params results in sql injection. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124555": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in JeecgBoot 3.9.5. This vulnerability affects the function JimuFormApiService.getTableDictList of the file /jeecg-boot/jmreport/form/getTableDictList of the component Table Dictionary API. Executing a manipulation of the argument searchSql can lead to sql injection. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121825": {
+    "cvss": 6.1,
+    "description": "OpenAM (OpenAM Consortium Edition) 14.0.5 and earlier contains an open redirect vulnerability (CWE-601) in the Liberty ID-FF service provider single sign-on flow. The goto parameter of the /preLogin endpoint is stored as the RelayState of the Liberty ID-FF authentication request without validation, and after the user completes single sign-on at the identity provider, the assertion consumer service redirects the browser to that value. A remote unauthenticated attacker can induce a user to access a crafted URL and, after the user authenticates, redirect the user to an arbitrary website, which may be used for phishing. Only deployments in which a Liberty ID-FF hosted service provider is configured are affected; Liberty ID-FF is not configured by default. This issue is fixed in 14.0.6, which disables the legacy Liberty ID-FF endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124558": {
+    "cvss": 7.3,
+    "description": "A vulnerability has been found in DataLinkDC Dinky up to 1.2.5. The impacted element is the function SqlGateway.onOpen of the file SqlGateway.java of the component sql-gateway Endpoint. Such manipulation of the argument connectAddress leads to server-side request forgery. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The researcher claims to have submitted a GHSA on the repository of the project.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124560": {
+    "cvss": 9.8,
+    "description": "A vulnerability was found in D-Link DIR-878 1.20B05. This affects the function GetCAPTCHAsetting of the file bin/prog.cgi of the component HNAP Handler. Performing a manipulation of the argument uid results in heap-based buffer overflow. The attack can be initiated remotely. The exploit has been made public and could be used. This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113362": {
+    "cvss": 8.5,
+    "description": "Improper Access Control in the program installation folder in NEC Corporation WebSAM Winshare Ver 7.5.0 and earlier (excluding Ver 7.3.3), Ver 7.6.0 and Ver 7.7.0 through 7.7.1 on Windows allows a locally authenticated low-privileged attacker to execute arbitrary code with SYSTEM privileges via a crafted DLL file that is loaded by a SYSTEM-level process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124561": {
+    "cvss": 7.5,
+    "description": "A vulnerability was determined in D-Link DIR-878 1.20B05. This impacts the function SetVLANSettings of the file prog.cgi of the component HNAP Handler. Executing a manipulation of the argument VID can lead to stack-based buffer overflow. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized. This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124563": {
+    "cvss": 7.5,
+    "description": "A security flaw has been discovered in D-Link DIR-878 1.20B05. Affected by this vulnerability is the function SetWanSettings of the component HNAP Handler. The manipulation of the argument Primary/Secondary results in buffer overflow. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks. This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124564": {
+    "cvss": 5.3,
+    "description": "A weakness has been identified in D-Link DIR-878 1.20B05. Affected by this issue is the function GetListDirectory of the file bin/prog.cgi of the component HNAP Handler. This manipulation of the argument ListDirectoryPath causes path traversal. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks. This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113363": {
+    "cvss": 9.3,
+    "description": "Improper Input Validation in the network communication processing in NEC Corporation WebSAM WinShare Ver 7.2.0 through 7.5.0, Ver 7.6.0 and Ver 7.7.0 through 7.7.2 on Windows allows a remote unauthenticated attacker to execute arbitrary commands with SYSTEM privileges via a crafted network packet sent to the computer on which WinShare is running.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113364": {
+    "cvss": 9.3,
+    "description": "Buffer Overflow in the data receiving process in NEC Corporation WebSAM WinShare Ver 7.5.0 and earlier, Ver 7.6.0 and Ver 7.7.0 through 7.7.2 on Windows allows a remote unauthenticated attacker to execute arbitrary code with SYSTEM privileges via a crafted packet with a malformed data size value in the protocol header.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124567": {
+    "cvss": 4.3,
+    "description": "A flaw has been found in fushengqian fuint up to 36cc31b08d77facc94e8959afa02224891b4fe5f. This issue affects the function receipt of the file ClientOrderController.java. Executing a manipulation can lead to state issue. The attack may be performed from remote. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases is not disclosed. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124568": {
+    "cvss": 4.3,
+    "description": "A vulnerability has been found in fushengqian fuintCatering up to 6d054f5788ac8645eb491f79242bb8a625efc133. Impacted is the function RefundServiceImpl.agreeRefund of the component Refund Agreement. The manipulation leads to improper access controls. It is possible to initiate the attack remotely. This product is using a rolling release to provide continious delivery. Therefore, no version details for affected nor updated releases are available. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-124571": {
+    "cvss": 6.3,
+    "description": "A flaw has been found in SourceCodester Simple CRUD using PHP and FPDF 1.0. Affected by this vulnerability is an unknown functionality of the file app/register.php. Executing a manipulation of the argument firstname can lead to sql injection. The attack can be executed remotely. The exploit has been published and may be used.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124572": {
+    "cvss": 5.4,
+    "description": "A vulnerability has been found in DataLinkDC dinky up to 1.2.5. Affected by this issue is the function CatalogueController.upload of the file dinky-admin/src/main/java/org/dinky/controller/CatalogueController.java of the component Catalogue Upload API. The manipulation leads to path traversal. The attack is possible to be carried out remotely. The researcher claims to have submitted a GHSA on the repository of the project.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124575": {
+    "cvss": 3.7,
+    "description": "A vulnerability was identified in SiteServer SSCMS up to 7.1.3/7.2.1/7.4.0. This issue affects the function LoginController.Submit of the file src/SSCMS.Web/Controllers/Admin/LoginController.Submit.cs of the component Admin-Login CAPTCHA. Such manipulation of the argument isForceLogoutAndLogin leads to improper restriction of excessive authentication attempts. It is possible to launch the attack remotely. A high complexity level is associated with this attack. The exploitability is assessed as difficult. The name of the patch is df3becb7ebb00a48435418a44fd08a459eb38ace. Applying a patch is advised to resolve this issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109582": {
+    "cvss": 4.0,
+    "description": "Insecure storage of sensitive information issue exists in SS1 provided by DOS Co., Ltd. Sensitive information used by the product may be obtained.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113437": {
+    "cvss": 5.3,
+    "description": "Path Traversal vulnerability exists in SS1/ SS1 Cloud provided by DOS Co., Ltd. and the ODM product rocoeyes provided by Rococo Co. Ltd. Arbitrary files may be deleted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120386": {
+    "cvss": 4.3,
+    "description": "Effekseer improperly validates \"effect\" files. When a crafted effect file is loaded to the affected runtime, the host process may be forced to crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124577": {
+    "cvss": 9.8,
+    "description": "A weakness has been identified in Intelbras SG 2404 PoE L2+ 1.00.70/1.00.72. The affected element is an unknown function of the file /EXCU_SHELL of the component Web Management Interface. Executing a manipulation can lead to improper authentication. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. Upgrading to version 1.00.74 is sufficient to fix this issue. Upgrading the affected component is advised.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124579": {
+    "cvss": 7.4,
+    "description": "A vulnerability was determined in aaPanel BillionMail up to 4.9. Affected by this issue is some unknown functionality of the file core/api/relay/v1/relay.go of the component Relay Configuration API. Executing a manipulation of the argument helo_name can lead to injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124580": {
+    "cvss": 10.0,
+    "description": "A vulnerability was found in Chengdu Feiyuxing Technology VW2100 and VEC10GP 1.0 B-MB3W202-210825-r11775. This impacts the function handle_wechat_cn_wifi of the file var/html/webserver of the component Weixin Auth Endpoint. The manipulation of the argument extend results in os command injection. The attack can be executed remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116337": {
+    "cvss": 0.6,
+    "description": "Uncontrolled resource consumption vulnerability in the Qt Framework HTTP response handling functionality of the Qt Network module.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123870": {
+    "cvss": 9.5,
+    "description": "The otterdog webapp evaluates a format-string built from the incoming GitHub webhook JSON body using Python's eval(). When the GITHUB_WEBHOOK_SECRET configuration value is unset or empty (the code default is None), the HMAC signature check is skipped entirely, allowing an unauthenticated network client to reach the eval() sink with attacker-controlled input and execute arbitrary Python on the webapp host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124584": {
+    "cvss": 4.4,
+    "description": "A vulnerability has been found in wummel patool 4.1.0. This vulnerability affects the function extract_gzip of the file patoolib/fileutil.py of the component Gzip Extraction Handler. The manipulation leads to symlink following. Local access is required to approach this attack. The researcher claims to have submitted a GHSA on the repository of the project.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124585": {
+    "cvss": 9.9,
+    "description": "A vulnerability was found in Chengdu Feiyuxing Technology VW2100 and VEC10GP 1.0 B-MB3W202-210825-r11775. This issue affects the function add_expmac of the file var/html/webserver of the component Web Administration Interface. The manipulation of the argument mac results in os command injection. The attack may be performed from remote. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92606": {
+    "cvss": 6.0,
+    "description": "Time-of-check time-of-use (TOCTOU) race condition vulnerability in TÜBİTAK BİLGEM Software Technologies Research Institute Pardus MyComputer allows Leveraging Time-of-Check and Time-of-Use (TOCTOU) Race Conditions. This issue affects Pardus MyComputer: from 0.8.0 before 0.8.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101031": {
+    "cvss": 9.1,
+    "description": "The `example_dag_decorator` example Dag shipped with Apache Airflow validated an IP address fetched over HTTP with Python's `ipaddress` module and then placed it into a shell command. `ipaddress` accepts IPv6 zone identifiers containing arbitrary characters, so when example Dags are loaded (`load_examples` enabled), a user who can trigger that Dag with a custom `url` parameter could point it at a server whose response injects shell commands run on the worker. This is an incomplete fix for CVE-2025-54941; users who upgraded for CVE-2025-54941 should upgrade again. Users are advised to upgrade to apache-airflow 3.4.0 or later, or to disable example Dags (`load_examples = False`), which is recommended for production.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107474": {
+    "cvss": 6.5,
+    "description": "The Apache Airflow connections API did not mask the apprise provider's `config` connection extra, which can embed notification-service credentials. A user with permission to read connections could retrieve it in cleartext, although Airflow 3 treats connection credentials as write-only. Users are advised to upgrade to apache-airflow 3.4.0 or later. Airflow 2.x is also affected; Airflow 2 has reached end of life and will not receive a fix, so Airflow 2 users should upgrade to Apache Airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111395": {
+    "cvss": 8.2,
+    "description": "Apache Airflow did not reject reserved serialization keys inside a Dag run's `conf`. A user allowed to trigger a Dag that uses a deadline alert with an asynchronous callback could pass a `conf` that, once the deadline was missed, either crashed the scheduler repeatedly or was rebuilt into objects inside the Triggerer. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111452": {
+    "cvss": 6.5,
+    "description": "Apache Airflow's secrets masker matched sensitive key names only in their snake_case form, so values stored under camelCase keys such as `privateKey`, `connectionString`, `webhookUrl` or `accessKey` — for example in a Connection's extra or a Variable — were not redacted in task logs, rendered template fields or API responses. A user who can read task logs or rendered templates, but is not meant to see those credentials, could read them in cleartext. Users are advised to upgrade to apache-airflow 3.4.0 or later. Airflow 2.x is also affected; Airflow 2 has reached end of life and will not receive a fix, so Airflow 2 users should upgrade to Apache Airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111454": {
+    "cvss": 6.5,
+    "description": "Apache Airflow's asset API endpoints returned the IDs of Dags that are scheduled on, produce, or consume an asset without checking whether the caller may read those Dags. An authenticated user with asset read access could learn the IDs of Dags they are not authorized to see. Users are advised to upgrade to apache-airflow 3.4.0 or later. Airflow 2.x is also affected; Airflow 2 has reached end of life and will not receive a fix, so Airflow 2 users should upgrade to Apache Airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111455": {
+    "cvss": 6.5,
+    "description": "Apache Airflow's asynchronous connection test checked permissions when the test was queued — only create permission when the connection ID did not exist yet — but, when the test completed with `commit_on_success`, wrote the tested connection under that ID. A user allowed to create but not edit connections could overwrite a connection someone else had created in the meantime. Only deployments that enable the non-default `[core] test_connection` setting are affected. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113504": {
+    "cvss": 6.5,
+    "description": "Apache Airflow's secrets masker stopped descending into nested structures after five levels, so a secret registered with the masker — for example a Connection password or a Variable value — that appeared more than five containers deep under non-sensitive keys was shown in cleartext in task logs and rendered template fields. A user who can read task logs or rendered templates, but is not meant to see those secrets, could read them. Users are advised to upgrade to apache-airflow 3.4.0 or later. Airflow 2.x is also affected; Airflow 2 has reached end of life and will not receive a fix, so Airflow 2 users should upgrade to Apache Airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113508": {
+    "cvss": 7.5,
+    "description": "Apache Airflow's logout endpoint attempted to revoke the presented token on the server, but any failure during revocation was silently ignored and logout still reported success. When the auth manager redirects logout to an external logout URL (for example the FAB or Keycloak auth managers), server-side revocation is the only thing that invalidates the Airflow token; it failed on database errors and, reliably, for tokens from an external issuer accepted via `[api_auth] trusted_jwks_url` whose token identifier is longer than 32 characters. Anyone holding a copy of a user's token from before logout could keep using it against the Airflow API until it expired. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124588": {
+    "cvss": 6.3,
+    "description": "A security flaw has been discovered in huggingface finetrainers 0.1.0/0.2.0. The impacted element is the function resolve_component_cls of the file finetrainers/utils/model.py of the component Model Index Handler. Performing a manipulation of the argument Library results in code injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124589": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in lxtGH OMG-Seg up to f3b26b609bae919760cd3ccf09c36179bb8624a0. This affects the function load_state_dict_into_model of the file omg_llava/xtuner/utils/handle_moe_load_and_save.py of the component MoE Shard Checkpoint Loader. Executing a manipulation of the argument weight_map can lead to path traversal. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-124637": {
+    "cvss": 5.3,
+    "description": "A stored Cross-Site Scripting (XSS) vulnerability was identified in the profile editing form, in the parameters: cliNom and cliCognoms, in a request to https://www.luxorgymtarrega.com/dadespersonals/modificarClient/ID. User-provided data is neither validated nor escaped before being displayed in the HTML response and stored in the database, allowing arbitrary JavaScript code to be executed in the victim’s browser.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40913": {
+    "cvss": 8.2,
+    "description": "Apache Airflow's public Import Errors API returns the raw parse-failure stack trace to any user with the `ImportError.can_read` permission when the failing file has no registered DAG. This happens when a file fails to parse before any DAG is defined, or when all of its previously registered DAGs are removed but the parse error remains. Users who should not see that file's details can read stack traces that may expose file paths and code. Users are advised to upgrade to Apache Airflow 3.4.0 or later, which restricts these stack traces to users with the new `IMPORT_ERRORS_ALL` permission.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50204": {
+    "cvss": 6.5,
+    "description": "Apache Airflow's audit log stored Connection and Variable secret values in cleartext in the `Log.extra` column because the secrets masker matched only on configured sensitive key names. An authenticated low-privilege user with read access to the event-log / audit API — with no prior access to the affected connection or variable — could read those rows and recover the credentials verbatim. Users should upgrade to apache-airflow 3.4.0 or later, which masks these values and restricts the affected audit rows to authorized users. Airflow 2.x is also affected; Airflow 2 has reached end of life and will not receive a fix, so Airflow 2 users should upgrade to Apache Airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68982": {
+    "cvss": 9.8,
+    "description": "Apache Airflow's CeleryExecutor ran callback workloads (`ExecuteCallback`, used for deadline-alert callbacks) without validating the workload's authentication token. Anyone able to write to the Celery broker could enqueue a forged callback and execute arbitrary code on every CeleryExecutor worker, without Airflow credentials. Deployments using the CeleryExecutor are affected. Users are advised to upgrade to apache-airflow 3.4.0 or later, in which the worker claims the callback through the Execution API, validating the token, before running it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76185": {
+    "cvss": 6.5,
+    "description": "Apache Airflow's Task SDK secret cache built its keys from the team name and secret id with unescaped `_` delimiters, so different (team, secret id) pairs could collide. In multi-team deployments a Dag author could read another team's Variable or Connection value by crafting a colliding secret id. Only deployments with both `core.multi_team = True` and `secrets.use_cache = True` are affected. Users are advised to upgrade to apache-airflow 3.4.0 or later. Deployments that cannot upgrade can set `secrets.use_cache = False`.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82337": {
+    "cvss": 7.3,
+    "description": "Apache Airflow rebuilt deadline alert fields through generic deserialization, which imports and instantiates the class named in the serialized Dag, in the scheduler and API server. A Dag author could cause classes within Airflow's deserialization allow list to be constructed in those processes with arguments they control. Deployments whose Dags use deadline alerts are affected. This is an incomplete fix of CVE-2026-45360, which only hardened the `reference` field; deployments that applied that fix remain affected through the `callback` and `interval` fields. Users of apache-airflow are recommended to upgrade to 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82436": {
+    "cvss": 8.8,
+    "description": "Description `DefaultStateSerializer`, used to persist and restore stateful bolt checkpoints, configured Kryo with class registration disabled and an instantiation strategy that constructs objects without invoking their constructors, then deserialized whatever bytes the state store returned. A party able to write to the topology's keyspace in the state store, for example a co-tenant of a shared Redis instance or anyone with network access to it, could therefore place a serialized object graph that executes code inside the worker JVM when the state is restored. This requires the Redis-backed state provider, which is not the default. Write access to a state-store key is a data-plane privilege; code execution in the worker JVM is not, so the two are not equivalent. Mitigation Upgrade to 3.1.0, where the state serializer requires registered classes. Note that this is a behaviour change for existing state: checkpoints written by an affected version may fail to restore, and a migration step may be required. Users who cannot upgrade immediately should restrict network and credential access to the state store to the cluster itself. Credit The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-82440": {
+    "cvss": 8.1,
+    "description": "Description Nimbus instantiates the class named by a topology's `topology.scheduler.strategy` when scheduling it. The allowlist intended to constrain that choice, `nimbus.scheduler.strategy.class.whitelist`, was treated as \"allow any class\" when unset, and it had no entry in the shipped `defaults.yaml`, so unset was the shipped state. An authenticated submitter could therefore cause Nimbus to instantiate any class on the Nimbus classpath that has a no-argument constructor. Storm's own production artifacts contain classes with side effects suitable for this: instantiating `org.apache.storm.testing.InProcessZookeeper` starts a ZooKeeper server with its own threads and sockets and nothing closes it, and `org.apache.storm.LocalCluster` behaves similarly. Repeated submissions therefore consume threads, sockets and memory in the most privileged daemon in the cluster. Mitigation Upgrade to 3.1.0, where an unset allowlist means the strategies shipped with Storm rather than any class. Note that this is a behaviour change: a cluster running an out-of-tree scheduler strategy without an explicit allowlist will have those topologies refused until the class is added to `nimbus.scheduler.strategy.class.whitelist`. The rejection message names the refused class and the configuration key. Users who cannot upgrade immediately should set `nimbus.scheduler.strategy.class.whitelist` explicitly to the strategies they intend to permit.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86468": {
+    "cvss": 6.5,
+    "description": "Apache Airflow's CLI records its arguments in the audit log but masks secrets by argument position, so some supported command shapes leave secrets in cleartext, for example a trailing `--description` on Variable commands, `--conn-extra`, and the inline `--password` of `airflow keycloak-auth-manager` commands. A user who can read audit events but is denied Variable and Connection access can retrieve those values through the event-log API. Users of apache-airflow are recommended to upgrade to 3.4.0 or later. Audit-log entries written before the upgrade keep the cleartext values: purge the affected entries and rotate the secrets they contain. Airflow 2.x is also affected; Airflow 2 has reached end of life and will not receive a fix, so Airflow 2 users should upgrade to Apache Airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86829": {
+    "cvss": 8.8,
+    "description": "Apache Airflow's scheduler fully deserializes XCom values written by task code while evaluating task dependencies. A Dag author, who controls what a task writes to XCom, therefore controls data that is deserialized inside the scheduler process - a context the Airflow security model reserves for code installed by the Deployment Manager, above the worker-scoped execution capability a Dag author is documented to have. Deployments that treat Dag authors as less trusted than Deployment Managers are affected, and the scheduler must be evaluating a task dependency that reads a task-written XCom value. Users of apache-airflow are recommended to upgrade to version 3.4.0 or later, which restricts dependency evaluation to primitive XCom values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92683": {
+    "cvss": 8.6,
+    "description": "Incorrect authorization in the @authentication directive JWT where filter evaluation in Neo4j @neo4j/graphql versions 7.0.0 before 7.6.7 allows an attacker holding an otherwise-valid JWT to bypass all but the first filter condition via a multi-condition jwt where filter written in generic operator syntax.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96285": {
+    "cvss": 8.8,
+    "description": "Apache Airflow 3.3.1 shipped a fix for CVE-2026-67260 that checks the scheduler's decoded `next_kwargs` value is a dictionary, but performs that check only after deserializing the whole stored payload. Deserialization reconstructs nested objects of classes permitted by the deserialization allow-list — which by default includes Airflow's own classes — and runs their constructors inside the scheduler process before the check can reject the value. A Dag author, who controls a task's `next_kwargs` through the task execution API, can therefore still trigger constructor execution in the scheduler when the `awaiting_input` timeout sweep processes the task, and in the API server when the task instance is served to a worker using an older Execution API version; no non-default configuration is required. Versions before 3.3.0 are not affected. This is an incomplete fix for CVE-2026-67260: deployments that upgraded to 3.3.1 for that issue must also upgrade to apache-airflow 3.4.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113702": {
+    "cvss": 4.3,
+    "description": "A security flaw has been discovered in iomad up to 4.5.15/5.0.11/5.1.8/5.2.4. Affected by this vulnerability is the function local_iomad_pluginfile in the library public/local/iomad/lib.php of the component PDF Certificate Handler. The manipulation results in authorization bypass. The attack can be launched remotely. The patch is identified as ac7427130865ce0ed80870813317c87ae3060fa4/7bf0b10199782e04aa579e9d516e473b164afd1c/db903abdcb3aba124cce670608ae6d7ba5f51a84/66f7417c5357b7575e39e8be390602156c1a1225. It is advisable to implement a patch to correct this issue. This CVE was requested by the vendor.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-118196": {
+    "cvss": 9.1,
+    "description": "OAuth 1 rebinding vulnerability in Apache Allura. This issue affects Apache Allura: through 1.22.0. Users are recommended to upgrade to version 1.22.1, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120367": {
+    "cvss": 7.5,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in Apache Axis2/Java. The JSON message builders, including the Gson, Moshi and HTTP/2 variants, buffered the entire request body with no size limit, so an unauthenticated caller could exhaust server memory with a large JSON request. Version 2.0.2 bounds JSON request bodies with the configurable jsonMaxRequestSize parameter. This issue affects Apache Axis2/Java: through 2.0.1. Users are recommended to upgrade to version 2.0.2, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120761": {
+    "cvss": 9.1,
+    "description": "Improper Restriction of XML External Entity Reference vulnerability in Apache Axis2/Java. When a client built an AxisService from a WSDL URL, through ServiceClient or AxisService.createClientSideAxisService, wsdl4j import resolution was enabled and the documents named by wsdl:import and xsd:import were parsed by wsdl4j's own XML parser, which processes DOCTYPE declarations and external entities. An attacker who controls a WSDL, or a document it imports, could therefore read local files or make the JVM issue network requests. This issue affects Apache Axis2/Java: through 2.0.1. Users are recommended to upgrade to version 2.0.2, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120832": {
+    "cvss": 6.5,
+    "description": "Server-Side Request Forgery (SSRF) vulnerability in Apache Axis2/Java. When Axis2 built a service description from a WSDL, through ServiceClient, AxisService.createClientSideAxisService or WSDLToAxisServiceBuilder, it fetched the absolute URLs in wsdl:import locations and in xsd:import and xsd:include schemaLocations with no scheme or host restriction; the AAR and WAR deployment resolvers also passed absolute schema locations on to the network. An attacker who controls a WSDL or schema processed by an Axis2 application could therefore make the JVM send requests to arbitrary internal or external hosts. This issue affects Apache Axis2/Java: through 2.0.1. Users are recommended to upgrade to version 2.0.2, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123766": {
+    "cvss": 6.1,
+    "description": "Improper Neutralization of Input During Web Page Generation (Cross-site Scripting) vulnerability in the OpenAPI module of Apache Axis2/Java. The Swagger UI page served by the OpenAPI module wrote a value derived from the request's Host header into the page without encoding, allowing script injection in the context of the Axis2 origin. This issue affects Apache Axis2/Java: 2.0.1. Users are recommended to upgrade to version 2.0.2, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123770": {
+    "cvss": 7.5,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in Apache Axis2/Java. The multipart/form-data and application/x-www-form-urlencoded message builders read the request body directly from the transport stream with no size limit, so the servlet container's post-size limit did not apply, and multipart temporary files were not deleted. An unauthenticated caller could exhaust memory or disk. Version 2.0.2 bounds these bodies with configurable limits and deletes temporary files. This issue affects Apache Axis2/Java: through 2.0.1. Users are recommended to upgrade to version 2.0.2, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123779": {
+    "cvss": 5.3,
+    "description": "Direct Request ('Forced Browsing') vulnerability in Apache Axis2/Java. The exposeServiceMetadata service parameter was enforced only on the ?wsdl, ?wsdl2 and ?xsd queries. For a service that had disabled it, the packaged .wsdl and .xsd file routes, the named-WSDL ?wsdl=NAME route of the standalone HTTP server, the OpenAPI, Swagger UI and MCP catalog endpoints, the services listing, WS-MetadataExchange GetMetadata and the ping module still disclosed its metadata to anonymous callers, including operation names and request and response schemas. This issue affects Apache Axis2/Java: through 2.0.1. Users are recommended to upgrade to version 2.0.2, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112172": {
+    "cvss": 8.1,
+    "description": "CGM XDent and XMedical expose PHP synchronization endpoints that allow unauthenticated attackers to manipulate session variables and execute arbitrary SQL queries against backend MySQL databases.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118450": {
+    "cvss": 5.9,
+    "description": "Venere is installed outside Program Files and loads/registers unsigned components from locations where an unprivileged user may create files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118458": {
+    "cvss": 8.1,
+    "description": "The shared AIS login routing selects a production-shipped test DAO and plaintext comparison for the H and V application codes, accepting fixed administrator accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118459": {
+    "cvss": 6.3,
+    "description": "A time-derived emergency password can be derived from publicly available application code, enabling authentication without legitimate credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118460": {
+    "cvss": 8.0,
+    "description": "Embedded private keys protected by a shared password can be used to sign practitioner assertions for arbitrary practitioner identifiers, enabling unauthorized practitioner token requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118461": {
+    "cvss": 8.0,
+    "description": "The shared client accepts caller-controlled doctor identifiers for read and write operations without requiring authentication or authorization credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118462": {
+    "cvss": 9.2,
+    "description": "Update components download and execute code without proper authenticity verification, relying on ignored hashes or forgeable checksums. Some update paths also permit archive traversal or script execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118464": {
+    "cvss": 5.8,
+    "description": "Shared cryptographic services use fixed vendor-wide secrets, deterministic IVs, null salts, and reversible transformations to protect credentials, IPC data, configuration values, and clinical fields.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118465": {
+    "cvss": 5.8,
+    "description": "Shared components expose hard-coded Access, workgroup, CCBasic, DBISAM, and related database credentials that are identical across installations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118467": {
+    "cvss": 4.3,
+    "description": "Shared telemetry and logging components store or transmit patient and doctor identifiers, clinical information, and low-entropy identifiers without adequate pseudonymization or protection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118468": {
+    "cvss": 7.2,
+    "description": "XML parsers process attacker-influenced update manifests or network responses with external entity resolution enabled, potentially allowing XML External Entity (XXE) attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121629": {
+    "cvss": 7.5,
+    "description": "A flaw was found in GStreamer's adaptive streaming demuxers (HLS, DASH, MSS). When processing a media playlist or manifest, URIs referenced in the manifest content are fetched without restricting which URI schemes are permitted. An attacker who controls a manifest URL, or who can inject content into an HTTP manifest response, can include file:// URIs pointing to arbitrary local files, causing the affected application to read and process those files. In automated or server-side deployments such as media recorders, proxies, and downloaders, this can lead to disclosure of sensitive local files. Existence of files can also be inferred through differing error responses even when content is not directly observable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124684": {
+    "cvss": 5.7,
+    "description": "A use-after-free vulnerability exists in Samsung Escargot 5.0.2 in the buffer-access paths for ReloadableString and CompressibleString. Internal raw character accessors and the public StringRef::stringBufferAccessData() API did not preserve the lifetime of the underlying buffer while it remained in use. As a result, idle unloading or garbage-collection compression could release the buffer and leave a stale pointer. Subsequent access may cause the process to crash or, under allocation-dependent conditions, expose limited contents of another heap allocation. The issue was addressed by adding buffer-lifetime reference tracking and removing unsafe raw character accessors.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110469": {
+    "cvss": 10.0,
+    "description": "WidzialniCMS is vulnerable to Unrestricted File Upload in the /panel/upload.php endpoint. Due to a client-controlled permission check parameter and insufficient validation of the uploadPath parameter, an unauthenticated attacker can upload arbitrary files to any locations on the server, leading to Remote Code Execution. This issue has been fixed in version 2.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112168": {
+    "cvss": 6.0,
+    "description": "The Magistra software uses weak custom encryption, relies on an outdated compression algorithm to protect the database, and contains embedded secrets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112169": {
+    "cvss": 6.1,
+    "description": "Magistra software contains undocumented backdoor functionality that allows authentication bypass and the creation of a privileged user account without credential verification.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112170": {
+    "cvss": 6.3,
+    "description": "The software downloads upgrade files without performing integrity checks, allowing the installation of tampered updates.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112171": {
+    "cvss": 4.4,
+    "description": "An attacker can inject malicious SQL statements through user-controlled input, allowing unauthorized access to, modification of, or disclosure of database data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112204": {
+    "cvss": 5.1,
+    "description": "WidzialniCMS is vulnerable to Reflected XSS in the /index.php endpoint. An attacker can prepare an URL that, when opened, results in arbitrary JavaScript execution in the victim's browser, allowing e.g session cookie theft. This issue has been fixed in version 2.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112205": {
+    "cvss": 6.9,
+    "description": "WidzialniCMS is vulnerable to Bruteforce Protection Bypass in the login functionality. The cookie-based lockout can be bypassed by omitting the login_count and login_timeout cookies, allowing an unauthenticated attacker to perform an unlimited number of login attempts. This issue has been fixed in version 2.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118790": {
+    "cvss": 7.2,
+    "description": "Multiple hardcoded credentials are embedded within product components and administrative functionalities. These credentials may enable unauthorized access to privileged accounts, services, or application features across affected deployments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118791": {
+    "cvss": 7.2,
+    "description": "The application implements software update functionality without adequate authenticity and integrity validation, allowing update packages to be accepted without sufficient cryptographic verification.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118792": {
+    "cvss": 6.1,
+    "description": "Default credentials permit access through AcuXDBC.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118795": {
+    "cvss": 5.9,
+    "description": "Administrative roles and module permissions are stored in mutable local database fields, allowing privilege escalation for attackers with database write access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118798": {
+    "cvss": 4.4,
+    "description": "Multiple sensitive authentication data, including credentials, OAuth-related secrets, session information, and authentication artifacts, are exposed through application logs and persistent client-side storage, enabling unauthorized access and session compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119610": {
+    "cvss": 8.2,
+    "description": "A flaw was found in GStreamer's gst-plugins-good, specifically in the H.264 RTP depayloader element. When processing MTAP16 or MTAP24 multi-time aggregation RTP packets, a signed/unsigned integer conversion error causes the remaining-length counter to underflow to a large positive value when the packet is truncated. This allows a remote, unauthenticated attacker to trigger an out-of-bounds heap read of up to approximately 64 KiB of process memory by sending a single malformed RTP packet. Successful exploitation can crash the receiving GStreamer pipeline (denial of service), and in relay or transcoding deployments where output is accessible to the attacker, may expose adjacent heap contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119613": {
+    "cvss": 5.3,
+    "description": "Generation of Error Message Containing Sensitive Information vulnerability in ash-project ash_ai allows a caller of an AshAi tool to read internal error details, including module names and data values, by making a tool call fail. AshAi.ToToolError gained an implementation for Ash.Error.Unknown.UnknownError that returns the error's error field as is, and AshAi.Tool.Errors.format/1 sends that text to MCP clients (tool calls and resource reads in AshAi.Mcp.Server) and to the model in AshAi.ToolLoop. Ash stores the full Exception.format/2 output of a raised exception, or inspect/1 of a bare {:error, term} return, in that field. A tool result that cannot be JSON-encoded raises a Protocol.UndefinedError whose text includes the inspected value, which can be a whole record with fields the tool never returns. None of these errors were logged. The fix logs them under an error id and returns only that id to the caller. This issue affects ash_ai: from 1.5.0 before 1.5.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95648": {
+    "cvss": 8.1,
+    "description": "Improperly controlled modification of Dynamically-Determined object attributes vulnerability in C-Prot Inc. C-Prot AppDefense allows Privilege Escalation. This issue affects C-Prot AppDefense: before 1.0.2729.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119274": {
+    "cvss": 4.8,
+    "description": "Infoblox NIOS version upto 9.1.0 contain a vulnerability related to improper input validation that allows a stored XSS",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119743": {
+    "cvss": 4.8,
+    "description": "pdfmake before 0.3.14 contains a shared resource caching vulnerability that allows attackers to access cross-document cached resources by exploiting a process-wide virtual file system keyed only by URL without request headers or per-document access enforcement. Attackers can retrieve resources fetched with another caller's credentials or from URLs that a later document's access policy would deny, resulting in cross-document information disclosure and bypass of the URL access policy.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121841": {
+    "cvss": 7.3,
+    "description": "Other issue in Firefox for iOS. This vulnerability was fixed in Firefox for iOS 160.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124624": {
+    "cvss": 5.3,
+    "description": "A weakness has been identified in PipraPay 3.0.0. Affected by this vulnerability is the function hash_hmac of the file pp-content/pp-include/pp-adapter.php of the component pp-token anti-CSRF Handler. Executing a manipulation can lead to hard-coded credentials. The attack may be performed from remote. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124625": {
+    "cvss": 6.3,
+    "description": "A security vulnerability has been detected in PipraPay 3.0.0. Affected by this issue is the function deleteData of the file pp-content/pp-include/pp-functions.php of the component Admin Panel. The manipulation of the argument selected_ids/ItemID leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16283": {
+    "cvss": 8.8,
+    "description": "Improper neutralization of special elements used in an OS command ('OS command injection') vulnerability in Osbil Technology Ltd.Osbil Technology Ltd. OPanel allows OS Command Injection. This issue affects oPanel: before 1.20.66.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95778": {
+    "cvss": 8.8,
+    "description": "A remote code execution vulnerability exists in HPE Morpheus Software.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95779": {
+    "cvss": 8.8,
+    "description": "An exposure of the appliance’s confidential certificate information vulnerability exists in HPE Morpheus manager software.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104620": {
+    "cvss": 8.5,
+    "description": "A path traversal attack in simulation of actions in the Zypp backend of PackageKit before 1.4.1 could be used by local attackers to gain root privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119474": {
+    "cvss": 7.8,
+    "description": "Incorrect Permission Assignment for Critical Resource vulnerability in HAVELSAN Inc. Liman Render Engine allows Privilege Escalation. This issue affects Liman Render Engine: before 1.2-81.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124249": {
+    "cvss": 6.3,
+    "description": "http.cookiejar.CookieJar deleted a stored cookie when a response carried an already expired Set-Cookie header for it, using the Domain and Path attributes from the header without consulting the cookie policy. A server could therefore delete cookies belonging to other domains from a shared cookie jar, such as the one used by urllib's HTTPCookieProcessor. The fix consults the cookie policy before an expired cookie may delete an existing one, as required by RFC 6265 section 5.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124850": {
+    "cvss": 7.3,
+    "description": "A SQL injection vulnerability exists in a database migration script in flowintel. The migration process reads stored connector identifier values from the database and interpolates them directly into SQL statements without parameterization. An attacker who has previously written a malicious identifier value into the affected tables can cause arbitrary SQL execution when the migration is subsequently run during an application upgrade. - Requires prior write access to the database to plant a malicious identifier value - Triggered automatically during a migration or upgrade operation - Can result in unauthorized data disclosure, modification, or deletion Affected versions: flowintel prior to 4.0.0",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124916": {
+    "cvss": 5.4,
+    "description": "PrestaShop contains an authenticated PHP code injection vulnerability in the back-office Performance debug-mode configuration. A back-office user with permission to modify debug settings can supply a crafted `debug_cookie_name` or `debug_cookie_value` that is written without sufficient escaping into a PHP configuration file. When PrestaShop subsequently loads the generated file, the injected PHP code is executed with the privileges of the web-server process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124959": {
+    "cvss": 7.1,
+    "description": "The loadIndex function in nmslib hnswlib and Spotify Voyager does not verify that the element count in a serialized HNSW index is within the stored capacity used to allocate the heap buffer. An attacker can supply a crafted index file with an element count greater than the stored capacity, causing the loader to write beyond the allocated buffer and potentially crash the application when it loads the file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19552": {
+    "cvss": 0.0,
+    "description": "When ca_certs parameter was supplied to ssl.get_server_certificate() function, the identity of the certificate is not checked.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-10248": {
+    "cvss": 7.2,
+    "description": "XSS Vulnerability in OpenText Filr Appliance versions upto 25.1.2 could allow an authenticated user to upload a malicious file and exercise Stored XSS attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118492": {
+    "cvss": 2.0,
+    "description": "In Eclipse Langium versions 3.0.0 and later, the langium-sprotty package does not HTML-escape diagnostic messages before rendering them in the default hover popup provided by `addHoverPopupHandler`. If a Langium grammar allows cross-reference text to contain HTML markup (such as through a STRING terminal), an unresolved cross-reference produces a diagnostic message that includes the literal ref text. When a Sprotty diagram is opened for a malicious source file under these conditions, and a user hovers over the corresponding error marker, attacker-controlled JavaScript can execute in the browser or webview.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-103906": {
+    "cvss": 7.8,
+    "description": "Use of hard-coded MQTT credentials in the AM CLUB mobile application allows an authenticated attacker to connect to the MQTT broker and access data or perform actions across tenant boundaries.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104989": {
+    "cvss": 9.3,
+    "description": "Uncontrolled search path element in package upload feature in Chaos Software V-Ray versions through 2.0.19 allows remote unauthenticated attackers to execute arbitrary code via redirecting access to libraries",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123496": {
+    "cvss": 3.3,
+    "description": "Vikunja veans before 2.7.1 contains a symlink following vulnerability that allows attackers to make veans init write files outside the repository via crafted repo symlinks. Attackers can ship symlinked .veans.yml, .claude, or .opencode entries to overwrite user files like ~/.bashrc or install veans hooks and plugins globally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123500": {
+    "cvss": 6.2,
+    "description": "Vikunja before 2.7.1 contains an insecure file permissions vulnerability that allows local users to read dump archives created with umask permissions by the vikunja dump command. Local attackers on a shared host can read the world-readable zip in the rootpath to obtain config, password hashes, TOTP secrets, tokens, and stored files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123504": {
+    "cvss": 4.3,
+    "description": "Vikunja from 0.22.0 before 2.7.1 contains an information disclosure vulnerability that allows read-only project members to view full webhook target URLs by listing project webhooks. Attackers can extract incoming-webhook tokens or API keys embedded in target_url values to post to receiving channels or reuse keys until rotated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123507": {
+    "cvss": 2.7,
+    "description": "Vikunja from 0.24.0 before 2.7.1 contains a nil pointer dereference vulnerability that allows project admins to break project views by saving a filter-mode bucket configuration with a null filter. Because validateProjectViewFilters skips nil entries, every subsequent read of the view panics in kanban and task collection code, returning HTTP 500 to all project members.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123508": {
+    "cvss": 3.1,
+    "description": "Vikunja before 2.7.1 contains a supply chain vulnerability in its mage release targets that fetch the xgo module and Docker image by mutable latest references. Attackers who compromise the upstream xgo module, image, or registry can inject malicious code into subsequently built release binaries shipped under a valid signature.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123511": {
+    "cvss": 4.3,
+    "description": "Vikunja before 2.7.1 contains an uncontrolled resource consumption vulnerability that allows authenticated CalDAV clients to create unbounded dummy tasks by sending VTODOs with thousands of RELATED-TO properties. Attackers can repeat unknown related UIDs in a single PUT request to generate thousands of task, relation, and event rows, bloating the database and overloading the event pipeline.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123512": {
+    "cvss": 6.1,
+    "description": "Vikunja before 2.7.1 embeds live password-reset, email-confirmation and account-deletion tokens in the URL query string of emailed links, so the full request URI, including the token, is written to Vikunja's HTTP access log and any reverse-proxy logs when a user clicks the link. Attackers with read access to those logs can replay an unredeemed password-reset token to take over the account or an account-deletion token to confirm the deletion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123515": {
+    "cvss": 4.1,
+    "description": "Vikunja before 2.7.1 contains a client-side request forgery vulnerability that allows users with write access to make viewers' clients request loopback or LAN addresses by storing img elements in rich text. Attackers can plant images in tasks, comments, project descriptions, or imported Markdown to trigger blind GET requests against local services and track when viewers open content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123516": {
+    "cvss": 4.3,
+    "description": "Vikunja before 2.7.1 contains a resource exhaustion vulnerability in the vikunja-file ZIP importer that allows authenticated users to consume CPU and memory by uploading archives with excessive entries. Attackers can upload export ZIPs containing many empty or non-files/ entries that bypass the per-entry caps, forcing scanArchive to process every entry twice.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123519": {
+    "cvss": 6.5,
+    "description": "Vikunja before 2.7.1 contains a denial of service vulnerability that allows authenticated users to exhaust API process memory by uploading WeKan or vikunja-file imports with no item-count cap. Attackers can submit a ~22 MB WeKan JSON with hundreds of thousands of cards or duplicate IDs to the wekan migrate endpoint, triggering OOM and crashing the instance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123520": {
+    "cvss": 7.1,
+    "description": "Vikunja from 0.18.0 before 2.7.1 contains a privilege escalation vulnerability that allows team owners to gain admin or ownership of read-only shared projects by deleting accounts. Attackers can create a bot, add it to their team, and delete it through the bots endpoint, triggering ensureProjectAdminUser to promote read-only shares and lock out the real owner.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123523": {
+    "cvss": 6.5,
+    "description": "Vikunja before 2.7.1 contains an uncontrolled resource consumption vulnerability that allows authenticated users to exhaust server memory by requesting avatars at many distinct sizes. Attackers can upload a noisy avatar and fetch it at each size up to 1024, caching roughly a gigabyte per account without eviction and causing the API process to be OOM-killed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123524": {
+    "cvss": 5.7,
+    "description": "Vikunja from 0.23.0 before 2.7.1 contains an information disclosure vulnerability that allows project collaborators with write access to read tasks from inaccessible projects by registering webhooks. Because webhook payloads are built with the triggering user's permissions, attackers receive related_tasks titles, descriptions and metadata from private projects whenever another user modifies a linked task.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123527": {
+    "cvss": 5.4,
+    "description": "Vikunja from 2.4.0 before 2.7.1 contains an authorization bypass vulnerability that allows token holders to perform unintended operations due to colliding v1 and v2 API token permission keys. Attackers with a token scoped to read project backgrounds can delete them via the v2 DELETE background route, and bucket create-only tokens can update existing buckets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123528": {
+    "cvss": 6.8,
+    "description": "Vikunja before 2.7.1 contains an insufficient session expiration vulnerability that allows holders of revoked access tokens to keep authenticating because SetupTokenMiddleware skips session and account-status checks. Attackers with a stolen token can, after logout, password reset, or account disabling, mint OAuth sessions via /oauth/authorize or tk_ API tokens for persistent access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123531": {
+    "cvss": 8.8,
+    "description": "Vikunja from 1.0.0 before 2.7.1 contains an uncontrolled resource consumption vulnerability that allows authenticated users to bypass service.maxitemsperpage by sending page=0 to /api/v1 list endpoints. Attackers can self-register and repeatedly request page=0 to force unbounded SQL queries, memory materialisation, and per-row query fan-out, degrading availability for other users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123532": {
+    "cvss": 6.5,
+    "description": "gix-fs in gitoxide before 0.24.1 contains a credential disclosure vulnerability that allows remote attackers to capture NTLM credentials by supplying UNC symlink targets in a crafted repository. When a victim checks out the repository on Windows with symlinks enabled, gix_fs::symlink::create calls is_dir() on the UNC target, triggering SMB authentication that leaks the username, domain, and NTLMv2 hash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123535": {
+    "cvss": 4.2,
+    "description": "Tornado before 6.6 does not validate the max_age argument of RequestHandler.set_cookie (also called by set_signed_cookie, set_secure_cookie, and clear_cookie), allowing injection of additional Set-Cookie attributes. When an application passes attacker-influenced input as max_age, an attacker can embed attributes such as Domain, Path, or Secure to widen the cookie's scope to parent paths or other subdomains.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123536": {
+    "cvss": 4.1,
+    "description": "OpenAM before 16.1.4 contains a server-side request forgery vulnerability that allows administrators, including delegated realm administrators, to make the server fetch arbitrary URLs through federation configuration wizard metadata URLs. Attackers can enter metadata or OpenID Connect discovery URLs pointing to internal hosts or cloud metadata endpoints to probe the internal network and read partial responses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123539": {
+    "cvss": 4.8,
+    "description": "OpenAM before 16.1.4 contains a stored cross-site scripting vulnerability that allows privileged attackers to inject script by placing markup in a user's display name. When the victim reaches the OAuth 2.0 / OpenID Connect consent page, the unencoded name executes script that can steal the OpenAM session cookie to impersonate the user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123540": {
+    "cvss": 2.0,
+    "description": "OpenAM before 16.1.4 contains an incomplete output encoding vulnerability that allows a SAML 1.x identity provider to alter attribute values by injecting unencoded content into the service provider auto-submitted form. Attackers controlling a trusted identity provider can craft assertion attribute names or values that reach the target application in modified form, undermining the integrity of received attributes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123541": {
+    "cvss": 6.1,
+    "description": "OpenAM before 16.1.4 contains an open redirect vulnerability that allows remote attackers to redirect users after SAML 1.x single sign-on by exploiting loose trusted-partner destination matching. Attackers can craft links to /SAMLAwareServlet or /SAMLPOSTProfileServlet with a destination host resembling a trusted partner to send authenticated users to attacker-controlled phishing sites.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123543": {
+    "cvss": 7.5,
+    "description": "OpenAM before 16.1.4 contains a denial of service vulnerability that allows unauthenticated attackers to exhaust server resources by sending serialized Java data without size or structure limits. Attackers can send small crafted requests to remote SDK endpoints, classic login pages, or the administration console to block authentication, session validation and policy decisions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123544": {
+    "cvss": 6.8,
+    "description": "OpenAM before 16.1.4 and its client SDK fail to sufficiently validate responses on the internal server-to-server SOAP channel, allowing network-positioned attackers to affect integrity and availability. Attackers who intercept unencrypted traffic or control a site server can crash receiving processes, tamper with writable files, and possibly execute code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123547": {
+    "cvss": 4.7,
+    "description": "OpenAM before 16.1.4 contains an open redirect vulnerability that allows attackers to redirect users to external sites because RelayState is unchecked when no relayStateUrlList is configured. Attackers can craft single sign-on links with a malicious RelayState to send users from the trusted OpenAM origin to phishing sites and bypass URL filters.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123548": {
+    "cvss": 4.7,
+    "description": "OpenIdentityPlatform OpenAM before 16.1.4 contains an open redirect because WS-Federation logout, SAML v2.0 logout and name-identifier management, SAML v2.0 identity provider finder, and some authentication pages do not check destination URLs against allowed lists. Attackers can craft OpenAM-domain links that send users to arbitrary external sites for phishing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123549": {
+    "cvss": 9.8,
+    "description": "OpenAM before 16.1.4 fails to enforce the Valid Creation Attributes list during self-registration, allowing anonymous attackers to set restricted attributes including group membership. Attackers can register through the legacy self-service REST endpoint or User Self-Service flow to join administrative groups and gain full administrative control of OpenAM.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123551": {
+    "cvss": 10.0,
+    "description": "OpenAM from 14.0.0 before 16.1.4 contains an information disclosure vulnerability that allows unauthenticated attackers to read live session tokens from the notification WebSocket. Attackers can bypass the agent-only check through an unvalidated internal forward on legacy Liberty ID-FF endpoints, collecting iPlanetDirectoryPro tokens to hijack user and administrator sessions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123552": {
+    "cvss": 6.5,
+    "description": "OpenAM before 16.1.4 contains a server-side request forgery vulnerability in certificate CRL checking that fetches CRLs from the distribution point named in a presented certificate without restricting the destination or verifying the downloaded CRL's signature. Attackers holding a trusted-CA-chained certificate can make OpenAM request internal hosts, capture configured CRL update credentials, overwrite stored revocation data to block certificate authentication for that CA, and tie up authentication threads.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123553": {
+    "cvss": 6.5,
+    "description": "OpenAM before 16.1.4 ships built-in identities in the Top Level Realm (demo, anonymous, wsc, wsp, SecurityTokenService and agentAuth) with passwords that are identical on every installation, publicly known, and able to authenticate. Unauthenticated remote attackers can log in as these identities to obtain authenticated sessions, and the agent identities can read the configuration of other agent profiles.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123555": {
+    "cvss": 7.5,
+    "description": "Zebra from 2.3.0 before 7.0.0 contains a denial of service vulnerability that allows unauthenticated peers to evade misbehavior scoring by sending transactions or blocks with invalid transparent scripts. Attackers can flood mempool with script-failing transactions or serve forged v5 block bodies with altered scriptSig bytes to exhaust CPU and repeatedly stall block sync.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123556": {
+    "cvss": 5.3,
+    "description": "ZcashFoundation Zebra from 4.5.0 before 7.0.0 contains a protection mechanism failure that bans honest peers by scoring mempool lock-time rejections at the ban threshold. Attackers can broadcast transactions locked until the current height right after each block, causing lagging nodes to ban honest relaying peers for 24 hours or until restart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123559": {
+    "cvss": 7.5,
+    "description": "Zebra before 7.0.0 contains an inefficient algorithmic complexity vulnerability that allows unauthenticated peers to exhaust verification threads by submitting transactions with many transparent inputs. Attackers can relay invalid transactions with tens of thousands of inputs, forcing quadratic ZIP-244 or ZIP-243 digest recomputation that stalls Rayon-backed block verification for minutes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123560": {
+    "cvss": 7.5,
+    "description": "Zebra before 7.0.0 contains an incomplete cleanup vulnerability that allows unauthenticated peers to stall initial sync by serving a forged checkpoint block body. Attackers can supply a body with forged authorizing data near the final checkpoint, leaving rejected hashes in the sent-hash set so the node stops requesting blocks until restart.",
+    "vendor": "Check Point",
+    "product": "Unknown"
+  },
+  "CVE-2026-123561": {
+    "cvss": 3.7,
+    "description": "devalue before 5.9.3 allows malformed null-prototype object keys to bypass parse's __proto__ rejection through property-key coercion, an incomplete fix for GHSA-mwv9-gp5h-frr4. Attackers can supply crafted payloads that yield objects with a __proto__ own property, which alone does not cause prototype pollution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123562": {
+    "cvss": 7.5,
+    "description": "devalue (sveltejs/devalue) 5.8.0 before 5.9.3 contains an unhandled promise rejection in stringifyAsync: when serializing multiple promises, a later promise rejecting before an earlier one settles leaves an internal rejection unhandled, even if the caller catches the returned promise. An attacker able to influence the timing or failure of serialized asynchronous values can terminate the Node.js process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123563": {
+    "cvss": 7.5,
+    "description": "Devalue before 5.9.3 contains a validation bypass vulnerability that allows custom ArrayBuffer revivers to skip typed-array allocation checks in the parse function. Attackers can supply very small crafted input processed by a malformed ArrayBuffer reviver to allocate massive ArrayBuffers, causing memory exhaustion and denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123564": {
+    "cvss": 7.5,
+    "description": "Sveltejs devalue from 1.0.0 before 5.9.3 contains a memory exhaustion flaw in uneval, whose generated code for sparse arrays allocates memory proportional to the array's declared length when evaluated. Attackers who can influence a very large sparse array serialized by an application can exhaust memory in the browser or runtime evaluating the output.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123565": {
+    "cvss": 7.5,
+    "description": "Sveltejs devalue before 5.9.3 contains a resource exhaustion vulnerability where repeated primitive strings cause quadratic expansion in the uneval function. Attackers can supply a small crafted payload that is parsed and then passed to uneval, producing a very large serialized string that exhausts memory or CPU.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123566": {
+    "cvss": 7.5,
+    "description": "Sveltejs devalue before 5.9.3 contains a denial of service vulnerability that allows attackers to cause CPU amplification by supplying sparse arrays to uneval. Attackers who influence sparse values passed to uneval can force synchronous work proportional to the declared array length, blocking the event loop.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123567": {
+    "cvss": 3.7,
+    "description": "Sveltejs devalue before 5.6.4 contains a prototype injection vulnerability that allows attackers to inject __proto__ own properties into objects returned by devalue.parse and devalue.unflatten. Attackers can supply crafted serialized input that, when downstream code merges results via Object.assign, alters the target object's prototype.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123568": {
+    "cvss": 4.4,
+    "description": "Sveltejs devalue before 5.6.3 contains a prototype pollution vulnerability that allows attackers to alter object prototypes by supplying untrusted data to uneval. When the generated code is later evaluated, it creates objects with polluted prototypes, producing output data whose shape differs from the original input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123569": {
+    "cvss": 7.5,
+    "description": "The devalue package for npm before 5.6.3 can consume excessive CPU and memory when serializing sparse arrays with uneval or stringify. An attacker who manages to get a sparse array created on the server, which mainstream wire formats do not allow, and serialized there can cause a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123571": {
+    "cvss": 7.5,
+    "description": "Hickory DNS from 0.26.0 before 0.26.2 contains an integer underflow vulnerability in TSIG RDATA decoding that allows remote attackers to trigger a panic via malformed records. Attackers can send a crafted TSIG record in DNS wire format to cause unchecked subtraction underflow, crashing builds with overflow checks enabled and causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123572": {
+    "cvss": 7.5,
+    "description": "Hickory-dns from 0.20.1 before 0.26.2 contains a denial of service vulnerability in the hickory-proto SVCB and HTTPS record presentation format parser, which panics on malformed alpn values. Attackers can supply untrusted zone files with unbalanced quotes, consecutive commas, or invalid escapes in alpn parameters to crash parsing processes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123575": {
+    "cvss": 7.5,
+    "description": "Hickory DNS before 0.26.2 contains a resource exhaustion vulnerability in its DNS-over-HTTPS HTTP/2 server that lacks sufficient timeouts or limits for incomplete request bodies. Remote attackers can open DoH connections, send incomplete request bodies, and hold connections open to exhaust server memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123576": {
+    "cvss": 7.5,
+    "description": "Hickory DNS 0.24.0 through 0.26.1 contains a memory exhaustion vulnerability that allows remote attackers to consume server resources by sending incomplete DNS-over-QUIC request bodies. Attackers can open many connections and send only large length prefixes, causing pre-allocated buffers to persist without timeout and exhausting server memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123579": {
+    "cvss": 3.7,
+    "description": "DNSSEC validation in Hickory DNS hickory-net 0.26.0-beta.1 before 0.26.2 and hickory-proto through 0.26.0-alpha.1 does not distinguish NODATA responses from wildcard-expanded positive responses. For a query that should return NODATA in a zone with wildcard records, an attacker can combine an NSEC3 record matching the query name with a signed wildcard record into a bogus positive response that validation accepts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123580": {
+    "cvss": 7.5,
+    "description": "Hickory DNS hickory-net 0.26.0-beta.1 before 0.26.2 and hickory-proto through 0.26.0-alpha.1 perform insufficient checks on NSEC3 record names during DNSSEC verification, comparing only the hashed label without confirming the record belongs to the correct zone. Attackers can supply NSEC3 records from another zone with a matching hash label to forge DNSSEC nonexistence proofs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123583": {
+    "cvss": 3.7,
+    "description": "The recursive resolver in Hickory DNS hickory-recursor 0.25.0 through 0.25.2 and hickory-resolver 0.26.0 before 0.26.2 does not apply out-of-bailiwick filtering to negative responses. Attackers able to supply crafted negative responses can include out-of-bailiwick records to facilitate cache poisoning and more easily exploit other DNSSEC verification flaws.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123584": {
+    "cvss": 5.9,
+    "description": "The hickory-net crate in Hickory DNS 0.26.0 before 0.26.2 stops listening and returns an error when a client UDP connection receives a datagram that cannot be parsed as a DNS message. Remote attackers who guess the query's source port, without knowing the transaction ID, can spoof malformed responses to abort client queries, causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123587": {
+    "cvss": 6.8,
+    "description": "The DNSSEC validation in the Hickory DNS hickory-net crate 0.26.0 before 0.26.2 identifies wraparound NSEC records by comparing the next domain name to an SOA record in the response, accepting that SOA even if it fails validation. Attackers who can supply DNS responses can combine a genuine NSEC record and its RRSIG with a crafted SOA record to forge nonexistence of any RRset.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123588": {
+    "cvss": 7.5,
+    "description": "The recursive resolver in Hickory DNS (all versions of the hickory-recursor crate, and hickory-resolver 0.26.0 before 0.26.2) caches an empty connection pool when it follows a referral with no glue records and all queries for the name servers' IP addresses fail. An attacker able to spoof DNS responses can make these lookups fail, causing all subsequent queries for the affected zone to fail until the cache entry expires or is evicted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123591": {
+    "cvss": 5.9,
+    "description": "Hickory DNS hickory-net 0.26.0-beta.1 before 0.26.2 and hickory-proto through 0.26.0-alpha.1 fail to verify, per RFC 6840 §4.4, that an NSEC or NSEC3 record denying a DS RRset also proves the delegation's NS record exists. Attackers can reuse child-side NSEC or NSEC3 records to fake an insecure delegation and forge child-zone records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123592": {
+    "cvss": 5.9,
+    "description": "The hickory-net crate in Hickory DNS 0.26.0-beta.1 before 0.26.2 allows DNSSEC validation bypass because Name's Hash ignores label lengths and ValidationCacheKey compares only that hash. An attacker controlling an unsigned delegation whose name differs from a signed target only in dot positions can prime an Insecure verdict, causing forged answers for the target to skip signature verification instead of returning SERVFAIL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123595": {
+    "cvss": 8.8,
+    "description": "Hickory DNS hickory-proto 0.25 through 0.26.0-alpha.1 and hickory-net 0.26.0-beta.1 before 0.26.2 contain a DNSSEC validation flaw in the validating recursor's NSEC3 handler, which matches the closest encloser by hash alone without checking the type bitmap and so accepts parent-side ancestor-delegation NSEC3 records as proof of nonexistence. An attacker who delivers one response built from genuinely signed parent NSEC3 records can cause NXDOMAIN or NODATA to be cached with AD=1, denying resolution of existing names at and below the zone cut.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123596": {
+    "cvss": 8.8,
+    "description": "Hickory DNS hickory-proto through 0.26.0-alpha.1 and hickory-net 0.26.0-beta.1 before 0.26.2 contain a DNSSEC validation flaw in the validating recursor's NSEC handler that accepts parent-side ancestor-delegation NSEC records as proof of nonexistence for names below the zone cut. An on-path attacker, rogue parent nameserver, or attacker winning a port and TXID race can deliver one forged NXDOMAIN response built from genuinely signed parent NSEC records, causing authenticated denial of existing child-zone names cached for the negative TTL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123599": {
+    "cvss": 3.7,
+    "description": "Hickory DNS hickory-proto before 0.26.0-beta.1 and hickory-net before 0.26.2 contain a DNSSEC validation bypass because verify_rrsets() ignores DNS class when partitioning RRsets, so non-IN records skip signature verification yet are marked secure when the IN records verify. Attackers able to supply DNS responses can include forged CH or HS class records, including DS records, to authenticate any DNSKEY and forge child zone responses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123600": {
+    "cvss": 4.8,
+    "description": "Hickory DNS hickory-proto 0.25.0-alpha.3 through 0.25.2 and hickory-net 0.26.0-alpha.1 before 0.26.2 contain a DNSSEC validation flaw in DnssecDnsHandle that accepts NSEC3-signed NODATA responses for zone-apex queries as secure without an NSEC3 record matching the hashed QNAME. On-path attackers or malicious authoritative servers can replay a validly signed non-apex NSEC3 with the zone's signed SOA to serve an authenticated (AD=1) denial of any apex RRtype for the negative-cache TTL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123603": {
+    "cvss": 6.5,
+    "description": "hickory-proto and hickory-resolver 0.26.0 before 0.26.2, hickory-server 0.25.0-alpha.1 before 0.26.2, and hickory-recursor 0.25.0-alpha.3 through 0.26.0-alpha.1 fail to canonicalize IPv4-mapped IPv6 addresses when checking deny_answers, deny_server, or AccessControlSet rules. Attackers can use IPv4-mapped addresses to evade answer filtering, trigger queries to denied nameservers, or reach hickory-server library deployments on dual-stack IPv6 sockets from denied clients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123604": {
+    "cvss": 7.5,
+    "description": "Hickory DNS hickory-resolver 0.26.0-beta.1 before 0.26.2 contains an unbounded retry loop in NameServerPool::try_send, which re-queues truncated (TC) responses without checking the answering transport or counting iterations. A malicious authoritative server returning TC=1 on every transport keeps the resolver spinning on a persistent TCP connection until the 5-second request deadline expires, causing resource exhaustion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123607": {
+    "cvss": 7.5,
+    "description": "Hickory DNS hickory-proto 0.25.0-alpha.3 through 0.25.2 and hickory-net before 0.26.1 contain an unbounded loop vulnerability in DnssecDnsHandle NSEC3 closest-encloser proof validation when the SOA owner is not an ancestor of the QNAME. Upstream attackers can return NoData or NXDomain responses with a cross-zone SOA record to panic debug builds or exhaust memory in release builds.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123608": {
+    "cvss": 7.5,
+    "description": "Hickory DNS hickory-proto from 0.3.1 before 0.26.1 contains a denial of service vulnerability in BinEncoder that allows remote attackers to exhaust CPU through quadratic-time name compression. Attackers can send malicious DNS messages with many records that add many candidate labels and trigger repeated linear scans during encoding, amplifying CPU exhaustion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123609": {
+    "cvss": 4.0,
+    "description": "Rustls before 0.23.46 and 0.24.0-dev.1 before 0.24.0-dev.2 contains an information disclosure vulnerability where derived Debug formatting of client session values exposes secret key material. Custom ClientSessionStore implementations that log Tls12ClientSessionValue or Tls13ClientSessionValue can leak TLS 1.2 master secrets or TLS 1.3 resumption PSKs to log readers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123610": {
+    "cvss": 3.7,
+    "description": "rustls before 0.23.46 contains an uncontrolled memory allocation flaw in its optional Brotli certificate decompression, which limits decompressed output size but accepts an input-selected large history window. Malicious peers can send a certificate with a five-byte Brotli header requesting up to 1 GiB before authentication, aborting Brotli-enabled clients or client-authenticating servers whose allocator cannot satisfy the request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123611": {
+    "cvss": 3.7,
+    "description": "rustls before 0.23.46 contains a key exchange downgrade vulnerability that allows network attackers to poison the per-server-name key-exchange group record via an unauthenticated ServerHello. Attackers can answer one connection with a ServerHello selecting X25519, causing later ClientHellos to send only classical shares and lose post-quantum confidentiality.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123612": {
+    "cvss": 2.3,
+    "description": "rustls 0.23.44 and 0.23.45 contain an information disclosure vulnerability that sends application data buffered before the handshake completes to the client-facing server when Encrypted Client Hello is rejected. Because start_traffic() queues plaintext from ClientConnection::writer() before sending the ech_required alert, the authenticated public_name server receives data intended for the inner server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123613": {
+    "cvss": 5.3,
+    "description": "Rustls from 0.23.13 before 0.23.45 accepts TLS 1.3 handshake messages at the wrong encryption level when they follow a key-changing message in the same record, because Deframer::aligned does not enforce RFC 8446 record-boundary alignment. A peer or on-path attacker can pack a plaintext EncryptedExtensions with the ServerHello, which rustls accepts unencrypted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123614": {
+    "cvss": 9.8,
+    "description": "imgproxy from 4.0.0 before 4.0.16 contains an integer overflow in the ICO loader that allows remote attackers to trigger a heap buffer overflow via a crafted data_size value. Attackers can submit a crafted ICO image whose data_size wraps the allocation in vips/icoload.c, corrupting heap memory to crash the process or achieve code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123615": {
+    "cvss": 7.5,
+    "description": "imgproxy 3.3.0 before 4.0.17 contains an out-of-bounds heap read and write in the ICO loader's BMP header reconstruction (vips_foreign_load_ico_header in vips/icoload.c) when an ICO entry declares a tiny data size, causing unvalidated header fields to be read and written past the allocated buffer. Unauthenticated remote attackers can supply a crafted ICO image to corrupt adjacent heap chunk metadata, triggering a glibc abort that crashes the worker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123616": {
+    "cvss": 7.5,
+    "description": "imgproxy from 3.3.0 before 4.0.16 contains an unbounded memory allocation vulnerability in the ICO loader that fails to validate the data_size field. Attackers can supply a crafted 23-byte ICO file declaring a ~4GB data_size to trigger memory exhaustion and worker crashes without authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124422": {
+    "cvss": 6.1,
+    "description": "SunEditor from 3.0.0 before 3.4.0 contains a stored cross-site scripting vulnerability in html.clean() that rebuilds iframes from data-se-iframe-holder-attrs JSON without filtering srcdoc or uppercase SRC keys. Attackers can inject crafted HTML through paste, html.set, or html.insert to execute script in the host page origin when victims load or paste the content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124326": {
+    "cvss": 5.4,
+    "description": "A flaw has been found in DataLinkDC Dinky up to 1.2.5. Impacted is the function file.getOriginalFilename of the file CatalogueController.java of the component Catalogue Upload. Executing a manipulation of the argument filename can lead to path traversal. The attack can be executed remotely. The exploit has been published and may be used. The researcher claims to have submitted a GHSA on the repository of the project.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124328": {
+    "cvss": 7.4,
+    "description": "A vulnerability has been found in FlowCI flow-core-x up to 1.23.49. The affected element is the function ConditionManagerImpl.run of the file core/src/main/java/com/flowci/core/common/manager/ConditionManagerImpl.java of the component Groovy Script Evaluation. The manipulation of the argument condition leads to code injection. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124331": {
+    "cvss": 7.3,
+    "description": "A vulnerability was identified in Jinher OA C6. This impacts an unknown function of the file /C6/JHSoft.Web.Project/OfficeReadOnly/ProjectAfficheManage.aspx. Such manipulation of the argument ProjID leads to sql injection. It is possible to launch the attack remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124425": {
+    "cvss": 3.1,
+    "description": "Parse Server 8.6.109 before 8.6.116 and 9.10.6-alpha.1 before 9.10.7-alpha.2 contains an information disclosure vulnerability in which create or update responses mark fields as deleted based on stored values the caller cannot read. Attackers with write but not read access to an object can inspect these markers to infer whether protected fields are set.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124426": {
+    "cvss": 5.3,
+    "description": "Craft CMS from 5.0.0 before 5.11.2 contains an authorization bypass vulnerability that allows unauthenticated attackers to read content from sites outside a GraphQL schema's Sites scope. Attackers can send a POST request to /actions/graphql/api selecting the localized field without the siteId argument to disclose out-of-scope site content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124427": {
+    "cvss": 9.8,
+    "description": "Craft CMS from 5.0.0 before 5.11.2 contains an authorization bypass vulnerability that allows anonymous GraphQL clients to read out-of-scope section entries via prev/next fields. Attackers can chain next hops from one visible in-scope entry to enumerate entries and read titles, slugs, and custom-field content from withheld sections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124429": {
+    "cvss": 7.5,
+    "description": "Craft CMS from 5.0.0 before 5.11.2 contains a privilege escalation vulnerability that allows unauthenticated public registrants to reclaim deactivated non-admin accounts while retaining their direct permissions. Attackers can register using a deactivated account, set a new password, and inherit permissions stored in userpermissions_users, enabling privileged account takeover when email verification is disabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124430": {
+    "cvss": 8.8,
+    "description": "Craft CMS from 5.10.0 before 5.11.2 contains a remote code execution vulnerability that allows non-administrator control panel users to obtain HMAC-signed Twig templates via the app/render-elements endpoint. Attackers can submit the signed templated returnUrl as the login redirect parameter, triggering unsandboxed renderObjectTemplate() evaluation and executing OS commands as the PHP worker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124433": {
+    "cvss": 6.5,
+    "description": "phpMyFAQ before 4.1.11 contains an insufficient authorization vulnerability that allows delegated administrators holding only GROUP_DELETE permission to delete higher-privileged groups. Attackers can submit a target group_list_select value to /admin/group/confirm and then /admin/group/delete to remove privileged groups, their memberships, and permission mappings.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124434": {
+    "cvss": 7.1,
+    "description": "Grav Lightbox Gallery plugin 1.1.0 before 1.3.2 on Grav 2.x calls any medium method named in image, thumb or thumb_options shortcode values without core's allowed media action check. A page editor can chain addMetaFile with value, toYaml or toJson to read server-readable YAML files, such as account password hashes, 2FA secrets and API keys, into a publicly viewable page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124437": {
+    "cvss": 7.5,
+    "description": "Scriban before 7.5.3 contains a resource exhaustion vulnerability that allows untrusted template authors to exhaust memory and CPU because builtins like math.format, regex.replace and string.escape skip the LimitToString allocation guard. Attackers can submit small templates using huge format precision specifiers, shared-structure array comparison, BigInteger multiplication or exponential function recursion that ignore LoopLimit and CancellationToken, crashing or stalling multi-tenant hosts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124438": {
+    "cvss": 7.4,
+    "description": "Scriban before 7.5.2 contains an information disclosure and object manipulation vulnerability that allows template authors to access .NET internals of function values through reflection member accessors. Attackers can use array.map to read Target, Method, or ReturnType on imported delegates, exposing and overwriting service properties, captured closure secrets, and assembly paths.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124439": {
+    "cvss": 7.5,
+    "description": "Scriban and Scriban.Signed before 7.5.3 contain uncontrolled recursion flaws in which postfix member, indexer, and call chains bypass ExpressionDepthLimit, array comparison lacks depth and cycle checks, and object.eval bypasses RecursiveLimit. Attackers who can supply templates can trigger an uncatchable StackOverflowException that terminates the host process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124440": {
+    "cvss": 9.9,
+    "description": "Kyverno from 1.19.1 before 1.19.2 contains an authorization bypass vulnerability in the apiCall namespace clamp that allows namespace tenants to issue cross-namespace and cluster-scoped API requests by appending malformed percent-escapes to urlPath. Attackers can create namespaced Policies whose apiCall runs as the admission-controller ServiceAccount to read other namespaces' resources and create mutating webhooks, escalating to cluster admin.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124441": {
+    "cvss": 8.8,
+    "description": "Kyverno before 1.19.2 contains an authorization bypass vulnerability that allows namespaced tenants to generate any resource kind in any namespace by templating the generate rule's kind and namespace with variables. Attackers can create a Policy and trigger ConfigMap in their own namespace, causing the privileged background-controller to write NetworkPolicies or RoleBindings into victim or kube-system namespaces.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124442": {
+    "cvss": 6.5,
+    "description": "AzuraCast before 0.24.0 contains a server-side request forgery vulnerability that allows users with station WebHooks permission to bypass the UserUrlFilter SSRF guard through HTTP redirects. Attackers can configure Mastodon, Telegram, GroupMe, or RadioReg webhooks pointing to a redirecting URL, causing the Guzzle client to reach internal services and expose responses via test logs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124445": {
+    "cvss": 9.8,
+    "description": "OpenEMR from 7.0.1 before 8.4.0 contains a flaw in src/Common/Auth/OneTimeAuth.php that ignores the enforce_onetime_use and max_access_count flags, never revokes consumed service_auth tokens, and checks login_pin without rate limiting or strict comparison. Attackers holding a captured token can replay it or brute-force the PIN to open patient-portal sessions exposing PHI.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124446": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.3.0 contains a path traversal vulnerability in the FaxSMS module's RCFaxClient and SignalWireClient disposeDocument functions that allows authenticated low-privilege users to read and overwrite arbitrary files via the unsanitized file_path parameter. Attackers can request action=download to retrieve cleartext files like sqlconf.php database credentials and keys, or use action=setup to overwrite web-server-writable files with ciphertext.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124449": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.4.0 contains a missing authorization vulnerability in FHIR Media/:uuid and QuestionnaireResponse read routes that skip ACL checks. Non-patient API tokens lacking OpenEMR ACLs can request resources by uuid, bypassing compartment filtering to read any patient's documents and questionnaire responses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124453": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.3.0 contains an insecure direct object reference vulnerability in portal/lib/persist.php that allows authenticated portal patients to write settings for other patients. Attackers can modify the setting_patient parameter in a JSON POST request to another patient's PID, altering that patient's portal settings such as the portal theme.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124455": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.3.0 contains an insecure direct object reference vulnerability in OnsiteDocumentController::Query() that allows authenticated portal patients to read other patients' documents by overriding Pid_Equals criteria. Attackers can supply Pid_Equals, Pid_GreaterThan, or Pid_In request parameters to the onsitedocuments API to retrieve signed consent forms, signatures, and PHI of any patient.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124458": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.4.0 contains an authorization bypass vulnerability in the FHIR GET /fhir/Person/:uuid route that allows patient-portal users to read any staff member's demographics by bypassing compartment enforcement. Attackers holding a patient SMART token with patient/Person.read can harvest staff Person UUIDs from Appointment references to retrieve names, home addresses, phone numbers, and personal emails.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124459": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.3.0 contains an insecure direct object reference vulnerability in many encounter-form view and save endpoints that lack patient/encounter ownership checks. Authenticated clinical users can enumerate sequential form id values in requests such as soap/view.php and save.php to read and overwrite other patients' clinical records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124462": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.3.0 contains an insecure direct object reference vulnerability in OnsiteDocumentController::Query() that allows authenticated portal patients to bypass the lowercase pid authorization guard by supplying a capitalised Pid parameter. Attackers can request the api/onsitedocuments endpoint with Pid set to another patient's id to overwrite the session-pinned criteria and read other patients' onsite documents containing PHI.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124463": {
+    "cvss": 8.7,
+    "description": "OpenEMR before 8.3.0 contains a stored cross-site scripting vulnerability that allows authenticated users with CAMOS access to inject HTML by saving malicious CAMOS content through ajax_save.php. Attackers can store a script payload that executes unencoded when the entry is printed via the non-print_html branch of rx_print.php, performing actions and reading data as the victim user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124465": {
+    "cvss": 6.5,
+    "description": "Trendyol kafka-konsumer from 2.3.3 before 2.6.18 contains a denial of service vulnerability in batch_consumer.go that panics when a single record exceeds MessageGroupByteSizeLimit. Attackers able to produce to the consumed topic can publish one oversized record that terminates the consumer before offset commit, causing a persistent crash loop.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124467": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.4.0 contains a local file inclusion in the ESign router (library/ESign/Router.php), which passes the unsanitized module parameter into a require_once of ' /Controller.php', and the fax module's faxProcessUploads writes attacker-named files to a predictable temp path without extension checks. Authenticated attackers can upload a PHP file named Controller.php, then request interface/esign/index.php with a traversing module parameter to include it and execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124468": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.3.0 contains an SQL injection vulnerability in the Standard REST API patient insurance and employer search, which concatenates query-string parameter names into SQL as column identifiers without escaping. Authenticated clients, including low-privilege patient-portal OAuth2 tokens, can send crafted parameter names to /api/patient/{puuid}/insurance or /api/patient/{puuid}/employer to extract patient PHI, user records, and API client secrets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124471": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.3.0 contains a missing authorization vulnerability in interface/billing/sl_eob_invoice.php that allows any authenticated user to read and modify billing data for any encounter. Attackers can iterate the id parameter to read patient names and billing notes, and post payments, adjustments, deletions, or billing notes against any patient's account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124472": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.3.0 contains a missing authorization vulnerability in interface/billing/sl_eob_patient_note.php that allows any authenticated user to read and modify patient billing notes. Attackers with low-privilege accounts can enumerate the patient_id parameter and submit POST requests using the embedded CSRF token to view or tamper with confidential billing data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124474": {
+    "cvss": 6.1,
+    "description": "MRBS (Meeting Room Booking System) before 1.12.3 contains a reflected cross-site scripting vulnerability that allows unauthenticated attackers to inject script via the error parameter of view_entry.php. Attackers can send crafted links to logged-in users to read CSRF tokens, modify or delete bookings, or perform administrative actions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124476": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.3.0 contains an insecure direct object reference in portal/lib/paylib.php, which writes the request-supplied form_pid (or the patient_id_cc value in Sphere data) to onsite_portal_activity without checking it against the session patient. Authenticated portal patients can submit portal-save, review-save, AuthorizeNet, Stripe, or Sphere requests to insert or modify forged payment-audit records in other patients' billing records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124477": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.3.0 contains a missing authorization vulnerability that allows low-privileged authenticated users to delete arbitrary patient recall records via the delete_Recall action. Attackers can send POST requests to /interface/main/messages/save.php with a target pid and r_ID to remove recall data without ACL or ownership checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124480": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.4.0 contains an authorization bypass vulnerability that allows low-privileged authenticated users to read cross-patient FHIR QuestionnaireResponse data by sending the APICSRFTOKEN header. Attackers can reuse the session-exposed api_csrf_token_js value to skip FHIR scope checks and call GET /fhir/QuestionnaireResponse, exfiltrating site-wide questionnaire answer PHI.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124481": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.4.0 contains an improper authorization vulnerability in Rainforest patient portal payments that trusts browser-supplied patientId, encounter, and amount values instead of deriving them from the portal session. Authenticated portal patients can tamper with JSON sent to portal_payment.rainforest.php so the payin.authorized webhook writes forged ar_activity credits to other patients' encounters exceeding the amount actually paid.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124484": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.4.0 contains a missing authorization vulnerability in portal onsite-document APIs that allows any authenticated core user to access cross-patient documents. Attackers can omit the patientId parameter and supply arbitrary record IDs to list, read, and overwrite other patients' portal documents, signatures, and template data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124485": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.3.0 contains an authorization bypass vulnerability in the patient portal onsitedocuments API that allows authenticated patients to read other patients' documents by overriding query criteria. Attackers can send empty pid_Equals and denialReason_IsNotLike parameters to remove patient scoping and locked filters, exposing consent bodies, signatures, file paths, and template data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124488": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.3.0 contains an authorization bypass vulnerability that allows authenticated clinicians lacking high-sensitivity permission to read and modify encounter-bound forms via load_form.php. Attackers can request the Clinical Notes or Care Plan direct loader to obtain restricted content and a CSRF token, then submit save.php to tamper with clinical records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124489": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.3.0 contains a broken access control vulnerability in portal/portal_payment.php that allows low-privilege authenticated users to bypass billing ACL checks by tampering patient identifiers. Attackers can modify the pid and form_pid parameters to view payment pages and record fraudulent payment receipts for arbitrary patients, corrupting billing records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124491": {
+    "cvss": 6.4,
+    "description": "SunEditor before 3.4.0 contains a stored cross-site scripting vulnerability in the FileUpload plugin create() method that assigns server-returned file names to innerHTML without escaping. Attackers can upload files with HTML-laden names that bypass html.clean() and execute JavaScript in victims' browsers when content or gallery items load, enabling session theft.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124492": {
+    "cvss": 7.6,
+    "description": "SunEditor before 3.4.0 contains a stored cross-site scripting vulnerability in ModalAnchorEditor's #createBookmarkList, which inserts entity-decoded h1-h6 header textContent into the bookmark list via innerHTML without escaping. Attackers can store HTML-encoded payloads in editor headers that execute JavaScript when a victim opens the link modal and types # in the URL input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124493": {
+    "cvss": 9.3,
+    "description": "SunEditor before 3.4.0 contains a stored cross-site scripting vulnerability in the DocumentType constructor that injects header textContent into innerHTML without HTML escaping. Attackers can store entity-encoded HTML in h1-h6 headers that executes JavaScript when editors using document:header mode initialize, enabling session cookie theft.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124494": {
+    "cvss": 9.3,
+    "description": "SunEditor before 3.4.0 contains a stored cross-site scripting vulnerability because the html.clean() sanitizer's _normalizeURL() function decodes named entities like : to an empty string. Attackers can inject href values such as javascript: that pass the _isSafeURL() check but are decoded by browsers, executing JavaScript when victims click stored links.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124551": {
+    "cvss": 5.3,
+    "description": "ClassroomIO through 1.0.0 contains an authorization bypass vulnerability that allows authenticated users of any organization to clone other tenants' courses via the POST /course/:courseId/clone endpoint. Attackers who know a target course id can copy its sections, lessons, exercises, and quiz answer keys into their own organization, exposing private course content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-41786": {
+    "cvss": 5.3,
+    "description": "IBM Engineering Requirements Management DOORS Next 7.1, and 7.2 could allow a remote attacker to force the Web server to return contents of a sensitive requested file due to improper input validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-0166": {
+    "cvss": 2.7,
+    "description": "IBM watsonx Orchestrate Cartridge for Cloud Pak for Data 4.8.4 through 4.8.5, and 5.0.0 through 5.4.2 could disclose sensitive source code information that should not be accessible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-1837": {
+    "cvss": 5.4,
+    "description": "IBM watsonx Orchestrate Cartridge for Cloud Pak for Data 4.8.4 through 4.8.5, and 5.0.0 through 5.4.2 could allow an authenticated user to perform unauthorized actions due to improper trust of server-side permission methods.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-36075": {
+    "cvss": 5.3,
+    "description": "IBM Safer Payments 6.4.0.00 through 6.4.2.11, 6.5.0.00 through 6.5.0.09, 6.6.0.00 through 6.6.0.07, 6.7.0.00 through 6.7.0.03, and 6.8.0.00 could allow an authenticated user to obtain sensitive information, caused by improper user input validation. By using a set of API requests the user could exploit this vulnerability to decrypt sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102618": {
+    "cvss": 3.6,
+    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow an authenticated user to indirectly disable system auditing, which they otherwise don't have authority to disable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107330": {
+    "cvss": 7.7,
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to obtain sensitive information due to a Server-Side Request Forgery (SSRF) vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107331": {
+    "cvss": 9.9,
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to obtain sensitive information due to an absolute-path traversal vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112369": {
+    "cvss": 4.3,
+    "description": "IBM Process Mining 2.0.0 through 2.2.1 could allow an authenticated user to perform unauthorized actions due to client-side enforcement of sever side security mechanisms.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116500": {
+    "cvss": 6.2,
+    "description": "IBM Qiskit SDK 2.4.0 through 2.6.1 could allow a local attacker to cause a denial of service due to unbound recursion during deserialization of untrusted QPY payloads.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120113": {
+    "cvss": 6.4,
+    "description": "IBM Aspera Connect 1.6.1 through 4.2.19 could allow a remote attacker to obtain sensitive information and modify host trust configuration due to missing authentication and overly permissive cross-origin access controls in the local HTTP service. By persuading a victim to visit a malicious web page, an attacker could perform unauthorized cross-origin requests to read and modify configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-14377": {
+    "cvss": 5.4,
+    "description": "IBM Turbonomic kubeturbo agent 8.16.0 through 8.21.2 is vulnerable to server-side request forgery (SSRF). This may allow an authenticated attacker to send unauthorized requests from the system, potentially leading to network enumeration or facilitating other attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-14963": {
+    "cvss": 4.3,
+    "description": "IBM Cognos Command Center 10.2.4.1 and 10.2.5 could allow a remote attacker to execute unauthorized processes due to cross-site request forgery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15266": {
+    "cvss": 9.8,
+    "description": "IBM Concert 1.0 through 3.0.1.1 contains components that allow potentially unsafe command execution, which could be exploited to run arbitrary system commands on the host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16433": {
+    "cvss": 6.5,
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to write arbitrary files due to a path traversal vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18194": {
+    "cvss": 2.5,
+    "description": "IBM App Connect Enterprise 13.0.1.0 through 13.0.8.2 could allow a remote attacker to perform unauthorized actions due to missing anti-clickjacking controls.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18546": {
+    "cvss": 5.4,
+    "description": "IBM CockroachDB PostgreSQL for IBM VPC 26.2.0 through 26.2.3, 25.4.0 through 25.4.12, and 25.2.0 through 25.2.20 is vulnerable to server-side request forgery (SSRF). This may allow an authenticated attacker to send unauthorized requests from the system, potentially leading to network enumeration or facilitating other attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-2477": {
+    "cvss": 6.5,
+    "description": "IBM watsonx Orchestrate Cartridge for Cloud Pak for Data 4.8.4 through 4.8.5, and 5.0.0 through 5.4.2 fails to enforce backend authorization checks, allowing low‑privileged users to directly invoke administrative API endpoints. This bypasses UI‑level access restrictions and may lead to unauthorized execution of privileged functions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6715": {
+    "cvss": 9.8,
+    "description": "IBM Concert 1.0 through 3.0.1.1 allows an attacker can supply crafted input that is incorporated into an operating system command without adequate validation or sanitization. Successful exploitation allows remote attackers to execute arbitrary commands on the underlying operating system with the privileges of the affected service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77153": {
+    "cvss": 4.8,
+    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote unauthenticated attacker to obtain sensitive information from the Host-Based Printer Subsystem due to no authorization check. A bad actor could use this vulnerability to print files they should not be able to access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81542": {
+    "cvss": 6.4,
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to delete arbitrary files due to path traversal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84237": {
+    "cvss": 3.1,
+    "description": "IBM Guardium Data Protection 12.2.4 could allow a remote authenticated attacker to obtain sensitive information due to improper limitation of a pathname to a restricted directory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93005": {
+    "cvss": 6.5,
+    "description": "IBM Process Mining 2.0.0 through 2.2.1 could allow an authenticated attacker to cause a denial of service through insufficient rate limiting of email notifications, resulting in excessive emails being sent to targeted recipients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118904": {
+    "cvss": 8.1,
+    "description": "IBM webMethods Integration Server 12.1 could allow a remote authenticated attacker to bypass security restrictions due to improper authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16697": {
+    "cvss": 6.5,
+    "description": "IBM Power Systems Firmware FW1060.00 through FW1060.81, OP940.00 through OP940.A2, OP910.00 through OP910.95, and OP940.00 through OP940.82 could allow a remote attacker to cause a denial of service due to improper restriction of excessive computational resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124498": {
+    "cvss": 3.5,
+    "description": "A vulnerability was determined in Convene Azeus Convene Board Management Portal 7.0.2.7_3 p72. The impacted element is an unknown function of the file /jsp/ge/dummy_launcher.jsp. Executing a manipulation of the argument REDIRECT_URL can lead to cross site scripting. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17368": {
+    "cvss": 6.8,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to perform network reconnaissance and obtain sensitive credentials due to server-side request forgery. The server can be made to send requests to unintended destinations and return the results.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17369": {
+    "cvss": 5.4,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to force a user to authenticate into an attacker-controlled account due to cross-site request forgery. The sign-in flow does not sufficiently verify that a login response belongs to the user's own request, which could link the victim's session to an account controlled by the attacker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17371": {
+    "cvss": 5.0,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17372": {
+    "cvss": 6.4,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to probe internal network resources due to insufficient validation of webhook destination URLs. User-configured webhook addresses are not sufficiently restricted, so the server could be made to contact internal systems.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17373": {
+    "cvss": 7.7,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to improper authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17374": {
+    "cvss": 7.7,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17375": {
+    "cvss": 7.7,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to improper authorization. Authorization decisions rely on information supplied by the client, which could allow access to information the user should not see.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17376": {
+    "cvss": 7.7,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17377": {
+    "cvss": 5.0,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to forge audit records due to improper output neutralization for logs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17378": {
+    "cvss": 7.7,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17379": {
+    "cvss": 7.4,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to bypass authentication and assign arbitrary roles due to improper verification of cryptographic signatures.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17382": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to a path traversal vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17383": {
+    "cvss": 7.7,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information from other tenants due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17385": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17387": {
+    "cvss": 7.7,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17389": {
+    "cvss": 5.3,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive information from the connected LDAP directory due to LDAP injection. Input is not properly neutralized in directory lookups, which could cause queries to return additional data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17390": {
+    "cvss": 6.4,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow an authenticated user to execute arbitrary JavaScript in the web UI due to cross-site scripting. This could alter the intended functionality of the page and potentially lead to credential disclosure within a trusted session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17391": {
+    "cvss": 6.3,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17393": {
+    "cvss": 5.1,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 could allow a local attacker to obtain sensitive information due to the use of a cryptographically weak pseudo-random number generator.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17395": {
+    "cvss": 6.4,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to access internal network resources due to improper validation of a user-supplied URL. Destinations are not sufficiently restricted, which could allow the server to be made to contact internal systems.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17396": {
+    "cvss": 9.6,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to SQL injection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17397": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17400": {
+    "cvss": 7.7,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to SQL injection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17405": {
+    "cvss": 8.8,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to broken object-level authorization. Access checks on keystore objects do not confirm that the requesting user is permitted to read them, which could expose keystore information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17406": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery. Address checks can be bypassed, which could allow the server to reach destinations that should be blocked.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17407": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary SQL commands due to SQL injection. Values received during sign-in are not properly neutralized before being used in a database query, which could allow SQL commands to run.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17409": {
+    "cvss": 9.4,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to execute unauthorized administrative operations and obtain sensitive information due to improper handling of case sensitivity. Access controls are not applied consistently to all variations of a request, which could allow restricted operations to be reached.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17410": {
+    "cvss": 9.9,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to access and modify other tenants' portal data due to improper neutralization of argument delimiters.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17411": {
+    "cvss": 7.6,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow an authenticated attacker to view, add, modify, or delete information in the back-end database due to SQL injection. Input is not properly neutralized before it is used in database queries.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17428": {
+    "cvss": 5.0,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to improper authorization. Values supplied in the request URL are used in authorization decisions without sufficient verification, which could allow access to information belonging to others.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18838": {
+    "cvss": 9.4,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive information and modify API configurations due to improper authentication. Identity information supplied in requests is not sufficiently verified, which could allow a caller to impersonate another user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19121": {
+    "cvss": 8.3,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow an authenticated attacker to gain unauthorized access due to improper authorization. Tenant context is not sufficiently verified against the authenticated user, which could allow access to another tenant's resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19122": {
+    "cvss": 3.8,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow an authenticated privileged attacker to send unauthorized requests from the system due to server-side request forgery. This could be used to enumerate network resources or to support further attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19129": {
+    "cvss": 6.8,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a network-positioned attacker to intercept backup data due to improper verification of the backup server's identity. The identity of the backup server is not verified when the secure connection for analytics backups is established, which could allow backup data, and credentials if used, to be intercepted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75590": {
+    "cvss": 7.2,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to access internal network resources and obtain sensitive information due to server-side request forgery. A protection that blocks requests to internal addresses can be bypassed, so the server could be made to contact internal services and return part of their responses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123776": {
+    "cvss": 9.8,
+    "description": "RRD::CGI::Image versions through 0.01 for Perl pass CGI query parameters containting \"tz\" to tzset(), , so a FIFO or device path blocks the CGI process. The normalize_params method sends any query key matching /tz/i to tz(), which sets $ENV{TZ} to that value, with no validation. It then calls tzset(). glibc treats a TZ value starting with / or : as a file path and opens it, so a value naming a FIFO or a blocking device stalls the process inside tzset().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124307": {
+    "cvss": 5.8,
+    "description": "Fraunhofer HHI VVdeC before 3.2.1 contains a heap use-after-free vulnerability that allows attackers to corrupt memory by redefining an ALF adaptation parameter set id still referenced by slices. Attackers can supply a crafted VVC bitstream that, with multithreaded decoding, makes worker threads dereference freed APS objects in CABACReader::readAlf() and AdaptiveLoopFilter::reconstructCoeff(), causing crashes or heap corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124308": {
+    "cvss": 5.8,
+    "description": "Fraunhofer HHI VVdeC before 3.2.1 contains a heap use-after-free vulnerability in DecLibRecon::createSubPicRefBufs because decompressPicture clears m_subPicExtTasks without waiting for pending tasks. Attackers can supply a crafted multi-subpicture VVC bitstream to decoders using two or more threads, causing heap memory corruption or a decoder crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124309": {
+    "cvss": 6.1,
+    "description": "Fraunhofer HHI VVdeC before 3.2.1 contains a heap out-of-bounds read vulnerability in SEIReader::xParseSEIScalableNesting that allows attackers to read past heap allocations by casting the SEI wrapper object instead of its payload. Attackers can supply a crafted VVC bitstream with a scalable nesting SEI containing a nested buffering period SEI to crash the decoder or copy adjacent heap memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124310": {
+    "cvss": 6.1,
+    "description": "Fraunhofer HHI VVdeC before 3.2.1 contains an out-of-bounds read vulnerability that allows attackers to crash the decoder by supplying bitstreams with overlapping slice CTU coverage. Attackers can code a CTU in a second slice so a bi-predicted BDOF coding unit carries a negative reference index, causing Slice::getRefPic to read outside m_apcRefPicList and crash decoding.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124311": {
+    "cvss": 5.5,
+    "description": "Fraunhofer HHI VVdeC through 3.2.1 contains a NULL pointer dereference vulnerability in InterPrediction::xPredInterBlk that allows attackers to crash the decoder by switching SPS to enable reference wrap-around. Attackers can supply a crafted VVC bitstream activating a new SPS with sps_ref_wraparound_enabled_flag set, causing reads from missing PIC_RECON_WRAP buffers and denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124312": {
+    "cvss": 4.7,
+    "description": "Fraunhofer HHI VVdeC through 3.2.1 contains a heap out-of-bounds read vulnerability that allows attackers to crash the decoder by supplying a collocated picture of different resolution. Attackers can craft a VVC bitstream enabling TMVP with a smaller collocated reference picture, causing getColInfo to read past the colMotion allocation when error concealment is enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124318": {
+    "cvss": 7.2,
+    "description": "Treeio through 2.0 contains an insecure deserialization vulnerability in UpdateRecord.get_format_strings and ModuleSetting.loads that allows staff users to execute code via unverified pickle data. Attackers can store a crafted base64 pickle payload in an UpdateRecord format_strings field through the Django admin, executing Python code as the web server user when news feeds render.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124058": {
+    "cvss": 9.1,
+    "description": "A weakness has been identified in TOTOLINK CA300-PoE 6.2c.884. Affected is the function setWiFiRepeaterConfig of the file /cgi-bin/cstecgi.cgi. Executing a manipulation of the argument ApCliKeyStr can lead to buffer overflow. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101572": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Helidon product of Oracle Fusion Middleware (component: helidon-webclient-http2). Supported versions that are affected are 4.0.0-4.5.5 and 27.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP/2 to compromise Helidon. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Helidon. CVSS 3.1 Base Score 7.5 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101590": {
+    "cvss": 9.1,
+    "description": "Vulnerability in the Helidon product of Oracle Fusion Middleware (component: helidon-microprofile-security). Supported versions that are affected are 4.0.0-4.5.5. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Helidon. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Helidon accessible data as well as unauthorized access to critical data or complete access to all Helidon accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101634": {
+    "cvss": 9.1,
+    "description": "Vulnerability in the Oracle Mobile Field Service product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Mobile Field Service. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Mobile Field Service accessible data and unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Mobile Field Service. CVSS 3.1 Base Score 9.1 (Confidentiality and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101635": {
+    "cvss": 8.8,
+    "description": "Vulnerability in the Oracle Mobile Field Service product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Mobile Field Service. Successful attacks of this vulnerability can result in takeover of Oracle Mobile Field Service. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101636": {
+    "cvss": 7.4,
+    "description": "Vulnerability in the Oracle Mobile Field Service product of Oracle E-Business Suite (component: Admin UI). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Mobile Field Service. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Mobile Field Service accessible data as well as unauthorized access to critical data or complete access to all Oracle Mobile Field Service accessible data. CVSS 3.1 Base Score 7.4 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).",
     "vendor": "Unknown",
     "product": "Unknown"
   }
