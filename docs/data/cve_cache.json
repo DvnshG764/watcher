@@ -116134,5 +116134,71 @@
     "description": "Time-of-check Time-of-use (TOCTOU) Race Condition vulnerability in Apache Tomcat. This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.1, from 10.1.0-M1 through 10.1.33, from 9.0.0.M1 through 9.0.97. The following versions were EOL at the time the CVE was created but are known to be affected: 8.5.0 though 8.5.100. Other, older, EOL versions may also be affected. The mitigation for CVE-2024-50379 was incomplete. Users running Tomcat on a case insensitive file system with the default servlet write enabled (readonly initialisation parameter set to the non-default value of false) may need additional configuration to fully mitigate CVE-2024-50379 depending on which version of Java they are using with Tomcat: - running on Java 8 or Java 11: the system property sun.io.useCanonCaches must be explicitly set to false (it defaults to true) - running on Java 17: the system property sun.io.useCanonCaches, if set, must be set to false (it defaults to false) - running on Java 21 onwards: no further configuration is required (the system property and the problematic cache have been removed) Tomcat 11.0.3, 10.1.35 and 9.0.99 onwards will include checks that sun.io.useCanonCaches is set appropriately before allowing the default servlet to be write enabled on a case insensitive file system. Tomcat will also set sun.io.useCanonCaches to false by default where it can.",
     "vendor": "Apache Software Foundation",
     "product": "Apache Tomcat"
+  },
+  "CVE-2026-86501": {
+    "cvss": 2.8,
+    "description": "In JetBrains IntelliJ IDEA before 2026.2.2 terminal command input could be written to idea.log",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86502": {
+    "cvss": 8.4,
+    "description": "In JetBrains IntelliJ IDEA before 2026.2.2 missing TLS and authentication on the IJent gRPC server allowed local code execution on Remote Development hosts",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86503": {
+    "cvss": 3.3,
+    "description": "In JetBrains IntelliJ IDEA before 2026.2.2 opening an untrusted project could trigger SSRF via Kubernetes spec-source URL fetching",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86504": {
+    "cvss": 7.8,
+    "description": "In JetBrains IntelliJ IDEA before 2026.2.2 missing project-trust confirmation before building a Dev Container allowed host-level code execution",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86505": {
+    "cvss": 3.3,
+    "description": "In JetBrains IntelliJ IDEA before 2026.2.2 missing project-trust check leaked project metadata to JetBrains Marketplace",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85091": {
+    "cvss": 7.4,
+    "description": "zlib 1.2.11 through 1.3.2 contains a heap buffer overflow: after an underlying write() fails, gz_write() returns without resetting strm.next_in, leaving it pointed at the caller's buffer. A later gz* write call then derives a position from the stale pointer and writes past a heap allocation; any write() failure reaches it, including EPIPE on a blocking descriptor, and in versions before 1.3.1.2 the failed write must be followed by a gzclearerr() call.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84761": {
+    "cvss": 7.2,
+    "description": "Server-Side Request Forgery (SSRF) vulnerability in Hai Zheng / Lite Speed Cache LiteSpeed Cache litespeed-cache allows Server Side Request Forgery.This issue affects LiteSpeed Cache: from n/a through 7.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84837": {
+    "cvss": 7.8,
+    "description": "A flaw was found in rpm. An attacker can exploit a command injection vulnerability by influencing the path or filename of a tarball processed by `rpmbuild -t*` to include shell metacharacters. This is particularly relevant in automated build or continuous integration (CI) workflows that ingest externally supplied artifact names. Successful exploitation allows for arbitrary command execution with the privileges of the build user, which could lead to information disclosure or disruption of the build environment.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84838": {
+    "cvss": 7.8,
+    "description": "A flaw was found in rpmuncompress. This command injection vulnerability allows a local attacker to execute arbitrary commands. This occurs when rpmuncompress processes a specially crafted archive filename containing shell metacharacters, which are not properly escaped before being passed to shell command strings. Successful exploitation requires user interaction, where a user or automated workflow invokes rpmuncompress on the malicious file, leading to high impact on the confidentiality, integrity, and availability of data accessible to the invoking user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84233": {
+    "cvss": 7.0,
+    "description": "A flaw was found in rpm. A local attacker could supply a specially crafted `.gem` filename containing RPM macro syntax. When a user or automated workflow invokes `rpmuncompress -x` on this file, the macro expansion occurs during command construction. This allows the attacker to execute arbitrary commands with the privileges of the invoking account, leading to a compromise of confidentiality, integrity, and availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112477": {
+    "cvss": 7.0,
+    "description": "A race condition was addressed with improved locking. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. An app may be able to cause unexpected system termination or corrupt kernel memory.",
+    "vendor": "Apple",
+    "product": "iOS and iPadOS"
   }
 }
