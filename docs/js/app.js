@@ -1174,57 +1174,7 @@ async function copyThreatBrief() {
   }
 }
 
-function toggleTeamsWebhookBox() {
-  const panel = document.getElementById('teams-webhook-panel');
-  const input = document.getElementById('teams-webhook-url');
-  if (!panel) return;
-  panel.classList.toggle('hidden');
-  const savedUrl = localStorage.getItem('watcher_teams_webhook');
-  if (savedUrl && input && !input.value) {
-    input.value = savedUrl;
-  }
-}
 
-async function sendBriefToTeams() {
-  const input = document.getElementById('teams-webhook-url');
-  const statusEl = document.getElementById('teams-status-msg');
-  const webhookUrl = (input?.value || '').trim();
-
-  if (!webhookUrl) {
-    alert('Please paste a valid Microsoft Teams Webhook URL.');
-    return;
-  }
-  localStorage.setItem('watcher_teams_webhook', webhookUrl);
-  const htmlReport = buildExportableHtmlBrief();
-
-  const payload = {
-    title: 'Watcher Vulnerability Intelligence Brief',
-    text: htmlReport
-  };
-
-  if (statusEl) {
-    statusEl.textContent = 'Sending brief to Microsoft Teams...';
-    statusEl.className = 'text-[11px] font-medium text-indigo-500 block';
-  }
-
-  try {
-    await fetch(webhookUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-      body: JSON.stringify(payload)
-    });
-    if (statusEl) {
-      statusEl.textContent = 'Brief dispatched to Microsoft Teams channel!';
-      statusEl.className = 'text-[11px] font-semibold text-emerald-500 block';
-    }
-  } catch (err) {
-    if (statusEl) {
-      statusEl.textContent = `Failed to send to Teams: ${err.message}`;
-      statusEl.className = 'text-[11px] font-semibold text-rose-500 block';
-    }
-  }
-}
 
 // =========================================================================
 // 10. DEDICATED CVE SEARCH & TABLE GENERATOR
