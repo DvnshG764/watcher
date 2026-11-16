@@ -116080,5 +116080,47 @@
     "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Datasolution AcyMailing SMTP Newsletter acymailing allows Blind SQL Injection.This issue affects AcyMailing SMTP Newsletter: from n/a through 10.11.0.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-81658": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Foreman. The template revision endpoint does not enforce object-level authorization when retrieving an audited template revision. An authenticated, low privileged user with a template-related permission, such as view_ptables, can obtain historical template contents belonging to another organization or location by supplying the corresponding audit ID. This can result in unauthorized disclosure of historical template contents, which may contain sensitive configuration information, credentials, or other secrets. The REST API revision endpoints correctly restrict this lookup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81668": {
+    "cvss": 5.4,
+    "description": "A flaw was found in Katello where the Content View Filter Rules API does not properly enforce authorization on the parent Content View Filter. An authenticated, low-privileged user with Content View permissions in one organization may be able to access and modify filter rules belonging to a Content View Filter in another organization by supplying that filter's identifier. This can result in unauthorized disclosure of filter-rule information and unauthorized changes to unpublished Content View filter configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76844": {
+    "cvss": 7.4,
+    "description": "webpack-dev-middleware 5.3.4, 6.1.2 through 6.1.3, 7.1.0 before 7.4.6, and 8.0.0 before 8.3.0 contains a path traversal vulnerability in getFilenameFromUrl that bypasses the fix for CVE-2024-29180: a publicPath without a trailing slash is matched by string prefix, and the '..' guard runs before that prefix is stripped. Unauthenticated attackers can request a path such as /assets../secret to read files one directory above the output directory when the middleware serves from the physical filesystem through writeToDisk or a custom outputFileSystem.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-78367": {
+    "cvss": 7.0,
+    "description": "A vulnerability was found in RPM's rpmbuild tarball processing. When processing a crafted source archive, the getTarSpec() function in tools/rpmbuild.cc passes an attacker-controlled tar archive member name to rpmExpand() as part of a %{basename:...} macro expression. A specially crafted .spec member name can therefore inject RPM macros, including Lua expressions, resulting in arbitrary code execution with the privileges of the user running rpmbuild. This can be exploited when a victim or automated build system processes an attacker-controlled source tarball using rpmbuild tarball mode (such as -ts, -ta, or -tb).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76878": {
+    "cvss": 8.4,
+    "description": "In OpenStack Aodh before 22.0.1, the alarm list API bypasses project scoping when the all_projects query parameter is set to false. The API checks for the presence of the all_projects key rather than its value; a true value enforces the administrator-only policy, but a false value removes the key and skips the branch that normally restricts results to the caller's project. A non-admin user with the reader role can list alarms from all projects, exposing alarm actions containing trust webhook URLs, Heat signal endpoints, project IDs, and user IDs. The parameter can also be combined with a foreign project_id to target a specific project's alarms. A related concern is that OpenStack Watcher does not apply authorization to its webhook trigger endpoint. Any authenticated user who learns an audit's webhook URL, for example from this leaked Aodh alarm metadata, can start an EVENT audit and its associated action plan regardless of their own project or role. The webhook endpoint has lacked policy enforcement since its introduction in the Ussuri release (Watcher 4.0.0).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70733": {
+    "cvss": 7.1,
+    "description": "Vulnerability in the Oracle Hyperion Profitability and Cost Management product of Oracle Hyperion (component: Deployment). The supported version that is affected is 11.2.25.0.000. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Hyperion Profitability and Cost Management. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Hyperion Profitability and Cost Management accessible data and unauthorized ability to cause a partial denial of service (partial DOS) of Oracle Hyperion Profitability and Cost Management. CVSS 3.1 Base Score 7.1 (Confidentiality and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70734": {
+    "cvss": 7.4,
+    "description": "Vulnerability in Oracle Autonomous Health Framework (component: Trace File Analyzer). Supported versions that are affected are 26-26.1.0, 26.2.0, 26.3.1, 26.5.0 and 26.5.2. Easily exploitable vulnerability allows high privileged attacker with logon to the infrastructure where Oracle Autonomous Health Framework executes to compromise Oracle Autonomous Health Framework. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Oracle Autonomous Health Framework, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Autonomous Health Framework accessible data and unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Autonomous Health Framework. CVSS 3.1 Base Score 7.4 (Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:C/C:N/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
