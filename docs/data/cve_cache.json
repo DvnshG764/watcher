@@ -53797,7 +53797,7 @@
   },
   "CVE-2026-90848": {
     "cvss": 4.3,
-    "description": "A weakness has been identified in Governikus AusweisApp up to 2.5.4. Affected is an unknown function of the component StartPAOSResponse Handler. Executing a manipulation of the argument ResultMessage can lead to cross site scripting. The attack can be launched remotely. Upgrading to version 2.5.5 is able to address this issue. It is recommended to upgrade the affected component. This CVE was requested by the vendor.",
+    "description": "A weakness has been identified in Governikus AusweisApp Desktop up to 2.5.4. Affected is an unknown function of the component StartPAOSResponse Handler. Executing a manipulation of the argument ResultMessage can lead to cross site scripting. The attack can be launched remotely. Upgrading to version 2.5.5 is able to address this issue. It is recommended to upgrade the affected component. This CVE was requested by the vendor.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -116320,5 +116320,17 @@
     "description": "Bolo (bolo-solo) 1.7 through 2.6.4 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to inject scripts via the unsanitized commentOriginalCommentName parameter. Attackers can post a comment to /article/comments with a short payload that steals non-HttpOnly session cookies from visitors, enabling takeover of administrator accounts.",
     "vendor": "bolo-blog",
     "product": "bolo-solo"
+  },
+  "CVE-2026-92893": {
+    "cvss": 4.3,
+    "description": "A flaw was found in the foreman_ansible plugin's Ansible inventory API. The controller builds its host query using an unscoped Host.where call that does not enforce the search filter associated with the caller's view_hosts permission. An authenticated user whose host visibility is restricted by a permission filter can supply arbitrary host IDs within their organization and receive the full Ansible inventory for those hosts, including parameter values marked as hidden.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92904": {
+    "cvss": 4.3,
+    "description": "A flaw was found in the foreman_remote_execution plugin's template invocations controller. The show_template_invocation_by_host action resolves the job invocation by ID without evaluating the caller's view_job_invocations permission filter against the record. An authenticated user whose job invocation visibility is restricted by a permission filter can enumerate job invocation IDs and read the live output, rendered script, and input values for other users' job invocations within their own organizations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
