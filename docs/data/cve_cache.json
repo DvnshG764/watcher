@@ -59270,7 +59270,7 @@
   "CVE-2026-93017": {
     "cvss": 7.7,
     "description": "The `insights-operator-gather` ClusterRole grants the operator's service account read access to secrets in the core API group with no namespace or resourceNames restriction — therefore, access to every secret in every namespace in the cluster. Ref: https://github.com/openshift/insights-operator/blob/8f15e3157ff09f54ab22801f5b21da35a195cc6d/manifests/03-clusterrole.yaml#L368-L373 ``` - apiGroups: - \"\" resources: - secrets verbs: - get - list ``` By spawning a pod with the gather service account mounted, an attacker will be able to access any secret in any namespace. ``` spec: serviceAccountName:\"gather\" ```",
-    "vendor": "Unknown",
+    "vendor": "F5",
     "product": "Unknown"
   },
   "CVE-2026-106433": {
@@ -63120,7 +63120,7 @@
     "product": "Unknown"
   },
   "CVE-2026-116606": {
-    "cvss": 9.3,
+    "cvss": 9.8,
     "description": "Barracuda Networks Email Security Gateway (ESG) contains an authentication bypass using an alternate path or channel that could allow an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration. This vulnerability can be chained with CVE-2026-111560.",
     "vendor": "Barracuda Networks",
     "product": "Barracuda Email Security Gateway (ESG)"
@@ -70813,7 +70813,7 @@
   },
   "CVE-2026-53995": {
     "cvss": 8.2,
-    "description": "MLflow 3.17.1 and earlier contains a path traversal vulnerability in the FileStore tracking backend that allows unauthenticated attackers to control filesystem paths by submitting a crafted trace ID containing traversal sequences to the POST /api/3.0/mlflow/traces endpoint. Attackers can exploit FileStore.start_trace() to write trace_info.yaml, request_metadata, and tag files with attacker-controlled metadata outside the intended experiment trace directory, subject to the server process's filesystem permissions. FileStore is the default tracking backend before MLflow 3.7.0 and opt-in thereafter (the default changed to a SQLite database), so deployments in the earlier part of the affected range are vulnerable without special configuration while later ones are affected only when FileStore is explicitly selected.",
+    "description": "MLflow before 3.18.0 contains a path traversal vulnerability in the FileStore tracking backend that allows unauthenticated attackers to control filesystem paths by submitting a crafted trace ID containing traversal sequences to the POST /api/3.0/mlflow/traces endpoint. Attackers can exploit FileStore.start_trace() to write trace_info.yaml, request_metadata, and tag files with attacker-controlled metadata outside the intended experiment trace directory, subject to the server process's filesystem permissions. FileStore is the default tracking backend before MLflow 3.7.0 and opt-in thereafter (the default changed to a SQLite database), so deployments in the earlier part of the affected range are vulnerable without special configuration while later ones are affected only when FileStore is explicitly selected.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -90786,7 +90786,7 @@
     "product": "civetweb"
   },
   "CVE-2026-111560": {
-    "cvss": 8.6,
+    "cvss": 7.2,
     "description": "Barracuda Networks Email Security Gateway (ESG), Load Balancer, Application Delivery Controller (ADC), Message Archiver (BMA), WAF Control Center (WCC), Web Application Firewall (WAF), and Web Security Gateway (WSG) contain an OS command injection vulnerability. This vulnerability could allow an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed. This vulnerability can be chained with CVE-2026-116606",
     "vendor": "Barracuda Networks",
     "product": "Barracuda Email Security Gateway (ESG)"
@@ -116482,5 +116482,527 @@
     "description": "The Auth Armor WordPress plugin through 1.0.3 does not require authentication on several handlers available to logged-out users, which leak the site's stored API credentials and allow an unauthenticated attacker to reset an administrator's enrollment and take over that administrator account.",
     "vendor": "Unknown",
     "product": "Auth Armor"
+  },
+  "CVE-2026-86378": {
+    "cvss": 8.8,
+    "description": "Dell PowerProtect Data Domain, Feature Release versions 7.7.1.0 through 8.8, LTS2024 release versions 7.13.1.0 through 7.13.1.80, LTS2025 release versions 8.3.1.0 through 8.3.1.40, LTS2026 release versions 8.6.1.0 through 8.6.1.20, contain a Stack-based Buffer Overflow vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118035": {
+    "cvss": 7.5,
+    "description": "In Progress® Telerik® Document Processing Libraries prior to version 2026.3.1027, uncontrolled recursion, inefficient algorithmic complexity and infinite loop vulnerabilities in RadWordsProcessing allow an unauthenticated attacker to terminate or hang the host process via a crafted DOCX, DOC, RTF or HTML document.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118036": {
+    "cvss": 7.5,
+    "description": "In Progress® Telerik® Document Processing Libraries prior to version 2026.3.1027, uncontrolled recursion, infinite loop, inefficient algorithmic complexity and resource allocation vulnerabilities in RadPdfProcessing and AI document summarization and question answering allow an unauthenticated attacker to terminate or hang the host process via a crafted PDF document or document text submitted for summarization or question answering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118037": {
+    "cvss": 7.5,
+    "description": "In Progress® Telerik® Document Processing Libraries prior to version 2026.3.1027, uncontrolled recursion, infinite loop, unchecked loop condition and inefficient regular expression vulnerabilities in RadSpreadProcessing and RadSpreadStreamProcessing allow an unauthenticated attacker to terminate or hang the host process via a crafted XLSX or XLS workbook or formula.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118038": {
+    "cvss": 7.1,
+    "description": "In Progress® Telerik® Document Processing Libraries prior to version 2026.3.1027, a path traversal vulnerability in the Convert and Merge AI agent tools allows an authenticated attacker with low privileges who can supply tool arguments to read files outside the configured output directory, and to overwrite such files where they are writable, via relative file paths that resolve against the process current working directory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118039": {
+    "cvss": 7.5,
+    "description": "In Progress® Telerik® Document Processing Libraries prior to version 2026.3.1027, an XML external entity reference vulnerability in SVG image processing allows an unauthenticated attacker to read local files on the server via a crafted SVG image with a nested embedded SVG, when the image is processed or exported to PDF.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117868": {
+    "cvss": 9.6,
+    "description": "Privilege escalation in the DOM: Networking component. This vulnerability was fixed in Firefox 159, Firefox ESR 115.44, Firefox ESR 153.6, Thunderbird 159, and Thunderbird 153.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116371": {
+    "cvss": 6.3,
+    "description": "A weakness has been identified in Akuvox Akubela HyPanel PS51 51.130.40.26. The impacted element is an unknown function of the file /login. Executing a manipulation of the argument engrmode with the input admin can lead to improper authentication. The attack may be launched remotely. Upgrading to version 51.130.40.31 is sufficient to resolve this issue. It is recommended to upgrade the affected component.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115533": {
+    "cvss": 8.8,
+    "description": "The LeRobot library is vulnerable to arbitrary code execution via unsafe dynamic class instantiation in the from_pretrained() method and related paths. When loading a policy's processor configuration from a repository, the library uses the class field within the JSON configuration to dynamically resolve and instantiate Python classes using importlib.import_module() and getattr().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112672": {
+    "cvss": 5.5,
+    "description": "The issue was addressed with improved checks. This issue is fixed in macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2. A maliciously crafted ZIP archive may bypass Gatekeeper checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-57845": {
+    "cvss": 8.8,
+    "description": "Hugging Face Datasets before 5.2.0 contains an insecure deserialization vulnerability that allows attackers to execute arbitrary Python code by crafting a malicious pickle file loaded through the deprecated pandas packaged builder. Attackers can supply a pickle-backed dataset that is processed by Pandas._generate_tables via pandas.read_pickle() without validation, so when a victim calls datasets.load_dataset(\"pandas\", data_files=...), the embedded __reduce__ payload executes code with the victim process's privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115207": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GNU patch. An attacker can achieve arbitrary file creation outside the intended working directory by enticing a user or automated workflow to apply a specially crafted patch file. Due to missing validation during automatic patch reversal, absolute file paths in patch headers are accepted rather than rejected. Consequently, the utility can create files in arbitrary locations with the permissions of the executing user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114605": {
+    "cvss": 7.5,
+    "description": "dnspython is a DNS toolkit for Python. Prior to 2.9.0, dns.name.from_wire_parser follows attacker-controlled DNS compression pointer chains without a hop limit. A malicious DNS wire-format message can force excessive pointer traversal during name decompression, causing high CPU use, application degradation, or denial of service in applications that process untrusted DNS messages. This issue is fixed in version 2.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92822": {
+    "cvss": 6.2,
+    "description": "A flaw was found in libmodulemd. When parsing module metadata, the xmd field is converted into nested GVariant values through recursive YAML mapping and sequence helpers without a recursion-depth or node-count limit. An attacker who can supply crafted modulemd YAML with deeply nested xmd content can cause stack exhaustion or excessive resource consumption, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92823": {
+    "cvss": 6.2,
+    "description": "A flaw was found in libmodulemd. In builds with rpmio support enabled, compressed modulemd YAML is decompressed through a custom read handler that does not enforce a cumulative decompressed-size limit before parsing. An attacker who can supply a highly compressible compressed YAML file can cause excessive CPU and memory consumption, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101386": {
+    "cvss": 4.2,
+    "description": "Vulnerability in Oracle REST Data Services (component: Core). Supported versions that are affected are 24.2.0-26.1.0. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle REST Data Services. Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Oracle REST Data Services accessible data as well as unauthorized read access to a subset of Oracle REST Data Services accessible data. CVSS 3.1 Base Score 4.2 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101399": {
+    "cvss": 5.3,
+    "description": "Vulnerability in the Siebel Apps - Marketing product of Oracle Siebel CRM (component: Marketing). Supported versions that are affected are 17.0-26.9. Easily exploitable vulnerability allows unauthenticated attacker with network access via SMTP to compromise Siebel Apps - Marketing. Successful attacks of this vulnerability can result in unauthorized ability to cause a partial denial of service (partial DOS) of Siebel Apps - Marketing. CVSS 3.1 Base Score 5.3 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101400": {
+    "cvss": 2.9,
+    "description": "Vulnerability in the Siebel Apps - Marketing product of Oracle Siebel CRM (component: Marketing). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with logon to the infrastructure where Siebel Apps - Marketing executes to compromise Siebel Apps - Marketing. Successful attacks of this vulnerability can result in unauthorized ability to cause a partial denial of service (partial DOS) of Siebel Apps - Marketing. CVSS 3.1 Base Score 2.9 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101401": {
+    "cvss": 2.9,
+    "description": "Vulnerability in the Siebel Apps - Marketing product of Oracle Siebel CRM (component: Marketing). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with logon to the infrastructure where Siebel Apps - Marketing executes to compromise Siebel Apps - Marketing. Successful attacks of this vulnerability can result in unauthorized ability to cause a partial denial of service (partial DOS) of Siebel Apps - Marketing. CVSS 3.1 Base Score 2.9 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101402": {
+    "cvss": 3.7,
+    "description": "Vulnerability in the Siebel Apps - Marketing product of Oracle Siebel CRM (component: Email Marketing). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel Apps - Marketing. Successful attacks of this vulnerability can result in unauthorized ability to cause a partial denial of service (partial DOS) of Siebel Apps - Marketing. CVSS 3.1 Base Score 3.7 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101403": {
+    "cvss": 5.9,
+    "description": "Vulnerability in the Siebel Apps - Marketing product of Oracle Siebel CRM (component: Email Marketing). Supported versions that are affected are 17.0-26.9. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Siebel Apps - Marketing. Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Siebel Apps - Marketing accessible data as well as unauthorized update, insert or delete access to some of Siebel Apps - Marketing accessible data. CVSS 3.1 Base Score 5.9 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101533": {
+    "cvss": 6.6,
+    "description": "Vulnerability in the Oracle EDI Gateway product of Oracle E-Business Suite (component: All Miscellaneous EDI Issues). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows high privileged attacker with network access via HTTP to compromise Oracle EDI Gateway. Successful attacks of this vulnerability can result in takeover of Oracle EDI Gateway. CVSS 3.1 Base Score 6.6 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101534": {
+    "cvss": 8.5,
+    "description": "Vulnerability in the Oracle EDI Gateway product of Oracle E-Business Suite (component: EDI). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle EDI Gateway. While the vulnerability is in Oracle EDI Gateway, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle EDI Gateway accessible data as well as unauthorized update, insert or delete access to some of Oracle EDI Gateway accessible data. CVSS 3.1 Base Score 8.5 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101535": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle Sales Foundation product of Oracle E-Business Suite (component: Security API). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Sales Foundation. Successful attacks of this vulnerability can result in takeover of Oracle Sales Foundation. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101536": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle Cost Management product of Oracle E-Business Suite (component: Cost Maintenance). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Cost Management. Successful attacks of this vulnerability can result in takeover of Oracle Cost Management. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101540": {
+    "cvss": 7.7,
+    "description": "Vulnerability in the Oracle Capacity product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Capacity. While the vulnerability is in Oracle Capacity, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Capacity accessible data. CVSS 3.1 Base Score 7.7 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101541": {
+    "cvss": 7.7,
+    "description": "Vulnerability in the Oracle Capacity product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Capacity. While the vulnerability is in Oracle Capacity, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Capacity accessible data. CVSS 3.1 Base Score 7.7 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101542": {
+    "cvss": 8.8,
+    "description": "Vulnerability in the Oracle Capacity product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Capacity. Successful attacks of this vulnerability can result in takeover of Oracle Capacity. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101543": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle Capacity product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Capacity. Successful attacks of this vulnerability can result in takeover of Oracle Capacity. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101546": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle Materials Requirement Planning product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Materials Requirement Planning. Successful attacks of this vulnerability can result in takeover of Oracle Materials Requirement Planning. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101552": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle Application Object Library product of Oracle E-Business Suite (component: Flexfields). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Application Object Library. Successful attacks of this vulnerability can result in takeover of Oracle Application Object Library. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101567": {
+    "cvss": 8.8,
+    "description": "Vulnerability in the Oracle Cost Management product of Oracle E-Business Suite (component: Cost Planning). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Cost Management. Successful attacks of this vulnerability can result in takeover of Oracle Cost Management. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101569": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Helidon product of Oracle Fusion Middleware (component: helidon-common-concurrency-limits). Supported versions that are affected are 4.0.0-4.5.5 and 27.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Helidon. Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Helidon accessible data and unauthorized ability to cause a partial denial of service (partial DOS) of Helidon. CVSS 3.1 Base Score 6.5 (Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101570": {
+    "cvss": 3.7,
+    "description": "Vulnerability in the Helidon product of Oracle Fusion Middleware (component: helidon-webserver-http2). Supported versions that are affected are 4.0.0-4.5.5. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP/2 to compromise Helidon. Successful attacks of this vulnerability can result in unauthorized ability to cause a partial denial of service (partial DOS) of Helidon. CVSS 3.1 Base Score 3.7 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101604": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle Communications Unified Inventory Management product of Oracle Communications (component: Security). Supported versions that are affected are 7.5.0, 7.5.1, 7.6.0, 7.7.0, 7.8.0 and 8.0.1. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Communications Unified Inventory Management. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Communications Unified Inventory Management accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112306": {
+    "cvss": 7.2,
+    "description": "NocoBase @nocobase/plugin-collection-sql through 2.2.46 contains an SQL injection vulnerability that allows privileged users to store unvalidated SQL by bypassing checkSQL() through the sqlCollection:setFields action. Attackers holding the collection-sql snippet can replace a benign collection query with dangerous statements executed on reload, reading pg_shadow password hashes or calling pg_read_file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-103038": {
+    "cvss": 8.6,
+    "description": "PingTools Network Utilities 4.64 contains an OS command injection vulnerability in the Host field of a Watcher ICMP service. The application appends the attacker-controlled Host value to a ping command, serializes the command as a single string, and executes it through sh -c. A local attacker who can create or modify a Watcher service can inject shell syntax and execute arbitrary commands with the PingTools application UID and its granted Android permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111063": {
+    "cvss": 5.3,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, the Secure attribute for a shared cookie is not enforced. An attacker can consequently cause a shared cookie marked Secure to be sent with an unencrypted request. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111064": {
+    "cvss": 7.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, keepalive timeout handling is absent during the initial portion of a request. An attacker can keep an idle connection open indefinitely before sending any request data, consuming server connection capacity. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111065": {
+    "cvss": 5.3,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, Max-Age processing can overflow and skip closing a connection. An attacker can consequently exhaust the connection pool temporarily until garbage collection resolves the connections. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111066": {
+    "cvss": 7.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. From 2.0.0 until 3.14.4, multipart request processing can retain an unbounded number of open file descriptors. An unauthenticated attacker can consequently exhaust file descriptors with specially crafted multipart requests when a handler uses Request.post(). This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111748": {
+    "cvss": 6.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, an attacker can send an absolute-form request that causes Request.scheme to use attacker-controlled request-target scheme data instead of the connection protocol. Applications that use Request.scheme for security decisions can consequently be tricked into treating an unencrypted connection as encrypted or an encrypted connection as unencrypted. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111749": {
+    "cvss": 5.4,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, Host-Only scope on an existing parent-domain cookie can be removed by a subdomain. A user who accesses an untrusted subdomain can consequently have host-only protections stripped from cookies, although impact is limited when applications do not reflect those cookies to a browser. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111750": {
+    "cvss": 6.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, the pure Python parser accepts ambiguous HTTP request framing. An unauthenticated attacker can consequently smuggle requests when an application uses AIOHTTP_NO_EXTENSIONS or otherwise runs without a standard wheel and an intermediary interprets the framing differently. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92982": {
+    "cvss": 8.5,
+    "description": "A flaw was found in Ansible Operator Plugins. A low-privileged Kubernetes user can exploit a Jinja2 template injection vulnerability by crafting malicious custom resource (CR) specification values. These values are processed by Ansible without proper sanitization, allowing embedded Jinja2 expressions to be executed within the operator pod. This can lead to arbitrary code execution and privilege escalation, granting the attacker control over the operator's service account with cluster-wide permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100229": {
+    "cvss": null,
+    "description": "Rejected reason: No standard GStreamer pipeline element invokes the vulnerable parser API. Exploitation would require a third-party application to call it with attacker-controlled H.266 DCI data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11732": {
+    "cvss": 8.8,
+    "description": "An insufficient input validation vulnerability in the website blocking feature (Block Sites) of the listed NETGEAR router models allows a network-adjacent attacker with access to the local network (such as through Wi-Fi credentials) to run unauthorized commands on the router. This vulnerability could affect the confidentiality, integrity, and availability of the affected router. It applies only when the Block Sites feature is turned on.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88833": {
+    "cvss": 6.5,
+    "description": "A flaw was found in BusyBox's udhcpc DHCP client. When processing raw DHCP packets, the client replaces the validated packet length with an attacker-controlled value from the IP header without re-validating the minimum size. This leads to an integer underflow when subtracting header sizes, causing a subsequent memory copy with a massively oversized length. An attacker on the same network segment can send a specially crafted packet to crash the DHCP client, resulting in denial of service and loss of network connectivity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106172": {
+    "cvss": 5.3,
+    "description": "A use of hard-coded cryptographic key vulnerability in Fortinet FortiSandbox 5.2.0 through 5.2.1, FortiSandbox 5.0.0 through 5.0.6, FortiSandbox 4.4 all versions, FortiSandbox Cloud 5.2.0 through 5.2.1, FortiSandbox Cloud 5.0.0 through 5.0.6, FortiSandbox Cloud 4.4 all versions may allow attacker to escalation of privilege via specially crafted HTTP requests",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-63146": {
+    "cvss": 9.8,
+    "description": "Omnispace Agora Project before 26.10.0 contains a code injection vulnerability where unescaped, attacker-controlled values are written into the config.inc.php configuration file during installation through File::updateConfigFile() and DbInstall::dbControl(), combined with an SQL injection issue enabled by PDO::ATTR_EMULATE_PREPARES supporting stacked queries. Attackers can exploit the SQL injection to re-trigger the installer and inject arbitrary PHP code into config.inc.php, achieving unauthenticated remote code execution on the underlying system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63147": {
+    "cvss": 5.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains a stored cross-site scripting vulnerability that allows authenticated users to inject malicious script by uploading a file with HTML/script markup embedded in its filename, which bypasses the paramFilter since uploaded-file names arrive through $_FILES rather than $_GET/$_POST. Attackers can upload a file with a crafted name such as an SVG onload payload to have the unsanitized filename stored and later rendered to other users, resulting in script execution in their browsers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63148": {
+    "cvss": 5.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains a stored cross-site scripting vulnerability that allows authenticated attackers to inject HTML/script markup by uploading a poll-response attachment with a malicious filename that bypasses the paramFilter sanitization applied to $_FILES. Attackers can submit a crafted filename that is stored and later rendered in components such as the dashboard controller (CtrlDashboard), executing arbitrary script in the browsers of users who view the affected page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63149": {
+    "cvss": 7.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains an insecure randomness vulnerability that allows attackers to predict temporary or default account passwords generated by Txt::defaultPassword() using PHP's uniqid() function based on server time in microseconds. Attackers who observe or approximate the account creation time can compute the predictable password and take over the account before the legitimate user logs in.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63152": {
+    "cvss": 8.1,
+    "description": "Omnispace Agora Project before 26.10.0 contains a second-order SQL injection vulnerability that allows authenticated attackers to inject malicious SQL via the _idCategoryFilter parameter, which is persisted into the session and later concatenated into a SQL statement without parameterization. Attackers can store a malicious payload that executes when the filter is subsequently applied in app/Common/MdlCategory.php, leading to unauthorized database access or manipulation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63153": {
+    "cvss": 8.1,
+    "description": "Omnispace Agora Project before 26.10.0 contains a broken access control vulnerability in setAffectations() that allows authenticated attackers to insert access-right records for a caller-supplied target space without verifying the caller has rights to that space. Attackers can assign access affectations to spaces outside their own reach, breaking tenant isolation and granting unauthorized access to restricted spaces.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63154": {
+    "cvss": 8.8,
+    "description": "Omnispace Agora Project before 26.10.0 contains a SQL identifier injection vulnerability that allows a space administrator to escalate privileges by supplying caller-controlled agoraFields[] names as unvalidated SQL column identifiers during the user import flow. Attackers can inject privileged column names such as generalAdmin or use backtick-injection techniques to set administrative flags and escalate to general administrator privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63158": {
+    "cvss": 7.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains an authentication bypass vulnerability that allows attackers possessing a user's stored bcrypt password hash to authenticate as that user without knowing the actual password, caused by the legacy AGORAP_LOG/AGORAP_PASS cookie mechanism treating the stored hash as a directly replayable bearer credential. Attackers can set the AGORAP_LOG/AGORAP_PASS cookies with a stolen password hash to impersonate any user, including administrators, and gain unauthorized access to the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63159": {
+    "cvss": 7.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains a predictable password-reset token vulnerability that allows unauthenticated attackers to take over user accounts by computing the reset token as sha1(login.password), a deterministic and reusable value. Attackers can derive or brute-force the reset token from known or guessed login and password combinations to forge valid password-reset requests and hijack arbitrary accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63160": {
+    "cvss": 7.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains a vulnerability where the persistent remember-me token is stored verbatim server-side, making the stored value identical to the bearer credential held in the user's cookie. Attackers who gain access to the stored token, such as through database or backup disclosure, can replay the plaintext value to authenticate as the victim user without needing their password.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63161": {
+    "cvss": 8.8,
+    "description": "Omnispace Agora Project before 26.10.0 contains a session fixation vulnerability that allows remote attackers to hijack authenticated sessions by planting a known session identifier in a victim's browser prior to login. Attackers can exploit the application's failure to regenerate the session id upon successful authentication to gain unauthorized access to the victim's authenticated session after they log in.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63162": {
+    "cvss": 8.8,
+    "description": "Omnispace Agora Project before 26.10.0 contains a path traversal vulnerability that allows attackers to write arbitrary files outside the intended temporary directory by supplying an unanchored tmpFolderName value in the upload destination path. Attackers can exploit this flaw, for example by setting tmpFolderName to a traversal sequence targeting the web root, to write attacker-controlled files and achieve remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63163": {
+    "cvss": 7.5,
+    "description": "Omnispace Agora Project before 26.10.0 contains a broken access control vulnerability in the MobileFileDownload route that allows unauthenticated attackers to download arbitrary files by computing an md5(filename) token instead of passing a proper authorization check. Attackers can guess or determine file names to generate the corresponding md5 token and retrieve protected files without authorization, leading to unauthorized information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63165": {
+    "cvss": 8.1,
+    "description": "Omnispace Agora Project before 26.10.0 contains a SQL injection vulnerability in the calendar functionality that allows attackers to inject malicious SQL by manipulating the sortEvents parameter, which is concatenated into the ORDER BY clause without sanitization in app/ModCalendar/CtrlCalendar.php. Attackers can exploit this flaw using error-based techniques such as extractvalue payloads to extract database information, including version data, from the underlying system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63172": {
+    "cvss": 7.1,
+    "description": "Omnispace Agora Project before 26.10.0 contains a broken access control vulnerability that allows a regular, non-administrative member to create user accounts by invoking the user-edit action without a function-level authorization check. Attackers can exploit the missing editRight() enforcement in actionVueEditUser to create unauthorized user accounts, leading to privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63174": {
+    "cvss": 8.1,
+    "description": "Omnispace Agora Project before 26.10.0 contains a broken access control vulnerability that allows a space administrator to assign users into spaces outside their authority because the spaceAffectList affectation was performed without verifying the caller's rights to the target space. Attackers can exploit the missing readRight() check in the import flow's join INSERT to break tenant isolation and manipulate user-space assignments across unauthorized spaces.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63156": {
+    "cvss": 6.1,
+    "description": "Omnispace Agora Project before 26.10.0 contains a reflected cross-site scripting vulnerability that allows unauthenticated attackers to inject malicious HTML attributes by manipulating the visioUrl parameter, which was not routed through the URL-sanitizing branch of the parameter filter and was urldecoded after filtering. Attackers can craft a malicious URL containing the visioUrl parameter with an attribute breakout payload to execute arbitrary JavaScript in the victim's browser pre-authentication, with the issue fixed in version 26.10.0 via changes to app/Common/Req.php.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63157": {
+    "cvss": 5.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains a stored cross-site scripting vulnerability that allows authenticated users to inject malicious scripts by submitting an unsanitized link address (adress) field that is echoed into an onclick event-handler attribute without neutralizing quotes. Attackers can store a crafted payload through the Links module that executes in the browser of any user viewing the links list, enabling session hijacking or further client-side compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63168": {
+    "cvss": 5.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains a stored cross-site scripting vulnerability that allows authenticated attackers to persist unneutralized markup by submitting malicious values as two-dimensional POST arrays through the LDAP/person import flow, bypassing the paramsFilter() request parameter filter which failed to recurse into nested arrays. Attackers can inject arbitrary script code into a user profile that is later rendered to other users, resulting in execution of malicious scripts in victims' browsers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63169": {
+    "cvss": 6.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains a stored cross-site scripting vulnerability that allows authenticated users to post messages containing attacker-controlled iframes through the messenger's HTMLPurifier SafeIframe branch. Attackers can craft a message with a malicious iframe that is stored and automatically rendered to other channel members, enabling zero-click drive-by downloads and framed JavaScript execution in recipients' browsers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63171": {
+    "cvss": 5.4,
+    "description": "Omnispace Agora Project before 26.10.0 contains a stored cross-site scripting vulnerability that allows authenticated attackers to inject malicious script by submitting a crafted forum category description containing a double-quote character that breaks out of an HTML input value attribute. Attackers can exploit the HTMLPurifier configuration that preserves double-quotes to escape the attribute context and execute arbitrary script in the browser of users viewing the forum category.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107193": {
+    "cvss": 6.5,
+    "description": "A flaw has been found in **permission filters** in the **foreman** package. The API loads a filter by its identifier and does not apply the search limit on the caller's permission. A low-privileged network attacker or user must already be allowed to delete filters for one role only. They can delete filters that belong to other unlocked roles. Those other roles then lose the access the deleted filters had granted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62031": {
+    "cvss": 9.3,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in StylemixThemes uListing ulisting allows Blind SQL Injection.This issue affects uListing: from n/a through 2.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94062": {
+    "cvss": 8.1,
+    "description": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in Fuelthemes Werkstatt werkstatt allows PHP Local File Inclusion.This issue affects Werkstatt: from n/a before 4.8.16.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106471": {
+    "cvss": 8.1,
+    "description": "A flaw was found in Candlepin. The central authorization filter incorrectly grants access when any one of multiple @Verify-annotated parameters is accessible, instead of requiring access to every verified entity. A low-privilege authenticated attacker who can access the first referenced object can bypass authorization checks on subsequent objects. When target resource identifiers are known, this can enable unauthorized disclosure of consumer information and unauthorized modification of entitlements and related subscription resources, including across organizations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-103870": {
+    "cvss": 5.0,
+    "description": "A flaw was found in pulp-rpm when it publishes a distribution tree. Addon and variant ids from .treeinfo are used as directory names. A user who can sync or upload that tree can make the publish task create a new directory outside the task work area and write that tree's repository metadata and packages there, as the Pulp worker user. An existing file or directory is not replaced. The flaw does not disclose data and does not stop the service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107174": {
+    "cvss": 6.4,
+    "description": "A flaw was found in source-to-image. When unpacking archive files, the application fails to properly sanitize symbolic links pointing to absolute file paths. An attacker who supplies a malicious builder image can exploit this vulnerability by embedding links pointing outside the extraction directory. This allows the attacker to bypass sandbox boundaries, potentially leading to unauthorized information disclosure or file modification on the host system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106396": {
+    "cvss": 7.3,
+    "description": "Improper input validation in Omnibox in Google Chrome on on Android prior to 155.0.8059.39 allowed a remote attacker leveraging social engineering to bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104721": {
+    "cvss": 6.3,
+    "description": "Path-traversal vulnerability in QOS.CH Sarl Logback-classic on Java (logback-classic module) allows path-traversal vulnerability. More specifically, an MDC-based discriminator value flows unsanitized into a nested FileAppender path, letting an attacker who influences that MDC value (e.g. via an HTTP header) create and append log files outside the intended directory. This issue affects Logback-classic: from 0.9.14 through 1.6.4. This vulnerability is similar to CVE-2026-19880 but involves other attack techniques.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96822": {
+    "cvss": 9.3,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Hossni Mubarak Books Gallery wp-books-gallery allows Blind SQL Injection.This issue affects Books Gallery: from n/a through 4.8.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96834": {
+    "cvss": 6.5,
+    "description": "Missing Authorization vulnerability in Liquid Web / StellarWP GiveWP give allows Retrieve Embedded Sensitive Data.This issue affects GiveWP: from n/a through 4.16.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95520": {
+    "cvss": 7.1,
+    "description": "A heap-based buffer overflow flaw was found in rpm. Parsing a symlink entry in an untrusted RPM package whose declared RPMTAG_LONGFILESIZES value is 0xFFFFFFFFFFFFFFFF causes an integer overflow in iterReadArchiveNext() that shrinks a buffer allocation to one byte, after which the payload's independently-controlled cpio filesize field is used to write attacker-controlled data past the end of that allocation. This is reachable via rpm2cpio, rpm2archive, and rpm -qlvp on an untrusted package.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71972": {
+    "cvss": 5.9,
+    "description": "U-Boot before 2027.01-rc1 contains an out-of-bounds write vulnerability in the video_display_rle8_bitmap function in drivers/video/video_bmp.c. Attackers can supply a crafted RLE8-compressed BMP image to corrupt memory adjacent to the framebuffer and crash the bootloader.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82375": {
+    "cvss": 7.4,
+    "description": "Server-Side Request Forgery (SSRF) in Apache Roller 6.1.5 allows an authenticated user with entry-editing rights on a weblog to cause outbound HTTP requests to attacker-chosen destinations through legacy outbound Trackback and entry enclosure handling. The Trackback control is hidden in the standard UI, but its action remains directly reachable; the enclosure path is relevant only when an author supplies an enclosure URL. No non-default server configuration is required, and the default empty Trackback allow-list permits all destinations. Requests can reach loopback and private-network addresses, while enclosure handling exposes response status, content type, and length. Users are recommended to upgrade to Apache Roller 6.1.6 or later, which removes the outbound trackback action and stops dereferencing enclosure URLs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82377": {
+    "cvss": 9.9,
+    "description": "Missing Authorization in Apache Roller 6.1.5 allows an authenticated user to read, modify, or delete weblog content belonging to other weblogs through the legacy XML-RPC Blogger and MetaWeblog APIs, because the handlers authenticate the caller but do not verify the caller's permission on the weblog or entry actually affected. Only installations that enable the non-default global XML-RPC setting are affected; the per-weblog API flag defaults to enabled for UI-created weblogs. Users are recommended to upgrade to Apache Roller 6.1.6 or later, which applies an explicit per-method permission check, or to keep the XML-RPC feature disabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82387": {
+    "cvss": 5.4,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') in Apache Roller 6.1.5 allows a user with media-upload rights to store active content on Roller's origin, because the media upload feature trusts the upload-supplied content type and serves the stored file back with that type. A victim who opens the uploaded file executes the stored script. Media uploads are disabled by default; only installations that enable them are affected, and the shipped type restrictions do not block active content once uploads are on. Users are recommended to upgrade to Apache Roller 6.1.6 or later, which derives the stored type from file content and serves non-image media as a download.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94131": {
+    "cvss": 8.1,
+    "description": "Joomla Extension - acymailing.com - Unauthenticated arbitrary file deletion in AcyMailing Enterprise extension < 11.1.0 - A subscriber could store a path in a file-type custom field and have AcyMailing delete that file when the field was cleared, including files outside the upload folder such as configuration.php.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94132": {
+    "cvss": 8.1,
+    "description": "Joomla Extension - acymailing.com - Remote Code Execution vulnerability in mailbox action feature in AcyMailing Enterprise extension < 11.1.0 - MIME parts of incoming emails were saved to media/com_acym/upload/ with no extension check, so anyone who could email the monitored mailbox could write a PHP file into the web root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
