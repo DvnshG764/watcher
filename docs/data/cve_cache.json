@@ -116266,5 +116266,59 @@
     "description": "Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.29.13, the unauthenticated /api/providers/github/setup route in apps/dokploy/pages/api/providers/github/setup.ts trusts gh_init organizationId and userId values from the state parameter and calls createGithub in packages/server/src/services/github.ts, allowing an attacker to insert a GitHub App provider containing client_secret, webhook_secret, and PEM private key material into another organization. This issue is fixed in version 0.29.13.",
     "vendor": "Check Point",
     "product": "dokploy"
+  },
+  "CVE-2026-62107": {
+    "cvss": 8.8,
+    "description": "Deserialization of Untrusted Data vulnerability in ThemeGrill Masteriyo - LMS learning-management-system allows Object Injection.This issue affects Masteriyo - LMS: from n/a through 3.4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80920": {
+    "cvss": null,
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-72672": {
+    "cvss": 6.5,
+    "description": "The Elastic Security capability that suggests existing field values while a user authors endpoint policy artifacts queries Elastic Defend event data with Kibana's internal Elasticsearch account instead of the account of the requesting user. Only Kibana feature privileges are verified, and the caller's Elasticsearch index privileges are not. An authenticated user who holds Elastic Security feature privileges but no read access to the Elastic Defend event indices can therefore retrieve field values from that data, including process command line arguments, which commonly contain tokens, credentials, connection strings, and other sensitive operational detail from protected hosts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-38795": {
+    "cvss": 9.8,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Emraan Cheema ListingPro listingpro-plugin allows SQL Injection.This issue affects ListingPro: from n/a through 2.9.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129493": {
+    "cvss": 7.5,
+    "description": "Bolo (bolo-solo) 1.7 through 2.6.4 contains an information disclosure vulnerability that allows unauthenticated attackers to read article view passwords via the public GET /articles endpoint. Attackers can retrieve the plaintext articleViewPwd field returned by ArticleProcessor.getArticlesByPage and submit it to read password-protected article content.",
+    "vendor": "bolo-blog",
+    "product": "bolo-solo"
+  },
+  "CVE-2026-125423": {
+    "cvss": null,
+    "description": "A repository created with auto-init accepted pushes before its initialization had finished, and the initial commit was built in a checkout of whatever the repository already contained. A user who is allowed to create repositories could push a crafted tree during that window so that writing the README followed a symbolic link and overwrote a server-side git hook, which runs commands as the Gitea system user. The initial commit is now built in a freshly initialized directory, and a new repository only becomes ready, and accepts pushes, once its initialization is complete.",
+    "vendor": "Gitea",
+    "product": "Gitea"
+  },
+  "CVE-2026-116331": {
+    "cvss": 8.8,
+    "description": "Type confusion in PostgreSQL min/max aggregate optimization allows an object creator to execute arbitrary code as the operating system user running the database, via a user-defined aggregate whose SORTOP option causes the planner to treat the aggregate's input and result as the same type when they differ. Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+    "vendor": "Unknown",
+    "product": "PostgreSQL"
+  },
+  "CVE-2026-129494": {
+    "cvss": 7.5,
+    "description": "CloudPaste 1.1.0 through 1.9.1 contains an information disclosure vulnerability that allows unauthenticated attackers to obtain WebDAV storage credentials through the unauthenticated /api/proxy/link endpoint. Attackers who know a public share slug can retrieve the Basic Authorization header containing the WebDAV username and password, then read, modify, or delete files on the WebDAV server.",
+    "vendor": "ling-drag0n",
+    "product": "CloudPaste"
+  },
+  "CVE-2026-129492": {
+    "cvss": 6.1,
+    "description": "Bolo (bolo-solo) 1.7 through 2.6.4 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to inject scripts via the unsanitized commentOriginalCommentName parameter. Attackers can post a comment to /article/comments with a short payload that steals non-HttpOnly session cookies from visitors, enabling takeover of administrator accounts.",
+    "vendor": "bolo-blog",
+    "product": "bolo-solo"
   }
 }
