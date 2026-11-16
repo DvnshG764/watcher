@@ -116446,5 +116446,41 @@
     "description": "SGLang allows unauthenticated pickle deserialization through /update_weights_from_tensor when no auth keys are configured, and the SafeUnpickler policy can be bypassed because builtins.import and builtins.getattr are resolvable, enabling code execution via pickle REDUCE.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-129491": {
+    "cvss": 5.4,
+    "description": "Qbian61 forum-java commit 20f7e68 through commit 63152c4 contains a stored cross-site scripting vulnerability that allows authenticated users to inject script by posting unsanitized comment content rendered via jQuery .html() in the reply dialog. Attackers can post comments with img onerror payloads that execute when victims click Reply, stealing the non-HttpOnly sid session cookie to hijack accounts including administrators.",
+    "vendor": "Qbian61",
+    "product": "forum-java"
+  },
+  "CVE-2026-116492": {
+    "cvss": 6.5,
+    "description": "Frappe CRM app before 1.89.1 contains a missing authorization vulnerability that allows authenticated low-privileged users to read CRM Lead records they are not permitted to access by querying the get_contact_by_phone_number API, which performs raw database queries without invoking the permission system. Attackers can supply a known phone number to the crm.integrations.api.get_contact_by_phone_number endpoint to retrieve full lead details otherwise blocked by standard API and UI access controls, resulting in unauthorized disclosure of sensitive CRM data.",
+    "vendor": "frappe",
+    "product": "crm"
+  },
+  "CVE-2026-119179": {
+    "cvss": 7.0,
+    "description": "A flaw in the connection management layer of the MongoDB Node.js driver can leave a pooled network connection in the pool for reuse while data from an earlier operation is still outstanding on it. In applications that enable an optional client-side operation timeout, an unauthenticated party that can send ordinary requests to the application may cause database replies to be paired with the wrong requests. This may result in unintended disclosure of other users' records, incorrect operation results being returned, and failures of legitimate requests.",
+    "vendor": "MongoDB",
+    "product": "Node.js Driver"
+  },
+  "CVE-2026-111559": {
+    "cvss": 9.3,
+    "description": "Batflat CMS does not sanitize data passed to the /contact endpoint. A remote unauthenticated attacker can send a POST request with a crafted message, causing arbitrary PHP code execution with www-data user privileges. The project is no longer maintained and the issue has not been fixed.",
+    "vendor": "sruupl",
+    "product": "Batflat"
+  },
+  "CVE-2026-119258": {
+    "cvss": 8.1,
+    "description": "The Swipe WordPress plugin through 1.4 does not properly authenticate a login request before issuing a WordPress session cookie, allowing unauthenticated attackers to log in as an existing user, including an administrator, when that user has an active app session.",
+    "vendor": "Unknown",
+    "product": "Swipe"
+  },
+  "CVE-2026-110960": {
+    "cvss": 9.8,
+    "description": "The Auth Armor WordPress plugin through 1.0.3 does not require authentication on several handlers available to logged-out users, which leak the site's stored API credentials and allow an unauthenticated attacker to reset an administrator's enrollment and take over that administrator account.",
+    "vendor": "Unknown",
+    "product": "Auth Armor"
   }
 }
