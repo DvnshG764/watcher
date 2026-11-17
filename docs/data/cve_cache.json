@@ -2360,13 +2360,13 @@
   "CVE-2024-57728": {
     "cvss": 7.2,
     "description": "SimpleHelp contains a path traversal vulnerability that allows admin users to upload arbitrary files anywhere on the file system by uploading a crafted zip file (i.e. zip slip). This can be exploited to execute arbitrary code on the host in the context of the SimpleHelp server user.",
-    "vendor": "SimpleHelp ",
+    "vendor": "SimpleHelp",
     "product": "SimpleHelp"
   },
   "CVE-2024-57726": {
     "cvss": 9.9,
     "description": "SimpleHelp contains a missing authorization vulnerability that could allow low-privileged technicians to create API keys with excessive permissions. These API keys can be used to escalate privileges to the server admin role.",
-    "vendor": "SimpleHelp ",
+    "vendor": "SimpleHelp",
     "product": "SimpleHelp"
   },
   "CVE-2026-39987": {
@@ -17136,10 +17136,10 @@
     "product": "openemr"
   },
   "CVE-2026-104100": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 8.8,
+    "description": "Teable is an AI spreadsheet for business. Prior to release.2026-07-21T11-27-40Z.2320, a registered user can supply path traversal sequences in the hash field accepted by POST /api/attachments/signature when the default local storage provider is in use. In apps/nestjs-backend/src/features/attachments/plugins/local.ts, LocalStorage.presigned uses the client-controlled hash as the storage filename, and LocalStorage.save resolves that path and copies the uploaded request body without calling assertPathWithinStorage on the write path. The read path uses the jail, but the write path does not, allowing the resolved destination to escape the configured storage directory. Because the backend container runs as uid 0, the attacker can write or overwrite arbitrary root-owned files, which can corrupt the instance or lead to root code execution. Object-storage deployments that do not use LocalStorage.save are not affected by this sink. This issue is fixed in release.2026-07-21T11-27-40Z.2320.",
+    "vendor": "teableio",
+    "product": "teable"
   },
   "CVE-2026-11119": {
     "cvss": 9.6,
@@ -22604,7 +22604,7 @@
   "CVE-2024-57727": {
     "cvss": 9.1,
     "description": "SimpleHelp remote support software contains multiple path traversal vulnerabilities that allow unauthenticated remote attackers to download arbitrary files from the SimpleHelp host via crafted HTTP requests. These files may include server configuration files and hashed user passwords.",
-    "vendor": "SimpleHelp ",
+    "vendor": "SimpleHelp",
     "product": "SimpleHelp"
   },
   "CVE-2025-24200": {
@@ -29882,7 +29882,7 @@
   "CVE-2023-28461": {
     "cvss": 9.8,
     "description": "Array Networks AG and vxAG ArrayOS contain a missing authentication for critical function vulnerability that allows an attacker to read local files and execute code on the SSL VPN gateway.",
-    "vendor": "Array Networks ",
+    "vendor": "Array Networks",
     "product": "AG/vxAG ArrayOS"
   },
   "CVE-2024-21287": {
@@ -113190,7 +113190,7 @@
     "product": "frankenphp"
   },
   "CVE-2026-123790": {
-    "cvss": null,
+    "cvss": 6.5,
     "description": "ComfyUI-Easy-Use version 1.3.6 contains a path traversal vulnerability in the `save_preview()` handler for POST `/easyuse/save/{name}`. The handler checks the source directory before appending a user-supplied filename and allows the request to select the `custom_nodes` directory as a copy destination. An unauthenticated attacker who can reach the ComfyUI server can overwrite an installed custom node’s Python entry point with an uploaded file. When ComfyUI restarts and loads the modified node, the attacker’s code runs with the privileges of the ComfyUI process.",
     "vendor": "ComfyUI-Easy-Use",
     "product": "ComfyUI-Easy-Use"
@@ -127642,5 +127642,305 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-124874": {
+    "cvss": 5.4,
+    "description": "Same-origin policy bypass in the Networking: HTTP component. This vulnerability was fixed in Firefox 160, Firefox ESR 115.45, Firefox ESR 153.7, Thunderbird 160, and Thunderbird 153.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124902": {
+    "cvss": 5.4,
+    "description": "Same-origin policy bypass due to race condition in the Audio/Video component. This vulnerability was fixed in Firefox 160, Firefox ESR 115.45, Firefox ESR 153.7, Thunderbird 160, and Thunderbird 153.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124914": {
+    "cvss": 4.3,
+    "description": "Site isolation issue in the DOM: Navigation component. This vulnerability was fixed in Firefox 160, Firefox ESR 153.7, Thunderbird 160, and Thunderbird 153.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124920": {
+    "cvss": 8.8,
+    "description": "Uninitialized memory in the Graphics: WebGPU component. This vulnerability was fixed in Firefox 160 and Thunderbird 160.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124921": {
+    "cvss": 9.6,
+    "description": "Sandbox escape in the Graphics: WebGPU component. This vulnerability was fixed in Firefox 160 and Thunderbird 160.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124923": {
+    "cvss": 9.6,
+    "description": "Sandbox escape in the Agent component. This vulnerability was fixed in Firefox 160 and Thunderbird 160.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124933": {
+    "cvss": 9.6,
+    "description": "Sandbox escape in the Console component. This vulnerability was fixed in Firefox 160, Firefox ESR 153.7, Thunderbird 160, and Thunderbird 153.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124934": {
+    "cvss": 5.4,
+    "description": "Spoofing issue in the Security component. This vulnerability was fixed in Firefox 160, Firefox ESR 153.7, Thunderbird 160, and Thunderbird 153.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124936": {
+    "cvss": 5.4,
+    "description": "Spoofing issue in the Address Bar component. This vulnerability was fixed in Firefox 160 and Thunderbird 160.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55316": {
+    "cvss": 6.8,
+    "description": "In handle_dpm_image of seclib.rs, there is a possible Logic error due to a logic error in the code. This could lead to physical escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55319": {
+    "cvss": 8.4,
+    "description": "In thread_free of thread.c, there is a possible way to corrupt kernel heap metadata on thread creation failure due to memory corruption. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55321": {
+    "cvss": 7.8,
+    "description": "In parse_prime256v1 of keymint_asn1.c, there is a possible Heap Buffer Overflow due to a logic error in the code. This could lead to local escalation of privilege with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55335": {
+    "cvss": 9.8,
+    "description": "In multiple locations, there is a possible use-after-free due to a logic error in the code. This could lead to remote code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55344": {
+    "cvss": 7.8,
+    "description": "In TzSharedMemory of TzSharedMemory.c, there is a possible Heap buffer overflow due to a logic error in the code. This could lead to local escalation of privilege with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55348": {
+    "cvss": 2.3,
+    "description": "In GetSharedMemory of trusty_shared_memory_manager.cc, there is a possible way to trigger an out of bounds read via sign extension of a negative buffer size due to an improper or implicit cast. This could lead to local information disclosure with System execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55360": {
+    "cvss": 8.4,
+    "description": "In secure_transport_usecase_handshake of secure_transport.c, there is a possible way to bypass secure transport channel encryption due to a logic error. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-55362": {
+    "cvss": 9.8,
+    "description": "In multiple files, there is a possible out-of-bounds write due to a missing bounds check. This could lead to remote code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56884": {
+    "cvss": 6.7,
+    "description": "In ac_set_ns_ipa_tbl of plat_trusty.c, there is a possible way to corrupt stream table entry configurations via unvalidated parameters due to improper input validation. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56897": {
+    "cvss": 4.0,
+    "description": "In multiple functions of attestation_object.c, there is a possible way to disclose uninitialized secure element stack memory in key attestation certificates due to uninitialized data. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56898": {
+    "cvss": 8.4,
+    "description": "In aes256_cmac_sw of aes.rs, there is a possible way to forge message authentication codes over multi-block messages due to improperly used crypto. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56902": {
+    "cvss": 4.0,
+    "description": "In multiple locations, there is a possible information disclosure due to a logic error in the code. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56909": {
+    "cvss": 6.7,
+    "description": "In multiple functions of sswrp_cpm.dtsi, there is a possible way to modify voltage control registers from non-secure software due to a missing permission check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56910": {
+    "cvss": 8.4,
+    "description": "In multiple locations, there is a possible way to trigger an out of bounds read and write in shared memory due to an incorrect bounds check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56912": {
+    "cvss": 7.8,
+    "description": "In ac_remove_smmu_prot_internal of acfw_smmu.c, there is a possible Logic error due to a logic error in the code. This could lead to local escalation of privilege with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56916": {
+    "cvss": 7.8,
+    "description": "In _vqueue_get_avail_buf_locked of trusty/kernel/lib/trusty/vqueue.c, there is a possible Double-read / TOCTOU due to a race condition. This could lead to local escalation of privilege with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56919": {
+    "cvss": 8.8,
+    "description": "In PackageSignatureChecker of SystemUIGoogleModule.java, there is a possible background activity launch due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56926": {
+    "cvss": 8.4,
+    "description": "In multiple functions of PssSubscriptionManager.java, there is a possible way to spoof subscription switch results and trigger a device reboot due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56929": {
+    "cvss": 7.8,
+    "description": "In TrustyKeyMintManager::VerifyHat of trusty_keymint_manager.cc, there is a possible Security check bypass due to a logic error in the code. This could lead to local escalation of privilege with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56930": {
+    "cvss": 8.4,
+    "description": "In smmu_find_ste of smmu.c, there is a possible way to retain stale translation lookaside buffer entries across stream identifiers due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56933": {
+    "cvss": 7.8,
+    "description": "In RecordApTx of efw_ap_transport.c, there is a possible Non-Heap Buffer Overflow due to a buffer overflow. This could lead to local escalation of privilege with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56934": {
+    "cvss": 7.8,
+    "description": "In arm_lpae_split_blk_unmap of drivers/iommu/io-pgtable-arm-common.c, there is a possible Logic error due to a logic error in the code. This could lead to local escalation of privilege with User execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56935": {
+    "cvss": 4.0,
+    "description": "In km_os_regen_salt of storage.c, there is a possible way to recover deleted keys due to a logic error. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56938": {
+    "cvss": 7.0,
+    "description": "In port_shutdown of ipc.c, there is a possible Use After Free due to a race condition. This could lead to local escalation of privilege with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56943": {
+    "cvss": 2.3,
+    "description": "In multiple locations, there is a possible way to trigger an out of bounds read via an attestation comparison oracle due to an incorrect bounds check. This could lead to local information disclosure with System execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56944": {
+    "cvss": 7.8,
+    "description": "In smmu_detach_dev of private/google-modules/iommu/arm-smmu-v3/drivers/iommu/arm/arm-smmu-v3/pkvm/arm-smmu-v3.c, there is a possible Use After Free due to a logic error in the code. This could lead to local escalation of privilege with User execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56946": {
+    "cvss": 6.7,
+    "description": "In smmu_unmap_visit_leaf of arm-smmu-v3.c, there is a possible way to release active direct memory access page references during unmapping due to a logic error. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56947": {
+    "cvss": 4.0,
+    "description": "In getCarrierRestrictionStatus of PhoneInterfaceManager.java, there is a possible permission bypass due to a confused deputy. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56951": {
+    "cvss": 8.4,
+    "description": "In on_vkUpdateDescriptorSetWithTemplateSized2GOOGLE of vk_decoder_global_state.cpp, there is a possible way to leak host code pointers to a guest virtual machine due to a logic error. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56956": {
+    "cvss": 5.3,
+    "description": "In EncodeT140 of TextRtpPayloadEncoderNode.cpp, there is a possible Heap Buffer Overflow due to a logic error in the code. This could lead to remote code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56966": {
+    "cvss": 8.4,
+    "description": "In CommitToBuffer of hal_override_options.bundle.cc, there is a possible way to retain stale direct memory access mappings to secure memory due to a confused deputy. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56969": {
+    "cvss": 7.8,
+    "description": "In edgetpu_group_clear_responses of edgetpu_group.c, there is a possible Use After Free due to a logic error in the code. This could lead to local escalation of privilege with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56971": {
+    "cvss": 9.8,
+    "description": "In AudioSession::SendInternalEvent of AudioSession.cpp, there is a possible Double Free due to a logic error in the code. This could lead to remote code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83495": {
+    "cvss": 8.8,
+    "description": "A flaw was found in the Trainer v2 TrainJob API. A user with permissions to create TrainJobs can exploit this by injecting `valueFrom.secretKeyRef` into environment variable definitions. This allows them to read and exfiltrate sensitive information (secrets) from the namespace, leading to a privilege escalation. This occurs when the TrainJob Role-Based Access Control (RBAC) is broader than the Secret read RBAC.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83494": {
+    "cvss": 5.4,
+    "description": "A flaw was found in the training-operator. An incorrect object casting in the PyTorchJob ValidateUpdate webhook allows users to bypass an immutability check. This vulnerability could enable users to detach a queued job from its quota management system or hijack a running job's controller ownership. The primary impact is a Denial of Service (DoS) condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106807": {
+    "cvss": 5.3,
+    "description": "A denial-of-service vulnerability exists in open5GS v2.8.0 in the PFCP transaction handling path. When the PFCP transaction or timer resource pool is exhausted, ogs_pfcp_xact_remote_create() returns NULL, but the failure is not handled properly and leads to an ogs_assert(new) failure in ogs_pfcp_xact_receive(). An attacker able to send PFCP messages to the affected SMF/UPF can exhaust transaction resources and cause the network function process to terminate with SIGABRT, resulting in service disruption and preventing further session establishment until the affected component is restarted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111590": {
+    "cvss": 8.5,
+    "description": "A wide range of Harbor versions allow SSRF via its webhook delivery component which does not properly validate web hook target addresses, allowing usage of private and link-local IP ranges. An authenticated attacker with ProjectAdmin permissions can configure a webhook policy pointing to a private internal address. When a project event fires, Harbor jobservice makes unauthenticated outbound HTTP POST requests to the target. If the target answers with an error status, the response body is written to the webhook execution log, which project members can read, potentially exposing cloud metadata or other network-restricted resources.",
+    "vendor": "Arbor",
+    "product": "Unknown"
+  },
+  "CVE-2026-116596": {
+    "cvss": 4.0,
+    "description": "Pyrus Sync for Windows contains a local privilege escalation vulnerability caused by missing authorization controls in its PyrusSyncService Windows service, which allow an attacker with unprivileged access to create files using the ISyncService contract.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113723": {
+    "cvss": 7.8,
+    "description": "virtualenv is a tool for creating isolated virtual python environments. Prior to 21.14.9, caller-supplied prompt text can become executable syntax in the bash activation prompt. An attacker must influence the value passed to virtualenv, and a user must subsequently activate the environment and draw the prompt. This vulnerability is fixed in 21.14.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113724": {
+    "cvss": 4.5,
+    "description": "virtualenv is a tool for creating isolated virtual python environments. Prior to 21.14.9, the safe_delete() deletion error handler responds to a failed removal by reading mode bits with os.lstat(path) and applying owner-write permission with os.chmod(path, ...), which follows a symlink. A planted link inside a read-only directory can therefore cause a victim-owned target outside the destination that is initially not writable by the invoking user to become broadly writable before the retry fails, provided that user owns the target and can change its mode. Another account can use the widened mode only if it can traverse the target's parent directories; root does not reach the demonstrated failure path, and the operation does not itself read the target. This issue is fixed in version 21.14.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115731": {
+    "cvss": 9.4,
+    "description": "Perforce Puppet Enterprise contains a deserialization of untrusted data vulnerability in Puppet’s report-processing code that allows a client with any CA-signed agent certificate to execute arbitrary code on the Puppet Server as the service user by submitting a report containing a crafted rich-data type through a PUT request. If the certificate authority automatically signs requests without strong verification, an unauthenticated network attacker can obtain a valid certificate and exploit the vulnerability.",
+    "vendor": "Perforce",
+    "product": "Puppet Enterprise"
   }
 }
