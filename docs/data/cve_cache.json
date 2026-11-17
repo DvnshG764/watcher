@@ -13950,7 +13950,7 @@
     "product": "Client"
   },
   "CVE-2026-103663": {
-    "cvss": 6.9,
+    "cvss": 9.4,
     "description": "Ollama is vulnerable to path traversal in the `/api/pull` endpoint due to insufficient validation of layer digests by the `digestToPath` function. An unauthenticated remote attacker can specify a path traversal sequence as a layer digest, causing a malicious binary to be written outside the model store. Critically if the server process has write access to `/usr/lib/ollama` (the default in most Ollama Docker images), an attacker can write the malicious file to that directory. On the next server restart, the file is loaded and executed, resulting in remote code execution as root. This issue was fixed in version 0.35.0.",
     "vendor": "Ollama",
     "product": "Ollama"
