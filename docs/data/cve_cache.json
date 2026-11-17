@@ -127006,5 +127006,59 @@
     "description": "WRC-BE36QS-B, WRC-W701-B, and WRC-BE94XS-B contain an improper neutralization of special elements used in an OS command ('OS Command Injection') vulnerability in WebGUI. If exploited, an arbitrary OS command may be executed by a remote attacker who can log in to WebGUI.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-99272": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: validate the data area in SMB2_read() SMB2_read() copies le32_to_cpu(rsp->DataLength) bytes from (char *)rsp + rsp->DataOffset without checking that the range lies within the response actually received. A READ response with DataOffset == 0 makes smb2_get_data_area_len() zero the data length, so smb2_check_message() accepts a frame as short as the fixed response, while SMB2_read() still uses the server-supplied DataLength, capped only by CIFS_MAX_MSGSIZE and the caller's length. A malicious server can answer the synchronous read used by the mfsymlinks (or SFU) symlink parser with an 81-byte READ response carrying DataOffset 0 and DataLength 1067, making the client copy 1067 bytes from a 448-byte receive object (KASAN slab-out-of-bounds; up to 16 KiB in the general case). Clamp a zero (or header-overlapping) DataOffset to read_rsp_size, as handle_read_data() does for the asynchronous path, and reject the response unless DataOffset + DataLength fits within rsp_iov.iov_len. The SMB1 helper was fixed the same way in 5be5bdda5863.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99275": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: reject short SESSION_SETUP responses smb2_check_message() accepts frames shorter than struct smb2_pdu when the SMB2 status is non-zero, before the minimum-PDU check added by b4694f269e66d. A 64-byte STATUS_MORE_PROCESSING_REQUIRED SESSION_SETUP response is therefore accepted even though it cannot contain the SecurityBufferOffset and SecurityBufferLength fields. The parser then reads those fields from stale bytes left in the reused receive buffer by an earlier frame. With a long stale SecurityBufferLength, decode_ntlmssp_challenge() copies up to about 64 KB from beyond the receive object and sends the data back to the server in the NTLMv2 AUTHENTICATE target info. Reject short MPR SESSION_SETUP responses before the short-error path, and validate SecurityBufferOffset + SecurityBufferLength against the received response length before decoding the challenge. The ordering bypass is not new: the short-error early return predates b4694f269e66d, and the unvalidated SecurityBufferLength read predates the 2016 raw NTLMSSP split in 166cea4dc3a4, so all supported stable trees are affected. Reproduced on 6.6.87.2; the path is unchanged on mainline.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98250": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: nfsd: fix handling of NFSEXP_PNFS in the netlink codepath The rework of how block layouts were checked moved the check for NFSEXP_PNFS out of nfsd4_setup_layout_type() and into the callers. That patch didn't account for the new call in nfsd4_setup_layout_type().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89692": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: nfsd: clear CALLBACK_RUNNING on failed delegation recall queue nfsd_break_one_deleg() sets NFSD4_CALLBACK_RUNNING via test_and_set_bit at entry to serialize recall work, then calls nfsd4_run_cb() to queue the recall. When the queue attempt fails the refcount bump is undone, but the RUNNING bit is left set. The only site that clears the bit is nfsd41_destroy_cb() (fs/nfsd/nfs4callback.c), which runs from the workqueue and is therefore unreachable when nothing was queued. The bit becomes a permanent latch on dp->dl_recall.cb_flags: every subsequent break_lease() on the same delegation hits the early-return guard in nfsd_break_one_deleg() and silently skips the recall, so the delegation is never broken and the conflicting open or lock stalls. Fix by clearing NFSD4_CALLBACK_RUNNING on the !queued branch alongside the refcount_dec.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-38050": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: mm/hugetlb: fix kernel NULL pointer dereference when replacing free hugetlb folios A kernel crash was observed when replacing free hugetlb folios: BUG: kernel NULL pointer dereference, address: 0000000000000028 PGD 0 P4D 0 Oops: Oops: 0000 [#1] SMP NOPTI CPU: 28 UID: 0 PID: 29639 Comm: test_cma.sh Tainted 6.15.0-rc6-zp #41 PREEMPT(voluntary) RIP: 0010:alloc_and_dissolve_hugetlb_folio+0x1d/0x1f0 RSP: 0018:ffffc9000b30fa90 EFLAGS: 00010286 RAX: 0000000000000000 RBX: 0000000000342cca RCX: ffffea0043000000 RDX: ffffc9000b30fb08 RSI: ffffea0043000000 RDI: 0000000000000000 RBP: ffffc9000b30fb20 R08: 0000000000001000 R09: 0000000000000000 R10: ffff88886f92eb00 R11: 0000000000000000 R12: ffffea0043000000 R13: 0000000000000000 R14: 00000000010c0200 R15: 0000000000000004 FS: 00007fcda5f14740(0000) GS:ffff8888ec1d8000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 0000000000000028 CR3: 0000000391402000 CR4: 0000000000350ef0 Call Trace: replace_free_hugepage_folios+0xb6/0x100 alloc_contig_range_noprof+0x18a/0x590 ? srso_return_thunk+0x5/0x5f ? down_read+0x12/0xa0 ? srso_return_thunk+0x5/0x5f cma_range_alloc.constprop.0+0x131/0x290 __cma_alloc+0xcf/0x2c0 cma_alloc_write+0x43/0xb0 simple_attr_write_xsigned.constprop.0.isra.0+0xb2/0x110 debugfs_attr_write+0x46/0x70 full_proxy_write+0x62/0xa0 vfs_write+0xf8/0x420 ? srso_return_thunk+0x5/0x5f ? filp_flush+0x86/0xa0 ? srso_return_thunk+0x5/0x5f ? filp_close+0x1f/0x30 ? srso_return_thunk+0x5/0x5f ? do_dup2+0xaf/0x160 ? srso_return_thunk+0x5/0x5f ksys_write+0x65/0xe0 do_syscall_64+0x64/0x170 entry_SYSCALL_64_after_hwframe+0x76/0x7e There is a potential race between __update_and_free_hugetlb_folio() and replace_free_hugepage_folios(): CPU1 CPU2 __update_and_free_hugetlb_folio replace_free_hugepage_folios folio_test_hugetlb(folio) -- It's still hugetlb folio. __folio_clear_hugetlb(folio) hugetlb_free_folio(folio) h = folio_hstate(folio) -- Here, h is NULL pointer When the above race condition occurs, folio_hstate(folio) returns NULL, and subsequent access to this NULL pointer will cause the system to crash. To resolve this issue, execute folio_hstate(folio) under the protection of the hugetlb_lock lock, ensuring that folio_hstate(folio) does not return NULL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-46669": {
+    "cvss": 6.5,
+    "description": "An Integer Overflow or Wraparound vulnerability [CWE-190] vulnerability in Fortinet FortiOS 7.4.0 through 7.4.4, FortiOS 7.2.0 through 7.2.11 may allow an authenticated attacker to crash the IPsec tunnel via crafted requests, resulting in potential denial of service.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2024-46670": {
+    "cvss": 7.5,
+    "description": "An Out-of-bounds Read vulnerability [CWE-125] vulnerability in Fortinet FortiOS 7.6.0, FortiOS 7.4.0 through 7.4.4, FortiOS 7.2.0 through 7.2.9 may allow an unauthenticated remote attacker to trigger memory consumption leading to Denial of Service via crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-104476": {
+    "cvss": 5.9,
+    "description": "Backdrop CMS before 1.35.1 contains an information disclosure vulnerability that allows unauthenticated attackers to retrieve configuration export archives left on the server after transfer. Attackers can download compressed archives generated by users with configuration export permission to obtain the full site configuration, including sensitive settings.",
+    "vendor": "backdrop",
+    "product": "backdrop"
+  },
+  "CVE-2026-75918": {
+    "cvss": 8.8,
+    "description": "phpMyFAQ before 4.1.7 stores password reset tokens in a publicly accessible tracking file when user tracking is enabled. Unauthenticated attackers can read the tracking file at content/core/data/trackingDDMMYYYY to extract reset tokens and replay them against the password reset API to take over user accounts.",
+    "vendor": "thorsten",
+    "product": "phpMyFAQ"
   }
 }
