@@ -126724,5 +126724,113 @@
     "description": "Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Prior to 6.13.11, 7.8.12, 8.24.3, and 9.9.2, Mongoose countDocuments() does not apply the configured sanitizeFilter query selector injection defense. An application that enables sanitizeFilter and passes attacker-controlled filter values to countDocuments() can therefore process query operator objects as operators rather than literal values, causing the count to include documents that should not match and potentially undermining authorization or application logic based on that count. This issue is fixed in versions 6.13.11, 7.8.12, 8.24.3, and 9.9.2.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-96150": {
+    "cvss": 5.6,
+    "description": "Use of uninitialized resource in Microsoft Windows Codecs Library allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99286": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: xen-netback: Fix XenBus connection failure cleanup xenvif_get_stats and xenvif_get_ethtool_stats capture vif->num_queues under rcu_read_lock. We need to unpublish vif->num_queues before synchronize_net to ensure that readers that come afterwards will not read a non-zero vif->num_queues and attempt to access invalid queues. This is the same cleanup algorithm as used in backend_disconnect and added in commit b17075d5c198 (\"xen-netback: fix race condition on XenBus disconnect\"). This is XSA-531",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99287": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: xen-netback: Zero out sring pointers on unmap If xenvif_map_frontend_data_rings() fails when a ring is already mapped, it unmaps them via xenvif_unmap_frontend_data_rings() which keeps the ring pointers unchanged. xenvif_connect_data()'s cleanup path calls xenvif_disconnect_queue() which in turn calls xenvif_unmap_frontend_data_rings() again, which will attempt to unmap the pointers a second time. Zero out the ring pointers after they are unmapped to avoid this issue. This is XSA-532",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99288": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: inet: reject unhashed sockets during established lookups TCP established ehash lookups are lockless. The socket caches involved use SLAB_TYPESAFE_BY_RCU, so memory can be reused before an RCU reader that retained its old address has finished. After a tuple match, __inet_lookup_established() and __inet6_lookup_established() acquire a reference and repeat the tuple check. They do not check whether the new object is hashed. If the address is reused for a socket with the same tuple, the lookup can acquire a reference to the new object and return it while its nulls node is unhashed. A PoC that drives reuse with a SYN cookie request socket reproduced the crash. The new request socket is unhashed and has a NULL rsk_listener. A lookup that had loaded the address of the old request socket acquired the reference published by tcp_get_cookie_sock() and returned the new object. tcp_v4_rcv() then read sk_state through the NULL listener. The resulting crash was: BUG: kernel NULL pointer dereference, address: 0000000000000012 #PF: supervisor read access in kernel mode #PF: error_code(0x0000) - not-present page ... Oops: Oops: 0000 [#1] SMP NOPTI CPU: 4 UID: 0 PID: 0 Comm: swapper/4 Not tainted 7.3.0-00591-g0e135910deec #1 PREEMPT(lazy) ... RIP: 0010:tcp_v4_rcv+0x44e/0x1280 ... R10: 0000000000000001 R11: 00000000024ca8c0 R12: 0000000000000000 ... CR2: 0000000000000012 CR3: 0000000103d50004 CR4: 0000000000770ef0 ... Call Trace: ? raw_local_deliver+0xae/0x240 ip_protocol_deliver_rcu+0x2d/0x180 ip_local_deliver_finish+0x84/0x100 ip_sublist_rcv_finish+0x5f/0x70 ip_sublist_rcv+0x12a/0x1d0 ip_list_rcv+0xfd/0x130 __netif_receive_skb_list_core+0x223/0x250 netif_receive_skb_list_internal+0x1d2/0x2c0 ? try_fill_recv+0x39/0x7b0 napi_complete_done+0x74/0x170 virtnet_poll+0x445/0x600 __napi_poll+0x27/0x1e0 net_rx_action+0x2fe/0x3b0 handle_softirqs+0xc2/0x2c0 __irq_exit_rcu+0x74/0xd0 common_interrupt+0x7f/0x90 ... Kernel panic - not syncing: Fatal exception in interrupt After taking a reference, check whether the nulls node is unhashed in both IPv4 and IPv6 established lookups. If it is unhashed or the tuple no longer matches, drop the reference and restart the lookup. Lookups racing with the TIME_WAIT hashdance, or with a request being replaced by its child, now restart and find the new socket instead of returning the old one. Request sockets that were never inserted into ehash can have a nonzero refcount, and a stale lookup can hold a transient reference. Therefore, when SYN cookie, Fast Open, and request migration paths fail after setting a nonzero refcount, release the references held by those paths with reqsk_put() instead of freeing the request directly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-61625": {
+    "cvss": 8.1,
+    "description": "An improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.4, FortiAnalyzer 7.4.0 through 7.4.7, FortiAnalyzer 7.2.0 through 7.2.11, FortiManager 7.6.0 through 7.6.4, FortiManager 7.4.0 through 7.4.7, FortiManager 7.2.0 through 7.2.11, FortiManager Cloud 7.6.0 through 7.6.4, FortiManager Cloud 7.4.1 through 7.4.7, FortiManager Cloud 7.2.1 through 7.2.10 may allow an authenticated attacker whose profile only has read permission to write and delete files from the underlying filesystem via crafted HTTP or HTTPs requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-0169": {
+    "cvss": 8.4,
+    "description": "In multiple functions of Android.bp, there is a possible way to bind to a privileged debug overlay service due to test or debugging code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0175": {
+    "cvss": 8.4,
+    "description": "In multiple locations, there is a possible way to bypass key authorization policies during wrapped key import due to a logic error. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0178": {
+    "cvss": 6.7,
+    "description": "In multiple functions of arm-smmu-v3.c, there is a possible way to bypass direct memory access isolation via stale stream table entries due to a logic error. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0191": {
+    "cvss": 7.8,
+    "description": "In event_set_sub of acropora_event.c, there is a possible Logic error due to a logic error in the code. This could lead to local escalation of privilege with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0193": {
+    "cvss": 3.3,
+    "description": "In handle_rx_msg of tipc_virtio_dev, there is a possible Double Fetch TOCTOU due to Double Fetch. This could lead to local information disclosure with execution privileges needed. User interaction is for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-0195": {
+    "cvss": 4.0,
+    "description": "In fill of dma.rs, there is a possible way to trigger an out of bounds stack read during direct memory access fills due to a logic error. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102166": {
+    "cvss": 8.8,
+    "description": "Arista C-260 and C-250 access points ship with fleet-wide static cryptographic keys used for firmware image verification and SSLP authentication. An attacker who is able to access these keys would be able to create modified firmware that will pass verification checks. This vulnerability is specific to the C-260 and C-250 models; other access point models enforce digitally signed upgrade images with secure boot and are not affected by this issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104060": {
+    "cvss": 6.5,
+    "description": "Worklenz before 3.3.0 contains an SQL injection vulnerability in the reporting members endpoints that allows authenticated attackers to read arbitrary database contents by injecting SQL through the projects and status parameters. Attackers can send crafted values to POST /api/v1/reporting/members/all or GET /api/v1/reporting/members/export, which are interpolated unparameterized into IN clauses in getTeamMemberInsightData, and use time-based blind techniques to extract data across tenants, including user password hashes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115483": {
+    "cvss": 7.5,
+    "description": "The Everest Forms plugin for WordPress is vulnerable to Arbitrary File Read in all versions up to, and including, 3.6.3 via the attach_entry_files() function. This is due to the function attaching any entry field value whose meta key matches /signature_/ to the notification email after only a file_exists() check, without validating or restricting the path. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, such as wp-config.php, which can contain sensitive information. Successful exploitation requires a form whose email notification has the “Attach Files” setting enabled and that contains a field with a meta key matching /signature_/ (for example, a text field labelled “Signature”), with the notification routed to an attacker-supplied email address so the exfiltrated file is delivered to the attacker. Note: The Everest Forms Pro add-on is required to exploit this vulnerability, as it provides the signature field and the email file-attachment functionality (file-email-attachments) that the attack relies on.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115538": {
+    "cvss": 7.0,
+    "description": "Moby's overlay network driver does not restore the iptables rules for encrypted overlay networks after firewalld deletes them. Unlike other Docker Engine networking components, the overlay driver does not handle firewalld reload or start signals over D-Bus. The missing rules cause outgoing VXLAN datagrams to bypass IPsec encryption and remove the protection against incoming cleartext VXLAN traffic. The condition is not logged by dockerd and persists until the encrypted network's last local endpoint is removed and another is added, or dockerd is restarted. Each further firewalld event repeats the condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115539": {
+    "cvss": 7.7,
+    "description": "SwarmKit's Cluster-API proxy can overwrite a forwarded client's TLS identity with an intermediary manager's identity. WithMetadataForwardTLSInfo replaces outgoing metadata with a copy of the incoming metadata, discarding the redirect guard's changes when built with grpc-go 1.39 or later. During a short window after a leader change, two proxy hops through managers with inconsistent views of the leader can allow an attacker possessing a valid worker node TLS certificate and private key to obtain a manager node certificate for the attacker's own key, escalating privileges from worker to manager. Applications built with an affected SwarmKit version and grpc-go 1.39 or later are impacted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120803": {
+    "cvss": 7.1,
+    "description": "A use-after-free issue exists in MongoDB’s SBE (Slot-Based Execution) implementation of a window function accumulator used by certain $setWindowFields aggregation pipelines. Under specific conditions, the accumulator can retain a dangling pointer to memory that has since been freed. When this stale pointer is later dereferenced during serialization of the carried-forward value, it can result in a heap out-of-bounds read that may expose adjacent heap contents and crash the mongod server. An authenticated user with readWrite privileges on a database can trigger this issue by crafting a specific aggregation pipeline.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112181": {
+    "cvss": 8.3,
+    "description": "Vulnerability due to inadequate restriction of references to external XML entities in OpenKM Community Edition. The XML processing in FormUtils / LocalEntityResolver does not properly restrict the resolution of external resources. An authenticated remote attacker with the ROLE_USER role can exploit the flaw via a REST request. In the 6.3.x branch, this allows the attacker to trigger HTTP requests under their control (SSRF); in 7.0.3, it allows the attacker to read local files and access internal HTTP resources from the server.",
+    "vendor": "OpenKM",
+    "product": "OpenKM Community Edition"
   }
 }
