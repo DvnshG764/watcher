@@ -63294,7 +63294,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64569": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: mpls: fix NULL deref in mpls_valid_fib_dump_req() on CONFIG_INET=n On CONFIG_INET=n builds, mpls_valid_fib_dump_req() walks the parsed attribute table itself instead of calling ip_valid_fib_dump_req(). The RTA_OIF arm passes tb[RTA_OIF] to nla_get_u32() without checking it is present, so an RTM_GETROUTE dump for AF_MPLS with strict checking and no RTA_OIF hits a NULL dereference. RTM_GETROUTE is RTNL_KIND_GET, which rtnetlink_rcv_msg() permits without CAP_NET_ADMIN, so an unprivileged user can trigger it. Oops: general protection fault, probably for non-canonical address 0xdffffc0000000000: 0000 [#1] SMP KASAN NOPTI KASAN: null-ptr-deref in range [0x0000000000000000-0x0000000000000007] RIP: 0010:mpls_valid_fib_dump_req (net/mpls/af_mpls.c:2189) Call Trace: mpls_dump_routes (net/mpls/af_mpls.c:2236) netlink_dump (net/netlink/af_netlink.c:2331) __netlink_dump_start (net/netlink/af_netlink.c:2446) rtnetlink_rcv_msg (net/core/rtnetlink.c:7033) netlink_rcv_skb (net/netlink/af_netlink.c:2556) netlink_unicast (net/netlink/af_netlink.c:1345) netlink_sendmsg (net/netlink/af_netlink.c:1900) __sock_sendmsg (net/socket.c:790) ____sys_sendmsg (net/socket.c:2684) ___sys_sendmsg (net/socket.c:2738) __sys_sendmsg (net/socket.c:2770) do_syscall_64 (arch/x86/entry/syscall_64.c:94) entry_SYSCALL_64_after_hwframe (arch/x86/entry/entry_64.S:121) Skip unset attributes, as ip_valid_fib_dump_req() does.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63306,7 +63306,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64571": {
-    "cvss": null,
+    "cvss": 7.1,
     "description": "In the Linux kernel, the following vulnerability has been resolved: wifi: p54: validate RX frame length in p54_rx_eeprom_readback() p54_rx_eeprom_readback() copies the requested EEPROM slice out of a device-supplied readback frame without checking that the skb actually holds that many bytes. Commit da1b9a55ff11 (\"wifi: p54: prevent buffer-overflow in p54_rx_eeprom_readback()\") closed the destination overflow by copying a fixed priv->eeprom_slice_size (and rejecting a mismatched advertised len), but the source side is still unbounded: nothing verifies the frame is long enough to supply that many bytes. A malicious USB device can send a short frame whose advertised len matches priv->eeprom_slice_size while the payload is truncated. The equality check passes and memcpy() reads past the end of the skb, leaking adjacent heap: BUG: KASAN: slab-out-of-bounds in p54_rx (drivers/net/wireless/intersil/p54/txrx.c:507) Read of size 1016 at addr ffff88800f077114 by task swapper/0/0 Call Trace: ... __asan_memcpy (mm/kasan/shadow.c:105) p54_rx (drivers/net/wireless/intersil/p54/txrx.c:507) p54u_rx_cb (drivers/net/wireless/intersil/p54/p54usb.c:163) __usb_hcd_giveback_urb (drivers/usb/core/hcd.c:1657) dummy_timer (drivers/usb/gadget/udc/dummy_hcd.c:2005) ... The buggy address belongs to the object at ffff88800f0770c0 which belongs to the cache skbuff_small_head of size 704 The buggy address is located 84 bytes inside of allocated 704-byte region [ffff88800f0770c0, ffff88800f077380) Check that the slice fits in the skb before copying.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63336,13 +63336,13 @@
     "product": "Unknown"
   },
   "CVE-2026-64565": {
-    "cvss": null,
+    "cvss": 7.8,
     "description": "In the Linux kernel, the following vulnerability has been resolved: Input: ims-pcu - fix heap-buffer-overflow in ims_pcu_process_data() The `ims_pcu_process_data()` processes incoming URB data byte by byte. However, it fails to check if the `read_pos` index exceeds IMS_PCU_BUF_SIZE. If a malicious USB device sends a packet larger than IMS_PCU_BUF_SIZE, `read_pos` will increment indefinitely. Moreover, since `read_pos` is located immediately after `read_buf`, the attacker can overwrite `read_pos` itself to arbitrarily control the index. This manipulated `read_pos` is subsequently used in `ims_pcu_handle_response()` to copy data into `cmd_buf`, leading to a heap buffer overflow. Specifically, an attacker can overwrite the `cmd_done.wait.head` located at offset 136 relative to `cmd_buf` in the `ims_pcu_handle_response()`. Consequently, when the driver calls `complete(&pcu->cmd_done)`, it triggers a control flow hijack by using the manipulated pointer. Fix this by adding a bounds check for `read_pos` before writing to `read_buf`. If the packet is too long, discard it, log a warning, and reset the parser state. [dtor: factor out resetting packet state, reset checksum as well]",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2022-4994": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: KVM: x86: wean fast IN from emulator_pio_in Use __emulator_pio_in() directly for fast PIO instead of bouncing through emulator_pio_in() now that __emulator_pio_in() fills \"val\" when handling in-kernel PIO. vcpu->arch.pio.count is guaranteed to be '0', so this a pure nop. emulator_pio_in_emulated is now the last caller of emulator_pio_in. No functional change intended.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63414,7 +63414,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64538": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: Fix null-ptr-deref in fib6_nh_mtu_change(). fib6_nh_mtu_change() re-fetches idev via __in6_dev_get(arg->dev) and dereferences idev->cnf.mtu6 without a NULL check. addrconf_ifdown() clears dev->ip6_ptr with RCU_INIT_POINTER() after rt6_disable_ip() has released tb6_lock, so the RA-driven MTU walk can observe a NULL idev and oops. The caller rt6_mtu_change_route() guards its own __in6_dev_get(), but this re-fetch is unguarded; nexthop-backed routes survive addrconf_ifdown()'s flush, so the walk still reaches it after ip6_ptr is nulled. Return 0 when idev is NULL, matching rt6_mtu_change_route() and the fib6_mtu() fix in commit 5ad509c1fdad (\"ipv6: Fix null-ptr-deref in fib6_mtu().\"). Oops: general protection fault, ... KASAN: null-ptr-deref in range [0x00000000000002a8-0x00000000000002af] RIP: 0010:fib6_nh_mtu_change+0x203/0x990 rt6_mtu_change_route+0x141/0x1d0 __fib6_clean_all+0xd0/0x160 rt6_mtu_change+0xb4/0x100 ndisc_router_discovery+0x24b5/0x2cb0 icmpv6_rcv+0x12e9/0x1710 ipv6_rcv+0x39b/0x410",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63438,7 +63438,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64542": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ipv6: ndisc: fix NULL deref in accept_untracked_na() accept_untracked_na() re-fetches the inet6_dev with __in6_dev_get(dev) and dereferences idev->cnf.accept_untracked_na without a NULL check, even though its only caller ndisc_recv_na() already fetched and NULL-checked idev for the same device. Both reads of dev->ip6_ptr run in the same RCU read-side critical section, but a concurrent addrconf_ifdown() can clear dev->ip6_ptr between them: lowering the MTU below IPV6_MIN_MTU calls addrconf_ifdown() without the synchronize_net() that orders the unregister path, so the re-fetch returns NULL and oopses: BUG: KASAN: null-ptr-deref in ndisc_recv_na (net/ipv6/ndisc.c:974) Read of size 4 at addr 0000000000000364 Call Trace: ndisc_recv_na (net/ipv6/ndisc.c:974) icmpv6_rcv (net/ipv6/icmp.c:1193) ip6_protocol_deliver_rcu (net/ipv6/ip6_input.c:479) ip6_input_finish (net/ipv6/ip6_input.c:534) ip6_input (net/ipv6/ip6_input.c:545) ip6_mc_input (net/ipv6/ip6_input.c:635) ipv6_rcv (net/ipv6/ip6_input.c:351) It is reachable by an unprivileged user via a network namespace. Pass the caller's already validated idev instead of re-fetching it; the idev stays alive for the whole RCU critical section, so it is safe even after dev->ip6_ptr has been cleared.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63450,7 +63450,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64544": {
-    "cvss": null,
+    "cvss": 7.1,
     "description": "In the Linux kernel, the following vulnerability has been resolved: crypto: asymmetric_keys - fix OOB read in pefile_digest_pe_contents pefile_digest_pe_contents() computes the trailing-data hash length as pelen - (hashed_bytes + certs_size). A crafted PE can make the addition exceed pelen, causing the unsigned subtraction to underflow to ~4 GiB. This is passed to crypto_shash_update() which reads out of bounds and panics on unmapped vmalloc guard pages. BUG: unable to handle page fault for address: ffffc900038d8000 Oops: Oops: 0000 [#1] SMP KASAN NOPTI RIP: 0010:sha256_blocks_generic (lib/crypto/sha256.c:152) Call Trace: __sha256_update (lib/crypto/sha256.c:208) crypto_sha256_update (crypto/sha256.c:142) verify_pefile_signature (crypto/asymmetric_keys/verify_pefile.c:436) kexec_kernel_verify_pe_sig (kernel/kexec_file.c:151) __do_sys_kexec_file_load (kernel/kexec_file.c:406) do_syscall_64 (arch/x86/entry/syscall_64.c:94) entry_SYSCALL_64_after_hwframe (arch/x86/entry/entry_64.S:121) Kernel panic - not syncing: Fatal exception Validate that the addition does not overflow and the result does not exceed pelen before the subtraction. Return -ELIBBAD on failure.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63480,7 +63480,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64549": {
-    "cvss": null,
+    "cvss": 7.1,
     "description": "In the Linux kernel, the following vulnerability has been resolved: Bluetooth: bpa10x: avoid OOB read of revision string in bpa10x_setup() bpa10x_setup() sends the vendor command 0xfc0e and passes the response to bt_dev_info() and hci_set_fw_info() as a \"%s\" string starting at skb->data + 1, without checking the length: bt_dev_info(hdev, \"%s\", (char *)(skb->data + 1)); hci_set_fw_info(hdev, \"%s\", skb->data + 1); A device that returns a one-byte response (status only) leaves skb->data + 1 past the end of the data, and the %s walk reads adjacent slab memory until it meets a NUL. The same happens when the payload is not NUL-terminated within skb->len. The out-of-bounds bytes end up in the kernel log and the firmware-info debugfs file. Print the revision string with a bounded \"%.*s\" limited to skb->len - 1 instead. This keeps the string readable for well-behaved devices while never reading past the received data, and does not fail setup, so a device returning a short or unterminated response keeps working.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63504,7 +63504,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64553": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: net: psample: fix info leak in PSAMPLE_ATTR_DATA psample open codes nla_put() presumably to avoid wiping the data with 0s just to override it with packet data. This open coding is missing clearing the pad, however, each netlink attr is padded to 4B and data_len may not be divisible by 4B.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -127938,7 +127938,7 @@
     "product": "Unknown"
   },
   "CVE-2026-115731": {
-    "cvss": 9.4,
+    "cvss": 9.9,
     "description": "Perforce Puppet Enterprise contains a deserialization of untrusted data vulnerability in Puppet’s report-processing code that allows a client with any CA-signed agent certificate to execute arbitrary code on the Puppet Server as the service user by submitting a report containing a crafted rich-data type through a PUT request. If the certificate authority automatically signs requests without strong verification, an unauthenticated network attacker can obtain a valid certificate and exploit the vulnerability.",
     "vendor": "Perforce",
     "product": "Puppet Enterprise"
@@ -128618,6 +128618,720 @@
   "CVE-2025-057819": {
     "cvss": null,
     "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119995": {
+    "cvss": 7.5,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119996": {
+    "cvss": 7.5,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119997": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123375": {
+    "cvss": 8.8,
+    "description": "Stack-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123376": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123377": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123378": {
+    "cvss": 7.5,
+    "description": "Integer overflow or wraparound in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123379": {
+    "cvss": 7.5,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123380": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123381": {
+    "cvss": 8.8,
+    "description": "Stack-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123382": {
+    "cvss": 8.8,
+    "description": "Untrusted pointer dereference in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123383": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123384": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124227": {
+    "cvss": 7.5,
+    "description": "Use of uninitialized resource in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124228": {
+    "cvss": 8.8,
+    "description": "Improper limitation of a pathname to a restricted directory ('path traversal') in Microsoft Office Outlook allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95405": {
+    "cvss": 8.4,
+    "description": "In acquireMemory of bt_bqr_offload.cc, there is a possible way to trigger an out of bounds write via a buffer size underflow due to an incorrect bounds check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95780": {
+    "cvss": 8.1,
+    "description": "A vulnerability exists in the authentication and session-management mechanisms that may result in access not being fully terminated following certain account or session state changes. Under specific conditions, a remote user with prior legitimate access could retain access to protected system resources beyond the intended authorization period. Successful exploitation could result in continued unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95781": {
+    "cvss": 7.5,
+    "description": "A security vulnerability exists in AthonetOS that may allow an unauthorized party to affect service operation or gain access to certain protected system functions. Successful exploitation could result in a compromise of service integrity or unauthorized system access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95782": {
+    "cvss": 7.5,
+    "description": "A vulnerability exists in a monitoring component that may, under certain conditions, allow security controls to be circumvented. Successful exploitation could result in unauthorized access to information intended for authorized users only.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95783": {
+    "cvss": 7.5,
+    "description": "A vulnerability exists in a network-facing component that may, under certain conditions, result in service disruption. Successful exploitation could cause temporary unavailability of affected functionality.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95784": {
+    "cvss": 7.5,
+    "description": "A vulnerability exists in a system component that may, under certain conditions, disrupt the availability of affected services. Successful exploitation could result in temporary service interruption or loss of functionality.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95785": {
+    "cvss": 7.2,
+    "description": "A vulnerability exists in a system component that may, under certain conditions, allow an authorized user to make unauthorized changes to system-managed content. Successful exploitation could affect system confidentiality, integrity, and availability, and may disrupt trusted interactions among system functions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95786": {
+    "cvss": 6.5,
+    "description": "A vulnerability exists in a system interface that may, under certain conditions, fail to properly enforce authorization boundaries. Successful exploitation could allow an unauthorized party to access or modify protected system information, potentially affecting confidentiality and integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105986": {
+    "cvss": 8.7,
+    "description": "Incorrect authorization in the Admin API RBAC of Kong Gateway Enterprise allows a delegated administrator to elevate privileges via a percent-encoded role name or a self-assigned role.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107372": {
+    "cvss": 7.5,
+    "description": "The auth0-ai-js FGA retriever does not distinguish between authorization checks under different conditions when filtering documents during retrieval-augmented generation, resulting in documents denied by Auth0 FGA being included in the model context and used in the generated response.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108167": {
+    "cvss": 7.5,
+    "description": "The auth0-ai-python FGA retriever does not distinguish between authorization checks under different users, relations, or conditions when filtering documents during retrieval-augmented generation, resulting in documents denied by Auth0 FGA being included in the model context and used in the generated response.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110091": {
+    "cvss": 7.1,
+    "description": "Premiere Pro is affected by a Missing Authentication for Critical Function vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to bypass security measures and gain unauthorized write access. Exploitation of this issue does not require user interaction. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113521": {
+    "cvss": 5.5,
+    "description": "After Effects is affected by a NULL Pointer Dereference vulnerability that could result in an application denial-of-service. An attacker could exploit this vulnerability to crash the application, leading to a denial-of-service condition. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113549": {
+    "cvss": 5.5,
+    "description": "Audition is affected by a NULL Pointer Dereference vulnerability that could result in an application denial-of-service. An attacker could exploit this vulnerability to crash the application, leading to a denial-of-service condition. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113551": {
+    "cvss": 8.8,
+    "description": "Audition is affected by a Violation of Secure Design Principles vulnerability that could result in privilege escalation. A low-privileged attacker could leverage this vulnerability to gain elevated access. Exploitation of this issue does not require user interaction. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113553": {
+    "cvss": 7.8,
+    "description": "Audition is affected by an out-of-bounds write vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113555": {
+    "cvss": 7.8,
+    "description": "Audition is affected by an out-of-bounds write vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113557": {
+    "cvss": 8.6,
+    "description": "Audition is affected by an Improper Input Validation vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue requires user interaction in that a victim must open a malicious file. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113558": {
+    "cvss": 8.6,
+    "description": "Audition is affected by an Improper Input Validation vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue requires user interaction in that a victim must open a malicious file. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113560": {
+    "cvss": 7.7,
+    "description": "Audition is affected by an Incorrect Authorization vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary code. Exploit depends on conditions beyond the attacker's control. Exploitation of this issue requires user interaction in that a victim must open a malicious file. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113562": {
+    "cvss": 7.7,
+    "description": "Audition is affected by an Improper Input Validation vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary code. Exploit depends on conditions beyond the attacker's control. Exploitation of this issue requires user interaction in that a victim must open a malicious file. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113563": {
+    "cvss": 8.6,
+    "description": "Audition is affected by a Violation of Secure Design Principles vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue requires user interaction in that a victim must open a malicious file. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113565": {
+    "cvss": 7.8,
+    "description": "Audition is affected by an out-of-bounds write vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113567": {
+    "cvss": 7.8,
+    "description": "Audition is affected by an out-of-bounds write vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120816": {
+    "cvss": 4.3,
+    "description": "A user with basic read-tier database privileges can use an option on a server-side data-change notification feature to receive the contents of certain restricted internal collections that the same user is refused on a direct read. The privilege check for the notification feature is derived only from the target namespace and does not account for the option, so no additional permission is required. This may result in unintended access to data stored in those internal collections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120817": {
+    "cvss": 6.5,
+    "description": "A race condition in the schema validation component of MongoDB Server can occur when concurrent writes are checked against a collection validator that uses geospatial query operators. The condition can be caused by an authenticated user with write privileges, and may result in the server terminating unexpectedly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120818": {
+    "cvss": 7.1,
+    "description": "A use-after-free weakness in MongoDB Server's server-side JavaScript support for aggregation may allow a stale reference to previously freed process memory to be read and returned. An authenticated user with minimal or no assigned roles can trigger this condition over the normal network protocol by submitting a single crafted aggregation request, with no additional privileges or non-default configuration. Successful triggering this issue may result in adjacent process memory contents being returned, including data that undermines memory-layout randomization, and may in some cases affect server availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120819": {
+    "cvss": 4.3,
+    "description": "A memory-management flaw in the server-side JavaScript execution component of MongoDB Server can allow an authenticated user holding only read privileges to cause the server to access memory that has already been released. By submitting a specially crafted database command that runs user-supplied JavaScript, the user can cause a bounded amount of adjacent process memory to be returned in the command's result. This results in the user obtaining information they are not authorized to access. Integrity and availability are not affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120820": {
+    "cvss": 4.3,
+    "description": "MongoDB Server maintains an in-memory table of per-namespace statistics for operations that carry encrypted-field information. Entries are created for any namespace supplied in a request, with no limit on the number of entries and no way to remove entries that never corresponded to a real collection. A user with basic read privileges who repeatedly issues ordinary read commands referencing arbitrary namespace names may cause the server process to retain steadily increasing amounts of memory and to slow down on the affected code path; the memory is reclaimed only by restarting the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120821": {
+    "cvss": 6.5,
+    "description": "A use-after-free in the aggregation framework of MongoDB Server can occur when certain expressions are evaluated in an aggregation sub-pipeline. The condition can be caused by an authenticated user with read privileges, and may result in the server terminating unexpectedly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120822": {
+    "cvss": 6.7,
+    "description": "MongoDB Server may omit an authorization check on the resource that a replication-related administrative command actually targets, because that check is conditioned on a value taken from the client's own request. A user holding backup and restore privileges may therefore read and relocate collections outside the set that user is permitted to access. This may result in unintended access to data and unintended changes to the collection catalog.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120823": {
+    "cvss": 4.3,
+    "description": "A missing authorization check in the aggregation framework of MongoDB Server may allow a user holding any valid credentials, including an account with no assigned roles, to read deployment-wide query configuration data that is otherwise restricted to a cluster-level privilege. This may result in unintended access to configuration and schema information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120824": {
+    "cvss": 8.8,
+    "description": "A use-after-free in the time-series collection component of MongoDB Server can occur when the server validates a time-series bucket document during a write. The condition can be caused by an authenticated user with privileges to write bucket documents directly, and may result in the server terminating unexpectedly or, under certain conditions, arbitrary code execution in the context of the server process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120825": {
+    "cvss": 6.5,
+    "description": "An authorization weakness in the aggregation framework of MongoDB Server may allow an authenticated user holding only basic database privileges to read the contents of collections in a database for which they have not been granted read access. The privilege evaluation performed while a view definition is validated does not cover a nested portion of the supplied pipeline, so the resulting view returns data the user is otherwise refused. This may result in unintended access to data, including stored authentication material.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120826": {
+    "cvss": 6.5,
+    "description": "An authorization flaw in the aggregation and view-definition handling of sharded deployments may allow a user holding only basic read-write privileges on a single database to define a view whose underlying processing is not fully subjected to privilege checking. Reading that view may result in unintended access to data belonging to other databases held on the same shard.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120828": {
+    "cvss": 7.5,
+    "description": "A replica-set database server node does not limit or reclaim internal wait records created while handling a client-supplied read option that names a point in time the node will never reach. A party with network access and no credentials can cause these records to accumulate without bound and persist after the requests end, which may make the server run out of memory and become unavailable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126063": {
+    "cvss": 2.3,
+    "description": "Nokogiri is an open source XML and HTML library for the Ruby programming language. From 1.12.0 until 1.19.5, the C extension on CRuby and TruffleRuby has a Nokogiri::HTML5 serializer that does not escape text inside noscript elements or angle brackets inside attribute values. When an application sanitizes untrusted HTML with the default parsing options, allows noscript, and sends serialized output to a scripting-enabled browser, the browser can parse markup that Nokogiri did not produce, enabling mutation cross-site scripting. Using parse_noscript_content_as_text: true is the recommended workaround, not the vulnerable default. JRuby is not affected because it does not implement Nokogiri::HTML5. This issue is fixed in version 1.19.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126064": {
+    "cvss": 2.0,
+    "description": "Nokogiri is an open source XML and HTML library for the Ruby programming language. Prior to 1.19.5, the CRuby native extension can leave Ruby wrappers pointing to freed memory when Nokogiri::XML::Node#[]= or Nokogiri::XML::Node#lang= replaces an existing attribute value after code has accessed the attribute's child nodes. Replacing the value frees native child nodes while their wrappers remain reachable, and later use of those wrappers can cause an invalid read or process segfault. JRuby is not affected. This issue is fixed in version 1.19.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126065": {
+    "cvss": 9.8,
+    "description": "OpenObserve is a cloud-native observability platform. Prior to 1.1.0, the shared authentication validator in src/api/common/src/auth/validator.rs accepts an empty or whitespace-only HTTP Basic password for an account whose password_ext value is missing or empty. SSO-provisioned and migration-created users can have this state, allowing an unauthenticated attacker who knows an affected user's email address and organization to authenticate on protected non-ingestion API routes with the victim's role and permissions. A compromised privileged account can expose or modify telemetry, alerts, streams, users, and security configuration. An account with search permission can submit a DataFusion COPY ... TO statement through the search API to create or overwrite attacker-controlled files at service-process-writable locations, creating a conditional escalation to pre-authentication remote code execution. This issue is fixed in version 1.1.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126067": {
+    "cvss": 3.1,
+    "description": "Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, Action Pack session stores other than ActionDispatch::Session::CookieStore (CacheStore, MemCacheStore, and third-party stores built on AbstractStore, AbstractSecureStore or the session mixins) write the session cookie without a SameSite attribute, regardless of config.action_dispatch.cookies_same_site_protection, which defaults to :lax. Only CookieStore applies the configured policy. In browsers that do not treat a cookie without the attribute as SameSite=Lax, a cross-site request could carry the session cookie, possibly leading to cross-site request forgery against actions that do not verify an authenticity token, such as those of API-only applications. Applications are affected when they use a session store other than CookieStore and do not pass same_site: to config.session_store. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126068": {
+    "cvss": 3.7,
+    "description": "Action Mailbox routes incoming emails to controller-like mailboxes for processing in Rails. Prior to 8.1.4.1 and 8.0.5.2, the Action Mailbox Mailgun ingress authenticates a request with an HMAC of the timestamp and token parameters concatenated without a separator, and ActionMailbox::Ingresses::Mailgun::InboundEmailsController::Authenticator#recent? rejects only timestamps more than 2 minutes in the past. Because the signature does not fix the boundary between the two values, a captured signed request can be presented with a timestamp far in the future, which the ingress then accepts indefinitely. An attacker who obtains one signed Mailgun webhook request, but not the signing key, could submit arbitrary inbound email that Action Mailbox processes as genuine, possibly leading to forged messages attributed to the sender of the attacker's choosing. Applications that receive inbound email through the Action Mailbox Mailgun ingress are affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126069": {
+    "cvss": 4.7,
+    "description": "Action View is a framework for handling view template lookup and rendering and provides view helpers for building HTML. Prior to 8.1.4.1 and 8.0.5.2, the fix for CVE-2026-33168 skips blank HTML attribute names in Action View tag helpers, but it tests the name before converting it to a string. A Symbol name made only of whitespace, such as :\" \", is not blank, because Symbol#blank? is Symbol#empty?, so it reaches the attribute escaping, which emits an attribute with no name and produces malformed HTML. The asset tag helpers, such as image_tag, video_tag and audio_tag, symbolize their options, so a whitespace String name passed to them takes the same path. A carefully crafted attribute value could then be misinterpreted by the browser as a separate attribute name, possibly leading to XSS. Applications that allow users to specify custom HTML attribute names are affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126070": {
+    "cvss": 6.1,
+    "description": "Action View is a framework for handling view template lookup and rendering and provides view helpers for building HTML. Prior to 8.1.4.1 and 8.0.5.2, strip_tags in Action View returns its sanitized output marked html_safe, but the underlying sanitizer encodes only &, < and >, leaving \" and ' unencoded. Because ERB does not escape a string marked html_safe, untrusted input passed through strip_tags and rendered inside a quoted HTML attribute value could close the attribute and add new attributes, possibly leading to XSS. Applications that render strip_tags output from untrusted input inside an HTML attribute, for example in a title attribute or a tag, are affected. Output rendered as element content is not affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126071": {
+    "cvss": 5.3,
+    "description": "Active Storage makes it simple to upload and reference files in cloud services and attach those files to Active Record objects. From 8.0 until 8.0.5.2 and 8.1.4.1, when Active Storage serves a file through its proxy controllers, ActiveStorage::Streaming#send_blob_stream handles an error from the storage service by calling head to send a 404 or 500 response. If the error occurs after the first chunk has been written, the response is already committed, and head replaces the response body while the server is still reading the original ActionController::Live buffer. That buffer is never closed, so the server thread handling the request blocks until the process restarts. Repeated failed downloads could exhaust the server's threads, possibly resulting in a DoS vulnerability. Applications are affected when they store files on a service that streams a download in several requests, such as Amazon S3, an S3-compatible service or Google Cloud Storage, and draw Active Storage's default routes. The proxy routes are drawn whether or not proxy mode is the default for the application. A file deleted while it is being served, or any other storage error partway through a download, triggers the condition. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126072": {
+    "cvss": 5.9,
+    "description": "Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, ActionController::Live::Buffer#close pushes its end-of-stream marker onto the response's bounded queue while it holds the buffer's monitor. When the client has stopped reading and the queue is full, the push blocks, and Buffer#abort, which runs when the client disconnects or a write times out, waits indefinitely for the same monitor. Each such response could permanently hold a web server thread and its ActionController::Live thread, possibly resulting in a DoS vulnerability through thread exhaustion. Applications that stream responses with ActionController::Live, including send_stream, are affected. Applications that serve large files through Active Storage proxy mode are exposed to unauthenticated clients. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126073": {
+    "cvss": 4.8,
+    "description": "Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, Action Pack negotiates the format of a rendered response from the Accept, X-Requested-With and, for XHR requests without Accept, Content-Type request headers, but ActionController::Rendering#_set_vary_header adds Vary: Accept only when the request carries a usable Accept header and the response has no Vary header yet. A response to a request without Accept, or to an XHR request, therefore omits the headers that selected its representation, and a response whose Vary the application set before rendering (for example Vary: Accept-Language) never gains Accept. A shared cache that honours Vary could store such a response and serve it to later clients that request a different representation, possibly leading to cache poisoning in which visitors receive, until the entry expires, a page without its layout or HTML in place of JSON. The attacker cannot choose the content of the response. Applications that render negotiated responses from actions marked public (for example with expires_in ..., public: true) behind a shared cache that honours Vary, such as Thruster or Rack::Cache, are affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126074": {
+    "cvss": 4.3,
+    "description": "Active Storage makes it simple to upload and reference files in cloud services and attach those files to Active Record objects. Prior to 8.1.4.1 and 8.0.5.2, ActiveStorage::Filename#base and #extension_with_delimiter, and therefore #extension, pass the stored filename unmodified to File.basename and File.extname, which raise ArgumentError when the name contains a NUL byte. Active Storage stores the client-supplied filename verbatim, so a user who is permitted to upload an attachment could persist such a filename on databases that accept NUL bytes in string columns, such as SQLite and MySQL/MariaDB. Each subsequent request that builds a variant or preview of the blob, opens it, or renders it as an Action Text attachment then raises, possibly resulting in a persistent DoS vulnerability for the pages that display the blob until it is purged or its filename is corrected. Applications that use PostgreSQL are not affected, because PostgreSQL rejects the row. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126075": {
+    "cvss": 4.7,
+    "description": "Active Support is a collection of utility classes and standard library extensions used by Rails and other Ruby projects. From 8.1 until 8.1.4.1, ActiveSupport::MessagePack serializes an ActiveSupport::SafeBuffer as its bytes alone and deserializes it as a new SafeBuffer, so a buffer that is no longer html_safe? (for example, one mutated in place with gsub!) is restored as html_safe. If such a buffer holds untrusted input and is stored through a MessagePack serializer, rendering it after it is loaded bypasses ERB auto-escaping, possibly leading to XSS. Applications on Rails 8.1 are affected if they use a MessagePack serializer, such as config.action_dispatch.cookies_serializer = :message_pack or :message_pack_allow_marshal, or serializer: :message_pack for Rails.cache, ActiveSupport::MessageVerifier or ActiveSupport::MessageEncryptor, and store a SafeBuffer that was mutated in place with untrusted input. Rails 8.0 and earlier do not serialize SafeBuffer with MessagePack and are not affected. This issue is fixed in version 8.1.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126076": {
+    "cvss": 4.2,
+    "description": "Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, ActionDispatch::Session::CacheStore writes a session back to the cache at the end of each request that loaded it, without checking that the session's cache entry still exists. When a concurrent request destroys the session, through reset_session on logout or by deleting its cache entry on the server, a request that loaded the session earlier and finishes later restores it under its original session ID. Logout and server-side revocation could therefore fail to end a session, and an attacker who holds a stolen session cookie could keep that session valid across the victim's logout. Applications that use config.session_store :cache_store are affected, with any cache backend. ActionDispatch::Session::CookieStore is not affected, nor is ActionDispatch::Session::MemCacheStore with Dalli 4.0.0 or later, whose session store does not write back a session that was deleted. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126077": {
+    "cvss": 6.8,
+    "description": "Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, When ActionDispatch::Cookies reads a signed or encrypted cookie that was written under a rotated secret (config.action_dispatch.cookies_rotations) or in the format that a :hybrid cookie serializer migrates from, it writes the cookie back to the response in the current format, and that write ignores request.session_options[:skip]. ActiveStorage::DisableSession relies on that option to keep the session cookie off the public, immutable responses of the Active Storage proxy controllers, but those controllers still load the session, so a request carrying an old-format session cookie could receive the rewritten session cookie in Set-Cookie on a cacheable response. A shared cache that stores such a response together with its Set-Cookie header could then serve one user's session to later requesters of the same URL, or serve an attacker's session to other users. Applications are affected when they serve Active Storage files through the proxy controllers, have a cookie rotation or a :hybrid serializer migration configured, and run behind a cache that stores Set-Cookie on public responses. This is a path around the fix for CVE-2024-26144. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126078": {
+    "cvss": 6.1,
+    "description": "Action View is a framework for handling view template lookup and rendering and provides view helpers for building HTML. Prior to 8.1.4.1 and 8.0.5.2, ActionView::Helpers::TextHelper#highlight substitutes each matched phrase into the :highlighter string without escaping it and returns the result marked HTML-safe. Because sanitizing leaves quote characters in text unescaped, a match substituted into a quoted attribute value of the highlighter, such as the form shown in the method's documentation, could end the attribute value and add attributes to the element, possibly leading to XSS. Applications are affected when they pass a :highlighter that places a placeholder inside an attribute value and highlight text or phrases that a user controls. The default \\1 highlighter and the block form are not affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126079": {
+    "cvss": 6.1,
+    "description": "Action View is a framework for handling view template lookup and rendering and provides view helpers for building HTML. Prior to 8.1.4.1 and 8.0.5.2, with the HTML5 sanitizer (Rails::HTML5::Sanitizer, the default vendor on CRuby for applications using load_defaults 7.1 or later), Nokogiri before 1.19.5 serializes < and > unescaped inside attribute values. The Action View text helpers highlight and simple_format sanitize their input and then process the resulting HTML as a string: highlight splits it on tag boundaries to insert matches, and simple_format splits it into paragraphs on blank lines. An unescaped > or a blank line inside an attribute value could cause markup in that value, which the sanitizer left inert, to be emitted as live elements in the helper's html_safe output, possibly leading to XSS. Applications that use the HTML5 sanitizer and pass untrusted text to highlight, or to simple_format with html_options, are affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126080": {
+    "cvss": 7.5,
+    "description": "Active Support is a collection of utility classes and standard library extensions used by Rails and other Ruby projects. Prior to 8.1.4.1 and 8.0.5.2, when constant lookup raises LoadError, ActiveSupport::Inflector#safe_constantize (and String#safe_constantize) builds a regular expression from the requested constant name without escaping it, so a caller that passes untrusted input lets the attacker choose the source of a pattern that the application compiles. Crafted patterns can trigger defects in Ruby's regular expression compiler, possibly leading to a crash of the server process, and repeated requests could keep the application unavailable. Action Cable passes the channel value of each subscribe command to safe_constantize before any channel lookup, so an unauthenticated client can reach this code when the application mounts Action Cable and accepts connections from untrusted clients without an added authentication check. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126081": {
+    "cvss": 7.5,
+    "description": "Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, ActionController::Parameters#each_key delegates to the internal ActiveSupport::HashWithIndifferentAccess that holds the request parameters, so when called with a block it returns that hash instead of the Parameters instance. The hash does not respond to permitted?, so Active Model mass assignment (new, assign_attributes, update) accepts it without raising ActiveModel::ForbiddenAttributesError. An application that passes the return value of each_key to mass assignment could allow a remote, unauthenticated attacker to set attributes that the application does not permit, such as an authorization flag. This is an incomplete fix of CVE-2020-8164, which made each, each_pair and each_value return the Parameters instance but left each_key delegated. An application is affected if it passes the return value of ActionController::Parameters#each_key, called with a block, to mass assignment. Rails itself makes no such call. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126083": {
+    "cvss": 7.4,
+    "description": "Action Pack is a framework for handling and responding to web requests. From 8.1 until 8.1.4.1, Since Rails 8.1.0, ActionDispatch::RemoteIp derives request.remote_ip from Rack::Request#forwarded_for, which under Rack 3 reads the RFC 7239 Forwarded header in preference to X-Forwarded-For. When a reverse proxy appends the client address to X-Forwarded-For but passes a client-supplied Forwarded header through unchanged, request.remote_ip returns an address chosen by the client, and the IP spoofing check does not raise, because it compares only Client-Ip with the forwarded addresses. An unauthenticated attacker could therefore spoof request.remote_ip, possibly bypassing IP-based access controls and rate limits keyed on the client address (including the default by: of rate_limit), and falsifying the client address in logs. An application is affected if it meets all of these requirements: Runs Rails 8.1.0 through 8.1.4 with Rack 3. Under Rack 2.2, forwarded_for reads only X-Forwarded-For. Is served behind a proxy that does not remove or overwrite a client-supplied Forwarded header. Relies on request.remote_ip for access control, rate limiting, or auditing. The fix detects a spoofed Forwarded header only when the proxy also sets X-Forwarded-For. An application whose proxy passes a client-supplied Forwarded header through and sets no X-Forwarded-For remains exposed after upgrading, and should configure the proxy to remove or overwrite Forwarded, or apply the workaround below. This issue is fixed in version 8.1.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126084": {
+    "cvss": 4.7,
+    "description": "Active Storage makes it simple to upload and reference files in cloud services and attach those files to Active Record objects. Prior to 8.1.4.1 and 8.0.5.2, when a GCS service is configured with the cache_control option, ActiveStorage::Service::GCSService#url_for_direct_upload signs direct-upload URLs with V4, and the V4 signature covers only the Cache-Control and Host headers. A direct-upload client can therefore send a Content-Type of its choosing, and can omit the declared Content-MD5, without invalidating the URL. GCS stores the supplied content type as object metadata, which takes precedence over the response-content-type that Active Storage sets on download URLs, so an uploaded object could be served as inline HTML under the application's bucket path on storage.googleapis.com. Script in such an object runs on the storage origin rather than the application's, but could register a Service Worker scoped to the bucket path and read or replace a victim's later responses for signed URLs in that bucket. Applications that use the GCS service with cache_control configured and accept direct uploads are affected. GCS services without cache_control sign with V2 and are not affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126128": {
+    "cvss": 7.5,
+    "description": "The Management API client in the Auth0 Node.js SDK improperly neutralizes path parameters, allowing a request and its attached management API token to be redirected to an unintended endpoint on the same tenant, resulting in unintended access to data or operations that the token's existing scopes already permit.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92544": {
+    "cvss": 8.7,
+    "description": "SQL injection in the LLM usage counters of Kong Gateway Enterprise and Kong AI Gateway may allow a client to execute arbitrary SQL against the Kong database via a crafted model name.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-0027": {
+    "cvss": 5.9,
+    "description": "Improper access control in AMD Secure Encrypted Virtualization (SEV) firmware could allow a malicious hypervisor to bypass Reverse Map Table (RMP) protections, potentially impacting the integrity of Secure Encrypted Virtualization-Secure Nested Paging (SEV-SNP) guest memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-29940": {
+    "cvss": 5.9,
+    "description": "Unverified ownership in Secure Encrypted Virtualization (SEV) firmware could allow a privileged attacker with access to a malicious hypervisor to overwrite guest memory if segmented Reverse Map Table (RMP) is enabled potentially resulting in loss of guest data integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52535": {
+    "cvss": 5.9,
+    "description": "Improper resource reuse in the AMD Secure Encrypted Virtualization (SEV) firmware could allow an attacker with hypervisor access to write to the Reverse Map Table (RMP) protected memory, potentially resulting in loss of guest memory integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-52537": {
+    "cvss": 4.0,
+    "description": "Improper access control within the AMD Secure Encrypted Virtualization (SEV) firmware could allow an attacker with administrative privileges to tamper with memory, potentially resulting in loss of guest memory integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-54503": {
+    "cvss": 5.9,
+    "description": "Improper handling of overlap between protected memory ranges in the Secure Encrypted Virtualization (SEV) firmware could allow a privileged attacker to cause misconfigurations in the RMP potentially resulting in loss of integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-54504": {
+    "cvss": 5.9,
+    "description": "Insufficient Granularity of Access Control in AMD Secure Encrypted Virtualization (SEV) firmware could allow an attacker with administrative privileges attacker to write to a trusted region used by AMD Secure Encrypted Virtualization-Encrypted State (SEV-ES), potentially resulting in loss of integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-54506": {
+    "cvss": 4.0,
+    "description": "A time-of-check to time-of-use (TOCTOU) race condition in the AMD SEV Secure Encrypted Virtualization (SEV) firmware could allow an attacker with administrative privileges to bypass security checks on scatter lists, potentially resulting in loss of guest integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-54508": {
+    "cvss": 4.0,
+    "description": "Improper validation of Reverse Map Table (RMP) entries in the Secure Encrypted Virtualization (SEV) firmware could allow a privileged attacker to trigger concurrent modifications to RMP entries without proper synchronization potentially resulting in loss of data integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-62620": {
+    "cvss": 5.9,
+    "description": "Improper validation of unsafe equivalence in input could allow an attacker with high privileges to reclaim the ring buffer queue status page, potentially resulting in loss of guest memory integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-62621": {
+    "cvss": 5.9,
+    "description": "Expected behavior violation in AMD Secure Encrypted Virtualization (SEV) firmware could allow a malicious hypervisor to bypass Reverse Map Table (RMP) protections, potentially resulting in a loss of Secure Encrypted Virtualization-Secure Nested Paging (SEV-SNP) guest memory integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107356": {
+    "cvss": 8.8,
+    "description": "U.S. Geological Survey Area Species Management Research Program (ARMI) accepts any uploaded file and stores the file under '/uploads/{upload-file}'. A remote, authenticated attacker could upload a crafted PHP file that executes and returns command output from the server when accessed. Fixed on 2026-07-20.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118197": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a DOM-based Cross-Site Scripting (XSS) vulnerability. An attacker could exploit this issue by manipulating the DOM environment to execute malicious JavaScript within the context of the victim's browser. Exploitation of this issue requires user interaction in that a victim must visit a crafted webpage. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118478": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a stored Cross-Site Scripting (XSS) vulnerability that could be abused by a low-privileged attacker to inject malicious scripts into vulnerable form fields. Malicious JavaScript may be executed in a victim's browser when they browse to the page containing the vulnerable field. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118479": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a DOM-based Cross-Site Scripting (XSS) vulnerability. An attacker could exploit this issue by manipulating the DOM environment to execute malicious JavaScript within the context of the victim's browser. Exploitation of this issue requires user interaction in that a victim must visit a crafted webpage. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118482": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by an Improper Input Validation vulnerability that could result in a Security feature bypass. A low-privileged attacker could leverage this vulnerability to bypass security measures and gain unauthorized limited read and write access. Exploitation of this issue does not require user interaction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118484": {
+    "cvss": 6.5,
+    "description": "CAI Content Credentials is affected by an Improper Input Validation vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to bypass security measures and gain unauthorized write access. Exploitation of this issue requires user interaction in that a victim must visit a maliciously crafted URL or interact with a compromised web page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121890": {
+    "cvss": 7.7,
+    "description": "Adobe Connect is affected by an Improper Restriction of XML External Entity Reference ('XXE') vulnerability that could lead to arbitrary file system read. A low-privileged attacker could exploit this vulnerability to access sensitive files and directories outside the intended access scope. Exploitation of this issue does not require user interaction. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121910": {
+    "cvss": 5.4,
+    "description": "Adobe Connect is affected by a Cross-Site Scripting (XSS) vulnerability. If a low-privileged attacker is able to convince a victim to visit a URL referencing a vulnerable page, malicious JavaScript content may be executed within the context of the victim's browser. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122097": {
+    "cvss": 6.5,
+    "description": "CAI Content Credentials is affected by an Uncontrolled Resource Consumption vulnerability that could lead to application denial-of-service. An attacker could exploit this vulnerability to exhaust system resources, resulting in an application denial-of-service condition. Exploitation of this issue requires user interaction in that a victim must visit a maliciously crafted URL or interact with a compromised web page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122100": {
+    "cvss": 5.5,
+    "description": "CAI Content Credentials is affected by an Improper Verification of Cryptographic Signature vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to bypass security measures and gain unauthorized write access. Exploitation of this issue requires user interaction in that a victim must visit a maliciously crafted URL or interact with a compromised web page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122101": {
+    "cvss": 3.7,
+    "description": "CAI Content Credentials is affected by an Improper Input Validation vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to bypass security measures and gain unauthorized limited write access. Exploit depends on conditions beyond the attacker's control. Exploitation of this issue does not require user interaction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123041": {
+    "cvss": 8.2,
+    "description": "The request-callout plugin in Kong Gateway Enterprise and Kong AI Gateway omits callout headers not sent by the client from its cache key, allowing a cached callout response for a caller to be served to another.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123258": {
+    "cvss": 5.4,
+    "description": "Adobe Experience Manager is affected by a DOM-based Cross-Site Scripting (XSS) vulnerability. An attacker could exploit this issue by manipulating the DOM environment to execute malicious JavaScript within the context of the victim's browser. Exploitation of this issue requires user interaction in that a victim must visit a crafted webpage. Scope is changed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123260": {
+    "cvss": 4.0,
+    "description": "CAI Content Credentials is affected by an Improper Input Validation vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to bypass security measures and gain unauthorized limited write access. Exploitation of this issue does not require user interaction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123267": {
+    "cvss": 5.5,
+    "description": "CAI Content Credentials is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to access unauthorized files or directories outside the intended restrictions. Exploitation of this issue requires user interaction in that a victim must visit a maliciously crafted URL or interact with a compromised web page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125297": {
+    "cvss": 9.8,
+    "description": "AsiaInfo Business Support System (BSS) 9.2.0 through 9.2.40 accepts unauthenticated requests via the management API '/bss/sysmgnt/api/'. A remote, unauthenticated attacker could provision a new account with administrative privileges or take over existing accounts, and perform other administrative actions. Fixed in 9.2.41.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125298": {
+    "cvss": 9.8,
+    "description": "AsiaInfo Business Support System (BSS) 9.2.0 through 9.2.40 does not correctly verify cryptographic signatures for JSON Web Tokens (JWT). A remote, unauthenticated attacker could forge a well-formed JWT without a valid signature and use it to execute privileged actions. Fixed in 9.2.41.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125878": {
+    "cvss": 8.7,
+    "description": "Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in N-able N-central allows Resource Injection. This issue affects N-central: before 26.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125879": {
+    "cvss": 8.6,
+    "description": "Incorrect privilege assignment vulnerability in N-able N-central allows Privilege Escalation. This issue affects N-central: before 26.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125880": {
+    "cvss": 8.3,
+    "description": "Improper neutralization of HTTP headers for scripting syntax vulnerability in N-able N-central allows Cross-Site Scripting (XSS). This issue affects N-central: before 26.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125881": {
+    "cvss": 9.3,
+    "description": "Server-Side request forgery (SSRF) vulnerability in N-able N-central allows Server Side Request Forgery. This issue affects N-central: before 26.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125882": {
+    "cvss": 8.6,
+    "description": "Relative path traversal vulnerability in N-able N-central allows Path Traversal. This issue affects N-central: before 26.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125883": {
+    "cvss": 9.3,
+    "description": "Improper restriction of XML external entity reference vulnerability in N-able N-central allows XML Schema Poisoning. This issue affects N-central: before 26.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125958": {
+    "cvss": 7.5,
+    "description": "Download of code without integrity check vulnerability in N-able N-central allows Remote Code Inclusion. This issue affects N-central: through 24.6.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126085": {
+    "cvss": 5.3,
+    "description": "Active Storage makes it simple to upload and reference files in cloud services and attach those files to Active Record objects. Prior to 8.1.4.1 and 8.0.5.2, ActiveStorage::Service::GCSService#url_for_direct_upload does not bind the declared content length into the signed direct-upload URL, and #headers_for_direct_upload returns no length constraint, so the URL authorizes an upload body of any size. A direct-upload client could store a file larger than the byte_size it declared, and the resulting blob keeps the declared size, possibly bypassing application file size validations and quotas. This is the weakness that CVE-2020-8162 fixed in the S3 service. Applications that store files in Google Cloud Storage and accept direct uploads are affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126123": {
+    "cvss": 6.5,
+    "description": "BeeS Software Solutions ERP before 04 September 2026 allows any low-privileged user to navigate directly to the administrative dashboard endpoint and gain access to the administrative console, including unrestricted access to institutional, employee, and student data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126129": {
+    "cvss": 7.5,
+    "description": "The Auth0 ASP.NET Core Authentication SDK incorrectly determines a session's OIDC Back-Channel Logout status, which may result in a logged-out session being accepted for access to protected endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126186": {
+    "cvss": 8.8,
+    "description": "Active Storage makes it simple to upload and reference files in cloud services and attach those files to Active Record objects. Prior to 8.1.4.1 and 8.0.5.2, ActiveStorage::Blob#open writes a blob to a tempfile whose name carries the extension of the uploaded filename, and hands that path to ffprobe (VideoAnalyzer, AudioAnalyzer), ffmpeg (VideoPreviewer) and ImageMagick (ImageAnalyzer, the :mini_magick variant processor). These tools select a decoder from the file extension when the content does not identify its own format, so an attacker who chooses the filename and declares the content type of an upload chooses which decoder processes it. An FFmpeg built with AviSynth support treats a file with the .avs extension as an AviSynth script and evaluates it, which could disclose files readable by the application process through the preview image, or load a native library the attacker has also uploaded, possibly leading to remote code execution in the FFmpeg process. ImageMagick selects its coders and delegates from the extension in the same way. An application is affected if it accepts uploads from untrusted users and analyzes video or audio attachments, generates video previews, or processes images with ImageMagick. The AviSynth attack additionally requires an FFmpeg built with --enable-avisynth and the AviSynthPlus runtime on the host. Upstream FFmpeg and the common Linux distribution and Homebrew packages do not enable it; the GPL builds distributed for Windows and Linux from ffmpeg.org do. Other decoders that FFmpeg or ImageMagick select from the extension may be reachable without AviSynth. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28247": {
+    "cvss": 5.9,
+    "description": "Improper Access Control Applied to Mirrored or Aliased Memory Regions in AMD Secure Encrypted Virtualization (SEV) firmware could allow a malicious hypervisor to change the encryption bit for guest context pages potentially resulting in loss of integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28248": {
+    "cvss": 5.9,
+    "description": "Improper enforcement of behavioral workflow in AMD Secure Encrypted Virtualization (SEV) firmware could allow a malicious hypervisor to potentially launch a guest whose attestation report contains an ID key digest for an ID block that doesn't match the guest's measurement resulting in loss of integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28249": {
+    "cvss": 4.6,
+    "description": "Improper preservation of consistency between independent representations of shared state in AMD Secure Encrypted Virtualization (SEV) firmware could allow a malicious hypervisor to potentially affect cache coherency for guest context pages resulting in loss of integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40668": {
+    "cvss": 4.6,
+    "description": "Authentication bypass by spoofing in AMD Secure Encrypted Virtualization (SEV) firmware could allow a malicious hypervisor to request attestation reports for VMPL 0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40669": {
+    "cvss": 4.0,
+    "description": "An off-by-one error in AMD Secure Encrypted Virtualization (SEV) firmware could allow an attacker with hypervisor access to corrupt the Reverse Map Table (RMP) table, potentially resulting in loss of guest memory integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-40670": {
+    "cvss": 5.9,
+    "description": "Improper check for unusual or exceptional conditions in AMD Secure Encrypted Virtualization - Secure Nested Paging (SEV-SNP) could allow a privileged attacker to potentially overlap MMIO regions with DRAM regions resulting in loss of integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106428": {
+    "cvss": 3.7,
+    "description": "An out-of-bounds read in SCRAM authentication response parsing in the MongoDB C Driver can read one byte beyond a fixed-size buffer when processing a malformed server-final message. A server or network intermediary able to provide this message before server-signature verification can cause the application using the driver to terminate. The extra byte is not returned through the protocol.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106429": {
+    "cvss": 6.5,
+    "description": "An integer underflow in the KMS endpoint-parsing logic of MongoDB libmongocrypt can cause an allocation failure that terminates the application process. This can occur when an authenticated user modifies a key document in the key vault collection, or when an application accepts a KMS endpoint containing a colon after its path or query during key creation. The issue does not access memory outside its allocated bounds.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
