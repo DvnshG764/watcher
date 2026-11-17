@@ -120386,8 +120386,8 @@
   "CVE-2026-39732": {
     "cvss": 9.3,
     "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in INTINITUM FORM Transliterator serbian-transliteration allows Blind SQL Injection.This issue affects Transliterator: from n/a through 2.5.13.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "INTINITUM FORM",
+    "product": "Transliterator"
   },
   "CVE-2026-62303": {
     "cvss": 5.9,
@@ -126838,5 +126838,95 @@
     "description": "A stack-based buffer overflow vulnerability exists in ELAN Microelectronics Corp. ELAN Smart-Pad on Windows (ETD.sys and ETDSMBus.sys). During Intel SMBus recovery, ETDSMBus.sys does not enforce an upper-bound check on the hardware-derived report count, allowing an out-of-range value to be forwarded to ETD.sys where it is used as a loop counter for a stack buffer copy without destination size validation. A local attacker with standard user privileges can trigger a kernel bugcheck (BSOD 0xF7 DRIVER_OVERRAN_STACK_BUFFER), resulting in denial of service. This issue affects ELAN Smart-Pad through ETD24.21.52.3.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-120804": {
+    "cvss": 7.5,
+    "description": "A flaw exists in the server-side SSPI Kerberos authentication handler on Windows Enterprise builds of MongoDB. When processing certain authentication requests, the server fails to properly release an underlying system resource due to an internal tracking error. An unauthenticated user can trigger this by repeatedly sending authentication requests using the Kerberos mechanism, eventually exhausting available resources and causing all subsequent Kerberos authentication attempts to fail. Server restart is required to recover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120805": {
+    "cvss": 4.3,
+    "description": "In MongoDB Server, an authenticated user with insert privileges on a collection could craft a command with specially constructed encryption-related parameters to redirect internal Queryable Encryption metadata writes to metadata belonging to other encrypted collections within the same database. The server’s authorization layer validated only the user-facing target collection namespace, while subsequent internal writes derived from client-supplied parameters were performed with elevated internal privileges, bypassing the original caller’s permission scope. This could allow unauthorized writes into another collection’s Queryable Encryption metadata, potentially corrupting encrypted index state and compaction operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120806": {
+    "cvss": 5.5,
+    "description": "A flaw in MongoDB Server's user management commands may lead to incomplete cleanup of role authorization data when roles are dropped from a database. Due to incorrect internal query predicates, the drop operation removes role definitions but fails to remove stale references in user and role documents. If a role with the same name is subsequently recreated with different privileges, previously associated users may silently inherit the new role's privileges without an explicit grant or corresponding audit event. Exploitation requires authenticated access with database administrative privileges on the target database.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120807": {
+    "cvss": 6.6,
+    "description": "A flaw in MongoDB’s X.509 cluster-membership authentication guard could allow a holder of a cluster-member certificate to gain elevated internal privileges when a specific deployment configuration is in use. An internal check, which prevents a certificate recognized as a cluster member from also being treated as a regular user, does not correctly distinguish between certain error conditions encountered during user lookup. Under certain timing conditions, this can cause the check to be bypassed, granting the connection full internal system privileges. Triggering this issue requires possession of a valid cluster-member TLS certificate, non-default X.509 cluster authentication configuration, and specific conditions during the user cache lookup process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120808": {
+    "cvss": 7.4,
+    "description": "An issue exists in MongoDB's macOS TLS client implementation where certificate chain-of-trust validation is bypassed for outbound connections to IPv6-addressed peers. When a MongoDB process using the Apple SecureTransport TLS backend connects to an IPv6 target, the trust evaluation result from SecTrustEvaluate is silently discarded, regardless of whether the peer's certificate is trusted. An on-path party could exploit this by presenting a self-signed certificate containing the target's IPv6 address in the Subject Alternative Name to intercept and modify encrypted inter-node or external service traffic. This issue only affects MongoDB processes running on macOS with the Apple SecureTransport TLS provider.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120809": {
+    "cvss": 6.8,
+    "description": "A use-after-free read issue exists in MongoDB’s SBE (Slot-Based Execution) engine when processing aggregation pipelines with $unwind on time-series collections. An internal error in state-preservation logic can cause a value still referenced by downstream stages to have its underlying memory freed prematurely. An authenticated user can craft an aggregation pipeline under specific conditions to trigger this condition, potentially reading recycled server heap memory in query results or crashing the server. This issue is only triggerable when a non-default server parameter related to the SBE engine is enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120810": {
+    "cvss": 6.5,
+    "description": "An issue in MongoDB server’s aggregation framework allows an authenticated user with read privileges to cause a denial of service by sending specially crafted aggregate commands using an internal expression. Despite its internal naming, this expression is registered as accessible to any authenticated client. By supplying crafted input parameters across multiple concurrent connections, each evaluation triggers unbounded memory allocations with no per-expression memory limits enforced. This can exhaust available server memory and cause the mongod process to be terminated by the operating system’s out-of-memory killer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120811": {
+    "cvss": 5.9,
+    "description": "A use-after-free issue exists in the MongoDB server’s classic query engine plan cache. Under certain query conditions, an unowned reference to data from an earlier command can be retained in cached plan statistics. After the originating memory is freed, a subsequent diagnostic command serializing those statistics can read freed heap memory, potentially returning sensitive server process memory contents to the authenticated client. Under certain heap reuse conditions, this may also cause the server to crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120812": {
+    "cvss": 6.5,
+    "description": "An issue in MongoDB Server's query processing component allows an authenticated user with read privileges to cause a denial of service. Uncontrolled recursion in an internal query compilation component can lead to stack exhaustion and server process termination when processing certain queries against time-series collections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130335": {
+    "cvss": 2.9,
+    "description": "Info-ZIP Zip 3.0 (and 3.1 beta through 3.1c) allows OS command injection by an attacker who controls the command line. The victim must use the -T option followed by a filename containing shell metacharacters, on a platform (such as Linux) where a suitable shell is run. This occurs because the system C library function is used. NOTE: there is no known common scenario in which an untrusted filename reaches a zip -T call.",
+    "vendor": "Info-ZIP",
+    "product": "Zip"
+  },
+  "CVE-2026-102657": {
+    "cvss": 7.5,
+    "description": "esm.sh is a no-build content delivery network (CDN) for web development. Prior to server version 137_7, the documented web.NewHandler static file server in web/handler.go joins the URL-decoded r.URL.Path with Config.AppDir without verifying that the result remains inside the configured application directory. URL-encoded dot segments such as %2e%2e bypass the plain traversal redirect performed by Go's ServeMux, allowing an unauthenticated remote attacker to make the server open and return files outside Config.AppDir that are readable by the server process. The confirmed impact is file disclosure only, and the issue is reachable with Dev disabled. This issue is fixed in server version 137_7.",
+    "vendor": "esm-dev",
+    "product": "esm.sh"
+  },
+  "CVE-2026-109991": {
+    "cvss": 7.5,
+    "description": "The FunnelKit Payment Gateway for Stripe WooCommerce plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 1.15.0.2 via the 'order-pay (WP query var from /checkout/order-pay/ /)' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to read the full billing PII — including name, email address, phone number, and complete street address — of any store order by enumerating sequential order IDs, as this data is emitted into the inline fkwcs_data JavaScript object via wp_localize_script on every matching page response. Exploitation occurs even when WooCommerce itself rejects the order-pay page request, because the plugin's wp_localize_script call runs independently of WooCommerce's own order-key validation on the same request.",
+    "vendor": "teamfunnelkit",
+    "product": "FunnelKit Payment Gateway for Stripe WooCommerce"
+  },
+  "CVE-2026-111057": {
+    "cvss": 10.0,
+    "description": "Mercury is a Python framework for sharing Jupyter notebooks as web applications and dashboards. From 3.0.0 until 3.2.4, a missing comma in BLOCKED_PATTERNS concatenates the /lab and /api/terminals regular-expression literals. Requests to /api/terminals therefore bypass the anonymous endpoint blocklist and reach Jupyter Server's terminal API. An unauthenticated attacker can use the resulting interactive operating-system shell to execute commands and access data available to the Mercury process. This issue is fixed in version 3.2.4.",
+    "vendor": "mljar",
+    "product": "mercury"
+  },
+  "CVE-2026-62032": {
+    "cvss": 9.8,
+    "description": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in Designinvento DirectoryPress directorypress allows PHP Local File Inclusion.This issue affects DirectoryPress: from n/a through 3.6.27.",
+    "vendor": "Designinvento",
+    "product": "DirectoryPress"
+  },
+  "CVE-2026-19715": {
+    "cvss": 7.5,
+    "description": "The WP OAuth Server ( Login with WordPress ) WordPress plugin before 6.3.1 does not restrict access to the debug log it writes, which is stored at a fixed and publicly reachable location, allowing unauthenticated users to read the OAuth tokens and authorisation codes it has issued as well as user records including password hashes when debug logging is enabled.",
+    "vendor": "Unknown",
+    "product": "WP OAuth Server ( Login with WordPress )"
   }
 }
