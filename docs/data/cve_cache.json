@@ -101664,7 +101664,7 @@
     "product": "Confection WordPress Cable"
   },
   "CVE-2026-121529": {
-    "cvss": 9.1,
+    "cvss": 9.6,
     "description": "A origin validation error vulnerability in Fortinet FortiClientMac 7.4.0 through 7.4.7, FortiClientWindows 7.4.0 through 7.4.7, FortiClientWindows 7.2.0 through 7.2.14, FortiClientWindowsPAM 7.4.7, FortiClientWindowsPAM 7.2.14 may allow an unauthorized remote attacker to execute unauthorized code or commands. Successful exploitation requires interaction with the victim.",
     "vendor": "Fortinet",
     "product": "FortiClientMac"
@@ -127228,5 +127228,203 @@
     "description": "The Soledad theme for WordPress is vulnerable to unauthenticated Remote Code Execution in versions up to, and including, 8.7.7 The public penci_more_post_ajax AJAX action feeds infeedads[ads_code] (base64+urldecoded) to penci_safe_shortcode(), whose allowlist regex inspects only the hyphen-truncated outer shortcode name (e.g. 'adinserter') and never the nested [elementor-element k=.. data=..] tag, so do_shortcode() renders an attacker-chosen Elementor element. The rendered penci-featured-sliders widget passes its unsanitized 'style' setting to include dirname(__FILE__).\"/{$style}.php\", a path-traversal local file inclusion.",
     "vendor": "pencidesign",
     "product": "Soledad"
+  },
+  "CVE-2026-120974": {
+    "cvss": 5.3,
+    "description": "On affected platforms running Arista EOS with IPsec AutoVPN Feature configured with dynamic paths, the configured IPsec replay window may not be applied as expected. As a result, IPsec anti-replay protection may be silently inactive even when it has been configured via an SA policy, contrary to the operator's expectation. This issue does not allow decryption of the affected IPsec traffic, but it may allow replay of previously valid protected traffic.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120975": {
+    "cvss": 3.1,
+    "description": "On affected platforms running Arista EOS with automatic certificate management configured and automatic Certificate Authority (CA) certificate retrieval enabled, a malicious packet may cause the AutoCertMgmt process to be terminated unexpectedly. Managed X.509 certificates will not be renewed automatically and may eventually expire, potentially disrupting TLS-dependent services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120976": {
+    "cvss": 6.0,
+    "description": "On affected platforms running Arista EOS with IEEE 802.1X authentication and MACsec using dynamically derived keys, sensitive authentication information may be recorded in diagnostic data during a Smart Switch Upgrade (SSU). An attacker with administrative access on the device who obtains the affected diagnostic data could recover sensitive authentication information. This could potentially compromise the confidentiality and integrity of traffic protected by MACsec on the affected link. The vulnerability is only exposed during and after an SSU reload where an active 802.1X session used for MACsec is present.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120977": {
+    "cvss": 8.2,
+    "description": "On affected platforms running Arista EOS with 802.1X with Dynamic Host Configuration Protocol (DHCP) device profiling enabled, a network-adjacent attacker can send a crafted DHCP packet to force the device to record a spoofed device profile. This may potentially allow the authenticated supplicant to acquire unauthorized access to a network segment with elevated privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120978": {
+    "cvss": 6.5,
+    "description": "On affected Arista EOS platforms running Border Gateway Protocol with Link State ( BGP-LS) and configured with the Dynamic Path Selection (DPS) consumer role, an attacker who has established an authenticated BGP-LS session with the device can send a crafted message to cause the BGP agent to restart unexpectedly. An Arista Pathfinder deployment is not required.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120979": {
+    "cvss": 8.1,
+    "description": "This vulnerability affects customers using Arista Pathfinder for WAN path selection with Border Gateway Protocol-Link State (BGP-LS) configured for Dynamic Path Selection (DPS). On affected platforms running Arista EOS with BGP-LS configured for DPS, an attacker who has established an authenticated BGP-LS session with the device can send a specially crafted BGP packet to cause incorrect WAN path selection and disrupt traffic forwarding.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120980": {
+    "cvss": 5.3,
+    "description": "On affected platforms running Arista EOS with VPLS-BGP enabled, an attacker who has established a BGP session with the PE routers can send a specially crafted BGP packet to cause the BGP agent to restart unexpectedly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120981": {
+    "cvss": 5.3,
+    "description": "On affected platforms running Arista EOS with VPLS-BGP enabled, an attacker who has established a BGP session with the PE router can affect the route advertisements of VPLS pseudowires, causing a churn of the established routes with other legitimate BGP peers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120982": {
+    "cvss": 7.5,
+    "description": "On affected platforms running Arista EOS with Border Gateway Protocol (BGP) configured, An unauthenticated attacker who can establish a BGP peering session with an affected device and can send specially crafted BGP messages to cause repeated BGP session resets, enabling sustained disruption to network routing and traffic forwarding.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120983": {
+    "cvss": 7.6,
+    "description": "On affected EOS platforms where 802.1x is configured in multi-host authenticated mode and the device is configured with Policy Based Routing (PBR), traffic from unauthenticated hosts may be forwarded to the destination configured in the PBR policies. This could potentially allow unauthenticated hosts access to networks. Additionally Layer 2 and Layer 3 control packets from unauthenticated hosts may get copied to the CPU.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121286": {
+    "cvss": 6.5,
+    "description": "On affected platforms running Arista EOS in multi-agent routing model with BGP Segment Routing Traffic Engineering (SR-TE) address family configured, a BGP peer can send crafted BGP packets to cause the BGP process to restart, disrupting all BGP sessions on the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121287": {
+    "cvss": 8.8,
+    "description": "An unauthenticated attacker on an adjacent network segment can send crafted RIPv2 packets to a RIP-enabled interface on the device to trigger the Rip agent crash without providing valid credentials. Repeated exploitation reliably interrupts routing service on the affected device, which may also disrupt routing for other devices that depend on it. In a worst-case scenario, the vulnerability may allow an attacker to execute arbitrary code on the affected device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121288": {
+    "cvss": 8.1,
+    "description": "An unauthenticated attacker on an adjacent network segment can bypass MD5 authentication and have unauthorized RIP route updates accepted by the device. Successful exploitation requires that RIPv2 MD5 authentication is configured on the affected interface. An attacker who can inject crafted RIPv2 packets could cause the device to install routes that redirect network traffic through attacker-controlled paths, create routing loops, or blackhole traffic, disrupting network connectivity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121289": {
+    "cvss": 9.8,
+    "description": "On affected platforms running Arista EOS with BGP configured, a specially crafted packet can cause the BGP agent to crash. Successful exploitation causes the BGP agent process to terminate, resulting in the loss of all BGP sessions on the affected device and possible disruption to network routing until the process recovers. Due to the nature of the vulnerability, it may also be possible for a sophisticated attacker to achieve arbitrary code execution, which could compromise the confidentiality and integrity of the affected system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121290": {
+    "cvss": 8.2,
+    "description": "On affected platforms running Arista EOS with Border Gateway Protocol (BGP) changing the BGP listen port from its default value disables default protective Access Control List (ACL) rules against unexpected BGP peering attempts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121291": {
+    "cvss": 8.2,
+    "description": "A crafted Error Report can leave EOS stuck believing that a cache reset is in progress, preventing ROA publication, withdrawal reconciliation, and BGP origin-validation updates.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121292": {
+    "cvss": 8.2,
+    "description": "A malformed Error Report can cause EOS to read beyond packet boundaries, potentially terminating the RPKI agent or exposing unintended memory contents through logging.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121293": {
+    "cvss": 4.4,
+    "description": "On affected EOS-based platforms, an attacker who controls a Border Gateway Protocol (BGP) peer can send a crafted BGP message over an established session with the Dynamic Path Selection (DPS) address family negotiated. This can cause the BGP process to terminate unexpectedly, resetting all BGP sessions and disrupting routing services until the process restarts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121294": {
+    "cvss": 5.3,
+    "description": "On affected platforms running Arista EOS with a S-BFD reflector proxy configured, an unauthenticated attacker could send a crafted S-BFD Protocol Data Unit (PDU) that might cause the device to temporarily cease reflecting S-BFD packets, potentially resulting in S-BFD session timeouts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121295": {
+    "cvss": 8.6,
+    "description": "On affected platforms running Arista EOS configured as S-BFD peers, an unauthenticated attacker could send a crafted S-BFD PDU to an initiator device. This crafted PDU could cause the kernel on the initiator device to crash, resulting in an unexpected device reboot.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121367": {
+    "cvss": 9.6,
+    "description": "On affected Arista EOS platforms with Routing Information Protocol version 2 (RIPv2) configured, under certain conditions, RIPv2 might be silently enabled on management interfaces even when the RIP agent intends to disable it. It allows an unauthenticated attacker with access to the adjacent network to send crafted RIPv2 route advertisements to the device's management IP address. The device could accept and install those routes without authentication. Successful exploitation could allow the attacker to redirect traffic flows to an attacker-controlled destination, install more-specific routes that blackhole legitimate traffic, or otherwise disrupt network reachability for systems whose traffic passes through the affected device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121368": {
+    "cvss": 8.6,
+    "description": "On affected platforms running Arista EOS with Bidirectional Forwarding Detection (BFD) configured to use keyed MD5 or keyed SHA1 authentication, an unauthenticated attacker with network adjacency (direct or multi-hop) to a BFD-enabled interface can send a specially crafted BFD packet resulting in a system reboot.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121369": {
+    "cvss": 5.3,
+    "description": "On affected platforms running Arista EOS under specific link configurations an attacker with direct connectivity to the system may cause system CPU and memory utilization to increase considerably leading to slow responsiveness and eventually may cause the system to reboot.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121370": {
+    "cvss": 8.6,
+    "description": "On affected platforms running Arista EOS with Precision Time Protocol (PTP) configured, an unauthenticated attacker with network access to a PTP-enabled port can create a denial of service (DoS) condition by sending traffic to the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101857": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Oracle Order Management product of Oracle E-Business Suite (component: Product Diagnostic Tools). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Order Management. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Order Management accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-60746": {
+    "cvss": 5.9,
+    "description": "Vulnerability in the Oracle Order Management product of Oracle E-Business Suite (component: Product Diagnostic Tools). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Order Management. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Order Management accessible data as well as unauthorized update, insert or delete access to some of Oracle Order Management accessible data. CVSS 3.1 Base Score 5.9 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83139": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Oracle Order Management product of Oracle E-Business Suite (component: Product Diagnostic Tools). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Order Management. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Order Management accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111653": {
+    "cvss": 5.3,
+    "description": "53AIHub before 0.5.5 contains a missing authentication vulnerability that allows unauthenticated attackers to overwrite any enterprise's profile by sending PUT requests to /api/enterprises/:id. Because UpdateEnterprise only enforces checks when IS_SAAS is true, attackers can enumerate sequential enterprise IDs and overwrite logos, display names and branding for defacement and phishing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18065": {
+    "cvss": 7.5,
+    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote unauthenticated attacker to gain access to sensitive information through session IP binding bypass in Navigator for i.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18251": {
+    "cvss": 7.5,
+    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote attacker to obtain sensitive information due to improper validation of the WebSocket origin.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18069": {
+    "cvss": 4.7,
+    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a local attacker to obtain ownership of arbitrary file system objects due to a time-of-check to time-of-use (TOCTOU) race condition.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19086": {
+    "cvss": 5.5,
+    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a denial of service as a result of a buffer overflow in a PASE process. An authenticated attacker could leverage this to terminate their own process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19280": {
+    "cvss": 5.5,
+    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a denial of service as a result of a buffer overflow in a PASE process. An authenticated attacker could leverage this to terminate their own process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
