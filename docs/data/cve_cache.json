@@ -32658,7 +32658,7 @@
     "product": "API Server"
   },
   "CVE-2024-13979": {
-    "cvss": 9.3,
+    "cvss": 9.8,
     "description": "A SQL injection vulnerability exists in the St. Joe ERP system (\"圣乔ERP系统\") that allows unauthenticated remote attackers to execute arbitrary SQL commands via crafted HTTP POST requests to the login endpoint. The application fails to properly sanitize user-supplied input before incorporating it into SQL queries, enabling direct manipulation of the backend database. Successful exploitation may result in unauthorized data access, modification of records, or limited disruption of service. An affected version range is undefined. Exploitation evidence was first observed by the Shadowserver Foundation on 2025-04-14 UTC.",
     "vendor": "Hangzhou Shengqiao Technology Co. Ltd.",
     "product": "St. Joe ERP System (\"圣乔ERP系统\")"
@@ -121452,7 +121452,7 @@
     "product": "Unknown"
   },
   "CVE-2026-123548": {
-    "cvss": 4.7,
+    "cvss": 6.1,
     "description": "OpenIdentityPlatform OpenAM before 16.1.4 contains an open redirect because WS-Federation logout, SAML v2.0 logout and name-identifier management, SAML v2.0 identity provider finder, and some authentication pages do not check destination URLs against allowed lists. Attackers can craft OpenAM-domain links that send users to arbitrary external sites for phishing.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -127950,7 +127950,7 @@
     "product": "Unknown"
   },
   "CVE-2026-124927": {
-    "cvss": null,
+    "cvss": 4.3,
     "description": "Site isolation issue in the Graphics: WebRender component. This vulnerability was fixed in Firefox 160, Firefox ESR 153.7, Thunderbird 160, and Thunderbird 153.7.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -130678,5 +130678,1265 @@
     "description": "Backstage is an open platform for building developer portals, and techdocs-common contains common functionalities for Backstage's TechDocs. In `@backstage/techdocs-common` versions prior to 0.6.3, a malicious actor could read sensitive files from the environment where TechDocs documentation is built and published by setting a particular path for `docs_dir` in `mkdocs.yml`. These files would then be available over the TechDocs backend API. This vulnerability is mitigated by the fact that an attacker would need access to modify the `mkdocs.yml` in the documentation source code, and would also need access to the TechDocs backend API. The vulnerability is patched in the `0.6.3` release of `@backstage/techdocs-common`.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-126720": {
+    "cvss": 8.1,
+    "description": "Rooxis RXR-12 Wi-Fi router contains an unauthenticated remote code execution vulnerability in /usr/bin/cloud_manage, where a server-controlled JSON diagnoseParameter field is passed unsanitized to popen(), enabling arbitrary command execution as root over cleartext HTTP when an attacker is positioned on-path and has access to the hard-coded cloud endpoint. Firmware 20260813_c2169ea5 fixes the vulnerability, and your router can be updated through the local web interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126722": {
+    "cvss": 9.8,
+    "description": "Rooxis RXR-12 Wi-Fi router contains an undocumented telnet backdoor daemon (/usr/bin/telnetd_startup) that, upon receipt of a precomputed AES-128-CBC magic packet using a firmware-wide static key and IV, enables telnet service with default credentials, providing remote root access. Firmware 20260813_c2169ea5 removes the UDP listener entirely, and users can update through their local web interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126723": {
+    "cvss": 8.8,
+    "description": "Rooxis RXR-12 Wi-Fi router contains an authenticated command injection vulnerability in the LuCI white_list RPC handler (/usr/lib/lua/luci/data/white_list_plt.lua), where unsanitized user-supplied MAC addresses are concatenated into os.execute() without validation, yielding root command execution via a malformed mac parameter. Firmware 20260813_c2169ea5 fixes the vulnerability, and users can update their router through the local web interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126724": {
+    "cvss": 7.8,
+    "description": "Rooxis RXR-12 Wi-Fi router contains an undocumented UID-0 backdoor account (dg) with a firmware-wide default password (ivanlee) and interactive shell (/bin/ash), allowing authentication as root via SSH or local console without device-specific secrets. Firmware 20260813_c2169ea5 removes the account from the shipped root filesystem and disables root password authentication in SSH. Users can update their router can be through the local web interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77873": {
+    "cvss": 7.3,
+    "description": "An improper permissions vulnerability was reported in Lenovo System Update that could allow a local authenticated user to execute code with elevated privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77882": {
+    "cvss": 7.8,
+    "description": "A deserialization of untrusted data vulnerability was discovered in Lenovo System Update that could allow a local authenticated user to execute code with elevated privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89061": {
+    "cvss": 7.8,
+    "description": "During an internal security assessment, a potential vulnerability was discovered in Lenovo PC Manager, distributed exclusively in the Chinese market, that could allow a local user to escalate privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106133": {
+    "cvss": 6.3,
+    "description": "In Progress® Telerik® Report Server prior to version 12.3.26.1110, an incorrect authorization vulnerability in the Web Report Designer allows an authenticated attacker with low privileges to perform unauthorized operations on shared report resources, affecting their integrity and availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106137": {
+    "cvss": 8.6,
+    "description": "In affected versions of Progress® Telerik® UI for ASP.NET MVC `2012.2.710` through `2026.3.811`, ClassFactory updates a shared class dictionary without exclusive write protection and emits non-collectible dynamic assemblies that remain loaded for the AppDomain's lifetime. The dictionary lookup and insertion are not atomic, and case variations in aggregate descriptors can produce distinct retained types even though member resolution is case-insensitive. An unauthenticated remote attacker can exploit this if the application exposes an aggregation endpoint that is reachable without authentication, by submitting concurrent or repeated crafted requests. These requests may corrupt dictionary state or increase CPU and memory use, potentially degrading availability. The issue is fixed in version `2026.3.1015`.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106152": {
+    "cvss": 8.8,
+    "description": "In Progress® Telerik® Report Server prior to version 12.3.26.1110, an external control of a system configuration setting vulnerability allows an unauthenticated remote attacker to influence the server address used by Report Server when generating links and notifications. With user interaction, this can lead to disclosure of sensitive information and account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106156": {
+    "cvss": 8.6,
+    "description": "In Progress® Telerik® UI for ASP.NET Core versions `2015.1.318` through `2026.3.811`, repeated server-side aggregation requests, with or without grouping, cause dynamic assemblies and load contexts to be retained, resulting in accumulating process memory consumption. An unauthenticated remote attacker can exploit this if the application exposes an aggregation endpoint that is reachable without authentication. Repeated requests can cause memory growth that may exhaust available resources and affect application availability. Disabling grouping in the client-side interface does not prevent direct requests containing these descriptors. The issue is fixed in version `2026.3.1015`.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107247": {
+    "cvss": 8.1,
+    "description": "An authorization bypass in Revive Adserver 6.0.0 through 6.0.8 allows an authenticated manager restricted to one agency to access or modify resources belonging to another agency. Global input registration gives GET parameters precedence over POST parameters, while submitted administration forms use POST values. By supplying authorized object identifiers in the query string and different identifiers in the POST body, an attacker can cause permission checks and subsequent operations to target different objects. This permits unauthorized cross-agency changes, campaign ownership reassignment and disclosure of campaign and banner data. The regression was introduced in commit 156dee7bc3283c128f35e5a31bb305054cc8de1b and is fixed in Revive Adserver 6.0.9 by restoring POST precedence in global input registration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107662": {
+    "cvss": 8.8,
+    "description": "Blind SQL injection in Revive Adserver 6.0.8 and earlier allows an authenticated manager restricted to one agency to extract arbitrary database values through the banner-zone.php and campaign-zone.php administration pages. Permission checks and database queries obtain identifiers through inconsistent request-input precedence, allowing an authorized numeric identifier to pass validation while a different, attacker-controlled value reaches an SQL query. Extracted data can include password hashes and active session identifiers. Reusing an unexpired administrator session can grant administrative access, allowing modification of configuration and disruption of ad delivery. The issue is fixed in Revive Adserver 6.0.9 by consistently selecting POST values before GET values in both global input registration and common input helpers, and excluding cookies from these helpers. Both commits e301dbbb7 and 0aa9d0124 are required for the complete correction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108558": {
+    "cvss": 6.1,
+    "description": "A reflected cross-site scripting vulnerability in the conversion-statistics pages of Revive Adserver 6.0.8 and earlier allows an unauthenticated attacker to execute JavaScript in an authenticated user's browser by persuading them to visit a crafted URL. An incorrect ownership check validates the advertiser identifier instead of the supplied website identifier, allowing malicious website input to reach HTML output without appropriate encoding. A related output issue affects the hour parameter. The issue is fixed in Revive Adserver 6.0.9 by validating the correct website identifier and normalising the hour parameter before formatting.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108559": {
+    "cvss": 6.1,
+    "description": "A reflected cross-site scripting vulnerability in the iframe invocation options of Revive Adserver 6.0.8 and earlier allows an unauthenticated attacker to execute JavaScript in an authenticated user's browser by persuading them to visit a crafted URL. When generating invocation tags for an any-size zone, the frame_width and frame_height request parameters are included in HTML attributes without appropriate encoding. The issue is fixed in Revive Adserver 6.0.9 by HTML-encoding the affected values in the invocation-option form fields.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108560": {
+    "cvss": 6.1,
+    "description": "A reflected cross-site scripting vulnerability in updates-history.php in Revive Adserver 6.0.8 and earlier allows an unauthenticated attacker to execute JavaScript in a victim's browser by persuading them to visit a crafted URL. Attacker-controlled values are included in XML command attributes without appropriate encoding, allowing injection of executable XHTML into the response. The preliminary session check omits GET xajax requests, exposing an unauthenticated attack path, while authenticated administrator requests also reach the unsafe output. The issue is fixed in Revive Adserver 6.0.9 by applying the session check to both GET and POST requests and encoding XML command attribute values in both response serializers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108561": {
+    "cvss": 6.1,
+    "description": "A stored cross-site scripting vulnerability in the report date-selection controls of Revive Adserver 6.0.8 and earlier allows an unauthenticated attacker to execute JavaScript in a victim's browser by persuading them to follow a crafted report URL and complete normal reauthentication. An attacker-controlled period_preset value can be saved in the victim's session and inserted into JavaScript without appropriate encoding. The payload can execute on the initial report view and subsequent report views using the stored defaults. The issue is fixed in Revive Adserver 6.0.9 by applying JSON encoding appropriate for the JavaScript context to date-selection values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108562": {
+    "cvss": 5.4,
+    "description": "A stored cross-site scripting vulnerability in maintenance-appendcode-check.php in Revive Adserver 6.0.8 and earlier allows an authenticated manager to execute JavaScript in an administrator's browser. A manager can store a malicious tracker name and cause the tracker to appear in the append-code maintenance results. When an administrator opens the affected maintenance page, the tracker name is included in HTML without appropriate encoding. The issue is fixed in Revive Adserver 6.0.9 by HTML-encoding tracker names when displaying the maintenance results.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108563": {
+    "cvss": 4.7,
+    "description": "Spreadsheet formula injection in conversion-tracking report exports in Revive Adserver 6.0.8 and earlier allows an unauthenticated attacker to submit conversion values that are written as formulas instead of text in an XLS workbook. When a user opens the exported report in a spreadsheet application, attacker-supplied formulas can be evaluated. The confirmed impact is formula execution within the workbook; disclosure of information to the attacker has not been established. The issue is fixed in Revive Adserver 6.0.9 by sanitising conversion values before writing them to the affected XLS report sections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108564": {
+    "cvss": 4.7,
+    "description": "A reflected cross-site scripting vulnerability in the invocation-tag generation interface of Revive Adserver 6.0.8 and earlier allows an unauthenticated attacker to execute JavaScript in an authenticated user's browser by persuading them to visit a crafted URL. When Direct Selection is enabled, an attacker-controlled banner identifier can be included in HTML form fields without appropriate encoding. Direct Selection is disabled by default. The issue is fixed in Revive Adserver 6.0.9 by HTML-encoding banner identifier values in the invocation-option form fields.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108565": {
+    "cvss": 4.7,
+    "description": "A reflected cross-site scripting vulnerability in the popup invocation options of Revive Adserver 6.0.8 and earlier allows an unauthenticated attacker to execute JavaScript in an authenticated user's browser by persuading them to visit a crafted URL. The top, left, timeout and delay request parameters are included in HTML attributes without appropriate encoding. Exploitation requires an existing popup zone, which can be created through the administrator API but is not offered by the normal zone-creation interface. The issue is fixed in Revive Adserver 6.0.9 by HTML-encoding the affected popup option values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117373": {
+    "cvss": 6.5,
+    "description": "Janus WebRTC Server 1.2.3 through 1.4.0 is vulnerable to Directory Traversal. The application accepts a caller supplied media path when an ondemand stream is created. The path is validated only by checking whether it contains one of the audio extensions and is then passed to the file source which opens it. No canonicalization is performed and no directory allowlist is enforced, so an unauthenticated caller can make the server open an arbitrary local file and use it as a media source, with the content delivered to viewers as RTP audio.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-61619": {
+    "cvss": 8.8,
+    "description": "The OWASP core rule set (CRS) is a set of generic attack detection rules for use with compatible web application firewalls. Prior to versions 3.3.10, 4.25.1, and 4.28.0, regular-expression denial of service (ReDoS) affects a shared regex-assembly include used to build 12 Unix RCE detection rules in CRS v4, and the same ambiguous pattern was present in the manually-assembled regexes in 4 rules in CRS v3.3. With a single, unauthenticated, crafted request, the generated pattern drives PCRE2 past its backtracking limit. When PCRE2 exceeds that limit, the @rx operator returns an error rather than a match result, which results in detection bypass and CPU denial of service. This issue has been patched in versions 3.3.10, 4.25.1, and 4.28.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62971": {
+    "cvss": 7.2,
+    "description": "The OWASP core rule set (CRS) is a set of generic attack detection rules for use with compatible web application firewalls. Prior to versions 3.3.10, 4.25.1, and 4.28.0, CRS rules in the 921 (protocol-attack), 930 (LFI), 931 (RFI), 932 (RCE), 933 (PHP), 934 (generic), 941 (XSS), 942 (SQLi), and 943 (session-fixation) families inspect XML request bodies via the XPath expression XML:/*. That expression matches only element text nodes — it does not match XML attribute values. As a result, an attacker who places an attack payload inside an XML attribute (e.g. or ) bypasses CRS detection entirely. This is verified empirically against a local CRS test instance and against the public CRS sandbox. The bypass affects approximately 159 rules across 9 rule files and applies at every paranoia level (PL1 through PL4), since the variable list is more or less shared across PLs. The 944 (Java) family is the only one that correctly includes XML://@* in addition to XML:/* and is therefore unaffected. This issue has been patched in versions 3.3.10, 4.25.1, and 4.28.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65820": {
+    "cvss": 8.7,
+    "description": "aeon is a scikit-learn compatible Python library for learning from time series. Prior to version 1.5.0, a GitHub Actions workflow used pull_request_target for pre-commit checks on pull requests from forks. In this configuration, fork-controlled code could be checked out and executed in a privileged context. The vulnerable workflow also generated/used elevated credentials and could automatically commit or push fixes back to pull request branches. This created a potential token exposure and repository write path if an attacker submitted a malicious fork pull request designed to execute during the privileged workflow run. This issue has been patched in version 1.5.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68485": {
+    "cvss": 4.3,
+    "description": "An authorization bypass in website-index.php in Revive Adserver 6.0.8 and earlier allows an authenticated manager restricted to one agency to view another agency's website listing by changing the agencyid request parameter. Disclosed information includes website names, identifiers and timestamps. Detailed website pages continue to enforce ownership checks. The issue is fixed in Revive Adserver 6.0.9 by obtaining the agency identifier from the authenticated account rather than the request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68486": {
+    "cvss": 5.4,
+    "description": "An authorization bypass in campaign-zone linking in Revive Adserver 6.0.8 and earlier allows an authenticated manager, or a trafficker with zone-linking permissions, to associate another agency's campaign with their own zone. Campaign ownership checks are missing from the bulk-linking and single-link operations in zone-include.php and the XML-RPC campaign-linking method. Although agency filtering prevents foreign banners from being linked, the unauthorized association can expose the foreign campaign's name, type and identifier in the linked-campaign listing. The issue is fixed in Revive Adserver 6.0.9 by validating campaign ownership in the affected operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77168": {
+    "cvss": 4.3,
+    "description": "A cross-site request forgery vulnerability in tracker-invocation.php in Revive Adserver 6.0.8 and earlier allows an attacker to modify a tracker's name, description or advertiser assignment using an authenticated victim's permissions. A leftover state-changing handler accepts request parameters without verifying a CSRF token, although it is not used by the normal invocation-tag interface. Exploitation requires victim interaction and a request path that carries the victim's session credentials. The issue is fixed in Revive Adserver 6.0.9 by removing the unused tracker-modification handler.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82978": {
+    "cvss": 4.3,
+    "description": "An authorization bypass in channel-edit.php in Revive Adserver 6.0.8 and earlier allows an authenticated manager to create a delivery rule set belonging to another agency by changing the submitted agencyid parameter. The server trusts the submitted agency identifier when inserting the new rule set, allowing unauthorized creation of objects in another agency's account. The issue is fixed in Revive Adserver 6.0.9 by obtaining the agency identifier from the authenticated account rather than submitted form data and removing the agency identifier from the form's hidden fields.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86363": {
+    "cvss": 5.5,
+    "description": "Dell Live Optics Collector, versions prior to 27.3.13.330 contains a Generation of Predictable IV with CBC Mode vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Information exposure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91870": {
+    "cvss": 7.4,
+    "description": "Dell Ansible Storage for PowerFlex, versions prior to 3.2.0, contains an Improper Certificate Validation vulnerability in the API client component. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to information exposure and unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91879": {
+    "cvss": 8.8,
+    "description": "Dell Terraform for ObjectScale and Powerstore, versions prior to 1.1.1 (ObjectScale) and versions 1.2.1 through 1.3.0 (PowerStore) contains an insertion of sensitive information into Log File vulnerability in the client initialization component. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to information exposure and unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91890": {
+    "cvss": 8.7,
+    "description": "Dell Ansible Storage for Unity , versions prior to 1.2.13 contains an Improper Certificate Validation vulnerability in the UnityRESTConnector component. An unauthenticated attacker with remote access could potentially exploit this vulnerability,leading to information exposure and unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108472": {
+    "cvss": 7.8,
+    "description": "A flaw was found in the xfs_admin utility in xfsprogs. The tool does not properly validate user-supplied parameters, allowing operating system command injection. A local attacker can exploit this issue by providing crafted input arguments, which may result in arbitrary command execution and local privilege escalation depending on how xfs_admin is executed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119055": {
+    "cvss": 4.6,
+    "description": "CWE- 416: Use After Free vulnerability exists that could cause arbitrary code execution when a local attacker could trick the end user to open a specially crafted malicious SSD file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123828": {
+    "cvss": 5.9,
+    "description": "A one-byte heap buffer overflow in Node.js HTTP/2 Alt-Svc handling lets a remote, unauthenticated attacker corrupt process memory. When an application passes an attacker-controlled value such as a request's :authority header to Http2Session.altsvc(), the AltSvc implementation in src/node_http2.cc allocates a buffer sized to the origin length and then writes it with a null terminator, placing one byte past the end of the allocation. A single request carrying a long but syntactically valid :authority triggers the out-of-bounds write, which aborts the process and serves as a remote heap-corruption primitive. This vulnerability affects Node.js 26.x and 24.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123829": {
+    "cvss": 2.5,
+    "description": "A Permission Model bypass in Node.js recursive file watching discloses the names of files and directories the process is not permitted to read. On macOS and Windows, fs.watch() and fs.promises.watch() in recursive mode are backed by the native libuv watcher: FSEventWrap::Start checks kFileSystemRead only once, on the watched root, and FSEventWrap::OnEvent then forwards every filename libuv reports (relative paths at any depth) to the JavaScript callback without checking that each path is covered by the read grant. Code running under --permission with an exact read grant on a directory can therefore learn names such as sub/secret.txt even though readdir on that subdirectory is denied. The flaw exposes names and timing metadata, not file contents, and requires macOS or Windows plus files created under the watched directory by another actor. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123862": {
+    "cvss": 2.9,
+    "description": "An uncatchable exception in the Node.js zlib streaming API lets a peer crash a process by disconnecting while data is being compressed. zlib.params() queues a flush and completes its work in that write's callback; if the stream is destroyed first, as pipeline() does when the peer goes away, Writable still invokes the callback with an error, but the callback ignores its arguments and asserts that the native handle still exists. The handle is gone, so an ERR_INTERNAL_ASSERTION is thrown from inside stream internals and bypasses the stream's error event, the params() callback, and the pipeline() callback, terminating the process. An application is affected only if it calls deflate.params() while streaming to a peer, which is uncommon. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123863": {
+    "cvss": 8.2,
+    "description": "A reachable assertion in Node.js HTTP/2 session teardown lets any unauthenticated client abort the server, over both TLS and cleartext. A client can arrange for an Http2Stream that still holds nghttp2-allocated header buffers to outlive its session: the stream is removed from the session's stream set but never detached, so when ~Http2Session() runs the memory accounting is nonzero and the CHECK_EQ(current_nghttp2_memory_, 0) assertion fails, terminating the process. The trigger needs only a default http2 server whose handler responds before the request body has ended, which is typical. It is a variant of CVE-2024-27983 that the earlier fix did not cover, because that fix only detached streams still tracked in the session. This vulnerability affects Node.js 26.x (since 26.9.0) and 24.x (since 24.22.0).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123864": {
+    "cvss": 8.1,
+    "description": "A re-entrancy flaw in Node.js HTTPS lets an unauthenticated client read memory belonging to other connections, including TLS private keys and other users' requests. TLSWrap::DoWrite() calls ClearOut() directly when asked to write zero bytes; if that write is issued from JavaScript running inside the HTTP parser's on_body callback, ClearOut() decrypts the next TLS record while the parser is still mid-body, re-entering llhttp_execute() and causing a use-after-free and an out-of-bounds heap read. The server then copies that freed or unrelated heap memory into the response for the request body. Triggering it requires a handler that calls res.flushHeaders() before the request body ends and later calls res.end() with a non-empty chunk, and reading the leaked memory requires any ordinary route that echoes or stores a request body. Cleartext node:http is not affected. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123865": {
+    "cvss": 7.5,
+    "description": "An unauthenticated HTTP/2 client can permanently leak Node.js server memory and file descriptors. If a peer triggers a protocol error, for example an oversized frame header, while the session is already shutting down, nghttp2 tears the session down internally but Node.js never notices, leaving a dangling session: the socket stays in CLOSE_WAIT and all of Node.js's HTTP/2 state for that connection is held in memory indefinitely, with no further cost to the attacker. The attacker can start the shutdown remotely by sending GOAWAY(NO_ERROR), so it is reliable against default HTTP/2 servers. It is an incomplete-fix case of CVE-2026-48937: that fix detected nghttp2 internal terminations by watching for GOAWAY sent while not shutting down, but missed terminations that arrive while the session is already shutting down. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123866": {
+    "cvss": 7.5,
+    "description": "A use-after-free in Node.js HTTP/2 stream teardown can leak response memory, including the contents of other connections' response buffers, to a peer. When a stream is torn down while a write is still backpressured, for example by a peer RST_STREAM or by the server's own per-stream timeout destroying the stream, the stream's response buffer is freed but a reference to it is still used, so freed or unrelated heap memory is written to the socket instead of the intended response. On Node.js 26.x and 24.x the teardown can be driven purely by a remote peer once the window-size change from 26.9.0 and 24.22.0 is present, and on all supported lines the same defect is reachable through an application-initiated teardown such as a per-stream idle timeout. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123867": {
+    "cvss": 4.2,
+    "description": "A per-host mutual-TLS authorization bypass in Node.js lets a client authorized for the default hostname reach a protected hostname it is not authorized for. When a TLS server assigns a hostname a different client-certificate CA with `server.addContext(host, { ca: protectedCA })` but no server certificate in that SNI context, the per-host client CA is never installed and the handshake falls back to the default client CA. In `src/crypto/crypto_tls.cc`, `CertCbDone` installs the SNI context's CA only when `setSniContext` succeeds, but `setSniContext` returns `false` for a context with no server certificate, so a CA-only SNI context silently keeps the default CA. A client holding a certificate trusted by the default CA, but not the protected CA, can therefore complete mTLS to the protected hostname and read its response even with `requestCert` and `rejectUnauthorized` enabled, while a client certified by the protected CA is rejected. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123868": {
+    "cvss": 5.9,
+    "description": "An unauthenticated HTTP/2 client can exhaust Node.js server memory because inbound DATA queued on an undrained stream is charged to no session budget. Each inbound DATA frame creates one JavaScript Buffer view in the receiving stream's readable queue, but nothing charges that queue to current_session_memory_: the socket read buffer is accounted only during parsing and released immediately, so whatever stays queued is accounted to nothing. A peer that fills a stream's receive window with one-byte DATA frames pays about 10 wire bytes per frame while the server retains about 114 bytes per frame, so a single stream on one connection can retain hundreds of megabytes from tens of megabytes sent. maxSessionMemory neither bounds the growth nor refuses new streams, because Http2Session::CanAddStream gates admission on the same counter that never sees the queue. This vulnerability affects Node.js 26.x and 24.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123871": {
+    "cvss": 6.2,
+    "description": "Node.js discloses proxy credentials in ERR_PROXY_INVALID_CONFIG error messages. CVE-2026-48615 established that a proxy credential must not appear in a Node.js error message and redacted the username and password from ProxyConfig.href, but that fix missed four error paths in the same subsystem, one of them inside the same constructor, which interpolate the raw proxy URL, credentials included, into an ERR_PROXY_INVALID_CONFIG message. The proxy URL comes from the environment, but the defect is the sink: a secret that Node.js redacts everywhere else is emitted verbatim into a much wider audience than the process environment, such as stderr, container logs, log aggregation, and crash reporting services. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123872": {
+    "cvss": 8.1,
+    "description": "A client certificate authentication bypass in Node.js TLS lets a client change the servername during TLS 1.2 renegotiation to reach endpoints it was not authorized for. On a server that applies different client-certificate policies per hostname, for example stricter admin-only client-cert auth on one host and ordinary client-cert auth on another, a client that authenticates for a permitted host can renegotiate the TLS 1.2 connection under a different servername and carry its existing authentication to the protected host, bypassing the stricter policy. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123874": {
+    "cvss": 7.5,
+    "description": "A use-after-free in Node.js HTTP/2 lets an unauthenticated client corrupt server memory, over both TLS and cleartext, when the server serves files with respondWithFile() or respondWithFD(). A client can make the server free an Http2Stream while a write request that points to it is still queued on the socket; when that write completes, the code dereferences and makes a virtual call through the freed object. The only precondition is that the application serves a file with stream.respondWithFile() or stream.respondWithFD(), with default settings otherwise. This vulnerability affects Node.js 26.x (since 26.9.0) and 24.x (since 24.22.0).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123875": {
+    "cvss": 5.9,
+    "description": "A NULL pointer dereference in Node.js HTTP/2 lets an unauthenticated client crash the server, over both TLS and cleartext, by cancelling file downloads. When the server serves a file with stream.respondWithFile() or stream.respondWithFD() and the client cancels the request, a StreamPipe used for the transfer is torn down in an order that leaves a NULL pointer which is then dereferenced, aborting the process. No crafted frames are needed, and a handful of cancelled requests against a default file-serving handler is enough. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123877": {
+    "cvss": 6.8,
+    "description": "A certificate validation bypass in Node.js https.Agent lets a cached TLS session authenticated under one CA policy be reused by a later request with a stricter policy. https.Agent.prototype.getName() assigns the same Agent and session-cache key to a request that omits ca and one that explicitly supplies ca: [], because an omitted value appends nothing to the key while an empty array stringifies to an empty string. The two policies differ: omitting ca uses the default trust store, while supplying ca replaces it. Since they share a key, a TLS session authenticated under the broader default policy is handed to a new connection made under the later ca: [] policy, and TLS 1.3 session resumption carries the earlier authentication forward, so the second request reports authorized === true and transmits confidential data to a server its own CA policy would reject on a fresh connection. This vulnerability affects Node.js 26.x, 24.x, and 22.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126051": {
+    "cvss": 7.5,
+    "description": "A deferred-callback use-after-destroy in Node.js TLS server handshake handling allows a remote, unauthenticated attacker to terminate the server process. When a TLS server uses any of the SNICallback, OCSPRequest, newSession, or resumeSession hooks, or server.addContext(), the corresponding OpenSSL callbacks are deferred, and the deferred code does not handle the underlying socket being destroyed between scheduling and execution. By sending a client hello that reaches the vulnerable path (for example, no SNI together with an OCSP request) followed by padding and a socket FIN, an attacker makes OpenSSL deliver the client hello and the end-of-file in the same tick, so the socket is destroyed before the deferred callback runs and the process raises an uncaught exception instead of emitting an 'error' event. This vulnerability affects Node.js 26.x and 24.x.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126766": {
+    "cvss": 4.3,
+    "description": "OpsTree REMS through 1.0.0 contains an improper authorization vulnerability that allows authenticated users to set an incident's reporter to another user by supplying a client-controlled reporter field. Attackers can send crafted POST /api/v1/incidents or PATCH /api/v1/incidents/{id}/status requests to falsify incident attribution and corrupt the accountability audit trail.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126769": {
+    "cvss": 7.5,
+    "description": "OpsTree REMS through 1.0.0 contains a missing authentication vulnerability that allows unauthenticated remote attackers to access Governance API endpoints, including /api/v1/databases. Attackers can send requests without an Authorization header, or with invalid or tampered JWT tokens, to retrieve stored database hosts, usernames, and passwords.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126770": {
+    "cvss": 5.0,
+    "description": "OpsTree REMS through 1.0.0 contains a server-side request forgery vulnerability that allows authenticated users to make the backend connect to arbitrary destinations through the database Test Connection feature. Attackers can set a database entry's host and port to localhost, internal addresses, or attacker-controlled servers to probe internal hosts and ports reachable from the REMS server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126772": {
+    "cvss": 4.3,
+    "description": "OpsTree REMS through 1.0.0 contains an improper attribution vulnerability that allows authenticated users to post comments as the incident creator via POST /api/v1/incidents/{incident_id}/comment. Lower-privileged attackers can comment on incidents owned by users such as a Super User to impersonate them and corrupt the incident timeline and audit trail.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126774": {
+    "cvss": 8.2,
+    "description": "@tinacms/mdx before 2.4.2 contains a code injection vulnerability in its MDX serializer, which writes rich-text values into MDX expressions without escaping them. Authenticated content editors can save crafted values that break out of list field or highlightColor expressions in the stored .mdx file, executing JavaScript in visitors' browsers or on build and server-side rendering hosts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126775": {
+    "cvss": 4.2,
+    "description": "Social-auth-core 4.7.0 before 7.0.0 contains a login cross-site request forgery vulnerability in the SAML backend that restores sessions named in the unsigned RelayState parameter. Attackers can deliver their own valid IdP response and RelayState to a victim's browser via an auto-submitting form, signing the victim into the attacker's account to capture entered data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126777": {
+    "cvss": 7.4,
+    "description": "Traccar 3.15 before 6.17.0 contains an authentication bypass vulnerability in LdapProvider.login() that fails to reject empty passwords, causing LDAP binds to be performed as unauthenticated binds when LDAP authentication is enabled. Unauthenticated attackers who know a valid username can log in via POST /api/session or HTTP Basic authentication with an empty password against directories that permit unauthenticated binds, obtaining sessions for any account including administrators.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126778": {
+    "cvss": 5.4,
+    "description": "Wallos 4.4.0 before 5.10.3 contains a stored cross-site scripting vulnerability in endpoints/cronjobs/sendnotifications.php that allows registered users to inject scripts via unescaped notification service responses. Attackers can point their Mattermost webhook URL or Web Push endpoint at a controlled server returning JavaScript, which executes in the administrator's session when sendnotifications.php is opened.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126779": {
+    "cvss": 7.5,
+    "description": "Spatie Browsershot 2.2.0 before 5.5.0 contains a local file read vulnerability that allows attackers to read server files by supplying root-relative references in HTML passed to setHtml(). Attackers can embed iframe, img, link or script elements referencing paths like /etc/passwd, which resolve to file:// URLs and render file contents into the returned PDF or screenshot.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126781": {
+    "cvss": 7.5,
+    "description": "Webmin through 2.670 contains a users file injection vulnerability in acl/cert_issue.cgi that allows authenticated Webmin users to inject lines by supplying unvalidated certificate DN fields containing newlines. Attackers can end a DN field with a backslash and newline to add a second root entry with a known password hash, gaining Webmin root access after miniserv restarts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-57500": {
+    "cvss": 6.3,
+    "description": "REVA is an interoperability platform. Prior to versions 2.40.5 and 2.46.4, Reva exposes internal metadata folders in the spaces of an authenticated user. This can lead to unwanted ways of interaction with the data. This issue has been patched in versions 2.40.5 and 2.46.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58505": {
+    "cvss": 7.5,
+    "description": "geojson-vt is a JavaScript library for slicing GeoJSON data into vector tiles on the fly, primarily designed to enable rendering and interacting with large geospatial datasets on the browser side (without a server). Prior to version 6.1.1, @maplibre/geojson-vt contains an uncontrolled recursion vulnerability in its GeoJSON conversion logic. When a GeoJSONVT instance is constructed with a deeply nested GeometryCollection object, the mutually recursive functions featureToInternal and convertGeometryCollection in src/convert.ts exhaust the Node.js call stack, causing an unhandled RangeError: Maximum call stack size exceeded that terminates the process. Because the library is widely used in server-side tile services that accept GeoJSON over the network, a remote unauthenticated attacker can trigger a denial-of-service by sending a single crafted payload. No authentication is required, and no non-default library options are needed. This issue has been patched in version 6.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-61637": {
+    "cvss": 3.5,
+    "description": "Icinga Web 2 is an open source monitoring web interface, framework and command-line interface. Prior to versions 2.12.7 and 2.13.1, an attacker can craft a URL that, once visited by an authenticated user (or one that is able to authenticate), allows to manipulate the backend to redirect the user to any location. For this to succeed, the victim's locale in Icinga Web must be different from en_US. This issue has been patched in versions 2.12.7 and 2.13.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63505": {
+    "cvss": 4.9,
+    "description": "Probo is a self-hostable governance, risk, and compliance (GRC) platform built for engineering and security teams. Prior to version 0.223.1, Probo's console GraphQL API is a multi-tenant GRC platform where all data is scoped to an organization. A Finding can reference a Risk via finding.riskId. That reference is stored without validating that the risk belongs to the caller's organization, and the Finding.risk field resolver authorizes the finding (caller's org) instead of the risk, then loads the risk with a tenant scope derived from the risk's own global ID. As a result, an authenticated member of organization A can attach an arbitrary organization B risk GID to a finding they own and then read organization B's Risk (name, description, treatment, category, severity, owner) — with no membership in B. The stored cross-tenant reference also blocks B from deleting its own risk (ON DELETE RESTRICT), a cross-tenant integrity/DoS. This issue has been patched in version 0.223.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65833": {
+    "cvss": 6.9,
+    "description": "iopress is a native HTTP server for Node.js with platform-specific async I/O. Prior to version 1.0.5, the chunked-transfer-encoding HTTP request parser in @iopress/core reads past the end of the input buffer when a request declares a chunk size larger than the body actually received. This results in a heap-buffer-over-read. This issue has been patched in version 1.0.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65840": {
+    "cvss": 9.6,
+    "description": "Fider is a feedback portal for feature requests and suggestions. Prior to version 0.36.0, in multi-tenant mode (HOST_MODE=multi), an attacker can use an email verification key issued by Tenant A to authenticate as the same email address on Tenant B. This completely bypasses tenant isolation and allows unauthorized account takeover across tenants. Single-host deployments (HOST_MODE=single, the default) are NOT affected. This issue has been patched in version 0.36.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65843": {
+    "cvss": 8.7,
+    "description": "sync-rpc runs asynchronous commands synchronously by putting them in a separate proces. Prior to version 1.3.7, if an attacker could guess the correct port and it was not blocked via a firewall, it was possible to load and execute arbitrary JavaScript files stored on the server running sync-rpc. This issue has been patched in version 1.3.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65967": {
+    "cvss": 7.1,
+    "description": "Fider is a feedback portal for feature requests and suggestions. Prior to version 0.34.0, a Server-Side Request Forgery (SSRF) vulnerability exists in Fider due to insufficient validation of webhook URLs. The application allows user-controlled URLs to be fetched by the server without restricting access to internal or external network resources. This enables attackers with administrative privileges to make arbitrary HTTP requests from the server, potentially accessing internal services or cloud metadata endpoints. This issue has been patched in version 0.34.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76078": {
+    "cvss": 3.1,
+    "description": "Probo is a self-hostable governance, risk, and compliance (GRC) platform built for engineering and security teams. Prior to version 0.224.0, the public Trust Center GraphQL API exposes acceptElectronicSignature and recordSigningEvent, both gated only by @authentication(required: PRESENT) @sessionOnly — any self-provisioned trust center identity can call them. The underlying esign.Service.AcceptSignature and esign.Service.recordEvent build the tenant scope from the client-supplied signatureId GID (coredata.NewScopeFromObjectID(req.SignatureID)) and load the signature by that GID. At no point do they verify that the signature belongs to the caller or that the caller's email matches the signature's SignerEmail. As a result, any authenticated trust-center visitor who possesses another visitor's signature GID can: (1) complete that visitor's NDA signature — overwriting signer name/IP/UA with attacker data and setting status to Accepted, which triggers the sealing worker to generate a completion certificate; (2) inject arbitrary audit-trail events into any signature's log. Both attacks defeat the non-repudiation and integrity guarantees of the e-signature system. This issue has been patched in version 0.224.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76080": {
+    "cvss": 3.7,
+    "description": "Probo is a self-hostable governance, risk, and compliance (GRC) platform built for engineering and security teams. Prior to version 0.224.0, the public Trust Center GraphQL API exposes Query.node(id:) with @authentication(required: OPTIONAL) — an unauthenticated internet visitor to any published trust center can call it. Six of its type branches — Organization, Framework, Audit, ThirdParty (subprocessor), TrustCenter, and TrustCenterReference — resolve the object with a tenant scope derived from the client-supplied GID itself (coredata.NewScopeFromObjectID(id)) and load it with a bare Get(scope, id) that performs no comparison to the current trust center's OrganizationID and no showOnTrustCenter/visibility check. (The Document and File branches, by contrast, correctly pass trustCenter.OrganizationID and check visibility). This issue has been patched in version 0.224.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91150": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Cockpit. This vulnerability allows a remote attacker, without prior authentication, to send specially crafted fragmented WebSocket messages. These messages accumulate without a total-size limit, leading to unbounded memory exhaustion and a denial of service in the `cockpit-ws` service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91873": {
+    "cvss": 8.7,
+    "description": "Dell OpenManage Ansible Modules, versions 2.1.2 through 10.0.3, contains an Improper Certificate Validation vulnerability in the iDRACRedfishAPI component. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to information exposure and unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91875": {
+    "cvss": 8.7,
+    "description": "Dell OpenManage Ansible Modules, versions 9.2.0 through 10.0.3, contains an Improper Certificate Validation vulnerability in the SessionAPI component. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to information exposure and unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91892": {
+    "cvss": 3.7,
+    "description": "Dell Terraform Provider for PowerFlex, versions prior to 1.9.0, contains a vulnerability that may permit the use of deprecated cryptographic protocols during secure communications. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to information exposure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122095": {
+    "cvss": 7.6,
+    "description": "AsiaInfo BSS Platform 9.2 before 9.2.38 has a stored cross-site scripting (XSS) vulnerability in the menu icon upload function. An authenticated user with ordinary application privileges can upload an SVG file containing embedded JavaScript, which is served from the application origin. Normal menu rendering uses an HTML element and does not execute the SVG script; exploitation requires a victim to load the uploaded SVG as a document (by directly navigating to its URL, or via / ), in which case the script executes under the application origin.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126784": {
+    "cvss": 4.3,
+    "description": "Missing rate limiting, per-account submission quota and geographic validation in the publicar_aviso RPC function in Lagarto Chivato 0.4.1 and earlier on Web allows remote authenticated attackers to flood the moderation queue via unlimited submission of notices with arbitrary coordinates.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126815": {
+    "cvss": 8.1,
+    "description": "Pre-account hijacking in the authentication flow in Lagarto Chivato 0.4.1 and earlier on Web allows remote unauthenticated attackers to take over arbitrary accounts via a password planted on an unregistered email address that becomes valid upon the victim’s first passwordless login.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91151": {
+    "cvss": 7.3,
+    "description": "A flaw was found in Cockpit. A local authenticated user with control over a target account's home directory can exploit a privileged symlink dereference vulnerability in the `ssh-add-public-key.sh` helper. When this helper runs with elevated privileges, it can be tricked into following attacker-controlled symlinks within the `.ssh` or `authorized_keys` paths. This allows the attacker to arbitrarily change file ownership and modes, potentially leading to local privilege escalation and impacting the integrity, confidentiality, and availability of the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100307": {
+    "cvss": 8.8,
+    "description": "Missing authorization in the external management API in Amazon mcp-gateway-registry 1.0.9 through 1.24.7 might allow an authenticated remote user to assign the registry administrator scope to their own identity group and obtain administrative control of every registered gateway asset via a crafted group import request. To remediate this issue, users should upgrade to version 1.25.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-103980": {
+    "cvss": 7.1,
+    "description": "ideon is a self-hosted visual workspace. Prior to version 0.9.6, the SSRF protection in safeFetch is bypassed by IPv6 transition addresses that embed private IPv4 addresses. The isPrivateIP function in src/app/lib/ssrf.ts checks only a narrow set of IPv6 ranges (loopback ::1, ULA fc/fd, link-local fe80) but does not recognize IPv4-mapped (::ffff:), NAT64 well-known (64:ff9b::/96, RFC 6052), NAT64 local-use (64:ff9b:1::/48, RFC 8215), 6to4 (2002::/16, RFC 3056), or Teredo (2001::/32, RFC 4380) encodings. An authenticated user can supply these addresses in link URLs to reach cloud metadata endpoints (169.254.169.254), localhost services, and RFC 1918 internal networks through the link preview metadata fetcher. This issue has been patched in version 0.9.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125926": {
+    "cvss": 8.5,
+    "description": "Server-side request forgery (SSRF) in the server registration and update API in Amazon mcp-gateway-registry before 1.35.0 might allow an authenticated remote user to send requests from the gateway to internal network services and cloud instance metadata endpoints and read the responses via a crafted request. To remediate this issue, users should upgrade to version 1.35.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126797": {
+    "cvss": 9.8,
+    "description": "NextScan 1.1.0 through 1.2.0 contains an authentication bypass vulnerability in ns-admin that allows unauthenticated attackers to forge administrator tokens using a hardcoded JWT signing key. Attackers can sign an HS256 X-Access-Token carrying the public super administrator role ID to gain full access to user management, scan tasks and stored vulnerability results.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126798": {
+    "cvss": 4.7,
+    "description": "NextScan 1.1.0 through 1.2.0 contains a stored cross-site scripting vulnerability in the ns-admin URL asset detail dialog that renders crawled form request bodies (Asset_URL.data) via innerHTML without encoding. Attackers can host crafted forms on crawled sites to store JavaScript that executes when users view asset details, stealing localStorage access tokens to hijack sessions, including administrators.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126801": {
+    "cvss": 8.8,
+    "description": "Rote 1.2.0 through 2.6.0 contains an authorization bypass in the OAuth bind/merge endpoint that allows authenticated users to merge any OAuth-bound account into their own. Attackers can submit a public existingUserId and GitHub or Apple user ID to take over notes, attachments, and API keys and delete the victim account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126802": {
+    "cvss": 8.2,
+    "description": "NextScan 1.1.0 through 1.2.0 contains hardcoded HTTP Basic Auth credentials in ns-admin's AuthAgent and AuthExternal routers that allow unauthenticated attackers to access protected APIs. Attackers can call /agent/config to obtain Redis passwords, etcd details and the server token, and impersonate scan nodes via registration, heartbeat and logging endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126805": {
+    "cvss": 7.2,
+    "description": "WWBN AVideo through 29.7.1 contains an incorrect authorization vulnerability that allows delegated Videos Admin users to obtain video_id_hash values bound to any video owner via encoder endpoints like aVideoEncoderStatus.json.php. Attackers can request the hash for an administrator-owned video and replay it through useVideoHashOrLogin() for password-less login, gaining plugin upload, configuration, and user management access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126806": {
+    "cvss": 8.7,
+    "description": "WWBN AVideo 14.3 through 29.7.1 contains a stored cross-site scripting vulnerability that allows uploaders to inject scripts via the videoDownloadedLink value stored unescaped through objects/aVideoEncoder.json.php. Attackers can embed event-handler payloads in the URL host rendered as a Source tag in view/managerVideos_body.php, executing in administrator sessions to install plugin archives containing PHP.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126809": {
+    "cvss": 7.1,
+    "description": "WWBN AVideo through 29.7.1 contains a missing authorization vulnerability in objects/import.json.php that allows uploaders to import other users' MP4 files by referencing any folder under videos/. Attackers can copy private, unlisted, password-protected or pay-per-view videos, read victims' .txt/.html sidecars as descriptions, list files via objects/listFiles.json.php, and delete victims' media using the delete parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126810": {
+    "cvss": 5.4,
+    "description": "WWBN AVideo 29.1.0 through 29.7.1 contains a stored cross-site scripting vulnerability that allows registered users to inject markup through the channel About field rendered in feed/index.php. Attackers can store an unquoted event-handler payload that bypasses feedHtmlDescription() filtering and executes via rss-style.xsl for any visitor, including administrators, viewing the channel feed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126812": {
+    "cvss": 9.8,
+    "description": "blueprintUE Self-Hosted Edition before 4.3.7 contains an insecure default configuration in its Docker Compose examples that sets MYSQL_ALLOW_EMPTY_PASSWORD=yes in database.env and publishes MariaDB on port 3306. Unauthenticated attackers reaching the Docker host on port 3306 can log in as root without a password to read, modify, or delete user accounts, blueprints, and all databases.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126813": {
+    "cvss": 6.8,
+    "description": "Roundcube Webmail before 1.6.21 and 1.7.x before 1.7.6 contains an IMAP command injection vulnerability that allows attackers to inject commands via CRLF in the _uid parameter when messages_cache is enabled. Attackers can lure logged-in victims into opening crafted GET links to mail/show or mail/get, executing IMAP commands that delete messages, change flags, or grant mailbox access via SETACL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126814": {
+    "cvss": 3.5,
+    "description": "blueprintUE Self-Hosted Edition before 4.3.6 contains an iframe injection vulnerability that allows authenticated users to embed arbitrary third-party content by abusing the PeerTube video URL matcher in BlueprintService::findVideoProvider(). Attackers can set a blueprint video URL on an attacker-controlled host, which site.js loads in an unsandboxed iframe after consent, framing fake login forms or malware downloads.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65957": {
+    "cvss": 6.9,
+    "description": "Helio is an MCP proxy that sits between AI agents and the tools they use. Prior to version 0.8.0, the dashboard sideband (default 127.0.0.1:3100) validated CORS request origins by matching the hostname against a private-network string prefix (10., 172.16.–172.31., 192.168.) rather than validating an IP address. A public DNS name such as 192.168.attacker.com, 10.evil.io, or 172.16.pwn.example also satisfies that prefix, so the proxy echoed the attacker origin in Access-Control-Allow-Origin. This issue has been patched in version 0.8.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65965": {
+    "cvss": 8.7,
+    "description": "ideon is a self-hosted visual workspace. Prior to version 0.9.4, several project mutation endpoints under /api/projects/[id]/* resolve the caller's project role but never enforce it, so a user who was granted only the read-only viewer role on a project can perform write operations on that project. The most severe is POST /api/projects/[id]/graph, which deletes every block and link in the project and re-inserts client-supplied ones. A viewer can silently rewrite or wipe the entire canvas of a project they were invited to read. The application clearly intends viewer to be read-only: the collaborators endpoint, the automation endpoints, and the realtime Yjs sync path all reject write attempts from viewers. These specific HTTP handlers simply omit the guard their siblings enforce. This issue has been patched in version 0.9.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65968": {
+    "cvss": 5.3,
+    "description": "ideon is a self-hosted visual workspace. Prior to version 0.9.4, validateUrlForSSRF() / safeFetch() in lib/oauth/ssrf-protection.ts (and the parallel validateMcpUrl() in lib/security/validators.ts) perform SSRF host-blocking by string/regex matching on new URL(url).hostname. Their IPv6 branch only recognises the textual forms ::1, fe80:/fc00:/fd00: prefixes, and the dotted-decimal IPv4-mapped form ::ffff:127.x. It does not recognise the WHATWG-canonical IPv4-mapped-IPv6 host that Node emits for a mapped address, which is hex-compressed and bracket-wrapped: [::ffff:7f00:1] for 127.0.0.1, [::ffff:a9fe:a9fe] for 169.254.169.254. An authenticated user who registers a STREAMABLE_HTTP / SSE MCP server with URL http://[::ffff:7f00:1]:PORT/ (loopback) or http://[::ffff:a9fe:a9fe]/ (cloud metadata) passes both guards, and the server-side OAuth-discovery action then fetches that host, yielding server-side request forgery to loopback and to the cloud metadata service. This issue has been patched in version 0.9.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65973": {
+    "cvss": 6.4,
+    "description": "Laradocs maintains version-controlled documentation inside a Laravel codebase. From version 0.4.0 to before version 1.0.0, Laradocs is vulnerable to local command injection in server-side KaTeX rendering via an unescaped Node.js binary path in a proc_open() command string. This issue has been patched in version 1.0.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65982": {
+    "cvss": 8.7,
+    "description": "nginx-http-flv-module is a media streaming server based on nginx-rtmp-module. Prior to version 1.2.14, if a server received an HTTP/1.0 request without a header Host, which was permitted by HTTP core of Nginx, then r->headers_in.host was NULL, nginx-http-flv-module used r->headers_in.host->value to make a pseudo tcUrl, so NULL-pointer dereference happened. This issue has been patched in version 1.2.14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68507": {
+    "cvss": 6.9,
+    "description": "ideon is a self-hosted visual workspace. Prior to version 0.9.5, ideon's link-preview endpoint requires no authentication at all and forwards any URL a caller supplies straight into a server-side fetch. The app does have a general-purpose SSRF guard (safeFetch/validateSafeUrl in src/app/lib/ssrf.ts), but this route sits behind no login check whatsoever, making it a fully open, anonymous URL-fetch relay - and the guard's IP blocklist itself has a gap that lets it reach the server's own loopback interface via the 0.0.0.0 \"any address\" bypass, a well-documented SSRF-filter evasion technique on Linux. This issue has been patched in version 0.9.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111521": {
+    "cvss": 7.0,
+    "description": "Dell Display and Peripheral Manager (DDPM Windows), versions prior to 2.4.0.17, contain a Time-of-check Time-of-use (TOCTOU) Condition vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121527": {
+    "cvss": 6.7,
+    "description": "A execution with unnecessary privileges vulnerability in Fortinet FortiClientEMS 7.4.3 through 7.4.7, FortiClientEMS 7.4.0 through 7.4.1, FortiClientEMS 7.2 all versions may allow an authenticated local attacker with admin privileges to gain root shell access via CLI commands.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-121528": {
+    "cvss": 8.1,
+    "description": "A improper certificate validation vulnerability in Fortinet FortiOS 7.6.0 through 7.6.4, FortiOS 7.4.0 through 7.4.9, FortiOS 7.2.0 through 7.2.13, FortiOS 7.0 all versions, FortiOS 6.4 all versions may allow a remote and unauthenticated attacker to perform a Man-in-the-Middle attack on the communication channel between the SSLVPN web portal and the backend destination website.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126144": {
+    "cvss": 8.8,
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6, FortiMail 7.2 all versions, FortiRecorder 7.6.0 through 7.6.2, FortiRecorder 7.2.0 through 7.2.12, FortiRecorder 7.0.0 through 7.0.6 may allow an authenticated attacker to execute unauthorized code or commands via specifically crafted HTTP requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126145": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated administrator with system-time read-write access to execute unauthorized code or commands as root.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126146": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6, FortiMail 7.2.0 through 7.2.9, FortiRecorder 7.6.0, FortiRecorder 7.2.0 through 7.2.11, FortiRecorder 7.0.0 through 7.0.6 may allow an authenticated privileged attacker to execute unauthorized code or commands via a specifically crafted archive account configuration.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126149": {
+    "cvss": 7.5,
+    "description": "A integer overflow or wraparound vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow a remote unauthenticated attacker to crash the daemon.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126150": {
+    "cvss": 9.1,
+    "description": "A weak password recovery mechanism for forgotten password vulnerability in Fortinet FortiMail 8.0.0, FortiMail 7.6.0 through 7.6.5, FortiMail 7.4.0 through 7.4.7, FortiMail 7.2.0 through 7.2.9 may allow an unauthenticated attacker to reset the password of an arbitrary IBE webmail user and take over their account via specially crafted HTTP requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126151": {
+    "cvss": 7.5,
+    "description": "A incorrect implementation of authentication algorithm vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to gain elevation of privilege (account takeover) via a crafted request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126152": {
+    "cvss": 7.6,
+    "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker to delete arbitrary directories as root, or to access or delete other users' calendar and mailbox data across tenant domains, via crafted HTTP requests to the webmail and administrative interfaces.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126153": {
+    "cvss": 7.5,
+    "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized commands via crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126154": {
+    "cvss": 7.5,
+    "description": "A out-of-bounds write vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow a remote unauthenticated attacker to cause a denial of service via a specially crafted HTTP request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126155": {
+    "cvss": 9.1,
+    "description": "A incorrect authorization vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to obtain an authenticated IBE webmail session as any IBE recipient and read or send their encrypted mail via crafted HTTP requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126156": {
+    "cvss": 9.1,
+    "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to take over an arbitrary IBE recipient account via crafted HTTP requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126157": {
+    "cvss": 9.1,
+    "description": "A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to gain access to other users' secure email accounts via crafted HTTP requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126158": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1 may allow an authenticated administrator to execute unauthorized code or commands as root via specially crafted HTTP requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126159": {
+    "cvss": 7.5,
+    "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to release or delete quarantined messages for arbitrary mailboxes via a crafted quarantine release request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126160": {
+    "cvss": 8.2,
+    "description": "A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to escalate privileges and release or delete quarantined messages for arbitrary mailboxes via a crafted quarantine release requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126161": {
+    "cvss": 7.5,
+    "description": "A uncontrolled resource consumption vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8 may allow a remote unauthenticated attacker to cause a denial of service via repeated unauthenticated POST requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126162": {
+    "cvss": 8.7,
+    "description": "A xml injection (aka blind xpath injection) vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6 may allow a remote unauthenticated attacker to execute unauthorized code or commands via a specially crafted request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126163": {
+    "cvss": 8.1,
+    "description": "A use of externally-controlled format string vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1 may allow a remote unauthenticated attacker to execute unauthorized code or commands via a specially crafted SMTP command.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126164": {
+    "cvss": 9.4,
+    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized code or commands via crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126165": {
+    "cvss": 7.5,
+    "description": "A memory allocation with excessive size value vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow a remote unauthenticated attacker to cause a denial of service via a specially crafted attachment delivered over SMTP.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126166": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker with domain admin or admin privileges to delete users of other tenant domains on a paired FortiAuthenticator, execute arbitrary code as root or arbitrary CLI commands, and read or write arbitrary files as root via crafted HTTP requests to the administrative interface.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126167": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements used in a command ('command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker with domain admin or admin privileges to delete users of other tenant domains on a paired FortiAuthenticator, execute arbitrary code as root or arbitrary CLI commands, and read or write arbitrary files as root via crafted HTTP requests to the administrative interface.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126168": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker with domain admin or admin privileges to delete users of other tenant domains on a paired FortiAuthenticator, execute arbitrary code as root or arbitrary CLI commands, and read or write arbitrary files as root via crafted HTTP requests to the administrative interface.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126169": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker with domain admin or admin privileges to delete users of other tenant domains on a paired FortiAuthenticator, execute arbitrary code as root or arbitrary CLI commands, and read or write arbitrary files as root via crafted HTTP requests to the administrative interface.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126171": {
+    "cvss": 7.2,
+    "description": "A use of externally-controlled format string vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated attacker to execute unauthorized commands via specially crafted HTTP request",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126175": {
+    "cvss": 8.8,
+    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.2 through 7.2.12, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.2 through 7.2.13, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.2 through 7.2.12, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.2 through 7.2.13 may allow an authenticated attacker to execute unauthorized code or commands via crafted JSON-RPC requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126176": {
+    "cvss": 8.1,
+    "description": "A xml injection (aka blind xpath injection) vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an unauthenticated remote attacker to inject arbitary content into a signed SAML response via crafted SAML requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126177": {
+    "cvss": 8.1,
+    "description": "A xml injection (aka blind xpath injection) vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an unauthenticated remote attacker to inject arbitary content into a signed SAML response via crafted SAML requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126178": {
+    "cvss": 7.2,
+    "description": "A heap-based buffer overflow vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated attacker with admin privileges to execute unauthorized code or commands via a crafted request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126179": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated administrator to execute unauthorized code or commands via specially crafted requests",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126180": {
+    "cvss": 8.4,
+    "description": "A improper neutralization of special elements used in a template engine vulnerability in Fortinet FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2 all versions, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2 all versions may allow a low privileged Device Manager admin to obtain super admin privilege on managed FortiGates via injecting malicious commands.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126181": {
+    "cvss": 8.0,
+    "description": "A use of hard-coded credentials vulnerability in Fortinet FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11 may allow an adjacent-network authenticated attacker with user permission to join the FGFM configuration-sync mesh of the affected FortiGate deployment via the default pre-shared key.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126182": {
+    "cvss": 7.2,
+    "description": "A improper control of generation of code ('code injection') vulnerability in Fortinet FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow a remote authenticated attacker to execute unauthorized code or commands via crafted HTTP requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126183": {
+    "cvss": 8.7,
+    "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated attacker to execute commands outside of the expected scope via specially crafted HTTP request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126184": {
+    "cvss": 8.2,
+    "description": "A authentication bypass by spoofing vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiAnalyzer-BigData 7.6.0 through 7.6.2, FortiAnalyzer-BigData 7.4.0 through 7.4.6, FortiAnalyzer-BigData 7.2.0 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an attacker to disrupt the HA state.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126185": {
+    "cvss": 7.2,
+    "description": "A improper control of generation of code ('code injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11 may allow an authenticated administrator to execute unauthorized code or commands via specially crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126211": {
+    "cvss": 7.2,
+    "description": "A improper privilege management vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.1 through 7.6.7, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.1 through 7.6.8, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.1 through 7.6.7, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.1 through 7.6.8 may allow an authenticated privileged attacker to elevate their privileges via crafted JSON-RPC request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126213": {
+    "cvss": 7.1,
+    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated attacker to execute unauthorized SQL commands via specially crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126214": {
+    "cvss": 7.2,
+    "description": "A authentication bypass by spoofing vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12 may allow an authenticated administrator to escalate their privileges, bypass authorization controls or impersonate internal services via specially crafted requests to the GUI.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126215": {
+    "cvss": 8.2,
+    "description": "A incorrect authorization vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated administrator to escalate their privileges, bypass authorization controls or impersonate internal services via specially crafted requests to the GUI.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126216": {
+    "cvss": 3.8,
+    "description": "A improper privilege management vulnerability in Fortinet FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated administrator to escalate their privileges, bypass authorization controls or impersonate internal services via specially crafted requests to the GUI.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-109487": {
+    "cvss": 7.5,
+    "description": "Use after free in Microsoft Office PowerPoint allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109493": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Access allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109494": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Visio allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109496": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft Office Visio allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123537": {
+    "cvss": 5.0,
+    "description": "OpenAM before 16.1.4 contains a server-side request forgery vulnerability that allows parties registering UMA resource sets to trigger internal requests through unvalidated scope description URLs. Attackers can register resource sets with scope URLs pointing to internal hosts or cloud metadata endpoints, which OpenAM fetches when sending pending-request notification emails, enabling internal network probing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123538": {
+    "cvss": 7.2,
+    "description": "OpenAM before 16.1.4 does not verify that a signed SAML 1.x assertion or response was signed by the partner named as its issuer, accepting a signature from any certificate in OpenAM's keystore. An attacker holding such a private key, such as a trusted SAML 1.x partner, can forge assertions claiming another partner's issuer and sign in as that partner's users, including privileged ones.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123545": {
+    "cvss": 7.1,
+    "description": "OpenAM from 14.5.1 before 16.1.4 contains a cross-site request forgery vulnerability in the OAuth 2.0 device authorization flow that allows attackers to approve device codes when consent is skipped for implied-consent clients. Attackers can start a device authorization and lure a logged-in user to a crafted page, obtaining access and ID tokens to call APIs as that user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124478": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.3.0 contains a missing authorization vulnerability in the addRecall action of /interface/main/messages/save.php that allows low-privileged authenticated users to modify arbitrary patients' recall data. Attackers can submit a crafted new_pid with recall, contact, provider, facility, and notification preference fields to overwrite records of patients they cannot access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124479": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.4.0 contains an arbitrary local file read vulnerability in REST document download, where the controller passes stored uploaded document bytes to Symfony's BinaryFileResponse as a filesystem path instead of returning them as content. Authenticated users with document upload and download access can upload a document containing an absolute pathname, such as the sqlconf.php location, then download it to read server files and recover database credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124482": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.4.0 contains an authorization bypass allowing low-privileged SMART standalone-launch users to bind arbitrary patient UUIDs into the OAuth token context. Attackers with only the patients|demo ACL can select a victim during authorization and read that patient's clinical notes and documents through patient-scoped DocumentReference and Binary FHIR endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124483": {
+    "cvss": 8.3,
+    "description": "OpenEMR before 8.4.0 contains an incorrect authorization vulnerability because the prescription REST API routes check the patients.med ACL instead of patients.rx and request no specific permission bit, so read-only Medical/History access passes the check. Authenticated staff users can reuse the UI-exposed APICSRFTOKEN to enumerate prescription UUIDs, forge prescriptions for arbitrary patients, and deactivate existing prescriptions tenant-wide.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124486": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.3.0 contains a missing authorization vulnerability in the classic document controller that allows low-privilege authenticated users to recategorize other patients' documents. Attackers can invoke move_action_process to move a document into a patients|demo category, then retrieve it with an empty patient_id to exfiltrate PHI and tamper with charts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124487": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.4.0 contains an improper authorization vulnerability in the non-patient POST /fhir/DocumentReference/$docref route that allows low-privileged users to generate any patient's CCDA. Attackers with only demographics and documents permissions can supply a victim patient parameter, then download the full-chart CCDA from Patient Documents to exfiltrate clinical data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124490": {
+    "cvss": 9.1,
+    "description": "OpenEMR before 8.3.0 contains a path traversal vulnerability in the RingCentral RCFaxClient disposeDocument() method of oe-module-faxsms that allows authenticated attackers to read and write arbitrary files via the file_path parameter. Attackers can use action=download to read credentials and source code, or action=setup with base64 content to write web-executable files for code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-103320": {
+    "cvss": 4.3,
+    "description": "IBM WebSphere Application Server Liberty 17.0.0.3 through 26.0.0.10 could allow an authenticated user with the Reader role to obtain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108284": {
+    "cvss": 6.5,
+    "description": "IBM WebSphere Application Server Liberty 17.0.0.3 through 26.0.0.10 could allow an authenticated user with the Reader role to obtain sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11547": {
+    "cvss": 4.3,
+    "description": "IBM WebSphere Application Server Liberty 17.0.0.3 through 26.0.0.10 is affected by a server-side request forgery vulnerability in the Admin Center deploy validation endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17308": {
+    "cvss": 9.1,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive credentials and manipulate tool responses due to improper certificate validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17311": {
+    "cvss": 6.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to modify application API subscriptions due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17312": {
+    "cvss": 5.4,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to force a user to authenticate into an attacker-controlled account due to cross-site request forgery. The sign-in flow does not sufficiently verify that a login response belongs to the user's own request, which could link the victim's session to an account controlled by the attacker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17313": {
+    "cvss": 9.8,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive information and take control of gateway configuration due to authentication bypass via an alternate path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17319": {
+    "cvss": 8.1,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to modify tool configuration and cause a denial of service due to improper authorization. Information supplied by the client is relied on when deciding what a user is allowed to do, which could allow unauthorized changes that disrupt service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17320": {
+    "cvss": 6.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to an insecure direct object reference.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17321": {
+    "cvss": 8.1,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to delete or overwrite arbitrary control-plane assets due to an insecure direct object reference.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17322": {
+    "cvss": 7.1,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a local attacker to obtain sensitive credentials and compromise accounts due to insertion of sensitive information into log files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17323": {
+    "cvss": 7.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive information due to XML external entity (XXE) injection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17325": {
+    "cvss": 6.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to improper validation of user-supplied URLs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17327": {
+    "cvss": 6.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17336": {
+    "cvss": 9.9,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary SQL commands due to improper neutralization of special elements used in an SQL command.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17337": {
+    "cvss": 7.4,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to bypass authentication due to improper certificate validation. A certificate check is not performed reliably in all cases, which could allow a connection to be accepted without proper authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17338": {
+    "cvss": 9.1,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17339": {
+    "cvss": 9.1,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to access or delete resources belonging to other tenants due to path traversal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17340": {
+    "cvss": 9.8,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to execute arbitrary code due to a path traversal vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17342": {
+    "cvss": 9.9,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to improper control of generation of code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17343": {
+    "cvss": 8.1,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to bypass authorization checks to access or modify sensitive information due to improper authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17352": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17353": {
+    "cvss": 9.6,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information and bypass security restrictions due to server-side request forgery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17354": {
+    "cvss": 9.9,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to perform arbitrary file writes due to path traversal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17355": {
+    "cvss": 8.2,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information from internal network resources due to server-side request forgery. Destination checks on outbound requests can be bypassed, which could allow the server to reach internal systems that should be blocked.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17358": {
+    "cvss": 8.2,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to bypass authentication across tenants due to improper authentication. Authentication checks are not sufficiently isolated between tenants, which could allow a user from one tenant to be accepted by another.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17359": {
+    "cvss": 9.9,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to improper control of generation of code. A user-supplied value can influence code that the product generates, which could lead to code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17365": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17370": {
+    "cvss": 6.4,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain an access token for another user due to improper authentication. The sign-in flow does not sufficiently verify the identity of the user completing it, which could allow another user's identity to be assumed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17380": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to access sensitive information belonging to other tenants due to improper validation of a path parameter. A path value in a request is not sufficiently validated, which could allow a user to reach data outside their own tenant.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17381": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to improper authorization validation using user-controlled keys.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17384": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 could allow a remote authenticated attacker to obtain sensitive information due to a server-side request forgery vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17386": {
+    "cvss": 8.1,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 could allow a remote attacker to gain full administrative control due to the use of a cryptographically weak pseudo-random number generator.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17388": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to broken object-level authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17392": {
+    "cvss": 9.9,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to gain unauthorized administrative access to other tenants due to LDAP injection. User-supplied input is not properly neutralized in directory queries, which could change the query and grant access beyond the user's own tenant.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17394": {
+    "cvss": 9.6,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to improperly controlled modification of object attributes. A user-supplied value could change an access-related setting that should be controlled by the system, which could expose sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17398": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17399": {
+    "cvss": 9.9,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to insufficient validation of uploaded content. Content uploaded to the product is not sufficiently checked before it is processed, which could allow code to run on the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17401": {
+    "cvss": 7.2,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to a stack-based buffer overflow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17402": {
+    "cvss": 9.9,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary commands due to OS command injection. User-supplied input is not properly neutralized before it is passed to the operating system, which could allow commands to run on the underlying host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17403": {
+    "cvss": 9.0,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to gain full administrative control due to the use of hard-coded credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17404": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17408": {
+    "cvss": 9.8,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to execute arbitrary code due to improper neutralization of special elements in an OS command.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18535": {
+    "cvss": 9.6,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 are vulnerable to a Regular Expression Denial of Service (ReDoS) attack and to improper neutralisation of wildcard query operators.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18689": {
+    "cvss": 4.3,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow an authenticated user to obtain limited information about other organizations due to incorrect authorization. A token issued for a limited purpose is accepted where it should not be, which could reveal the names of other organizations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18836": {
+    "cvss": 9.3,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive information due to server-side request forgery. The affected component can be made to send requests to unintended destinations and return the response to the attacker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19124": {
+    "cvss": 6.8,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 could allow an attacker with access to stored data to decrypt sensitive credentials due to the use of a hard-coded cryptographic key. The key protecting stored credentials is built into the product, so credentials could be decrypted if the stored data is obtained.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19126": {
+    "cvss": 5.9,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 uses weaker than expected cryptographic algorithms that could allow an attacker to decrypt highly sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19128": {
+    "cvss": 7.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow an authenticated attacker to send unauthorized requests from the system due to server-side request forgery. This could be used to enumerate network resources or to support further attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19131": {
+    "cvss": 6.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow low-privileged users to query arbitrary indices and read sensitive data due to missing authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116094": {
+    "cvss": 7.3,
+    "description": "A vulnerability was determined in EyouCMS up to 1.8.6. This impacts the function remote_file_to_local of the file application/function.php. Executing a manipulation can lead to server-side request forgery. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized. Upgrading to version 1.8.7 will fix this issue. Upgrading the affected component is advised.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76305": {
+    "cvss": 6.5,
+    "description": "In Splunk SOAR versions below 8.7.0, an authenticated user who does not hold a role with permission to view apps could download an archive of an installed app. This could expose all data in the app archive, including proprietary source code and sensitive information. The vulnerability is possible because Splunk SOAR does not verify permission to view apps before it returns the app archive. For more information see Export or import an app (https://help.splunk.com/en/splunk-soar/soar-on-premises/develop-apps/8.4.0/develop-an-app-using-the-splunk-soar-app-wizard/export-or-import-an-app) and Manage roles and permissions in Splunk SOAR (On-premises) (https://help.splunk.com/en/splunk-soar/soar-on-premises/administer-soar-on-premises/8.5.0/manage-your-splunk-soar-on-premises-users-and-accounts/manage-roles-and-permissions-in-splunk-soar-on-premises) in the Splunk documentation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2018-25115": {
+    "cvss": 9.8,
+    "description": "Multiple D-Link DIR-series routers, including DIR-110, DIR-412, DIR-600, DIR-610, DIR-615, DIR-645, and DIR-815 firmware version 1.03, contain a vulnerability in the service.cgi endpoint that allows remote attackers to execute arbitrary system commands without authentication. The flaw stems from improper input handling in the EVENT=CHECKFW parameter, which is passed directly to the system shell without sanitization. A crafted HTTP POST request can inject commands that are executed with root privileges, resulting in full device compromise. These router models are no longer supported at the time of assignment and affected version ranges may vary. Exploitation evidence was first observed by the Shadowserver Foundation on 2025-08-21 UTC.",
+    "vendor": "D-Link",
+    "product": "DIR-110"
+  },
+  "CVE-2023-7308": {
+    "cvss": 7.5,
+    "description": "SecGate3600, a network firewall product developed by NSFOCUS, contains a sensitive information disclosure vulnerability in the /cgi-bin/authUser/authManageSet.cgi endpoint. The affected component fails to enforce authentication checks on POST requests to retrieve user data. An unauthenticated remote attacker can exploit this flaw to obtain sensitive information, including user identifiers and configuration details, by sending crafted requests to the vulnerable endpoint. An affected version range is undefined. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-06-18 UTC.",
+    "vendor": "NSFOCUS",
+    "product": "SecGate3600 Firewall"
   }
 }
