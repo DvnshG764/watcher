@@ -126928,5 +126928,41 @@
     "description": "The WP OAuth Server ( Login with WordPress ) WordPress plugin before 6.3.1 does not restrict access to the debug log it writes, which is stored at a fixed and publicly reachable location, allowing unauthenticated users to read the OAuth tokens and authorisation codes it has issued as well as user records including password hashes when debug logging is enabled.",
     "vendor": "Unknown",
     "product": "WP OAuth Server ( Login with WordPress )"
+  },
+  "CVE-2026-120813": {
+    "cvss": 5.9,
+    "description": "An issue in MongoDB Server's client-side field-level encryption (CSFLE) schema processing component allows encryption metadata to be silently dropped during schema parsing under certain conditions. A party who can deliver a specially crafted schema to a user's CSFLE client may cause sensitive data intended for encryption to be stored in plaintext, bypassing confidentiality protections. Exploitation requires the ability to deliver the malicious schema to the user's client, such as through a man-in-the-middle position or an untrusted server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120814": {
+    "cvss": 7.2,
+    "description": "An improper privilege management issue in the sharding subsystem of MongoDB Server may allow a user holding certain shard-level administrative privileges to cause persisted internal coordination state to be reprocessed with elevated internal authority. Because that state is trusted rather than re-validated, operations may be carried out beyond the user's authorized scope, including changes to cluster-wide security configuration. Successful triggering this issue requires an authenticated session directly against a cluster member and can result in unauthorized access to and modification of data across the cluster.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120815": {
+    "cvss": 8.4,
+    "description": "An incorrect authorization check in the MongoDB Server authorization subsystem may allow an unauthenticated party with local host access to obtain administrative privileges on a database server that has authorization enabled. This may result in unintended access to stored data and credentials, unintended modification of data, and loss of availability of the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86538": {
+    "cvss": 7.5,
+    "description": "knowns versions before 0.30.0 contain a path traversal vulnerability in the POST /api/templates/preview endpoint that allows unauthenticated attackers to read arbitrary files. Attackers can supply directory traversal sequences in the templateFile parameter to bypass path restrictions and read sensitive files like credentials and configuration through the JSON response.",
+    "vendor": "knowns-dev",
+    "product": "knowns"
+  },
+  "CVE-2026-120409": {
+    "cvss": 5.3,
+    "description": "The All-in-One Video Gallery WordPress plugin before 5.1.1 does not check whether a video is password protected before serving it through its standalone player page and its download link, allowing unauthenticated visitors to obtain the media source of password-protected videos, such as unlisted YouTube or Vimeo links and external file URLs.",
+    "vendor": "Unknown",
+    "product": "All-in-One Video Gallery"
+  },
+  "CVE-2026-42608": {
+    "cvss": 8.8,
+    "description": "Grav is a file-based Web platform. Prior to 2.0.0-beta.2, there is a Path Traversal vulnerability within the FormFlash core component. By manipulating the session_id (passed as __form-flash-id in POST requests), an unauthenticated attacker can traverse the filesystem to create arbitrary directories and write an index.yaml file containing attacker-controlled data. This vulnerability can lead to unauthorized modification of application behavior, potential data integrity issues, and service disruption in production environments. This vulnerability is fixed in 2.0.0-beta.2.",
+    "vendor": "getgrav",
+    "product": "grav"
   }
 }
