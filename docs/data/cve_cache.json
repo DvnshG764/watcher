@@ -134500,5 +134500,35 @@
     "description": "Perses is an open-source dashboard and visualization project for observability data. Prior to 0.54.0-rc.0, list endpoints used with the file-system database bind the request-controlled project query parameter into the resource Query structure without validating it against directory traversal characters, and the resulting project value is used to select database paths. An authenticated attacker can supply directory traversal segments to leave the intended project directory, read arbitrary YAML or JSON files accessible to the Perses process, and bypass project isolation to enumerate other file-backed resources. This issue is fixed in version 0.54.0-rc.0.",
     "vendor": "perses",
     "product": "perses"
+  },
+  "CVE-2026-76061": {
+    "cvss": 5.5,
+    "description": "A flaw was found in CRI-O's `bind_mount_prefix` handling. When configured with a non-empty `bind_mount_prefix`, a malicious container or local attacker could use a Container Runtime Interface (CRI) hostPath containing an intermediate absolute symlink. This could cause the bind mount source to resolve outside the intended prefixed root, potentially leading to unauthorized access to files or privilege escalation on the host system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66786": {
+    "cvss": 9.1,
+    "description": "A flaw was found in submariner. In cert-auth mode, the connection configuration is built using free-form strings from the Custom Resource Definition (CRD) without proper validation. A malicious cluster can exploit this by publishing a CableName that includes newlines and ipsec.conf directives. This allows an attacker to inject arbitrary configuration parameters or execute commands through leftupdown hooks, leading to remote code execution as root on the gateway node.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66785": {
+    "cvss": 8.7,
+    "description": "A flaw was found in Submariner. This vulnerability allows a malicious cluster (spoke) to redirect network traffic from other connected clusters (peer clusters) by publishing a specially crafted network endpoint. The system fails to properly validate the network subnets provided by the malicious cluster, enabling it to declare arbitrary network ranges. Consequently, all network traffic intended for these arbitrary ranges from peer clusters will be rerouted through the attacker's tunnel, potentially leading to unauthorized information disclosure or network disruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28516": {
+    "cvss": 9.3,
+    "description": "openDCIM version 23.04, through commit 4467e9c4, contains a SQL injection vulnerability in Config::UpdateParameter. The install.php and container-install.php handlers pass user-supplied input directly into SQL statements using string interpolation without prepared statements or proper input sanitation. An authenticated user can execute arbitrary SQL statements against the underlying database.",
+    "vendor": "openDCIM",
+    "product": "openDCIM"
+  },
+  "CVE-2026-88995": {
+    "cvss": 5.3,
+    "description": "The Bookit — Booking & Appointment Calendar WordPress plugin before 2.6.0.1 does not properly restrict the data returned by an availability-check request, allowing unauthenticated users to retrieve other customers' appointment details, including free-text booking comments and contact information.",
+    "vendor": "Unknown",
+    "product": "Bookit — Booking & Appointment Calendar"
   }
 }
