@@ -134620,5 +134620,47 @@
     "description": "Improper check for unusual or exceptional conditions vulnerability in SSO in Synology DiskStation Manager (DSM) before 7.2.2-72806-5 and 7.3.1-86003-1 (7.2.1-69057 is not affected) allows remote attackers to bypass authentication with prior knowledge of the distinguished name (DN).",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-98074": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: bonding: do not clear curr_active_slave prematurely when releasing all slaves When releasing all slaves during bond destruction (all == true), __bond_release_one() unconditionally clears bond->curr_active_slave to NULL in every iteration. If a backup slave is released before the active slave, bond_alb_deinit_slave() triggers rlb_teach_disabled_mac_on_primary(), which increments the active slave dev promiscuity counter and sets bond_info->primary_is_promisc = 1. Because bond->curr_active_slave was prematurely cleared to NULL when releasing the backup slave, the subsequent iteration releasing the active slave evaluates oldcurrent as NULL, so bond_change_active_slave(bond, NULL) is skipped. Consequently, bond_alb_handle_active_change() is never called to decrement the promiscuity counter, permanently leaking promiscuous mode on the physical device after bond teardown. When oldcurrent == slave, bond_change_active_slave(bond, NULL) already sets bond->curr_active_slave to NULL. We only need to avoid selecting a new active slave when all == true. Replace the if (all) branch with if (!all && oldcurrent == slave).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98075": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: bpf: reject BPF_PSEUDO_FUNC reference to the main program fixups.c:jit_subprogs() rewrites BPF_PSEUDO_FUNC loads to contain real function addresses. This function is invoked from bpf_jit_subprogs() only when env->subprog_cnt > 1. Meaning that for any program like below: int main(void *ctx) { void *ptr = main; ... bpf_timer_set_callback(..., ptr); ... } The 'ptr' won't be ever converted to contain an address. In combination with e.g. bpf_timer_set_callback() this would lead to a function call at a bogus address. Instead of complicating the implementation, just assume that no useful program needs main to be a sync or async callback and reject BPF_PSEUDO_FUNC loads for the main subprogram.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98076": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: tracing/probes: Fix use-after-free on field name/type of events with multiple probes The fields of a probe-based dynamic event (kprobe, uprobe, eprobe and fprobe events) are created in traceprobe_define_arg_fields() by handing the probe_arg name/type strings to trace_define_field(), which only stores the pointers without copying. Those strings are owned by the trace_probe and are freed when that probe is removed. An event can have several probes attached. The field list is defined only once, by the first probe that registers the event, but it is kept alive by any surviving sibling probe. Deleting just that first probe by symbol - # primary A: fields are defined from A's args echo 'p:kprobes/ev vfs_read a1=$arg1' > kprobe_events # append B: shares A's event call echo 'p:kprobes/ev vfs_write a1=$arg1' >> kprobe_events # delete only A (matched by symbol), B survives echo '-:kprobes/ev vfs_read' >> kprobe_events frees A's args (trace_probe_cleanup() -> traceprobe_free_probe_arg()), but trace_probe_unlink() keeps the trace_probe_event because the probe list is not empty. The event call stays registered via B while its fields now reference freed memory. Any field lookup then reads it, e.g. echo 'a1 == 1' > events/kprobes/ev/filter BUG: KASAN: slab-use-after-free in strcmp+0xa7/0xb0 Call Trace: strcmp trace_find_event_field parse_pred process_preds create_filter apply_event_filter event_filter_write field->name references parg->name (kstrdup'd, freed with the probe) and, for array arguments, field->type references parg->fmt (kmalloc'd, freed with the probe) - the scalar type otherwise points at the static fmttype rodata, which is safe. Have traceprobe_define_arg_fields() duplicate the name and type strings and anchor the copies on the trace_probe_event, which embeds the event call and outlives every individual probe; trace_probe_event_free() releases them. The reproducer above triggers reliably; the field lookup and the delete both run under event_mutex, so this is a dangling reference after removal rather than a race. The issue was found by the autokbug dynamic kernel fuzzer at Tencent Yunding Lab.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108474": {
+    "cvss": 9.8,
+    "description": "In JetBrains Exposed before 1.5.1 sQL injection was possible via unescaped string arguments of several SQL functions",
+    "vendor": "JetBrains",
+    "product": "Exposed"
+  },
+  "CVE-2026-116289": {
+    "cvss": 9.1,
+    "description": "Gitea did not reject personal access tokens restricted to public resources (`public-only`) on the organization Actions runner registration-token endpoint, and the runner registered with the resulting token was not limited to public repositories. Holding only such a token with `write:organization` that belongs to an owner of a public organization, an attacker could register an organization-level runner and receive jobs of the organization's private repositories that have Actions enabled, including the workflow content, Actions secrets and variables, and a task token with access to the private repository. The issue widens what the restricted token can reach; it gives nothing beyond what the owner's full account can already do.",
+    "vendor": "Gitea",
+    "product": "Gitea"
+  },
+  "CVE-2026-130587": {
+    "cvss": 9.9,
+    "description": "OpenFunction through 1.2.0 contains a privilege escalation vulnerability that allows namespace tenants to create privileged host-access pods by supplying unrestricted PodSpec templates in Function and Serving resources. Attackers with only Function or Serving create permissions can set privileged, hostNetwork, hostPID, or hostPath fields to mount the worker node's root filesystem and escalate to node access.",
+    "vendor": "OpenFunction",
+    "product": "OpenFunction"
+  },
+  "CVE-2026-131873": {
+    "cvss": 6.1,
+    "description": "Gargoyle 2023.1 through 2026.1.1 contains a stack-based buffer overflow vulnerability in the bundled Plus interpreter's ReadAction() function in terps/plus/loaddatabase.c, which never bounds-checks the index into the 1024-entry conditions array. Attackers can supply a crafted or truncated .plus game file with unterminated action conditions to write file-controlled values past the array and crash the player.",
+    "vendor": "Chris Spiegel",
+    "product": "Gargoyle"
   }
 }
