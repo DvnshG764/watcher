@@ -135754,5 +135754,263 @@
     "description": "Open Access Management (OpenAM) is an access management solution. Prior to 16.1.1, the private_key_jwt client authentication path uses ClientJwksResolverCache without reliably binding a cached jwks_uri resolver and verified assertion to the expected clientID in ClientCredentialsReader. An attacker controlling any registered client with published keys, including one obtained through open dynamic registration when enabled, can authenticate as another client whose keys are exposed through jwks_uri and mint tokens in that client's name across realms in the same OpenAM process. This issue is fixed in version 16.1.1.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-124696": {
+    "cvss": 7.1,
+    "description": "In Progress Kendo UI for jQuery, Spreadsheet sheet names are inserted into the SheetsBar menu button's data-sheet-name attribute without encoding. An attacker who can influence a sheet name can inject an event-handler attribute and execute JavaScript when a user hovers over the menu button. Successful exploitation may compromise the confidentiality and integrity of data available in the user's browser context. The first affected version is 2024.4.1112; the latest vulnerable version is 2026.3.1015. The issue is fixed in version 2026.4.1111.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124697": {
+    "cvss": 7.1,
+    "description": "In Progress Kendo UI for jQuery, Chart shared-tooltip rendering treats bound category and series-name values as raw HTML. An attacker who can influence values consumed by an affected Chart can inject markup that executes as JavaScript when a user displays the shared tooltip. Successful exploitation may compromise the confidentiality and integrity of data available in the user's browser context. Version 2016.2.607 or earlier may be affected, but earlier releases have not been verified. The latest vulnerable version is 2026.3.1015; the issue is fixed in version 2026.4.1111.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124698": {
+    "cvss": 7.1,
+    "description": "In Progress Kendo UI for jQuery, the Chart default tooltip renders point values as raw HTML. An attacker who can influence a string point value can inject markup that executes as JavaScript when a user hovers over the point. Successful exploitation may compromise the confidentiality and integrity of data available in the user's browser context. Version 2016.2.607 or earlier may be affected, but earlier releases have not been verified. The latest vulnerable version is 2026.3.1015; the issue is fixed in version 2026.4.1111.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126189": {
+    "cvss": 5.3,
+    "description": "Soup Sieve is a CSS selector library designed to be used with Beautiful Soup 4. Prior to 4.0.1, Soup Sieve repeatedly searches descendant subtrees for each candidate evaluated by :has() and repeatedly reevaluates a parent containing :has(> ...) for each child, causing quadratic matching on deeply nested or wide attacker-influenced HTML or XML. Applications using ordinary fixed selectors through select(), select_one(), or Beautiful Soup CSS APIs against untrusted documents can have a worker occupied for seconds or minutes, while applications that process only trusted documents are not affected. Selectors compiled with NOCACHE continue to use the old uncached behavior. This issue is fixed in version 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126190": {
+    "cvss": 7.5,
+    "description": "Soup Sieve is a CSS selector library designed to be used with Beautiful Soup 4. Prior to 4.0, Soup Sieve repeatedly walks the same ancestors while matching descendant combinators, and each additional descendant combinator raises the polynomial degree of the work on deeply nested attacker-influenced HTML or XML. Applications using selectors such as section div div through select(), select_one(), or Beautiful Soup CSS APIs against untrusted documents can have a worker occupied for seconds or minutes, while trusted-only document processing is not affected. Selectors compiled with NOCACHE continue to use the old uncached behavior. This issue is fixed in version 4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126191": {
+    "cvss": 7.5,
+    "description": "Soup Sieve is a CSS selector library designed to be used with Beautiful Soup 4. Prior to 3.0, the CSS_ESCAPES and IDENTIFIER regular-expression subpatterns can backtrack exponentially on runs of ambiguous digit escapes in an attribute-name or tag position of an otherwise valid selector. The failure occurs during selector compilation through soupsieve.compile() or Beautiful Soup select() before SELECTOR_LIMIT is applied, so an application that accepts untrusted selector strings can have a worker stalled by a short input. This issue is fixed in version 3.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126193": {
+    "cvss": 5.3,
+    "description": "Soup Sieve is a CSS selector library for Beautiful Soup. From 0.4 until 3.0, deeply nested CSS pseudo-class selectors can cause recursive parsing to exceed Python’s recursion limit and raise RecursionError . Applications accepting untrusted selectors may experience failure of the affected request or task if the exception is not handled. The demonstrated behavior is recoverable and does not establish an interpreter crash or persistent service-wide denial of service. This vulnerability is fixed in version 3.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126835": {
+    "cvss": 6.5,
+    "description": "The MongoDB Node.js driver does not consistently enforce its permitted-host restriction during OIDC authentication. A bearer token produced by the embedding application's own login callback may therefore be transmitted to a host outside the configured set of permitted hosts, which may result in unintended disclosure of that credential. No database account is required; the party supplying the connection configuration needs only to influence the settings the application passes to the driver.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127029": {
+    "cvss": 7.5,
+    "description": "A flaw was found in freeradius's Extensible Authentication Protocol Method for Subscriber Identity Module (EAP-SIM) module. When handling authentication requests, the server copies a client-supplied identity into an internal structure without properly checking its length against a fixed-size buffer. An unauthenticated remote attacker can exploit this issue by sending specially crafted EAP-SIM messages, triggering a stack buffer overflow that crashes the service and results in a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127203": {
+    "cvss": 5.4,
+    "description": "AppFlowy Cloud through 0.9.64 contains a stored cross-site scripting vulnerability that allows authenticated workspace members to upload blobs with unvalidated Content-Type values that are later served inline without a Content-Disposition header or authentication on the retrieval route. Attackers can upload a text/html or image/svg+xml blob via put_blob_handler, which is then rendered as an active same-origin document through the unauthenticated get_blob_handler endpoint and cached immutably for one year, enabling persistent script execution against any visitor who accesses the URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16052": {
+    "cvss": 2.3,
+    "description": "The http.cookies.Morsel class allows separator semicolons in attribute values and includes them verbatim in all output formats. An attacker who can control these values could use this to relax the cookie's Domain or SameSite restrictions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82977": {
+    "cvss": 8.4,
+    "description": "The Plesk GoAccess statistics integration in Plesk Obsidian for Linux, versions 18.0.77 to 18.0.81.7, 18.0.82 to 18.0.82.2, allows cross-subscription information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106146": {
+    "cvss": 8.6,
+    "description": "In Progress® Telerik® UI for ASP.NET MVC versions `2012.2.710` through `2026.3.1015`, server-side filter processing does not properly validate descriptor types, null values, or stack state in FilterNodeVisitor and does not catch FilterParserException within the affected assembly. An unauthenticated remote attacker can exploit this if the application exposes an endpoint reachable without authentication that accepts crafted filter parameters. Affected requests can trigger uncaught cast, null-reference, or empty-stack exceptions and return HTTP 500. The report does not demonstrate worker-process termination or disruption of unrelated requests. The issue is fixed in version `2026.4.1111`.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106154": {
+    "cvss": 8.6,
+    "description": "In Progress® Telerik® UI for ASP.NET Core versions `2015.1.318` through `2026.3.1015`, the server-side FilterParser processes nested expressions in untrusted filter parameters through recursive parsing without a recursion-depth limit, while FilterLexer does not enforce an input-length limit. An unauthenticated remote attacker can exploit this if the application exposes an endpoint using DataSourceRequest model binding that is reachable without authentication. Deeply nested filters can trigger parsing errors during model binding or cause `StackOverflowException`. This issue is fixed in version `2026.4.1111`.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106472": {
+    "cvss": 6.3,
+    "description": "Grafana's Prometheus data source passes the resource path supplied by the caller to the configured Prometheus server without restricting it to the supported API endpoints [missing path allowlist]. A user with permission to query the data source can read responses from other endpoints on that server using the data source's credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105501": {
+    "cvss": 7.8,
+    "description": "Incorrect authorization in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105503": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Management Instrumentation allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105504": {
+    "cvss": 7.0,
+    "description": "An elevation of privilege vulnerability exists in the way that the Windows Kernel handles objects in memory. An attacker who successfully exploited the vulnerability could execute code with elevated permissions. To exploit the vulnerability, a locally authenticated attacker could run a specially crafted application. The security update addresses the vulnerability by ensuring the Windows Kernel properly handles objects in memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105506": {
+    "cvss": 5.0,
+    "description": "Buffer over-read in Windows Shell allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105507": {
+    "cvss": 7.8,
+    "description": "An elevation of privilege vulnerability exists in the Windows Installer when the Windows Installer fails to properly sanitize input leading to an insecure library loading behavior. A locally authenticated attacker could run arbitrary code with elevated system privileges. An attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. The security update addresses the vulnerability by correcting the input sanitization error to preclude unintended elevation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105509": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Resilient File System (ReFS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105510": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Secure Socket Tunneling Protocol (SSTP) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105515": {
+    "cvss": 7.5,
+    "description": "Buffer over-read in Windows Message Queuing allows an unauthorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105518": {
+    "cvss": 8.8,
+    "description": "Use after free in Windows iSCSI allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105520": {
+    "cvss": 7.2,
+    "description": "Improper link resolution before file access ('link following') in Windows DNS allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105524": {
+    "cvss": 7.8,
+    "description": "Weak authentication in Windows Management Instrumentation allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111293": {
+    "cvss": 6.5,
+    "description": "Buffer over-read in Microsoft Office allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96097": {
+    "cvss": 7.0,
+    "description": "Release of invalid pointer or reference in Windows Brokering File System allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96101": {
+    "cvss": 5.5,
+    "description": "Files or directories accessible to external parties in Windows Connected User Experiences and Telemetry allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96102": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows TCP/IP allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96107": {
+    "cvss": 7.0,
+    "description": "Null pointer dereference in Windows Phone Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96110": {
+    "cvss": 5.5,
+    "description": "Use after free in Windows OLE allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96115": {
+    "cvss": 8.0,
+    "description": "Double free in Windows DHCP Client allows an authorized attacker to elevate privileges over an adjacent network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96117": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows LUAFV allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96122": {
+    "cvss": 7.8,
+    "description": "Untrusted pointer dereference in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96124": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96127": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Biometric Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96129": {
+    "cvss": 7.8,
+    "description": "Inclusion of functionality from untrusted control sphere in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96133": {
+    "cvss": 5.5,
+    "description": "Improper access control in Windows Graphics Kernel allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96134": {
+    "cvss": 7.5,
+    "description": "Uncontrolled resource consumption in Windows DHCP Server allows an unauthorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96137": {
+    "cvss": 5.5,
+    "description": "Exposure of sensitive system information to an unauthorized control sphere in Windows Graphics Kernel allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-44793": {
+    "cvss": 6.1,
+    "description": "Open Access Management (OpenAM) is an access management solution. Prior to 16.1.1, certain federation endpoints in a non-default clustered configuration inconsistently encode user-supplied parameters rendered into HTML in the SAML2 cluster cookie-hash redirect path. An unauthenticated attacker can induce a user to follow a crafted request and execute script in the OpenAM origin. This issue is fixed in version 16.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45794": {
+    "cvss": 8.8,
+    "description": "Open Access Management (OpenAM) is an access management solution. Prior to 16.1.1, the anonymous Push Notification SNS callback handled by SnsMessageResource falls back to a CTS predicate blob after a messageId expires from the in-memory dispatcher, treats top-level blob keys as Java class names for Class.forName, and deserializes attacker-controlled JSON through Jackson. A low-privileged user who starts Push Registration and obtains the messageId, shared secret, and challenge can wait for expiry, replace the persistent blob through anonymous callbacks, and trigger class loading and construction in the OpenAM JVM. The primitive can cause classpath-dependent process execution, file writes, or denial of service, although command execution was not confirmed on the tested stock classpath. This issue is fixed in version 16.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
