@@ -131503,7 +131503,7 @@
   },
   "CVE-2026-126211": {
     "cvss": 7.2,
-    "description": "A improper privilege management vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.1 through 7.6.7, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.1 through 7.6.8, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.1 through 7.6.7, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.1 through 7.6.8 may allow an authenticated privileged attacker to elevate their privileges via crafted JSON-RPC request.",
+    "description": "A improper privilege management vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.1 through 7.6.7, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.1 through 7.6.7, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.1 through 7.6.7, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.1 through 7.6.7 may allow an authenticated privileged attacker to elevate their privileges via crafted JSON-RPC request.",
     "vendor": "Fortinet",
     "product": "Unknown"
   },
@@ -133994,6 +133994,66 @@
   "CVE-2026-111825": {
     "cvss": null,
     "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111216": {
+    "cvss": 7.2,
+    "description": "Netgate pfSense CE through 2.9.0 and Plus through 26.07 contains an OS command injection vulnerability that allows authenticated users with gateway edit privileges to execute commands as root by injecting shell metacharacters into an IPv6 link-local zone index. Attackers can set a gateway Monitor IP whose unvalidated zone carries a payload, which start_dpinger() passes unescaped to the dpinger shell command when monitoring is applied.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111219": {
+    "cvss": 7.2,
+    "description": "Netgate pfSense CE through 2.9.0 and Plus through 26.07 contains a newline injection vulnerability in services_pppoe_edit.php that allows privileged users to inject mpd.secret entries via unvalidated username POST fields. Attackers with the PPPoE Server Edit privilege can add a line whose secret begins with '!', making mpd5 run commands as root when a PPPoE client authenticates.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111220": {
+    "cvss": 7.2,
+    "description": "pfSense CE through 2.9.0 and Plus through 26.07 contains a crontab injection vulnerability in interfaces_ppps_edit.php that allows authenticated users to execute commands as root by injecting newlines into the ptpid or reset hour/minute fields. Attackers holding the 'WebCfg - Interfaces: PPPs: Edit' privilege can submit crafted POST values that configure_cron() writes unescaped into /etc/crontab, running arbitrary root commands on schedule.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111222": {
+    "cvss": 7.2,
+    "description": "Netgate pfSense CE through 2.9.0 and Plus through 26.07 contains a php.ini injection vulnerability that allows authenticated users with General Setup privileges to inject directives by submitting an unvalidated timezone value. Attackers can embed a quote and newline to add auto_prepend_file pointing at /var/db/zoneinfo, executing PHP as root after php.ini is regenerated at boot or php-fpm restart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111223": {
+    "cvss": 7.2,
+    "description": "Netgate pfSense CE 2.7.0 through 2.9.0 and Plus through 26.07 contains a configuration injection vulnerability that allows authenticated users with IPsec Mobile privileges to execute commands as root via the login_banner field. Attackers can submit a single-line banner containing '}' to escape the unquoted strongswan.conf attr value and define charon.start-scripts entries that charon executes as root on restart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111227": {
+    "cvss": 5.5,
+    "description": "Netgate pfSense CE through 2.9.0 and Plus through 26.07 contains a CRLF injection vulnerability in services_unbound_acls.php that allows authenticated users with the DNS Resolver: Access Lists privilege to inject Unbound configuration directives. Attackers can embed CR/LF characters in the aclname or aclaction fields written to access_lists.conf to add local-data, local-zone, or forward-zone directives and control DNS answers served to LAN clients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111228": {
+    "cvss": 5.5,
+    "description": "Netgate pfSense CE from 2.7.1 through 2.9.0 and Plus through 26.07 contains a CRLF injection vulnerability in services_unbound_advanced.php that allows authenticated users with DNS Resolver: Advanced privilege to inject Unbound directives. Attackers can embed CR/LF characters in the unvalidated sock_queue_timeout parameter, which is written raw into unbound.conf, to override local records and forwarding for all clients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111230": {
+    "cvss": 4.9,
+    "description": "Netgate pfSense CE through 2.9.0 and Plus through 26.07 contains a local file read vulnerability that allows users with the Dynamic DNS client privilege to read files as root by setting a file:// custom Update URL in services_dyndns_edit.php. Attackers can set a non-matching Result Match string so _checkStatus() logs file contents such as /conf/config.xml or /etc/master.passwd to the system log.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111232": {
+    "cvss": 4.8,
+    "description": "Netgate pfSense CE 2.3.0 through 2.9.0 and Plus through 26.07 contains a stored cross-site scripting vulnerability that allows authenticated users with Firewall: Rules or NAT: Port Forward privileges to inject scripts via the separator color field. Attackers can submit a crafted separator[] color value that display_separator() renders unencoded into class attributes, executing in administrators' browsers to perform WebGUI actions with their privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111233": {
+    "cvss": 6.1,
+    "description": "Netgate pfSense CE 2.7.1 through 2.9.0 and Plus through 26.07 contains a reflected cross-site scripting vulnerability in firewall_rules.php that allows remote attackers to inject script via the unencoded if parameter. When the non-default Require Firewall Interface option is enabled, attackers can lure users with firewall rules privileges into opening a crafted GET link to execute script in the WebGUI with their privileges.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
