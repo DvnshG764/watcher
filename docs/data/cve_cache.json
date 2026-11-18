@@ -88200,10 +88200,10 @@
     "product": "Unknown"
   },
   "CVE-2026-121720": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 8.5,
+    "description": "OpenVPN 2.4.0 through 2.6.23 and 2.7_alpha1 through 2.7.8 on Windows allows local authenticated users to execute arbitrary code via a privileged service using user-controlled environment variables.",
+    "vendor": "OpenVPN",
+    "product": "OpenVPN"
   },
   "CVE-2026-123158": {
     "cvss": 8.1,
@@ -137474,6 +137474,378 @@
   "CVE-2026-131811": {
     "cvss": null,
     "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116438": {
+    "cvss": 5.4,
+    "description": "Dell PowerScale InsightIQ, Versions 6.3.0 through 6.4.0 , contains a Missing Authorization vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120864": {
+    "cvss": 9.3,
+    "description": "Memory overflow in ICA proxy can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-120865": {
+    "cvss": 8.7,
+    "description": "Memory overflow in HTTP/3 (QUIC) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-120866": {
+    "cvss": 7.7,
+    "description": "Memory overflow / improper handling in BGP dynamic routing can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-120867": {
+    "cvss": 8.7,
+    "description": "Memory overflow in SSL/TLS/DTLS can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-128824": {
+    "cvss": 5.4,
+    "description": "A flaw was found in Red Hat Quay. The v1 registry API error handler reflects the attacker-supplied image_id path segment in a response served as text/html, allowing a reflected cross-site scripting (XSS) attack. By tricking a user into visiting a specially crafted URL, a remote attacker can execute arbitrary JavaScript in the victim's browser within the Quay origin, potentially compromising the user's session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-54423": {
+    "cvss": 7.5,
+    "description": "OpenMage magento-lts before 20.2.0 contains a stored cross-site scripting vulnerability because the TinyMCE WYSIWYG editor fails to filter scripts in specially crafted HTML tags. Attackers can inject an img element with a malicious onmouseover attribute to execute scripts in the browsers of users viewing the rendered content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58404": {
+    "cvss": 7.7,
+    "description": "Zipline versions from 3.4.5 before 3.7.10 contain a path traversal vulnerability in the user data export endpoint via the name query parameter. Authenticated attackers can bypass the user id check and use directory traversal sequences to read arbitrary files on the server host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58405": {
+    "cvss": 8.6,
+    "description": "Zipline through 3.7.9 contains an improper authorization vulnerability in the /api/auth/register endpoint, which enforces invite codes only when user registration is disabled, so registration succeeds without an invite when both invites and user registration are enabled. Unauthenticated attackers can send a direct POST request omitting the invite code to create accounts, view stats, and exhaust storage by uploading many files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-71459": {
+    "cvss": 8.1,
+    "description": "Zipline through 4.3.2 contains a path traversal vulnerability that allows authenticated uploaders to write files outside the upload directory by supplying traversal sequences in the x-zipline-filename header. Attackers using the local datasource can create or overwrite files writable by the Zipline process, corrupting application data or disrupting service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-71460": {
+    "cvss": 4.2,
+    "description": "Zipline before 4.2.1 contains a missing authorization vulnerability in the /api/user/files/transaction endpoint that allows authenticated users to modify other users' files due to absent ownership checks. Attackers who know a target file ID can submit transaction requests to edit or delete files belonging to any user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-71461": {
+    "cvss": 5.3,
+    "description": "Zipline before 4.0.2 contains a predictable filename vulnerability that allows attackers to infer other users' upload filenames by recovering the Math.random generator state. Attackers with five consecutive gfycat-style filenames can reconstruct the random state to predict previous and future filenames until the instance restarts, exposing private uploads.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-71462": {
+    "cvss": 6.1,
+    "description": "Zipline before 3.7.12 contains a cross-site scripting vulnerability in the login page that allows attackers to execute JavaScript by supplying an unvalidated url parameter. Attackers can craft a login link with a javascript: URI in the url parameter that executes in the victim's browser after login.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-71463": {
+    "cvss": 6.7,
+    "description": "Scapy before 2.7.0 contains an insecure deserialization vulnerability in the load_session function that allows attackers to execute code by supplying a malicious pickle session file. Attackers can trick users into loading a crafted .pkl.gz file via the -s option or conf.session, executing embedded Python code through __reduce__().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-103645": {
+    "cvss": 1.1,
+    "description": "An integer overflow vulnerability in the Qt QTextCodec fromUnicode() and toUnicode() functionality of the Qt 5 Core Compatibility APIs module (Qt 6) and the Qt Core module (Qt 5). Only builds where Qt is compiled with ICU support are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116433": {
+    "cvss": 4.3,
+    "description": "Dell PowerScale InsightIQ, versions 6.3.0 through 6.4.0, contains a Missing Authorization vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116614": {
+    "cvss": 4.9,
+    "description": "The WPMR Google Feed Manager for WooCommerce – Sell on Google Merchant Center & Shopping plugin for WordPress is vulnerable to generic SQL Injection via the 'sourceId' parameter in all versions up to, and including, 2.24.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with editor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The plugin grants the edit_feeds capability to the Editor role on activation, meaning any Editor-level user satisfies the authorization checks and can exploit this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120547": {
+    "cvss": 4.4,
+    "description": "The CF7 Apps – Honeypot, Database, Redirection, Webhook, and Addons for Contact Form 7 plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'wpcf7-form (CF7 form body; the [honeypot ...] tag value)' parameter in all versions up to, and including, 3.8.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with custom-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is only a meaningful privilege escalation on multisite installations or those with DISALLOW_UNFILTERED_HTML enabled, as Editor-level users on default single-site installs already possess the unfiltered_html capability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120658": {
+    "cvss": 6.4,
+    "description": "The Download Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'file[additional_previews][]' parameter in all versions up to, and including, 7.6.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The wpdm_sanitize_array() function strips HTML tags via wp_kses but leaves bare single quotes intact and calls stripslashes_deep() which defeats WordPress magic quotes protection, allowing a single-quote-based attribute breakout payload to be stored verbatim and later rendered without escaping.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121518": {
+    "cvss": 5.3,
+    "description": "The Customer Reviews for WooCommerce plugin for WordPress is vulnerable to Sensitive Information Exposure in versions up to, and including, 5.127.0 via the 'search' parameter of the cr_show_more_all_reviews and cr_show_more_reviews AJAX actions. This is due to the handlers being hooked on wp_ajax_nopriv_* without a capability check (and, in the product-page handler, with a nonce check that is behind a filter defaulting to false) while passing the visitor-supplied search string straight into get_comments() as the 'search' argument, which core expands into LIKE conditions over comment_author, comment_author_email, comment_author_url, comment_author_IP and comment_content. This makes it possible for unauthenticated attackers to extract review author email addresses and IP addresses — fields WordPress and WooCommerce never expose to the public — one character at a time by observing whether the returned result set matches a probed substring.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122063": {
+    "cvss": 6.5,
+    "description": "The Newsletters plugin for WordPress is vulnerable to blind SQL Injection via the 'user_email' parameter in all versions up to, and including, 4.18.2 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation requires the admin-controlled 'currentusersubscribed' option to be enabled and at least one page rendering the Newsletters subscribe shortcode or widget to exist; a Subscriber-level attacker can self-serve the attack by updating their own profile email to a crafted payload and loading such a page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123769": {
+    "cvss": 8.8,
+    "description": "The SureDash – Community, Courses & Member Dashboard plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.13.0 This is due to the `save_settings()` REST handler at `/suredash/v1/save-settings` being gated only by `admin_permission_callback()`, which authorizes any holder of the custom `manage_portal_dashboard` capability (Portal Manager role) without requiring `promote_users`, `edit_users`, or `manage_options`, combined with `sanitize_settings_data()` iterating all attacker-supplied keys with no allow-list, allowing arbitrary keys such as `default_role` to pass through `sanitize_text_field()` unchanged and be persisted into the `portal_settings` option via `update_option()` with no role-validity check. This makes it possible for authenticated attackers with Portal Manager-level access and above to poison the `default_role` setting to `administrator`, after which any subsequent new-user registration through the publicly accessible block-register endpoint reads the corrupted setting and passes it directly to `wp_insert_user()`, producing a full WordPress Administrator account under the attacker's control. The exploit requires two steps: a POST to the authenticated `save-settings` endpoint to overwrite `default_role`, followed by triggering a new registration through the unauthenticated block-register endpoint to receive the escalated account. Successful exploitation causes the attacker's own account to receive the complete administrator role.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125055": {
+    "cvss": 9.8,
+    "description": "The Chatterbug Forms – Fast, Flexible WordPress Form Builder plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 1.0.2 via the cbforms_check_form_submissions function. This is due to missing server-side file extension validation in cbforms_check_form_submissions(), where the allowed-type check defaults to the uploaded file's own extension when no field restriction is configured, trivially allowing any extension including .php. This makes it possible for unauthenticated attackers to upload files that may be executable, which makes remote code execution possible. The submission nonce printed inline on every public page containing a Chatterbug form is freely obtainable by unauthenticated visitors and therefore does not constitute an effective access control barrier.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125409": {
+    "cvss": 6.4,
+    "description": "The Passster – Password Protect Pages and Content plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'metavalue (metakeyinput=passster_id | passster_headline)' parameter in all versions up to, and including, 4.3.21 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. A Contributor can break out of the shortcode attribute context by embedding a ] character in the passster_id or passster_headline meta value to prematurely close the opening shortcode tag, then append a [/passster] closing tag so that the trailing HTML payload is emitted verbatim by do_shortcode() — bypassing the per-attribute escaping present inside render_shortcode() — and the script will also execute in an editor's or administrator's browser when they preview the Contributor's pending post, since filter_the_content() has no edit-permission capability gate.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126029": {
+    "cvss": 6.4,
+    "description": "The WPZOOM Addons for Elementor – Starter Templates & Widgets plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'actions[save_builder][data][elements][...][settings][regions][i][link][url] / [pins][i][link][url]' parameter in all versions up to, and including, 1.4.20 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126264": {
+    "cvss": 7.7,
+    "description": "SiYuan before 3.8.9 contains an information disclosure vulnerability that allows authenticated Reader users to retrieve credential-named widget files by bypassing the sensitive-path guard in getFile. Attackers can request paths like /data/widgets/ /credentials.json for publish-referenced widgets to obtain API keys, tokens, or other stored secrets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126265": {
+    "cvss": 7.4,
+    "description": "SiYuan 2.1.0 before 3.8.9 contains a flaw where the loginAuth CAPTCHA challenge lives in a signed client-side cookie, allowing reuse of a solved challenge. Attackers can replay the original signed siyuan cookie with distinct wrong access codes to brute-force the code and gain an administrator session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126266": {
+    "cvss": 7.5,
+    "description": "SiYuan from 3.6.0 before 3.8.9 contains an information disclosure vulnerability that allows unauthenticated publish visitors to bypass per-document passwords via regex search in getDoc. Attackers can send POST requests to /api/filetree/getDoc with queryMethod 3 and a broad regex to read protected body text returned in the unfiltered keywords field.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126267": {
+    "cvss": 6.5,
+    "description": "NocoDB from 0.300.0 before 2026.04.4 contains a denial of service vulnerability that allows authenticated users to crash the server by triggering an unhandled promise rejection in MetaService metadata logging. Attackers can send a request leaving a lookup condition undefined, causing knex binding errors in the unawaited logHelper call that terminate the server process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126268": {
+    "cvss": 5.3,
+    "description": "NocoDB before 2026.08.0 contains an IP address spoofing vulnerability that allows unauthenticated attackers to forge their recorded source IP by supplying X-Forwarded-For headers, because Express trust proxy is enabled unconditionally. Attackers can write arbitrary source addresses into audit and request logs to mislead investigations and evade the per-address public API rate limiter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126270": {
+    "cvss": 6.5,
+    "description": "NocoDB before 2026.09.1 contains a missing authentication vulnerability in the aggregated meta info route of utils.controller.ts that exposes instance-wide metadata to anonymous callers. Unauthenticated attackers can request the endpoint to enumerate bases, user counts, shared and password-protected view counts, webhook counts, and live per-base row counts, while repeated requests amplify database query load.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126271": {
+    "cvss": 7.7,
+    "description": "NocoDB before 2026.09.0 contains an information disclosure vulnerability that allows authenticated base Viewers to obtain TLS client private keys by reading a base's data source. The source read handler masked only the connection password, letting attackers retrieve the decrypted private key, client certificate and CA to connect directly to the external database, bypassing NocoDB permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126272": {
+    "cvss": 6.5,
+    "description": "NocoDB before 2026.09.0 contains an uncontrolled resource consumption vulnerability that allows authenticated users to bypass bulk row-count limits by using session authentication instead of API tokens. Attackers with Editor write permission on one table can submit hundreds of thousands of rows to v1 and v2 bulk write routes, exhausting database connections, CPU, and memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126275": {
+    "cvss": 7.1,
+    "description": "NocoDB before 2026.09.0 contains an insecure direct object reference vulnerability that allows authenticated users to read cross-base row comments by supplying only model and row ids. Attackers with a Viewer or Creator role on an unrelated base can read private comments and author emails, or plant decoy tables and duplicate comment ids to spoof teammates' comments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126276": {
+    "cvss": 6.3,
+    "description": "NocoDB before 2026.08.1 contains an authentication bypass vulnerability in oauth-token.service.ts that treats PKCE as a substitute for confidential client authentication, skipping client secret verification when omitted. Attackers holding a captured authorization code and PKCE verifier can mint access tokens and 60-day refresh tokens for a confidential client without knowing its secret.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126277": {
+    "cvss": 7.5,
+    "description": "NocoDB before 2026.08.1 contains an uncontrolled resource consumption vulnerability that allows unauthenticated attackers to exhaust server resources by sending unbounded filter arrays to shared-view bulk endpoints. Attackers with a shared view UUID can POST a large body of minimal filter objects, triggering a full database query per entry, to crash the NocoDB process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126278": {
+    "cvss": 7.5,
+    "description": "NocoDB before 2026.08.1 contains a race condition vulnerability in users.service.ts that allows holders of a valid reset token to perform multiple password changes by sending concurrent reset requests. Attackers can exploit the window created by slow bcrypt hashing before the token is cleared to overwrite the owner's new password and lock them out.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126279": {
+    "cvss": 6.3,
+    "description": "NocoDB before 2026.06.2 contains a stored cross-site scripting vulnerability in PromptWithFields.vue that renders unescaped field references from AI field prompts as HTML in a tooltip. Attackers with the Creator role or above can store markup in a prompt's field reference that executes when victims open the field configuration, stealing the localStorage session token to call authenticated APIs as the victim.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126280": {
+    "cvss": 7.4,
+    "description": "NocoDB before 2026.08.0 contains a race condition in refresh-token rotation that allows attackers to reuse tokens because UserRefreshToken.ts never checks the affected-row count. Attackers holding a captured refresh token can present it concurrently with the legitimate user to obtain a valid authenticated session, and no reuse event is recorded.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126281": {
+    "cvss": 6.5,
+    "description": "NocoDB before 2026.08.0 contains a missing authorization vulnerability in the copy-from branch of integration creation in integrations.service.ts that decrypts a source integration's connection credentials without checking its owner or private flag. Authenticated users with the Creator role can supply guessed or enumerated integration ids to copy other users' private database host, username, and password into an integration they own.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126282": {
+    "cvss": 8.0,
+    "description": "NocoDB from 2026.04.0 before 2026.08.0 contains an improper privilege management vulnerability in org-users.service.ts where updating a user's legacy organization role rewrites their default-workspace role. Revoked users can silently regain Creator-level read, write and schema modification access across all default-workspace bases using their existing session token.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126283": {
+    "cvss": 8.8,
+    "description": "NocoDB before 2026.08.0 contains an incorrect authorization vulnerability that lets base-scoped API tokens act as account-wide credentials because the token's base_id is never stored or checked. Attackers holding a leaked token can read, write and delete records on every base the token owner belongs to, including bases joined later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126284": {
+    "cvss": 3.1,
+    "description": "NocoDB from 2026.05.2 before 2026.07.0 contains a server-side request forgery vulnerability that allows Editor-role users to fetch internal URLs because data import reused the webhook internal-network exemption. When NC_ALLOW_LOCAL_HOOKS or NC_WEBHOOK_ALLOW_PRIVATE_NETWORK is set, attackers can request internal services via URLs ending in CSV or spreadsheet extensions and read the responses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126285": {
+    "cvss": 7.7,
+    "description": "NocoDB before 2026.08.0 contains an sql injection vulnerability that allows authenticated users with read access to run arbitrary read queries via the legacy where parameter on PostgreSQL. Attackers, including Viewer-role users, can inject single quotes into filter values concatenated by CustomKnex.ts to read other tables, schemas, view-filtered rows, and hidden columns.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126286": {
+    "cvss": 8.1,
+    "description": "NocoDB before 2026.08.0 contains a reflected cross-site scripting vulnerability in PageLeavingWarning.vue that allows unauthenticated attackers to execute script by embedding an ASCII control character in the ncRedirectUrl scheme. Attackers can send a crafted link that bypasses the scheme check and reaches the anchor href or window.location, stealing the session token from localStorage for account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126287": {
+    "cvss": 5.9,
+    "description": "NocoDB before 2026.06.2 contains a race condition vulnerability in oauth-token.service.ts that allows attackers to reuse a refresh token by presenting it concurrently during non-atomic rotation. Attackers holding a captured refresh token can race the legitimate client to obtain their own access and refresh tokens, retaining scoped access without triggering reuse detection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126288": {
+    "cvss": 5.3,
+    "description": "NocoDB before 2026.06.2 contains an information disclosure vulnerability that allows unauthenticated attackers to retrieve full OAuth client records by querying the public client lookup route in oauth.controller.ts. Attackers who know or guess a client identifier can obtain the registration access token to modify or delete registrations, plus the bcrypt client secret hash and owner's internal identifier.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126289": {
+    "cvss": 5.4,
+    "description": "NocoDB before 2026.06.1 contains a CSV formula injection vulnerability in export.service.ts that writes record values and column titles beginning with formula characters into CSV exports without neutralization. Low-privileged collaborators, or unauthenticated users submitting a public form, can plant formulas that execute when a user opens the export in a spreadsheet application, potentially exfiltrating cell contents or invoking external commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126290": {
+    "cvss": 6.5,
+    "description": "NocoDB before 2026.07.0 contains an information disclosure vulnerability in base-integrations.service.ts that allows authenticated base members to read private integration configurations by omitting a query flag. Attackers can request another user's private integration without the configuration flag, bypassing the ownership check to obtain stored connection credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126291": {
+    "cvss": 8.8,
+    "description": "NocoDB before 2026.06.2 contains an SQL injection vulnerability in base-user.cte.utils.ts, which concatenates base members' email addresses into the SQL text of queries resolving user, created-by or last-modified-by fields. Registered users can set an email with a quoted local part containing a single quote to execute arbitrary SQL, exposing user records, API tokens and data-source credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126292": {
+    "cvss": 4.3,
+    "description": "NocoDB before 2026.06.1 contains an information disclosure vulnerability in the profile update handler in users.service.ts, which returns the stored user record without passing it through the user-serialization filter, exposing the bcrypt password hash, salt, and session token counter. Attackers holding a stolen or hijacked session can update the profile to retrieve that account's password hash and salt for offline cracking.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126293": {
+    "cvss": 6.5,
+    "description": "NocoDB before 2026.06.2 contains an attachment size limit bypass that allows authenticated Editor users to store oversized files because data-attachment-v3.service.ts trusts the remote server's advertised content length. Attackers can point the v3 upload-by-URL endpoint at a server that understates or omits its length to exhaust disk space or storage quota.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126294": {
+    "cvss": 7.5,
+    "description": "Grav Login plugin before 3.11.0 contains an authentication bypass vulnerability that allows attackers with an account password to skip two-factor verification when the global twofa_enabled setting is off. Attackers can sign in through the /login form, remember-me cookie, or magic link to obtain a session the API plugin accepts, gaining full account permissions including super-admin control.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126295": {
+    "cvss": 6.8,
+    "description": "NLTK from 3.10.0 before 3.10.4 contains an arbitrary file read vulnerability in BllipParser that allows attackers to open files outside NLTK data roots by supplying unvalidated model paths. Attackers controlling parser_model, reranker_features, reranker_weights, or from_unified_model_dir() input can make the bllipparser C extension read sensitive files or block on FIFOs and devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126296": {
+    "cvss": 4.8,
+    "description": "NLTK before 3.10.4 contains a path traversal vulnerability in save_maxent_params() and load_maxent_params() that bypasses the pathsec filesystem restriction mechanism. Attackers who control the tab_dir argument can read or overwrite model parameter files outside permitted data roots, because the functions call Python's built-in open() directly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126297": {
+    "cvss": 7.5,
+    "description": "NLTK before 3.10.4 contains a quadratic-time denial of service vulnerability in ConllCorpusReader._get_srl_instances that allows remote attackers to exhaust CPU through nested span rescans. Attackers can supply a crafted CoNLL SRL corpus with many predicates and span columns, placing the head span last, to pin a core for minutes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126298": {
+    "cvss": 7.5,
+    "description": "NLTK before 3.10.4 contains a denial of service vulnerability in Tree.chomsky_normal_form that allows remote attackers to exhaust CPU through quadratic-time right-factor binarization using list.pop(0). Attackers can supply a wide flat treebank tree parsed by Tree.fromstring to force tens of seconds of single-threaded CPU consumption, blocking the processing thread.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126299": {
+    "cvss": 7.5,
+    "description": "NLTK before 3.10.4 contains a denial of service vulnerability in the CCG lexicon parser fromstring that allows remote attackers to exhaust CPU by supplying wide inputs. Attackers can submit lexicon text with long flat bracket bodies or operator chains, triggering quadratic string re-slicing in matchBrackets and augParseCategory that blocks worker threads.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126300": {
+    "cvss": 5.3,
+    "description": "NLTK from 3.2.5 before 3.10.4 contains an algorithmic complexity vulnerability in TreebankWordTokenizer.span_tokenize that allows remote attackers to cause quadratic CPU consumption through repeated list.pop(0) calls. Attackers can submit long runs of double-quote characters to services span-tokenizing untrusted text, exhausting a CPU core and degrading availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126301": {
+    "cvss": 5.3,
+    "description": "NLTK from 3.6 before 3.10.4 contains an algorithmic complexity vulnerability in LegalitySyllableTokenizer.tokenize that allows remote attackers to exhaust CPU by supplying long all-vowel tokens. Attackers can submit a token such as a long run of vowels, causing the unguarded onset reversal loop to perform quadratic work and deny service to syllabification components.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126303": {
+    "cvss": 7.5,
+    "description": "NLTK before 3.10.4 contains an uncontrolled resource consumption vulnerability in SteppingRecursiveDescentParser.parse() that lacks any max_time deadline or step limit. Attackers influencing the grammar can supply an ambiguous self-embedding grammar and short token input to force unbounded top-down search, pinning CPU cores and exhausting worker pools.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50236": {
+    "cvss": 7.4,
+    "description": "An authenticated SSRF flaw was found in the OpenShift Console Dev Console webhook helpers. User-supplied target URLs are fetched server-side without validation, with path neutralization enabling arbitrary endpoint targeting and full response reflection from the console pod's privileged network position.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
