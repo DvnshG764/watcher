@@ -63576,7 +63576,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64462": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: PCI: altera: Fix resource leaks on probe failure The chained IRQ handler is set during probe, but is only removed during the driver remove(). If pci_host_probe() fails, the handler and INTx IRQ domain remain set even though the devm-managed host bridge storage containing struct altera_pcie will be released, leaving the handler with a stale data pointer. Interrupts are also enabled before pci_host_probe() is called. If probe fails after that point, the controller interrupt source should be disabled before the chained handler and INTx domain are removed. So set the chained handler only after the INTx domain has been created. Disable controller interrupts during IRQ teardown, and tear the IRQ setup down if pci_host_probe() fails. [mani: commit log]",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63684,19 +63684,19 @@
     "product": "Unknown"
   },
   "CVE-2026-64482": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: gus: check snd_ctl_new1() return value snd_ctl_new1() can return NULL when memory allocation fails. snd_gf1_pcm_volume_control() does not check the return value before dereferencing kctl->id.index, which can lead to a NULL pointer dereference. Add a NULL check after snd_ctl_new1() and return -ENOMEM if it fails.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64483": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: firewire: isight: bound the sample count to the packet payload isight_packet() takes the frame count from the device iso packet and checks it only against the device claimed iso length. count = be32_to_cpu(payload->sample_count); if (likely(count <= (length - 16) / 4)) isight_samples(isight, payload->samples, count); length is the iso header data_length. It can be up to 0xffff. So the gate allows a count up to about 16379. isight_samples() then copies count frames out of payload->samples into the PCM DMA buffer. payload->samples holds only 2 * MAX_FRAMES_PER_PACKET values. The device multiplexes two samples per frame. A count past MAX_FRAMES_PER_PACKET reads past the payload. A count past the buffer size writes past runtime->dma_area. The smallest PCM buffer is larger than MAX_FRAMES_PER_PACKET. Bounding the count to MAX_FRAMES_PER_PACKET keeps both the read and the write in range. A malicious or faulty Apple iSight on the FireWire bus reaches this during a normal capture. Add the MAX_FRAMES_PER_PACKET bound to the gate.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64484": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: es1938: check snd_ctl_new1() return value snd_ctl_new1() can return NULL when memory allocation fails. snd_es1938_mixer() does not check the return value before dereferencing the pointer, which can lead to a NULL pointer dereference. Add a NULL check after snd_ctl_new1() and return -ENOMEM if it fails.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63708,7 +63708,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64486": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: cmipci: check snd_ctl_new1() return value snd_ctl_new1() can return NULL when memory allocation fails. snd_cmipci_spdif_controls() does not check the return value before dereferencing kctl->id.device, which can lead to a NULL pointer dereference. Add NULL checks after snd_ctl_new1() calls and return -ENOMEM if any fails.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63720,13 +63720,13 @@
     "product": "Unknown"
   },
   "CVE-2026-64488": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: aoa: check snd_ctl_new1() return value snd_ctl_new1() can return NULL when memory allocation fails. In layout.c, the function does not check the return value before dereferencing ctl->id.name or passing to aoa_snd_ctl_add(), which can lead to a NULL pointer dereference. Add NULL checks after snd_ctl_new1() calls and return early if any fails.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64489": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: ymfpci: check snd_ctl_new1() return value snd_ctl_new1() can return NULL when memory allocation fails. snd_ymfpci_create_spdif_controls() does not check the return value before dereferencing kctl->id.device, which can lead to a NULL pointer dereference. Add NULL checks after snd_ctl_new1() calls and return -ENOMEM if any fails.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -63738,13 +63738,13 @@
     "product": "Unknown"
   },
   "CVE-2026-64491": {
-    "cvss": null,
+    "cvss": 7.8,
     "description": "In the Linux kernel, the following vulnerability has been resolved: ALSA: usx2y: us144mkii: fix work UAF on disconnect tascam_disconnect() cancels capture_work and midi_in_work before usb_kill_anchored_urbs() kills the capture/MIDI-in URBs. Those URBs self-resubmit, and their completion handlers reschedule the work. A URB that completes in the small window between cancel_work_sync() and usb_kill_anchored_urbs() therefore re-arms the work after its only cancel. Nothing cancels it again before snd_card_free() frees the card-private tascam structure, so the work handler then runs on freed memory. Kill the anchored URBs before cancelling the work; once the work is cancelled no remaining URB can complete to re-arm it.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-64492": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: iio: temperature: tmp006: use devm_iio_trigger_register tmp006_probe() allocates the DRDY trigger with devm_iio_trigger_alloc() but registers it with plain iio_trigger_register(). The driver has no .remove() callback, so on module unload the trigger stays in the global trigger list while its memory is freed by devm, leaving a dangling entry. Switch to devm_iio_trigger_register() so the registration is undone in the same devm scope as the allocation.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -79332,7 +79332,7 @@
     "product": "Unknown"
   },
   "CVE-2026-104044": {
-    "cvss": 6.2,
+    "cvss": 5.5,
     "description": "A flaw was found in sssd. A local attacker can trigger a Denial of Service (DoS) by sending a specially crafted Pluggable Authentication Module (PAM) request when passkey authentication is enabled. Due to a missing state validation check in passkey Kerberos handling, the PAM responder dereferences an uninitialized pointer and crashes. This failure disrupts authentication services on the host.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -137846,6 +137846,66 @@
   "CVE-2026-50236": {
     "cvss": 7.4,
     "description": "An authenticated SSRF flaw was found in the OpenShift Console Dev Console webhook helpers. User-supplied target URLs are fetched server-side without validation, with path neutralization enabling arbitrary endpoint targeting and full response reflection from the console pod's privileged network position.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17158": {
+    "cvss": 8.8,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to gain elevated privileges due to improper authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17167": {
+    "cvss": 4.3,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to falsify audit log information due to reliance on untrusted inputs. Information supplied by the client is relied on when recording the source of a request, so audit records could contain inaccurate details.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17172": {
+    "cvss": 8.8,
+    "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to bypass security restrictions due to improper authentication. Information supplied by the client is not sufficiently verified, which could allow a caller to impersonate another party.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17187": {
+    "cvss": 6.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to improper validation of user-supplied URLs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-13451": {
+    "cvss": 7.7,
+    "description": "A flaw was found in KServe. A namespace-scoped user with create/update permissions on InferenceService custom resources can exploit this vulnerability by providing a malicious `storageUri`. This Server-Side Request Forgery (SSRF) vulnerability allows the `storage-initializer` init container to issue arbitrary outbound HTTP/HTTPS requests from inside the cluster. This can lead to information disclosure, including credential theft for the node's Identity and Access Management (IAM) role or access to internal cluster services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105729": {
+    "cvss": 7.8,
+    "description": "Untrusted pointer dereference in SysInternals allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105731": {
+    "cvss": 5.5,
+    "description": "Use of uninitialized resource in Microsoft Graphics Component allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105732": {
+    "cvss": 7.3,
+    "description": "Stack-based buffer overflow in SysInternals allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108400": {
+    "cvss": 8.8,
+    "description": "Integer overflow or wraparound in Microsoft Windows Codecs Library allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106434": {
+    "cvss": 4.3,
+    "description": "The explicit decryption component of MongoDB libmongocrypt can return an unrecognized encrypted payload unchanged instead of returning a decryption error. An actor who can modify stored encrypted fields, such as a database writer, server, or network intermediary, can cause an affected application to process the supplied bytes as decrypted plaintext.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
