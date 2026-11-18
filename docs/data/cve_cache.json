@@ -17256,7 +17256,7 @@
     "product": "Premium Packages – Sell Digital Products Securely"
   },
   "CVE-2026-8857": {
-    "cvss": 0.0,
+    "cvss": 8.8,
     "description": "A vulnerability in Wikimedia Foundation timeline. This vulnerability is associated with program files scripts/EasyTimeline.Pl, includes/Timeline.Php. This issue affects timeline: from * before 1.46.0, 1.45.4, 1.44.6, 1.43.9.",
     "vendor": "PHP",
     "product": "timeline"
@@ -133352,6 +133352,102 @@
   "CVE-2025-34114": {
     "cvss": 8.4,
     "description": "A client-side security misconfiguration vulnerability exists in OpenBlow whistleblowing platform across multiple versions and default deployments, due to the absence of critical HTTP response headers including Content-Security-Policy, Referrer-Policy, Permissions-Policy, Cross-Origin-Embedder-Policy, and Cross-Origin-Resource-Policy. This omission weakens browser-level defenses and exposes users to cross-site scripting (XSS), clickjacking, and referer leakage. Although some instances attempt to enforce CSP via HTML tags, this method is ineffective, as modern browsers rely on header-based enforcement to reliably block inline scripts and untrusted resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105562": {
+    "cvss": 4.7,
+    "description": "Time-of-check time-of-use (toctou) race condition in Windows Container Manager Service allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80143": {
+    "cvss": 9.9,
+    "description": "Lantronix SLC8000/SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a command injection vulnerability that allows authenticated attackers to execute arbitrary shell commands as root by exploiting an undocumented mfc eeprom read command that passes unsanitized user input to a system() call. Attackers can authenticate as any user to the terminal or CLI interface and inject malicious commands through the unsanitized parameter to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-attached devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80144": {
+    "cvss": 9.9,
+    "description": "Lantronix SLC8000/SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a command injection vulnerability that allows authenticated attackers to execute arbitrary shell commands as root by exploiting an undocumented mfc eeprom write command that passes unsanitized user input to a system() call. Attackers can authenticate as any user to the terminal or CLI interface and inject malicious commands through the unsanitized parameter to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-attached devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80145": {
+    "cvss": 9.1,
+    "description": "Lantronix SLC8000/SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a command injection vulnerability that allows authenticated attackers with the services permission to execute arbitrary shell commands as root by exploiting the set cifs password command that passes unsanitized user input to a system() call. Attackers with the services permission can authenticate to the terminal or CLI interface and inject malicious commands through the unsanitized parameter to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-attached devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80146": {
+    "cvss": 9.9,
+    "description": "Lantronix SLC8000/SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a stack-based buffer overflow vulnerability that allows authenticated attackers to potentially execute arbitrary code by exploiting an undocumented mfc eeprom read command that copies unbounded user input into a bounded stack buffer before passing it to a system() call. Attackers can authenticate as any user to the terminal or CLI interface and supply an oversized input to trigger the overflow, potentially achieving complete loss of confidentiality, integrity, and availability on the affected device and impacting downstream serial-attached devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80147": {
+    "cvss": 9.9,
+    "description": "Lantronix SLC8000/SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a stack-based buffer overflow vulnerability that allows authenticated attackers to potentially execute arbitrary code by exploiting an undocumented mfc eeprom write command that copies unbounded user input into a bounded stack buffer before passing it to a system() call. Attackers can authenticate as any user to the terminal or CLI interface and supply an oversized input to trigger the overflow, potentially achieving complete loss of confidentiality, integrity, and availability on the affected device and impacting downstream serial-attached devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80148": {
+    "cvss": 8.6,
+    "description": "Lantronix SLC8000 before firmware v9.7.0.3, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882 contain a server-side request forgery vulnerability in the WebSSH/WebTelnet listener that allows unauthenticated attackers to cause the affected device to establish SSH connections to attacker-controlled endpoints. The custom shellinaboxd builds its SSH connection target using a snprintf call with user-supplied input; by supplying an overlong username string an attacker causes the device IP suffix to be truncated, redirecting the resulting connection to an arbitrary host. Attackers can use this capability to enumerate or communicate with internal network endpoints that would otherwise be inaccessible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80149": {
+    "cvss": 8.6,
+    "description": "Lantronix SLC8000 before firmware v9.7.0.3, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882 contain a server-side request forgery vulnerability in the WebSSH/WebTelnet listener that allows unauthenticated attackers to cause the affected device to establish SSH connections to attacker-controlled endpoints. The custom shellinaboxd uses the rooturl parameter from the web connection to determine its own IP address; by modifying this parameter an attacker redirects the SSH terminal connection to an arbitrary host or IP. Attackers can use this capability to enumerate or communicate with internal network endpoints that would otherwise be inaccessible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80150": {
+    "cvss": 7.5,
+    "description": "Lantronix SLC8000 before firmware v9.7.0.3, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882 contain a server-side request forgery vulnerability in the WebSSH/WebTelnet listener that allows unauthenticated attackers to cause the affected device to establish Telnet connections to attacker-controlled endpoints. The custom shellinaboxd uses the rooturl parameter from the web connection to determine its own IP address; by modifying this parameter an attacker redirects the Telnet terminal connection to an arbitrary host or IP. Attackers can use this capability to enumerate or communicate with internal network endpoints that would otherwise be inaccessible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80151": {
+    "cvss": 9.1,
+    "description": "Lantronix SLC8000 before firmware v9.7.0.3, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a command injection vulnerability that allows authenticated attackers with the services permission to execute arbitrary shell commands as root by exploiting the set nfs download command that passes unsanitized user input to a system() call. Attackers with the services permission can authenticate to the terminal or CLI interface and inject malicious commands through the unsanitized parameter to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-attached devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80152": {
+    "cvss": 9.1,
+    "description": "Lantronix SLC8000 before firmware v9.7.0.3, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a command injection vulnerability that allows authenticated attackers with the services permission to execute arbitrary shell commands as root by exploiting the set script schedule command that passes unsanitized user input to a system() call. Attackers with the services permission can authenticate to the terminal or CLI interface and inject malicious commands through the unsanitized parameter to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-attached devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80154": {
+    "cvss": 9.6,
+    "description": "All firmware versions of Lantronix SLC8000, SLC9000, EMG8500, EMG7500, SLB882, SLCx-03, and SLCx-02 contain an authentication bypass vulnerability in the web management portal that allows unauthenticated attackers to derive valid session tokens of logged-in users and bypass source IP and User-Agent validation. Session tokens are generated deterministically from the device model and the current time at one-second resolution, resulting in a small enumerable set of possible active tokens. Attackers can construct a crafted URI that exploits file extension handling in the web server path routing to bypass per-session source-address validation, then use a derived token from a different source address to gain elevated privileges on the affected device and potentially impact downstream serial-attached devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80155": {
+    "cvss": 10.0,
+    "description": "Lantronix SLC8000 before firmware v9.7.0.5, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain an authentication bypass vulnerability in the web management portal upload endpoint that allows unauthenticated attackers to read sensitive configuration files and upload files to arbitrary filesystem locations, leading to remote code execution. The web configuration server constructs the session cookie file path using snprintf with a fixed-size buffer; by supplying a cookie value of a specific length an attacker causes the path to truncate at the required delimiter and leverages path traversal to redirect authentication validation to an arbitrary on-disk file such as the local user database, bypassing all session checks. Attackers can use this vulnerability to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-connected devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80156": {
+    "cvss": 9.1,
+    "description": "Lantronix SLC8000 before firmware v9.7.0.5, SLC9000 before firmware v9.7.0.2, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882/SLCx-03/SLCx-02 contain a path traversal vulnerability in the web management portal upload endpoint that allows authenticated attackers to write arbitrary data to any location on the device's filesystem, leading to remote code execution. The upload filename validation strips backslash characters but does not subsequently check for forward slashes when a backslash is detected; by supplying a filename containing both characters an attacker writes outside the intended upload directory to any writable path. Attackers can use this vulnerability to achieve complete loss of confidentiality, integrity, and availability on the affected device and potentially impact downstream serial-connected devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-24425": {
+    "cvss": 9.9,
+    "description": "Twig versions 2.16.x and 3.9.0 through 3.25.x contain a sandbox bypass vulnerability when using a SourcePolicyInterface that allows attackers with template rendering capabilities to pass arbitrary PHP callables to sort, filter, map, and reduce filters. Attackers can exploit the runtime check that fails to use the current template source to bypass sandbox restrictions and execute arbitrary code when the sandbox is enabled through a source policy rather than globally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-27182": {
+    "cvss": 8.4,
+    "description": "Saturn Remote Mouse Server contains a command injection vulnerability that allows unauthenticated attackers to execute arbitrary commands by sending specially crafted UDP JSON frames to port 27000. Attackers on the local network can send malformed packets with unsanitized command data that the service forwards directly to OS execution functions, enabling remote code execution under the service account.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
