@@ -134530,5 +134530,53 @@
     "description": "The Bookit — Booking & Appointment Calendar WordPress plugin before 2.6.0.1 does not properly restrict the data returned by an availability-check request, allowing unauthenticated users to retrieve other customers' appointment details, including free-text booking comments and contact information.",
     "vendor": "Unknown",
     "product": "Bookit — Booking & Appointment Calendar"
+  },
+  "CVE-2026-131842": {
+    "cvss": 4.7,
+    "description": "Poppler pdfdetach 24.03.0 through 26.11.0 contains a path traversal vulnerability in utils/pdfdetach.cc that allows attackers to write files outside the output directory by bypassing a string-prefix containment check. Attackers can craft PDFs with embedded file names containing '..' sequences or absolute paths, so -saveall or -savefile extraction creates or overwrites files with the invoking user's privileges.",
+    "vendor": "freedesktop",
+    "product": "poppler"
+  },
+  "CVE-2026-121994": {
+    "cvss": 8.8,
+    "description": "A stack buffer overflow in the GDB client's remote protocol handler allows an attacker-controlled debug target to execute arbitrary code in the GDB process. The vulnerability exists in fetch_register_using_p, which decodes a stub's register reply into an alloca-sized buffer without bounding writes by the register width.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 10"
+  },
+  "CVE-2026-131852": {
+    "cvss": 9.8,
+    "description": "OwnTracks Recorder before 1.0.5 contains a format string vulnerability in json_response() and related output functions that allows unauthenticated attackers to execute code by storing a malicious tid value. Attackers can publish locations via POST /pub or MQTT with printf specifiers in tid, then read them back through GET /api/0/last to leak addresses and write memory.",
+    "vendor": "OwnTracks",
+    "product": "Recorder"
+  },
+  "CVE-2026-131850": {
+    "cvss": 7.2,
+    "description": "ILIAS 11.0 before 11.6 contains an sql injection vulnerability in RegistrationCodeRepository::getCodesData() that concatenates unvalidated sort fields into an ORDER BY clause. Authenticated users with read access to the Authentication and Registration administration node can supply SQL expressions as the sort parameter to extract database contents via boolean-based inference.",
+    "vendor": "ILIAS-eLearning e.V.",
+    "product": "ILIAS"
+  },
+  "CVE-2026-32609": {
+    "cvss": 7.5,
+    "description": "Glances is an open-source system cross-platform monitoring tool. The GHSA-gh4x fix (commit 5d3de60) addressed unauthenticated configuration secrets exposure on the `/api/v4/config` endpoints by introducing `as_dict_secure()` redaction. However, the `/api/v4/args` and `/api/v4/args/{item}` endpoints were not addressed by this fix. These endpoints return the complete command-line arguments namespace via `vars(self.args)`, which includes the password hash (salt + pbkdf2_hmac), SNMP community strings, SNMP authentication keys, and the configuration file path. When Glances runs without `--password` (the default), these endpoints are accessible without any authentication. Version 4.5.2 provides a more complete fix.",
+    "vendor": "nicolargo",
+    "product": "glances"
+  },
+  "CVE-2026-59148": {
+    "cvss": 8.8,
+    "description": "Mockoon provides way to design and run mock APIs. Prior to 9.7.0, Mockoon's admin API in commons-server/src/libs/server/admin-api.ts is mounted on the same Express listener as user-defined mock routes, enabled by default in shipped runtimes, serves Access-Control-Allow-Origin: * with write methods allowed, and has no authentication. Any unauthenticated caller who can reach the mock server port can read MOCKOON_* environment variables, write arbitrary process environment variables through /mockoon-admin/env-vars, rewrite mock route bodies, statuses, and headers through PUT /mockoon-admin/environment, read transaction logs and SSE streams, and purge state. This issue is fixed in version 9.7.0.",
+    "vendor": "mockoon",
+    "product": "mockoon"
+  },
+  "CVE-2024-34193": {
+    "cvss": 7.5,
+    "description": "smanga 3.2.7 does not filter the file parameter at the PHP/get file flow.php interface, resulting in a path traversal vulnerability that can cause arbitrary file reading.",
+    "vendor": "pocketmanga",
+    "product": "smanga"
+  },
+  "CVE-2026-49352": {
+    "cvss": 9.8,
+    "description": "9Router is an AI router & token saver. From 0.2.21 until 0.4.44, 9Router used the hardcoded fallback JWT secret 9router-default-secret-change-me in src/app/api/auth/login/route.js, src/middleware.js, and later src/lib/auth/dashboardSession.js, allowing attackers to forge an auth_token cookie when JWT_SECRET was unset. This issue is fixed in version 0.4.44",
+    "vendor": "decolua",
+    "product": "9router"
   }
 }
