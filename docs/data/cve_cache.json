@@ -113118,16 +113118,16 @@
     "product": "Linux"
   },
   "CVE-2026-126969": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 9.1,
+    "description": "SmarterTools SmarterMail Insufficient Entropy Authentication Bypass Vulnerability. This vulnerability allows remote attackers to bypass authentication on affected installations of SmarterTools SmarterMail. Authentication is not required to exploit this vulnerability. The specific flaw exists within the generation of Application Passwords. The issue results from using insufficient entropy in the generation of credentials. An attacker can leverage this vulnerability to bypass authentication on the system. Was ZDI-CAN-33568.",
+    "vendor": "SmarterTools",
+    "product": "SmarterMail"
   },
   "CVE-2026-126968": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 6.5,
+    "description": "SmarterTools SmarterMail Missing Authorization Information Disclosure Vulnerability. This vulnerability allows remote attackers to disclose sensitive information on affected installations of SmarterTools SmarterMail. Authentication is required to exploit this vulnerability. The specific flaw exists within the handling of email attachments. The issue results from the lack of authorization prior to allowing access to functionality. An attacker can leverage this vulnerability to disclose sensitive information in the context of a target user. Was ZDI-CAN-33567.",
+    "vendor": "SmarterTools",
+    "product": "SmarterMail"
   },
   "CVE-2026-126966": {
     "cvss": null,
@@ -131938,5 +131938,1421 @@
     "description": "SecGate3600, a network firewall product developed by NSFOCUS, contains a sensitive information disclosure vulnerability in the /cgi-bin/authUser/authManageSet.cgi endpoint. The affected component fails to enforce authentication checks on POST requests to retrieve user data. An unauthenticated remote attacker can exploit this flaw to obtain sensitive information, including user identifiers and configuration details, by sending crafted requests to the vulnerable endpoint. An affected version range is undefined. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-06-18 UTC.",
     "vendor": "NSFOCUS",
     "product": "SecGate3600 Firewall"
+  },
+  "CVE-2026-125785": {
+    "cvss": 6.5,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Crocoblock JetEngine jet-engine allows Stored XSS.This issue affects JetEngine: from n/a through 3.9.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126673": {
+    "cvss": 9.8,
+    "description": "Data::Dump::Streamer versions before 3.00 for Perl allow code injection via unescaped Regexp patterns in _dump_qr. A Regexp's pattern is written into a qr literal without escaping \"$\" or \"@\", so \"@{[ ... ]}\" and \"${\\ ... }\" in the pattern run as code when the dump is evaluated. An already escaped delimiter gets a second backslash, which leaves the delimiter bare and ends the qr literal early. An attacker who supplies a pattern that an application compiles, dumps and later restores with eval or do can run arbitrary Perl code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126785": {
+    "cvss": 8.8,
+    "description": "A vulnerability has been found in rmalright TR-VISION HOME 2.0.5. Impacted is the function sub_11504 in the library WFanManager.sys of the component IOCTL Handler. Such manipulation leads to incorrect default permissions. The attack must be carried out locally. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126217": {
+    "cvss": 8.7,
+    "description": "A incorrect authorization vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated administrator to escalate their privileges, bypass authorization controls or impersonate internal services via specially crafted requests to the GUI.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126218": {
+    "cvss": 8.2,
+    "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11 may allow a remote authenticated attacker with admin permission to elevate their privileges to root via crafted HTTP requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126219": {
+    "cvss": 7.2,
+    "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager Cloud 8.0.0, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11 may allow an authenticated administrator to read or write arbitrary files or execute unauthorized code or commands via specially crafted requests to the GUI.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126220": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements in output used by a downstream component ('injection') vulnerability in Fortinet FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11 may allow an authenticated administrator to read or write arbitrary files or execute unauthorized code or commands via specially crafted requests to the GUI.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126221": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements in output used by a downstream component ('injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager Cloud 8.0.0, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11 may allow an authenticated administrator to read or write arbitrary files or execute unauthorized code or commands via specially crafted requests to the GUI.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126222": {
+    "cvss": 7.2,
+    "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.3 through 7.6.7, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.3 through 7.6.7, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.3 through 7.6.7, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.3 through 7.6.7 may allow an authenticated attacker with admin privileges to execute unauthorized code or commands via crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126223": {
+    "cvss": 7.2,
+    "description": "A stack-based buffer overflow vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11 may allow an authenticated administrator to execute unauthorized code or commands or cause a denial of service via specially crafted JSON-RPC requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126224": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated privileged admin user to execute unauthorized code or commands.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126225": {
+    "cvss": 7.1,
+    "description": "A missing authorization vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.7, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.7, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.7, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.7 may allow an authenticated attacker to elevate their privileges via crafted JSON-RPC request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126226": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated privileged attacker to execute unauthorized code or commands via crafted report schedule name.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126227": {
+    "cvss": 7.2,
+    "description": "A unintended proxy or intermediary ('confused deputy') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated attacker to execute commands outside of the intended scope via specially crafted HTTP request",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126228": {
+    "cvss": 7.2,
+    "description": "A out-of-bounds write vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.4 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.4 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.4 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.4 through 7.2.12 may allow an authenticated remote attacker with admin privileges to execute unauthorized code or commands via a specially crafted request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126229": {
+    "cvss": 9.1,
+    "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer 7.0 all versions, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiAnalyzer Cloud 7.0 all versions, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager 7.0 all versions, FortiManager Cloud 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12, FortiManager Cloud 7.0 all versions may allow an authenticated administrator to access to other VDOMs via specially crafted HTTP requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126230": {
+    "cvss": 7.2,
+    "description": "A use of externally-controlled format string vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated administrator to execute unauthorized code or commands or cause a denial of service via specially crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126231": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2 all versions, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2 all versions, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2 all versions, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2 all versions may allow an authenticated attacker to execute unauthorized commands via a crafted HTTP request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126232": {
+    "cvss": 7.5,
+    "description": "A improper certificate validation vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager Cloud 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11 may allow a MITM attacker to impersonate the radius server via a rogue RADIUS server.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126233": {
+    "cvss": 7.2,
+    "description": "A unrestricted upload of file with dangerous type vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated administrator to upload arbitrary files via specially crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126234": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements used in a template engine vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer Cloud 8.0.0, FortiManager 8.0.0, FortiManager Cloud 8.0.0 may allow an authenticated attacker with restricted privileges to execute unauthorized code or commands via a specially crafted request.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126235": {
+    "cvss": 7.2,
+    "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.2 through 7.6.7, FortiAnalyzer 7.4.7 through 7.4.11, FortiAnalyzer 7.2.10 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.2 through 7.6.7, FortiManager 7.4.7 through 7.4.11, FortiManager 7.2.10 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated administrator to write arbitrary files via a specially crafted archive.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126236": {
+    "cvss": 7.2,
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow an authenticated attacker to execute unauthorized code or commands via specially crafted HTTP requests",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126240": {
+    "cvss": 8.2,
+    "description": "A improper neutralization of special elements used in an ldap query ('ldap injection') vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated attacker to bypass authentication. Successful exploitation requires either a malicious/compromised upstream IdP, or an IdP configuration that allows the user to control the NameID (or the SAML attribute used as the username).",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126242": {
+    "cvss": 7.4,
+    "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to bypass authentication and gain unauthorized access. Full impersonation however requires the attacker to obtain pre-required id and data via other means.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126243": {
+    "cvss": 7.2,
+    "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to bypass authentication and gain unauthorized access. Full impersonation however requires the attacker to obtain pre-required id and data via other means.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126255": {
+    "cvss": 7.4,
+    "description": "A path traversal: '../filedir' vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13, FortiPAM 1.6 all versions, FortiPAM 1.5 all versions, FortiPAM 1.4 all versions, FortiPAM 1.3 all versions, FortiPAM 1.2 all versions, FortiPAM 1.1 all versions, FortiPAM 1.0 all versions may allow an unauthenticated attacker to bypass authentication via specially crafted credentials.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126256": {
+    "cvss": 7.4,
+    "description": "A out-of-bounds read vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4 all versions, FortiOS 7.2 all versions, FortiOS 7.0 all versions may allow an unauthenticated attacker to execute arbitrary code or command via crafted packets.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126257": {
+    "cvss": 9.0,
+    "description": "A use of hard-coded password vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to bypass credential validation in certain circumstances outside of the attacker's control and gain unauthorized access.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126259": {
+    "cvss": 9.8,
+    "description": "A missing authentication for critical function vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13, FortiOS 7.0 all versions may allow an unauthenticated attacker with HA FGSP + standalone-config-sync, or autoscale to execute command as super admin via crafted HA packets.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126262": {
+    "cvss": 9.8,
+    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12 may allow an unauthenticated attacker who has access to the oftp port to execute code or command on the system via crafted OFTP packets.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126263": {
+    "cvss": 9.8,
+    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6 may allow an authenticated attacker to execute unauthorized code or commands via specifically crafted requests.",
+    "vendor": "Fortinet",
+    "product": "Unknown"
+  },
+  "CVE-2026-126326": {
+    "cvss": 6.5,
+    "description": "Improper access control in the administrative role assignment endpoint in Devolutions Server 2026.3.13.0 and earlier allows an authenticated user with only vault assignment management rights to escalate privileges and read vault entry passwords via a crafted role assignment request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126327": {
+    "cvss": 6.5,
+    "description": "Improper access control in the connection history in Devolutions Server 2026.3.13.0 allows an authenticated user without the permission to view passwords to obtain historical entry passwords via the connection history API.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126328": {
+    "cvss": 2.7,
+    "description": "Insertion of sensitive information into sent data in the user endpoints in Devolutions Server 2026.3.13.0 and earlier allows an authenticated user with delegated user-viewing permissions to obtain users' MFA shared secrets via the user API responses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126331": {
+    "cvss": 2.7,
+    "description": "Insertion of sensitive information into sent data in the user list endpoint in Devolutions Server 2026.3.13.0 and earlier allows an authenticated user with delegated user-viewing permissions to obtain users' API key secret hashes via the user list API response.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126332": {
+    "cvss": 6.5,
+    "description": "Improper access control in the autofill vault search in Devolutions Server 2026.3.13.0 and earlier allows an authenticated user with only view permission on a shared entry to obtain its password in clear text via a linked credential entry created in their private vault.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65949": {
+    "cvss": 7.2,
+    "description": "Improper neutralization of special elements used in an OS command in Lenovo XClarity Integrator for Microsoft Windows Admin Center 5.1.1 and 5.2.0 allows an authenticated remote attacker to execute arbitrary PowerShell commands by submitting a crafted hostname.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65950": {
+    "cvss": 5.8,
+    "description": "A path traversal vulnerability in the ZIP extraction logic of Lenovo XClarity Essentials OneCLI 5.5.0 for Linux could allow an attacker to write arbitrary files with the privileges of the OneCLI process by convincing a user to process a specially crafted ZIP-based update package.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65951": {
+    "cvss": 5.8,
+    "description": "A path traversal vulnerability in the TAR.GZ extraction logic of Lenovo XClarity Essentials OneCLI 5.5.0 for Linux could allow an attacker to write arbitrary files with the privileges of the OneCLI process by convincing a user to process a specially crafted TAR.GZ update package.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65952": {
+    "cvss": 8.5,
+    "description": "Improper neutralization of special elements used in an OS command in the remote SSH operation functionality of Lenovo XClarity Essentials OneCLI 5.5.0 for Linux could allow an attacker to execute arbitrary OS commands with the privileges of the configured SSH account on a managed server by supplying a specially crafted remote path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65971": {
+    "cvss": 7.6,
+    "description": "Livewire PowerGrid creates data tables based on Laravel Livewire library. From version 6.0.0 to before version 6.10.4, the public Livewire property sortDirection is interpolated verbatim into a raw SQL ORDER BY clause and is not restricted to asc/desc, allowing arbitrary SQL injection through POST /livewire/update. This issue has been patched in version 6.10.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67540": {
+    "cvss": 6.5,
+    "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.70, get_workflow_template / get_node_template fetches a template by ID with no visibility / author / shared_with predicate, so any authenticated user can read (and use) any other tenant's private (visibility=specific_users) template — including its full node/edge graph and the email addresses it was shared with. The list endpoint enforces visibility correctly; the single-item get/use paths do not. This issue has been patched in version 0.0.70.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67541": {
+    "cvss": 8.1,
+    "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.70, team-member management (add / remove / update) is gated only on team membership, not on the team creator/admin role — and TeamMember has no role column. Any non-creator member can seat an attacker account into the team; because credential team-shares are scoped only by TeamMember.user_id, the newly-added attacker can then decrypt every credential shared into that team (provider API keys, OAuth tokens. This issue has been patched in version 0.0.70.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67543": {
+    "cvss": 8.8,
+    "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.70, heym hardens one untrusted-code path but not its sibling. The Python tool executor (python_tool_executor.py) treats user code as untrusted and mandates a Docker sandbox (no network, read-only fs, non-root, no docker socket), failing closed. The skill executor (skill_python_executor.py) runs skill Python via a local backend subprocess with no Docker isolation — only a 512 MB RLIMIT and a 7-key env denylist — so a skill executes inside the backend execution context, with filesystem access, network egress, and non-denylisted environment variables that should not be exposed to untrusted/shared skills. In the shipped Docker config (backend runs as root + /var/run/docker.sock mounted), this escalates to host root. This issue has been patched in version 0.0.70.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67544": {
+    "cvss": 8.8,
+    "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.71, Heym's workflow engine accepts an arbitrary Python code string in the playwrightCode field of a Playwright node. This string is written to a temporary .py file and executed directly by the backend process via subprocess.Popen([sys.executable, script_path]) with no sandboxing, AST validation, or role gate. Any authenticated user — including a freshly registered account — can achieve full remote code execution (RCE) on the backend host, running as the service process user (observed as root in the default Docker deployment). This issue has been patched in version 0.0.71.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67545": {
+    "cvss": 7.4,
+    "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.73, the HTTP workflow node in Heym makes outbound HTTP requests to user-supplied URLs without validation of the target host or IP address. If a workflow author has already configured an HTTP node that targets internal addresses such as cloud metadata endpoints or private network hosts, and exposed the workflow with anonymous execution, an unauthenticated attacker can trigger the preconfigured SSRF sink. The same project has comprehensive SSRF protection in its MCP integration, which is absent from the HTTP node. This issue has been patched in version 0.0.73.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67547": {
+    "cvss": 8.8,
+    "description": "taOS is a self-hosted AI agent OS. Prior to version 1.0.0-beta.23, the POST /api/skill-exec/{skill_id}/call endpoint in taOS executes built-in skills — including the code_exec skill which runs arbitrary Python via subprocess.run([\"python3\", \"-c\", code]) — without performing any admin role check, skill ownership check, or agent assignment verification. Any authenticated non-admin user can supply attacker-controlled Python code in the request body and have it executed as the taOS backend process user on the host, achieving full remote code execution with no privilege escalation required beyond a valid (non-admin) session. This issue has been patched in version 1.0.0-beta.23.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67548": {
+    "cvss": 8.3,
+    "description": "taOS is a self-hosted AI agent OS. Prior to version 1.0.0-beta.25, tinyagentos (taOS) registers all system settings routes under a single APIRouter() instance created with no admin authorization dependency. Any authenticated user—including non-admin invited users whose is_admin flag is explicitly False—can read the full system configuration, overwrite it, modify platform settings, trigger a git pull + dependency reinstall + service restart, and switch the tracked update branch. Successful exploitation of the write endpoints causes immediate configuration corruption or a denial of service for all users on the instance from a low-privileged account. This issue has been patched in version 1.0.0-beta.25.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68511": {
+    "cvss": 6.3,
+    "description": "Paaster is a pastebin application. Prior to version 3.3.0, Paaster's \"view once\" (burn-after-reading) paste mode can be bypassed with concurrent requests. The check that's supposed to enforce single-use is a plain read followed by a separate write, with no atomicity, so multiple simultaneous requests can all see the paste as \"not yet read\" and all successfully retrieve it. This issue has been patched in version 3.3.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68512": {
+    "cvss": 6.3,
+    "description": "Paaster is a pastebin application. Prior to version 3.3.0, Paaster's account login has no rate limiting, lockout, or CAPTCHA of any kind, and a companion endpoint openly discloses whether a username exists along with that account's password-hashing salts. Together these let an attacker enumerate real accounts and then brute-force their passwords with unlimited, unthrottled attempts. This issue has been patched in version 3.3.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68538": {
+    "cvss": 7.5,
+    "description": "fulgur converts untrusted HTML/CSS into PDF, commonly on a server that processes input supplied by many tenants. From version 0.15.0 to before version 0.27.0, resolving the CSS counters(name, sep) function in generated content was bounded neither in the size of a single expansion nor in the aggregate work across an element tree. An attacker able to submit HTML/CSS to a fulgur-based conversion service can trigger CPU and memory exhaustion with a trivially small payload, denying service to the host and any co-tenants. This issue has been patched in version 0.27.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68540": {
+    "cvss": 7.5,
+    "description": "fulgur converts untrusted HTML/CSS into PDF, commonly on a server that processes input supplied by many tenants. From version 0.6.0 to before version 0.33.0, quadratic style-list reprocessing during containing-block resolution for absolutely-positioned pseudo-elements cause denial of service. This issue has been patched in version 0.33.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81936": {
+    "cvss": 6.8,
+    "description": "An internal security review identified a development regression from ThinkSystem v4 XClarity Controller 3 (XCC3) versions (2.51) IHX432Y to (2.56) IHX436K which re-introduces the default OpenBMC root password upon performing an XCC Reset to Default operation. An attacker can gain access to enabled administrative interfaces of XCC using the default OpenBMC credential re-introduced after Reset to Default. Additionally, this provides access to the underlying XCC Operating System which is not normally accessible. Only these versions are affected and are no longer available for download. Process enhancements have also been made to prevent and identify potential future regression.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126757": {
+    "cvss": 4.3,
+    "description": "A security vulnerability has been detected in Moonshot AI Kimi Code up to 2.5.2. This affects the function isOriginAllowed of the file apps/kimi-code/dist-web/assets/index-HU0LCM-X.js of the component Web UI. Such manipulation of the argument kimi_origin leads to open redirect. The attack can be executed remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126758": {
+    "cvss": 4.4,
+    "description": "A vulnerability was detected in Moonshot AI Kimi Code up to 2.0.2. This vulnerability affects unknown code of the file .kimi-code/local.toml of the component WorkspaceDirsService. Performing a manipulation of the argument additional_dir results in reliance on untrusted inputs in a security decision. The attack requires a local approach. The exploit is now public and may be used. Upgrading to version 2.1.0 is able to resolve this issue. Upgrading the affected component is recommended.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126840": {
+    "cvss": 8.8,
+    "description": "Out of bounds write in Network in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126841": {
+    "cvss": 3.1,
+    "description": "Out of bounds read in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126842": {
+    "cvss": 9.6,
+    "description": "Use after free in ANGLE in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126843": {
+    "cvss": 8.8,
+    "description": "Type confusion in Turbolev in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126844": {
+    "cvss": 3.1,
+    "description": "Uninitialized resource in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126845": {
+    "cvss": 3.1,
+    "description": "Uninitialized resource in GPU in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to potentially read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126846": {
+    "cvss": 9.6,
+    "description": "Use after free in Skia in Google Chrome on on Android prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126847": {
+    "cvss": 8.8,
+    "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126848": {
+    "cvss": 3.1,
+    "description": "Uninitialized resource in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126849": {
+    "cvss": 8.8,
+    "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126850": {
+    "cvss": 5.3,
+    "description": "Incorrect authorization in SiteIsolation in Google Chrome on on Android prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to obtain sensitive information via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126851": {
+    "cvss": 8.8,
+    "description": "Use after free in Accessibility in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126852": {
+    "cvss": 8.8,
+    "description": "Use after free in MediaStream in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126853": {
+    "cvss": 3.1,
+    "description": "Uninitialized resource in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126854": {
+    "cvss": 4.3,
+    "description": "Incorrect authorization in Layout in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to obtain cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126855": {
+    "cvss": 6.8,
+    "description": "Missing authorization in ImageCapture in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126856": {
+    "cvss": 4.3,
+    "description": "Incomplete cleanup in Cache in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to obtain cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126857": {
+    "cvss": 4.3,
+    "description": "Out of bounds read in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to obtain cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126858": {
+    "cvss": 4.7,
+    "description": "Uninitialized resource in ANGLE in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126859": {
+    "cvss": 9.6,
+    "description": "Link following in FileSystem in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126860": {
+    "cvss": 8.8,
+    "description": "Incorrect authorization in FileSystem in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126861": {
+    "cvss": 8.8,
+    "description": "Use after free in Media in Google Chrome on on Android prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126862": {
+    "cvss": 7.7,
+    "description": "Improper input validation in Core in Google Chrome on on Android prior to 157.0.8103.78 allowed a local attacker to bypass web origin policy via a co-installed app. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126863": {
+    "cvss": 8.8,
+    "description": "Use after free in HTML in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126864": {
+    "cvss": 8.8,
+    "description": "Use after free in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126865": {
+    "cvss": 8.8,
+    "description": "Use after free in DOM in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126866": {
+    "cvss": 8.8,
+    "description": "Incorrect authorization in Extensions in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code inside the sandbox via a crafted Chrome extension. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126867": {
+    "cvss": 8.8,
+    "description": "Use after free in Browser in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126868": {
+    "cvss": 8.8,
+    "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126869": {
+    "cvss": 8.8,
+    "description": "Use after free in Frames in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126870": {
+    "cvss": 4.7,
+    "description": "Uninitialized resource in ANGLE in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126871": {
+    "cvss": 4.7,
+    "description": "Out of bounds read in Skia in Google Chrome on on Mac prior to 157.0.8103.78 allowed a remote attacker to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126872": {
+    "cvss": 9.6,
+    "description": "Incorrect authorization in FileSystem in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126873": {
+    "cvss": 8.8,
+    "description": "Use after free in Extensions in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126874": {
+    "cvss": 8.8,
+    "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126875": {
+    "cvss": 8.1,
+    "description": "Missing authorization in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126876": {
+    "cvss": 8.8,
+    "description": "Integer overflow in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126877": {
+    "cvss": 7.5,
+    "description": "Use after free in Dawn in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126878": {
+    "cvss": 4.3,
+    "description": "Information leak in Core in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126879": {
+    "cvss": 8.8,
+    "description": "Use after free in Layout in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126880": {
+    "cvss": 8.8,
+    "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126881": {
+    "cvss": 8.8,
+    "description": "Improper initialization in Media in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126882": {
+    "cvss": 3.1,
+    "description": "Information leak in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to leak cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126883": {
+    "cvss": 7.5,
+    "description": "Use after free in Core in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126884": {
+    "cvss": 4.7,
+    "description": "Out of bounds read in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126885": {
+    "cvss": 9.6,
+    "description": "Use after free in ServiceWorker in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126886": {
+    "cvss": 8.8,
+    "description": "Use after free in Frames in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126887": {
+    "cvss": 8.8,
+    "description": "Use after free in Animation in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126888": {
+    "cvss": 8.8,
+    "description": "Buffer overflow in Turbolev in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126889": {
+    "cvss": 8.8,
+    "description": "Off-by-one error in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126890": {
+    "cvss": 8.8,
+    "description": "Out of bounds read in Media in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126891": {
+    "cvss": 4.3,
+    "description": "Use after free in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to read memory inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126892": {
+    "cvss": 8.8,
+    "description": "Use after free in MediaStream in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126893": {
+    "cvss": 8.8,
+    "description": "Out of bounds write in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126894": {
+    "cvss": 3.1,
+    "description": "Out of bounds read in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to leak cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126895": {
+    "cvss": 8.8,
+    "description": "Use after free in CSS in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126896": {
+    "cvss": 8.1,
+    "description": "Missing authorization in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126897": {
+    "cvss": 8.8,
+    "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126898": {
+    "cvss": 4.3,
+    "description": "Uninitialized resource in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to obtain cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126899": {
+    "cvss": 8.8,
+    "description": "Use after free in Elements in Google Chrome prior to 157.0.8103.78 allowed a remote attacker leveraging social engineering to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126900": {
+    "cvss": 8.8,
+    "description": "Use after free in CSS in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126901": {
+    "cvss": 8.8,
+    "description": "Use after free in PDF in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126903": {
+    "cvss": 8.1,
+    "description": "Improper state validation in ANGLE in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker to bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126904": {
+    "cvss": 7.5,
+    "description": "Use after free in Compositing in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126905": {
+    "cvss": 8.8,
+    "description": "Incomplete cleanup in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126906": {
+    "cvss": 5.9,
+    "description": "Race condition in Extensions in Google Chrome on on Mac prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to obtain sensitive information via crafted network traffic. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126907": {
+    "cvss": 3.1,
+    "description": "Uninitialized resource in Media in Google Chrome on on Windows prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to potentially read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126908": {
+    "cvss": 8.8,
+    "description": "Type confusion in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126911": {
+    "cvss": 8.8,
+    "description": "Use after free in Accessibility in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126913": {
+    "cvss": 3.4,
+    "description": "Out of bounds read in Compositing in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126914": {
+    "cvss": 4.3,
+    "description": "Uninitialized resource in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to obtain cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126917": {
+    "cvss": 8.8,
+    "description": "Memory corruption in V8 in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126918": {
+    "cvss": 8.8,
+    "description": "Use after free in Layout in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126920": {
+    "cvss": 4.3,
+    "description": "Information leak in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to obtain cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126921": {
+    "cvss": 8.8,
+    "description": "Use after free in Accessibility in Google Chrome prior to 157.0.8103.78 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126922": {
+    "cvss": 3.1,
+    "description": "Out of bounds read in Skia in Google Chrome prior to 157.0.8103.78 allowed a remote attacker who had compromised the renderer process to leak cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126933": {
+    "cvss": 4.3,
+    "description": "Zipline 4.0.0 before 4.8.0 contains an upload filter bypass vulnerability that allows users with upload access to store blocked file types due to extension format mismatch. The upload and partial handlers compare dotted, case-sensitive extensions against undotted disabledExtensions entries, letting authenticated or permitted unauthenticated folder uploaders bypass administrator restrictions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126934": {
+    "cvss": 6.5,
+    "description": "Zipline 4.3.2 before 4.8.0 contains a rate limit bypass vulnerability that allows unauthenticated attackers to evade throttling by spoofing X-Forwarded-For headers when core.trustProxy is enabled. Attackers can send a different X-Forwarded-For value per request to obtain fresh rate-limit buckets, enabling unlimited guessing of login passwords, TOTP codes, and file and URL passwords.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126935": {
+    "cvss": 3.7,
+    "description": "Zipline before 4.8.0 contains a race condition vulnerability in src/server/routes/raw/[id].ts that allows remote attackers to bypass file maxViews limits through non-atomic view counting. Attackers holding a file link can send parallel requests that read the same pre-increment count, viewing view-limited or delete-on-max-views files beyond their limit.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68549": {
+    "cvss": 3.3,
+    "description": "ClickMigrate is a database migration tool for ClickHouse with automatic SQL migration management and version tracking. Prior to version 1.0.3, a path traversal vulnerability in the revision command allowed a crafted migration name supplied via the -m argument to escape the intended migrations directory. Under specific conditions, an attacker could cause the tool to create a .sql file in an arbitrary location writable by the user executing the command. This issue is only exploitable if an attacker can influence the migration name passed to the revision command, such as through an insecure automation or CI/CD pipeline that forwards untrusted input. This issue has been patched in version 1.0.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105018": {
+    "cvss": 6.6,
+    "description": "Heap-based buffer overflow in Windows Partition Management Driver allows an authorized attacker to elevate privileges with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105560": {
+    "cvss": 7.2,
+    "description": "Release of invalid pointer or reference in Windows DHCP Server allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105565": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows MIDI Service Module allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105566": {
+    "cvss": 7.0,
+    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105567": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Print Spooler Components allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105574": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows MIDI Service Module allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105575": {
+    "cvss": 7.8,
+    "description": "Access of resource using incompatible type ('type confusion') in Windows DWM Core Library allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105579": {
+    "cvss": 7.5,
+    "description": "Integer overflow or wraparound in Windows DNS allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105580": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Management Instrumentation allows an unauthorized attacker to execute code locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105584": {
+    "cvss": 5.5,
+    "description": "Use of externally-controlled format string in Windows Inventory Backup allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105586": {
+    "cvss": 7.0,
+    "description": "Null pointer dereference in Microsoft Windows SCSI Class System File allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105587": {
+    "cvss": 7.0,
+    "description": "Heap-based buffer overflow in Windows OLE DB allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105588": {
+    "cvss": 6.4,
+    "description": "Missing authentication for critical function in Windows DHCP Server allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105589": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Wireless Networking allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105590": {
+    "cvss": 5.3,
+    "description": "Improper certificate validation in Windows Active Directory Certificate Services allows an authorized attacker to bypass a security feature over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108401": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Remote Desktop Services allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108402": {
+    "cvss": 5.3,
+    "description": "Missing release of memory after effective lifetime in Windows Layer-2 Bridge Network Driver allows an unauthorized attacker to deny service over an adjacent network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108403": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108404": {
+    "cvss": 6.8,
+    "description": "Heap-based buffer overflow in Windows CD-ROM Driver allows an unauthorized attacker to execute code with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108405": {
+    "cvss": 7.8,
+    "description": "Integer overflow or wraparound in Windows CD-ROM Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108406": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Network Connection Broker allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108407": {
+    "cvss": 7.8,
+    "description": "Out-of-bounds read in Windows GDI allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108408": {
+    "cvss": 5.5,
+    "description": "Out-of-bounds read in Windows Telephony Service allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108409": {
+    "cvss": 5.5,
+    "description": "Exposure of sensitive system information to an unauthorized control sphere in Windows Overlay Filter allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108410": {
+    "cvss": 5.5,
+    "description": "Buffer over-read in Windows Management Instrumentation allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108421": {
+    "cvss": 7.5,
+    "description": "Out-of-bounds read in Windows File Server Resource Management Service allows an unauthorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108423": {
+    "cvss": 4.7,
+    "description": "Out-of-bounds read in Windows WinHTTP allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108424": {
+    "cvss": 6.5,
+    "description": "Out-of-bounds read in Windows GDI allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108425": {
+    "cvss": 5.9,
+    "description": "Out-of-bounds read in Windows DNS allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2020-37278": {
+    "cvss": 7.5,
+    "description": "Weaver e-Bridge contains an unauthenticated arbitrary file read vulnerability that allows remote attackers to access arbitrary files on the host system by supplying a file: URL to the downloadUrl parameter of the saveYZJFile endpoint. Attackers can exploit this flaw to read sensitive files such as /etc/passwd or configuration and credential files, and the same endpoint's support for http(s) URLs also enables server-side request forgery against internal network resources. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-17.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-54405": {
+    "cvss": 9.8,
+    "description": "H3C CVM, the Cloud Virtualization Management component of the H3C CAS cloud platform, contains an unauthenticated arbitrary file upload vulnerability in the /cas/fileUpload/upload endpoint that allows remote attackers to write arbitrary files by manipulating the caller-supplied token parameter without restricting path traversal or file type. Attackers can exploit the path traversal in the token parameter to upload a malicious JSP file into a web-accessible directory and then request it to achieve remote code execution as the web-server user. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-54402": {
+    "cvss": 7.5,
+    "description": "iDocView contains a server-side request forgery vulnerability in its /doc/upload endpoint that allows remote unauthenticated attackers to fetch arbitrary URLs by supplying a hardcoded default token value (testtoken) to bypass authentication. Attackers can exploit the unrestricted URL scheme handling, including file:// URIs, to read arbitrary local files such as operating-system and application configuration files, and to reach internal network hosts and services not otherwise accessible. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-03-26.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58387": {
+    "cvss": 7.5,
+    "description": "Inspur Haiyue HCM Cloud contains an arbitrary file read vulnerability in the /api/model_report/file/download endpoint that allows unauthenticated remote attackers to read arbitrary files by supplying unvalidated path parameters index and ext. Attackers can craft requests such as /api/model_report/file/download?index=/&ext= to traverse the filesystem and disclose sensitive files including /etc/passwd, application database files, and system configuration files. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-11-04 .",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2015-20122": {
+    "cvss": 7.5,
+    "description": "Seeyon A6 collaborative office automation platform contains an unauthenticated SQL injection vulnerability in the attach_ids parameter of the file attachment download endpoint that allows remote attackers to extract arbitrary database contents without prior authentication. Attackers can inject UNION-based SQL statements through the attach_ids request parameter in downloadAtt.jsp to retrieve sensitive information including credentials and system configuration data. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-17.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-54400": {
+    "cvss": 9.8,
+    "description": "Fumasoft Fumeng Cloud contains a SQL injection vulnerability in the AjaxMethod.ashx endpoint that allows unauthenticated remote attackers to inject arbitrary SQL through the Name parameter of the getEmpByname action without any authentication. Attackers can exploit UNION-based SQL injection techniques against the Microsoft SQL Server backend to extract, disclose, and modify database contents, with potential for further compromise of the underlying server. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-18.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25776": {
+    "cvss": 7.5,
+    "description": "Weaver E-cology contains an unauthenticated SQL injection vulnerability that allows remote attackers to execute arbitrary SQL queries by submitting malicious input through the userIdentifiers GET parameter in the mobile plugin endpoint. Attackers can bypass space-based filter controls by wrapping SQL keywords in parentheses to perform UNION-based injection and extract sensitive data including administrator credential hashes from the database. Exploitation evidence was first observed by the Shadowserver Foundation on 2022-07-28.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2021-48008": {
+    "cvss": 7.5,
+    "description": "Chanjet CRM contains an unauthenticated SQL injection vulnerability that allows remote attackers to execute arbitrary SQL queries by manipulating the site_id GET parameter in the webservice endpoint. Attackers can exploit the lack of input sanitization or parameterization through UNION-based injection techniques to extract sensitive data from the underlying database. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-18.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2017-20284": {
+    "cvss": 7.5,
+    "description": "Caucho Resin contains a path traversal vulnerability in the documentation webapp (resin-doc) that allows remote unauthenticated attackers to read arbitrary files by supplying a relative path through the inputFile request parameter of the jndi-appconfig tutorial servlet. Attackers can craft requests with directory traversal sequences to the servlet endpoint to read files outside the intended tutorial directory on the underlying system. Exploitation evidence was first observed by the Shadowserver Foundation on 2021-12-10.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-14037": {
+    "cvss": 9.8,
+    "description": "Redsea Cloud eHR contains an arbitrary file upload vulnerability that allows unauthenticated attackers to achieve remote code execution by uploading malicious files through the PtFjk.mob servlet endpoint. Attackers can submit a multipart POST request with a JSP webshell disguised using a spoofed image/jpeg Content-Type to bypass the absence of extension and MIME type validation, with the uploaded file stored at a predictable path under the uploadfile directory and executed directly by the web server. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-11-03 (UTC).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58352": {
+    "cvss": 7.5,
+    "description": "Landray OA contains an unauthenticated HQL injection vulnerability that allows unauthenticated attackers to query arbitrary Hibernate entity classes by injecting malicious HQL syntax into the uid POST parameter of the wechatLoginHelper.do endpoint. Attackers can exploit the lack of input sanitization in the string-concatenated filter expression passed to the Hibernate findList() call to extract sensitive data such as administrator password hashes and, with sufficient database privileges, perform file-write operations enabling remote code execution. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-03-11 (UTC).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25635": {
+    "cvss": 8.2,
+    "description": "Zeeways Matrimony CMS contains multiple SQL injection vulnerabilities that allow unauthenticated attackers to manipulate database queries through the profile_list endpoint. Attackers can inject SQL code via the up_cast, s_mother, and s_religion parameters to extract sensitive database information using time-based or error-based techniques.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25636": {
+    "cvss": 8.2,
+    "description": "Zeeways Jobsite CMS contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the 'id' GET parameter. Attackers can send crafted requests to news_details.php, jobs_details.php, or job_cmp_details.php with malicious 'id' values using GROUP BY and CASE statements to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25638": {
+    "cvss": 7.1,
+    "description": "Meeplace Business Review Script contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code through the 'id' parameter. Attackers can send GET requests to the addclick.php endpoint with crafted SQL payloads in the 'id' parameter to extract sensitive database information or cause denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25640": {
+    "cvss": 8.2,
+    "description": "Inout Article Base CMS contains SQL injection vulnerabilities that allow unauthenticated attackers to manipulate database queries through the 'p' and 'u' parameters. Attackers can inject SQL code using XOR-based payloads in GET requests to portalLogin.php to extract sensitive database information or cause denial of service through time-based attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25641": {
+    "cvss": 8.2,
+    "description": "Netartmedia Vlog System contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the email parameter. Attackers can send POST requests to index.php with malicious email values in the forgotten_password module to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25642": {
+    "cvss": 8.2,
+    "description": "Bootstrapy CMS contains multiple SQL injection vulnerabilities that allow unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code through POST parameters. Attackers can inject SQL payloads into the thread_id parameter of forum-thread.php, the subject parameter of contact-submit.php, the post-id parameter of post-new-submit.php, and the thread-id parameter to extract sensitive database information or cause denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25611": {
+    "cvss": 8.4,
+    "description": "MiniFtp contains a buffer overflow vulnerability in the parseconf_load_setting function that allows local attackers to execute arbitrary code by supplying oversized configuration values. Attackers can craft a miniftpd.conf file with values exceeding 128 bytes to overflow stack buffers and overwrite the return address, enabling code execution with root privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25473": {
+    "cvss": 7.1,
+    "description": "Clinic Pro contains a SQL injection vulnerability that allows authenticated attackers to manipulate database queries by injecting SQL code through the month parameter. Attackers can send POST requests to the monthly_expense_overview endpoint with crafted month values using boolean-based blind, time-based blind, or error-based SQL injection techniques to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25479": {
+    "cvss": 8.2,
+    "description": "Inout RealEstate contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the city parameter. Attackers can send POST requests to the agents/agentlistdetails endpoint with malicious SQL payloads in the city parameter to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25481": {
+    "cvss": 8.2,
+    "description": "iScripts ReserveLogic contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the jqSearchDestination parameter. Attackers can send POST requests to the search endpoint with crafted SQL payloads to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25509": {
+    "cvss": 8.2,
+    "description": "XooDigital Latest contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the 'p' parameter. Attackers can send GET requests to results.php with malicious 'p' values to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25521": {
+    "cvss": 9.1,
+    "description": "XooGallery Latest contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the gal_id parameter. Attackers can send GET requests to gal.php with malicious gal_id values to extract sensitive database information or modify database contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25522": {
+    "cvss": 9.1,
+    "description": "XooGallery Latest contains multiple SQL injection vulnerabilities that allow unauthenticated attackers to manipulate database queries by injecting SQL code through the photo_id parameter. Attackers can send GET requests to photo.php with malicious photo_id values to extract sensitive data, bypass authentication, or modify database contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25523": {
+    "cvss": 9.1,
+    "description": "XooGallery Latest contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the cat_id parameter. Attackers can send GET requests to cat.php with malicious cat_id values to bypass authentication, extract sensitive data, or modify database contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25524": {
+    "cvss": 9.1,
+    "description": "XooGallery Latest contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the 'p' parameter. Attackers can send GET requests to results.php with malicious 'p' values to bypass authentication, extract sensitive data, or modify database contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25530": {
+    "cvss": 8.2,
+    "description": "uHotelBooking System contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the system_page GET parameter. Attackers can send crafted requests to index.php with malicious system_page values using time-based blind SQL injection techniques to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25531": {
+    "cvss": 8.2,
+    "description": "Netartmedia Deals Portal contains an SQL injection vulnerability in the Email parameter of loginaction.php that allows unauthenticated attackers to manipulate database queries. Attackers can submit crafted SQL payloads through POST requests to extract sensitive information or bypass authentication mechanisms.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25534": {
+    "cvss": 8.2,
+    "description": "Netartmedia PHP Car Dealer contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code through the features[] parameter. Attackers can submit POST requests to index.php with crafted SQL payloads in the features[] parameter to extract sensitive database information or manipulate database queries.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25535": {
+    "cvss": 8.2,
+    "description": "Netartmedia PHP Dating Site contains a SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the Email parameter. Attackers can send POST requests to loginaction.php with time-based SQL injection payloads in the Email field to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2018-25159": {
+    "cvss": 9.8,
+    "description": "Epross AVCON6 systems management platform contains an object-graph navigation language (OGNL) injection vulnerability that allows unauthenticated attackers to execute arbitrary commands by injecting malicious OGNL expressions. Attackers can send crafted requests to the login.action endpoint with OGNL payloads in the redirect parameter to instantiate ProcessBuilder objects and execute system commands with root privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25472": {
+    "cvss": 7.5,
+    "description": "IntelBras Telefone IP TIP200 and 200 LITE contain an unauthenticated arbitrary file read vulnerability in the dumpConfigFile function accessible via the cgiServer.exx endpoint. Attackers can send GET requests to /cgi-bin/cgiServer.exx with the command parameter containing dumpConfigFile() to read sensitive files including /etc/shadow and configuration files without proper authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25480": {
+    "cvss": 7.5,
+    "description": "ARMBot contains an unrestricted file upload vulnerability in upload.php that allows unauthenticated attackers to upload arbitrary files by manipulating the file parameter with path traversal sequences. Attackers can upload PHP files with traversal payloads ../public_html/ to write executable code to the web root and achieve remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25504": {
+    "cvss": 8.2,
+    "description": "NCrypted Jobgator contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the experience parameter. Attackers can send POST requests to the agents Find-Jobs endpoint with malicious experience values to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25366": {
+    "cvss": 8.2,
+    "description": "microASP Portal+ CMS contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code into the explode_tree parameter. Attackers can send crafted requests to pagina.phtml with SQL injection payloads using extractvalue and concat functions to extract sensitive database information like the current database name.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25391": {
+    "cvss": 8.2,
+    "description": "Ashop Shopping Cart Software contains a time-based blind SQL injection vulnerability that allows attackers to manipulate database queries through the blacklistitemid parameter. Attackers can send POST requests to the admin/bannedcustomers.php endpoint with crafted SQL payloads using SLEEP functions to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25439": {
+    "cvss": 8.2,
+    "description": "NoviSmart CMS contains an SQL injection vulnerability that allows remote attackers to execute arbitrary SQL queries by injecting malicious code through the Referer HTTP header field. Attackers can craft requests with time-based SQL injection payloads in the Referer header to extract sensitive database information or cause denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25440": {
+    "cvss": 8.2,
+    "description": "WebIncorp ERP contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the prod_id parameter. Attackers can send GET requests to product_detail.php with malicious prod_id values to extract sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25443": {
+    "cvss": 8.2,
+    "description": "Inventory Webapp contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through GET parameters. Attackers can supply malicious SQL payloads in the name, description, quantity, or cat_id parameters to add-item.php to execute arbitrary database commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25446": {
+    "cvss": 8.2,
+    "description": "DIGIT CENTRIS ERP contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the datum1, datum2, KID, and PID parameters. Attackers can send POST requests to /korisnikinfo.php with malicious SQL syntax in these parameters to extract or modify sensitive database information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2021-47709": {
+    "cvss": 8.7,
+    "description": "COMMAX Smart Home System allows an unauthenticated attacker to change configuration and cause denial-of-service through the setconf endpoint. Attackers can trigger a denial-of-service scenario by sending a malformed request to the setconf endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2021-47710": {
+    "cvss": 8.7,
+    "description": "COMMAX Smart Home System is a smart IoT home solution that allows an unauthenticated attacker to disclose RTSP credentials in plain-text by exploiting the /overview.asp endpoint. Attackers can access sensitive information, including login credentials and DVR settings, by submitting a GET request to this endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2017-20204": {
+    "cvss": 9.3,
+    "description": "DBLTek GoIP devices (models GoIP 1, 4, 8, 16, and 32) contain an undocumented vendor backdoor in the Telnet administrative interface that allows remote authentication as an undocumented user via a proprietary challenge–response scheme which is fundamentally flawed. Because the challenge response can be computed from the challenge itself, a remote attacker can authenticate without knowledge of a secret and obtain a root shell on the device. This can lead to persistent remote code execution, full device compromise, and arbitrary control of the device and any managed services. The firmware used within these devices was updated in December 2016 to make this vulnerability more complex to exploit. However, it is unknown if DBLTek has taken steps to fully mitigate.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-7304": {
+    "cvss": 9.3,
+    "description": "Ruijie RG-UAC Application Management Gateway contains a command injection vulnerability via the 'nmc_sync.php' interface. An unauthenticated attacker able to reach the affected endpoint can inject shell commands via crafted request data, causing the application to execute arbitrary commands on the host. Successful exploitation can yield full control of the application process and may lead to system-level access depending on the service privileges. VulnCheck has observed this vulnerability being targeted by the RondoDox botnet campaign.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-7311": {
+    "cvss": 9.3,
+    "description": "BYTEVALUE Intelligent Flow Control Router contains a command injection vulnerability via the /goform/webRead/open endpoint. The `path` parameter is not properly validated and is echoed into a shell context, allowing an attacker to inject and execute arbitrary shell commands on the device. Successful exploitation can lead to writing backdoors, privilege escalation on the host, and full compromise of the router and its management functions. VulnCheck has observed this vulnerability being targeted by the RondoDox botnet campaign.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-13991": {
+    "cvss": 8.7,
+    "description": "Huijietong Cloud Video Platform contains a path traversal vulnerability that allows an unauthenticated attacker can supply arbitrary file paths to the `fullPath` parameter of the `/fileDownload?action=downloadBackupFile` endpoint and retrieve files from the server filesystem. VulnCheck has observed this vulnerability being exploited in the wild.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2016-15047": {
+    "cvss": 8.7,
+    "description": "AVTECH devices that include the CloudSetup.cgi management endpoint are vulnerable to authenticated OS command injection. The `exefile` parameter in CloudSetup.cgi is passed to the underlying system command execution without proper validation or whitelisting. An authenticated attacker who can invoke this endpoint can supply crafted input to execute arbitrary system commands as root. Successful exploitation grants full control of the device, and - depending on deployment and whether the device stores credentials or has network reachability to internal systems - may enable credential theft, lateral movement, or data exfiltration. The archived SEARCH-LAB disclosure implies that this vulnerability was remediated in early 2017, but AVTECH has not defined an affected version range.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34208": {
+    "cvss": 7.5,
+    "description": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host and Application (VA/SaaS deployments) store user passwords using unsalted SHA-512 hashes with a fall-back to unsalted SHA-1. The hashing is performed via PHP's `hash()` function in multiple files (server_write_requests_users.php, update_database.php, legacy/Login.php, tests/Unit/Api/IdpControllerTest.php). No per-user salt is used and the fast hash algorithms are unsuitable for password storage. An attacker who obtains the password database can recover cleartext passwords via offline dictionary or rainbow table attacks. The vulnerable code also contains logic that migrates legacy SHA-1 hashes to SHA-512 on login, further exposing users still on the old hash. This vulnerability was partially resolved, but still present within the legacy authentication platform.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34210": {
+    "cvss": 5.5,
+    "description": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host and Application (VA/SaaS deployments) store a large number of sensitive credentials (database passwords, MySQL root password, SaaS keys, Portainer admin password, etc.) in cleartext files that are world-readable. Any local user - or any process that can read the host filesystem - can retrieve all of these secrets in plain text, leading to credential theft and full compromise of the appliance. The vendor does not consider this to be a security vulnerability as this product \"follows a shared responsibility model, where administrators are expected to configure persistent storage encryption.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34217": {
+    "cvss": 9.8,
+    "description": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host and Application (VA/SaaS deployments) contain an undocumented 'printerlogic' user with a hardcoded SSH public key in '~/.ssh/authorized_keys' and a sudoers rule granting the printerlogic_ssh group 'NOPASSWD: ALL'. Possession of the matching private key gives an attacker root access to the appliance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-13990": {
+    "cvss": 9.3,
+    "description": "MicroWorld eScan AV's update mechanism failed to ensure authenticity and integrity of updates: update packages were delivered and accepted without robust cryptographic verification. As a result, an on-path attacker could perform a man-in-the-middle (MitM) attack and substitute malicious update payloads for legitimate ones. The eScan AV client accepted these substituted packages and executed or loaded their components (including sideloaded DLLs and Java/installer payloads), enabling remote code execution on affected systems. MicroWorld eScan confirmed remediation of the update mechanism on 2023-07-31 but versioning details are unavailable. NOTE: MicroWorld eScan disputes the characterization in third-party reports, stating the issue relates to 2018–2019 and that controls were implemented then.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34201": {
+    "cvss": 7.8,
+    "description": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host and Application (VA and SaaS deployments) run many Docker containers on shared internal networks without firewalling or segmentation between instances. A compromise of any single container allows direct access to internal services (HTTP, Redis, MySQL, etc.) on the overlay network. From a compromised container, an attacker can reach and exploit other services, enabling lateral movement, data theft, and system-wide compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34204": {
+    "cvss": 9.8,
+    "description": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host and Application (VA and SaaS deployments) contains multiple Docker containers that run primary application processes (for example PHP workers, Node.js servers and custom binaries) as the root user. This increases the blast radius of a container compromise and enables lateral movement and host compromise when a container is breached.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34206": {
+    "cvss": 9.8,
+    "description": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host and Application (VA and SaaS deployments) mount host configuration and secret material under /var/www/efs_storage into many Docker containers with overly-permissive filesystem permissions. Files such as secrets.env, GPG-encrypted blobs in .secrets, MySQL client keys, and application session files are accessible from multiple containers. An attacker who controls or reaches any container can read or modify these artifacts, leading to credential theft, RCE via Laravel APP_KEY, Portainer takeover, and full compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-7307": {
+    "cvss": 8.7,
+    "description": "Sangfor Behavior Management System (also referred to as DC Management System in Chinese-language documentation) contains an XML external entity (XXE) injection vulnerability in the /src/sangforindex endpoint. A remote unauthenticated attacker can submit crafted XML data containing external entity definitions, leading to potential disclosure of internal files, server-side request forgery (SSRF), or other impacts depending on parser behavior. The vulnerability is due to improper configuration of the XML parser, which allows resolution of external entities without restriction. This product is now integrated into their IAM (Internet Access Management) platform and an affected version range is undefined. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-09-06 UTC.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-13982": {
+    "cvss": 8.7,
+    "description": "SPON IP Network Broadcast System, a digital audio transmission platform developed by SPON Communications, contains an arbitrary file read vulnerability in the rj_get_token.php endpoint. The flaw arises from insufficient input validation on the jsondata[url] parameter, which allows attackers to perform directory traversal and access sensitive files on the server. An unauthenticated remote attacker can exploit this vulnerability by sending a crafted POST request to read arbitrary files, potentially exposing system configuration, credentials, or internal logic. An affected version range is undefined.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2010-20112": {
+    "cvss": 9.3,
+    "description": "Amlib’s NetOpacs webquery.dll contains a stack-based buffer overflow vulnerability triggered by improper handling of HTTP GET parameters. Specifically, the application fails to enforce bounds on input supplied to the app parameter, allowing excessive data to overwrite memory structures including the Structured Exception Handler (SEH). Additionally, malformed parameter names followed by an equals sign may result in unintended control flow behavior. This vulnerability is exposed through IIS and affects legacy Windows deployments",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-10038": {
+    "cvss": 9.3,
+    "description": "Auxilium RateMyPet contains an unauthenticated arbitrary file upload vulnerability in upload_banners.php. The banner upload feature fails to validate file types or enforce authentication, allowing remote attackers to upload malicious PHP files. These files are stored in a web-accessible /banners/ directory and can be executed directly, resulting in remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34148": {
+    "cvss": 9.4,
+    "description": "An unauthenticated OS command injection vulnerability exists in the Shenzhen Aitemi M300 Wi-Fi Repeater (hardware model MT02). When configuring the device in WISP mode, the 'ssid' parameter is passed unsanitized to system-level scripts. This allows remote attackers within Wi-Fi range to inject arbitrary shell commands that execute as root, resulting in full device compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34149": {
+    "cvss": 9.4,
+    "description": "A command injection vulnerability affects the Shenzhen Aitemi M300 Wi-Fi Repeater (hardware model MT02) during WPA2 configuration. The 'key' parameter is interpreted directly by the system shell, enabling attackers to execute arbitrary commands as root. Exploitation requires no authentication and can be triggered during wireless setup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34150": {
+    "cvss": 9.4,
+    "description": "The PPPoE configuration interface of the Shenzhen Aitemi M300 Wi-Fi Repeater (hardware model MT02) is vulnerable to command injection via the 'user' parameter. Input is processed unsafely during network setup, allowing attackers to execute arbitrary system commands with root privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34151": {
+    "cvss": 9.4,
+    "description": "A command injection vulnerability exists in the 'passwd' parameter of the PPPoE setup process on the Shenzhen Aitemi M300 Wi-Fi Repeater (hardware model MT02). The input is passed directly to system-level commands without sanitation, enabling unauthenticated attackers to achieve root-level code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-10023": {
+    "cvss": 9.8,
+    "description": "A stack-based buffer overflow vulnerability exists in FreeFloat FTP Server version 1.0.0. The server fails to properly validate input passed to the USER command, allowing remote attackers to overwrite memory and potentially execute arbitrary code. The flaw is triggered by sending an overly long username string, which overflows the buffer allocated for user authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-10030": {
+    "cvss": 9.8,
+    "description": "FreeFloat FTP Server contains multiple critical design flaws that allow unauthenticated remote attackers to upload arbitrary files to sensitive system directories. The server accepts empty credentials, defaults user access to the root of the C:\\ drive, and imposes no restrictions on file type or destination path. These conditions enable attackers to upload executable payloads and .mof files to locations such as system32 and wbem\\mof, where Windows Management Instrumentation (WMI) automatically processes and executes them. This results in remote code execution with SYSTEM-level privileges, without requiring user interaction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-10033": {
+    "cvss": 9.3,
+    "description": "Narcissus is vulnerable to remote code execution via improper input handling in its image configuration workflow. Specifically, the backend.php script fails to sanitize the release parameter before passing it to the configure_image() function. This function invokes PHP’s passthru() with the unsanitized input, allowing attackers to inject arbitrary system commands. Exploitation occurs via a crafted POST request, resulting in command execution under the web server’s context.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2013-10052": {
+    "cvss": 8.5,
+    "description": "ZPanel includes a helper binary named zsudo, intended to allow restricted privilege escalation for administrative tasks. However, when misconfigured in /etc/sudoers, zsudo can be invoked by low-privileged users to execute arbitrary commands as root. This flaw enables local attackers with shell access to escalate privileges by writing a payload to a writable directory and executing it via zsudo. The vulnerability is particularly impactful in post-exploitation scenarios following web server compromise, where the attacker inherits access to zsudo.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34147": {
+    "cvss": 9.4,
+    "description": "An unauthenticated OS command injection vulnerability exists in the Shenzhen Aitemi M300 Wi-Fi Repeater (hardware model MT02). When configuring the device in Extender mode via its captive portal, the extap2g SSID field is inserted unescaped into a reboot-time shell script. This allows remote attackers within Wi-Fi range to inject arbitrary shell commands that execute as root during device reboot, leading to full system compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2013-10049": {
+    "cvss": 9.3,
+    "description": "An OS command injection vulnerability exists in multiple Raidsonic NAS devices—specifically tested on IB-NAS5220 and IB-NAS4220—via the unauthenticated timeHandler.cgi endpoint exposed through the web interface. The CGI script fails to properly sanitize user-supplied input in the timeZone parameter of a POST request, allowing remote attackers to inject arbitrary shell commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2013-10057": {
+    "cvss": 7.5,
+    "description": "A stack-based buffer overflow vulnerability exists in Synactis PDF In-The-Box ActiveX control (PDF_IN_1.ocx), specifically the ConnectToSynactis method. When a long string is passed to this method—intended to populate the ldCmdLine argument of a WinExec call—a strcpy operation overwrites a saved TRegistry class pointer on the stack. This allows remote attackers to execute arbitrary code in the context of the user by enticing them to visit a malicious webpage that instantiates the vulnerable ActiveX control. The vulnerability was discovered via its use in third-party software such as Logic Print 2013.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-4979": {
+    "cvss": 5.1,
+    "description": "A cross-site scripting (XSS) vulnerability exists in Sitecore Experience Platform (XP) 7.5 - 10.2 and CMS 7.2 - 7.2 Update-6 that may allow authenticated Sitecore Shell users to be tricked into executing custom JS code. Managed Cloud Standard customers who run the affected Sitecore Experience Platform / CMS versions are also affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34114": {
+    "cvss": 8.4,
+    "description": "A client-side security misconfiguration vulnerability exists in OpenBlow whistleblowing platform across multiple versions and default deployments, due to the absence of critical HTTP response headers including Content-Security-Policy, Referrer-Policy, Permissions-Policy, Cross-Origin-Embedder-Policy, and Cross-Origin-Resource-Policy. This omission weakens browser-level defenses and exposes users to cross-site scripting (XSS), clickjacking, and referer leakage. Although some instances attempt to enforce CSP via HTML tags, this method is ineffective, as modern browsers rely on header-based enforcement to reliably block inline scripts and untrusted resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
