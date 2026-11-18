@@ -63876,7 +63876,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64514": {
-    "cvss": null,
+    "cvss": 5.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: userfaultfd: gate must_wait writability check on pte_present() userfaultfd_must_wait() and userfaultfd_huge_must_wait() read the PTE without taking the page table lock and then apply pte_write() / huge_pte_write() to it. Those accessors decode bits from the present encoding only; on a swap or migration entry they read the offset bits that happen to share the same position and return an undefined result. The intent of the check is \"is this fault still WP-blocked?\". A non-marker swap entry means the page is in transit -- the userfault context the original fault delivered against is no longer the same, and the swap-in or migration completion path will re-deliver a fresh fault if userspace still needs to handle it. Worst case under the current code the garbage write bit says \"wait\", and the thread stays asleep until a UFFDIO_WAKE that may never arrive. Gate the writability check on pte_present() so the lockless re-check only inspects present-PTE bits when the entry is actually present. The non-present, non-marker case returns \"don't wait\" and lets the fault path retry.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -71460,38 +71460,38 @@
     "product": "Unknown"
   },
   "CVE-2026-121742": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "Ashlar-Vellum Cobalt XE File Parsing Use-After-Free Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of XE files. The issue results from the lack of validating the existence of an object prior to performing operations on the object. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28757.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-121743": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "Ashlar-Vellum Cobalt AR File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of AR files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28675.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-121753": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "Ashlar-Vellum Cobalt XE File Parsing Use-After-Free Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of XE files. The issue results from the lack of validating the existence of an object prior to performing operations on the object. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28587.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-121752": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "Ashlar-Vellum Cobalt LI File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of LI files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28447.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-121744": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "Ashlar-Vellum Cobalt XE File Parsing Stack-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of XE files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a stack-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28172.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-114556": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.4,
+    "description": "MailEnable Save Directory Traversal Arbitrary File Creation Vulnerability. This vulnerability allows remote attackers to create arbitrary files on affected installations of MailEnable. Authentication is not required to exploit this vulnerability. The specific flaw exists within the implementation of the Save method. The issue results from the lack of proper validation of a user-supplied path prior to using it in file operations. An attacker can leverage this in conjunction with other vulnerabilities to execute code in the context of SYSTEM. Was ZDI-CAN-29161.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -88758,68 +88758,68 @@
     "product": "Docker Sandboxes"
   },
   "CVE-2026-121741": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "Trimble SketchUp SKP File Parsing Use-After-Free Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Trimble SketchUp. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of SKP files. The issue results from the lack of validating the existence of an object prior to performing operations on the object. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30421.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-122044": {
-    "cvss": null,
-    "description": "",
+    "cvss": 8.8,
+    "description": "Philips Hue Bridge Pro Protection Mechanism Failure Authentication Bypass Vulnerability. This vulnerability allows network-adjacent attackers to bypass authentication on affected installations of Philips Hue Bridge Pro. Authentication is not required to exploit this vulnerability. The specific flaw exists within the HTTP service, which listens on TCP port 443 by default. The issue results from the failure to apply a protection mechanism. An attacker can leverage this vulnerability to bypass authentication on the system. Was ZDI-CAN-33086.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-118632": {
-    "cvss": null,
-    "description": "",
+    "cvss": 8.0,
+    "description": "Philips Hue Bridge Pro SQL Injection Remote Code Execution Vulnerability. This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of Philips Hue Bridge Pro. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed. The specific flaw exists within the HTTP service, which listens on TCP port 443 by default. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to execute code in the context of root. Was ZDI-CAN-33089.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-118631": {
-    "cvss": null,
-    "description": "",
+    "cvss": 3.8,
+    "description": "Philips Hue Bridge Pro Argument Injection Restricted File Write Vulnerability. This vulnerability allows local attackers to modify files on affected installations of Philips Hue Bridge Pro. An attacker must first obtain the ability to execute low-privileged code within a container on the target system, in order to exploit this vulnerability. The specific flaw exists within the factory data service, which listens on TCP port 5001 by default. The issue results from the lack of proper validation of a user-supplied string before using it to execute a system call. An attacker can leverage this vulnerability to modify files in the context of the service account. Was ZDI-CAN-33090.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-13270": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.5,
+    "description": "Quest NetVault Backup nvpmgr Integer Underflow Denial-of-Service Vulnerability. This vulnerability allows remote attackers to create a denial-of-service condition on affected installations of Quest NetVault Backup. Authentication is not required to exploit this vulnerability. The specific flaw exists within the nvpmgr service, which listens on UDP port 20031 by default. The issue results from the lack of proper validation of user-supplied data, which can result in an integer underflow before allocating a buffer. An attacker can leverage this vulnerability to create a denial-of-service condition on the system. Was ZDI-CAN-28744.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-13269": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.5,
+    "description": "Quest NetVault Backup StnzCreateKey Numeric Truncation Error Denial-of-Service Vulnerability. This vulnerability allows remote attackers to create a denial-of-service condition on affected installations of Quest NetVault Backup. Authentication is not required to exploit this vulnerability. The specific flaw exists within the StnzCreateKey function. The issue results from the lack of proper validation of user-supplied data, which can result in a numeric truncation error before allocating a buffer. An attacker can leverage this vulnerability to create a denial-of-service condition on the system. Was ZDI-CAN-28743.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2025-10935": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "libilbm ILBM File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of libilbm. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of ILBM files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-27792.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-114558": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OPJU File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OPJU files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated data structure. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30738.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-114568": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OPJ File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OPJ files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-31587.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-114567": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OGWU File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OGWU files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated data structure. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30771.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-114566": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OGM File Parsing Memory Corruption Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OGM files. The issue results from the lack of proper validation of user-supplied data, which can result in a memory corruption condition. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30770.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -134762,6 +134762,330 @@
   "CVE-2026-89307": {
     "cvss": 5.1,
     "description": "The \"Firma Circolare\" feature in the \"Design Scuole Italia\" WordPress theme allows an authenticated attacker to inject arbitrary HTML via the sign parameter, enabling forced redirection of visiting users to an attacker-controlled URL (Stored HTML Injection / Open Redirect).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114559": {
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OGG File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OGG files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated data structure. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30431.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114560": {
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OPJ File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OPJ files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated data structure. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30432.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114561": {
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OPJU File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OPJU files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated data structure. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30433.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114562": {
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OGWU File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OGWU files. The issue results from the lack of proper validation of user-supplied data, which can result in a write before the start of an allocated data structure. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30736.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114563": {
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OGWU File Parsing Stack-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OGWU files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a stack-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30737.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114564": {
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OGG File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OGG files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated data structure. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30768.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114565": {
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OGG File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OGG files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated data structure. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30769.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114569": {
+    "cvss": 7.8,
+    "description": "OriginLab Origin Viewer OGWU File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of OGWU files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-30430.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126795": {
+    "cvss": 7.3,
+    "description": "A vulnerability was determined in ToolJet up to 3.20.256-lts/3.21.93-beta. The impacted element is the function activateUserWithPassword of the file server/src/modules/onboarding/util.service.ts of the component Onboarding Signup Endpoint. Executing a manipulation of the argument email can lead to missing authentication. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized. Upgrading to version 3.21.94-beta is sufficient to resolve this issue. This patch is called af8f17a745621ae418f1743440f63d315e8b8643. The affected component should be upgraded. The vendor was contacted early about this disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126957": {
+    "cvss": 5.3,
+    "description": "An integer underflow in Zephyr's IPv4 option handling allows a remote, unauthenticated attacker to read stack memory. When replying to an ICMP Echo Request that carries an IPv4 Record Route or Timestamp option, icmpv4_update_record_route() and icmpv4_update_time_stamp() in subsys/net/ip/icmpv4.c compute the length of the already recorded data as ptr - ptr_offset in uint8_t arithmetic. The attacker-controlled Pointer field is checked against the option length but not against the RFC 791 minimum (4 for Record Route, 5 for Timestamp), so a smaller value wraps the length to up to 252 bytes. net_pkt_write() then reads past the 40-byte opt_data stack buffer and up to 213 bytes of stack memory, which can include stack and heap pointers, are returned in the ICMP Echo Reply. A single packet triggers the leak and the device does not crash, so it can be repeated. Devices built with CONFIG_NET_IPV4_HDR_OPTIONS, which CONFIG_NET_IPV4_IGMP selects, are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111433": {
+    "cvss": 8.6,
+    "description": "UNIX symbolic link (symlink) following vulnerability in openEuler iSulad on Linux. This vulnerability is associated with program file src/daemon/modules/spec/specs_mount.c. This issue affects iSulad: through 2.1.6. If an attacker can get the victim or the platform to run their crafted malicious image, they can cause the iSulad daemon to copy sensitive host directories into an anonymous volume when creating a container, which the container can then read.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111434": {
+    "cvss": 5.6,
+    "description": "Use of Externally-Controlled format string vulnerability in openEuler iSulad on Linux. This vulnerability is associated with program file src/daemon/modules/image/oci/oci_load.c. This issue affects iSulad: through 2.1.6. When the iSulad daemon performs container lifecycle operations (such as create, start, exec, stop, etc.) through the isula runtime (shim), the daemon reads the stderr output of the shim process via a pipe for error information display. If the buffer contains format specifiers such as %s, %x, or %n, it may trigger a format string vulnerability, potentially leading to information leakage, denial of service, or the risk of arbitrary writes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111435": {
+    "cvss": 7.4,
+    "description": "Relative path traversal vulnerability in openEuler iSulad on Linux. This vulnerability is associated with program file src/daemon/modules/image/oci/oci_load.c. This issue affects iSulad: through 2.1.6. In oci_load.c, oci_load_process_manifest() does not sanitize the Config path of manifest.json. A malicious tar package can enable the isulad with the root permission to read any file on the host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111436": {
+    "cvss": 4.4,
+    "description": "Missing release of memory after effective lifetime vulnerability in openEuler iSulad on Linux. This vulnerability is associated with program file src/daemon/modules/spec/specs_mount.c. This issue affects iSulad: through 2.1.6. The memory leak vulnerability causes the iSulad daemon to be triggered frequently, exhausting the host machine's memory and ultimately leading to an OOM crash of the daemon, resulting in a denial of service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117687": {
+    "cvss": 7.3,
+    "description": "Movable Type provided by Six Apart Ltd. contains a code injection vulnerability in its Dynamic Publishing functionality. By sending a specially crafted request that is processed by the Dynamic Publishing, an attacker may be able to execute arbitrary PHP code on the affected product.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124993": {
+    "cvss": 5.3,
+    "description": "An incorrect authorization vulnerability in the Security Advisor in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote attackers to read specific files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-13656": {
+    "cvss": 5.4,
+    "description": "An improper neutralization of input during web page generation vulnerability in the Audio Player in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to read or write specific files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-13672": {
+    "cvss": 8.8,
+    "description": "An authorization bypass through user-controlled key vulnerability in the SSOAuth in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to read or write arbitrary files and conduct denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15198": {
+    "cvss": 6.5,
+    "description": "A missing authentication for critical functionality vulnerability in the Webdav API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote attackers to read specific files and conduct limited denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15201": {
+    "cvss": 5.9,
+    "description": "An improper certificate validation vulnerability in the Support Form in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows man-in-the-middle attackers to read arbitrary files and write specific files during support form submission.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16550": {
+    "cvss": 6.5,
+    "description": "An external control of file name or path vulnerability in the Media Parser in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to write arbitrary files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18596": {
+    "cvss": 8.1,
+    "description": "An authentication bypass using an alternate path or channel vulnerability in the OTP in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote attackers with valid user credentials to read or write arbitrary files and conduct denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18633": {
+    "cvss": 7.5,
+    "description": "An access of uninitialized pointer vulnerability in the nfsd in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote attackers to conduct denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18792": {
+    "cvss": 8.8,
+    "description": "An improper limitation of a pathname to a restricted directory vulnerability in the Sharing API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to read or write arbitrary files and conduct denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19048": {
+    "cvss": 8.1,
+    "description": "An improper link resolution before file access vulnerability in the thumb in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to write arbitrary files and conduct denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19414": {
+    "cvss": 4.3,
+    "description": "A missing authorization vulnerability in the Promotion API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to write specific files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19833": {
+    "cvss": 5.4,
+    "description": "A missing authorization vulnerability in the ACL API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to read or write specific files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-74850": {
+    "cvss": 4.3,
+    "description": "An improper limitation of a pathname to a restricted directory vulnerability in the contentextract in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to read specific files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-74857": {
+    "cvss": 8.8,
+    "description": "A missing critical step in authentication vulnerability in the Auth API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to read or write arbitrary files and conduct denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75785": {
+    "cvss": 7.2,
+    "description": "An improper neutralization of special elements used in an OS command vulnerability in the VPN API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users with administrator privileges to read or write arbitrary files and conduct denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76954": {
+    "cvss": 9.8,
+    "description": "An improper neutralization of special elements used in an SQL command vulnerability in the Auth API in Synology DiskStation Manager (DSM) before 7.2.1-69057-13, 7.2.2-72806-10, 7.3.2-86009-5, and 7.4.1-90080-1 allows remote attackers to read or write arbitrary files and conduct denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77738": {
+    "cvss": 4.3,
+    "description": "A server-side request forgery vulnerability in the Credential API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to read specific files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81557": {
+    "cvss": 5.4,
+    "description": "An improper neutralization of input during web page generation vulnerability in the DSMNotify in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to read or write specific files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81558": {
+    "cvss": 4.3,
+    "description": "A missing authorization vulnerability in the SocketIo API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to write specific files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81559": {
+    "cvss": 4.3,
+    "description": "A missing authorization vulnerability in the TaskScheduler API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote authenticated users to write specific files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81584": {
+    "cvss": 8.1,
+    "description": "An improper neutralization of special elements used in an SQL command vulnerability in the User API in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote attackers with control over a compromised LDAP or Active Directory server to read or write arbitrary files and conduct denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85098": {
+    "cvss": 5.3,
+    "description": "A reachable assertion vulnerability in the synoscgi in Synology DiskStation Manager (DSM) before 7.3.2-86009-5 and 7.4.1-90080-1 allows remote attackers to conduct limited denial-of-service attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105561": {
+    "cvss": 7.5,
+    "description": "Uncontrolled resource consumption in Windows Secure Socket Tunneling Protocol (SSTP) allows an unauthorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98072": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: net/rds: use wq_has_sleeper() in release_in_xmit() release_in_xmit() clears RDS_IN_XMIT with clear_bit_unlock() and then checks waitqueue_active() to decide whether anyone needs waking. clear_bit_unlock() is only a release operation: it orders the critical section before the bit clear, but does not order the subsequent plain load of the wait queue head after it. The waiter side does the mirror image - it adds itself to the wait queue and then tests the bit. That is the classic store-buffering pattern: the releasing CPU can read the wait queue as empty while the waiting CPU still reads the bit as set, so the sleeper is never woken. The waiters are rds_conn_shutdown() and rds_tcp_reset_callbacks(), both in uninterruptible wait_event() with no timeout. A lost wake-up strands the shutdown worker on its single-threaded workqueue until some other sender releases the bit again - and on a connection that is being torn down precisely because it failed, there may never be another sender. The barrier used to be there: release_in_xmit() did clear_bit() followed by smp_mb__after_atomic() until commit 1422f28826d2 (\"rds: introduce acquire/release ordering in acquire/release_in_xmit()\") folded both into clear_bit_unlock(), which strengthened the lock hand-off but silently dropped the full barrier the wake-up check depends on. The refill counterpart, release_refill() in net/rds/ib_recv.c, still carries its smp_mb__after_atomic() for exactly this reason. Use wq_has_sleeper(), which is waitqueue_active() preceded by the required full barrier.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12507": {
+    "cvss": 9.1,
+    "description": "Zohocorp ManageEngine AssetExplorer versions below 7860, ServiceDesk Plus versions below 15290, ServiceDesk Plus MSP versions below 15150, and SupportCenter Plus versions below 15150 are affected by a authenticated remote code execution vulnerability in the Reports module. An authenticated user with the Create Query Reports permission could exploit specially crafted database queries to execute arbitrary commands on the underlying server.",
+    "vendor": "Zohocorp",
+    "product": "AssetExplorer"
+  },
+  "CVE-2026-75869": {
+    "cvss": 8.8,
+    "description": "Zohocorp ManageEngine DDI Central versions below 6301 is affected by an authorization bypass and PowerShell command injection vulnerability that allowed authenticated non-administrative users to target unauthorized Windows DHCP subnets and potentially execute arbitrary commands on managed Windows DHCP servers through crafted DNS suffix values.",
+    "vendor": "Zohocorp",
+    "product": "DDI Central"
+  },
+  "CVE-2026-76415": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-76421": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-76430": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-76411": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-76422": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-76515": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-76417": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-76516": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-76414": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-76416": {
+    "cvss": null,
+    "description": "Multiple vulnerabilities in ClamAV could allow a remote attacker to bypass configured file and scan time limits and cause a denial of service (DoS) condition, interrupting scanning operations. For more information about these vulnerabilities, see the Details section of this advisory. For additional information on these vulnerabilities in ClamAV, see the ClamAV blog . Cisco has released software updates that address t",
+    "vendor": "Cisco",
+    "product": "Unknown"
+  },
+  "CVE-2026-19776": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19777": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19779": {
+    "cvss": null,
+    "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
   }
