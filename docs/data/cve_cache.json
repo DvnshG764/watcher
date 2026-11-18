@@ -134068,5 +134068,35 @@
     "description": "The AppPresser WordPress plugin before 5.0.0 does not restrict access to two of its REST API endpoints, allowing unauthenticated visitors to retrieve the installed versions of AppPresser, its add-ons, several third-party AppPresser WordPress plugin before 5.0.0 and its .",
     "vendor": "Unknown",
     "product": "AppPresser"
+  },
+  "CVE-2026-123084": {
+    "cvss": 6.5,
+    "description": "An **expression language injection** has been found in the HeaderContentGuard.permit function in publication.py of the content guard in the **Pulpcore** package. The guard is supposed to check a value in a request header. It saves a jq filter and runs that filter against the header when a client asks for content. The filter is not limited to the header, and jq's env builtin also returns the environment of the content process. A low-privileged network attacker or user who can create a header content guard and attach it to a distribution can save a filter that reads that environment. The content request is allowed or denied according to the filter result. Repeating the request lets that attacker or user recover the environment, including Pulp settings held there, such as the Django secret key or the database password.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-43931": {
+    "cvss": 10.0,
+    "description": "Out-of-bounds write vulnerability in Remote Desktop Functionality in Synology VPN Plus Server before 1.4.3-0534 and 1.4.4-0635 allows remote attackers to execute arbitrary commands via unspecified vectors.",
+    "vendor": "Synology",
+    "product": "VPN Plus Server"
+  },
+  "CVE-2024-10443": {
+    "cvss": 9.8,
+    "description": "Improper neutralization of special elements used in an OS command ('OS Command Injection') vulnerability in Task Manager component in Synology BeePhotos before 1.0.2-10026 and 1.1.0-10053 and Synology Photos before 1.6.2-0720 and 1.7.0-0795 allows remote attackers to execute arbitrary code via unspecified vectors.",
+    "vendor": "Synology",
+    "product": "BeePhotos"
+  },
+  "CVE-2024-50630": {
+    "cvss": 7.5,
+    "description": "Missing authentication for critical function vulnerability in the webapi component in Synology Drive Server before 3.0.4-12699, 3.2.1-23280, 3.5.0-26085 and 3.5.1-26102 allows remote attackers to obtain administrator credentials via unspecified vectors.",
+    "vendor": "Synology",
+    "product": "Synology Drive Server"
+  },
+  "CVE-2024-50631": {
+    "cvss": 7.5,
+    "description": "Improper neutralization of special elements used in an SQL command ('SQL Injection') vulnerability in the system syncing daemon in Synology Drive Server before 3.0.4-12699, 3.2.1-23280, 3.5.0-26085 and 3.5.1-26102 allows remote attackers to inject SQL commands, limited to write operations, via unspecified vectors.",
+    "vendor": "Synology",
+    "product": "Synology Drive Server"
   }
 }
