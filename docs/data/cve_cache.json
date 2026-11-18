@@ -63786,7 +63786,7 @@
     "product": "Unknown"
   },
   "CVE-2026-64499": {
-    "cvss": null,
+    "cvss": 3.3,
     "description": "In the Linux kernel, the following vulnerability has been resolved: iio: adc: ti-ads1119: fix PM reference leak in buffer preenable ads1119_triggered_buffer_preenable() resumes the device with pm_runtime_resume_and_get() before starting a conversion. If i2c_smbus_write_byte() fails, the function returns the error directly and leaves the runtime PM usage counter elevated. The matching postdisable callback is not called when preenable fails, so the reference is leaked and the device may remain runtime-active indefinitely. Store the I2C transfer result in ret and drop the runtime PM reference on failure before returning the error.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -112902,10 +112902,10 @@
     "product": "Unknown"
   },
   "CVE-2026-126978": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 8.8,
+    "description": "Philips Hue Bridge hap_pair_setup_handler Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of Philips Hue Bridge. Authentication is not required to exploit this vulnerability. The specific flaw exists within the HomeKit Accessory Protocol service, which listens on TCP port 8080 by default. When parsing pairing requests, the process does not properly validate the length of user-supplied data prior to copying it to a fixed-length, heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the device. Was ZDI-CAN-28434.",
+    "vendor": "Philips",
+    "product": "Hue Bridge"
   },
   "CVE-2026-126977": {
     "cvss": null,
@@ -117138,7 +117138,7 @@
     "product": "Unknown"
   },
   "CVE-2026-17214": {
-    "cvss": 4.8,
+    "cvss": 7.5,
     "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to bypass security restrictions due to LDAP injection.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -130736,8 +130736,8 @@
   "CVE-2026-106152": {
     "cvss": 8.8,
     "description": "In Progress® Telerik® Report Server prior to version 12.3.26.1110, an external control of a system configuration setting vulnerability allows an unauthenticated remote attacker to influence the server address used by Report Server when generating links and notifications. With user interaction, this can lead to disclosure of sensitive information and account takeover.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Progress Software",
+    "product": "Telerik Report Server"
   },
   "CVE-2026-106156": {
     "cvss": 8.6,
@@ -133980,10 +133980,10 @@
     "product": "pfSense CE"
   },
   "CVE-2026-127222": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 7.5,
+    "description": "SGLang through 0.5.23, fixed in commit 7b5fb39, contains a missing authorization vulnerability in the POST /load_lora_adapter_from_tensors HTTP endpoint, which lacks the @auth_level(AuthLevel.ADMIN_OPTIONAL) decorator applied to its sibling admin endpoints, allowing unauthenticated network-reachable attackers to invoke it without an API key. Attackers can load a LoRA adapter from attacker-supplied serialized tensors to manipulate the served model, and when combined with a separately documented deserialization bypass, achieve unauthenticated remote code execution as root.",
+    "vendor": "sgl-project",
+    "product": "sglang"
   },
   "CVE-2026-124024": {
     "cvss": 5.9,
@@ -137074,5 +137074,407 @@
     "description": "Deserialization of Untrusted Data in Apache Roller versions 4.0.0 through 6.1.4 allows an unauthenticated remote attacker to execute arbitrary code. The XML-RPC endpoint accepts vendor extension types and deserializes them before authenticating the requester. This is the same vulnerability as CVE-2026-82384, which listed only Apache Roller 6.1.5 as affected. This issue is being actively exploited. Users are recommended to upgrade to Apache Roller 6.1.6 or later, which disables the extension types and rejects XML-RPC requests when the XML-RPC feature is disabled. Users who cannot upgrade right away should set \"enabledForExtensions\" to \"false\" in WEB-INF/web.xml, or remove the \"/roller-services/xmlrpc\" servlet mapping, and restart Roller. Disabling XML-RPC in the administration UI is not enough, because older versions deserialize the request before checking that setting.",
     "vendor": "Apache Software Foundation",
     "product": "Apache Roller"
+  },
+  "CVE-2026-111333": {
+    "cvss": 6.9,
+    "description": "Memory overflow in an authentication request can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-111334": {
+    "cvss": 9.3,
+    "description": "Memory overflow in Endpoint Analysis (EPA/EPAS) can lead to unpredictable or erroneous behavior or a Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-111335": {
+    "cvss": 6.9,
+    "description": "Improper request handling can lead to a denial-of-service / reboot-loop condition in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-111336": {
+    "cvss": 8.3,
+    "description": "Memory overflow in HTTP/2 handling can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-111337": {
+    "cvss": 8.7,
+    "description": "Memory overflow in Base64 decoding in advanced policy expressions leading to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-111338": {
+    "cvss": 6.9,
+    "description": "Sensitive authentication material written to a log file in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-111339": {
+    "cvss": 6.9,
+    "description": "Memory overflow in Application Firewall data decompression/inspection can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-120860": {
+    "cvss": 8.7,
+    "description": "Memory overflow in protocol load-balancing traffic handling (Diameter, SIP-over-TCP, MQTT, RADIUS) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-120861": {
+    "cvss": 8.7,
+    "description": "Memory overflow / improper handling in GSLB and geolocation (MEP, static-proximity, config-sync) can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-120862": {
+    "cvss": 8.7,
+    "description": "Memory overflow in SIP ALG (LSN) and DNS answer-section logging datapaths can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-120863": {
+    "cvss": 8.7,
+    "description": "Memory overflow in the management plane can lead to unpredictable or erroneous behavior or Denial of Service in Citrix NetScaler ADC and Citrix NetScaler Gateway.",
+    "vendor": "Citrix",
+    "product": "Unknown"
+  },
+  "CVE-2026-128637": {
+    "cvss": 5.1,
+    "description": "The MISP Modules website component contains an open redirect vulnerability in its login endpoint. The /login route accepted a user-supplied next query parameter and passed it directly to Flask's redirect() function without validating the destination. An attacker could craft a URL such as https://victim-host/login?next=https://attacker.example/phish and deliver it to a user (e.g., via email or a lookalike page). After the user successfully authenticated, the application issued a 302 redirect to the attacker-controlled external URL. This enables phishing attacks where a user, believing they are still on the legitimate MISP Modules site, may enter additional credentials or sensitive information on the attacker's page. It can also be used to obscure the true destination of a link, bypassing user trust in the legitimate domain. The vulnerability requires the victim to interact with the crafted URL and complete a login, but no prior authentication or special configuration is needed on the attacker's side. The affected component is the website sub-project of misp-modules, specifically the account blueprint in website/app/account/account.py. No version boundaries are specified in the patch metadata.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59074": {
+    "cvss": 8.7,
+    "description": "Edito CMS is vulnerable to improper cryptographic signature verification in the JWT refresh logic. An authenticated low-privilege user can submit self-crafted​ ​JWT​ containing​ ​an existing user​ ​identifier and, due to the lack of signature validation,​​ obtain​ ​a ​​valid,​​ fully-signed​​ session ​​token​​ for​​ any ​​account ​​in​ ​the​ ​system. This allows the attacker to impersonate any user, including administrators. This issue was fixed in version 5.10.2607. Hotfixes for older versions (5.8) have also been released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59075": {
+    "cvss": 7.1,
+    "description": "Edito CMS is vulnerable to Dynamic LINQ injection. Due to improper input validation, an authenticated attacker can inject conditional expressions into the sort parameter of paginated administrative endpoints. Analyzing the returned result order allows the attacker to extract value of any field character by character, leading to potential exposure of sensitive data. This issue was fixed in version 5.10.2607. Hotfixes for older versions (5.8) have also been released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59076": {
+    "cvss": 5.1,
+    "description": "Edito CMS is vulnerable to Stored Cross-Site Scripting (XSS). Due to improper input validation, an authenticated attacker can inject malicious scripts into givenName and surname parameters via the /api/auth/profile endpoint. When an administrator visits the admin changelog logs, the injected script is automatically executed, in his browser. This issue was fixed in version 5.10.2607. Hotfixes for older versions (5.8) have also been released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59077": {
+    "cvss": 5.1,
+    "description": "Edito CMS is vulnerable to Stored XSS via content parameter in Tiny editor functionality. Authenticated attacker can inject arbitrary HTML and JS into website, which will be rendered/executed when user tries to edit changed entry. This issue was fixed in version 5.10.2607. Hotfixes for older versions (5.8) have also been released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59078": {
+    "cvss": 5.1,
+    "description": "Edito CMS is vulnerable to Stored XSS in avatar upload functionality. Authenticated attacker can inject arbitrary HTML and JS into website, which will be rendered/executed when visiting an URL leading to a edited avatar. This issue was fixed in version 5.10.2607. Hotfixes for older versions (5.8) have also been released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59079": {
+    "cvss": 7.1,
+    "description": "Edito CMS restricts the ability to upload files via the UI to specific file types. However, an avatar upload functionality allows an attacker to upload files of any type and extension without restriction. This issue was fixed in version 5.10.2607. Hotfixes for older versions (5.8) have also been released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59080": {
+    "cvss": 2.1,
+    "description": "Edito CMS sends JWT token via GET requests. This allows a local attacker with access to browser history to obtain valid JWT token and perform action on behalf of the victim. The token is valid for only short period of time; after that time, it expires and can no longer be used. The vendor assessed the likelihood of exploitation as very low and determined that a fix is not necessary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59081": {
+    "cvss": 8.4,
+    "description": "Edito CMS deserializes JSON data without further validation. A user (even an administrator) cannot exploit this vulnerability through the application's normal functionality. An attacker who could modify cache entries or inject them could execute code on the server. This issue was fixed in version 5.10.2607. Hotfixes for older versions (5.8) have also been released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116417": {
+    "cvss": 8.1,
+    "description": "Dell PowerScale InsightIQ, versions 6.3.0 through 6.4.0, contains a Weak Password Requirements vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability, leading to Information disclosure and Unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116419": {
+    "cvss": 6.4,
+    "description": "Dell PowerScale InsightIQ, versions 6.3.0 through 6.4.0, containsan Insertion of Sensitive Information into Log File vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116420": {
+    "cvss": 6.4,
+    "description": "Dell PowerScale InsightIQ, versions 6.3.0 through 6.4.0, containsan Insertion of Sensitive Information into Log File vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116430": {
+    "cvss": 4.3,
+    "description": "Dell PowerScale InsightIQ, Version 6.4.0, contain an Insufficient Verification of Data Authenticity vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Information tampering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116436": {
+    "cvss": 4.3,
+    "description": "Dell PowerScale InsightIQ, Versions 6.3.0 through 6.4.0, contains an Insertion of Sensitive Information into Log File vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105020": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105021": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105022": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105023": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105024": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Storage Spaces Controller allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105025": {
+    "cvss": 7.8,
+    "description": "Double free in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105026": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105028": {
+    "cvss": 7.8,
+    "description": "Out-of-bounds read in Windows Win32K allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105490": {
+    "cvss": 8.8,
+    "description": "Stack-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105491": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105493": {
+    "cvss": 8.8,
+    "description": "Stack-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105495": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105496": {
+    "cvss": 8.8,
+    "description": "Double free in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105497": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105498": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105499": {
+    "cvss": 8.8,
+    "description": "Out-of-bounds read in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118148": {
+    "cvss": 8.8,
+    "description": "Incorrect authorization in Active Directory Domain Services allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-17228": {
+    "cvss": 8.5,
+    "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery. Destination restrictions on outbound requests can be bypassed, which could allow the server to retrieve content from unintended resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98055": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ASoC: Intel: avs: Clean up the bus when fetching ML caps fails snd_hdac_ext_bus_get_ml_capabilities() may fail and its return code shall be checked and accounted for. Address the issue by updating the error-path for avs_pci_probe(). At the same time, if the function in question succeeds but the next part of avs_pci_probe() fails, the hlink list shall be cleaned up before leaving the scope.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98056": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: nvme: remove stale namespaces by NSID range during scan nvme_scan_ns_list() drops the stale namespaces in each gap in the reported NSID list one NSID at a time. Every iteration calls nvme_find_get_ns() to look the namespace up and removes it if it is present. The loop runs once per NSID in the gap rather than once per namespace actually present. NSIDs are 32-bit, so a target with a sparse NSID space can make a single gap spin the loop billions of times with nothing to remove. watchdog: BUG: soft lockup - CPU#4 stuck for 26s! Workqueue: nvme-wq nvme_scan_work [nvme_core] RIP: 0010:__srcu_read_unlock+0xb/0x20 Call Trace: nvme_find_get_ns+0x7d/0xb0 [nvme_core] nvme_scan_ns_list+0xe8/0x280 [nvme_core] nvme_scan_work+0x18a/0x280 [nvme_core] process_one_work+0x197/0x380 worker_thread+0x2fe/0x410 kthread+0xe0/0x100 Rename nvme_remove_invalid_namespaces() to nvme_remove_nsid_range() and give it an open (start, end) NSID range. ctrl->namespaces is sorted by NSID, so the whole gap is dropped in a single walk that stops once end is reached. This bounds the work by the namespaces that are present instead of by the size of the gap.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98057": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ring-buffer: Add checking nr_subbufs to persistent ring buffer validation Sashiko reported that the code was using meta->nr_subbufs without making sure that it matched the nr_pages + 1 on data that was assuming the two were the same. Add a check to the persistent ring buffer validation code to make sure that the saved nr_subbufs matches what we expect.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98067": {
+    "cvss": 5.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: erofs: disable LZ4 rolling decompression for now LZ4 rolling decompression [1] was introduced to reduce the memory footprint of temporary pages: For many cases, it is needed for users to read small data within a compressed extent (pcluster), either due to random small read, or since uptodate folios (typically order-0) cannot be reused for decompression again since decompression algorithm refills already-uptodate folios. Rolling decompression works because LZ4 is LZ77-based and only refers to the most recent 64 KiB of decompressed data, so in theory only a bounded rolling window of temporary pages is needed when decompressing. It can save a lot of temporary memory, e.g. 601,960-byte data can be compressed into a 256k LZ4 compressed extent, which means it needs 146 extra pages per request in the worst case if rolling decompression is disabled. However, the upstream LZ4 implementation is not under EROFS' control: For example, the literal copy memmove() may still **copy long literals backward** on x86 based on the address comparison even when the source and destination ranges do not overlap (IOWs, inline decompression doesn't need to be considered here). That breaks the rolling assumption and makes the optimization broken. Disable it for now to make sure the data correctness first since EROFS is used everywhere now: The rolling window approach can be revived once we either ensure that the official LZ4 code always copies forward for non-overlapping ranges or maintain our own LZ4 implementation in EROFS. The main impact is a higher runtime memory footprint; However, recent commit 0f6273ab4637 (\"erofs: add a reserved buffer pool for lz4 decompression\") helps mitigate this when enabled but it's still not perfect. [1] https://www.usenix.org/conference/atc19/presentation/gao § 3.3 Decompression",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123633": {
+    "cvss": 8.1,
+    "description": "When NGINX Plus or NGINX Open Source is configured to use HTTP/2 for client connections and proxy client requests to a backend, a specially crafted request can result in use-after-free in the worker process, if this process is running low on worker_connections. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR. Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or may allow a code execution. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "NGINX Open Source"
+  },
+  "CVE-2026-123634": {
+    "cvss": 8.1,
+    "description": "This issue occurs when NGINX Plus or NGINX Open Source is configured as a proxy, the proxied server name includes variables, and a Server Side Includes (SSI) or mirror directive sends a subrequest to a location that resolves the same server name. Under these conditions, a specially crafted HTTP request may cause a use-after-free condition in a worker process. An attacker may also be able to execute code if Address Space Layout Randomization (ASLR) is disabled or the attacker can bypass ASLR. Impact: An attacker could leverage this vulnerability to crash the NGINX worker process, corrupt its memory, or perform remote code execution (RCE) Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "NGINX Plus"
+  },
+  "CVE-2026-124990": {
+    "cvss": 9.8,
+    "description": "The Masteriyo LMS – LMS Course Builder, Quizzes & Certificates plugin for WordPress is vulnerable to PHP Object Injection in versions up to, and including, 3.5.1 via deserialization of untrusted input in the course importer. The set_post_metas() method calls maybe_unserialize() on attacker-controlled postmeta string values parsed from the uploaded JSON import file. This makes it possible for unauthenticated attackers to inject arbitrary PHP Objects. Exploitation by unauthenticated attackers requires that the site has enable_instructor_registration=true AND enable_guest_checkout=true AND at least one purchasable course exists. Install.php sets enable_instructor_registration=false on fresh installs, so this is a non-default configuration. On a default installation, where that is not configured, the vulnerability requires attackers with author-level access and above.",
+    "vendor": "masteriyo",
+    "product": "Masteriyo LMS – LMS Course Builder, Quizzes & Certificates"
+  },
+  "CVE-2026-120967": {
+    "cvss": 4.8,
+    "description": "When NGINX Plus or NGINX Open Source is configured to require client certificates (\"ssl_verify_client on\") in a non-default stream virtual server, a remote attacker could bypass verification of client certificates. Impact: An attacker could leverage this vulnerability to bypass verification of client certificates. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "NGINX Plus"
+  },
+  "CVE-2026-126967": {
+    "cvss": 8.8,
+    "description": "SmarterTools SmarterMail File Edit API Directory Traversal Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of SmarterTools SmarterMail. Authentication is required to exploit this vulnerability. The specific flaw exists within the FileStorageController class. The issue results from the lack of proper validation of a user-supplied path prior to using it in file operations. An attacker can leverage this vulnerability to execute code in the context of SYSTEM. Was ZDI-CAN-30742.",
+    "vendor": "SmarterTools",
+    "product": "SmarterMail"
+  },
+  "CVE-2026-125283": {
+    "cvss": 5.3,
+    "description": "When NGINX Plus or NGINX Open Source is configured to use the try_files and alias directives with a map variable, certain combinations of regular expression captures in map and try_files can cause a segmentation fault in an NGINX worker process. Impact: An attacker could leverage this vulnerability to cause an NGINX worker process to terminate unexpectedly. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "NGINX Plus"
+  },
+  "CVE-2026-114202": {
+    "cvss": 10.0,
+    "description": "Use of Hard-coded Cryptographic Key in ASUS Control Center Express allows a remote user to gain administrative privileges via a forged authentication token. Refer to the ' Security Update for ASUS Control Center Express Agent ' section on the ASUS Security Advisory for more information.",
+    "vendor": "ASUS",
+    "product": "Control Center Express"
+  },
+  "CVE-2026-120993": {
+    "cvss": 5.3,
+    "description": "When NGINX Plus or NGINX Open Source is configured to use the ngx_stream_ssl_module module with dynamic certificate loading and the ngx_stream_proxy_module module with the proxy_protocol v2 directive, an abbreviated SSL handshake can cause a worker process to terminate. Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system. This is a data plane vulnerability only; there is no control plane exposure. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "NGINX Plus"
+  },
+  "CVE-2026-118899": {
+    "cvss": 7.5,
+    "description": "When using the listen directive with the ssl parameter in the http block with TLSv1.3 enabled, an attacker can use a specially crafted TLS connection to cause an infinite loop in the NGINX worker process while reading the HTTP request body. As a result, the worker process stops accepting new connections and processing existing connections. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated. Impact: This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) of NGINX. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "NGINX Open Source"
+  },
+  "CVE-2026-19773": {
+    "cvss": 9.8,
+    "description": "libwebsockets HTTP/2 HPACK Path Header Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of libwebsockets. Authentication is not required to exploit this vulnerability. The specific flaw exists within the parsing of HTTP/2 HPACK path header. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-31036.",
+    "vendor": "libwebsockets",
+    "product": "libwebsockets"
+  },
+  "CVE-2026-113425": {
+    "cvss": 8.1,
+    "description": "When NGINX Plus or NGINX Open Source is configured as a mail proxy, undisclosed traffic can cause a use-after-free in an nginx worker process. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR. Impact: A remote unauthenticated attacker may crash an nginx worker process or corrupt its memory, disrupting service. Remote code execution is a potential impact. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "NGINX Plus"
+  },
+  "CVE-2026-123640": {
+    "cvss": 5.3,
+    "description": "Description When NGINX Plus or NGINX Open Source is configured with the ngx_stream_ssl_preread_module module, a specially crafted ClientHello message from an unauthenticated attacker causes forged values of the ngx_stream_ssl_preread_module variables, affecting virtual server selection. In addition, it may also cause a disagreement with a proxied server terminating the SSL/TLS connection without Transport Layer Security (TLS) 1.3 support. Impact This vulnerability may allow an attacker to forge values of the ngx_stream_ssl_preread_module variables and bypass the NGINX systems stream routing segmentation. As a result, the attacker may be able to route the connection to a privileged or internal backend that should be unreachable and gain access to sensitive information. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "NGINX Plus"
+  },
+  "CVE-2026-121810": {
+    "cvss": 8.1,
+    "description": "Description: This issue affects NGINX Plus and NGINX Open Source configurations that use HTTP/3. A remote, unauthenticated attacker can cause a use-after-free condition in the NGINX worker process, leading to a restart. Exploitation also depends on conditions beyond the attacker’s control. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR. Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or to possibly trigger a code execution. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "NGINX Plus"
+  },
+  "CVE-2026-100397": {
+    "cvss": 10.0,
+    "description": "Rucio is a scientific data management framework. From 1.14.0 until 35.9.1, 38.6.1, 40.4.2, and 41.1.1, validate_auth_token in lib/rucio/core/authentication.py does not distinguish short-lived SSH challenge nonces from authentication tokens stored in the same token table. An unauthenticated attacker can request /auth/ssh_challenge_token for an arbitrary account by supplying X-Rucio-Account, then present the returned X-Rucio-SSH-Challenge-Token as X-Rucio-Auth-Token to authenticate to other API endpoints as that account, including an administrative account. This issue is fixed in versions 35.9.1, 38.6.1, 40.4.2, and 41.1.1.",
+    "vendor": "rucio",
+    "product": "rucio"
+  },
+  "CVE-2026-131809": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131808": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131810": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131812": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131807": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131811": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
