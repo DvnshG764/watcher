@@ -138904,5 +138904,29 @@
     "description": "phpMyFAQ before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains an information disclosure vulnerability that allows unauthenticated attackers to read editor-only Private Notes by querying the public FAQ list API. Attackers can page through GET /api/v4.0/faqs or /api/v3.1/faqs without credentials to retrieve the notes field of every anonymously readable FAQ, exposing internal remarks and ticket details.",
     "vendor": "thorsten",
     "product": "phpMyFAQ"
+  },
+  "CVE-2026-117656": {
+    "cvss": 9.3,
+    "description": "Acceptance of Extraneous Untrusted Data With Trusted Data vulnerability in the Sign in with Apple strategy in pow-auth Assent allows an unauthenticated remote attacker to impersonate another user via the user parameter of the authorization callback. Apple posts the user's name to the callback endpoint in a user form parameter that the browser submits and the client controls. Assent.Strategy.Apple.callback/2 in lib/assent/strategies/apple.ex decodes that parameter, and fetch_user/2 merges it over the claims of the verified ID token, so the unverified map wins. An attacker who completes a Sign in with Apple login with their own Apple ID and edits the user parameter can replace sub, email, and any other claim. Applications that look up, link, or authorize accounts by the returned subject or email then act on the attacker's values. This issue affects assent: from 0.1.25 before 0.3.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-90890": {
+    "cvss": 5.5,
+    "description": "ASRock Polychrome SYNC/RGB software utility developed by ASRock Inc. has an Untrusted Pointer Dereference vulnerability. Authenticated local attackers can send a specially crafted IOCTL request to cause the driver to dereference an unvalidated pointer, resulting in an operating system crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-90891": {
+    "cvss": 5.5,
+    "description": "ASRock Polychrome SYNC/RGB software utility developed by ASRock Inc. has an Improper Access Control vulnerability. Authenticated local attackers can send a specially crafted IOCTL request to cause the driver to write to improperly restricted I/O ports, resulting in a forced operating system reboot.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18948": {
+    "cvss": 9.9,
+    "description": "A flaw was found in Feast. The system improperly deserializes user-defined functions (UDFs) stored in its registry, which are serialized using the 'dill' library. This allows a remote attacker to store a malicious UDF, leading to unauthenticated arbitrary code execution on the feature server in default configurations. An authenticated attacker can also achieve arbitrary code execution on the registry server by bypassing authorization checks during deserialization. This vulnerability can result in cross-tenant data access and lateral movement within the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
