@@ -138364,5 +138364,347 @@
     "description": "Use of externally-controlled format string in SQL Server allows an authorized attacker to deny service over a network.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-126449": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in immunizations.php, diagnosis_full.php, and billing_process.php that lets low-privileged users bypass ACL checks. Authenticated Front Office users can reuse their session CSRF token to add or delete immunizations, write encounter billing codes, and invoke the billing processor.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126450": {
+    "cvss": 5.0,
+    "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability that allows authenticated users to inject scripts by placing payloads in the patient External ID field. The payload executes when other users open the patient's prescriptions via View Printable Version (HTML), running script in their browser sessions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126451": {
+    "cvss": 5.4,
+    "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability that allows portal patients to run JavaScript in staff sessions by injecting javascript: URLs into document template_data. Attackers can submit an encounterForm value rendered unsanitized into an iframe src by DocumentTemplateRender, letting the script read PHI and CSRF tokens and call staff or admin endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126452": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in diagnosis_full.php that allows authenticated users to delete or clear any billing record by ID. Attackers can supply a target billing ID in the id parameter with delete or clear mode to deactivate other patients' charges and corrupt financial records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126453": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains an inverted comparison in Document::has_expired() that causes the FHIR Binary download endpoint to treat time-limited PHI documents as unexpired after their one-hour lifetime. Authenticated users still authorized for a Binary/{id} resource can download expired bulk export NDJSON files and $docref CCDs indefinitely.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126454": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.5.0 lacks rate limiting or lockout on TOTP submission, allowing attackers with a valid password to brute-force the 6-digit MFA code. Attackers can script repeated POST requests to main_screen.php or the OAuth2 authorization flow with re-submitted hidden credentials to bypass two-factor authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126455": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.5.0 contains multiple missing authorization and SQL injection defects across report, portal, transaction, and immunization components. Low-privileged Front Office clerks can chain these to read arbitrary database tables including users_secure hashes, hijack patient portal identities, and forge approved clinical records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126456": {
+    "cvss": 5.4,
+    "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability in the Fee Sheet notecodes field, which is escaped with the wrong context. Attackers with clinician access can inject a payload that breaks out of the single-quoted value attribute and executes in higher-privileged users' browsers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126457": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in InstallerController that allows any authenticated user to modify module administration settings without the admin/manage_modules permission. Low-privileged users such as Front Office clerks can POST to saveConfig, DeleteAcl, DeleteHooks and nickName actions to reconfigure or partially disable installed modules.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126458": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in authorizations_full.php that allows any authenticated staff user to authorize arbitrary patients' clinical records. Attackers can send a mode=authorize request with an attacker-chosen pid and their own CSRF token to set authorized=1 on billing, forms, pnotes, and transactions records, bypassing provider review.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126460": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains a persistent SQL injection vulnerability in SLEOB::slInvoiceNumber(), where the CLP01 claim control number from uploaded X12 835 ERA files is concatenated unescaped into a query. Attackers with billing write access can upload a crafted .edi file via sl_eob_search.php that is stored on the server and re-executes a time-based payload whenever it is reprocessed through sl_eob_process.php, extracting patient health information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126461": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in library/ajax/user_settings.php that lets any authenticated user persist arbitrary global configuration overrides. Attackers can POST global:-prefixed keys to re-point external service hosts like CouchDB, eRx, phiMail, or SMTP to attacker-controlled servers, exfiltrating system credentials and patient PHI.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126462": {
+    "cvss": 5.4,
+    "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability that allows authenticated users with Eye Exam edit permission to inject scripts via the Next Visit Orders PLAN[] field. Attackers can store a payload closing the textarea in view.php, executing JavaScript when another user opens the Eye Exam editor to steal session identifiers or clinical data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126463": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains multiple sql injection vulnerabilities that allow authenticated users to inject payloads through ERA CLP01, form_facility, form_icd_codes, and POST key names. Attackers can perform UNION, blind, and error-based injection to read users_secure password hashes and patient PHI, and overwrite patient_data fields.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126464": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains a server-side request forgery vulnerability in PatientPortalPDFDocumentCreator::createPdfObject() that allows authenticated patients to make the server issue HTTP GET requests. Attackers can submit img src, inline style url(), or reinserted unpurified style blocks via the content parameter of portal/lib/doc_lib.php to probe internal ports and cloud metadata endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126465": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains an SQL injection vulnerability in the patient portal api/onsiteactivityviews endpoint that allows any authenticated staff user to inject SQL through unquoted Id_BitwiseAnd Criteria values. Attackers can close the bitwise parenthesis and append OR or UNION SELECT clauses to read patient PHI, staff password hashes, MySQL authentication strings, and API tokens.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126466": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability that allows any authenticated user to create patient records and enumerate patients by omitting aclCheckCore() checks. Attackers can POST to new_comprehensive_save.php to create patients with insurance PHI, or query new_search_popup.php and patient_select.php to leak names, SSNs and DOBs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126467": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a mass assignment vulnerability in ObservationController::processEnhancedFormSave() that allows authenticated low-privilege users to forge authorization flags through an incomplete field blacklist. Attackers can submit authorized=1 or override the id field alongside observation_id to mark observations as Provider-signed and overwrite clinical fields of other observations within the same patient encounter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126468": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability that allows any authenticated low-privilege user to access reports, dated reminders, and batch reminder endpoints lacking AclMain::aclCheckCore() checks. Attackers can request patient_list.php, amc_full_report.php, dated_reminders_add.php, or batch_reminders.php directly to export patient PHI, send unauthorized reminders, and trigger batch reminder processing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126469": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in several custom/ scripts that rely only on session authentication and never call AclMain::aclCheckCore(). Any authenticated low-privilege user can request export_labworks.php, chart_tracker.php, or export_registry_xml.php to disclose patient SSN, DOB, and insurance data or provider NPI/tax IDs, and forge chart-tracker records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126470": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.5.0 contains an insecure direct object reference vulnerability in the Carecoordination module that allows authenticated users with send_to_hie permission to access any patient's CCDA/CCR/QRDA documents. Attackers can supply arbitrary document or patient IDs to download, transmit, or export patient health records, inject falsified clinical data, and delete audit records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126471": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in print_referral.php and trend_form.php that allows low-privileged Front Office users to access patient PHI without patients:med permission. Attackers can directly request these endpoints with arbitrary patient_id values to retrieve patient demographics, insurance data, and vitals history, enumerating IDs to expand disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126472": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in ccdaservice/ccda_gateway.php that allows any authenticated low-privilege staff user to retrieve other patients' C-CDA documents. Attackers can request the view or dl action with sequential pid values and their own CSRF token to enumerate and exfiltrate medications, problems, allergies, and immunizations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126474": {
+    "cvss": 6.1,
+    "description": "OpenEMR before 8.5.0 contains a reflected cross-site scripting vulnerability in the ACL module that allows attackers to execute JavaScript in authenticated sessions via the module_id parameter. Attackers can deliver crafted acl/index or acl/acl links that inject unencoded input into inline script blocks, stealing non-HttpOnly session cookies and modifying ACL configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126475": {
+    "cvss": 6.1,
+    "description": "OpenEMR before 8.5.0 contains a reflected cross-site scripting vulnerability that allows authenticated attackers to execute JavaScript by injecting payloads into the searchEleNo POST parameter of the application/index/search endpoint. Attackers can break out of unencoded HTML attributes in auto-suggest.phtml to inject event handlers that fire on DOM insertion, stealing non-HttpOnly session cookies and patient data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126476": {
+    "cvss": 6.1,
+    "description": "OpenEMR before 8.5.0 contains a reflected cross-site scripting vulnerability in the Application module's auto-suggest endpoint, which echoes the searchMode POST parameter unencoded into a single-quoted onClick attribute. Attackers can induce an authenticated user to submit a single-quote payload to application/index/search, executing arbitrary JavaScript in that user's session to steal session cookies or disclose patient data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126477": {
+    "cvss": 4.8,
+    "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability in the Eye Exam (eye_mag) module that allows administrators to inject JavaScript through unencoded Eye_defaults list option titles. Attackers can store a crafted title via edit_list.php that breaks out of a jQuery string in eye_base.php, executing script in any authenticated user's session when they click Defaults.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126478": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains an SQL injection vulnerability in the Syndromic Surveillance report because the form_icd_codes[] POST array is concatenated into an unquoted numeric IN() clause without integer validation. Authenticated users can submit quote-free payloads that bypass add_escape_custom to perform blind or UNION-based injection and exfiltrate patient health information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126479": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in five Module Manager InstallerController actions that lack the admin/manage_modules ACL check and CSRF validation. Low-privilege users such as Front Office accounts can POST to saveConfig or SaveHooks to overwrite any module's configuration, retarget CCDA and HIE settings, and delete module hooks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126480": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.5.0 contains an sql injection vulnerability in CcrTable::insertApprovedData() that allows authenticated users to inject SQL through request parameter names used as column names. Attackers can send crafted patient_data-*-sel parameters to the revandapprove route, lacking ACL and CSRF checks, to copy password hashes into patient fields or corrupt records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126481": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.5.0 contains a path traversal vulnerability in era_payments.php and sl_eob_search.php that allows authenticated billing users to write files outside the ERA directory. Attackers can embed traversal sequences in the GS04 element of an uploaded X12 835 file to overwrite .edi or .835 files with attacker-controlled content anywhere writable by the web server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126482": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.5.0 contains an SQL injection vulnerability in SLEOB::slInvoiceNumber() in src/Billing/SLEOB.php, which concatenates the CLP01 claim identifier from uploaded X12 835 ERA files into a query without escaping or parameter binding. Authenticated users with billing permissions, or a malicious payer whose ERA file a clerk uploads, can execute arbitrary SQL to read any table, including users_secure password hashes, and modify data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126483": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains an SQL injection vulnerability that allows authenticated report users to manipulate queries by supplying a crafted form_facility value to interface/reports/ippf_statistics.php. Attackers can close the string literal in the facility_id WHERE clause and use boolean or time-based payloads to read sensitive database contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126484": {
+    "cvss": 5.4,
+    "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability in printed_fee_sheet.php that allows authenticated portal patients to inject script by setting unescaped appointment comments (pc_hometext). Attackers can submit HTML payloads via the form_comments field in add_edit_event_user.php that execute when staff open the patient's fee sheet, acting within the staff session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126485": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains a cross-site request forgery vulnerability in ObservationController::deleteAction that allows attackers to delete observation form records without a CSRF token. Attackers can lure a logged-in clinician to a page issuing a GET to delete.php with guessed id values, soft-deleting observations in the victim's open encounter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126486": {
+    "cvss": 7.6,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in portal/import_template.php, where several portal document template modes lack admin/forms ACL and CSRF checks. Any authenticated staff user can send mode=save_profiles to delete all template profile assignments, use other unguarded modes to push templates to patients or change categories, and read template bodies via mode=get or getPdf.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126487": {
+    "cvss": 8.8,
+    "description": "OpenEMR before 8.5.0 contains an authorization bypass vulnerability that allows authenticated users to override system-wide global configuration values by storing global-prefixed keys through library/ajax/user_settings.php. Attackers can submit lab or target parameters with global: prefixed setting names to disable audit logging, weaken password policies, or alter security-sensitive settings persistently for their sessions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126490": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains active debug code in interface/fax/fax_view.php that executes passthru(\"groups\") and discloses the web server's Unix group memberships. Authenticated attackers with fax module access can supply a nonexistent jid value to reveal groups such as adm or shadow, aiding privilege escalation planning.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126491": {
+    "cvss": 7.6,
+    "description": "OpenEMR before 8.5.0 contains a stored SQL injection vulnerability in getByPatientDemographics() where layout_options field_id values are concatenated into the patient search WHERE clause. Attackers with Layout Editor access can plant a malicious field_id, allowing any authenticated low-privilege user to exfiltrate data from patient_data and users_secure tables.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126494": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.4.0 contains an improper authorization vulnerability in ScopeRepository::finalizeScopes() that allows read-only SMART/OAuth clients to obtain write scopes because ScopeEntity::containsScope() ignores registered permissions. Attackers with a client registered for user/ .read can request user/ .write to create, update, and delete appointments or patient data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126936": {
+    "cvss": 5.9,
+    "description": "Zipline before 4.7.0 contains a race condition vulnerability that allows users to bypass invitation usage limits, upload storage quotas, and shortened-URL quotas through concurrent requests. Attackers can send overlapping registration, upload, or URL creation requests that pass checks against stale state, creating extra accounts and exceeding administrator-configured resource quotas.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126938": {
+    "cvss": 7.1,
+    "description": "Zipline before 4.6.4 contains a resource allocation vulnerability that allows authenticated users to bypass chunked-upload size and quota checks by forging Content-Range offsets and totals. Attackers can send tiny chunks to the partial upload endpoint with large declared offsets, causing the server to create oversized files and exhaust disk space.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126939": {
+    "cvss": 5.3,
+    "description": "Zipline before 4.6.4 contains an information disclosure vulnerability in GET /api/server/folder/:id that allows unauthenticated attackers to list files in non-public upload-only folders. Attackers who know the folder UUID can supply the page query parameter to bypass the metadata-only early return and enumerate file names, IDs, MIME types, sizes, and view counts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126940": {
+    "cvss": 6.5,
+    "description": "Zipline before 4.6.4 contains a rate limit bypass vulnerability that allows remote attackers to evade request limits by varying query strings or supplying the x-zipline-p-filename header. Attackers can append differing query parameters to login and file or short-link password verification endpoints to perform credential guessing beyond the intended rate limits.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126941": {
+    "cvss": 6.8,
+    "description": "Zipline through 4.6.2 contains an authorization bypass vulnerability that allows authenticated administrators to read superadmin secrets because GET /api/users and GET /api/users/:id lack the canInteract check. Attackers can retrieve plaintext totpSecret and OAuth tokens to bypass 2FA and take over superadmin accounts, while any authenticated user can enumerate other users' folders via GET /api/user/folders.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126942": {
+    "cvss": 5.4,
+    "description": "Zipline before 4.6.2 contains a missing authorization vulnerability in POST /api/user/folders that allows authenticated users to reparent other users' files by supplying their file IDs. Attackers can harvest file IDs from public folders and create a folder seeded with them, disclosing victims' file URLs and removing those files from their folder views.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126943": {
+    "cvss": 4.9,
+    "description": "Zipline from 4.2.0 before 4.6.2 contains an information disclosure vulnerability that logs sensitive environment variable values, such as OAUTH_OIDC_CLIENT_SECRET, without redaction at startup. Attackers with access to system journal or docker logs can obtain OAuth2 client secrets and use them to exchange intercepted OAuth2 callbacks for valid tokens.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126944": {
+    "cvss": 5.7,
+    "description": "Zipline before 4.6.1 contains a path traversal vulnerability in LocalDatasource that allows SUPERADMIN users to read or delete files outside the upload directory by importing records with traversal filenames. Attackers can trigger the unchecked range-read path with byte-range requests or set expired deletion times to delete files accessible to the Zipline process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126945": {
+    "cvss": 8.7,
+    "description": "Zipline before 4.5.1 contains a stored cross-site scripting vulnerability in the HighlightCode component that renders unescaped file content before highlight.js finishes loading. Authenticated attackers can upload text files containing HTML/JavaScript payloads that execute in viewers' browsers, enabling API calls such as account changes on the victim's behalf.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126949": {
+    "cvss": 7.0,
+    "description": "Zipline through 4.4.0 contains a path traversal vulnerability in the PATCH /api/user/files/:id rename endpoint that allows authenticated users to overwrite existing uploads by supplying unsanitized names. Attackers can submit names like ../uploads/victim.txt that bypass the raw-string database uniqueness check but normalize via path.join(), causing fs.rename() to replace other files' contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126950": {
+    "cvss": 7.0,
+    "description": "Zipline through 4.4.0 contains a path traversal vulnerability that allows authenticated attackers to delete arbitrary server files by injecting traversal sequences via the x-zipline-file-extension header. Attackers can upload a file with a poisoned stored name and short expiry so LocalDatasource deletion removes chosen files, causing denial of service or data loss.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126953": {
+    "cvss": 8.1,
+    "description": "Cudy TR3000 before 2.5.42 contains an OS command injection vulnerability that allows a malicious or compromised ACS to execute commands as root by supplying an unvalidated InternetGatewayDevice.User.{i}.Username value. Attackers can send a SetParameterValues request with shell metacharacters that set_UserUsername() in obuspa_system.lua passes to os.execute(), gaining root command execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126954": {
+    "cvss": 4.7,
+    "description": "Glance from 0.7.9 before 0.8.8 contains a stored cross-site scripting vulnerability that allows malicious extension endpoints to inject javascript: URLs via the Widget-Title-URL response header. Attackers controlling an extension endpoint can execute script when users click the widget title, reading dashboard pages through same-origin requests and exfiltrating content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127074": {
+    "cvss": 4.3,
+    "description": "OpsTree BuildPiper before 2.7.0 contains a path traversal vulnerability that allows authenticated users with build configuration permission to read files on the build worker by supplying unvalidated dockerfile_path and build context values. Attackers can set traversal or absolute paths such as /etc/passwd via the CI configuration endpoint, then trigger a build to disclose file contents in the build log.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127075": {
+    "cvss": 6.5,
+    "description": "OpsTree BuildPiper before 2.7.0 contains a path traversal vulnerability that allows authenticated users to read arbitrary files by supplying traversal sequences in Additional Manifest file paths. Attackers can enter paths like ../../../../etc/passwd so the renderer embeds file contents in generated manifests and logs, exposing configuration files and service-account tokens.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127078": {
+    "cvss": 7.1,
+    "description": "OpsTree BuildPiper before 2.7.0 contains an authorization bypass vulnerability that allows authenticated users to attach another application's environment to their service by supplying a foreign project_env_id. Attackers can configure CI and trigger builds and deployments through the component env endpoints using the other application's configuration, registries and deployment infrastructure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127079": {
+    "cvss": 7.4,
+    "description": "OpsTree BuildPiper before 2.7.0 lacks rate limiting on password-reset OTP verification, allowing unauthenticated attackers to brute force 6-digit OTPs. Attackers can initiate a reset and submit unthrottled guesses to the check_otp endpoint, resetting the target's password and taking over the account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
