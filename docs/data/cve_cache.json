@@ -138754,5 +138754,107 @@
     "description": "FrankenPHP before 1.13.4 contains a denial of service vulnerability in worker mode where frankenphp_handle_request() returns false without finishing the dequeued request after a fatal error during request startup. Attackers who trigger startup fatal errors against worker scripts that keep calling frankenphp_handle_request() can leave client requests hanging indefinitely while the worker continues running.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-128019": {
+    "cvss": 4.8,
+    "description": "FrankenPHP before 1.13.4 contains an information disclosure vulnerability in worker mode that leaks per-request environment variables into later requests on the same PHP thread. Attackers can read values set via env directives with request placeholders or WithRequestEnv() through getenv() or $_SERVER, causing applications to act on another user's routing, tenant, or authorization values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128022": {
+    "cvss": 5.3,
+    "description": "FrankenPHP before 1.13.2 contains a resource exhaustion vulnerability that allows unauthenticated clients to tie up PHP threads because queued requests are not cancelled when clients disconnect. Attackers can send many requests and close connections immediately, forcing handleRequestWithRegularPHPThreads and worker handlers to execute them and delay all clients sharing the thread pool.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128023": {
+    "cvss": 7.4,
+    "description": "FrankenPHP before 1.13.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to spoof trusted headers by sending dot-form header names that PHP rewrites to underscores. Attackers can send headers like X.Authenticated.User or X.Forwarded.For that map to $_SERVER keys, spoofing user identity, client IP, or scheme.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128026": {
+    "cvss": 6.4,
+    "description": "FrankenPHP from 1.5.0 before 1.13.0 contains an incomplete environment sandbox vulnerability in which putenv writes to the process-wide OS environment via os.Setenv, leaking values across concurrent requests. Attackers reaching a request path that spawns child processes with the default environment through proc_open or exec can read secrets such as database passwords set by other requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128030": {
+    "cvss": 5.9,
+    "description": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 contains an insufficient session expiration vulnerability because Mage_Api_Model_Session::_renewBySessId() never checks api_user.is_active and REST OAuth authorization never checks whether the admin user is active. Attackers holding an existing SOAP/XML-RPC session or OAuth access token retain API access after deactivation or API key rotation, reading and modifying customer, order and catalog data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128031": {
+    "cvss": 3.8,
+    "description": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 contains an incorrect authorization vulnerability because admin controllers' _isAllowed() checks fall back to, or only check, parent ACL resources instead of finer per-action permissions. Authenticated restricted administrators can mass cancel or hold orders, rewrite order shipping addresses, export customer report data, or create REST roles despite their role denying those permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128040": {
+    "cvss": 6.1,
+    "description": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 contains a stored cross-site scripting vulnerability because admin pages render Dataflow profile link variables, tax rate titles, OAuth consumer names, and PayPal certificate filenames without escaping. An administrator restricted to one affected area can store script that runs when another administrator, including a full administrator, opens the page, reading the form key and performing actions with that administrator's privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128041": {
+    "cvss": 8.0,
+    "description": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 serves RSS feeds with a text/html content type and does not escape feed entry data, leading to stored cross-site scripting. An unauthenticated guest can submit a product review with script in the nickname, title or text that executes when an administrator opens the pending-reviews feed, enabling admin account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128044": {
+    "cvss": 7.7,
+    "description": "OpenMage magento-lts before 20.18.2 and 21.x before 21.0.0-beta3 validates OAuth 1.0a oauth_callback URLs with a string-prefix check and falls back to accepting any well-formed URL. Attackers holding a leaked consumer key and secret can supply host-suffix, userinfo, or arbitrary callback URLs to capture an approving administrator's or customer's request token and verifier, then obtain an access token with the victim's API privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128045": {
+    "cvss": 5.3,
+    "description": "OpenMage Magento-LTS before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 contains an authorization bypass in the /rss/order/status feed because its URL key is unsigned Base64-encoded JSON of the order, increment, and customer ids. Unauthenticated attackers can forge keys from enumerated sequential ids to read other customers' names, items, prices, totals, and status comments when order-status RSS is enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128048": {
+    "cvss": 4.9,
+    "description": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 lets restricted administrators read decrypted configuration secrets because the store.getConfig email template directive's encrypted-path check missed config.xml-declared paths, case variants of the getConfig method name, and parent paths. Administrators with Transactional Emails access can preview a crafted template to expose PayPal, payment gateway, and carrier credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128049": {
+    "cvss": 9.0,
+    "description": "OpenMage Magento LTS before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 contains a cross-site request forgery vulnerability in the admin and storefront OAuth confirm and confirmSimple actions, which accept GET requests without form-key validation. Attackers holding OAuth consumer credentials can lure a logged-in administrator or customer to a crafted confirm URL that authorizes the attacker's request token, then exchange it at /oauth/token for a persistent REST API access token bound to the victim.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128053": {
+    "cvss": 4.7,
+    "description": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 contains a reflected cross-site scripting vulnerability in its error pages, which print SCRIPT_NAME-derived URLs built by errors/processor.php without escaping. Unauthenticated attackers can craft links that trigger uncaught exceptions on servers deriving SCRIPT_NAME from the request path, executing script in the storefront origin within victims' browsers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128237": {
+    "cvss": 5.3,
+    "description": "Scapy before 2.8.0 contains a denial of service vulnerability in BER_num_dec() and BERcodec_OID.do_dec() that allows remote attackers to exhaust CPU by supplying oversized OID arcs. Attackers can send ASN.1/BER data with many base-128 continuation bytes to cause quadratic CPU consumption or an uncaught ValueError crash on Python 3.11+.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128240": {
+    "cvss": 5.5,
+    "description": "GPAC through 26.07.0 contains a use-after-free vulnerability in gf_sg_proto_del() in src/scenegraph/vrml_proto.c because gf_sg_reset() frees unregistered prototypes still referenced by scene commands. Attackers can supply a crafted XMT/BT scene declaring prototypes via commands, processed by MP4Box -chap, to trigger freed memory access and crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-41661": {
+    "cvss": 6.1,
+    "description": "Admidio is an open-source user management solution. Prior to version 5.0.9, an unauthenticated attacker can execute arbitrary JavaScript in any Admidio user's browser through a reflected XSS in system/msg_window.php. The endpoint passes user input through htmlspecialchars(), which does not encode square brackets. A subsequent call to Language::prepareTextPlaceholders() converts those brackets into HTML angle brackets, producing executable markup. This issue has been patched in version 5.0.9.",
+    "vendor": "Admidio",
+    "product": "admidio"
+  },
+  "CVE-2026-73969": {
+    "cvss": 9.8,
+    "description": "AnsibleForms is a self-hosted web application that turns automation into self-service forms. Prior to 6.2.1, AnsibleForms uses a public hard-coded fallback JWT signing secret from server/config/auth.config.js when ACCESS_TOKEN_SECRET is unset. An unauthenticated attacker can sign a self-contained token with privileged claims because server/src/auth/auth_jwt.js verifies the signature without reloading the user from the database, and server/src/lib/middleware.js trusts the token's roles and options for authorization. A forged token can therefore be accepted as an administrator session, resulting in authentication bypass and full privileged API access. This issue is fixed in version 6.2.1.",
+    "vendor": "ansibleguy76",
+    "product": "ansibleforms"
   }
 }
