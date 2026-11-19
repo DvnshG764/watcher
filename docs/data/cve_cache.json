@@ -138706,5 +138706,53 @@
     "description": "OpsTree BuildPiper before 2.7.0 lacks rate limiting on password-reset OTP verification, allowing unauthenticated attackers to brute force 6-digit OTPs. Attackers can initiate a reset and submit unthrottled guesses to the check_otp endpoint, resetting the target's password and taking over the account.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-127082": {
+    "cvss": 7.7,
+    "description": "Huginn before 2026.11.09 contains an information exposure vulnerability in JqAgent that allows authenticated users to read the server process environment because the jq child process inherits it. Attackers who can create, configure or dry-run a JqAgent can supply a filter using env or $ENV to disclose APP_SECRET_TOKEN, database, SMTP and OAuth secrets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127083": {
+    "cvss": 6.4,
+    "description": "Huginn from 2026.09.09 before 2026.11.09 contains a server-side request forgery vulnerability because OutboundProxy.configure! applies the egress proxy only to Faraday and Typhoeus. Authenticated users can configure JiraAgent or WeiboPublishAgent to send HTTParty, open-uri or Net::HTTP requests directly to internal services, with JiraAgent returning response data as events.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127086": {
+    "cvss": 6.3,
+    "description": "Ryot before 10.5.6 contains an authorization bypass vulnerability that allows authenticated users to take over other users' collections by supplying an updateId to the createOrUpdateCollection GraphQL mutation. Attackers who know a collection id can trigger ownership reassignment without checks, read its items, rewrite metadata, and evict the original owner and collaborators.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127087": {
+    "cvss": 3.1,
+    "description": "Ryot before 10.5.6 contains an authorization bypass vulnerability that allows authenticated users to revoke other users' access links by supplying an arbitrary accessLinkId. Attackers can obtain access link ids from public share URLs and revoke them without ownership checks, breaking shared access for all link users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127091": {
+    "cvss": 6.8,
+    "description": "Jadaptive Maverick Synergy Server before 3.0.33 and 3.1.x before 3.1.7, and Maverick Legacy Server before 1.8.1, contain an improper path equivalence flaw in VirtualFileFactory.canonicalisePath that bypasses mount-level access policy. Authenticated users can supply paths with duplicate separators or dot segments to route operations to a less restrictive parent mount and read or write files the child mount denies.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127092": {
+    "cvss": 6.1,
+    "description": "BuildAdmin 1.0.1 through 2.3.9 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to store javascript: URLs in the admin operation log via the X-Rewrite-URL header. When an administrator clicks the log entry's url open button, the script runs in the backend origin and steals the adminInfo token from localStorage, enabling account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128015": {
+    "cvss": 6.5,
+    "description": "FrankenPHP before 1.13.4 contains a use-after-free vulnerability that leaves a dangling pointer to a freed environment table when putenv() is called during request shutdown. Attackers triggering putenv() in shutdown functions, destructors, or session handlers can crash the process on the next getenv() call or leak previous request environment values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128018": {
+    "cvss": 3.7,
+    "description": "FrankenPHP before 1.13.4 contains a denial of service vulnerability in worker mode where frankenphp_handle_request() returns false without finishing the dequeued request after a fatal error during request startup. Attackers who trigger startup fatal errors against worker scripts that keep calling frankenphp_handle_request() can leave client requests hanging indefinitely while the worker continues running.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
