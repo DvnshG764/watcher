@@ -94237,7 +94237,7 @@
   },
   "CVE-2026-97013": {
     "cvss": 7.8,
-    "description": "High 10 Nov 2026 10 Nov 2026 CPAI-2026-17596 Microsoft CVE-2026-97013 CVE-2026-97013 Microsoft Windows Shell Elevation of Privilege (CVE-2026-97013)",
+    "description": "Access of resource using incompatible type ('type confusion') in Windows Shell allows an authorized attacker to elevate privileges locally.",
     "vendor": "Check Point",
     "product": "Windows 10 Version 1607"
   },
@@ -94279,19 +94279,19 @@
   },
   "CVE-2026-95989": {
     "cvss": 7.0,
-    "description": "High 10 Nov 2026 10 Nov 2026 CPAI-2026-17412 Microsoft CVE-2026-95989 CVE-2026-95989 Microsoft vhdmp.sys Elevation of Privilege (CVE-2026-95989)",
+    "description": "Use after free in vhdmp.sys allows an authorized attacker to elevate privileges locally.",
     "vendor": "Check Point",
     "product": "Windows 10 Version 1607"
   },
   "CVE-2026-94514": {
     "cvss": 7.0,
-    "description": "High 10 Nov 2026 10 Nov 2026 CPAI-2026-17411 Microsoft CVE-2026-94514 CVE-2026-94514 Microsoft Windows Kernel Elevation of Privilege (CVE-2026-94514)",
+    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Kernel allows an authorized attacker to elevate privileges locally.",
     "vendor": "Check Point",
     "product": "Windows 10 Version 1607"
   },
   "CVE-2026-95988": {
     "cvss": 7.8,
-    "description": "High 10 Nov 2026 10 Nov 2026 CPAI-2026-17410 Microsoft CVE-2026-95988 CVE-2026-95988 Microsoft Windows Kernel Elevation of Privilege (CVE-2026-95988)",
+    "description": "Incorrect authorization in Windows Kernel allows an authorized attacker to elevate privileges locally.",
     "vendor": "Check Point",
     "product": "Windows 11 Version 24H2"
   },
@@ -127608,40 +127608,40 @@
     "product": "Unknown"
   },
   "CVE-2026-117659": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 8.1,
+    "description": "The InfoScan Electron desktop client improperly handles TLS certificate errors by accepting certificates without validating their trustworthiness. The client also configures Electron with nodeIntegration enabled, contextIsolation disabled, and webSecurity disabled. These settings weaken the client’s security boundaries. An attacker who is able to intercept or manipulate network communications may be able to present an untrusted certificate without the application rejecting the connection.",
+    "vendor": "Dorsett Controls",
+    "product": "InfoScan"
   },
   "CVE-2026-120157": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 5.3,
+    "description": "The publicly distributed InfoScan Electron installer contains configuration files identifying hostnames associated with customer installations and internal development, testing, and database infrastructure. An individual who obtains and inspects the installer can extract these hostnames without authenticating to the affected systems.",
+    "vendor": "Dorsett Controls",
+    "product": "InfoScan"
   },
   "CVE-2026-120255": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 4.3,
+    "description": "InfoScan uses hard-coded cryptographic keys and initialization-vector values in its database-encryption implementation. The application uses these values to encrypt the MongoDB password before storing it in the Windows registry. Because the cryptographic material is embedded in the distributed application, an individual with access to the encrypted registry value and the application code may be able to recover the database password.",
+    "vendor": "Dorsett Controls",
+    "product": "InfoScan"
   },
   "CVE-2026-120260": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 5.5,
+    "description": "InfoScan does not enforce authentication on an endpoint used to retrieve sales-automation templates. A local attacker can submit an HTTP request to the affected endpoint without a valid session and retrieve the returned template data.",
+    "vendor": "Dorsett Controls",
+    "product": "InfoScan"
   },
   "CVE-2026-120271": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 5.3,
+    "description": "InfoScan contains an unauthenticated information disclosure vulnerability in its mobile-enumeration and version-reporting endpoints. A remote attacker can send HTTP requests without authentication to retrieve system configuration information, including usernames and display names, multifactor authentication configuration status, session settings, application version information, server details, hardware module firmware versions, and the BACnet/IP port used by the installation.",
+    "vendor": "Dorsett Controls",
+    "product": "InfoScan"
   },
   "CVE-2026-120298": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 5.3,
+    "description": "InfoScan fails to properly handle certain malformed or incomplete requests to its login and password-reset endpoints. These requests can trigger unhandled server exceptions that return detailed Node.js stack traces to the requester. The responses disclose internal filesystem paths, application directory names, source file locations, and line numbers.",
+    "vendor": "Dorsett Controls",
+    "product": "InfoScan"
   },
   "CVE-2026-124874": {
     "cvss": 5.4,
@@ -139782,10 +139782,10 @@
     "product": "Unknown"
   },
   "CVE-2026-126088": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 8.1,
+    "description": "In Autonomy Logic OpenPLC Runtime versions 4.2.4 and prior, a race condition allows multiple concurrent requests to pass the existence check before any user is committed, resulting in several unauthenticated admin accounts being created.",
+    "vendor": "Autonomy Logic",
+    "product": "OpenPLC Runtime"
   },
   "CVE-2026-99285": {
     "cvss": null,
@@ -139990,5 +139990,455 @@
     "description": "Partially overwritten session files can lead to remote code execution. The files session save handler, which is the default, writes updated session data into the existing session file without first clearing it. If a write is interrupted, the file can contain the beginning of the new session followed by the end of the old one, and bytes of an ordinary string can later be unserialized as objects. An attacker who can influence the session data, for example through session upload progress, and interrupt a write at a suitable point may inject objects, which can lead to code execution when the application contains a suitable gadget chain. Session data can also be corrupted. This issue affects PHP versions 8.2.* before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
     "vendor": "PHP Group",
     "product": "PHP"
+  },
+  "CVE-2026-88244": {
+    "cvss": 7.5,
+    "description": "Use after free in Windows Link Layer Topology Discovery Protocol allows an unauthorized attacker to execute code over an adjacent network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88245": {
+    "cvss": 7.8,
+    "description": "Missing authentication for critical function in Windows Brokering File System allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88247": {
+    "cvss": 5.5,
+    "description": "Use of uninitialized resource in Windows Program Compatibility Assistant Service allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88249": {
+    "cvss": 8.8,
+    "description": "Use after free in Windows Client for NFS allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94507": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows DirectX allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94515": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94517": {
+    "cvss": 5.5,
+    "description": "Use of uninitialized resource in Kernel Transaction Manager allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94519": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94522": {
+    "cvss": 7.0,
+    "description": "Use after free in Kernel Transaction Manager allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95987": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows User Manager Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95991": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95996": {
+    "cvss": 8.8,
+    "description": "Integer underflow (wrap or wraparound) in Windows Bluetooth Port Driver allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95997": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Event Logging Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95998": {
+    "cvss": 4.4,
+    "description": "Missing authentication for critical function in Windows StateRepository API allows an authorized attacker to perform tampering locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95999": {
+    "cvss": 7.8,
+    "description": "Out-of-bounds read in Windows USB Hub Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96001": {
+    "cvss": 5.5,
+    "description": "Exposure of sensitive system information to an unauthorized control sphere in Windows Bluetooth Service allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96002": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in DNS Server allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96004": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96005": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows USB Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96007": {
+    "cvss": 7.0,
+    "description": "Use after free in Connected Devices Platform Service (Cdpsvc) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96008": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96010": {
+    "cvss": 8.8,
+    "description": "Integer underflow (wrap or wraparound) in HID Parser Library allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96016": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Local Security Authority Subsystem Service (LSASS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96017": {
+    "cvss": 4.9,
+    "description": "Use after free in DNS Server allows an authorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96018": {
+    "cvss": 6.5,
+    "description": "Weak authentication in Windows AppContainer allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96019": {
+    "cvss": 7.0,
+    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96020": {
+    "cvss": 8.8,
+    "description": "Out-of-bounds write in DNS Server allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96153": {
+    "cvss": 7.0,
+    "description": "Heap-based buffer overflow in Windows Error Reporting allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96155": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Audio Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96156": {
+    "cvss": 5.5,
+    "description": "Use of uninitialized resource in Windows Broker Infrastructure Service allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96157": {
+    "cvss": 9.8,
+    "description": "Heap-based buffer overflow in Microsoft Windows Media Foundation allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96160": {
+    "cvss": 7.8,
+    "description": "Out-of-bounds read in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96162": {
+    "cvss": 7.8,
+    "description": "Incorrect authorization in Windows Clipboard Virtual Channel Extension allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96164": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Imaging Component allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96168": {
+    "cvss": 7.0,
+    "description": "Untrusted pointer dereference in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96171": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96176": {
+    "cvss": 7.5,
+    "description": "Missing release of memory after effective lifetime in Windows DNS allows an unauthorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96184": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Modern Device Management (MDM) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96845": {
+    "cvss": 7.8,
+    "description": "Improper authorization in Windows Task Scheduler allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96965": {
+    "cvss": 5.3,
+    "description": "Null pointer dereference in Windows Hyper-V allows an authorized attacker to deny service locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96969": {
+    "cvss": 7.0,
+    "description": "Double free in Windows TCP/IP allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96970": {
+    "cvss": 6.5,
+    "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96971": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows NetBIOS allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96972": {
+    "cvss": 7.5,
+    "description": "Out-of-bounds read in Windows DNS allows an unauthorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96973": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Encrypting File System (EFS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96976": {
+    "cvss": 6.5,
+    "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96978": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Credential User Interface allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96980": {
+    "cvss": 6.5,
+    "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96981": {
+    "cvss": 6.4,
+    "description": "Out-of-bounds write in Windows PCI Bus Driver allows an unauthorized attacker to elevate privileges with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96983": {
+    "cvss": 5.3,
+    "description": "Use after free in Windows DNS allows an unauthorized attacker to deny service over an adjacent network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96984": {
+    "cvss": 4.9,
+    "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96985": {
+    "cvss": 4.9,
+    "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96986": {
+    "cvss": 4.9,
+    "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96987": {
+    "cvss": 4.9,
+    "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96988": {
+    "cvss": 6.5,
+    "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96992": {
+    "cvss": 6.4,
+    "description": "Use after free in Windows PCI Bus Driver allows an unauthorized attacker to elevate privileges with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96993": {
+    "cvss": 8.1,
+    "description": "Release of invalid pointer or reference in Windows Performance Monitor allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97000": {
+    "cvss": 7.0,
+    "description": "Null pointer dereference in Windows USM Communication Manager allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97002": {
+    "cvss": 7.5,
+    "description": "Out-of-bounds read in Windows VMSwitch allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97006": {
+    "cvss": 4.9,
+    "description": "Out-of-bounds read in Windows DNS allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97015": {
+    "cvss": 6.8,
+    "description": "Heap-based buffer overflow in Windows BitLocker allows an unauthorized attacker to bypass a security feature with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108310": {
+    "cvss": 5.3,
+    "description": "Tanium addressed a denial of service vulnerability in Tanium Server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108311": {
+    "cvss": 2.7,
+    "description": "Tanium addressed an insufficient logging vulnerability in Tanium Server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108313": {
+    "cvss": 7.2,
+    "description": "Tanium addressed an incorrect privilege assignment vulnerability in Tanium Server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108316": {
+    "cvss": 4.3,
+    "description": "Tanium addressed an information disclosure vulnerability in Tanium Server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108328": {
+    "cvss": 4.9,
+    "description": "Tanium addressed an insertion of sensitive information into log file vulnerability in Threat Response.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108329": {
+    "cvss": 8.8,
+    "description": "Tanium addressed an unauthorized code execution vulnerability in Threat Response.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101607": {
+    "cvss": 4.9,
+    "description": "Vulnerability in the MySQL Server, MySQL Cluster product of Oracle MySQL (component: Server: Optimizer). Supported versions that are affected are MySQL Server: 8.4.0-8.4.12, 9.7.0-9.7.3, 26.7.0-26.7.1; MySQL Cluster: 8.0.0-8.0.49, 8.4.0-8.4.12, 9.7.0-9.7.3 and 26.7.0-26.7.1. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server, MySQL Cluster. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server, MySQL Cluster. CVSS 3.1 Base Score 4.9 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101608": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the MySQL Server, MySQL Cluster product of Oracle MySQL (component: Server: Optimizer). Supported versions that are affected are MySQL Server: 8.4.0-8.4.12, 9.7.0-9.7.3, 26.7.0-26.7.1; MySQL Cluster: 8.0.0-8.0.49, 8.4.0-8.4.12, 9.7.0-9.7.3 and 26.7.0-26.7.1. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server, MySQL Cluster. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server, MySQL Cluster. CVSS 3.1 Base Score 6.5 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95521": {
+    "cvss": 7.8,
+    "description": "A command injection flaw was found in rpm. Installing or rebuilding a source RPM whose source or spec file basenames contain a %() macro construct causes rpm to execute an attacker-controlled shell command via popen() while relocating the source file list. This allows arbitrary command execution as the invoking (typically non-root) user, simply by installing, rebuilding, or otherwise processing an untrusted .src.rpm.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32866": {
+    "cvss": 5.4,
+    "description": "OPEXUS eComplaint and eCASE before 10.2.0.0 do not correctly sanitize the contents of first and last name fields in a user profile. An authenticated attacker can inject parts of an XSS payload in their first and last name fields. The payload is executed when the user's full name is rendered. The attacker can run script in the context of a victim's session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-22873": {
+    "cvss": 3.8,
+    "description": "It was possible to improperly access the parent directory of an os.Root by opening a filename ending in \"../\". For example, Root.Open(\"../\") would open the parent directory of the Root. This escape only permits opening the parent directory itself, not ancestors of the parent or files contained within the parent.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-50182": {
+    "cvss": 6.1,
+    "description": "urllib3 is a user-friendly HTTP client library for Python. Starting in version 2.2.0 and prior to 2.5.0, urllib3 does not control redirects in browsers and Node.js. urllib3 supports being used in a Pyodide runtime utilizing the JavaScript Fetch API or falling back on XMLHttpRequest. This means Python libraries can be used to make HTTP requests from a browser or Node.js. Additionally, urllib3 provides a mechanism to control redirects, but the retries and redirect parameters are ignored with Pyodide; the runtime itself determines redirect behavior. This issue has been patched in version 2.5.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-39526": {
+    "cvss": 6.5,
+    "description": "An Improper Handling of Exceptional Conditions vulnerability in packet processing of Juniper Networks Junos OS on MX Series with MPC10/MPC11/LC9600 line cards, EX9200 with EX9200-15C lines cards, MX304 devices, and Juniper Networks Junos OS Evolved on PTX Series, allows an attacker sending malformed DHCP packets to cause ingress packet processing to stop, leading to a Denial of Service (DoS). Continued receipt and processing of these packets will create a sustained Denial of Service (DoS) condition. This issue only occurs if DHCP snooping is enabled. See configuration below. This issue can be detected using following commands. Their output will display the interface status going down: user@device>show interfaces user@device>show log messages | match user@device>show log messages ==> will display the \"[Error] Wedge-Detect : Host Loopback Wedge Detected: PFE: no,\" logs. This issue affects: Junos OS on MX Series with MPC10/MPC11/LC9600 line cards, EX9200 with EX9200-15C line cards, and MX304: * All versions before 21.2R3-S7, * from 21.4 before 21.4R3-S6, * from 22.2 before 22.2R3-S3, * all versions of 22.3, * from 22.4 before 22.4R3, * from 23.2 before 23.2R2; Junos OS Evolved on PTX Series: * from 19.3R1-EVO before 21.2R3-S8-EVO, * from 21.4-EVO before 21.4R3-S7-EVO, * from 22.1-EVO before 22.1R3-S6-EVO, * from 22.2-EVO before 22.2R3-S5-EVO, * from 22.3-EVO before 22.3R3-S3-EVO, * from 22.4-EVO before 22.4R3-S1-EVO, * from 23.2-EVO before 23.2R2-S2-EVO, * from 23.4-EVO before 23.4R2-EVO. Junos OS Evolved releases prior to 19.3R1-EVO are unaffected by this vulnerability",
+    "vendor": "Juniper",
+    "product": "Unknown"
+  },
+  "CVE-2024-47496": {
+    "cvss": 5.5,
+    "description": "A NULL Pointer Dereference vulnerability in the Packet Forwarding Engine (pfe) of Juniper Networks Junos OS allows a local, low-privileged attacker to cause a Denial-of-Service (DoS). When a specific command is executed, the pfe crashes. This will cause traffic forwarding to be interrupted until the system self-recovers. Repeated execution will create a sustained DoS condition. This issue only affects MX Series devices with Line cards MPC1-MPC9. This issue affects: Junos OS on MX Series: * All versions before 21.4R3-S9, * from 22.2 before 22.2R3-S5, * from 22.3 before 22.3R3-S4, * from 22.4 before 22.4R3-S2, * from 23.2 before 23.2R2-S1, * from 23.4 before 23.4R2.",
+    "vendor": "Juniper",
+    "product": "Unknown"
   }
 }
