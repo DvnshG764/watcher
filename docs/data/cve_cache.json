@@ -126744,7 +126744,7 @@
     "product": "Unknown"
   },
   "CVE-2026-99288": {
-    "cvss": 5.9,
+    "cvss": 7.5,
     "description": "In the Linux kernel, the following vulnerability has been resolved: inet: reject unhashed sockets during established lookups TCP established ehash lookups are lockless. The socket caches involved use SLAB_TYPESAFE_BY_RCU, so memory can be reused before an RCU reader that retained its old address has finished. After a tuple match, __inet_lookup_established() and __inet6_lookup_established() acquire a reference and repeat the tuple check. They do not check whether the new object is hashed. If the address is reused for a socket with the same tuple, the lookup can acquire a reference to the new object and return it while its nulls node is unhashed. A PoC that drives reuse with a SYN cookie request socket reproduced the crash. The new request socket is unhashed and has a NULL rsk_listener. A lookup that had loaded the address of the old request socket acquired the reference published by tcp_get_cookie_sock() and returned the new object. tcp_v4_rcv() then read sk_state through the NULL listener. The resulting crash was: BUG: kernel NULL pointer dereference, address: 0000000000000012 #PF: supervisor read access in kernel mode #PF: error_code(0x0000) - not-present page ... Oops: Oops: 0000 [#1] SMP NOPTI CPU: 4 UID: 0 PID: 0 Comm: swapper/4 Not tainted 7.3.0-00591-g0e135910deec #1 PREEMPT(lazy) ... RIP: 0010:tcp_v4_rcv+0x44e/0x1280 ... R10: 0000000000000001 R11: 00000000024ca8c0 R12: 0000000000000000 ... CR2: 0000000000000012 CR3: 0000000103d50004 CR4: 0000000000770ef0 ... Call Trace: ? raw_local_deliver+0xae/0x240 ip_protocol_deliver_rcu+0x2d/0x180 ip_local_deliver_finish+0x84/0x100 ip_sublist_rcv_finish+0x5f/0x70 ip_sublist_rcv+0x12a/0x1d0 ip_list_rcv+0xfd/0x130 __netif_receive_skb_list_core+0x223/0x250 netif_receive_skb_list_internal+0x1d2/0x2c0 ? try_fill_recv+0x39/0x7b0 napi_complete_done+0x74/0x170 virtnet_poll+0x445/0x600 __napi_poll+0x27/0x1e0 net_rx_action+0x2fe/0x3b0 handle_softirqs+0xc2/0x2c0 __irq_exit_rcu+0x74/0xd0 common_interrupt+0x7f/0x90 ... Kernel panic - not syncing: Fatal exception in interrupt After taking a reference, check whether the nulls node is unhashed in both IPv4 and IPv6 established lookups. If it is unhashed or the tuple no longer matches, drop the reference and restart the lookup. Lookups racing with the TIME_WAIT hashdance, or with a request being replaced by its child, now restart and find the new socket instead of returning the old one. Request sockets that were never inserted into ehash can have a nonzero refcount, and a stale lookup can hold a transient reference. Therefore, when SYN cookie, Fast Open, and request migration paths fail after setting a nonzero refcount, release the references held by those paths with reqsk_put() instead of freeing the request directly.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -139696,5 +139696,95 @@
     "description": "Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, the database password validation used by the MySQL, PostgreSQL, MariaDB, MongoDB, and Redis change-password procedures permits backticks, and the procedures interpolate attacker-controlled passwords into Bash command strings. An authenticated user who can update a database password can trigger command substitution before the database command runs, resulting in arbitrary operating-system command execution with the Dokploy process privileges, which are typically root. This issue is fixed in version 0.31.1.",
     "vendor": "Dokploy",
     "product": "dokploy"
+  },
+  "CVE-2026-115716": {
+    "cvss": 6.5,
+    "description": "Allocation of Resources Without Limits or Throttling (CWE-770) in APM Server can lead to denial of service via Oversized Serialized Data Payloads (CAPEC-231). An attacker who can send OpenTelemetry (OTLP) data to APM Server over HTTP can cause APM Server to exhaust its memory and terminate. This stops the intake of APM and OpenTelemetry data until APM Server restarts. The issue is resolved in version 8.19.24, 9.4.9 and 9.5.6. The fixed versions reject OTLP/HTTP requests with a body larger than 64 MiB after decompression, as recommended by the OTLP specification.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101645": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle iSetup product of Oracle E-Business Suite (component: General Ledger Update Transform, Reports). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle iSetup. Successful attacks of this vulnerability can result in takeover of Oracle iSetup. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101646": {
+    "cvss": 7.2,
+    "description": "Vulnerability in the Oracle iSetup product of Oracle E-Business Suite (component: General Ledger Update Transform, Reports). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows high privileged attacker with network access via HTTP to compromise Oracle iSetup. Successful attacks of this vulnerability can result in takeover of Oracle iSetup. CVSS 3.1 Base Score 7.2 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101647": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle iSetup product of Oracle E-Business Suite (component: General Ledger Update Transform, Reports). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle iSetup. Successful attacks of this vulnerability can result in takeover of Oracle iSetup. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101666": {
+    "cvss": 5.4,
+    "description": "Vulnerability in the Oracle Trade Management product of Oracle E-Business Suite (component: Claim LOV). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Trade Management. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Oracle Trade Management, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Oracle Trade Management accessible data as well as unauthorized read access to a subset of Oracle Trade Management accessible data. CVSS 3.1 Base Score 5.4 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101686": {
+    "cvss": 8.8,
+    "description": "Vulnerability in the Oracle E-Business Suite Integrated SOA Gateway product of Oracle E-Business Suite (component: SOA Provider). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle E-Business Suite Integrated SOA Gateway. Successful attacks of this vulnerability can result in takeover of Oracle E-Business Suite Integrated SOA Gateway. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101687": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle E-Business Suite Integrated SOA Gateway product of Oracle E-Business Suite (component: SOA Provider). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle E-Business Suite Integrated SOA Gateway. Successful attacks of this vulnerability can result in takeover of Oracle E-Business Suite Integrated SOA Gateway. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101688": {
+    "cvss": 8.6,
+    "description": "Vulnerability in the Oracle E-Business Suite Integrated SOA Gateway product of Oracle E-Business Suite (component: SOA Provider). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle E-Business Suite Integrated SOA Gateway. While the vulnerability is in Oracle E-Business Suite Integrated SOA Gateway, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle E-Business Suite Integrated SOA Gateway accessible data. CVSS 3.1 Base Score 8.6 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101689": {
+    "cvss": 7.7,
+    "description": "Vulnerability in the Oracle E-Business Suite Integrated SOA Gateway product of Oracle E-Business Suite (component: SOA Provider). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle E-Business Suite Integrated SOA Gateway. While the vulnerability is in Oracle E-Business Suite Integrated SOA Gateway, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle E-Business Suite Integrated SOA Gateway accessible data. CVSS 3.1 Base Score 7.7 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101690": {
+    "cvss": 8.2,
+    "description": "Vulnerability in the Oracle E-Business Suite Integrated SOA Gateway product of Oracle E-Business Suite (component: SOA Provider). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle E-Business Suite Integrated SOA Gateway. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle E-Business Suite Integrated SOA Gateway accessible data as well as unauthorized update, insert or delete access to some of Oracle E-Business Suite Integrated SOA Gateway accessible data. CVSS 3.1 Base Score 8.2 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124281": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125273": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96805": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125132": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126088": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
