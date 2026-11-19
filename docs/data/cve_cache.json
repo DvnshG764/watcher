@@ -71118,7 +71118,7 @@
     "product": "Unknown"
   },
   "CVE-2026-88081": {
-    "cvss": 7.7,
+    "cvss": 6.5,
     "description": "Out-of-bounds read in SQL Server allows an authorized attacker to disclose information over a network.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -71136,7 +71136,7 @@
     "product": "Unknown"
   },
   "CVE-2026-88084": {
-    "cvss": 5.3,
+    "cvss": 6.5,
     "description": "Allocation of resources without limits or throttling in SQL Server allows an authorized attacker to deny service over a network.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -138206,6 +138206,162 @@
   "CVE-2026-16615": {
     "cvss": 6.8,
     "description": "A flaw was found in librest. The PKCE implementation for OAuth authorization uses the GRand function from the GLib API, a cryptographically insecure pseudo-random number generator. Because the generated \"code verifier\" lacks sufficient cryptographic entropy, a malicious actor can reverse-engineer the pseudo-random number generator (PRNG) seed to predict or reconstruct the code verifier string, allowing an attacker to bypass PKCE protections and successfully impersonate the client during the OAuth 2.0 authorization flow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126426": {
+    "cvss": 4.3,
+    "description": "OpenEMR 5.0.2 before 8.5.0 contains a missing authentication vulnerability in mfa_registrations.php and mfa_u2f.php that allows session hijackers to delete MFA factors or register U2F keys without password re-entry. Attackers holding a victim's authenticated session can remove all second factors or add their own U2F key, bypassing MFA at later logins with the password.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126427": {
+    "cvss": 4.6,
+    "description": "OpenEMR before 8.5.0 contains a session expiration vulnerability that prevents automatic logoff because the Eye Exam form's read-only poll omits skip_timeout_reset. Attackers with physical access to an unattended workstation can use the still-active session to view patient health information, since update_READONLY() resets the idle timer every 15 seconds.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126428": {
+    "cvss": 7.5,
+    "description": "OpenEMR before 8.5.0 contains a remote code execution vulnerability that allows authenticated billing users to store attacker-controlled PHP by uploading a malformed ERA file to era_payments.php. Attackers with a database-write primitive such as SQL injection can register a background_services row whose require_once loads the stored .edi file, executing PHP as the web-server user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126429": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 passes authenticated user-controlled HTML from the doc_lib.php content parameter to mPDF, which resolves local files and nested SVG resources. Authenticated patients or core users can submit crafted CSS imports or php://filter SVG references to read arbitrary server files including credentials and OAuth keys.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126430": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.5.0 contains an sql injection vulnerability that allows any authenticated core user to inject SQL by supplying crafted patient_data field names to the CCR revandapprove controller. Attackers can embed scalar subqueries in the UPDATE patient_data SET clause to read staff password hashes and portal reset values, alter arbitrary patient demographics, and take over patient-portal accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126431": {
+    "cvss": 6.8,
+    "description": "OpenEMR before 8.5.0 contains a second-order sql injection vulnerability that allows authenticated Carecoordination users to store malicious C-CDA field identifiers through the savedata action. Attackers can inject SQL into the IN clause built by fetchFormValues() during C-CDA generation to extract password hashes, portal reset values, and patient records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126432": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains an improper authorization vulnerability in interface/orders/list_reports.php that allows read-only users to transmit lab orders because the patients/med check ignores write permission. Authenticated attackers can submit form_xmit with arbitrary procedure order IDs to send HL7 orders containing SSNs, insurance, and diagnoses to laboratories and mark them transmitted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126433": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains an improper authorization vulnerability in interface/drugs/dispense_drug.php, which checks only for admin/drugs view permission instead of write permission before dispensing medication. Authenticated users with read-only drug administration access can send GET requests with drug_id, quantity, fee, and encounter parameters to create false dispensing records and decrement inventory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126434": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in interface/forms/procedure_order/common.php that allows authenticated accounts lacking patients/lab permission to read and modify other patients' procedure orders. Attackers can request a global order id to disclose clinical history, or select the target patient in their session and submit bn_save to falsify diagnoses, instructions, and order status.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126435": {
+    "cvss": 5.4,
+    "description": "OpenEMR before 8.5.0 contains an improper authorization vulnerability in interface/orders/order_manifest.php, which checks patients/med without requiring write access or applying patient squad restrictions. Users with only patients/med view permission can request any order ID to read squad-restricted patient data and submit bn_save and form_omit parameters, without a CSRF token, to set do_not_send flags that suppress ordered lab procedures.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126436": {
+    "cvss": 7.5,
+    "description": "OpenEMR before 8.5.0 contains an authorization bypass vulnerability that allows OAuth2 clients to use unregistered grant types because oauth_clients.grant_types is never enforced. Attackers can request tokens with grant_type=password to bypass the user consent screen, and disabled clients can redeem authorization codes using JWT client assertions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126437": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains an authorization bypass vulnerability in portal/lib/download_template.php that allows any authenticated core user to render documents for arbitrary patients by setting isModule. Attackers can submit arbitrary pid and template_id values to disclose patient names, birth dates, chart IDs, addresses, allergies, medications, and problem lists despite ACL and squad restrictions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126438": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains an improper authorization vulnerability in interface/patient_file/rules/patient_data.php that allows read-only patients/med users to modify clinical-rule records. Attackers can submit a global form_entryID row ID to overwrite completion date, state, and result, including records of patients outside their configured squad.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126439": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in ccdaservice/ccda_gateway.php that fails to enforce the patients/pat_rep permission, accepting any authenticated core session. Authenticated users without patient-report permission can request the report_ccd_view action to retrieve the selected patient's C-CDA clinical summary, including diagnoses, medications, laboratory results, and identifiers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126440": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization flaw in the Care Coordination CCDA and CCR import controllers, which move a document named by the document_id parameter into the import category without checking access to the source document. Authenticated non-administrators with Care Coordination access can recategorize protected patient documents and then download them through normal ACL-checked retrieval.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126441": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains an insecure direct object reference vulnerability in the CAMOS rx_print.php printer that allows authenticated users to read other patients' prescriptions. Attackers can submit forged chrx_ parameters with global prescription IDs to disclose drug names, dosages, directions, and refill counts without medication permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126442": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in create_portallogin.php that allows low-privilege authenticated users to replace patient portal credentials without ACL checks. Attackers can select a victim patient in session and post replacement credentials to take over portal accounts, read PHI, and lock patients out.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126443": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in dynamic_finder_ajax.php that allows authenticated users without patients/demo permission to query patient demographics. Attackers can supply arbitrary patient_data columns via the sColumns parameter to enumerate names, dates of birth, contact details, and Social Security numbers across the practice.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126444": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in the Ensora eRx integration that allows authenticated staff without patients/rx permission to access prescription data by directly requesting eRx.php. Attackers can expose selected patients' demographic, medication, and allergy data in the vendor XML and trigger eRx synchronization state changes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126445": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability that allows any authenticated core user to modify arbitrary Patient Flow Board trackers without the patients/appt permission. Attackers can submit a victim tracker_id to patient_tracker_status.php or drug_screen_completed.php to falsify check-in status, rooms, drug-screen completion, and tracker history.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126446": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability that allows any authenticated core user to retrieve destroyed-drug records because destroyed_drugs_report.php lacks the admin/drugs or inventory/reporting ACL check. Attackers can submit the report refresh form with a chosen date range to obtain drug names, NDC, lots, quantities, destruction methods, witnesses, and notes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126447": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in trusted-messages-ajax.php that allows any authenticated core user to send Direct messages without the patients/notes permission. Attackers with zero-ACL accounts can submit chosen recipients and message bodies sent via the clinic's phiMail credentials, impersonating the clinic to deliver fraudulent clinical communications.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126448": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability that allows authenticated users lacking nationnotes/nn_configure to modify shared Nation Notes templates by calling mutation endpoints directly. Attackers can send requests to ajax_code.php or add_context.php, which lack ACL and CSRF checks, to tamper with clinical-note templates and assignments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111093": {
+    "cvss": 7.5,
+    "description": "In JetBrains Datalore before 2026.2.1 unauthenticated path traversal via the report blob endpoint allowed reading arbitrary files",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85888": {
+    "cvss": 6.5,
+    "description": "Out-of-bounds read in SQL Server allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94520": {
+    "cvss": 6.5,
+    "description": "Use of externally-controlled format string in SQL Server allows an authorized attacker to deny service over a network.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
