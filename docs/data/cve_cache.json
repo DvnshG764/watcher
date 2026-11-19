@@ -234,10 +234,10 @@
     "product": "Red Hat Enterprise Linux 10"
   },
   "CVE-2026-115560": {
-    "cvss": null,
+    "cvss": 9.2,
     "description": "Critical 21 Oct 2026 25 Oct 2026 CPAI-2026-15855 CVE-2026-109618 CVE-2026-109619 CVE-2026-115560 PHP Remote Code Execution (CVE-2026-109618; CVE-2026-109619; CVE-2026-115560)",
     "vendor": "Check Point",
-    "product": "Unknown"
+    "product": "PHP"
   },
   "CVE-2026-70475": {
     "cvss": 7.1,
@@ -139660,5 +139660,41 @@
     "description": "Rclone is a command-line program to sync files and directories to and from different cloud storage providers. From 1.46.0 until 1.74.3, rclone rcd --rc-serve accepts unauthenticated GET and HEAD requests to paths of the form: /[remote:path]/object. The remote value is parsed from the URL and passed to normal backend initialization. Inline remote configuration can set backend options that execute local commands during initialization. As a result, a single unauthenticated GET or HEAD request can execute a command as the rclone process user. This vulnerability is fixed in 1.74.3.",
     "vendor": "rclone",
     "product": "rclone"
+  },
+  "CVE-2026-101667": {
+    "cvss": 5.4,
+    "description": "Vulnerability in the Oracle Trade Management product of Oracle E-Business Suite (component: Claim LOV). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Trade Management. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Oracle Trade Management, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Oracle Trade Management accessible data as well as unauthorized read access to a subset of Oracle Trade Management accessible data. CVSS 3.1 Base Score 5.4 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101668": {
+    "cvss": 6.1,
+    "description": "Vulnerability in the Oracle Customer Care product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Customer Care. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Oracle Customer Care, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Oracle Customer Care accessible data as well as unauthorized read access to a subset of Oracle Customer Care accessible data. CVSS 3.1 Base Score 6.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132825": {
+    "cvss": 7.4,
+    "description": "Ruby before 3.3.14, 3.4.13, and 4.0.10 has a heap-based buffer overflow during case conversion. One byte can be written outside a buffer for, for example, ISO-8859-1 or Windows-1252.",
+    "vendor": "ruby-lang",
+    "product": "Ruby"
+  },
+  "CVE-2026-114952": {
+    "cvss": 9.1,
+    "description": "Vulnerability in the MySQL Server, MySQL Cluster product of Oracle MySQL (component: Client programs). Supported versions that are affected are MySQL Server: 8.4.0-8.4.13, 9.7.0-9.7.4, 26.10; MySQL Cluster: 8.0.0-8.0.50, 8.4.0-8.4.13, 9.7.0-9.7.4 and 26.10. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise MySQL Server, MySQL Cluster. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all MySQL Server, MySQL Cluster accessible data as well as unauthorized access to critical data or complete access to all MySQL Server, MySQL Cluster accessible data. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).",
+    "vendor": "Oracle Corporation",
+    "product": "MySQL Server"
+  },
+  "CVE-2026-117378": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129987": {
+    "cvss": 9.9,
+    "description": "Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, the database password validation used by the MySQL, PostgreSQL, MariaDB, MongoDB, and Redis change-password procedures permits backticks, and the procedures interpolate attacker-controlled passwords into Bash command strings. An authenticated user who can update a database password can trigger command substitution before the database command runs, resulting in arbitrary operating-system command execution with the Dokploy process privileges, which are typically root. This issue is fixed in version 0.31.1.",
+    "vendor": "Dokploy",
+    "product": "dokploy"
   }
 }
