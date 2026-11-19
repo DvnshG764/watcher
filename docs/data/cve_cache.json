@@ -138928,5 +138928,23 @@
     "description": "A flaw was found in Feast. The system improperly deserializes user-defined functions (UDFs) stored in its registry, which are serialized using the 'dill' library. This allows a remote attacker to store a malicious UDF, leading to unauthenticated arbitrary code execution on the feature server in default configurations. An authenticated attacker can also achieve arbitrary code execution on the registry server by bypassing authorization checks during deserialization. This vulnerability can result in cross-tenant data access and lateral movement within the system.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-97209": {
+    "cvss": 5.4,
+    "description": "Insecure Temporary File vulnerability in Mix deps.partition in Elixir allows a local user to execute code as another user via a swapped partition config file. Partitioned dependency compilation passes the project configuration to each partition VM through a file in a fixed-name directory under the shared system temporary directory, and the partition trusts what it reads back. Another local user on the same host can exploit this during a mix deps.compile run that uses partitioned compilation. Mix.Tasks.Deps.Partition.server/4 in lib/mix/lib/mix/tasks/deps.partition.ex creates the directory with File.mkdir_p/1, which accepts an existing directory without checking its owner, so a user who created it first can replace the file before client/0 reads it. This issue affects mix: from 1.20.0-rc.4 before 1.20.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-5806": {
+    "cvss": 9.1,
+    "description": "Improper Authentication vulnerability in Progress MOVEit Transfer (SFTP module) can lead to Authentication Bypass.This issue affects MOVEit Transfer: from 2023.0.0 before 2023.0.11, from 2023.1.0 before 2023.1.6, from 2024.0.0 before 2024.0.2.",
+    "vendor": "Progress",
+    "product": "MOVEit Transfer"
+  },
+  "CVE-2026-58400": {
+    "cvss": 9.1,
+    "description": "GeoNetwork is a catalog application to manage spatially referenced resources. Prior to versions 4.4.12 and 4.2.17, the Saxon XSLT processor used to render formatters is configured without secure processing (`FEATURE_SECURE_PROCESSING`) and without disabling Java extension functions (`ALLOW_EXTERNAL_FUNCTIONS`). Any stylesheet loaded by GeoNetwork can therefore invoke `java.lang.Runtime.exec()` or `java.lang.ProcessBuilder` directly, achieving arbitrary command execution as the GeoNetwork process user. A user with sufficient privileges to upload a formatter can deliver a `.xsl` file containing Java extension call that execute arbitrary OS commands with the privileges of the GeoNetwork process. The issue is patched in GeoNetwork versions 4.4.12 and 4.2.17.",
+    "vendor": "geonetwork",
+    "product": "core-geonetwork"
   }
 }
