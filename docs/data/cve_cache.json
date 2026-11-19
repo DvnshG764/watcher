@@ -139972,5 +139972,23 @@
     "description": "United Chargers Grizzl-E Smart 40A OCPP UpdateFirmware Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of United Chargers Grizzl-E Smart 40A EV chargers. Authentication is not required to exploit this vulnerability. The specific flaw exists within the handling of OCPP UpdateFirmware requests. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated buffer. An attacker can leverage this in conjunction with other vulnerabilities to execute code in the context of the device. Was ZDI-CAN-29487.",
     "vendor": "United Chargers",
     "product": "Grizzl-E Smart 40A"
+  },
+  "CVE-2026-116647": {
+    "cvss": 7.1,
+    "description": "Tanium addressed an improper output sanitization vulnerability in Comply.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116649": {
+    "cvss": 7.1,
+    "description": "Tanium addressed an improper output sanitization vulnerability in Enforce.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126714": {
+    "cvss": 9.2,
+    "description": "Partially overwritten session files can lead to remote code execution. The files session save handler, which is the default, writes updated session data into the existing session file without first clearing it. If a write is interrupted, the file can contain the beginning of the new session followed by the end of the old one, and bytes of an ordinary string can later be unserialized as objects. An attacker who can influence the session data, for example through session upload progress, and interrupt a write at a suitable point may inject objects, which can lead to code execution when the application contains a suitable gadget chain. Session data can also be corrupted. This issue affects PHP versions 8.2.* before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
+    "vendor": "PHP Group",
+    "product": "PHP"
   }
 }
