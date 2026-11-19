@@ -137926,5 +137926,287 @@
     "description": "In the Linux kernel, the following vulnerability has been resolved: f2fs: fix to do sanity check on f2fs_get_node_folio_ra() kernel BUG at fs/f2fs/file.c:845! Oops: invalid opcode: 0000 [#1] SMP KASAN NOPTI CPU: 0 UID: 0 PID: 5336 Comm: syz.0.0 Not tainted syzkaller #0 PREEMPT(full) Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2 04/01/2014 RIP: 0010:f2fs_do_truncate_blocks+0x1115/0x1140 fs/f2fs/file.c:845 Code: fc fc 90 0f 0b e8 8b 9d 9a fd 90 0f 0b e8 83 9d 9a fd 48 89 df 48 c7 c6 60 d1 1a 8c e8 54 f1 fc fc 90 0f 0b e8 6c 9d 9a fd 90 <0f> 0b e8 64 9d 9a fd 90 0f 0b 90 e9 93 fd ff ff e8 56 9d 9a fd 90 RSP: 0018:ffffc9000e4474c0 EFLAGS: 00010283 RAX: ffffffff842b1d34 RBX: 0000000000000003 RCX: 0000000000100000 RDX: ffffc9000f03a000 RSI: 0000000000035503 RDI: 0000000000035504 RBP: ffffc9000e447608 R08: ffff8880123b0000 R09: 0000000000000002 R10: 00000000fffffffe R11: 0000000000000002 R12: 0000000000000001 R13: 0000000000000000 R14: 1ffff92001c88ea0 R15: 00000000ffff039c FS: 00007f7e02ee36c0(0000) GS:ffff88808c887000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 00007ff0305c4000 CR3: 0000000012d4c000 CR4: 0000000000352ef0 Call Trace: f2fs_truncate_blocks+0x10a/0x300 fs/f2fs/file.c:882 f2fs_truncate+0x471/0x7c0 fs/f2fs/file.c:940 f2fs_evict_inode+0xa3f/0x1ac0 fs/f2fs/inode.c:907 evict+0x61e/0xb10 fs/inode.c:841 f2fs_fill_super+0x5f43/0x78f0 fs/f2fs/super.c:5224 get_tree_bdev_flags+0x431/0x4f0 fs/super.c:1694 vfs_get_tree+0x92/0x2a0 fs/super.c:1754 fc_mount fs/namespace.c:1193 [inline] do_new_mount_fc fs/namespace.c:3758 [inline] do_new_mount+0x341/0xd30 fs/namespace.c:3834 do_mount fs/namespace.c:4167 [inline] __do_sys_mount fs/namespace.c:4383 [inline] __se_sys_mount+0x31d/0x420 fs/namespace.c:4360 do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline] do_syscall_64+0x15f/0xf80 arch/x86/entry/syscall_64.c:94 entry_SYSCALL_64_after_hwframe+0x77/0x7f count = ADDRS_PER_PAGE(dn.node_folio, inode); count -= dn.ofs_in_node; f2fs_bug_on(sbi, count < 0); The fuzz test will trigger above bug_on in f2fs. The root cause should be: in the corrupted inode, there is a direct node which has the same ino and nid in its footer, so in f2fs_do_truncate_blocks(), after f2fs_get_dnode_of_data() finds such dnode: 1) ADDRS_PER_PAGE(dn.node_folio, inode) will return 923 2) once dn.ofs_in_node points to addr[923, 1017] Then it will trigger the system panic. Let's introduce NODE_TYPE_NON_IXNODE to indicate current node should not be an inode or xattr node, and then use it in below path to detect inconsistent node chain in inode mapping table: - f2fs_do_truncate_blocks - f2fs_get_dnode_of_data - f2fs_get_node_folio_ra - __get_node_folio - f2fs_sanity_check_node_footer - case NODE_TYPE_NON_IXNODE -> check whether it is inode|xnode",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-126308": {
+    "cvss": 7.7,
+    "description": "The web dashboard in Coder 2.24.0 before 2.29.23, 2.30.0 before 2.34.14, 2.35.0 before 2.36.9, 2.37.0 before 2.37.6, and 2.38.0 before 2.38.2 replaces the $SESSION_TOKEN placeholder in external app URLs with a full-access API key without checking whether the app belongs to a sub-agent. Code running in a workspace can register a disguised sub-agent app with a custom protocol URL, so the owner's click sends their API key to an attacker-chosen destination.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126309": {
+    "cvss": 7.1,
+    "description": "OpenBao before 2.6.5 and 2.7.2 contains a path traversal vulnerability in Transit key import that allows authenticated attackers to bypass name restrictions in ACL policies. Attackers limited by a required_parameters name constraint can craft traversal sequences during import to write key material under arbitrary Transit key names.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126312": {
+    "cvss": 7.1,
+    "description": "OpenBao before 2.6.5 and 2.7.x before 2.7.2, and the openbao-plugins LDAP and RADIUS auth plugins before 0.2.0, contain an ACL bypass in the AppRole, Cert, LDAP, and RADIUS auth methods caused by implicit path canonicalization. Authenticated attackers can request non-canonical paths for AppRole Role IDs, Cert CRLs, LDAP groups and users, or RADIUS users to evade ACL deny rules.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126313": {
+    "cvss": 4.3,
+    "description": "Frappe HRMS 16.0.0 before 16.20.1 contains an authorization bypass because an ownership check is missing on a record type that employees can create. Authenticated users holding only the Employee role can create or change draft records for another employee, or for a company they do not belong to.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126314": {
+    "cvss": 8.8,
+    "description": "Frappe HRMS 15.0.0 before 15.64.6 and 16.0.0 before 16.20.1 does not check access to each employee on endpoints that create records in bulk for a list of employees. An authenticated user with create permission on the affected record type, such as HR User, can create records for employees outside their user-permission scope, including other companies' employees.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126315": {
+    "cvss": 9.8,
+    "description": "Frappe HRMS 16.14.0 before 16.20.1 sends product usage events on certain HR transactions without checking the site's telemetry setting, and some events include more detail than needed. During normal use, with no user action, values such as leave type names, claimed amounts and appraisal scores are transmitted even when telemetry is disabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126316": {
+    "cvss": 2.2,
+    "description": "Frappe HRMS from 16.0.0 before 16.20.1 contains an information exposure vulnerability that places the subscription key in the query string of outbound subscription status requests. Attackers with access to proxy, server, or monitoring logs along the request path can recover the site's subscription key from recorded URLs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126317": {
+    "cvss": 8.8,
+    "description": "Frappe HRMS from 16.0.0 before 16.20.1 contains a missing authorization vulnerability that allows authenticated users to read company details outside their permissions due to a missing permission check. Any logged-in user, including Employee role users, can query the affected endpoint to list every company on the site along with its default currency.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126320": {
+    "cvss": 6.5,
+    "description": "Dockhand before 1.0.55 contains an improper authorization vulnerability that lets users holding only containers:view download arbitrary container files instead of requiring containers:exec. Authenticated Enterprise RBAC users can request any path from the files/download endpoint, which reads through Docker's archive API, to retrieve secrets, keys, and mounted credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126321": {
+    "cvss": 8.3,
+    "description": "Dockhand before 1.0.55 contains a path traversal vulnerability that allows authenticated users with stacks:edit to bypass the file-browser path guard by combining symlinks with '..' sequences. Attackers can read /proc/self/environ, the SQLite database, and the encryption key via /api/system/files/content, or move them using the stack relocate endpoint, exposing stored credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126369": {
+    "cvss": 5.4,
+    "description": "Vvveb through 1.0.8.6 contains a stored cross-site scripting vulnerability that allows low-privilege author or vendor users to inject script by bypassing the regex blacklist in sanitizeHTML(). Attackers can save post or product content with unclosed event-handler tags or javascript: entities to execute script for anonymous visitors and admins, enabling session or CSRF-token theft.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126370": {
+    "cvss": 8.8,
+    "description": "Vvveb through 1.0.8.6 contains a remote code execution vulnerability allowing restricted site_admin roles to inject PHP by saving .sql files through the admin code editor. Attackers can bypass extension and content deny-lists with an @IF macro payload that compiles into executable PHP when the model loads, running OS commands as the web user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126373": {
+    "cvss": 4.3,
+    "description": "Vvveb 1.0.8.4 through 1.0.8.6 contains an authorization bypass vulnerability in the content/revisions revision action that lets low-privileged Authors read other authors' revisions. Attackers can supply a post_id, language_id, and created_at timestamp to retrieve private unpublished drafts, because the revision() action lacks the admin_id ownership restriction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126374": {
+    "cvss": 4.3,
+    "description": "Vvveb through 1.0.8.6 contains an SQL injection vulnerability because the @KEYS(:each) macro emits PHP array keys as backtick-quoted INSERT column names without escaping, and several procedures in admin/sql/mysqli/product.sql and admin_auth_token.sql omit the @FILTER guard. Authenticated back-office users able to save products can submit product_ POST array keys containing backticks to redirect bound values into unexposed columns or break SQL statements.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126377": {
+    "cvss": 8.1,
+    "description": "Vvveb before 1.0.9.0 contains an authentication bypass vulnerability in generateCookie() in system/user/user.php that uses loose comparison to validate MD5 cookie hashes. Unauthenticated attackers can brute-force cookie values until the server's MD5 computation yields a 0e magic hash, then forge persistent cookies for account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126378": {
+    "cvss": 9.1,
+    "description": "Vvveb through 1.0.8.6 contains a file upload vulnerability in the theme installer validFile() function that uses strpos() instead of strict path matching. Attackers with admin credentials can upload a ZIP containing a PHP file whose path includes /theme.php to achieve remote code execution on nginx deployments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126381": {
+    "cvss": 6.3,
+    "description": "n8n before 2.43.5, 2.44.x before 2.44.1, and 3.x before 3.0.1 contains an SQL injection vulnerability in the Vector Store (OracleDB) node, which does not validate Metadata Filter keys used in vector search queries. Attackers can supply crafted filter keys through untrusted workflow input such as webhooks to read data accessible to the configured Oracle credential.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126382": {
+    "cvss": 5.4,
+    "description": "n8n before 2.38.0 and 3.x before 3.0.1 contains a missing authentication vulnerability in the Asana Trigger that accepts a new webhook verification secret from any request carrying an X-Hook-Secret header. Unauthenticated attackers who know the webhook URL can replace the secret, send forged Asana events that pass signature verification, and trigger workflows with attacker-controlled data while genuine deliveries are rejected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126385": {
+    "cvss": 7.7,
+    "description": "n8n before 2.45.5, 2.46.x before 2.46.1, and 3.x before 3.0.1 contains a flaw in the OAuth2 credential callback of the dynamic-credential connect flow, which does not verify that the completing browser belongs to the user who started the flow. Members with access to a resolvable OAuth2 credential can send the provider authorization URL to a victim; if the victim consents without an active n8n session, the victim's tokens are stored under the member's identity, letting the member's workflows act as the victim.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126386": {
+    "cvss": 4.7,
+    "description": "n8n before 1.123.89, 2.x before 2.45.5, 2.46.x before 2.46.1, and 3.x before 3.0.1 contains an open redirect vulnerability in the unauthenticated MCP OAuth dynamic client registration flow, which accepts arbitrary redirect_uri values via the /mcp-oauth/register endpoint. Attackers can send victims crafted /mcp-oauth/authorize URLs that redirect them to attacker-controlled sites before instance checks run, enabling phishing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126389": {
+    "cvss": 5.4,
+    "description": "n8n before 1.123.89 contains an authentication bypass vulnerability in the Chat Trigger that allows unauthenticated attackers to skip n8n User Auth through the setup GET webhook route in embedded chat mode. Attackers can send unauthenticated GET requests to the chat webhook URL to read named session conversation history or trigger workflows with attacker-supplied input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126390": {
+    "cvss": 3.7,
+    "description": "n8n before 1.123.89 contains a credential leakage vulnerability in the NocoDB node that sends the configured NocoDB API token to attacker-chosen hosts when downloading attachments. Attackers with write access to a NocoDB attachment cell can insert a URL to their host, capturing the API token when the workflow executes with Download Attachments enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126393": {
+    "cvss": 6.1,
+    "description": "SiYuan before 3.8.10 contains a server-side request forgery vulnerability in the skill-install download path because fetchBytes performs only a parse-time hostname check instead of using ssrfSafeClient. Attackers can supply a skill URL via the MCP skill install action that redirects or DNS-rebinds to loopback addresses, reaching internal services and metadata endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126394": {
+    "cvss": 5.3,
+    "description": "vLLM 0.30.0 before 0.31.0 contains a resource exhaustion vulnerability in OpenCVDynamicOpenPanguVideoBackend, which uses request-controlled num_frames without an effective ceiling. Unauthenticated attackers can send /v1/chat/completions or /tokenize requests selecting the openpangu video_backend with a huge num_frames, forcing np.linspace allocations and CPU work that OOM-kill the API server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126397": {
+    "cvss": 7.5,
+    "description": "vLLM from 0.10.1 before 0.31.0 forwards a request-controlled mm_processor_kwargs.max_patches value to the Hugging Face processor for Cohere2 Vision models without a server-side upper bound, causing quadratic CPU work during multimodal preprocessing. Remote clients can send small image chat-completion requests with large, varying max_patches values to bypass the LRU cache, exhaust preprocessing workers, and deny service to other clients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126398": {
+    "cvss": 5.9,
+    "description": "vLLM from 0.28.0 before 0.30.0 contains a reachable assertion vulnerability in GPUModelRunner._init_xdrope_positions that allows remote attackers to crash the engine by submitting embeddings-only requests. Attackers can send a /v1/completions request containing only prompt_embeds to XD-RoPE models with --enable-prompt-embeds, terminating the EngineCore and API server for all clients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126401": {
+    "cvss": 7.5,
+    "description": "Fleet before 4.86.2 contains a denial of service vulnerability that allows unauthenticated attackers to exhaust server memory through quadratic XML canonicalization of unsigned SAML responses. Attackers can send a single crafted SAML response with deeply nested elements declaring new namespace prefixes to POST /api/v1/fleet/sso/callback, crashing the Fleet server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126402": {
+    "cvss": 7.2,
+    "description": "Fleet before 4.89.0 contains an incorrect authorization flaw in its user administration API that accepts user creation or modification when the caller administers any one of the assigned teams. Authenticated team administrators can grant users administrator roles on other teams, then deploy software and execute scripts on those teams' hosts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126403": {
+    "cvss": 6.5,
+    "description": "Coder 2.26.0 before 2.29.24, 2.30.0 before 2.34.16, 2.35.0 before 2.36.11, 2.37.0 before 2.37.8, and 2.38.0 before 2.38.4 contains an improper authorization flaw in the external agent credentials endpoint, which returns the workspace agent token to users with only workspace read access rather than ssh permission. Authenticated users with roles such as Template Admin or Organization Admin can use the token to read the owner's private Git SSH key and Git provider OAuth tokens, and impersonate the agent to receive the owner's sessions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126404": {
+    "cvss": 6.8,
+    "description": "Coder 2.28.0 before 2.29.24, 2.30.0 before 2.34.16, 2.35.0 before 2.36.11, 2.37.0 before 2.37.8, and 2.38.0 before 2.38.4 does not restrict new API keys to the creating token's scopes, allow list, or expiry. A scoped API key or OAuth2 token holding key-creation permission can call POST /api/v2/users/{user}/keys/tokens to mint longer-lived coder:all keys, gaining the user's full privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126405": {
+    "cvss": 6.5,
+    "description": "Coder 2.21.0 before 2.29.24, 2.30.0 before 2.34.16, 2.35.0 before 2.36.11, 2.37.0 before 2.37.8, and 2.38.0 before 2.38.4 reads Web Push endpoint responses in webpushSend with io.ReadAll, without a size limit or client timeout. Any authenticated user can register a subscription via POST /api/v2/users/{user}/webpush/subscription pointing to a server returning an endless body, exhausting coderd memory and crashing the API, dashboard, and workspace connections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126406": {
+    "cvss": 3.7,
+    "description": "The wasmtime-wasi-http p2 implementation in Wasmtime before 36.0.20, 37.0.0 before 48.0.8, 49.0.0 before 49.0.5, and 50.0.0 before 50.0.1 can send conflicting content-length headers, or ones not matching the body, in outgoing requests. A guest that reuses a received response's headers resource to send a bodyless request can enable request smuggling against non-compliant servers, potentially bypassing embedder destination access controls.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126409": {
+    "cvss": 2.0,
+    "description": "Wasmtime 47.0.0 before 48.0.8, 49.0.0 before 49.0.5, and 50.0.0 before 50.0.1 contains a cross-engine type confusion vulnerability because StructType::with_finality_and_supertype does not validate that the supplied supertype belongs to the same Engine. Embedders using multiple engines that create a GC struct type with another engine's supertype can trigger runtime panics or GC heap corruption, causing denial of service; guest WebAssembly cannot trigger it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126410": {
+    "cvss": 6.4,
+    "description": "Wasmtime's wasmtime-wasi crate 48.0.0 before 48.0.8, 49.0.0 before 49.0.5, and 50.0.0 before 50.0.1 contains a time-of-check/time-of-use race in the wasip3 wasi:sockets udp-socket host implementation that lets guests bypass socket_addr_check send restrictions. A malicious guest can race udp-socket.send against udp-socket.connect to deliver attacker-controlled datagrams to addresses the policy permits only for receiving.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126411": {
+    "cvss": 5.4,
+    "description": "Frappe HRMS 16.0.0 before 16.50.0 lacks authorization checks on certain HR workflow endpoints, letting authenticated users access records they are not permitted to view. Any logged-in user, including one with only the Employee role, can read candidate record details and employee email addresses, and cause emails to be sent to employees.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126412": {
+    "cvss": 8.8,
+    "description": "Frappe HRMS 15.0.0 before 15.64.1 and 16.0.0 before 16.19.0 lacks a write permission check on a bulk record processing action, allowing users with only read access to the related setup record to modify data. Authenticated users with the default Employee role can run the action to create and submit records for every covered employee.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126413": {
+    "cvss": 4.3,
+    "description": "Frappe HRMS 15.x before 15.64.1 and 16.x before 16.19.0 contains a missing authorization vulnerability in an endpoint that returns file information, allowing authenticated users to read details of files attached to records they cannot access. Any logged-in user, including one with only the Employee role, can query it to view attachment details on any document type and confirm record existence.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126414": {
+    "cvss": 8.8,
+    "description": "Frappe HRMS 15.0.0 before 15.64.2 and 16.0.0 before 16.20.0 contains a missing authorization vulnerability in certain record update endpoints that lack an ownership check. Authenticated users with the Employee role can call these endpoints to modify records belonging to other employees, beyond their permitted role.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126417": {
+    "cvss": 5.3,
+    "description": "OpenEMR before 8.5.0 contains an access control flaw in get_claim_file.php: with location=tmp, it serves any file in the shared temporary directory without verifying the file is a claim for the caller. Users with acct/eob or acct/bill write access can request key=ccda.xml to download the most recently validated patient's complete C-CDA clinical document.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126418": {
+    "cvss": 6.3,
+    "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability in interface/billing/sl_eob_invoice.php, which escapes billing codes for HTML attributes but not for JavaScript strings in an inline onkeyup handler. Clinicians with encounter coding access can save crafted billing codes through diagnosis.php that execute script when a Back Office user enters a payment, exposing patient and financial data or performing actions as that user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126420": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in the FaxSMS module's utility.php that allows read-only demographics users to create patient charts. Attackers can submit the form_create request with chosen identity fields to create fictitious or duplicate patients with employer, history, and insurance records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126421": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains an uncontrolled resource consumption vulnerability that allows authenticated users with patients/med access to exhaust PHP workers via an unbounded count parameter. Attackers can send print_labels requests to labs_ajax.php with huge counts, forcing mPDF page and barcode generation that makes OpenEMR unavailable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126422": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in library/ajax/lists_touch.php that allows restricted authenticated users to mark another patient's clinical lists as reviewed. Attackers can submit arbitrary patient_id and type values to falsely record \"None known\" allergy, medication, or problem lists, misleading clinicians and skewing quality-measure calculations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126423": {
+    "cvss": 4.3,
+    "description": "OpenEMR before 8.5.0 contains a denial of service vulnerability in four ZIP upload paths that read uncompressed entries into memory without size or ratio checks. Authenticated billing or Carecoordination users can upload highly compressed ZIP archives to exhaust PHP memory and worker pools, making OpenEMR unavailable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126424": {
+    "cvss": 3.5,
+    "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability that allows users with admin/superbill write permission to inject HTML into SNOMED code descriptions via superbill_custom_full.php. When a clinician selects the malicious code, the Functional and Cognitive Status form or fee-sheet forms assign it to innerHTML, executing JavaScript in the clinician's session to read patient data and perform actions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126425": {
+    "cvss": 7.2,
+    "description": "OpenEMR before 8.5.0 contains a stored SQL injection vulnerability in which History layout field identifiers saved through edit_layout.php, including HIS fields and LBF source-H fields, are placed unvalidated into an INSERT statement for patients without a history_data row. Users with admin/super and patients/med write access can trigger history_save.php or LBF saves to execute SQL functions like SLEEP, tying up database workers or accessing data beyond their privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16615": {
+    "cvss": 6.8,
+    "description": "A flaw was found in librest. The PKCE implementation for OAuth authorization uses the GRand function from the GLib API, a cryptographically insecure pseudo-random number generator. Because the generated \"code verifier\" lacks sufficient cryptographic entropy, a malicious actor can reverse-engineer the pseudo-random number generator (PRNG) seed to predict or reconstruct the code verifier string, allowing an attacker to bypass PKCE protections and successfully impersonate the client during the OAuth 2.0 authorization flow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
