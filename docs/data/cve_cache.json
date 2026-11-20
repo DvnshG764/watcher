@@ -2714,8 +2714,8 @@
   "CVE-2026-30778": {
     "cvss": 7.5,
     "description": "The SkyWalking OAP /debugging/config/dump endpoint may leak sensitive configuration information of MySQL/PostgreSQL. This issue affects Apache SkyWalking: from 9.7.0 through 10.3.0. Users are recommended to upgrade to version 10.4.0, which fixes the issue.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Apache Software Foundation",
+    "product": "Apache SkyWalking"
   },
   "CVE-2026-33805": {
     "cvss": 8.6,
@@ -141742,5 +141742,35 @@
     "description": "Nuxt is an open-source web development framework for Vue.js. From 3.0.0 until 4.6.3, the Nuxt development server can expose the Nitro 2 development bundle at /dev/index.mjs through Vite file serving when the server is reachable over HTTP. Nitro inlines private runtimeConfig values resolved at build time into that bundle, including secrets configured in nuxt.config, and Nuxt 4.6.0 and later also inline the generated development appSecret. The default localhost binding limits remote exposure, production builds and Nitro 3 are not affected, and runtime configuration supplied only through NUXT_* environment variables at server startup is not inlined. This issue is fixed in version 4.6.3.",
     "vendor": "nuxt",
     "product": "nuxt"
+  },
+  "CVE-2026-124329": {
+    "cvss": 5.0,
+    "description": "A vulnerability was found in FlowCI flow-core-x up to 1.23.49. The impacted element is the function FileHelper.unzip of the file common/src/main/java/com/flowci/common/helper/FileHelper.java. The manipulation results in path traversal. The attack may be performed from remote. A high complexity level is associated with this attack. The exploitability is regarded as difficult. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124330": {
+    "cvss": 5.0,
+    "description": "A vulnerability was determined in FlowCI flow-core-x up to 1.23.49. This affects the function exist/save/read/remove of the file store/src/main/java/com/flowci/store/LocalFileManager.java of the component LocalFileManager. This manipulation of the argument fileName causes path traversal. It is possible to initiate the attack remotely. A high degree of complexity is needed for the attack. The exploitability is reported as difficult. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53431": {
+    "cvss": 9.1,
+    "description": "Authentication Bypass by Capture-replay vulnerability in malach-it Boruta allows an attacker who has obtained a previously valid JWT client assertion to authenticate as the issuing OAuth client after the assertion has expired. Boruta accepts JWT-based client authentication (client_secret_jwt and private_key_jwt token endpoint authentication methods) but never enforces that the assertion's exp claim is in the future. The pre-check helper Boruta.Oauth.Request.Base.check_expiration/1 in lib/boruta/oauth/request/base.ex only verifies that an exp claim is present (it pattern-matches on the existence of the key and returns success), and the Joken token configuration used for signature verification, Boruta.Oauth.Authorization.Client.Token.token_config/0 in lib/boruta/oauth/authorization/client.ex, returns an empty map, so Joken's default exp claim validator is not engaged either. Any attacker who obtains a validly-signed client assertion (for example through logs, reverse proxies, browser tooling, or other observability surfaces) can replay it indefinitely to authenticate as the client and obtain access tokens with that client's privileges. This issue affects boruta: from 2.3.0 before 2.3.7 and from 3.0.0-beta.1 onward.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53430": {
+    "cvss": 8.7,
+    "description": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in elixir-grpc grpc (GRPC.Compressor.Gzip, GRPC.Message modules) allows a denial of service via a gzip decompression bomb. This vulnerability is associated with program files lib/grpc/compressor/gzip.ex, lib/grpc/message.ex and program routines GRPC.Compressor.Gzip.decompress/1, GRPC.Message.from_data/2. GRPC.Compressor.Gzip.decompress/1 calls :zlib.gunzip/1 directly on attacker-controlled bytes with no decompressed-size limit, ratio check, or incremental decoding. Because this module is the registered gzip GRPC.Compressor implementation, it is invoked automatically whenever an incoming gRPC frame carries the grpc-encoding: gzip header. :zlib.gunzip/1 allocates the entire decompressed result as a single binary, so a small highly compressible payload (for example a few kilobytes of zeros, which gzip compresses at roughly 1000:1) expands to multiple gigabytes inside a single call. The max_receive_message_length limit is enforced only against the already-decompressed message, so it provides no protection. An unauthenticated remote peer can send a single crafted frame to exhaust the BEAM node's heap and trigger an out-of-memory kill. This issue affects grpc: from 0.4.0 before 1.0.0; grpc_core: from 1.0.0-alfa before 1.0.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8468": {
+    "cvss": 8.2,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in plug_project plug allows denial of service via unbounded buffer accumulation in multipart header parsing. Plug.Conn.read_part_headers/2 in lib/plug/conn.ex does not obey its :length parameter. There is no upper bound on the size of the accumulated buffer. By contrast, the sibling function read_part_body has an explicit byte_size(acc) > length guard that stops accumulation once a limit is reached. No such guard exists in read_part_headers. An unauthenticated remote attacker can exhaust server memory by sending a crafted multipart/form-data request, causing a denial of service. This issue affects plug: from 1.4.0-rc.0 before 1.15.4, from 1.16.0 before 1.16.3, from 1.17.0 before 1.17.1, from 1.18.0 before 1.18.2, and from 1.19.0 before 1.19.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
