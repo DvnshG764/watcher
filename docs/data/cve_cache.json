@@ -141550,5 +141550,47 @@
     "description": "bep/imagemeta is a Go library for reading EXIF, IPTC and XMP image meta data from JPEG, TIFF, PNG, and WebP files. Prior to 0.17.3, imagemeta.Decode could exhaust memory when parsing PNG zTXt chunks whose keyword is \"Raw profile type iptc\": the declared chunk length can drive an allocation far larger than the input file, and the embedded zlib stream is decompressed without an output limit. The advisory reports a 42-byte input causing a 256 MB allocation and a 127 KB input inflating to 460 MB. The oversized-allocation path's memory effect depends on platform overcommit and configured GOMEMLIMIT or cgroup limits, while the decompression path reliably creates resident memory. Applications that decode untrusted PNGs with IPTC metadata processing can therefore suffer denial of service through memory exhaustion. This issue is fixed in 0.17.3.",
     "vendor": "bep",
     "product": "imagemeta"
+  },
+  "CVE-2026-97196": {
+    "cvss": 9.1,
+    "description": "Improper Validation of Unsafe Equivalence in Input vulnerability in Liquid Web / StellarWP GiveWP give allows Authentication Bypass.This issue affects GiveWP: from n/a through 4.16.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71220": {
+    "cvss": 7.0,
+    "description": "A stack out-of-bounds write vulnerability was found in gfs2-utils. In gfs2_edit, the di_height field from on-disk inode metadata is used as an array index without bounds checking, causing a stack buffer overflow that may lead to arbitrary code execution when processing crafted GFS2 filesystem images.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71221": {
+    "cvss": 7.0,
+    "description": "A stack out-of-bounds write vulnerability was found in gfs2-utils. In savemeta, the height value from on-disk inode metadata is used as a loop bound without bounds checking, causing a stack buffer overflow that may lead to arbitrary code execution when processing crafted GFS2 filesystem images.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47067": {
+    "cvss": 7.5,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. The URL parser in src/hackney_url.erl converts every unrecognized URL scheme to a permanent BEAM atom via binary_to_atom/2. BEAM atoms are never garbage-collected and the atom table defaults to a hard limit of 1,048,576 entries. An attacker who can supply URLs with attacker-chosen scheme prefixes — directly as request targets, as configured webhook URLs, or via Location headers followed during redirects — can exhaust the atom table and crash the entire BEAM VM with system_limit. This issue affects hackney: from 2.0.0 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47069": {
+    "cvss": 5.3,
+    "description": "Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability in benoitc hackney allows HTTP Response Splitting. The hackney_cookie:setcookie/3 function in src/hackney_cookie.erl validates the Name and Value arguments against CRLF and control characters, but concatenates the domain and path options verbatim into the output iolist with no equivalent check. An attacker who controls either option — for example by supplying a Host header value forwarded as the cookie domain, or a request path forwarded as the cookie path — can inject a literal CRLF sequence and arbitrary additional Set-Cookie headers into the HTTP response. This issue affects hackney: from 0.9.0 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47070": {
+    "cvss": 6.1,
+    "description": "Sensitive Data Exposure vulnerability in benoitc hackney allows Retrieve Embedded Sensitive Data. The HTTP/3 redirect handler in src/hackney_h3.erl passes the original request headers unchanged to the redirect target without performing any cross-origin check. When a client issues an HTTP/3 request with follow_redirect enabled and includes Authorization or Cookie headers, a server responding with a 3xx redirect to a different host will cause the client to forward those credentials verbatim to the new origin. The main hackney.erl module has maybe_strip_auth_on_redirect/2 (guarded by the location_trusted option) to address CVE-2018-1000007, but hackney_h3.erl is missing this protection entirely. This issue affects hackney: from 3.1.1 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47068": {
+    "cvss": 2.3,
+    "description": "Authorization Bypass Through User-Controlled Key vulnerability in phenixdigital phoenix_storybook allows cross-session PubSub topic injection via a URL query parameter. An attacker who loads the component iframe with the topic of another session receives the control messages that the victim's playground sends to its iframe. PhoenixStorybook.Story.ComponentIframeLive.handle_params/3 reads a PubSub topic from params[\"topic\"] and broadcasts {:component_iframe_pid, self()} on it, with no check that the topic belongs to the requesting session. The playground uses the received pid as the target of its later messages (variation state, theme switches, extra-assign payloads). Releases published as phx_live_storybook have the same code in PhxLiveStorybook.Story.ComponentIframeLive. This issue affects phoenix_storybook: from 0.5.0 before 1.1.0; phx_live_storybook: from 0.4.0 onward.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
