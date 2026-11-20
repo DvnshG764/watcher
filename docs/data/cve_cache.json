@@ -141436,5 +141436,119 @@
     "description": "Uncontrolled Resource Consumption vulnerability in hexpm hexpm/hexpm allows Excessive Allocation. Publishing an oversized package can cause Hex.pm to run out of memory while extracting the uploaded package tarball. This can terminate the affected application instance and result in a denial of service for package publishing and potentially other package-processing functionality. This issue affects hex.pm: before 2026-03-10; hexpm/hexpm: from 82911daf5f8fb2ab44f298e3ba22b90bc1ae3746 before 495f01607d3eae4aed7ad09b2f54f31ec7a7df01.",
     "vendor": "F5",
     "product": "Unknown"
+  },
+  "CVE-2026-126759": {
+    "cvss": 5.3,
+    "description": "A flaw has been found in H3C ICG2000 Unified Communication Gateway 2023. This issue affects some unknown processing of the file /wnm/check.j of the component Web Management Module. Executing a manipulation can lead to missing authentication. The attack may be performed from remote. The exploit has been published and may be used. Upgrading to version R9141PXX is capable of addressing this issue. It is recommended to upgrade the affected component. The vendor confirms: \"We have confirmed this issue is a known issue and has been fixed in R9141PXX versions.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43972": {
+    "cvss": 7.2,
+    "description": "Origin Validation Error vulnerability in ninenines gun (gun_http2 module) allows cross-origin cookie injection via unvalidated HTTP/2 PUSH_PROMISE authority. In gun_http2:push_promise_frame/7, the :authority pseudo-header from an incoming PUSH_PROMISE frame is stored verbatim into the promised stream record without checking that it matches the connection's origin. When gun_http2:headers_frame/9 later processes the response headers for the promised stream, it calls gun_cookies:set_cookie_header/7 with the unvalidated server-supplied authority before any status branching and before user code can act. This violates RFC 7540 §10.6 / RFC 9113 §8.4, which require receivers to treat as a protocol error any push for a resource the server is not authoritative for. A malicious or compromised HTTP/2 server can plant cookies scoped to arbitrary third-party domains into the client's shared cookie store. This enables session fixation attacks against those domains and, if the planted cookie overrides a legitimate session token, may result in account takeover. No user interaction beyond making a normal HTTP/2 request to the attacker-controlled server is required. This issue affects gun: from 2.0.0-pre.2 before 2.4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43973": {
+    "cvss": 7.5,
+    "description": "Uncontrolled Resource Consumption vulnerability in ninenines gun (gun_http module) allows a malicious server to exhaust client memory via unbounded HTTP/1.1 response buffering. In gun_http:handle/5, three clauses accumulate incoming TCP data into the connection's buffer field using binary concatenation with no upper-bound check: the head clause appends data until the \\r\\n\\r\\n header terminator is found; the body_chunked clause appends data whenever cow_http_te:stream_chunked/2 returns a more result indicating an incomplete chunk boundary; and the body_trailer clause appends data until the trailing \\r\\n\\r\\n is found. In each case, when the expected terminator never arrives, the enlarged binary is stored back into state and the process waits for more data, with no configurable or hard-coded ceiling on buffer size. A malicious or compromised server can exploit this by sending a partial response that never completes. For example, a response may begin with HTTP/1.1 200 OK\\r\\nX-Pad: followed by an unbounded stream of arbitrary bytes, never sending the header terminator. The gun connection process will continuously append the incoming data to its buffer, causing unbounded heap growth. Because BEAM imposes no per-process heap limit by default, a single malicious connection can exhaust all available memory on the node, causing a node-wide out-of-memory crash. This issue affects gun: from 1.0.0-pre.1 before 2.4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-43974": {
+    "cvss": 7.5,
+    "description": "Unexpected Status Code or Return Value vulnerability in ninenines gun (gun_http module) allows a malicious HTTP server to force the client into raw protocol mode via an unsolicited 101 Switching Protocols response. In gun_http:handle_inform/8, when a 101 Switching Protocols response is received over HTTP/1.1, the function verifies only that the Upgrade header is syntactically valid and that the stream reference is a plain reference(). It does not check whether the client ever sent an Upgrade or Connection: upgrade header on the corresponding request. Because this check is absent, any 101 response (solicited or not) causes gun to dispatch a gun_upgrade message to the caller and transition the entire connection to raw protocol mode. A malicious or compromised HTTP server can send an unsolicited 101 response to any HTTP/1.1 request, causing the gun client to abandon HTTP framing for that connection. Once in raw mode, gun_raw applies no flow control (flow=infinity) and re-arms socket active mode after every received packet, so the server can flood the client with arbitrary bytes. These are forwarded as unbounded gun_data messages to the owner process, exhausting its mailbox and BEAM memory, ultimately crashing the VM. This issue affects gun: from 2.0.0-pre.1 before 2.4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47066": {
+    "cvss": 7.5,
+    "description": "Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability in benoitc hackney allows Excessive Allocation. The Alt-Svc response header parser in src/hackney_altsvc.erl does not guarantee forward progress. When parse_token/2 receives a non-token, non-whitespace, non-comma byte (e.g. !, @, =, ;), it returns the input unchanged. skip_comma/1 also returns the buffer unchanged when the first byte is not a comma. parse_entries/2 then recurses with identical data, creating a tight infinite tail-recursive loop that pins a scheduler at 100% CPU. The calling process never returns. The entry point parse_and_cache/3 is called synchronously in the connection process on every HTTP response. A single-byte Alt-Svc: ! response header is sufficient to trigger the hang; the header is fully controlled by any HTTP origin the client connects to. This issue affects hackney: from 2.0.0-beta.1 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8467": {
+    "cvss": 9.5,
+    "description": "Code Injection vulnerability in phenixdigital phoenix_storybook allows unauthenticated remote code execution via HEEx template injection in the component playground. A client can send attribute values over the playground WebSocket. A value that closes the attribute quote and adds a HEEx expression is evaluated as Elixir code on the server. PhoenixStorybook.Story.PlaygroundPreviewLive.handle_event/3 accepts attribute names and values from the client and stores them through PhoenixStorybook.ExtraAssignsHelpers.handle_set_variation_assign/3. PhoenixStorybook.Rendering.ComponentRenderer.attributes_markup/1 interpolates string values into a HEEx template without escaping. The template is compiled with EEx.compile_string/2 and evaluated. Releases published as phx_live_storybook have the same code in the PhxLiveStorybook namespace, where the first client entry point is PhxLiveStorybook.Entry.Playground.handle_event/3. This issue affects phoenix_storybook: from 0.5.0 before 1.1.0; phx_live_storybook: from 0.3.0 onward.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-8469": {
+    "cvss": 8.2,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in phenixdigital phoenix_storybook allows unauthenticated denial of service via atom table exhaustion. LiveView event handlers and request parameters of the storybook convert client-supplied strings to atoms. Atoms are never garbage-collected, so a client that sends enough unique strings fills the atom table, and the BEAM node terminates. PhoenixStorybook.ExtraAssignsHelpers.handle_set_variation_assign/3 and handle_toggle_variation_assign/3 call String.to_atom/1 on parameter keys, attribute names, variation ids, and values of attributes declared as :atom or :boolean. PhoenixStorybook.Story.Playground.handle_event/3 and PhoenixStorybook.StoryLive do the same for tab names, theme names, and playground field names. Releases published as phx_live_storybook have the same calls in the PhxLiveStorybook namespace, at first in PhxLiveStorybook.EntryLive. This issue affects phoenix_storybook: from 0.5.0 before 1.1.0; phx_live_storybook: from 0.2.0 onward.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128090": {
+    "cvss": 7.7,
+    "description": "PHAR OpenSSL signature bypass via algorithm downgrade. The Phar extension selects the signature verification method from the signature type stored in the archive, and only the OpenSSL types consult the separate .pubkey file holding the trusted public key. An attacker who can modify an OpenSSL-signed Phar archive, but not its public key file, can switch the signature type to a keyless hash such as SHA-256 with a recomputed digest, so the altered archive passes verification even with phar.require_hash enabled. An application that loads the archive may then execute attacker-controlled PHP code. Native, tar-based and zip-based phars are affected. This issue affects PHP versions before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
+    "vendor": "Check Point",
+    "product": "PHP"
+  },
+  "CVE-2026-15353": {
+    "cvss": 6.3,
+    "description": "SOAP information disclosure through malformed array dimensions. The SOAP extension reads an uninitialized array position when decoding an encoded array whose arraySize attribute is empty, whitespace-only or non-numeric, or when such dimensions come from a WSDL definition. Four bytes of unrelated heap data can then be used as an integer key in the decoded array. An unauthenticated remote client can trigger this with a crafted request to a SoapServer endpoint, and a malicious SOAP server with a response to SoapClient. Heap memory is disclosed only if the application returns or otherwise exposes the decoded array. This issue affects PHP versions before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
+    "vendor": "Check Point",
+    "product": "PHP"
+  },
+  "CVE-2026-132746": {
+    "cvss": 6.5,
+    "description": "Vtiger CRM through 8.4.0 contains a blind SQL injection vulnerability that allows authenticated low-privileged users to inject SQL via unescaped clientid values in the wsapp_map webservice operation. Attackers can register a sync application with wsapp_register, then send delete-mode entries with quoted clientid values processed by SyncServer.php to extract database contents including administrator access keys.",
+    "vendor": "Vtiger",
+    "product": "Vtiger CRM"
+  },
+  "CVE-2026-20971": {
+    "cvss": 7.3,
+    "description": "Use After Free in PROCA driver prior to SMR Jan-2026 Release 1 allows local attackers to potentially execute arbitrary code.",
+    "vendor": "Samsung Mobile",
+    "product": "Samsung Mobile Devices"
+  },
+  "CVE-2026-132748": {
+    "cvss": 7.2,
+    "description": "Vtiger CRM through 8.4.0 contains a PHP code injection vulnerability that allows authenticated administrators to inject code via the updatedFields parameter into config.inc.php. Attackers can supply a crafted HELPDESK_SUPPORT_EMAIL_ID value that passes email validation but closes the PHP string literal to execute arbitrary operating system commands.",
+    "vendor": "Vtiger",
+    "product": "Vtiger CRM"
+  },
+  "CVE-2026-132747": {
+    "cvss": 6.5,
+    "description": "Vtiger CRM through 8.4.0 contains an SQL injection vulnerability that allows authenticated users with export access to inject SQL through unvalidated selected_ids values in ExportData.php. Attackers can send a UNION SELECT payload in selected_ids[] to the ExportSelectedRecords mode and read password hashes and access keys from the exported CSV.",
+    "vendor": "Vtiger",
+    "product": "Vtiger CRM"
+  },
+  "CVE-2026-117517": {
+    "cvss": null,
+    "description": "The fix for CVE-2026-25854 was incomplete. This issue affects Apache Tomcat: from 11.0.19 through 11.0.27, from 10.1.53 through 10.1.61, from 9.0.116 through 9.0.123. Users are recommended to upgrade to version 11.0.29, 10.1.62 or 9.0.124, which fix the issue. Note: Tomcat 11.0.28 was not released",
+    "vendor": "Apache Software Foundation",
+    "product": "Apache Tomcat"
+  },
+  "CVE-2026-103033": {
+    "cvss": 5.3,
+    "description": "ALTCHA is a Go library for creating and verifying ALTCHA challenges. Prior to 2.1.0, parseServerSignature can leave ServerSignatureVerificationData.Extra uninitialized when url.ParseQuery returns partial values and an error for a malformed percent escape in VerificationData. A later write of an unknown parsed key to the nil map panics before VerifyServerSignature or VerifyServerSignatureSafe completes signature verification, so an unauthenticated client can abort a request. Standard net/http recovers the request goroutine, while application goroutines or frameworks without recovery can crash the process. This issue is fixed in version 2.1.0.",
+    "vendor": "altcha-org",
+    "product": "altcha-lib-go"
+  },
+  "CVE-2026-132749": {
+    "cvss": 6.5,
+    "description": "Vtiger CRM through 8.4.0 contains a blind SQL injection vulnerability in ReportRun::generateAdvFilterSql() that allows authenticated low-privileged users to inject SQL via the bw comparator. Attackers can send a crafted advanced_filter parameter containing a single quote to the Reports getRecordsCount action to break out of BETWEEN literals and extract database contents.",
+    "vendor": "Vtiger",
+    "product": "Vtiger CRM"
+  },
+  "CVE-2026-132745": {
+    "cvss": 6.5,
+    "description": "Vtiger CRM through 8.4.0 contains a blind SQL injection vulnerability that allows authenticated non-administrative users to inject SQL through the k (does not contain) comparator in list view search_params. Attackers can send crafted search_params to the ListAjax getRecordsCount mode, breaking out of the unescaped NOT LIKE clause to extract database contents via boolean or time-based techniques.",
+    "vendor": "Vtiger",
+    "product": "Vtiger CRM"
+  },
+  "CVE-2026-133481": {
+    "cvss": 4.3,
+    "description": "In Dolibarr before 24.0.3, /api/index.php/eventattendees discloses attendee and project data regardless of the caller's permissions. Only 22.0.0 and later (where api_eventattendees.class.php exists) are affected. A remote authenticated user can obtain column values one character at a time.",
+    "vendor": "Dolibarr",
+    "product": "Dolibarr ERP/CRM"
+  },
+  "CVE-2026-103025": {
+    "cvss": 8.7,
+    "description": "bep/imagemeta is a Go library for reading EXIF, IPTC and XMP image meta data from JPEG, TIFF, PNG, and WebP files. Prior to 0.17.3, imagemeta.Decode could exhaust memory when parsing PNG zTXt chunks whose keyword is \"Raw profile type iptc\": the declared chunk length can drive an allocation far larger than the input file, and the embedded zlib stream is decompressed without an output limit. The advisory reports a 42-byte input causing a 256 MB allocation and a 127 KB input inflating to 460 MB. The oversized-allocation path's memory effect depends on platform overcommit and configured GOMEMLIMIT or cgroup limits, while the decompression path reliably creates resident memory. Applications that decode untrusted PNGs with IPTC metadata processing can therefore suffer denial of service through memory exhaustion. This issue is fixed in 0.17.3.",
+    "vendor": "bep",
+    "product": "imagemeta"
   }
 }
