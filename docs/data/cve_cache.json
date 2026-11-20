@@ -59197,7 +59197,7 @@
   },
   "CVE-2026-109256": {
     "cvss": 6.5,
-    "description": "FreeRDP 3.10.0 through 3.32.2 contains a heap buffer overflow in the WinPR png_write_data callback that writes past the buffer after a realloc failure. A malicious RDP clipboard peer can supply a large CF_DIB image that triggers out-of-bounds memcpy during PNG conversion, causing a client crash.",
+    "description": "FreeRDP 3.10.0 before 3.33.0 contains a heap buffer overflow in the WinPR png_write_data callback that writes past the buffer after a realloc failure. A malicious RDP clipboard peer can supply a large CF_DIB image that triggers out-of-bounds memcpy during PNG conversion, causing a client crash.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -129361,7 +129361,7 @@
   },
   "CVE-2026-126542": {
     "cvss": 9.8,
-    "description": "WWBN AVideo 6.5 through 29.7.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to log in as any user via Hybridauth social login display names. Attackers can set their X, Facebook, Yahoo or LinkedIn display name to a victim's username and withhold email, causing login.json.php or oauth2.php to log them in as that account, including administrators, without a password.",
+    "description": "WWBN AVideo 6.5 before 29.8.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to log in as any user via Hybridauth social login display names. Attackers can set their X, Facebook, Yahoo or LinkedIn display name to a victim's username and withhold email, causing login.json.php or oauth2.php to log them in as that account, including administrators, without a password.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -142000,5 +142000,293 @@
     "description": "Flowise v3.0.1 < 3.0.8, and 3.0.8 < 3.1.3 with 'ALLOW_BUILTIN_DEP' enabled contain an authenticated remote code execution vulnerability and node VM sandbox escape due to insecure use of integrated modules (Puppeteer and Playwright) within the nodevm execution environment. An authenticated attacker able to create or run a tool that leverages Puppeteer/Playwright can specify attacker-controlled browser binary paths and parameters. When the tool executes, the attacker-controlled executable/parameters are run on the host and circumvent the intended nodevm sandbox restrictions, resulting in execution of arbitrary code in the context of the host. This vulnerability was incorrectly assigned as a duplicate CVE-2025-26319 by the developers and should be considered distinct from that identifier.",
     "vendor": "FlowiseAI",
     "product": "Flowise"
+  },
+  "CVE-2026-123586": {
+    "cvss": 7.5,
+    "description": "Hickory DNS hickory-recursor 0.25.0-alpha.3 through 0.25.2 and hickory-resolver 0.26.0-alpha.1 before 0.26.2 contains a query amplification vulnerability in its recursive resolver, which mishandles cyclic sibling name server referrals that lack glue records. Attackers controlling two zones whose name servers reference each other without glue records can make the recursor loop, sending many upstream queries, amplified further by zero-TTL NS records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124432": {
+    "cvss": 7.3,
+    "description": "phpMyFAQ 4.1.9 before 4.1.11 and 4.2.0 pre-releases before 4.2.0-beta.3 contain an account enumeration vulnerability in the unauthenticated POST /api/webauthn/prepare-login endpoint, which returns stable stored credential IDs for passkey-registered accounts but an md5(time())-derived fallback ID otherwise. Unauthenticated attackers can compare allowCredentials IDs from requests sent more than one second apart, without rate limiting, to identify existing passkey-registered accounts and their credential IDs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121958": {
+    "cvss": 7.5,
+    "description": "FreeRDP before 3.32.2 has a heap out-of-bounds write in the RDPGFX client because the delete_surface callback truncates surface hash keys to 16 bits, leaving the surface table inconsistent so HashTable_GetKeys writes past its allocated key array. A malicious or man-in-the-middle RDP server can exploit this by creating surfaceId 0xFFFF, closing the RDPGFX channel, sending repeated DELETESURFACE PDUs, and then sending ENDFRAME or RESETGRAPHICS.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119417": {
+    "cvss": 3.7,
+    "description": "CakePHP 4.5.12, 4.6.5, 5.1.8 through 5.1.10, 5.2.14 through 5.2.15, 5.3.7, and 5.4.0 through 5.4.3 contain an email header injection vulnerability because SmtpTransport and MailTransport strip only CRLF pairs from header values, an incomplete fix for CVE-2026-77634. Attackers controlling custom headers set via Message::setHeaders() or Message::addHeaders() can insert a bare CR or LF to inject headers like Bcc, redirecting or altering outgoing mail.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114085": {
+    "cvss": 7.9,
+    "description": "Trigger.dev through 4.8.8 contains a missing authentication vulnerability in the supervisor workload server that allows workloads to manipulate runs belonging to other deployments without ownership verification. Attackers with network access and a valid run/snapshot pair can call the attempts/start endpoint to obtain resolved environment variables and run JWTs, or start, complete, and suspend other tenants' runs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110628": {
+    "cvss": 8.6,
+    "description": "Kan 0.5.5 through 0.7.0 contains an unauthenticated server-side request forgery vulnerability in the /api/download/attatchment route due to an incomplete fix for CVE-2026-32255. When S3_ENDPOINT is unset, attackers can pass arbitrary url query parameters to fetch() to read internal services, localhost ports, and cloud instance metadata.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108101": {
+    "cvss": 7.5,
+    "description": "HortusFox (hortusfox-web) through 6.4 contains an unrestricted file upload vulnerability in PlantAttachmentModel that allows authenticated users to store files with client-supplied extensions under public/attachments/. Attackers can upload HTML or SVG files via /plants/attachments/add for stored cross-site scripting, or PHP files where .htaccess is unenforced to execute code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105829": {
+    "cvss": 6.1,
+    "description": "League CommonMark from 1.3.0 before 2.10.2 contains a cross-site scripting vulnerability that allows users posting Markdown to bypass the DisallowedRawHtml extension by ending raw HTML with a bare disallowed tag name. Attackers can place a lone",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101883": {
+    "cvss": 5.4,
+    "description": "OpenClaw Windows Node through 2026.11.3 contains a server-side request forgery vulnerability in the canvas.present capability that bypasses URL risk evaluation enforced by canvas.navigate. Attackers with gateway or agent access can issue canvas.present to make the node's WebView send requests to localhost, private networks, or tailnet services from the user's machine.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100868": {
+    "cvss": 6.3,
+    "description": "Penpot before 2.18.0 binds the MCP server plugin WebSocket bridge to all network interfaces without authentication in single-user mode. Unauthenticated attackers on adjacent networks can connect to the WebSocket port to impersonate the Penpot browser plugin, intercept task payloads, and return forged results to the MCP client.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94108": {
+    "cvss": 6.5,
+    "description": "getID3 before 1.9.27 contains an XML external entity injection vulnerability in the XML2array helper function that fails to properly disable entity loading on PHP before 8.0. Attackers can craft malicious XML metadata in media files to disclose local files, perform server-side request forgery, or cause denial of service through entity expansion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92916": {
+    "cvss": 7.5,
+    "description": "Grav is a flat-file CMS. In Grav 1.7.0 before 1.7.53.3 and 2.0.0 before 2.0.22, when the debugger is enabled (system.debugger.enabled: true, which is not the default), the Clockwork profiler endpoint is exposed without authentication: InitializeProcessor::handleDebuggerRequest() intercepts any path containing /__clockwork/ during bootstrap and passes it to Debugger::debuggerRequest(), which performs no user lookup, IP restriction, or Clockwork authenticator check, and also supports anonymous pagination over the entire stored history. With the shipped censored: false default, each stored record contains raw request cookies (including Grav's session cookie, whose value is the PHP session id, allowing an attacker to resume another user's session, including an authenticated admin's), the full parsed request body (Grav's login form posts data[username]/data[password], so passwords are stored in plaintext because Clockwork's password filter only inspects top-level keys), and the site's entire system and plugin configuration, including operator-saved secrets such as SMTP credentials, third-party API keys, and licence keys. Authorization and X-API-Token headers are stored even when censored: true. On Grav 2.0, setting provider: debugbar does not avoid the issue because Grav forces the Clockwork provider for requests preferring a JSON response. The issue is fixed in 1.7.53.3 and 2.0.22, which restrict /__clockwork/ to server-local requests or requests presenting the new system.debugger.token secret and strip cookies and credential headers from stored records. Workarounds include setting debugger.enabled: false or blocking /__clockwork/ at the web server or CDN.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92804": {
+    "cvss": 7.1,
+    "description": "Nango through 0.72.6 fails to validate caller-supplied connection configuration values interpolated into provider token and proxy URL templates. Authenticated attackers can supply malicious configuration values to direct server requests at internal addresses or cloud metadata endpoints (0.71.3 and later block cloud metadata and loopback addresses by default but still permit private network addresses), potentially exfiltrating provider credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88877": {
+    "cvss": 9.8,
+    "description": "Traefik is a HTTP reverse proxy and load balancer. In versions >= v3.7.0 and <= v3.7.11, the Kubernetes ingress-nginx provider mishandles Ingresses that carry both an authentication annotation and the nginx.ingress.kubernetes.io/from-to-www-redirect annotation. For such Ingresses the provider creates an additional 'sibling' router that matches on the host alone, carries only the RedirectRegex middleware, and still points at the parent router's protected backend service. Because RedirectRegex is not a terminal handler, a request its pattern does not match is forwarded to the backend, and because the redirect pattern only accepts a numeric port while Traefik's host matcher canonicalizes the authority via net.SplitHostPort, a request with a non-numeric or empty port (for example 'Host: www.example.com:x') selects the sibling router, misses the redirect, and is proxied to the protected backend with none of the Ingress's annotation-derived middlewares applied. This discards not only authentication (e.g. BasicAuth) but every annotation-derived middleware, including source-IP allowlisting. Traefik v2 and v3 releases before v3.7.0 are not affected. The issue is fixed in v3.7.12.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88878": {
+    "cvss": 5.3,
+    "description": "Traefik is an HTTP reverse proxy and load balancer. In versions >= v2.8.2 through <= v2.11.55 and >= v3.0.0 through <= v3.7.11, the entryPoints. .transport.respondingTimeouts settings — notably readTimeout, which is enabled by default at 60s — are not applied to the HTTP/3 request path. readTimeout is enforced as a deadline on the underlying TCP connection, which cannot be applied to a QUIC stream, and Traefik's HTTP/3 server is constructed without any timeout. As a result, on entry points with HTTP/3 enabled, an unauthenticated remote client that trickles request body bytes can hold a request open indefinitely and, with it, one upstream connection per request, exhausting bounded backend connection pools and causing denial of service. The issue was introduced in v2.8.2 when a quic-go API change removed the embedded http.Server that carried these timeouts. Fixed in v2.11.56 and v3.7.12.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88879": {
+    "cvss": 8.2,
+    "description": "Traefik is an HTTP reverse proxy and load balancer. In Traefik v1.x, v2.x through v2.11.55, and v3.0.0 through v3.7.11, header names are canonicalized only on dashes, so X-Auth-User, X_Auth_User and X.Auth.User are treated as three distinct headers by Traefik, while backends that derive variable names from header names (CGI, WSGI, PHP, NGINX and others) collapse them into a single variable. A client can therefore smuggle a dot-form alias of a header that Traefik manages past the middleware managing it — for example supplying X.Authenticated.User alongside the canonical X-Authenticated-User written by the ForwardAuth middleware — causing such a backend to read the client-supplied value instead of the identity Traefik asserted. In the tested configuration (PHP 8.2 built-in SAPI over an HTTP/1 backend path), Go's lexical header ordering makes the attacker-supplied value win deterministically, so a client that ForwardAuth admits as a low-privilege identity can be treated by the backend as a different user or role. Any header Traefik sets is affected, not only ForwardAuth's. This is an incomplete fix for GHSA-x677-9fxg-v5c5, which blocked only the underscore form. Fixed in v2.11.56 and v3.7.12, which add the aliasHeadersStrategy entry-point option; because it defaults to 'keep' for backwards compatibility, it must be explicitly set to 'delete' or 'reject' for the fix to take effect. Unmaintained release lines will not receive a patch.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88937": {
+    "cvss": 8.8,
+    "description": "knowns through 0.36.1 fails to properly validate template destination paths in the code generation template engine, allowing attackers to read and write arbitrary files outside the project root. Attackers can supply malicious templates that traverse directories to overwrite shell profiles, steal credentials, or achieve persistent code execution on victim systems.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86755": {
+    "cvss": 5.4,
+    "description": "Snipe-IT versions 4.2.0 through 8.6.3 expose Laravel Passport's auto-registered personal-access-token routes (GET, POST, DELETE /oauth/personal-access-tokens*) with only 'web' and 'auth:web' middleware, without the self.api permission gate that Snipe-IT enforces on its own token endpoints (/account/api and /api/v1/account/personal-access-tokens). Any user with a valid web session and the corresponding CSRF token can POST to /oauth/personal-access-tokens and mint a long-lived bearer token for their own account, even when an administrator has denied the self.api permission. The issued token is still subject to existing per-endpoint authorization policies, so this is not a privilege escalation; it defeats the administrative control intended to block API/scripted access at the user's own permission level. Fixed in 8.7.0 (commit 3f74b8c), which registers overriding routes wrapped in the can:self.api middleware.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86756": {
+    "cvss": 6.1,
+    "description": "Snipe-IT 8.5.0 through 8.6.3 contains an open redirect vulnerability in its SAML assertion-consumer endpoint (SamlController::acs, POST /saml/acs). The endpoint wrote the RelayState POST parameter directly into Laravel's url.intended session key with only CR/LF characters stripped, and LoginController later issued redirect()->intended(), which passes an absolute URL through to the Location header unchanged. An unauthenticated attacker who induces a user of a SAML-SSO-enabled instance to visit a crafted IdP-initiated SSO link can therefore cause the victim's browser to be redirected to an arbitrary absolute external URL immediately after a successful authentication, which the advisory notes facilitates credential-harvesting phishing. No account on the target instance and no compromise of the identity provider are required. Only deployments with SAML SSO enabled are affected. Fixed in 8.7.0 (commit d30b73d, PR #19386), which validates RelayState via a new Helper::sameOriginUrl check before storing it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86763": {
+    "cvss": 3.5,
+    "description": "Snipe-IT versions >= 7.0.12 and <= 8.6.3 contain an authorization bypass in the Livewire importer component (App\\Livewire\\Importer, mounted at the imports.index route). The component only checked the broad 'import' ability at mount time, while its files() and activeFile() computed properties queried the imports table with no owner or company scope. As a result, any authenticated non-superuser holding the import permission could view every Import record on the instance (original filename, file_path, filesize, import_type and creation timestamp) and could invoke the selectFile($id) Livewire action with any auto-incrementing Import ID to load another user's record, exposing its stored preview data (header_row column headers and first_row, the first data row of the CSV). Because import CSVs commonly contain personal data, asset serial numbers and license keys, this discloses sensitive information; in Full Multiple Companies Support (FMCS) deployments the disclosure also crosses company/tenant boundaries. Impact is limited to preview data rather than the full CSV file, and superusers were unaffected. Fixed in version 8.7.0, which scopes non-superuser reads to imports owned by the caller.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86539": {
+    "cvss": 7.2,
+    "description": "knowns through 0.36.1 contains a server-side request forgery vulnerability in the POST /api/embedding-models/test endpoint that issues outbound requests to caller-supplied destinations without validation. Attackers can enumerate internal hosts and cloud metadata endpoints by observing transport error messages that reveal network reachability information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85594": {
+    "cvss": 9.8,
+    "description": "Traefik versions from v3.7.1 fail to enforce crossProviderNamespaces restrictions on the traefik.ingress.kubernetes.io/service.middlewares Service annotation in the Kubernetes Ingress provider. A namespace-limited tenant excluded from the allowlist can attach an operator-owned middleware to its Service, and if that middleware injects backend credentials, recover them at a controlled backend.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85597": {
+    "cvss": 9.1,
+    "description": "Traefik before v2.11.55 and v3.0.0 before v3.7.11 contain a TLS option conflict resolution vulnerability that allows unauthenticated attackers to bypass client-certificate authentication by creating conflicting TLS options on multi-host routers. Attackers can reach protected backends by exploiting shared TLS resolution across multiple hostnames in a single router rule, causing the strict mTLS requirement to fall back to default options for all hosts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85388": {
+    "cvss": 8.1,
+    "description": "Worklenz through 3.4.2 fails to properly validate the sort-field query parameter in pagination helper functions, allowing authenticated users to inject arbitrary PostgreSQL expressions into ORDER BY clauses. Attackers can use time-based and boolean-based blind SQL injection techniques to extract sensitive database content including password hashes from other tenants. This is an incomplete fix for CVE-2026-25947.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85393": {
+    "cvss": 7.5,
+    "description": "node-forge through 1.4.0 fails to validate element count in nested DigestAlgorithm sequences during RSA PKCS#1 v1.5 signature verification. Attackers can embed garbage bytes inside the DigestAlgorithm sequence to forge valid signatures for arbitrary messages using low-exponent RSA keys. This is an incomplete fix for CVE-2026-33894.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82873": {
+    "cvss": 5.0,
+    "description": "ToolJet before 3.21.94-beta, including all 3.20.x LTS releases through 3.20.257-lts, contains authorization bypass vulnerabilities in the POST /api/v2/resources/export endpoint that allow authenticated users to disclose TooljetDB table schemas across workspace boundaries and export app definitions across granular permission boundaries. Attackers can supply a body-provided organization_id parameter to access schemas from other workspaces, or bypass per-app authorization gates to export restricted app definitions within their workspace.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82255": {
+    "cvss": 6.8,
+    "description": "gitoxide gix-transport crate versions from 0.25.4 before 0.56.0 contain an HTTP credential leak vulnerability in the curl-based transport backend where credentials are sent to attacker-controlled servers after HTTP redirects. The vulnerability occurs because credential validation checks the original URL instead of the effective URL after redirect, allowing attackers to steal authentication tokens through cross-domain redirects or HTTPS-to-HTTP downgrades.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81091": {
+    "cvss": 8.6,
+    "description": "The proxy middleware in mcp-use's inspector forwards requests to a destination the caller names. mountMcpProxy in libraries/typescript/packages/mcp-use/src/server/middleware/mcp-proxy.ts read the target from the X-Target-URL header or the __mcp_target parameter and proxied to it without inspecting the host, so loopback, link-local and private addresses were all accepted, as were names that resolve to them, and the validation was not reapplied to a redirect the destination returned. A caller could therefore make the server issue requests to addresses reachable only from the host it runs on and read the responses. In mcp-use 2.x the proxy moved to the @mcp-use/inspector package, whose mcp-proxy.ts calls isSafeProxyTarget, which checks the resolved address against private, loopback and link-local ranges before proxying and bounds the number of redirects followed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81096": {
+    "cvss": 10.0,
+    "description": "ToolUniverse ran caller-supplied Python inside a sandbox that could be escaped, on a server that required no authentication. The executor behind the python_code_executor tool, in python_executor_tool.py, inspected the submitted source for a denied list of attribute names and calls but left the attribute-lookup builtins available and did not stop a dunder attribute reached through a string lookup or through a module already permitted, so a caller could walk from a literal's class to its base and enumerate subclasses to obtain a reference to the process and subprocess modules. A per-call argument also let the caller widen the import allow-list before the inspection ran. The HTTP and MCP servers in http_api_server.py and smcp_server.py bound to every interface with debugging enabled and no authentication, so any caller able to reach the port executed code as the server process. Version 1.3.0 adds bearer-token authentication, defaults the bind address to loopback, and hardens the attribute checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81098": {
+    "cvss": 9.1,
+    "description": "The Telnyx MCP server exposed its HTTP transport on every interface and did not require a caller credential. packages/mcp-server/src/http.ts served MCP on the root path with a listener bound to all interfaces and parsed the caller's authentication headers in a mode that did not fail when they were absent, so a request without any credential completed initialisation and dispatched tools. Dispatch forwarded the server's own stored credentials, the Telnyx API key and client secret together with the code-execution key, to the upstream endpoint, so an unauthenticated caller able to reach the port acted with them. The current code defaults the host to loopback, requires a server API key, and enforces it in middleware.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79775": {
+    "cvss": 6.5,
+    "description": "rclone versions >= v1.72.0 and <= v1.74.4 (fixed in v1.75.0) contain multiple denial-of-service vulnerabilities in the archive backend's SquashFS parser, which relies on the github.com/diskfs/go-diskfs dependency. The parser fails to validate attacker-controlled superblock and metadata values before use. An attacker who can place or modify a SquashFS image in storage exposed through an rclone :archive: remote can craft a malicious image that triggers an integer division-by-zero panic (zero block size), an out-of-bounds slice panic (out-of-range inode metadata offset), or a non-progress CPU loop (truncated metadata stream). Variants 1 and 2 terminate the rclone process and, via 'rclone serve sftp', can crash the entire SFTP server; variant 3 causes sustained CPU consumption. Parsing is lazy, so a victim or remote client must address or descend into the malicious archive object to trigger it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76840": {
+    "cvss": 9.6,
+    "description": "RustDesk's Windows clipboard redirection copies a peer-supplied length into a fixed-size caller buffer without an upper bound check. When an OLE paste consumer such as explorer.exe calls IStream::Read with a buffer of cb bytes, CliprdrStream_Read in libs/clipboard/src/windows/wf_cliprdr.c requests that many bytes of a remote file through cliprdr_send_request_filecontents and then executes CopyMemory(pv, clipboard->req_fdata, clipboard->req_fsize), where req_fsize is taken verbatim from the peer's CLIPRDR FileContentsResponse by wf_cliprdr_server_file_contents_response (req_fsize = fileContentsResponse->cbRequested) and is never clamped to cb anywhere in the chain. The function's only length comparison, req_fsize < cb, handles the short-read case and is evaluated after the copy has already occurred. A malicious or compromised peer that answers a small file-contents read with an oversized response therefore writes attacker-chosen data past the end of the paste consumer's heap buffer when the local user pastes clipboard file contents offered by the remote side. The file is a fork of FreeRDP's client/Windows/wf_cliprdr.c, where the same defect is CVE-2026-68579, fixed in FreeRDP 3.30.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73616": {
+    "cvss": 6.5,
+    "description": "OpenRemote notification deletion endpoints fail to enforce realm boundaries, allowing any realm administrator to delete notifications belonging to other realms. Attackers with write:admin role in one realm can send DELETE requests to remove notifications from the master realm or other tenants without authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73627": {
+    "cvss": 6.0,
+    "description": "JupyterLab (pip package 'jupyterlab') versions >=4.1.0,<=4.5.9 and >=4.6.0,<=4.6.1 contain a plugin manager lock-rule enforcement bypass. Two server-side enforcement gaps allow an authenticated user to circumvent administrator lock rules by making direct requests to the /lab/api/plugins endpoint, enabling or disabling plugins that were locked — including child plugins of multi-plugin extensions and plugins locked via the 'lock all' mechanism. This can impact data integrity and bypass hardening or restrictions (e.g., download/upload limits) implemented through locked plugins. Fixed in versions 4.6.2 and 4.5.10.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70617": {
+    "cvss": 8.1,
+    "description": "Spacebar Server before commit dcfd910 contains a missing authorization vulnerability that allows any authenticated attacker to add themselves to arbitrary group DM channels by sending a PUT request to the channels recipient endpoint without membership verification. Attackers can exploit the unguarded PUT /channels/{channel_id}/recipients/{user_id} handler to join private group DMs, read complete message history, post messages as a participant, and force-add third-party users without their consent.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70618": {
+    "cvss": 4.3,
+    "description": "Spacebar Server before commit 51da17c contains a missing authorization vulnerability that allows any authenticated user to enumerate complete guild membership by querying the GET /guilds/{guild_id}/roles/{role_id}/member-ids endpoint without guild membership verification. Attackers can exploit the unprotected route handler in the roles member-ids endpoint, which lacks permission checks present in sibling endpoints, to retrieve the full list of member user IDs for any guild on the instance using only a valid bearer token and a known guild ID.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67330": {
+    "cvss": 9.9,
+    "description": "@better-auth/scim (a better-auth plugin) versions >= 1.4.0-beta.27 through <= 1.6.21 and >= 1.7.0-beta.0 through <= 1.7.0-beta.9 contain an authorization bypass. SCIM token issuance did not reject provider IDs already used by existing SSO, SAML, OIDC, generic OAuth, or social account providers, and the same logical provider ID was used for both SCIM provider configuration and account ownership. An authenticated user could mint a SCIM token whose provider ID collided with an existing provider namespace, causing SCIM user routes to resolve account rows the token never provisioned. This allowed listing, reading, updating (including rewriting global profile/email fields without uniqueness checks), and deleting global user accounts and sessions, resulting in account takeover and unauthorized deprovisioning. Fixed in 1.6.22 and 1.7.0-beta.10 (1.7.0-rc.0).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66412": {
+    "cvss": 6.5,
+    "description": "Leantime before 3.10.0 contains a broken access control vulnerability that allows authenticated users to read milestone data from projects they are not assigned to by supplying arbitrary integer milestone IDs to the tickets.getMilestone JSON-RPC endpoint. Attackers can enumerate integer milestone IDs through the JSON-RPC API to access project planning information, milestone titles, descriptions, and timelines across all projects on the instance regardless of project membership.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65904": {
+    "cvss": 4.7,
+    "description": "DOMPurify before 3.4.4 fails to sanitize DOM elements passed via IN_PLACE mode when the element originates from a different window/realm (e.g., an iframe's contentDocument). A cross-realm instanceof check in the private _isNode() function returns false for foreign-realm nodes, causing DOMPurify to stringify the element (yielding '[object HTMLDivElement]'), silently reset IN_PLACE to false, and return the unsanitized element unchanged with any XSS payloads intact.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-64628": {
+    "cvss": 5.4,
+    "description": "The Grav shortcode-core plugin contains a stored cross-site scripting vulnerability in shortcode-core attribute handlers where the XSS detection scan only matches payloads containing literal angle brackets, allowing shortcode parameters to bypass validation. Attackers with admin.pages permission can inject malicious JavaScript through shortcode attributes that execute in any viewer's browser, including administrators, enabling session hijacking via admin nonce theft.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65314": {
+    "cvss": 4.3,
+    "description": "Electric Postgres Sync versions below 1.6.10 contains an information disclosure vulnerability that allows attackers to infer the values of excluded columns by crafting subset where clause conditions against shape responses. Attackers can observe whether subset where conditions match rows to deduce sensitive field data even though those columns are not returned in shape responses, bypassing column-based access restrictions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-57852": {
+    "cvss": 5.6,
+    "description": "Grav CMS scheduler-webhook plugin contains an authentication bypass vulnerability that allows unauthenticated remote attackers to trigger configured scheduled jobs by exploiting a short-circuit logic flaw in the webhook token validation. Attackers can send a single unauthenticated POST request to the scheduler webhook endpoint to execute all configured scheduled jobs or target a specific job, causing unintended execution of operator-defined commands under the web server process user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-9323": {
+    "cvss": 8.1,
+    "description": "The urwid web display backend (urwid/display/web.py) generates web session identifiers (urwid_id) in Screen.start() by concatenating two random.randrange(10**9) calls that use Python's Mersenne Twister PRNG, which is not cryptographically secure. Each call consumes approximately 30 bits of PRNG state, and the Mersenne Twister internal state is approximately 19,937 bits, so an attacker who observes approximately 334 session IDs (for example via the X-Urwid-ID HTTP response header) can fully reconstruct the internal state and predict all past and future session IDs (Path B). The same identifier is also used as the filename of a FIFO created in the world-listable /tmp directory (for example /tmp/urwid375487765176907690.in), so any local user on the host can list /tmp to enumerate active session tokens directly (Path A). With a valid session ID, an attacker can read the victim's terminal screen via the polling endpoint, inject keystrokes into the victim's session (yielding OS-level code execution with the session owner's privileges if the session runs a shell), and inject exit sequences or flood the FIFO to terminate or crash the session. A prior Bandit S311 warning on this usage was suppressed with # noqa: S311 rather than fixed",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-56375": {
+    "cvss": 3.3,
+    "description": "ImageMagick before 7.1.2-18 contains a memory leak vulnerability in the ASHLAR coder when an action fails. Attackers can trigger failed actions to exhaust memory resources and cause denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58656": {
+    "cvss": 7.5,
+    "description": "Grav API plugin before v1.0.0-rc.16 accepts JWT tokens via the ?token= URL query parameter and responds with Access-Control-Allow-Origin: *, allowing unauthenticated attackers to make fully authenticated cross-origin API requests from any malicious website. Attackers who obtain a leaked JWT token from access logs, proxy logs, browser history, or Referrer headers can create persistent backdoor super-admin accounts and exfiltrate sensitive configuration and user data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49490": {
+    "cvss": 8.1,
+    "description": "OpenCATS from version 0.9.1a before 0.10.0 contains an SQL injection vulnerability in DataGrid filter handling that allows authenticated attackers to inject SQL through crafted filters targeting the non-filterable Tags column in the Candidates DataGrid. Attackers can bypass column filterable restrictions by manipulating filter requests to execute arbitrary SQL queries against the database.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-39922": {
+    "cvss": 6.3,
+    "description": "GeoNode versions 4.4.5 and 5.0.2 (and prior within their respective releases) contain a server-side request forgery vulnerability in the service registration endpoint that allows authenticated attackers to trigger outbound network requests to arbitrary URLs by submitting a crafted service URL during form validation. Attackers can probe internal network targets including loopback addresses, RFC1918 private IP ranges, link-local addresses, and cloud metadata services by exploiting insufficient URL validation in the WMS service handler without private IP filtering or allowlist enforcement.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-23871": {
+    "cvss": 3.5,
+    "description": "Incomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4 could have caused a target's device to reveal its IP information to an attacker if an attacker sent media from an attacker-controlled URL when a crafted Click to WhatsApp ad-reply message was rendered and displayed in a message thread. This issue may have been abused in conjunction with specific spam messages.",
+    "vendor": "Facebook",
+    "product": "WhatsApp Business for Android"
   }
 }
