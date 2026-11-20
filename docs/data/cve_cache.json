@@ -50953,7 +50953,7 @@
   },
   "CVE-2026-42786": {
     "cvss": 8.7,
-    "description": "Allocation of Resources Without Limits or Throttling vulnerability in mtrudel bandit allows unauthenticated remote denial of service via memory exhaustion. The fragment reassembly path in 'Elixir.Bandit.WebSocket.Connection':handle_frame/3 in lib/bandit/websocket/connection.ex appends every incoming Continuation{fin: false} frame's payload to a per-connection iolist with no cumulative size cap. The existing max_frame_size option only bounds individual frames; a peer that streams an unbounded number of continuation frames without ever setting fin=1 grows BEAM heap linearly until the OS or a supervisor kills the process. Because the accumulation happens before WebSock.handle_in/2 is called, the application has no opportunity to interpose a size check. Phoenix Channels and LiveView both run over WebSock on Bandit, so a stock Phoenix application exposes this surface as soon as it accepts socket connections. This issue affects bandit: from 0.5.0 before 1.11.0.",
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in mtrudel bandit allows unauthenticated remote denial of service via memory exhaustion. The fragment reassembly path in Bandit.WebSocket.Connection.handle_frame/3 in lib/bandit/websocket/connection.ex appends every incoming Continuation{fin: false} frame's payload to a per-connection iolist with no cumulative size cap. The existing max_frame_size option only bounds individual frames; a peer that streams an unbounded number of continuation frames without ever setting fin=1 grows BEAM heap linearly until the OS or a supervisor kills the process. Because the accumulation happens before WebSock.handle_in/2 is called, the application has no opportunity to interpose a size check. Phoenix Channels and LiveView both run over WebSock on Bandit, so a stock Phoenix application exposes this surface as soon as it accepts socket connections. This issue affects bandit: from 0.5.1 before 1.11.0.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -141124,5 +141124,35 @@
     "description": "GeoNetwork is a catalog application to manage spatially referenced resources. Prior to versions 4.4.12 and 4.2.17, the API endpoint for creating a new formatter via file upload is unprotected and allows the upload of external uncontrolled files. An unauthenticated attacker can upload arbitrary `.xsl` or `.zip` formatter files to the server. An unauthenticated attacker can write arbitrary files into the GeoNetwork formatter directory. On its own this constitutes unauthorized write access to server storage. The issue is patched in GeoNetwork versions 4.4.12 and 4.2.17.",
     "vendor": "geonetwork",
     "product": "core-geonetwork"
+  },
+  "CVE-2026-42788": {
+    "cvss": 6.9,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in mtrudel bandit allows unauthenticated memory exhaustion via oversized HTTP/2 frames. Bandit.HTTP2.Frame.deserialize/2 in lib/bandit/http2/frame.ex checks the SETTINGS_MAX_FRAME_SIZE limit only after pattern-matching payload::binary-size(length), which requires the entire frame body to be present in memory before either the accept or reject clause can fire. A peer that announces a frame length up to the 24-bit maximum (~16 MiB) causes the server to buffer that entire body before the size guard is evaluated, regardless of the max_frame_size negotiated during the HTTP/2 handshake (default 16 KiB per RFC 9113). An unauthenticated attacker holding many concurrent connections can force the server to buffer far more memory than the negotiated frame size limit should permit, leading to memory pressure and potential denial of service. This issue affects bandit: from 0.3.6 before 1.11.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28809": {
+    "cvss": 5.3,
+    "description": "XML External Entity (XXE) vulnerability in esaml (and its forks) allows an attacker to cause the system to read local files and incorporate their contents into processed SAML documents, and potentially perform SSRF via crafted SAML messages. esaml parses attacker-controlled SAML messages using xmerl_scan:string/2 before signature verification without disabling XML entity expansion. On Erlang/OTP versions before 27, Xmerl allows entities by default, enabling pre-signature XXE attacks. An attacker can cause the host to read local files (e.g., Kubernetes-mounted secrets) into the SAML document. If the attacker is not a trusted SAML SP, signature verification will fail and the document is discarded, but file contents may still be exposed through logs or error messages. This issue affects all versions of esaml, including forks by arekinath, handnot2, and dropbox. Users running on Erlang/OTP 27 or later are not affected due to Xmerl defaulting to entities disabled. This issue affects esaml: all versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21621": {
+    "cvss": 5.3,
+    "description": "Incorrect Authorization vulnerability in hexpm hexpm/hexpm (HexpmWeb.API.OAuthController module) allows Privilege Escalation. An API key created with read-only permissions (domain: \"api\", resource: \"read\") can be escalated to full write access under specific conditions. When exchanging a read-only API key via the OAuth client_credentials grant, the resource qualifier is ignored. The resulting JWT receives the broad \"api\" scope instead of the expected \"api:read\" scope. This token is therefore treated as having full API access. If an attacker is able to obtain a victim's read-only API key and a valid 2FA (TOTP) code for the victim account, they can use the incorrectly scoped JWT to create a new full-access API key with unrestricted API permissions that does not expire by default and can perform write operations such as publishing, retiring, or modifying packages. This vulnerability is associated with program files lib/hexpm_web/controllers/api/oauth_controller.ex and program routines HexpmWeb.API.OAuthController.validate_scopes_against_key/2. This issue affects hex.pm: from 2025-08-18 before 2026-03-05; hexpm/hexpm: from 71829cb6f6559bcceb1ef4e43a2fb8cdd3af654b before 71c127afebb7ed7cc637eb231b98feb802d62999.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21622": {
+    "cvss": 9.8,
+    "description": "Insufficient Session Expiration vulnerability in hexpm hexpm/hexpm (Hexpm.Accounts.PasswordReset module) allows Account Takeover. Password reset tokens generated via the \"Reset your password\" flow do not expire. When a user requests a password reset, Hex sends an email containing a reset link with a token. This token remains valid indefinitely until used. There is no time-based expiration enforced. If a user's historical emails are exposed through a data breach (e.g., a leaked mailbox archive), any unused password reset email contained in that dataset could be used by an attacker to reset the victim's password. The attacker does not need current access to the victim's email account, only access to a previously leaked copy of the reset email. This vulnerability is associated with program files lib/hexpm/accounts/password_reset.ex and program routines Hexpm.Accounts.PasswordReset.can_reset?/3. This issue affects hex.pm: from 2025-08-01 before 2026-03-05; hexpm/hexpm: from 617e44c71f1dd9043870205f371d375c5c4d886d before bb0e42091995945deef10556f58d046a52eb7884.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-21619": {
+    "cvss": 7.5,
+    "description": "Uncontrolled Resource Consumption, Deserialization of Untrusted Data vulnerability in hexpm hex_core (hex_api modules), hexpm hex (mix_hex_api modules), erlang rebar3 (r3_hex_api modules) allows Object Injection, Excessive Allocation. This vulnerability is associated with program files src/hex_api.erl, src/mix_hex_api.erl, apps/rebar/src/vendored/r3_hex_api.erl and program routines hex_core:request/4, mix_hex_api:request/4, r3_hex_api:request/4. This issue affects rebar3: from 3.9.1 before 3.27.0; hex: from 2.3.0 before 2.3.2; hex_core: from 0.1.0 before 0.12.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
