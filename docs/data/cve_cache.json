@@ -94255,7 +94255,7 @@
   },
   "CVE-2026-88242": {
     "cvss": 7.0,
-    "description": "High 10 Nov 2026 10 Nov 2026 CPAI-2026-17419 Microsoft CVE-2026-88242 CVE-2026-88242 Microsoft Windows Ancillary Function Driver for WinSock Elevation of Privilege (CVE-2026-88242)",
+    "description": "Use after free in Windows Ancillary Function Driver for WinSock allows an authorized attacker to elevate privileges locally.",
     "vendor": "Check Point",
     "product": "Windows 10 Version 1607"
   },
@@ -137366,7 +137366,7 @@
   "CVE-2026-123634": {
     "cvss": 8.1,
     "description": "This issue occurs when NGINX Plus or NGINX Open Source is configured as a proxy, the proxied server name includes variables, and a Server Side Includes (SSI) or mirror directive sends a subrequest to a location that resolves the same server name. Under these conditions, a specially crafted HTTP request may cause a use-after-free condition in a worker process. An attacker may also be able to execute code if Address Space Layout Randomization (ASLR) is disabled or the attacker can bypass ASLR. Impact: An attacker could leverage this vulnerability to crash the NGINX worker process, corrupt its memory, or perform remote code execution (RCE) Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "vendor": "F5",
+    "vendor": "Cisco",
     "product": "NGINX Plus"
   },
   "CVE-2026-124990": {
@@ -137420,7 +137420,7 @@
   "CVE-2026-113425": {
     "cvss": 8.1,
     "description": "When NGINX Plus or NGINX Open Source is configured as a mail proxy, undisclosed traffic can cause a use-after-free in an nginx worker process. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR. Impact: A remote unauthenticated attacker may crash an nginx worker process or corrupt its memory, disrupting service. Remote code execution is a potential impact. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "vendor": "F5",
+    "vendor": "Cisco",
     "product": "NGINX Plus"
   },
   "CVE-2026-123640": {
@@ -137432,7 +137432,7 @@
   "CVE-2026-121810": {
     "cvss": 8.1,
     "description": "Description: This issue affects NGINX Plus and NGINX Open Source configurations that use HTTP/3. A remote, unauthenticated attacker can cause a use-after-free condition in the NGINX worker process, leading to a restart. Exploitation also depends on conditions beyond the attacker’s control. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR. Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or to possibly trigger a code execution. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "vendor": "F5",
+    "vendor": "Cisco",
     "product": "NGINX Plus"
   },
   "CVE-2026-100397": {
@@ -142374,7 +142374,7 @@
     "product": "Unknown"
   },
   "CVE-2026-104126": {
-    "cvss": 6.0,
+    "cvss": 9.9,
     "description": "JumpServer is an open source bastion host and an operation and maintenance security audit system. Prior to 4.10.17-lts, JumpServer's Ansible-based automation rendering can evaluate attacker-controlled template expressions from users who have permission to create or execute affected automation tasks. Crafted content can invoke sensitive Ansible lookup behavior, including file, pipe, env, and password lookups, within the Ansible execution context, which can disclose files or environment values and may permit limited command execution under the privileges of the automation process. The issue does not provide unauthenticated access or direct access to unrelated JumpServer assets. This issue is fixed in version 4.10.17-lts.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -142426,5 +142426,191 @@
     "description": "FlowIntel contains a resource exhaustion vulnerability in its file-to-note conversion feature. When a user converts an attached CSV or JSON file into a case note, the application renders the data as a Markdown table by padding every row to the maximum column count. A crafted file with a small number of filled cells but a very large number of columns (or keys) causes the application to allocate a quadratic number of padded table cells, potentially exhausting a worker process in memory or CPU. The same issue affects nested JSON values rendered inside table cells, where pretty-printed indentation further inflates the output size. Preconditions: - An authenticated user with access to a case in FlowIntel - Ability to attach and convert a CSV or JSON file to a note Impact: - Denial of service: exhaustion of a worker process, potentially disrupting service for other users - No confidentiality or integrity impact Affected versions: FlowIntel prior to 4.1.0",
     "vendor": "flowintel",
     "product": "flowintel"
+  },
+  "CVE-2026-122163": {
+    "cvss": 7.5,
+    "description": "Double free in Windows Image Acquisition allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122164": {
+    "cvss": 8.0,
+    "description": "Weak authentication in Windows Kerberos allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122165": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Client for NFS allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122167": {
+    "cvss": 6.8,
+    "description": "Heap-based buffer overflow in Windows USB Driver allows an unauthorized attacker to elevate privileges with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122168": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Microsoft Windows Media Foundation allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122169": {
+    "cvss": 7.5,
+    "description": "Insufficient granularity of access control in Windows IKE Extension allows an authorized attacker to perform spoofing locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122170": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Win32K allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122173": {
+    "cvss": 6.8,
+    "description": "Heap-based buffer overflow in HID Parser Library allows an unauthorized attacker to elevate privileges with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122174": {
+    "cvss": 7.0,
+    "description": "Improper link resolution before file access ('link following') in Windows Task Scheduler allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122176": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows SMB allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122177": {
+    "cvss": 7.5,
+    "description": "Improper link resolution before file access ('link following') in Windows iSCSI allows an unauthorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122297": {
+    "cvss": 5.5,
+    "description": "Use of uninitialized resource in Kernel Transaction Manager allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122474": {
+    "cvss": 5.9,
+    "description": "Time-of-check time-of-use (toctou) race condition in Windows Security Account Manager allows an unauthorized attacker to bypass a security feature over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122475": {
+    "cvss": 8.8,
+    "description": "Untrusted pointer dereference in Windows Storage Spaces Controller allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122984": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Universal Disk Format File System Driver (UDFS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123387": {
+    "cvss": 8.0,
+    "description": "Improper neutralization of special elements used in a command ('command injection') in Windows Active Directory allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123389": {
+    "cvss": 7.0,
+    "description": "Use after free in Quality Windows Audio/Video Experience (QWAVE) service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88213": {
+    "cvss": 7.8,
+    "description": "Numeric truncation error in Windows Bluetooth Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88215": {
+    "cvss": 6.4,
+    "description": "Use after free in Windows Filtering Platform (WFP) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88216": {
+    "cvss": 7.5,
+    "description": "Time-of-check time-of-use (toctou) race condition in Windows DHCP Server allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88218": {
+    "cvss": 9.8,
+    "description": "Double free in Windows DNS allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88220": {
+    "cvss": 5.5,
+    "description": "Buffer over-read in Windows Performance Counters allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88224": {
+    "cvss": 7.0,
+    "description": "Improper link resolution before file access ('link following') in Windows AppX Deployment Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88227": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Local Security Authority Subsystem Service (LSASS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88228": {
+    "cvss": 7.0,
+    "description": "Heap-based buffer overflow in Windows Local Security Authority Subsystem Service (LSASS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88229": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Media Player allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88240": {
+    "cvss": 8.0,
+    "description": "Heap-based buffer overflow in Windows DHCP Client allows an authorized attacker to elevate privileges over an adjacent network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88241": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Sensor Data Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88243": {
+    "cvss": 9.8,
+    "description": "Out-of-bounds read in Windows DHCP Server allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94525": {
+    "cvss": 7.0,
+    "description": "An elevation of privilege vulnerability exists in Windows Error Reporting (WER) when WER handles and executes files. The vulnerability could allow elevation of privilege if an attacker can successfully exploit it. An attacker who successfully exploited the vulnerability could gain greater access to sensitive information and system functionality. To exploit the vulnerability, an attacker could run a specially crafted application. The security update addresses the vulnerability by correcting the way that WER handles and executes files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91837": {
+    "cvss": 7.8,
+    "description": "A flaw was found in NetworkManager-iodine, the iodine VPN plugin for NetworkManager. A local unprivileged user can exploit a vulnerability in how the 'nameserver' setting is processed when establishing an iodine VPN connection. By embedding shell metacharacters (special characters that can execute commands) in the 'nameserver' value, an attacker can inject and execute arbitrary commands. These commands run with root privileges before the application drops its elevated permissions, leading to local privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
