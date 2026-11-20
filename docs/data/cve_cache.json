@@ -121878,7 +121878,7 @@
     "product": "Unknown"
   },
   "CVE-2026-124463": {
-    "cvss": 8.7,
+    "cvss": 5.4,
     "description": "OpenEMR before 8.3.0 contains a stored cross-site scripting vulnerability that allows authenticated users with CAMOS access to inject HTML by saving malicious CAMOS content through ajax_save.php. Attackers can store a script payload that executes unencoded when the entry is printed via the non-print_html branch of rx_print.php, performing actions and reading data as the victim user.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -142652,6 +142652,30 @@
   "CVE-2026-101644": {
     "cvss": 6.6,
     "description": "Vulnerability in the Oracle Mobile Field Service product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows high privileged attacker with network access via HTTP to compromise Oracle Mobile Field Service. Successful attacks of this vulnerability can result in takeover of Oracle Mobile Field Service. CVSS 3.1 Base Score 6.6 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125064": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains a NULL pointer dereference vulnerability in g726_decode_frame() in libavcodec/g726.c because it ignores init_get_bits() failure on oversized packets. Attackers can supply a crafted AVI file with a 268435392-byte G.726 audio chunk to make the decoder read from a NULL buffer, crashing the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124464": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.4.0 contains an authorization bypass vulnerability that allows patient-scoped SMART tokens to read other patients' questionnaire responses because FhirQuestionnaireResponseService does not implement IPatientCompartmentResourceService. Attackers holding a patient/QuestionnaireResponse.rs token can request responses by uuid or list the unfiltered bundle to obtain cross-patient clinical assessment answers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124466": {
+    "cvss": 7.2,
+    "description": "OpenEMR before 8.4.0 contains a server-side request forgery vulnerability that allows unauthenticated attackers to make the server send HTTP requests by registering an OAuth2 client with an unvalidated jwks_uri. Attackers can trigger the fetch via the token introspection endpoint with an unsigned client_assertion to probe internal services and reach cloud metadata endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101531": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Oracle Business Intelligence Enterprise Edition product of Oracle Analytics (component: Analytics Server). Supported versions that are affected are 8.2.0.0.0 and 26.01.0.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Business Intelligence Enterprise Edition. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Business Intelligence Enterprise Edition accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).",
     "vendor": "Unknown",
     "product": "Unknown"
   }
