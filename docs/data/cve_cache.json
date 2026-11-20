@@ -63025,7 +63025,7 @@
   },
   "CVE-2026-92809": {
     "cvss": 4.3,
-    "description": "PrestaShop psgdpr versions through 1.4.3 fail to validate that GDPR consent log entries are attributed to the authenticated customer. Authenticated attackers can submit arbitrary customer identifiers to create forged consent records for other customers, corrupting audit logs.",
+    "description": "PrestaShop psgdpr versions before 1.4.4 fail to validate that GDPR consent log entries are attributed to the authenticated customer. Authenticated attackers can submit arbitrary customer identifiers to create forged consent records for other customers, corrupting audit logs.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -70849,7 +70849,7 @@
   },
   "CVE-2026-111274": {
     "cvss": 5.5,
-    "description": "unarr through 1.1.1 contains a heap-based out-of-bounds read in zip_parse_extra_fields() in zip/parse-zip.c due to an incorrect ZIP64 extra field length check. Attackers can supply a crafted ZIP archive with 0xFFFFFFFF sentinel values and a truncated ZIP64 record to read past the heap buffer and crash the process.",
+    "description": "unarr before 1.2.0 contains a heap-based out-of-bounds read in zip_parse_extra_fields() in zip/parse-zip.c due to an incorrect ZIP64 extra field length check. Attackers can supply a crafted ZIP archive with 0xFFFFFFFF sentinel values and a truncated ZIP64 record to read past the heap buffer and crash the process.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -122737,43 +122737,43 @@
   },
   "CVE-2026-125400": {
     "cvss": 8.8,
-    "description": "Ettercap through 0.8.4.1 contains a use-after-free vulnerability in func_pcre() in src/ec_filter.c that reads the PCRE2 ovector after freeing match data. Network-adjacent attackers can send packets matching a loaded pcre_regex() substitution filter to corrupt memory and potentially execute code as root.",
+    "description": "Ettercap before 0.8.5.1 contains a use-after-free vulnerability in func_pcre() in src/ec_filter.c that reads the PCRE2 ovector after freeing match data. Network-adjacent attackers can send packets matching a loaded pcre_regex() substitution filter to corrupt memory and potentially execute code as root.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-125401": {
     "cvss": 8.1,
-    "description": "Ettercap through 0.8.4.1 contains a heap buffer overflow vulnerability in gg_get_version() in src/dissectors/ec_gg.c that writes up to 44 bytes into a 30-byte allocation. Remote attackers can send Gadu-Gadu traffic on TCP port 8074 with a crafted version field through a monitored network to corrupt heap memory in the Ettercap process, which normally runs as root.",
+    "description": "Ettercap before 0.8.5.1 contains a heap buffer overflow vulnerability in gg_get_version() in src/dissectors/ec_gg.c that writes up to 44 bytes into a 30-byte allocation. Remote attackers can send Gadu-Gadu traffic on TCP port 8074 with a crafted version field through a monitored network to corrupt heap memory in the Ettercap process, which normally runs as root.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-125402": {
     "cvss": 8.1,
-    "description": "Ettercap through 0.8.4.1 contains a heap out-of-bounds read vulnerability in sslw_get_clienthello_sni() in src/ec_sslwrap.c that trusts the unchecked 16-bit SNI length field. Network-adjacent attackers can send crafted TLS ClientHello messages during SSL interception to leak up to 64 KB of heap memory upstream or crash Ettercap.",
+    "description": "Ettercap before 0.8.5.1 contains a heap out-of-bounds read vulnerability in sslw_get_clienthello_sni() in src/ec_sslwrap.c that trusts the unchecked 16-bit SNI length field. Network-adjacent attackers can send crafted TLS ClientHello messages during SSL interception to leak up to 64 KB of heap memory upstream or crash Ettercap.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-125403": {
     "cvss": 8.1,
-    "description": "Ettercap through 0.8.4.1 contains an out-of-bounds read and size_t underflow vulnerability in sslw_remove_sts() in src/ec_sslwrap.c, caused by a stale length and an unchecked memmem() result when stripping Strict-Transport-Security headers. A malicious HTTPS server whose response passes through Ettercap's SSL interception can trigger out-of-bounds reads and memory corruption in the Ettercap process, which normally runs as root.",
+    "description": "Ettercap before 0.8.5.1 contains an out-of-bounds read and size_t underflow vulnerability in sslw_remove_sts() in src/ec_sslwrap.c, caused by a stale length and an unchecked memmem() result when stripping Strict-Transport-Security headers. A malicious HTTPS server whose response passes through Ettercap's SSL interception can trigger out-of-bounds reads and memory corruption in the Ettercap process, which normally runs as root.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-125404": {
     "cvss": 7.5,
-    "description": "Ettercap through 0.8.4.1 contains an integer underflow in ccmp_decrypt() in src/ec_encryption_ccmp.c that subtracts the 8-byte CCMP trailer without checking minimum length. Attackers on a network whose WPA key is loaded can send a short crafted CCMP frame to overflow a stack buffer in the Ettercap process, which normally runs as root.",
+    "description": "Ettercap before 0.8.5.1 contains an integer underflow in ccmp_decrypt() in src/ec_encryption_ccmp.c that subtracts the 8-byte CCMP trailer without checking minimum length. Attackers on a network whose WPA key is loaded can send a short crafted CCMP frame to overflow a stack buffer in the Ettercap process, which normally runs as root.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-125405": {
     "cvss": 8.1,
-    "description": "Ettercap through 0.8.4.1 contains an out-of-bounds read vulnerability in Parse_NTLM_Auth() in src/dissectors/ec_http.c due to unvalidated NTLM message offsets. Attackers can send a crafted HTTP Authorization header observed by Ettercap to read beyond the buffer, disclosing memory or crashing the process.",
+    "description": "Ettercap before 0.8.5.1 contains an out-of-bounds read vulnerability in Parse_NTLM_Auth() in src/dissectors/ec_http.c due to unvalidated NTLM message offsets. Attackers can send a crafted HTTP Authorization header observed by Ettercap to read beyond the buffer, disclosing memory or crashing the process.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-125406": {
     "cvss": 8.8,
-    "description": "Ettercap through 0.8.4.1 contains a stack buffer underwrite vulnerability in the telnet dissector in src/dissectors/ec_telnet.c that decrements the output pointer on backspace without a lower bound check. Attackers can send a telnet stream with more backspaces than preceding characters to write below the stack buffer, corrupting the stack of the Ettercap process that normally runs as root.",
+    "description": "Ettercap before 0.8.5.1 contains a stack buffer underwrite vulnerability in the telnet dissector in src/dissectors/ec_telnet.c that decrements the output pointer on backspace without a lower bound check. Attackers can send a telnet stream with more backspaces than preceding characters to write below the stack buffer, corrupting the stack of the Ettercap process that normally runs as root.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -141776,6 +141776,186 @@
   "CVE-2026-99312": {
     "cvss": 8.8,
     "description": "In the Linux kernel, the following vulnerability has been resolved: KVM: x86: Unconditionally reset MMU context when emulating INIT Force an MMU reset when emulating an INIT even if paging was already disabled, as the MMU page role includes guest_mode (L2), i.e. an INIT while L2 is running with CR0.PG=0 will result in KVM running L1 with a stale MMU context. Alternatively, the reset could be scoped strictly to paging being enabled or L2 being active, but SMM is also encoded in the page role. Even though it _should_ be impossible for the vCPU to be INIT'd while SMM is active, there's zero value in not handling SMM. At that point, the only scenario where KVM _doesn't_ need to reset the MMU context is on an INIT with the vCPU running in Real Mode or Unpaged Protect Mode, and while INIT in those modes is somewhat common, it's far from a hot path and re-initializing the MMU is not expensive, especially when the role isn't changing (KVM elides most of the re-configuration in that case). Note, like the Fixes commit, this bug only affects nested SVM as INIT is an unconditional intercept on VMX, i.e. it's impossible to emulate INIT while L2 is active. Temporarily keep the guest TLB flush when CR0.PG is being cleared even though it is fully redundant with the flush that is emitted on all INIT events (KVM itself only does RESET when a vCPU is being created, i.e. when CR0.PG must be '0').",
+    "vendor": "Linux",
+    "product": "Linux"
+  },
+  "CVE-2026-109956": {
+    "cvss": 7.0,
+    "description": "NLTK before 3.10.4 contains a path traversal vulnerability in WekaClassifier that allows attackers to bypass nltk.pathsec containment by supplying unvalidated model paths. Attackers controlling the model_filename or model argument can make the weka JVM write files via -d or probe files via -l outside allowed data roots.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100836": {
+    "cvss": 4.3,
+    "description": "Contrast before 1.21.0 contains a panic vulnerability in the transit-engine endpoint's ciphertextContainer.UnmarshalJSON function that fails to validate decoded ciphertext length before slicing. An authenticated workload with a valid mesh certificate can trigger a runtime panic by submitting a short base64-encoded ciphertext, causing log spam and request failures without crashing the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100837": {
+    "cvss": 3.7,
+    "description": "Contrast (Edgeless Systems) before 1.21.0 performs unanchored suffix matching when selecting per-registry configuration in the imagepuller. Config.registryFor strips a single trailing dot and then uses strings.HasSuffix(hostname, fqdn) without requiring a DNS label boundary, so a registry entry such as [registries.\"ghcr.io.\"] is also applied to any host whose name merely ends in that byte sequence, including attacker-registered domains such as evilghcr.io. When an image or layer is pulled from such a sibling domain, the imagepuller sends the configured Authorization header (basic auth, registry token, or identity token), trusts the configured custom CA bundle, follows the configured mirror, and honours insecure-skip-verify (disabling TLS verification) for that host. Image integrity is not affected, as image bytes remain pinned by digest in the policy and are validated after the pull. Configurations that use a leading dot (e.g., [registries.\".example.registry\"]) are unaffected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93921": {
+    "cvss": 4.3,
+    "description": "SiYuan versions before 3.8.5 fail to enforce publish access control in the getDynamicIcon endpoint, allowing read-only token holders to access document metadata. Attackers can call the endpoint with type=8 and crafted content to read block titles, names, aliases, and hierarchical paths of restricted documents via template injection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93922": {
+    "cvss": 8.8,
+    "description": "SiYuan before 3.8.5 renders notebook names as raw HTML in the Daily Note picker dialog without escaping, allowing stored cross-site scripting in the Electron renderer. Attackers can create notebooks with HTML payloads in names that execute JavaScript with Node.js access when the picker opens, enabling operating system command execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93923": {
+    "cvss": 8.8,
+    "description": "SiYuan before 3.8.5 fails to escape heading style attributes when rendering outline and bookmark dock HTML, allowing stored cross-site scripting. Attackers can supply crafted notebooks or call administrative endpoints to inject malicious style values that execute in the Electron renderer with full system access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85596": {
+    "cvss": 9.8,
+    "description": "Traefik versions >= v3.7.0 and < v3.7.11 contain an authentication bypass in the Kubernetes Ingress NGINX provider. The TLS option generated for an Ingress carrying the nginx.ingress.kubernetes.io/auth-tls-secret annotation was named after the Ingress namespace and name. As a result, two Ingress objects sharing the same host, the same client CA secret, and the same client-authentication mode produced two distinct TLS option names for that host. Traefik treats this as a TLS options conflict and falls back to the entry point's default TLS configuration, which does not request a client certificate, so a route configured with nginx.ingress.kubernetes.io/auth-tls-verify-client: \"on\" becomes reachable without a client certificate. Only the v3.7 line is affected; the issue is fixed in v3.7.11.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85598": {
+    "cvss": 6.4,
+    "description": "Grav versions 2.0.0 before 2.0.18 fail to apply save-time XSS detection to modular pages, allowing authenticated page editors to store Twig-assembled XSS payloads. Attackers with page-edit rights can create modular pages with malicious Twig code that executes in visitor browsers when the parent page is rendered, including in administrator sessions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-34967": {
+    "cvss": 5.4,
+    "description": "Adminer versions 5.3.0 before 5.4.3 with the sql-log plugin enabled contain an arbitrary file write vulnerability in the ns parameter of plugins/sql-log.php. An authenticated user can supply path traversal sequences in the ns parameter to write arbitrary .sql files with attacker-controlled content to any writable directory on the host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77088": {
+    "cvss": 6.1,
+    "description": "justhtml versions 0.9.0 before 1.22.0 contain a cross-site scripting vulnerability in to_markdown() where inline code spans fail to account for blank lines as block boundaries. Attackers can inject blank lines into code or pre element text to break the inline span, causing sanitized HTML to be emitted unescaped and re-parsed as live Markdown by compliant renderers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76208": {
+    "cvss": 8.2,
+    "description": "phpMyFAQ versions 3.1.0 before 4.1.7 contain an authentication bypass vulnerability in AuthLdap::create(). When LDAP authentication is enabled, after a successful LDAP bind the code calls User::setStatus('active') unconditionally, which overwrites the account_status column of a pre-existing local account from 'blocked' to 'active'. As a result, a user whose local phpMyFAQ account has been administratively blocked can restore their account and log in by authenticating via LDAP. The state transition is not logged, so administrators cannot detect that the block was overridden. Fixed in 4.1.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76216": {
+    "cvss": 7.5,
+    "description": "Vikunja before 2.5.0 contains a principal-type confusion vulnerability where LinkSharing principals with id N are treated as user principals with users.id == N at three permission checks lacking type guards. Attackers with a link-share JWT can remove victims from teams, enumerate and delete victim bot users, or read team rosters by exploiting id collisions in the autoincrement space.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73060": {
+    "cvss": 7.5,
+    "description": "Scriban versions 3.0.0 before 7.2.6 contain a denial of service vulnerability in the ScriptRange.Multiply operator that bypasses LoopLimit when the left operand is a lazy sequence. Attackers can supply templates with array multiplication on lazy sequences to execute billions of uncharged iterations, pinning CPU cores and exhausting garbage collection resources even when LoopLimit is set to 1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73062": {
+    "cvss": 7.5,
+    "description": "Scriban versions 3.0.0 before 7.2.1 contain a denial of service vulnerability in the array multiplication operator that allocates memory without enforcing LoopLimit or overflow-safe arithmetic checks. Attackers can supply a large integer multiplier in a template to force multi-gigabyte memory allocations, causing resource exhaustion and availability degradation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-74783": {
+    "cvss": 7.5,
+    "description": "Scriban versions 6.6.0 before 7.2.1 contain a non-enforcing ExpressionDepthLimit guard that fails to stop recursive descent parsing of deeply nested expressions. Attackers can supply templates with deeply nested parentheses, array initializers, object initializers, or unary operators to trigger an uncatchable StackOverflowException that immediately terminates the host process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-72832": {
+    "cvss": 5.4,
+    "description": "Grav versions 1.5.2 before 2.0.13 contain a stored cross-site scripting vulnerability in the Security::detectXss() function (system/src/Grav/Common/Security.php). The event-handler scan is anchored at `<` and uses `[^>]*?`, which cannot cross the first literal `>`; when a `>` appears inside a quoted attribute value the browser keeps the tag open and parses a subsequent event handler (e.g. onerror), so the detector and browser disagree. A page editor without admin.super privileges can save page content such as ` `, which is accepted, stored, and executed in the site origin when any visitor (including unauthenticated users) views the page. Fixed in 2.0.13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-72833": {
+    "cvss": 8.8,
+    "description": "The Grav API plugin (getgrav/grav-plugin-api) versions >= 1.0.6 and < 1.0.13 contain a privilege escalation vulnerability. A scoped API key minted on a super-admin account bypasses its declared scope cap on four isSuperAdmin()-gated write endpoints (in GroupsController, AccountsConfigController, PreferencesController, and DashboardWidgetController). These endpoints authorize via a super-admin early-return that never invokes requirePermission()—the sole enforcement point of the scope cap—so a 'read-only'-scoped key (e.g. api.pages.read) can perform super-only write operations, including rewriting group ACL maps to grant super-admin privileges to arbitrary accounts. A leaked or delegated read-only CI/monitoring key can therefore gain full super-admin write capability. Fixed in 1.0.13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73611": {
+    "cvss": 6.8,
+    "description": "File Browser versions 2.50.0 before 2.63.22 fail to validate JWT expiration when proxy authentication is configured with a non-default logout page. Attackers with a previously valid token can access protected routes and administrative endpoints indefinitely, and exchange expired tokens for fresh ones via the renewal endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73628": {
+    "cvss": 6.1,
+    "description": "Serendipity versions >= 2.3.5 and < 2.6.1 contain a reflected cross-site scripting vulnerability in the search clean-URL route (/search/ ). In include/functions_routing.inc.php serveSearch(), the sanitisation pipeline runs urldecode() after HTML-encoding, so a single URL-encoded HTML payload survives strip_tags() and htmlspecialchars() and is then decoded back into live HTML in the page. A crafted search link can execute arbitrary JavaScript in the victim's browser. Fixed in 2.6.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-64622": {
+    "cvss": 7.5,
+    "description": "Network-AI (npm: network-ai) versions 5.12.2 before 5.13.4 fail to apply the configured authorization check (checkAuth/secret) to the ApprovalInbox GET read routes, so even when an operator configures a secret, unauthenticated actors can access sensitive approval request details. The GET /approvals/?status=all, GET /approvals/:id, GET /approvals/stats, and GET /approvals/sse routes disclose full ApprovalEntry content including action/target shell-command strings, file paths, justifications, and risk levels. All responses also carry a hardcoded Access-Control-Allow-Origin: * header, enabling cross-origin disclosure from any website the operator visits. This is an incomplete fix for GHSA-mxjx-28vx-xjjj.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-9147": {
+    "cvss": 7.8,
+    "description": "uproot dynamically generates Python class source code from ROOT TStreamerInfo records in a file and compiles it at runtime. Some file-controlled streamer metadata fields (for example, streamer element names) are interpolated into the generated Python source without safe quoting via repr() or the !r format specifier. An attacker who can supply a crafted ROOT file can place Python expression-breaking content into a streamer metadata field. When uproot generates and invokes the corresponding reader method, the injected Python expression is evaluated in the context of the process opening the file, resulting in arbitrary Python code execution in applications that open or process attacker-controlled ROOT files with affected uproot code paths.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49489": {
+    "cvss": 8.5,
+    "description": "OpenCATS before 0.10.0 contains a sql injection vulnerability in the sortDirection parameter of the DataGrid component that allows authenticated users to extract database contents. Attackers can inject malicious SQL via the sortDirection parameter in ajax/getDataGridPager.php to perform time-based blind injection attacks and read sensitive data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-22186": {
+    "cvss": 7.1,
+    "description": "Bio-Formats versions before 8.5.0 contain an XML External Entity (XXE) vulnerability in the Leica Microsystems metadata parsing component (e.g., XLEF). The parser uses an insecurely configured DocumentBuilderFactory when processing Leica XML-based metadata files, allowing external entity expansion and external DTD loading. A crafted metadata file can trigger outbound network requests (SSRF), access local system resources where readable, or cause a denial of service during XML parsing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-22049": {
+    "cvss": 5.3,
+    "description": "httparty before 0.21.0 is vulnerable to an assumed-immutable web parameter vulnerability. A remote and unauthenticated attacker can provide a crafted filename parameter during multipart/form-data uploads which could result in attacker controlled filenames being written.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129474": {
+    "cvss": 9.2,
+    "description": "Use-after-free in magic method backtraces can lead to remote code execution. When collecting the arguments of a method call handled by __call() or __callStatic() for a backtrace, PHP can read stale values that may refer to freed memory. If a fatal error such as exceeding memory_limit occurs while an application enters such a call, with fatal_error_backtraces enabled (the default) and zend.exception_ignore_args disabled, a remote attacker who controls enough request data to influence memory allocation may cause memory corruption, crash the PHP worker or, with knowledge of memory addresses, execute arbitrary code. php.ini-production enables zend.exception_ignore_args, which prevents this. This issue affects PHP versions 8.5.* before 8.5.13.",
+    "vendor": "PHP Group",
+    "product": "PHP"
+  },
+  "CVE-2026-129289": {
+    "cvss": 9.2,
+    "description": "PHP-FPM request smuggling through an unread HTTP request body. PHP does not discard the unread part of an HTTP request body at request shutdown when the application has opened php://input without reading it to the end. When the front end reuses backend connections, which is not the default in nginx or Apache (for example nginx with fastcgi_keep_conn on, or Apache mod_proxy_fcgi with enablereuse=on), PHP-FPM can parse the leftover bytes as a new FastCGI request. An unauthenticated remote attacker can use a single crafted multipart/form-data request to forge a backend request with chosen parameters such as SCRIPT_FILENAME, REMOTE_ADDR and PHP_ADMIN_VALUE, which can lead to execution of attacker-controlled PHP code. With LSAPI, subsequent requests on the connection can be disrupted. This issue affects PHP versions before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
+    "vendor": "PHP Group",
+    "product": "PHP"
+  },
+  "CVE-2026-132165": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-133430": {
+    "cvss": 5.4,
+    "description": "A flaw was found in Keycloak. This vulnerability allows an authenticated remote attacker to cause a denial of service by terminating active sessions of arbitrary users. When processing Security Assertion Markup Language (SAML) documents that lack a root signature, Keycloak accepts the request as long as any assertion within the document is signed, without verifying its context or placement. An attacker holding a validly signed assertion can embed it into an unsigned logout request for another user, causing Keycloak to accept the forged request and terminate the victim's session.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Build of Keycloak"
+  },
+  "CVE-2026-121481": {
+    "cvss": 9.8,
+    "description": "Issue summary: Calling EVP_EncodeBlock() with an input length close to INT_MAX may overflow the calculation of the encoded output size and write past the end of the caller-supplied output buffer. Impact summary: No path by which an attacker can trigger this has been identified. An application that passes an input length near INT_MAX to EVP_EncodeBlock() could suffer a heap buffer overflow, crashing or corrupting its own memory, but it must itself supply such a length. CWE: CWE-190: Integer Overflow or Wraparound Description: EVP_EncodeBlock() base64-encodes a buffer of a caller-supplied length into an output buffer that the caller allocates. The caller is expected to reserve 4*((len+2)/3)+1 bytes. For input lengths close to INT_MAX, the arithmetic that computes the encoded length overflows a signed integer, so the function writes more data than the documented output size. The result is a heap buffer overflow in the calling process. Reaching this requires an application to pass an input length near INT_MAX to EVP_EncodeBlock(). OpenSSL's TLS, QUIC and CMS implementations never encode buffers of that size, and the command line tools cannot practically be made to do so: the limits on reading a proxy password from a file and on bignum sizes prevent it. An application that accepts an attacker-controlled length and forwards it to EVP_EncodeBlock() without its own bound check is exposed. The severity is Low because no attacker-controlled path to the overflow is known. The caller must already hold a buffer of about two gigabytes before the defect can be reached. FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "vendor": "OpenSSL",
+    "product": "OpenSSL"
+  },
+  "CVE-2025-38618": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: vsock: Do not allow binding to VMADDR_PORT_ANY It is possible for a vsock to autobind to VMADDR_PORT_ANY. This can cause a use-after-free when a connection is made to the bound socket. The socket returned by accept() also has port VMADDR_PORT_ANY but is not on the list of unbound sockets. Binding it will result in an extra refcount decrement similar to the one fixed in fcdd2242c023 (vsock: Keep the binding until socket destruction). Modify the check in __vsock_bind_connectible() to also prevent binding to VMADDR_PORT_ANY.",
     "vendor": "Linux",
     "product": "Linux"
   }
