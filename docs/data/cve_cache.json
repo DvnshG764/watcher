@@ -139758,16 +139758,16 @@
     "product": "Unknown"
   },
   "CVE-2026-124281": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 6.1,
+    "description": "The affected products use an unprotected firmware-update channel, which may allow for unauthorized firmware modification.",
+    "vendor": "Elecbrakes",
+    "product": "EB2"
   },
   "CVE-2026-125273": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 9.6,
+    "description": "No replay or command-integrity protection. Commands lack sequence numbers, nonces, or session tokens; captured commands can be replayed, and the last command persists across sessions.",
+    "vendor": "Elecbrakes",
+    "product": "EB2"
   },
   "CVE-2026-96805": {
     "cvss": null,
@@ -139776,10 +139776,10 @@
     "product": "Unknown"
   },
   "CVE-2026-125132": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 8.6,
+    "description": "libumqtt is vulnerable to an integer underflow which may allow a remote attacker to cause a denial of service, memory corruption, or information disclosure.",
+    "vendor": "libumqtt",
+    "product": "libumqtt"
   },
   "CVE-2026-126088": {
     "cvss": 8.1,
@@ -141516,7 +141516,7 @@
     "product": "Vtiger CRM"
   },
   "CVE-2026-117517": {
-    "cvss": null,
+    "cvss": 7.3,
     "description": "The fix for CVE-2026-25854 was incomplete. This issue affects Apache Tomcat: from 11.0.19 through 11.0.27, from 10.1.53 through 10.1.61, from 9.0.116 through 9.0.123. Users are recommended to upgrade to version 11.0.29, 10.1.62 or 9.0.124, which fix the issue. Note: Tomcat 11.0.28 was not released",
     "vendor": "Apache Software Foundation",
     "product": "Apache Tomcat"
@@ -142318,5 +142318,47 @@
     "description": "SAP NetWeaver Enterprise Portal contains an improper neutralization of special elements in data query logic vulnerability that allows an unauthenticated attacker to disclose or modify server information via injected JNDI environment properties or a URL used during JNDI lookup operations.",
     "vendor": "SAP",
     "product": "NetWeaver"
+  },
+  "CVE-2026-50056": {
+    "cvss": 7.8,
+    "description": "A local privilege escalation vulnerability in the zmmailboxdmgr launcher of Zimbra Collaboration Suite (ZCS) allows the Unix zimbra account to execute arbitrary commands as root. The passwordless sudo interface accepts JVM arguments that are not adequately restricted. An attacker can postpone Jetty's privilege drop, register an OnOutOfMemoryError command and force heap exhaustion during startup, causing the command to execute while the JVM still runs as root. Exploitation requires local command execution as zimbra on a mailbox server and interrupts mailboxd during the malicious restart. ZCS 10.1.16 and 10.1.21 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50057": {
+    "cvss": 7.8,
+    "description": "A local privilege escalation vulnerability in the Zimbra Collaboration Suite (ZCS) MTA package allows the Unix zimbra account to execute arbitrary commands as root. The installed sudo policy permits passwordless root execution of Postfix administration commands without restricting their arguments. An attacker can select a zimbra-controlled daemon_directory in the Postfix configuration and invoke postfix set-permissions, causing Postfix to execute the attacker's post-install program as root. The Postfix configuration directory is also writable by zimbra, so restricting postconf alone does not remove the execution path. Exploitation requires local command execution as zimbra on an MTA node. ZCS 10.1.16 and 10.1.21 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93627": {
+    "cvss": 7.5,
+    "description": "An organizer authentication vulnerability in the email calendar processing of Zimbra Collaboration Suite (ZCS) allows an unauthenticated sender to cancel or modify an existing meeting in a recipient's calendar. Zimbra accepts iCalendar CANCEL and REQUEST components without verifying that the email sender is authorized to act as the supplied organizer. An attacker who knows the meeting UID and organizer address can supply a non-outdated sequence number to move the recipient's meeting to Trash or replace its details. Processing occurs automatically during email delivery without recipient interaction. ZCS 10.1.16 and 10.1.21 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93628": {
+    "cvss": 5.3,
+    "description": "An attendee authentication vulnerability in the email calendar processing of Zimbra Collaboration Suite (ZCS) allows an unauthenticated sender to forge another attendee's response to an existing meeting. Zimbra passes a null sender identity when processing iCalendar REPLY components, causing the attendee authorization filter to be skipped. An attacker who knows the meeting UID, organizer address and attendee address can send a non-outdated reply that changes the attendee's participation status in the organizer's calendar. The change occurs automatically during delivery without organizer or attendee interaction. ZCS 10.1.16 and 10.1.21 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93629": {
+    "cvss": 7.5,
+    "description": "An organizer authentication vulnerability in Zimbra Collaboration Suite (ZCS) allows an unauthenticated email sender to insert calendar invitations attributed to another user. The email delivery path permits external invitations but does not verify that the message sender is authorized to use the iCalendar ORGANIZER identity. When automatic invitation insertion is enabled, a crafted REQUEST component creates an event containing attacker-selected meeting details and reminders under a forged organizer without recipient interaction. No corresponding event is created in the claimed organizer's calendar. ZCS 10.1.16 and 10.1.21 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93640": {
+    "cvss": 7.8,
+    "description": "A local privilege escalation vulnerability in the optional dnscache package of Zimbra Collaboration Suite (ZCS) allows the Unix zimbra account to access files with root privileges. The passwordless sudo policy permits arbitrary arguments to zmunbound, whose wrapper forwards them to Unbound without restricting the configuration path. An attacker can supply a configuration that retains root privileges and disables the chroot. Include directives expose root-readable file contents through parser errors, while an attacker-selected logfile path creates a root-owned file or appends Unbound log records to an existing file. This can disclose password hashes and private keys and corrupt privileged configuration files, preventing affected services from starting with the modified configuration. The affected configuration is present in ZCS 10.1.16 and 10.1.21 dnscache packages.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-83366": {
+    "cvss": 7.4,
+    "description": "Vulnerability in the Oracle Shipping Execution product of Oracle E-Business Suite (component: Workflow Events). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Shipping Execution. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Shipping Execution accessible data as well as unauthorized access to critical data or complete access to all Oracle Shipping Execution accessible data. CVSS 3.1 Base Score 7.4 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
