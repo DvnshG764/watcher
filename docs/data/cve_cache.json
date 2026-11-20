@@ -141088,5 +141088,41 @@
     "description": "Improper access control in Windows Server allows an authorized attacker to elevate privileges locally.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-39806": {
+    "cvss": 7.5,
+    "description": "Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability in mtrudel bandit allows unauthenticated remote denial of service via worker process exhaustion. Bandit.HTTP1.Socket.do_read_chunked_data!/5 in lib/bandit/http1/socket.ex terminates only when the last-chunk line 0\\r\\n is followed immediately by the empty trailer line \\r\\n. RFC 9112 §7.1.2 permits zero or more trailer fields between them. When trailers are present, none of the match clauses fit: the catch-all arm computes a negative to_read, calls read_available!/2, receives <<>> on timeout, and tail-recurses with unchanged state. The worker process is pinned for the lifetime of the TCP connection. A handful of concurrent connections sending RFC-conformant chunked requests with trailer fields is sufficient to exhaust the Bandit worker pool and render the server unresponsive to all further traffic. No authentication, special headers, or large payload is required. Proxies such as NGINX and HAProxy legitimately forward trailer-bearing requests, so servers behind such proxies may be affected without any malicious client involvement. This issue affects bandit: from 1.6.1 before 1.11.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32688": {
+    "cvss": 7.5,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in elixir-plug plug_cowboy allows unauthenticated remote denial of service via atom table exhaustion. Plug.Cowboy.Conn.conn/1 in lib/plug/cowboy/conn.ex calls String.to_atom/1 on the value returned by :cowboy_req.scheme/1. For HTTP/2 connections, cowlib passes the client-supplied :scheme pseudo-header value through verbatim without validation. Each unique value permanently allocates a new entry in the BEAM atom table. Since atoms are never garbage-collected and the atom table has a fixed limit (default 1,048,576), an unauthenticated attacker can exhaust the table by sending HTTP/2 requests with unique :scheme values, causing the Erlang VM to abort with system_limit and taking down the entire node. This vulnerability does not affect HTTP/1.1, where cowboy derives the scheme from the listener type rather than from a client-supplied header. This issue affects plug_cowboy: from 2.0.0 before 2.8.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28807": {
+    "cvss": 7.5,
+    "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in gleam-wisp wisp allows arbitrary file read via percent-encoded path traversal. The wisp.serve_static function is vulnerable to path traversal because sanitization runs before percent-decoding. The encoded sequence %2e%2e passes through string.replace unchanged, then uri.percent_decode converts it to .., which the OS resolves as directory traversal when the file is read. An unauthenticated attacker can read any file readable by the application process in a single HTTP request, including application source code, configuration files, secrets, and system files. This issue affects wisp: from 2.1.1 before 2.2.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-23939": {
+    "cvss": 7.5,
+    "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in hexpm hexpm/hexpm (Hexpm.Store.Local module) allows Relative Path Traversal. This vulnerability is associated with program files lib/hexpm/store/local.ex and program routines Hexpm.Store.Local.get/3, Hexpm.Store.Local.put/4, Hexpm.Store.Local.delete/2, Hexpm.Store.Local.delete_many/2. This issue does NOT affect hex.pm the service. Only self-hosted deployments using the Local Storage backend are affected. This issue affects hexpm/hexpm: from 931ee0ed46fa89218e0400a4f6e6d15f96406050 before 5d2ccd2f14f45a63225a73fb5b1c937baf36fdc0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-46846": {
+    "cvss": 5.3,
+    "description": "SQUID is vulnerable to HTTP request smuggling, caused by chunked decoder lenience, allows a remote attacker to perform Request/Response smuggling past firewall and frontend security systems.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+  },
+  "CVE-2026-63219": {
+    "cvss": 8.6,
+    "description": "GeoNetwork is a catalog application to manage spatially referenced resources. Prior to versions 4.4.12 and 4.2.17, the API endpoint for creating a new formatter via file upload is unprotected and allows the upload of external uncontrolled files. An unauthenticated attacker can upload arbitrary `.xsl` or `.zip` formatter files to the server. An unauthenticated attacker can write arbitrary files into the GeoNetwork formatter directory. On its own this constitutes unauthorized write access to server storage. The issue is patched in GeoNetwork versions 4.4.12 and 4.2.17.",
+    "vendor": "geonetwork",
+    "product": "core-geonetwork"
   }
 }
