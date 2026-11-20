@@ -18726,8 +18726,8 @@
     "product": "openbullet2"
   },
   "CVE-2026-85595": {
-    "cvss": 9.3,
-    "description": "Traefik versions before v2.11.55 and versions v3.0.0 through v3.7.10 contain an authentication bypass vulnerability in the digestAuth middleware where unknown usernames receive an empty secret instead of rejection. Attackers can compute a valid digest response using the empty secret and arbitrary credentials to bypass authentication on any digestAuth-protected route without a valid username or password.",
+    "cvss": 9.8,
+    "description": "Traefik versions before v2.11.55 and versions v3.0.0 before v3.7.11 contain an authentication bypass vulnerability in the digestAuth middleware where unknown usernames receive an empty secret instead of rejection. Attackers can compute a valid digest response using the empty secret and arbitrary credentials to bypass authentication on any digestAuth-protected route without a valid username or password.",
     "vendor": "traefik",
     "product": "traefik"
   },
@@ -141958,5 +141958,47 @@
     "description": "In the Linux kernel, the following vulnerability has been resolved: vsock: Do not allow binding to VMADDR_PORT_ANY It is possible for a vsock to autobind to VMADDR_PORT_ANY. This can cause a use-after-free when a connection is made to the bound socket. The socket returned by accept() also has port VMADDR_PORT_ANY but is not on the list of unbound sockets. Binding it will result in an extra refcount decrement similar to the one fixed in fcdd2242c023 (vsock: Keep the binding until socket destruction). Modify the check in __vsock_bind_connectible() to also prevent binding to VMADDR_PORT_ANY.",
     "vendor": "Linux",
     "product": "Linux"
+  },
+  "CVE-2026-95968": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Smart Card allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95971": {
+    "cvss": 7.0,
+    "description": "Untrusted pointer dereference in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95973": {
+    "cvss": 7.0,
+    "description": "Untrusted pointer dereference in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95974": {
+    "cvss": 7.0,
+    "description": "Heap-based buffer overflow in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95975": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Performance Counters allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95976": {
+    "cvss": 7.0,
+    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Diagnostic Policy Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-34267": {
+    "cvss": 9.9,
+    "description": "Flowise v3.0.1 < 3.0.8, and 3.0.8 < 3.1.3 with 'ALLOW_BUILTIN_DEP' enabled contain an authenticated remote code execution vulnerability and node VM sandbox escape due to insecure use of integrated modules (Puppeteer and Playwright) within the nodevm execution environment. An authenticated attacker able to create or run a tool that leverages Puppeteer/Playwright can specify attacker-controlled browser binary paths and parameters. When the tool executes, the attacker-controlled executable/parameters are run on the host and circumvent the intended nodevm sandbox restrictions, resulting in execution of arbitrary code in the context of the host. This vulnerability was incorrectly assigned as a duplicate CVE-2025-26319 by the developers and should be considered distinct from that identifier.",
+    "vendor": "FlowiseAI",
+    "product": "Flowise"
   }
 }
