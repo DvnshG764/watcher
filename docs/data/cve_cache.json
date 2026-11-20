@@ -141592,5 +141592,155 @@
     "description": "Authorization Bypass Through User-Controlled Key vulnerability in phenixdigital phoenix_storybook allows cross-session PubSub topic injection via a URL query parameter. An attacker who loads the component iframe with the topic of another session receives the control messages that the victim's playground sends to its iframe. PhoenixStorybook.Story.ComponentIframeLive.handle_params/3 reads a PubSub topic from params[\"topic\"] and broadcasts {:component_iframe_pid, self()} on it, with no check that the topic belongs to the requesting session. The playground uses the received pid as the target of its later messages (variation state, theme switches, extra-assign payloads). Releases published as phx_live_storybook have the same code in PhxLiveStorybook.Story.ComponentIframeLive. This issue affects phoenix_storybook: from 0.5.0 before 1.1.0; phx_live_storybook: from 0.4.0 onward.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-108772": {
+    "cvss": 5.3,
+    "description": "A security vulnerability has been detected in bleenco abstruse up to 2.1.0. This issue affects the function filepath.Join of the file server/api/worker/download_cache.go of the component Cache Endpoint. Such manipulation of the argument File leads to path traversal. The attack can be launched remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-10600": {
+    "cvss": 4.3,
+    "description": "Mattermost versions 11.8.x <= 11.8.0, 11.7.x <= 11.7.3, 11.6.x <= 11.6.5, 11.2.x <= 11.2.4, 10.11.x <= 10.11.20 fail to bound the time and resource consumption of server-side document content extraction which allows an authenticated user with file-upload permission to degrade file uploads for all users on the server via repeatedly uploading small documents that are cheap to upload but expensive to extract, saturating the shared extraction worker pool. Mattermost Advisory ID: MMSA-2026-00694",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53427": {
+    "cvss": 2.3,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in leandrocp MDEx allows stored or reflected cross-site scripting via attacker-controlled Markdown. When syntax highlighting and full info-string forwarding (render: [full_info_string: true]) are enabled, the Lumis adapter copies the value of a code fence's highlight_lines_class info-string attribute, unescaped, into the class attribute of every rendered line. comrak_nif::lumis_adapter::LumisAdapter::parse_custom_attributes in native/comrak_nif/src/lumis_adapter.rs shlex-parses the info string and stores each key=value pair verbatim, highlight_lines_config pulls highlight_lines_class into the per-line class value, and write_highlighted interpolates that value directly into the class attribute of the per-line . A single-quoted shell token preserves an inner double quote through shlex parsing, so a value such as '\"> ' terminates the class attribute early and the markup that follows is emitted as live HTML. An attacker who can submit Markdown (through comments, posts, wiki pages, documentation, or any user-generated content) can inject arbitrary HTML and JavaScript that runs in the browser of every user who views the rendered output, enabling session theft, account takeover, and other client-side attacks. No authentication or special privileges are required. The vulnerable native code originally shipped inside mdex (in native/comrak_nif/src/autumnus_adapter.rs, later renamed to native/comrak_nif/src/lumis_adapter.rs) and was later extracted into the separate mdex_native package (native/mdex_native_nif/src/lumis_adapter.rs). This issue affects mdex: from 0.8.0 before 0.12.3; mdex_native: from 0.1.0 before 0.2.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53428": {
+    "cvss": 6.9,
+    "description": "Memory Allocation with Excessive Size Value vulnerability in leandrocp mdex allows an unauthenticated attacker to cause a denial of service through unbounded memory allocation. comrak_nif::lumis_adapter::LumisAdapter::parse_highlight_lines in native/comrak_nif/src/lumis_adapter.rs eagerly expands a user-controlled inclusive line range from a fenced code block's highlight_lines decorator into a Vec , pushing one element per integer in the range with no upper bound on the range size. An attacker who can supply Markdown that an application renders with MDEx.to_html/2 (for example a comment, chat message, or wiki page) can embed a code block whose info string is rust highlight_lines=\"1-100000000\", forcing the native adapter to allocate roughly 8 bytes per line in the range. A payload that differs by only a few bytes can therefore allocate hundreds of megabytes, and a sufficiently large range (for example 1-2000000000) exhausts host memory and aborts the BEAM, denying service to every user of the rendering process. The per-line write loop additionally tests membership with a linear scan over the same vector, degrading rendering to a quadratic cost even for ranges that do not immediately exhaust memory. The vulnerable native code originally shipped inside mdex (in native/comrak_nif/src/autumnus_adapter.rs, later renamed to native/comrak_nif/src/lumis_adapter.rs) and was later extracted into the separate mdex_native package (native/mdex_native_nif/src/lumis_adapter.rs). This issue affects mdex: from 0.11.0 before 0.12.3; mdex_native: from 0.1.0 before 0.2.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53426": {
+    "cvss": 8.2,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in leandrocp MDEx allows Excessive Allocation. MDEx.parse_document/2 accepts a {:json, json} source. In lib/mdex.ex, the private json_to_node/1 function passes the attacker-controlled node_type value to Module.concat/1, which calls String.to_atom/1 and interns a brand-new atom for every distinct value. Atoms are never garbage collected on the BEAM, so a crafted JSON document carrying a unique node_type at each (deeply nested) node mints one permanent atom per node. A single document can intern hundreds of thousands of atoms, and a large enough document exhausts the default atom table (around 1,048,576 atoms) and aborts the entire Erlang VM, taking down every process on the node. Any application that passes untrusted input to the {:json, ...} source of MDEx.parse_document is exposed to an unauthenticated denial-of-service. This issue affects mdex: from 0.4.3 before 0.13.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53429": {
+    "cvss": 6.9,
+    "description": "Missing Release of Memory after Effective Lifetime vulnerability in leandrocp mdex and mdex_native allows an attacker who controls a rendered document to cause a denial of service through unbounded native memory exhaustion. The native rendering code permanently leaks memory when rendering a document that contains escaped-tag nodes. The conversion of each %MDEx.EscapedTag{} node into its native representation (From for NodeValue in the Rust NIF) calls Box::leak on the caller-supplied literal string, which surrenders the backing allocation so that it lives for the entire lifetime of the operating system process and is never freed. Both the byte length of each literal and the number of escaped-tag nodes in a document are attacker-controlled, and there is no size cap, rate limit, or string interning on this path. Every render of a document containing escaped-tag nodes therefore leaks literal_size × node_count bytes that can never be reclaimed, and repeated renders accumulate without bound. Rendering reaches this path through the public MDEx.to_html/1 entry point and any other API that renders a supplied %MDEx.Document{}. Any application that uses mdex (or mdex_native directly) to render documents derived from user-supplied content is affected. Because the leaked memory is never reclaimed for the life of the BEAM process, an attacker can drive resident memory upward without limit until the node exhausts memory and crashes, taking down every process on it. The vulnerable native code originally shipped inside mdex (in native/comrak_nif/src/types/document.rs) and was later extracted into the separate mdex_native package (native/mdex_native_nif/src/types/document.rs). This issue affects mdex: from 0.11.1 before 0.12.3; mdex_native: from 0.1.0 before 0.2.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48591": {
+    "cvss": 4.8,
+    "description": "Improper Neutralization of Script in Attributes in a Web Page vulnerability in pragdave earmark allows stored cross-site scripting via unescaped HTML attribute values. Earmark.Transform._make_att1/2 in lib/earmark/transform.ex splices attribute values verbatim between two literal \" bytes: [\" \", name, \"=\\\"\" , value, \"\\\"\"]. Text nodes are routed through the existing escape function which encodes \" as \", but attribute values never visit that path. A markdown link whose URL or title contains a bare \" closes the attribute early and lets the trailing bytes be parsed by the browser as fresh HTML attributes. For example, [click](http://example.com/?a=x\" onerror=\"alert(1)) renders as click , executing arbitrary JavaScript in the victim's browser. The earmark library is no longer maintained and has been retired on Hex. No patched version will be released. All releases from 1.4.1 onward are affected, and users should migrate to a maintained Markdown library such as MDEx. This issue affects earmark: from 1.4.1 onward.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49757": {
+    "cvss": 9.2,
+    "description": "Authentication Bypass by Spoofing vulnerability in team-alembic AshAuthentication allows account takeover of local users via OAuth2/OIDC sign-in. AshAuthentication's OAuth2 and OIDC family strategies matched the local user by email address (an upsert on the email field, or a user-defined sign-in filter) rather than by the OpenID Connect iss/sub claim combination. Per OpenID Connect Core §5.7, only iss/sub uniquely and stably identifies an end-user; other claims, including email, MUST NOT be used as unique identifiers. A provider login presenting a victim's email, including an unverified email, a reused email, or an account with email_verified: false, resolved to and signed in as the victim's existing local account. An unauthenticated attacker who can register an account on any accepted OAuth provider with the victim's email (or who benefits from provider-side email reuse or reclamation) obtains the victim's full local privileges. The fix resolves users by the (strategy, sub) identity stored in a user identity resource, and only links a new sub to an existing local account by email when the provider's email_verified claim is trusted (trust_email_verified?). This issue affects ash_authentication: from 0.6.0 before 4.14.0 and from 5.0.0-rc.0 before 5.0.0-rc.10.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53423": {
+    "cvss": 5.9,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in membraneframework membrane_mp4_plugin allows unauthenticated denial-of-service via BEAM atom table exhaustion. The MP4 box header parser converts each 4-byte box name to an atom using String.to_atom/1 without validation. Membrane.MP4.Container.Header.parse_box_name/1 in lib/membrane_mp4/container/header.ex interns every box name encountered while Membrane.MP4.Container.Header.parse/1 walks the input. BEAM atoms are never garbage-collected, so each unique attacker-controlled 4-byte name is a permanent allocation. A crafted MP4 of approximately 8 MB containing roughly 1.1 million boxes with distinct non-standard names exhausts the atom table (default ceiling around 1,048,576 atoms), aborting the entire BEAM node and taking down all applications running on it. This issue affects membrane_mp4_plugin: from 0.3.0 before 0.36.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49755": {
+    "cvss": 7.5,
+    "description": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in wojtekmach Req allows attacker-controlled HTTP servers to exhaust memory in a Req client via decompression-bomb response bodies. Req's default response pipeline includes Req.Steps.decode_body/1 and Req.Steps.decompress_body/1 in lib/req/steps.ex. decode_body/1 dispatches on the server-supplied content-type (or URL extension) and calls :zip.extract(body, [:memory]) for application/zip, :erl_tar.extract({:binary, body}, [:memory]) for application/x-tar, and :erl_tar.extract({:binary, body}, [:memory, :compressed]) for application/gzip / .tgz. Each returns the full decompressed archive contents as a [{name, bytes}] list in memory, with no per-entry or total size cap. decompress_body/1 walks the content-encoding header and chains :zlib/:brotli/:ezstd decoders, so a response advertising content-encoding: gzip, gzip, gzip inflates through multiple layers without bound. Both steps are enabled by default, no caller opt-in is required, and the attacker controls the content-type and content-encoding headers on their own server (or on any host reached via Req's automatic redirect following). A sub-megabyte response can expand to multiple gigabytes on the victim, crashing the BEAM process. This issue affects req: from 0.1.0 before 0.6.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49756": {
+    "cvss": 3.7,
+    "description": "Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability in wojtekmach Req allows multipart parameter smuggling via attacker-influenced part metadata. Req.Utils.encode_form_part/2 in lib/req/utils.ex builds the per-part headers by interpolating the caller-supplied name, filename, and content_type values directly into the content-disposition and content-type lines with no escaping or CRLF stripping. A value containing \", \\r, or \\n closes the surrounding quoted value and starts a new header line; an additional \\r\\n-- terminates the current part and prepends a smuggled part of the attacker's choosing. This is reachable through every supported way of supplying a part. It is particularly easy when value is a %File.Stream{}, because filename then defaults to Path.basename(stream.path) and POSIX filenames may legitimately contain \\r and \\n. Any application that forwards user-controlled filenames (or field names / MIME types) through Req.post/2 with form_multipart: lets an attacker inject arbitrary headers into the outgoing multipart body or smuggle additional fields and parts into the request the victim service sends downstream. This issue affects req: from 0.5.3 before 0.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48861": {
+    "cvss": 2.1,
+    "description": "Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability in elixir-mint Mint allows HTTP Request Splitting and HTTP Request Smuggling. In lib/mint/http1/request.ex, the encode_request_line/2 function splices the caller-supplied method and target arguments directly into the HTTP/1 request line without any character validation: [method, ?\\s, target, \" HTTP/1.1\\r\\n\"]. An application that forwards attacker-controlled input as the HTTP method or target to Mint.HTTP.request/5 is therefore exposed to request-line CRLF injection: the attacker can terminate the request line early, inject arbitrary headers, and smuggle an entirely separate pipelined HTTP request onto the same TCP connection. Mint 1.7.0 introduced validate_request_target/2, which rejects CRLF and other control characters in the target by default and closes the path/query vector unless the caller opts out via skip_target_validation: true. The method field remains unvalidated, so the method-based injection is exploitable under the default Mint configuration on all versions. This issue affects mint: from 0.1.0 before 1.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48862": {
+    "cvss": 8.2,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in elixir-mint Mint allows attacker-controlled HTTP/2 servers to exhaust memory in a Mint client via PUSH_PROMISE flooding. In lib/mint/http2.ex, Mint.HTTP2.decode_push_promise_headers_and_add_response/5 inserts a :reserved_remote entry into conn.streams for every promised stream ID. The neighbouring Mint.HTTP2.assert_valid_promised_stream_id/2 only verifies that the promised ID is even and not already present; client_settings.max_concurrent_streams is not consulted at promise time. The concurrency cap is only checked when the response HEADERS for the promised stream arrive, so a server that emits PUSH_PROMISE frames and withholds the matching HEADERS never trips that check. HTTP/2 server push is accepted by default (client_settings.enable_push defaults to true). A single long-lived HTTP/2 connection to a hostile server lets that server pin one conn.streams entry per PUSH_PROMISE frame it sends, with no upper bound, until the client process runs out of memory. This issue affects mint: from 0.2.0 before 1.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49753": {
+    "cvss": 6.3,
+    "description": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') vulnerability in elixir-mint Mint allows attacker-controlled HTTP/1 servers to desynchronise response framing on shared connections. Mint's HTTP/1 Content-Length parser, Mint.HTTP1.Parse.content_length_header/1 in lib/mint/http1/parse.ex, parses the header value with Integer.parse/1, which accepts an optional + or - sign prefix. The length >= 0 guard rejects negatives, but inputs such as +0 or +123 are returned as valid lengths. RFC 7230 specifies Content-Length = 1*DIGIT, with no sign character permitted. A fronting proxy or load balancer that strictly enforces the grammar will reject or reframe a header like Content-Length: +0, while Mint silently treats it as zero. When Mint reuses the socket (keep-alive, pipelining, or any pooled connection shared across requesters), the parser disagreement is a response-smuggling primitive: the proxy delimits the body one way, Mint another, and bytes from one response get attributed to the next. Where the same Mint connection is shared across trust boundaries, an attacker-controlled upstream can leak bytes into a different consumer's response stream. This issue affects mint: from 0.1.0 before 1.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49754": {
+    "cvss": 8.2,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in elixir-mint Mint allows attacker-controlled HTTP/2 servers to exhaust memory in a Mint client (HTTP/2 CONTINUATION flood). When Mint's HTTP/2 receive path observes a HEADERS frame without the END_HEADERS flag, the unparsed header-block fragment is parked in conn.headers_being_processed, and every subsequent CONTINUATION frame on that stream is appended to the accumulator. Nothing in the receive path caps the accumulator: there is no per-stream size limit, no CONTINUATION frame-count limit, and max_header_list_size is only enforced on outgoing requests, never on inbound header blocks (its default is :infinity). A malicious or compromised HTTP/2 server can stream an endless sequence of CONTINUATION frames (each up to the peer-advertised SETTINGS_MAX_FRAME_SIZE) and drive the client's iolist to arbitrary size, causing memory exhaustion and BEAM process death. A single connection to an attacker-controlled HTTP/2 endpoint is sufficient. This issue affects mint: from 0.1.0 before 1.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47074": {
+    "cvss": 8.7,
+    "description": "Improper Certificate Validation vulnerability in ex-aws ex_aws_sns (ExAws.SNS, ExAws.SNS.PublicKeyCache modules) allows Signature Spoofing by Improper Validation. This vulnerability is associated with program files lib/ex_aws/sns.ex, lib/ex_aws/sns/public_key_cache.ex and program routines ExAws.SNS.verify_message/1, ExAws.SNS.PublicKeyCache.get/1. ExAws.SNS.verify_message/1 fetches the signing certificate from the SigningCertURL field of the incoming SNS message without validating that the URL uses HTTPS or that the host matches an AWS-owned SNS certificate domain. An unauthenticated attacker who can POST to an endpoint that calls verify_message/1 can supply an attacker-controlled SigningCertURL, sign a forged SNS message with their own key, and cause the function to return :ok, completely bypassing SNS signature verification. This issue affects ex_aws_sns: from 2.0.0 before 2.3.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48592": {
+    "cvss": 5.3,
+    "description": "Missing Authorization vulnerability in oban-bg oban_web (Oban.Web.Jobs.DetailComponent modules) allows unauthorized job worker substitution. The handle_event(\"save-job\", ...) handler in Oban.Web.Jobs.DetailComponent does not perform an authorization check, unlike the sibling cancel, delete, and retry handlers which all verify the caller's privileges via can?/2. An authenticated user with :read_only access can push a forged save-job LiveView WebSocket event to overwrite a job's worker field with any other existing Oban.Worker module in the application. On the job's next execution attempt, Oban will invoke perform/1 on the attacker-chosen module instead of the intended one. This issue affects oban_web: from 2.12.0 before 2.12.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48593": {
+    "cvss": 5.9,
+    "description": "Uncontrolled Resource Consumption vulnerability in oban-bg oban_web (Oban.Web.CronExpr modules) allows memory exhaustion via unbounded cron range expansion. An attacker with access to schedule cron jobs can submit a malicious cron expression such as \"0 0 1-100000000 * *\". When a user with dashboard access views the cron job list, Oban.Web.CronExpr.describe/1 is called to render the expression. parse_range/2 parses both range endpoints via Integer.parse/1 with no bounds check, and the downstream helpers expand_dom_parts/1 and expand_dow_parts/1 materialise the range eagerly via Enum.to_list/1, causing allocation of ~2.4 GB and stalling or crashing the BEAM node. A sibling helper extract_dom_values already validates range bounds, but the expansion helpers do not. This issue affects oban_web: from 2.12.0 before 2.12.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47071": {
+    "cvss": 7.5,
+    "description": "Uncontrolled Resource Consumption vulnerability in benoitc hackney allows Flooding. The SOCKS5 transport in src/hackney_socks5.erl correctly applies the caller-supplied timeout to the SOCKS5 negotiation phase, but then upgrades the connection to TLS using the two-argument form ssl:connect/2, which defaults to an infinite timeout. The Timeout value is in scope at the call site but is not forwarded. A hostile SOCKS5 proxy that completes the SOCKS5 handshake normally and then goes silent (or sends a partial TLS ServerHello and stalls) will cause the connecting process to block indefinitely, regardless of the connect_timeout or recv_timeout options supplied by the caller. This issue affects hackney: from 0.8.1 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47072": {
+    "cvss": 7.5,
+    "description": "Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability in benoitc hackney allows HTTP Request/Response Splitting. The WebSocket upgrade code in src/hackney_ws.erl copies the host, path, headers (ExtraHeaders), and protocols options from the caller-supplied opts map into the internal #ws_data{} record in init/1 and then splices them verbatim into the raw HTTP/1.1 upgrade request by binary concatenation in do_handshake/1. No CRLF or NUL stripping is performed at any of these four injection sites. An attacker who controls any of these options — for example by forwarding URL components or header values from untrusted input into hackney_ws:start_link/1 — can inject arbitrary HTTP headers into the outbound WebSocket upgrade request, leading to header injection, credential spoofing toward the upstream server, log and cache poisoning, or request smuggling via intermediary proxies. This issue affects hackney: from 2.0.0-beta.1 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47073": {
+    "cvss": 7.5,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. The WebSocket client in src/hackney_ws.erl imposes no upper bound on memory consumption in three code paths. First, read_handshake_response/3 accumulates received bytes into a growing buffer with no size cap; the per-receive timeout resets on every chunk, so a server that streams bytes without ever sending \\r\\n\\r\\n causes the buffer to grow until memory is exhausted. Second, parse_payload/9 and parse_active_payload/8 do not validate the declared frame payload length against any limit; because RFC 6455 allows payload lengths up to 2^63-1 bytes, a server that announces a very large frame and dribbles bytes causes the accumulation buffer to grow until OOM. Third, the frag_buffer field in #ws_data{} accumulates continuation frames indefinitely; a server that sends an endless stream of non-final (nofin) fragmented frames without ever sending a final (fin) frame grows frag_buffer without bound. In all three cases the attacker only needs to control the WebSocket server the hackney client connects to, with no authentication or special client configuration required. This issue affects hackney: from 2.0.0-beta.1 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47075": {
+    "cvss": 7.5,
+    "description": "Improper Neutralization of CRLF Sequences vulnerability in benoitc hackney allows HTTP Request Splitting. hackney does not percent-encode carriage return (\\r) or line feed (\\n) characters in the URL query component before constructing the HTTP/1.1 request target. Characters outside the grammar defined in RFC 3986 Section 3.4 must be percent-encoded, but hackney_url:make_url/3 passes the query binary directly without validation or escaping. An attacker who can control all or part of a URL passed to hackney can inject raw CRLF sequences into the query string, which are then sent as HTTP line breaks in the request target. This enables injection of arbitrary HTTP headers or splitting of the HTTP request. This issue affects hackney: from 0.1.0 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47076": {
+    "cvss": 6.5,
+    "description": "Interpretation Conflict vulnerability in benoitc hackney allows Server Side Request Forgery. hackney_url:normalize/2 URL-decodes the host component after the URL has been parsed into a #hackney_url{} record. OTP's uri_string:parse/1 and inet:parse_address/1 do not decode percent-escapes in the host, so a URL such as http://%31%32%37%2E%30%2E%30%2E%31/ is seen by a caller's allowlist validator with host %31%32%37%2E%30%2E%30%2E%31 (not an IP address), which passes the allowlist check. hackney's normalizer then decodes the host to 127.0.0.1 and opens a TCP connection to loopback. Because hackney:request/5 always calls hackney_url:normalize/2 with no opt-out, every request that takes a binary or list URL is affected. The same technique reaches cloud instance metadata services (169.254.169.254), RFC1918 networks, and any admin interface listening on localhost. This issue affects hackney: from 0.13.0 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-47077": {
+    "cvss": 7.5,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. hackney_h3:await_response_loop/6 accumulates the HTTP/3 response body in memory without any size cap. The after Timeout clause is a per-message inactivity timer that resets on every received chunk, housekeeping message, or settings frame — it is not a wall-clock deadline. A malicious HTTP/3 server that emits one small chunk every Timeout - 1 ms with Fin = false and never sends a final frame keeps the loop alive indefinitely while the accumulation buffer grows linearly without bound, eventually exhausting the BEAM process heap and causing an out-of-memory condition. This issue affects hackney: from 2.0.0-beta.1 before 4.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119199": {
+    "cvss": 5.9,
+    "description": "Nuxt is an open-source web development framework for Vue.js. From 3.0.0 until 4.6.3, the Nuxt development server can expose the Nitro 2 development bundle at /dev/index.mjs through Vite file serving when the server is reachable over HTTP. Nitro inlines private runtimeConfig values resolved at build time into that bundle, including secrets configured in nuxt.config, and Nuxt 4.6.0 and later also inline the generated development appSecret. The default localhost binding limits remote exposure, production builds and Nitro 3 are not affected, and runtime configuration supplied only through NUXT_* environment variables at server startup is not inlined. This issue is fixed in version 4.6.3.",
+    "vendor": "nuxt",
+    "product": "nuxt"
   }
 }
