@@ -135072,22 +135072,22 @@
     "product": "Cisco Secure Endpoint"
   },
   "CVE-2026-19776": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 7.8,
+    "description": "G DATA Total Security TSNxGService Link Following Local Privilege Escalation Vulnerability. This vulnerability allows local attackers to escalate privileges on affected installations of G DATA Total Security. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The specific flaw exists within the TSNxGService service. By creating a symbolic link, an attacker can abuse the service to delete a file. An attacker can leverage this vulnerability to escalate privileges and execute arbitrary code in the context of SYSTEM. Was ZDI-CAN-28663.",
+    "vendor": "G DATA",
+    "product": "Total Security"
   },
   "CVE-2026-19777": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 6.1,
+    "description": "G DATA Total Security AVKProxy Link Following Denial-of-Service Vulnerability. This vulnerability allows local attackers to create a denial-of-service condition on affected installations of G DATA Total Security. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The specific flaw exists within the G DATA ANTIVIRUS Proxy Service. By creating a symbolic link, an attacker can abuse the service to create a file. An attacker can leverage this vulnerability to create a persistent denial-of-service condition on the system. Was ZDI-CAN-28662.",
+    "vendor": "G DATA",
+    "product": "Total Security"
   },
   "CVE-2026-19779": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 7.3,
+    "description": "G DATA Total Security Backup Service Uncontrolled Search Path Element Local Privilege Escalation Vulnerability. This vulnerability allows local attackers to escalate privileges on affected installations of G DATA Total Security. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The specific flaw exists within the Backup Service. The service restores archives from an unsecured location. An attacker can leverage this vulnerability to escalate privileges and execute arbitrary code in the context of SYSTEM. Was ZDI-CAN-28666.",
+    "vendor": "G DATA",
+    "product": "Total Security"
   },
   "CVE-2026-85101": {
     "cvss": 8.6,
@@ -139770,10 +139770,10 @@
     "product": "EB2"
   },
   "CVE-2026-96805": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 9.6,
+    "description": "The affected products have an unauthenticated command injection, which may allow an in-range BLE device to gain access to write to the control interface and influence braking with no authentication or pairing.",
+    "vendor": "Elecbrakes",
+    "product": "EB2"
   },
   "CVE-2026-125132": {
     "cvss": 8.6,
@@ -142360,5 +142360,71 @@
     "description": "Vulnerability in the Oracle Shipping Execution product of Oracle E-Business Suite (component: Workflow Events). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Shipping Execution. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Shipping Execution accessible data as well as unauthorized access to critical data or complete access to all Oracle Shipping Execution accessible data. CVSS 3.1 Base Score 7.4 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-93630": {
+    "cvss": 4.3,
+    "description": "A hostname canonicalization vulnerability in the email HTML sanitizers of Zimbra Collaboration Suite (ZCS) allows an unauthenticated sender to bypass the restriction on forms that target the Zimbra host. DefangFilter and the OWASP ActionAttributePolicy compare the form-action hostname with the request hostname before browser URL canonicalization. A percent-encoded hostname can therefore survive sanitization while the browser submits the form to the normal Zimbra origin with the recipient's authentication cookie. This permits authenticated form requests from a crafted email after the recipient opens it in Classic and submits the form. The issue is present in ZCS 10.1.16 and 10.1.21. It does not bypass an endpoint's CSRF-token checks; a state-changing attack additionally requires an endpoint that accepts the resulting request without that protection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93639": {
+    "cvss": 8.7,
+    "description": "A missing authorization vulnerability in Zimbra Collaboration Suite (ZCS) allows a delegated administrator with no explicit administrative grants to overwrite global Zimlet configuration through ConfigureZimletRequest. The uploaded configuration can also add an attacker-controlled domain to the proxy allowlist of the default class of service. If a signed-in user in that class opens a crafted /service/proxy URL, Zimbra serves attacker-controlled HTML under its own origin. The resulting JavaScript can read mailbox data and perform authenticated actions as the victim. Exploitation requires a delegated-administrator account and access to the admin SOAP service; the browser compromise additionally requires the victim to open the crafted URL. ZCS 10.1.16 and 10.1.20 are affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104126": {
+    "cvss": 6.0,
+    "description": "JumpServer is an open source bastion host and an operation and maintenance security audit system. Prior to 4.10.17-lts, JumpServer's Ansible-based automation rendering can evaluate attacker-controlled template expressions from users who have permission to create or execute affected automation tasks. Crafted content can invoke sensitive Ansible lookup behavior, including file, pipe, env, and password lookups, within the Ansible execution context, which can disclose files or environment values and may permit limited command execution under the privileges of the automation process. The issue does not provide unauthenticated access or direct access to unrelated JumpServer assets. This issue is fixed in version 4.10.17-lts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84713": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the automation-controller notification subsystem. Although NotificationTemplate.notification_ configuration is protected from API filtering, its recipient value is copied in clear text into the unprotected Notification.recipients field on every send. Because the credential-types endpoint is listable by any authenticated user and the API filter backend traverses object relations without per-hop authorization, a user with no privileges can use a relational filter as a boolean count-oracle to recover, character by character and across organizations, the secret recipient values of other tenants' notifications — including PagerDuty service keys and Slack/Mattermost/RocketChat/Webhook bearer-token URLs. This flaw affects confidentiality.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-8766": {
+    "cvss": 6.4,
+    "description": "A container privilege escalation flaw was found in certain Multi-Cloud Object Gateway Core images. This issue stems from the /etc/passwd file being created with group-writable permissions during build time. In certain conditions, an attacker who can execute commands within an affected container, even as a non-root user, can leverage their membership in the root group to modify the /etc/passwd file. This could allow the attacker to add a new user with any arbitrary UID, including UID 0, leading to full root privileges within the container",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-133624": {
+    "cvss": 5.5,
+    "description": "SCTP protocol dissector heap disclosure in 4.6.0 to 4.6.9 and 4.4.0 to 4.4.19 might enable denial of service or code execution",
+    "vendor": "Wireshark Foundation",
+    "product": "Wireshark"
+  },
+  "CVE-2026-133620": {
+    "cvss": 5.3,
+    "description": "Flowintel's template repository subsystem did not adequately constrain file access to the configured repository base directory. Two related weaknesses existed: - Repository registration and editing accepted arbitrary local paths without verifying they resolved inside the configured REPOSITORY_BASE_PATH, allowing an authenticated user to point a repository at any readable directory on the host. - Manifest and template file lookups used normalized (non-canonical) path joins and a startswith-based guard that could be bypassed by symbolic links, permitting reads of files outside the intended repository. An authenticated user with the ability to add or edit a template repository could therefore cause the application to read and return the contents of arbitrary files readable by the service account, including configuration files, credentials, or other sensitive data. Affected: Flowintel versions prior to 4.1.0.",
+    "vendor": "flowintel",
+    "product": "flowintel"
+  },
+  "CVE-2026-119348": {
+    "cvss": 6.3,
+    "description": "Next.js is a React framework for building full-stack web applications. Prior to 15.5.29 and 16.4.5, self-hosted Next.js App Router route handlers and the fetch cache that return a fetched upstream response unchanged can emit a response whose declared framing does not match the body actually sent. When the application is behind an HTTP/1.1 reverse proxy that permits pipelined response queueing, a crafted upstream response can desynchronize responses between clients. The resulting desynchronization can inject a response into another client's queue or disclose another client's response. This issue is fixed in versions 16.4.5 and 15.5.29.",
+    "vendor": "vercel",
+    "product": "next.js"
+  },
+  "CVE-2026-115578": {
+    "cvss": 7.5,
+    "description": "Go-Guerrilla SMTP Daemon is a lightweight SMTP server written in Go. In 1.6.7 and earlier, according to the repository advisory's structured affected range, server.go defines the seven-byte cmdXCLIENT token, but the XCLIENT handler slices input[8:] after matching only that seven-byte verb, so a bare command causes an out-of-bounds panic in handleClient and terminates the daemon because that connection goroutine does not recover the panic. The issue is reachable by an unauthenticated client when the non-default xclient_on setting is enabled; no HELO command is required. The repository fix is present in version 1.6.7-1.",
+    "vendor": "phires",
+    "product": "go-guerrilla"
+  },
+  "CVE-2026-114516": {
+    "cvss": 9.8,
+    "description": "Etherpad is a real-time collaborative editor. From 1.8.14 until 3.3.3, the pre-authentication /static/* plugin asset handler in src/node/utils/Minify.ts performs a backslash-to-forward-slash conversion after src/node/utils/sanitizePathname.ts has completed its POSIX path checks. On POSIX systems the sanitizer correctly treats backslashes as ordinary filename bytes, but the later conversion turns encoded backslash-separated parent-directory segments into traversal components without revalidation or containment. The expressPreSession registration and the always-present ep_etherpad-lite core pseudo-plugin make this path reachable without credentials, allowing a remote attacker to read any file available to the Etherpad process. Disclosed configuration or environment secrets can expose administrator credentials, after which the administrator plugin installer can provide in-process code execution and full server compromise. This issue is fixed in version 3.3.3.",
+    "vendor": "ether",
+    "product": "etherpad"
+  },
+  "CVE-2026-133626": {
+    "cvss": 7.1,
+    "description": "FlowIntel contains a resource exhaustion vulnerability in its file-to-note conversion feature. When a user converts an attached CSV or JSON file into a case note, the application renders the data as a Markdown table by padding every row to the maximum column count. A crafted file with a small number of filled cells but a very large number of columns (or keys) causes the application to allocate a quadratic number of padded table cells, potentially exhausting a worker process in memory or CPU. The same issue affects nested JSON values rendered inside table cells, where pretty-printed indentation further inflates the output size. Preconditions: - An authenticated user with access to a case in FlowIntel - Ability to attach and convert a CSV or JSON file to a note Impact: - Denial of service: exhaustion of a worker process, potentially disrupting service for other users - No confidentiality or integrity impact Affected versions: FlowIntel prior to 4.1.0",
+    "vendor": "flowintel",
+    "product": "flowintel"
   }
 }
