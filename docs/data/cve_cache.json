@@ -138049,7 +138049,7 @@
   },
   "CVE-2026-126389": {
     "cvss": 5.4,
-    "description": "n8n before 1.123.89 contains an authentication bypass vulnerability in the Chat Trigger that allows unauthenticated attackers to skip n8n User Auth through the setup GET webhook route in embedded chat mode. Attackers can send unauthenticated GET requests to the chat webhook URL to read named session conversation history or trigger workflows with attacker-supplied input.",
+    "description": "n8n before 1.123.89, 2.0.0 before 2.45.5, 2.46.0 before 2.46.1, and 3.0.0 before 3.0.1 contains an authentication bypass vulnerability in the Chat Trigger that allows unauthenticated attackers to skip n8n User Auth through the setup GET webhook route in embedded chat mode. Attackers can send unauthenticated GET requests to the chat webhook URL to read named session conversation history or trigger workflows with attacker-supplied input.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -138156,13 +138156,13 @@
     "product": "Unknown"
   },
   "CVE-2026-126417": {
-    "cvss": 5.3,
+    "cvss": 6.5,
     "description": "OpenEMR before 8.5.0 contains an access control flaw in get_claim_file.php: with location=tmp, it serves any file in the shared temporary directory without verifying the file is a claim for the caller. Users with acct/eob or acct/bill write access can request key=ccda.xml to download the most recently validated patient's complete C-CDA clinical document.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-126418": {
-    "cvss": 6.3,
+    "cvss": 7.6,
     "description": "OpenEMR before 8.5.0 contains a stored cross-site scripting vulnerability in interface/billing/sl_eob_invoice.php, which escapes billing codes for HTML attributes but not for JavaScript strings in an inline onkeyup handler. Clinicians with encounter coding access can save crafted billing codes through diagnosis.php that execute script when a Back Office user enters a payment, exposing patient and financial data or performing actions as that user.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -138235,7 +138235,7 @@
   },
   "CVE-2026-126430": {
     "cvss": 8.1,
-    "description": "OpenEMR before 8.5.0 contains an sql injection vulnerability that allows any authenticated core user to inject SQL by supplying crafted patient_data field names to the CCR revandapprove controller. Attackers can embed scalar subqueries in the UPDATE patient_data SET clause to read staff password hashes and portal reset values, alter arbitrary patient demographics, and take over patient-portal accounts.",
+    "description": "OpenEMR before 8.5.0 contains a SQL injection vulnerability that allows any authenticated core user to inject SQL by supplying crafted patient_data field names to the CCR revandapprove controller. Attackers can embed scalar subqueries in the UPDATE patient_data SET clause to read staff password hashes and portal reset values, alter arbitrary patient demographics, and take over patient-portal accounts.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -142928,6 +142928,30 @@
   "CVE-2026-82327": {
     "cvss": 5.5,
     "description": "A flaw was found in libsolv, a dependency-resolution library used by RPM-based package managers such as dnf and zypper to work with .solv repository cache files. When libsolv rewrites a .solv cache file, it reads directory-id values from the file's compressed filelist data without validating that they fall within the expected range. A corrupted or specially crafted .solv cache file (for example, one left in a torn state after an unclean system shutdown) can cause an out-of-bounds memory write when a tool such as dnf, yum, or zypper next processes it. Successful exploitation is expected to result in a crash of the affected tool (denial of service); it is not expected to allow arbitrary code execution because the out-of-bounds write always stores a fixed, non-attacker-controlled value.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126391": {
+    "cvss": 7.5,
+    "description": "n8n before 1.123.89, 2.0.0 before 2.45.5, 2.46.0 before 2.46.1, and 3.0.0 before 3.0.1 contains an insufficient isolation vulnerability in workflow expression evaluation that allows authenticated users to escape the sandbox. Attackers with permission to create or modify workflows can craft expressions referencing unexpected JavaScript properties to execute arbitrary code on the n8n host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126415": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in the Patient Validation module that allows any authenticated user to retrieve patient demographic records. Attackers can send direct requests with wildcard mf_lname or empty mf_ parameters to the patientvalidation endpoint to enumerate the entire patient_data table.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126416": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.5.0 contains an improper authorization vulnerability in patient_tracker_status.php that allows low-privilege authenticated users to modify other patients' tracker entries by supplying arbitrary tracker_id values. Attackers can post statustype and roomnum parameters with a valid CSRF token to alter patient-flow status, room assignments, and linked calendar appointment state.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126419": {
+    "cvss": 5.4,
+    "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in the esign_form_submit handler of library/ESign/Form/Controller.php that verifies only the caller's password, not access to the patient, encounter, or form type. Authenticated core users can supply arbitrary formId, formDir, and encounterId values to sign and lock any patient's clinical form, creating unauthorized approval records and blocking normal editing.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
