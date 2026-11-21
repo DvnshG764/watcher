@@ -142900,5 +142900,17 @@
     "description": "Dolibarr ERP CRM through 24.0.3 contains a code injection vulnerability in Website::importWebSite() that allows website editors without PHP permission to execute code by importing templates. Attackers can import a template zip whose javascript.js.php contains PHP code, which the public javascript.js.php endpoint includes, executing code as the web server user.",
     "vendor": "Dolibarr",
     "product": "Dolibarr ERP CRM"
+  },
+  "CVE-2026-94451": {
+    "cvss": 6.5,
+    "description": "Quarkus REST Data Panache provides a way to automatically generate REST endpoints for data entities. A flaw was found where certain endpoints do not properly check the sort parameter provided by users. This could allow an attacker to learn information they should not have access to or slow down the system by forcing the database to perform complex tasks, potentially causing a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93432": {
+    "cvss": 6.1,
+    "description": "A flaw was found in the Quarkus Qute template engine. When the {#eval} section helper processes a sub-template, it fails to pass the parent template's content type information. This bypasses standard escaping mechanisms, allowing untrusted data to be output as raw, unescaped text. This vulnerability can lead to Cross-Site Scripting (XSS) and JSON Injection, potentially allowing a remote attacker to execute arbitrary code in a user's browser or manipulate data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
