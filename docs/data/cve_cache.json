@@ -12415,7 +12415,7 @@
   },
   "CVE-2026-15315": {
     "cvss": 8.8,
-    "description": "Tapo C120 v1 and C200 v5 contain an improper authentication vulnerability within the login authentication verification module. An attacker on the local network can exploit weaknesses in challenge parameter validation to bypass normal authentication controls and obtain administrative session tokens. Successful exploitation may allow an attacker to subsequently execute privileged management actions, enable unauthorized administrative access and temporary disruption of device services, resulting in a denial-of-service (DoS) condition.",
+    "description": "Tapo C120 and C200 contain an improper authentication vulnerability within the login authentication verification module. An attacker on the local network can exploit weaknesses in challenge parameter validation to bypass normal authentication controls and obtain administrative session tokens. Successful exploitation may allow an attacker to subsequently execute privileged management actions, enable unauthorized administrative access and temporary disruption of device services, resulting in a denial-of-service (DoS) condition.",
     "vendor": "TP-Link Systems Inc.",
     "product": "Tapo C200 v5"
   },
@@ -48031,7 +48031,7 @@
   },
   "CVE-2026-112487": {
     "cvss": 7.8,
-    "description": "A path handling issue was addressed with improved validation. This issue is fixed in macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2. An app may be able to gain root privileges.",
+    "description": "A path handling issue was addressed with improved validation. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2. An app may be able to gain root privileges.",
     "vendor": "Apple",
     "product": "macOS"
   },
@@ -142678,5 +142678,11 @@
     "description": "Vulnerability in the Oracle Business Intelligence Enterprise Edition product of Oracle Analytics (component: Analytics Server). Supported versions that are affected are 8.2.0.0.0 and 26.01.0.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Business Intelligence Enterprise Edition. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Business Intelligence Enterprise Edition accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-33638": {
+    "cvss": 5.3,
+    "description": "Ech0 is an open-source, self-hosted publishing platform for personal idea sharing. Prior to version 4.2.0, `GET /api/allusers` is mounted as a public endpoint and returns user records without authentication. This allows remote unauthenticated user enumeration and exposure of user profile metadata. A fix is available in v4.2.0.",
+    "vendor": "lin-snow",
+    "product": "Ech0"
   }
 }
