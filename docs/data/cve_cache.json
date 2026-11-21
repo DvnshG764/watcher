@@ -142882,5 +142882,23 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-17591": {
+    "cvss": 3.6,
+    "description": "A flaw was found in libarchive. An attacker can cause a Denial of Service (DoS) or potential information disclosure due to a use-after-free vulnerability, which occurs when a program reads memory that has already been released. This issue arises when the archive_entry_copy_mac_metadata() function deallocates an internal buffer before completing a data copy. An attacker who can supply input to an application utilizing this function can trigger the flaw to crash the application or read uninitialized memory data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130847": {
+    "cvss": 7.2,
+    "description": "Dolibarr ERP CRM before 24.0.2 contains an improper authorization vulnerability in the Users REST API put() method that allows non-admin API users to set administrator passwords. Authenticated users with user modification and password rights can send a PUT request to the users endpoint with a chosen pass value for a SuperAdmin account and then log in as that administrator.",
+    "vendor": "Dolibarr",
+    "product": "Dolibarr ERP CRM"
+  },
+  "CVE-2026-130848": {
+    "cvss": 8.8,
+    "description": "Dolibarr ERP CRM through 24.0.3 contains a code injection vulnerability in Website::importWebSite() that allows website editors without PHP permission to execute code by importing templates. Attackers can import a template zip whose javascript.js.php contains PHP code, which the public javascript.js.php endpoint includes, executing code as the web server user.",
+    "vendor": "Dolibarr",
+    "product": "Dolibarr ERP CRM"
   }
 }
