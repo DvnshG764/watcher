@@ -143488,5 +143488,59 @@
     "description": "Improper Input Validation vulnerability in Apache Traffic Server. This issue affects Apache Traffic Server: from 9.2.0 through 9.2.14, from 10.1.0 through 10.1.3. Users are recommended to upgrade to version 9.2.15 or 10.1.4, which fixes the issue.",
     "vendor": "Apache Software Foundation",
     "product": "Apache Traffic Server"
+  },
+  "CVE-2026-92241": {
+    "cvss": 5.7,
+    "description": "The AVRCP browsing channel's L2CAP receive-buffer callback, browsing_avrcp_l2cap_alloc_buf() in subsys/bluetooth/host/classic/avrcp.c, allocated from the shared avctp_browsing_rx_pool with K_FOREVER. L2CAP invokes that callback from the Bluetooth RX work queue thread (bt_workq, \"BT RX WQ\"), both for the head buffer of a new SDU and — through l2cap_br_alloc_frag() and net_buf_append_bytes() — for every further fragment of a reassembled SDU. That same thread is the only context that ever releases these buffers, after bt_l2cap_br_recv_seg() delivers a completed SDU and calls net_buf_unref(), so a wait taken there can never be satisfied. The pool holds CONFIG_BT_MAX_CONN + 1 buffers of CONFIG_BT_AVRCP_BROWSING_L2CAP_MTU bytes (two buffers of 339 bytes in the default configuration). A connected browsing peer can drain it because bt_l2cap_br_recv_seg() in subsys/bluetooth/host/classic/l2cap_br.c accepts the SDU length declared in an SAR_START segment without bounding it by br_chan->rx.mtu: a peer that announces a large SDU and then streams continuation segments forces one pool buffer per segment-worth of data. Once the pool is empty the next allocation blocks forever inside the callback. Triggering the flaw requires a build with CONFIG_BT_CLASSIC and the experimental CONFIG_BT_AVRCP_BROWSING option, an application that registers AVRCP callbacks, and a BR/EDR peer that has established the AVRCP control channel and then the browsing channel, which requires an encrypted (paired) link. No malformed packet is needed — a few hundred bytes of ordinary segmented L2CAP traffic suffice. The consequence is a permanent hang of the whole Bluetooth host, not just of AVRCP: the blocked thread drains bt_dev.rx_queue for all HCI ACL data and low-priority events and also runs the host's internal work items, so all connections stop being serviced and the state is unrecoverable without a reboot. There is no memory-corruption or information-disclosure component. The fix allocates with K_NO_WAIT, so an empty pool now yields a local-busy indication or a channel disconnect that the application can recover from.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107523": {
+    "cvss": 8.7,
+    "description": "Dell PowerStore contains an integer overflow vulnerability. An adjacent attacker could exploit it to bypass volume bounds checks, potentially leading to data destruction or denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109092": {
+    "cvss": 7.8,
+    "description": "Incorrectly handled negative sizes when processing ProcXvShmPutImage requests in the X.Org xwayland before 24.1.15 and X Server before 21.1.26 could be used by local authenticated X clients to crash the X server or execute code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109093": {
+    "cvss": 8.5,
+    "description": "A stack buffer overflow in ProcXTestFakeInput DeviceValuator handling in X.Org xwayland before 24.1.15 and X server before 21.1.26 could be used by authenticated clients to crash or execute code in the X server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109094": {
+    "cvss": 8.5,
+    "description": "A integer overflow that can lead to a buffer overrread in the XRes QueryResourceBytes Swap Path in the X.Org xwayland before 24.1.15 and X Server before 21.1.26 on 32bit systems could be used by authenticated clients to crash the X server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109445": {
+    "cvss": 9.8,
+    "description": "PLANET GS-5220-8P2T2S (hardware version 3.0) firmware versions before 3.2412b261008 contains a stack-based buffer overflow vulnerability that allows unauthenticated attackers to corrupt stack memory by submitting an oversized webstax_auth HTTP Cookie value that is copied into a fixed-size stack buffer without length validation. Attackers can send a crafted unauthenticated HTTP request with an oversized cookie to overwrite the saved return address and corrupt stack memory, leading to memory corruption and potential denial of service on the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123975": {
+    "cvss": 7.5,
+    "description": "Grid Community Toolkit before 6.2.20261111 (globus-gss-assist before 12.9) contains a heap out-of-bounds write in globus_gss_assist_token_get_fd() triggered by SSLv2 record lengths below 3. Remote unauthenticated clients can send a crafted GSI handshake record to services like globus-gatekeeper and myproxy to corrupt heap memory and crash the service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127031": {
+    "cvss": 7.7,
+    "description": "In Eclipse AAS4J before 3.0.1, `XmlSchemaValidator.validateSchema()` (and `AASXValidator.validateSchema()`, which calls it) validates untrusted XML with a default JAXP `Validator` that resolves external DTDs and external entities. An attacker who supplies a crafted AAS XML document or AASX package can read local files from the host, send their contents out-of-band to an attacker-controlled server, and make the validating process send arbitrary outbound requests (SSRF). Validation still returns no errors. Details: - Vulnerable code: `dataformat-xml/src/main/java/org/eclipse/digitaltwin/aas4j/v3/dataformat/xml/XmlSchemaValidator.java`. `schema.newValidator().validate(new StreamSource(...))` runs without `ACCESS_EXTERNAL_DTD` / `ACCESS_EXTERNAL_SCHEMA` restrictions and without `disallow-doctype-decl`. - Second entry point: `dataformat-aasx/src/main/java/org/eclipse/digitaltwin/aas4j/v3/dataformat/aasx/AASXValidator.java`. The AAS XML part of an `.aasx` package is passed unchanged to the vulnerable validator. - `XmlDeserializer` (Jackson/Woodstox) is not affected, because DTD support is disabled by default there. - Present since the initial import of the code base (commit `cc9da52`). - Fix: harden the validator by setting `ACCESS_EXTERNAL_DTD` and `ACCESS_EXTERNAL_SCHEMA` to `\"\"` and rejecting `DOCTYPE` declarations. The bundled `AAS.xsd` does not need DTDs, so no functionality is lost.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-69224": {
+    "cvss": 6.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Versions 3.13.2 and below of the Python HTTP parser may allow a request smuggling attack with the presence of non-ASCII characters. If a pure Python version of AIOHTTP is installed (i.e. without the usual C extensions) or AIOHTTP_NO_EXTENSIONS is enabled, then an attacker may be able to execute a request smuggling attack to bypass certain firewalls or proxy protections. This issue is fixed in version 3.13.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
