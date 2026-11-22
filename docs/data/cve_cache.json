@@ -143602,5 +143602,167 @@
     "description": "LodePNG through 20261006 contains a heap out-of-bounds read vulnerability in lodepng::getFilterTypesInterlaced() in lodepng_util.cpp that lacks bounds checks on decompressed IDAT data. Attackers can supply a crafted interlaced PNG declaring a raster larger than its IDAT stream to disclose adjacent heap memory or crash applications.",
     "vendor": "lvandeve",
     "product": "lodepng"
+  },
+  "CVE-2026-128907": {
+    "cvss": 4.3,
+    "description": "Missing authentication for a critical function (CWE-306) in the management service (uavmonitor_usbv1) of the 1300 communications board in DJI AeroScope Mobile (TP703) firmware 03.00.00.26, with 1300 communications board firmware 02.00.07.12 through 02.00.08.40, allows an unauthenticated attacker on the local network to read device information, such as the serial number, MAC address, IP address and radio configuration, and to change configuration settings. The service accepts commands in DJI's proprietary DUML protocol without any authentication. Exploitation requires network access to TCP port 16000 on the board and that the unit is not connected to another controlling host. The same commands are also accepted over the USB operator port. Confirmed on a physical device. NOTE: This vulnerability only affects products that are no longer supported by the maintainer. DJI has discontinued AeroScope Mobile and no fixed firmware is available.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128908": {
+    "cvss": 8.8,
+    "description": "OS command injection (CWE-78) in the network-configuration handling of the management service (uavmonitor_usbv1) of the 1300 communications board in DJI AeroScope Mobile (TP703) firmware 03.00.00.26, with 1300 communications board firmware 02.00.07.12 through 02.00.08.40, allows an unauthenticated attacker on the local network to execute arbitrary commands as root. Configuration values that can be written without authentication over the management interface are inserted unquoted into shell commands. Exploitation requires network access to TCP port 16000 on the board and that the unit is not connected to another controlling host. The injected command persists across reboots. Confirmed on a physical device. NOTE: This vulnerability only affects products that are no longer supported by the maintainer. DJI has discontinued AeroScope Mobile and no fixed firmware is available.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128910": {
+    "cvss": 6.8,
+    "description": "Use of hard-coded credentials (CWE-798) on the 1300 communications board in DJI AeroScope Mobile (TP703) firmware 03.00.00.26, with 1300 communications board firmware 02.00.07.12 through 02.00.08.40, allows an attacker with physical access to the board's serial console to log in as root. The same password hash is present on every unit and uses DES crypt, so the password can be recovered offline from the distributed firmware. No network login service accepts this password by default. Confirmed on a physical device. NOTE: This vulnerability only affects products that are no longer supported by the maintainer. DJI has discontinued AeroScope Mobile and no fixed firmware is available.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129092": {
+    "cvss": 5.7,
+    "description": "CCC Attestation SIG attested-tls-poc through commit 731ca82 contains a time-of-check time-of-use vulnerability because Evidence is appraised only once during the TLS handshake, without post-handshake re-attestation. Attackers with local access to the attesting endpoint can alter workload code, data, configuration, or attached devices like GPUs while peers keep trusting the original Evidence.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121808": {
+    "cvss": 8.2,
+    "description": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in elixir-grpc grpc_core and grpc allows unauthenticated attackers to exhaust server memory via a compressed Erlang external term in a gRPC message body. GRPC.Codec.Erlpack.decode/2 (grpc_core/lib/grpc/codec/erlpack.ex, and lib/grpc/codec/erlpack.ex before the package split) passes the message body to :erlang.binary_to_term/2. That function inflates a compressed term in full before it returns. The codec sets no limit on the decoded size, and its type checks run only on the decoded term. The server's max_body_size limit counts the compressed bytes of the request. A request with Content-Type: application/grpc+erlpack can therefore make the server allocate a term much larger than the request body. This issue affects grpc: from 0.4.0 before 1.0.0; grpc_core: from 1.0.0 before 1.1.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123635": {
+    "cvss": 6.3,
+    "description": "Missing Release of Resource after Effective Lifetime vulnerability in elixir-grpc grpc_server allows a client to stall all later calls on a shared HTTP/2 connection via calls that the server refuses while their DATA frames are in flight. The stream handler grpc_stream_h (grpc_server/src/grpc_stream_h.erl) requests flow from Cowboy only for request data that has arrived. When the server refuses a call early, for example because the body exceeds max_body_size or the method is not implemented, Cowboy drops the DATA frames still in flight for that stream. Their bytes are not returned to the connection flow-control window. After enough refused calls the window is empty. No call on that connection can then send a request body, and each call waits until its deadline. Other connections are not affected. This issue affects grpc_server: from 1.0.0 before 1.1.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124278": {
+    "cvss": 7.6,
+    "description": "Authorization Bypass Through User-Controlled Key vulnerability in elixir-grpc grpc_server and grpc allows an attacker to make a handler act on a resource other than the one named in the URL of an HTTP-transcoded route, via a request with a gRPC Content-Type. Only the transcoding clause of GRPC.Server.do_handle_request/4 (grpc_server/lib/grpc/server.ex, and lib/grpc/server.ex before the package split) applies the route's path bindings to the request message. The Cowboy handler picks that clause from the request Content-Type, not from the route. A request to a transcoded URL with application/grpc or application/grpc-web is decoded from the body alone, so every path-bound field takes its value from the body. A gateway, proxy rule or WAF that authorizes on the URL path sees one resource while the handler receives another. This issue affects grpc: from 0.8.0 before 1.0.0; grpc_server: from 1.0.0 before 1.1.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126818": {
+    "cvss": 6.5,
+    "description": "A Ruby object-document mapper does not apply its automatic field-level encryption configuration to certain fields when the data model uses class inheritance. Values the application designated for encryption are written to the database in readable form without any error or warning. A database account holding only read access to the application's collections, and no access to the encryption key store, may obtain those values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128034": {
+    "cvss": 5.5,
+    "description": "In gittuf before 0.18.0, verification of file protection rules uses the quoted, escaped pathnames that Git prints by default for files with special characters (for example non-ASCII characters) instead of the raw paths. Such paths do not match patterns like file:internal/*, so the files are treated as unprotected, and a user who is not authorized by a file protection rule can change a protected file whose name contains special characters and still pass verification.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128035": {
+    "cvss": 5.5,
+    "description": "In gittuf 0.10.0 through 0.17.0, the verification workflow does not load policy updates that are propagated from an upstream (controller) repository and recorded in the reference state log after the first entry being verified. Only the propagated policy in effect at the start of verification is applied, so later controller changes to global rules, such as threshold requirements and force-push blocks, are ignored and changes that these rules should block pass verification.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128036": {
+    "cvss": 2.3,
+    "description": "In gittuf 0.4.0 through 0.16.0, when a policy update appears within the range of reference state log entries being verified, verification checks only the root of trust signatures of the new policy and not the signatures of its other metadata (rule files). A user trusted to push to the repository who bypasses gittuf policy apply and writes the policy reference and reference state log directly can make an invalid policy apply during verification, weakening or strengthening the rules for later changes. The update is still recorded in the reference state log.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128037": {
+    "cvss": 6.5,
+    "description": "In gittuf 0.10.0 through 0.15.0, when a minimum threshold global rule and a policy rule protect the same namespace, verification gives the global rule's check over all trusted users in the policy precedence over the policy rule's own authorized users. A user listed in the policy file but not authorized by the policy rule, or fewer users than the rule's threshold, can make changes to the protected namespace that pass verification.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129094": {
+    "cvss": 4.7,
+    "description": "@utcp/http before 1.1.14 contains a server-side request forgery vulnerability that allows remote manuals to reach loopback services by bypassing the remote-loopback check with a {host} placeholder. Attackers can supply host arguments like 127.0.0.1 or register tools via Streamable HTTP and SSE discovery to access internal services on the agent machine.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129099": {
+    "cvss": 7.2,
+    "description": "Cudy TR3000 before 2.5.42 contains a remote code execution vulnerability that allows authenticated administrators to run root commands by importing a malicious OpenVPN client configuration. Attackers can include tls-verify or ipchange directives, which the incomplete denylist does not filter, to execute commands as root when the router connects to an attacker-controlled VPN endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129100": {
+    "cvss": 7.2,
+    "description": "Cudy TR3000 before 2.5.42 contains a remote code execution vulnerability that allows authenticated administrators to execute commands as root by uploading crafted OpenVPN private or tls-auth keys. Attackers can close the inline key block with , inject directives such as tls-verify that bypass the .ovpn denylist, and have OpenVPN execute the hook as root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129101": {
+    "cvss": 7.2,
+    "description": "Cudy TR3000 before 2.5.42 contains a mass assignment vulnerability in the vpn.set_conf App RPC method that allows authenticated administrators to inject arbitrary OpenVPN server options. Attackers can set enabled=1 and a malicious up option in the openvpns object, which the openvpn-hotplug wrapper executes via /bin/sh as root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129102": {
+    "cvss": 7.2,
+    "description": "Cudy TR3000 before 2.5.42 contains a command injection vulnerability that allows authenticated administrators to execute commands as root by injecting newlines into the IPsec keyexchange field of the vpn.set_conf RPC method. Attackers can append a second leftupdown directive to ipsec.conf, which StrongSwan's updown plugin runs as root when an attacker-controlled peer establishes the CHILD_SA.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129103": {
+    "cvss": 7.2,
+    "description": "Cudy TR3000 before 2.5.42 contains a command injection vulnerability that allows authenticated administrators to execute commands as root by injecting newlines into reboot_time. Attackers can submit a reboot_time value followed by a newline and crontab line, which /etc/init.d/autoreboot writes to the root crontab for crond to run.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129104": {
+    "cvss": 6.5,
+    "description": "Cudy TR3000 before 2.5.42 contains a dnsmasq configuration injection vulnerability that allows authenticated administrators to inject directives by embedding a newline in the net.set_dhcp leasetime field. Attackers can append address= entries via /etc/init.d/dnsmasq to alter DNS answers for LAN clients, or insert invalid lines that stop dnsmasq.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129105": {
+    "cvss": 6.5,
+    "description": "Cudy TR3000 before 2.5.42 contains an option injection vulnerability that allows authenticated administrators to inject arbitrary pppd options by embedding quotes and newlines in L2TP credentials. Attackers can submit crafted usernames or passwords to the net.set_wan RPC method, which l2tp.sh writes into a pppd options file, adding options like logfile to the root pppd process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49341": {
+    "cvss": 7.5,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to version 1.5.1, there is a remotely reachable denial-of-service vulnerability in bacnet-stack affecting the default demo server built from the unmodified apps/server/main.c. This issue has been patched in version 1.5.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52787": {
+    "cvss": 7.5,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to versions 1.4.5, 1.5.1, and 1.6.0-rc2, a reachable out-of-bounds write exists when encoding the device.address-binding property. This issue has been patched in versions 1.4.5, 1.5.1, and 1.6.0-rc2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52789": {
+    "cvss": 7.5,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to versions 1.4.5, 1.5.1, and 1.6.0, a Denial of Service (DoS) vulnerability exists in the BACnet stack's ReadPropertyMultiple (RPM) handler. When processing a malformed RPM request packet that lacks the expected closing tags, the function handler_read_property_multiple enters an infinite loop. This issue has been patched in versions 1.4.5, 1.5.1, and 1.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58265": {
+    "cvss": 6.5,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to versions 1.4.5, 1.5.1, and 1.6.0, a BACnet/SC peer can trigger a heap out-of-bounds read (up to 3 bytes), pre-authentication, in the BACnet/SC header-option decoder. bvlc_sc_decode_proprietary_option() reads the vendor-id and option-type at fixed offsets [3],[4],[5] before checking the option's declared header length, and the option-list validator never enforces a minimum length for proprietary options. This issue has been patched in versions 1.4.5, 1.5.1, and 1.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62972": {
+    "cvss": 6.9,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to versions 1.4.5, 1.5.1, and 1.6.0, lighting_command_decode in src/bacnet/lighting.c decodes its first field with the bounded apdu_size - apdu_len, but every nested decode in the operation switch is called with the original full apdu_size while the read pointer has been advanced to &apdu[apdu_len]. The leaf decoders bound their reads against the size they are told, so they read up to apdu_len bytes past the end of the caller's buffer, resulting in an out-of-bounds read. This issue has been patched in versions 1.4.5, 1.5.1, and 1.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62974": {
+    "cvss": 8.7,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to versions 1.4.5, 1.5.1, and 1.6.0, a malformed but non-empty BACnet WriteProperty request can drive the official server demo into a non-terminating request-processing loop with repeated heap-backed side effects. This results in a remote unauthenticated denial of service via uncontrolled resource consumption and a non-terminating request path. This issue has been patched in versions 1.4.5, 1.5.1, and 1.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121809": {
+    "cvss": 8.2,
+    "description": "Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability in elixir-grpc grpc_server and grpc allows unauthenticated attackers to occupy a BEAM scheduler indefinitely via a client-streaming or bidirectional-streaming request whose body ends inside a gRPC message. GRPC.Server.Adapters.Cowboy.read_stream/1 (grpc_server/lib/grpc/server/adapters/cowboy.ex, and the Cowboy adapter in grpc before the package split) asks for more data whenever the buffer does not hold a complete message. Once the request body has ended, every further read returns an empty chunk, so the buffer never changes and the function retries without end. A single 5-byte length prefix sent with END_STREAM keeps one scheduler busy for as long as the connection stays open, and repeated requests exhaust all schedulers. This issue affects grpc: from 0.3.1 before 1.0.0; grpc_server: from 1.0.0 before 1.1.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
