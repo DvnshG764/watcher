@@ -146374,5 +146374,557 @@
     "description": "modified eCommerce Shopsoftware through 3.3.0 contains a cross-site request forgery vulnerability in gv_send.php because the action=process step never validates a CSRF token via check_secure_form(). Attackers can host an auto-submitting form that makes a logged-in customer send their gift voucher balance to an attacker-controlled email address for redemption.",
     "vendor": "modified-shop",
     "product": "modified-shop"
+  },
+  "CVE-2026-122150": {
+    "cvss": 9.1,
+    "description": "The PocketTouch and TouchPoint POS `CHECKPAYMENT` workflow accepts a caller-supplied clerk number without adequately verifying that the requesting client is authorized to act as that clerk. An attacker with access to the POS protocol may be able to specify another employee’s clerk identifier and submit payment-related requests under that identity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122152": {
+    "cvss": 5.9,
+    "description": "The ICRTouch white-label TouchTakeaway Cordova applications do not implement certificate or public-key pinning for backend HTTPS connections. The applications therefore rely exclusively on the device’s system trust store when validating server certificates. An attacker who can cause a device to trust an attacker-controlled certificate authority, or who operates through a compromised or improperly issued trusted certificate, may be able to intercept and modify application traffic.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122153": {
+    "cvss": 7.5,
+    "description": "The TouchOffice API `clerkList` endpoint appears to return sensitive clerk authentication data, including clerk PINs and iButton serial numbers. If the endpoint is accessible to callers who do not require access to these values, the API exposes reusable authentication material beyond the minimum information necessary for clerk-list functionality.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65106": {
+    "cvss": 7.8,
+    "description": "NVIDIA Transformer Engine for Linux contains a vulnerability where a user could cause deserialization by loading untrusted data. A successful exploit of this vulnerability might lead to code execution, information disclosure, and denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65167": {
+    "cvss": 5.5,
+    "description": "NVIDIA TensorRT contains a vulnerability where a user could cause memory allocation with excessive size value by crafting a malicious TRT engine. A successful exploit of this vulnerability might lead to denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120287": {
+    "cvss": 6.9,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in Plug.Parsers.MULTIPART in elixir-plug plug allows an unauthenticated remote attacker to exhaust memory via a multipart request body built from parts without headers, or from header lines without a name and a value. The parser charges the :length limit only with the name and value bytes of each part header and the bytes of each part body. The part delimiter, the header separator, and the line endings cost nothing. In lib/plug/parsers/multipart.ex, Plug.Parsers.MULTIPART.parse_multipart_headers/5 keeps an entry for every part without a content-disposition header, together with its header list, until the whole body is read. A request made of such parts does not reach the limit at any size, and the parser process holds a multiple of the request size in memory until parsing completes. Any endpoint that uses Plug.Parsers with the :multipart parser is reachable. This issue affects plug: from 1.13.0 before 1.20.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129246": {
+    "cvss": 7.8,
+    "description": "Due to a Debian-specific patch, the directory used to share data between the LightDM and the users logging in was writable by the lightdm user of the unprivileged greeter process. A process running under the lightdm identity could leverage write access to that directory to force the LightDM process (running as root) to change ownership and permissions on other root-owned directories and escalate privileges from the lightdm user to root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130801": {
+    "cvss": 9.8,
+    "description": "The device's command parser does not require asymmetric cryptographic signatures to validate incoming APDU packets. This enables an attacker to inject forged, unauthorized commands to manipulate device features and configurations once the initial handshake is bypassed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130802": {
+    "cvss": 9.1,
+    "description": "The NFC authentication handshake relies on a fixed, static challenge instead of a unique, random value for every session. This allows an attacker to perform a \"replay attack,\" successfully authenticating by simply sending the same pre-recorded response.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130803": {
+    "cvss": 7.5,
+    "description": "The firmware and flash memory store critical cryptographic secrets, such as global AES keys and network master keys, in unencrypted formats. Additionally, active session tokens (Store Pairing Tokens) are written to the flash in plaintext, exposing live network credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130804": {
+    "cvss": 6.1,
+    "description": "The microcontroller lacks enabled debug lock bits, leaving the physical Single-Wire (SWS) debugging interface completely unrestricted. This allows an attacker with physical access to use a hardware programmer to dump the entire production firmware.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67455": {
+    "cvss": 8.8,
+    "description": "NVIDIA Model Optimizer for Linux and Windows contains a vulnerability where an attacker could cause a deserialization of untrusted data. A successful exploit of this vulnerability might lead to code execution, data tampering, denial of service, and information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21590": {
+    "cvss": 8.7,
+    "description": "This High severity Information Path Traversal (Arbitrary Read/Write) vulnerability was introduced in versions 9.12.0, 10.3.0, and 11.3.0 of Jira Software Data Center. This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7, allows a remote unauthenticated attacker to read files from the Jira web application root. Atlassian recommends that Jira Software Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Jira Software Data Center 9.12: Upgrade to a release greater than or equal to 9.12.40 Jira Software Data Center 10.3: Upgrade to a release greater than or equal to 10.3.26 Jira Software Data Center 11.3: Upgrade to a release greater than or equal to 11.3.12 See the release notes (https://confluence.atlassian.com/jirasoftware/jira-software-data-center-release-notes.html). You can download the latest version of Jira Software Data Center from the download center (https://www.atlassian.com/software/jira/download-archives). This vulnerability was reported via our Bug Bounty program.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21591": {
+    "cvss": 7.4,
+    "description": "This High severity PrivEsc (Privilege Escalation) vulnerability was introduced in versions 10.2.0, 11.0.0, 12.0.0, and 12.1.0 of Bamboo Data Center. This PrivEsc (Privilege Escalation) vulnerability, with a CVSS Score of 7.4, allows an authenticated attacker to perform actions as a higher-privileged user. Atlassian recommends that Bamboo Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Bamboo Data Center 10.2: Upgrade to a release greater than or equal to 10.2.26 Bamboo Data Center 12.1: Upgrade to a release greater than or equal to 12.1.13 Bamboo Data Center 13.0: Upgrade to a release greater than or equal to 13.0.1 See the release notes ([https://confluence.atlassian.com/bambooreleases/bamboo-release-notes-1189793869.html]). You can download the latest version of Bamboo Data Center from the download center ([https://www.atlassian.com/software/bamboo/download-archives]). This vulnerability was reported via our Penetration Testing program.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21592": {
+    "cvss": 7.7,
+    "description": "This High severity Path Traversal (Arbitrary Read/Write) vulnerability known as CVE-2026-21592 was introduced in version 4.9.0. This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 7.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:P allows an unauthenticated attacker to disclose protected application configuration files, which has high impact to confidentiality, no impact to integrity, no impact to availability, and requires no user interaction. Atlassian recommends that Crucible Server customers upgrade to the latest version. If you are unable to do so, upgrade your instance to the specified supported fixed version: Crucible Server 4.9: Upgrade to a release greater than or equal to 4.9.16 See the Crucible Server release notes ([https://confluence.atlassian.com/crucible/crucible-releases-298977378.html]). You can download the latest version of Crucible from the Crucible Download Archives ([https://www.atlassian.com/software/crucible/download-archives]). The following description summarizes the vulnerability reported via our Penetration Testing program: Crucible do not account for path parameters when validating protected paths requested through the static-resource route. A crafted path segment passes validation, after which Jetty removes the path parameter during dispatch and resolves the request to a protected resource. This can expose files under WEB-INF and permit direct invocation of admin-area JSPs outside the normal interceptor and administrative password checks. An ordinary authenticated user can exploit the issue, and unauthenticated exploitation is possible when anonymous access is enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21593": {
+    "cvss": 7.7,
+    "description": "This High severity OS Command Injection vulnerability known as CVE-2026-21593 was introduced in version 4.9.0. This OS Command Injection vulnerability, with a CVSS Score of 7.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N allows an authenticated attacker to execute arbitrary commands. Atlassian recommends that Fisheye and Crucible Data Center and Server customers upgrade to the latest version. If you are unable to do so, upgrade your instance to the specified supported fixed version: Fisheye and Crucible 4.9: Upgrade to a release greater than or equal to 4.9.16 See the Fisheye release notes (https://confluence.atlassian.com/fisheye/fisheye-release-notes-965552419.html) and Crucible release notes (https://confluence.atlassian.com/crucible/crucible-releases-298977378.html). You can download the latest version of Fisheye and Crucible from the Crucible Download Archives (https://www.atlassian.com/software/crucible/download-archives).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21594": {
+    "cvss": 8.7,
+    "description": "This High severity Path Traversal (Arbitrary Read/Write) vulnerability known as CVE-2026-21594 was introduced in versions 10.2.0, 11.0.0, 12.0.0, and 12.1.0. This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N allows an unauthenticated attacker to disclose protected files from the Bamboo web application root, which has high impact to confidentiality, no impact to integrity, no impact to availability, and requires no user interaction. Atlassian recommends that Bamboo Data Center customers upgrade to the latest version. If you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Bamboo Data Center 12.1: Upgrade to a release greater than or equal to 12.1.13 Bamboo Data Center 10.2: Upgrade to a release greater than or equal to 10.2.26 See the release notes (https://confluence.atlassian.com/bambooreleases/bamboo-release-notes-1189793869.html). You can download the latest version of Bamboo Data Center from the download center (https://www.atlassian.com/software/bamboo/download-archives).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21595": {
+    "cvss": 7.6,
+    "description": "This High severity Improper Authorization vulnerability was introduced in versions 10.2.0, 11.0.0, 12.0.0, and 12.1.0 of Bamboo Data Center. This Improper Authorization vulnerability, with a CVSS Score of 7.6, allows an unauthenticated attacker to gain unintended access and can lead to the exposure of resources or functionality, possibly providing attackers with sensitive information or even execute arbitrary code. Atlassian recommends that Bamboo Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Bamboo Data Center 10.2: Upgrade to a release greater than or equal to 10.2.26 Bamboo Data Center 12.1: Upgrade to a release greater than or equal to 12.1.13 Bamboo Data Center 13.0: Upgrade to a release greater than or equal to 13.0.1 See the release notes ([https://confluence.atlassian.com/bambooreleases/bamboo-release-notes-1189793869.html]). You can download the latest version of Bamboo Data Center from the download center ([https://www.atlassian.com/software/bamboo/download-archives]). This vulnerability was reported via our Penetration Testing program.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21596": {
+    "cvss": 7.7,
+    "description": "This High severity SSTI (Server-side Template Injection) vulnerability known as CVE-2026-21596 was introduced in version 12.0.0, 12.1.0. This SSTI (Server-side Template Injection) vulnerability, with a CVSS Score of 7.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N allows an authenticated attacker to execute arbitrary commands, which has high impact to confidentiality, high impact to integrity, high impact to availability, and requires no user interaction. Atlassian recommends that Bamboo Data Center customers upgrade to the latest version. If you are unable to do so, upgrade your instance to the specified supported fixed version: Bamboo Data Center 12.1: Upgrade to a release greater than or equal to 12.1.13 See the release notes ([https://confluence.atlassian.com/bambooreleases/bamboo-release-notes-1189793869.html]). You can download the latest version of Bamboo Data Center from the download center ([https://www.atlassian.com/software/bamboo/download-archives]).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21598": {
+    "cvss": 8.7,
+    "description": "This High severity Path Traversal (Arbitrary Read/Write) vulnerability known as CVE-2026-21598 was introduced in versions 10.2.0, 11.0.0, 12.0.0 and 12.1.0. This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N allows an unauthenticated attacker to potentially disclose sensitive information from the deployed Bamboo web application root, which has high impact to confidentiality, no impact to integrity, no impact to availability, and requires no user interaction. Atlassian recommends that Bamboo Data Center customers upgrade to the latest version. If you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Bamboo Data Center 12.1: Upgrade to a release greater than or equal to 12.1.13 Bamboo Data Center 10.2: Upgrade to a release greater than or equal to 10.2.26 See the release notes ([https://confluence.atlassian.com/bambooreleases/bamboo-release-notes-1189793869.html]). You can download the latest version of Bamboo Data Center from the download center ([https://www.atlassian.com/software/bamboo/download-archives]).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21599": {
+    "cvss": 7.5,
+    "description": "This High severity Path Traversal (Arbitrary Read/Write) vulnerability known as CVE-2026-21599 was introduced in versions 10.2.0, 11.0.0, 12.0.0, and 12.1.0. This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 7.5 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N allows an authenticated attacker to expose assets in your environment susceptible to exploitation. Atlassian recommends that Bamboo Data Center customers upgrade to the latest version. If you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Bamboo Data Center 13.0: Upgrade to a release greater than or equal to 13.0.1 Bamboo Data Center 12.1: Upgrade to a release greater than or equal to 12.1.13 Bamboo Data Center 10.2: Upgrade to a release greater than or equal to 10.2.26 See the release notes (https://confluence.atlassian.com/bambooreleases/bamboo-release-notes-1189793869.html). You can download the latest version of Bamboo Data Center from the download center (https://www.atlassian.com/software/bamboo/download-archives).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21600": {
+    "cvss": 8.9,
+    "description": "This High severity Security Misconfiguration vulnerability was introduced in versions 10.2.0, 11.0.0, 12.0.0, and 12.1.0 of Bamboo Data Center. This Security Misconfiguration vulnerability, with a CVSS Score of 8.9, allows an authenticated attacker to to get into the system utilizing loopholes exposed from security best-practices being overlooked. Atlassian recommends that Bamboo Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Bamboo Data Center 10.2: Upgrade to a release greater than or equal to 10.2.26 Bamboo Data Center 12.1: Upgrade to a release greater than or equal to 12.1.13 Bamboo Data Center 13.0: Upgrade to a release greater than or equal to 13.0.1 See the release notes ([https://confluence.atlassian.com/bambooreleases/bamboo-release-notes-1189793869.html]). You can download the latest version of Bamboo Data Center from the download center ([https://www.atlassian.com/software/bamboo/download-archives]). This vulnerability was reported via our Atlassian (Internal) program.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21601": {
+    "cvss": 8.7,
+    "description": "This High severity BASM (Broken Authentication & Session Management) vulnerability was introduced in versions 10.0.0 and 11.0.0 of Jira Service Management Data Center. This BASM (Broken Authentication & Session Management) vulnerability, with a CVSS Score of 8.7, allows an unauthenticated attacker to perform actions as another user. Atlassian recommends that Jira Service Management Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: * Jira Service Management Data Center 10.3: Upgrade to a release greater than or equal to 10.3.27 * Jira Service Management Data Center 11.3: Upgrade to a release greater than or equal to 11.3.13 See the release notes (https://confluence.atlassian.com/servicemanagement/jira-service-management-release-notes-780083086.html). You can download the latest version of Jira Service Management Data Center from the download center (https://www.atlassian.com/software/jira/service-management/download-archives). This vulnerability was discovered by Nagli and reported via our Bug Bounty program",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21602": {
+    "cvss": 7.4,
+    "description": "This High severity Stored XSS vulnerability was introduced in version 10.3.26 of Jira Core Data Center and Jira Software Data Center. This Stored XSS vulnerability, with a CVSS Score of 7.4, allows an authenticated attacker to execute arbitrary HTML or JavaScript code on a victims browser. Atlassian recommends that Jira Core Data Center and Jira Software Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: * Jira Core Data Center and Jira Software Data Center 10.3: Upgrade to a release greater than or equal to 10.3.27 * Jira Core Data Center and Jira Software Data Center 11.3: Upgrade to a release greater than or equal to 11.3.13 See the release notes (https://www.atlassian.com/software/jira/download-archives). You can download the latest version of Jira Core Data Center and Jira Software Data Center from the download center (https://www.atlassian.com/software/jira/download-archives). This vulnerability was reported via our Penetration Testing program.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21603": {
+    "cvss": 8.4,
+    "description": "This High severity Stored XSS vulnerability was introduced in version 10.3.26 of Jira Core Data Center and Jira Software Data Center. This Stored XSS vulnerability, with a CVSS Score of 8.4, allows an authenticated attacker to execute arbitrary HTML or JavaScript code on a victims browser. Atlassian recommends that Jira Core Data Center and Jira Software Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: * Jira Core Data Center and Jira Software Data Center 10.3: Upgrade to a release greater than or equal to 10.3.27 * Jira Core Data Center and Jira Software Data Center 11.3: Upgrade to a release greater than or equal to 11.3.13 See the release notes (https://www.atlassian.com/software/jira/download-archives). You can download the latest version of Jira Core Data Center and Jira Software Data Center from the download center (https://www.atlassian.com/software/jira/download-archives). This vulnerability was reported via our Penetration Testing program.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21605": {
+    "cvss": 8.7,
+    "description": "This High severity Path Traversal (Arbitrary Read/Write) vulnerability known as CVE-2026-21605 was introduced in versions 2.0.0, 3.0.0, 4.0.0, 5.0.0, 6.0.1, 6.1.0, 6.2.0, 6.3.1, 6.4.0, 6.5.0, 6.6.0 ,6.7.0, 6.8.0, 6.9.0, 6.10.0, 6.11.0, 6.12.0, 6.13.0, 6.14.0, 6.15.1, 7.0.1, 7.1.0, 7.2.0, 7.3.1, 7.4.0, 7.5.0, 7.6.0, 7.7.2, 7.8.0, 7.9.0, 7.11.0, 7.12.0, 7.13.0, 7.14.0, 7.15.0, 7.16.0, 7.17.0, 7.18.0, 7.19.0, 7.20.0, 8.0.0, 8.1.0, 8.2.0, 8.3.0, 8.4.0, 8.5.0, 8.6.0, 8.7.1, 8.8.0, 8.9.0, 9.0.1, 9.1.0, 9.2.0, 9.3.1, 9.4.0, 9.5.1, 10.0.2, 10.1.0, 10.2.0, and 11.0.0 of Confluence Data Center. This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N allows an unauthenticated attacker to expose assets in your environment susceptible to exploitation, which has high impact to confidentiality, no impact to integrity, no impact to availability, and requires no user interaction. Atlassian recommends that Confluence Data Center and Server customers upgrade to the latest version. If you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Confluence Data Center 11.0: Upgrade to a release greater than or equal to 11.0.1 Confluence Data Center 10.2: Upgrade to a release greater than or equal to 10.2.20 Confluence Data Center 9.2: Upgrade to a release greater than or equal to 9.2.27 See the release notes ([https://confluence.atlassian.com/doc/confluence-release-notes-327.html]). You can download the latest version of Confluence Data Center and Server from the download center ([https://www.atlassian.com/software/confluence/download-archives]). The following description summarizes the vulnerability reported internally: Confluence CssServlet forwards a request-controlled path to ServletRequest.getRequestDispatcher. The dispatcher URL-decodes and normalizes the path, allowing an unauthenticated attacker to use an encoded traversal sequence to access protected web application resources such as /WEB-INF/web.xml. The demonstrated impact is disclosure of protected files that may contain configuration or secrets; no integrity or availability impact was demonstrated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21606": {
+    "cvss": 8.7,
+    "description": "This High severity Path Traversal (Arbitrary Read/Write) vulnerability known as CVE-2026-21606 was introduced in versions 10.3.26 and 11.3.12. This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N allows an unauthenticated attacker to disclose protected resources outside declared resource directories, which has high impact to confidentiality, no impact to integrity, no impact to availability, and requires no user interaction. Atlassian recommends that Jira Software Data Center customers upgrade to the latest version. If you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Jira Software Data Center 11.3: Upgrade to a release greater than or equal to 11.3.13 Jira Software Data Center 10.3: Upgrade to a release greater than or equal to 10.3.27 See the release notes (https://confluence.atlassian.com/jirasoftware/jira-software-data-center-release-notes.html). You can download the latest version of Jira Software Data Center from the Jira Data Center Download Archives (https://www.atlassian.com/software/jira/download-archives).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21607": {
+    "cvss": 8.7,
+    "description": "This High severity Path Traversal (Arbitrary Read/Write) vulnerability known as CVE-2026-21607 was introduced in versions 10.3.26 and 11.3.12. This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N allows an unauthenticated attacker to disclose protected web application files outside the intended resource location, which has high impact to confidentiality, no impact to integrity, no impact to availability, and requires no user interaction. Atlassian recommends that Jira Software Data Center customers upgrade to the latest version. If you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Jira Software Data Center 11.3: Upgrade to a release greater than or equal to 11.3.13 Jira Software Data Center 10.3: Upgrade to a release greater than or equal to 10.3.27 See the release notes (https://confluence.atlassian.com/jirasoftware/jira-software-data-center-release-notes.html). You can download the latest version of Jira Software Data Center from the Jira Data Center Download Archives (https://www.atlassian.com/software/jira/download-archives).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84974": {
+    "cvss": 5.4,
+    "description": "code16 Sharp is a Laravel-based framework for building content-management and administrative interfaces. Prior to 9.23.0, an authenticated attacker can submit an arbitrary PHP class name through the embed_key parameter to multiple embed API endpoints. The application passes the selected class to the Laravel service container, which invokes the class's __construct() method and recursively instantiates constructor dependencies, potentially causing unauthorized integrity or availability effects. The attacker cannot supply constructor parameter values or invoke an arbitrary method. This issue is fixed in version 9.23.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84987": {
+    "cvss": 5.4,
+    "description": "code16 Sharp is a Laravel-based framework for building content-management and administrative interfaces. Prior to 9.23.0, an authenticated attacker can call the autocomplete API with a request endpoint that contains the configured remote endpoint only as a substring. The endpoint validation uses an unanchored regular expression, so a different internal route can satisfy the check and be invoked server-side through the autocomplete request. The vulnerable path uses SharpFormAutocompleteRemoteField::setRemoteEndpoint(); applications using SharpFormAutocompleteRemoteField::setRemoteCallback() are not affected by this endpoint-selection flaw. This issue is fixed in version 9.23.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86061": {
+    "cvss": 8.8,
+    "description": "Teable is an AI spreadsheet for business. Prior to release.2026-07-17T05-20-38Z.2264, the routes for PluginService::regenerateSecret and PluginService::delete carry no @Permissions decorator, and the methods omit plugin ownership checks. An authenticated attacker can directly target another plugin's identifier to rotate and disclose its OAuth secret or delete the plugin, including system plugins. Separately, PermissionGuard authorizes several nested API requests using a caller-controlled parent tableId, baseId, or spaceId, while the services resolve the requested child object only by its globally unique identifier. An authenticated attacker can provide a parent resource the attacker owns together with a victim's child identifier. ViewService::getViewById can then disclose another tenant's view configuration, embedded filter values, field layout, and shareId. DashboardService::updatePluginStorage and the view-position updatePluginStorage path can overwrite another tenant's plugin storage because the plugin installation is not rebound to the authorized base, dashboard, table, or view. This issue is fixed in release.2026-07-17T05-20-38Z.2264.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-43361": {
+    "cvss": 6.5,
+    "description": "ZoneMinder is a free, open source closed-circuit television software application. Prior to 1.38.4, detaintPath() in web/includes/functions.php can be bypassed with a PHP stream-wrapper path when sanitizing modal.php input. A remote unauthenticated attacker can submit such a path through the affected input and potentially read unauthorized local files through local file inclusion. This issue is fixed in version 1.38.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104868": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DWG file, when parsed by Autodesk AutoCAD, can trigger an Integer Overflow vulnerability in RLE bitmap decompression, resulting in an undersized heap allocation and subsequent heap buffer overflow. A malicious actor can leverage this vulnerability to cause a crash or potentially execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113781": {
+    "cvss": 7.1,
+    "description": "ESP-IDF is the Espressif Internet of Things (IoT) Development Framework. Prior to 5.2.8, 5.3.6, 5.5.6, and 6.0.3, the Bluedroid BLE Mesh GATT server read handler bt_mesh_bta_gatts_cb in esp_ble_mesh stores a signed attribute-read callback length in an unsigned 16-bit variable. A negative ATT error code is therefore interpreted as a very large successful length and used for a memory copy from a small stack buffer into the GATT response structure. A remote attacker within Bluetooth LE range who can connect to an exposed PB-GATT provisioning or Mesh Proxy service can trigger a failed attribute read with a crafted request. On devices where the affected attributes are accessible without pairing, exploitation requires neither pairing nor user interaction; access requirements depend on device configuration. The resulting out-of-bounds read and stack-based buffer overflow corrupts the Bluetooth host task stack, causing a crash and device restart and potentially further memory corruption. The issue affects devices built with CONFIG_BT_BLUEDROID_ENABLED=y and BLE Mesh GATT enabled; the NimBLE host path is not affected. This issue is fixed in versions 5.2.8, 5.3.6, 5.5.6, and 6.0.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119793": {
+    "cvss": 7.5,
+    "description": "libp2p is a JavaScript implementation of the libp2p networking stack. Prior to 17.0.0, the @libp2p/gossipsub default configuration allows a connected remote peer to submit unsigned subscription RPC metadata for arbitrarily many distinct topic strings. handleReceivedSubscription in packages/gossipsub/src/gossipsub.ts creates a persistent topics-map entry for each accepted topic, while allowedTopics is unset by default, decodeRpc maxSubscriptions limits only one RPC rather than aggregate topic bytes, and peer scoring has no subscription-volume penalty. A single peer can therefore grow the topics map and committed heap toward out-of-memory conditions, and disconnecting additionally causes removePeer to scan all accumulated topic entries. This issue is fixed in version 17.0.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130621": {
+    "cvss": 8.2,
+    "description": "A time-of-check time-of-use (TOCTOU) race condition in the local port selection in AWS efs-utils (amazon-efs-utils) before 3.3.5 might allow a user that can start EFS mounts on a shared host to read and write a different Amazon EFS or S3 Files file system that is mounted on that same host, under that mount's IAM identity and access point, via concurrent mount operations. Only file systems mounted on the same host at the same time can be affected. Every mount involved was configured by the owner of that host, using credentials and access points that owner controls, against file systems whose owners had already granted that host access, so the issue grants no access beyond what the host was already permitted and does not cross AWS account boundaries unless the host's owner configured a cross-account mount. The practical risk is lateral access between workloads on the same host at the same time, for example one container reading another container's file system under that container's identity. The issue does not expose the other mount's IAM credentials or TLS session keys. To remediate this issue, users should upgrade amazon-efs-utils to version 3.3.5 or later. Users of the Amazon EFS CSI Driver should upgrade to version 3.5.4 or later, and users of the Amazon EKS EFS CSI add-on should update to v3.5.4-eksbuild.1 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16780": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DXF file, when parsed through Autodesk AutoCAD, can force a Heap-Based Buffer Overflow vulnerability. A malicious actor can leverage this vulnerability to cause a crash or execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18826": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DXF file, when parsed through Autodesk AutoCAD, can force a Type Confusion vulnerability. A malicious actor can leverage this vulnerability to cause a crash or execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18827": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DWG file containing an attacker-controlled Excel Data Link connection string, when processed through Autodesk AutoCAD, can cause AutoCAD to execute an attacker-controlled program. A malicious actor can leverage this vulnerability to execute arbitrary code in the context of the current user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-28273": {
+    "cvss": 9.9,
+    "description": "ZoneMinder is a free, open source closed-circuit television software application. Prior to 1.38.4, any authenticated user can use the /api/configs/edit/{name}.json endpoint to modify protected configuration settings because ConfigsController::edit() does not enforce the System=Edit authorization requirement and its system-variable protection is ineffective. An attacker can set ZM_PATH_FFMPEG to a command-bearing value and trigger an exec() sink in web/views/image.php or web/includes/Event.php by requesting frame extraction. This permits arbitrary command execution with the privileges of the web server user and can expose private camera feeds, recordings, and database data or establish persistence. This issue is fixed in version 1.38.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62267": {
+    "cvss": 7.1,
+    "description": "matrix-hookshot is a Matrix bot for connecting to external services like GitHub, GitLab, JIRA, and more. Prior to 7.3.3, Hookshot can crash in src/Bridge.ts while processing a modern Matrix reply whose m.relates_to.m.in_reply_to.event_id identifies an event that the bot cannot read. Bridge event handling calls botClient.getEvent() for the parent event without catching the resulting M_NOT_FOUND error, allowing the rejected request to escape reply processing and terminate the service. This issue is fixed in version 7.3.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69241": {
+    "cvss": 5.4,
+    "description": "Filament Curator is a media picker plugin for Filament panels. From 3.0.0 until 3.7.9, 4.1.2, and 5.1.2, the Curator media panel accepts image/svg+xml files by default and stores and serves their markup inline without sanitization. An authenticated user with media-upload permission can store an SVG containing scripts, event-handler attributes, or javascript: URIs. When another panel user selects the View action, the SVG opens as a top-level browser document and its active content executes in the Filament application's origin. The script can perform authenticated same-origin actions as the viewing user and read same-origin data and script-accessible tokens. Panel thumbnails are not affected because they render through an image element that does not execute SVG script. This issue is fixed in versions 3.7.9, 4.1.2, and 5.1.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77942": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted IES file, when parsed through Autodesk AutoCAD, can force an Out-of-Bounds Write vulnerability. A malicious actor can leverage this vulnerability to cause a crash or execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77943": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DXF file, when parsed through Autodesk AutoCAD, can force an Out-of-Bounds Write vulnerability. A malicious actor can leverage this vulnerability to cause a crash or execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77944": {
+    "cvss": 3.3,
+    "description": "A maliciously crafted DXF file containing a scene-background object with an attacker-controlled network path, when parsed through Autodesk AutoCAD, can force an Information Disclosure vulnerability. A malicious actor can leverage this vulnerability to disclose NTLM authentication information from the current user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84855": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DGN file, when parsed through Autodesk AutoCAD, can force a Heap-Based Buffer Overflow vulnerability. A malicious actor can leverage this vulnerability to cause a crash or execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85646": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DWF file, when parsed through Autodesk AutoCAD, can force a Heap-Based Buffer Overflow vulnerability. A malicious actor can leverage this vulnerability to cause a crash or execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85647": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DWG file containing a malformed embedded image, when parsed through Autodesk AutoCAD, can force a Heap-Based Buffer Overflow vulnerability. A malicious actor can leverage this vulnerability to cause a crash or execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85648": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DDS file, when parsed through Autodesk AutoCAD, can force a Heap-Based Buffer Overflow vulnerability. A malicious actor can leverage this vulnerability to cause a crash or execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93297": {
+    "cvss": 5.5,
+    "description": "A maliciously crafted DWG or DXF file containing a crafted field format string, when parsed through Autodesk AutoCAD, can force an Out-of-Bounds Read vulnerability. A malicious actor can leverage this vulnerability to read sensitive data from process memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93298": {
+    "cvss": 5.5,
+    "description": "A maliciously crafted DXF file containing crafted VBA project data, when parsed through Autodesk AutoCAD, can force an Out-of-Bounds Read vulnerability. A malicious actor can leverage this vulnerability to read sensitive data from process memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93299": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DWG file, when parsed through Autodesk AutoCAD or processed by the installed DWG thumbnail handler, can force an Out-of-Bounds Write vulnerability resulting in heap corruption. A malicious actor can leverage this vulnerability to cause a crash or execute arbitrary code in the context of the current process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95849": {
+    "cvss": 6.8,
+    "description": "Linkwarden is a self-hosted, open-source collaborative bookmark manager to collect, organize and archive webpages. Prior to 2.15.0, .github/workflows/check-branch.yml runs on the privileged pull_request_target event and interpolates the attacker-controlled github.head_ref source branch name unquoted into a run: shell script. An unauthenticated attacker can open a pull request from a fork with shell metacharacters in its branch name, causing arbitrary commands to execute in the base repository's privileged CI job before the branch comparison result matters. The job has access to GITHUB_TOKEN and any exposed secrets, allowing secret exfiltration and, when workflow token permissions allow repository writes, modification of repository content. This issue is fixed in version 2.15.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110789": {
+    "cvss": 7.5,
+    "description": "libp2p is a JavaScript implementation of the libp2p networking stack. Prior to 5.1.22, the @libp2p/crypto code reached by the default Identify service accepts a remote peer’s crafted publicKey before peer-id or signature verification and passes it through publicKeyFromProtobuf to the ASN.1 DER decoder. readLength in packages/crypto/src/keys/rsa/der.ts accepts long-form element lengths larger than the remaining buffer, causing readInteger and related readers to loop synchronously over an attacker-claimed length from a very small key blob. Because decoding occurs in one event-loop tick before the remotePeer equality check in packages/protocol-identify/src/identify.ts, the Identify timeout cannot interrupt it, allowing repeated unauthenticated connections to stall all timers and peers and transiently exhaust memory. This issue is fixed in version 5.1.22.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119192": {
+    "cvss": 7.5,
+    "description": "Forge, also called node-forge, is a native implementation of Transport Layer Security in JavaScript. Prior to 1.4.1, publicKey.verify() with the default RSASSA-PKCS1-V1_5 scheme in lib/rsa.js parses the recovered DigestInfo with the lenient BER parser asn1.fromDer() and validates its structure with digestInfoValidator without requiring canonical DER bytes. Non-minimal or indefinite lengths, malformed parameter values, and non-canonical object identifier encodings with padded subidentifiers or trailing bytes can leave attacker-controlled data inside an accepted DigestInfo. When the verifying RSA public key uses a low exponent such as e=3, an attacker can use that encoding slack to forge a signature without the private key. The same path is used by X.509 certificate and PKCS#7 signature verification. This issue is fixed in version 1.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119292": {
+    "cvss": 8.7,
+    "description": "FreeSWITCH is a Software Defined Telecom Stack enabling the digital transformation from proprietary telecom switches to a software implementation that runs on any commodity hardware. Prior to 1.11.2, after FreeSWITCH has learned and closed source learning for an RTP peer, read_rtp_packet() and rtp_common_read() in src/switch_rtp.c reject RTP from an unrecognized source only after packet classification and, for encrypted calls, SRTP processing. An unauthenticated attacker with UDP reachability to an active RTP or SRTP media port can sustain a foreign-source packet flood that occupies the media read path and prevents legitimate media from entering FreeSWITCH on calls that consume incoming media for relay or echo. The resulting one-way audio allows the affected endpoint to continue hearing the other party, but the other party loses that endpoint's audio, leaving SIP signaling established while the call is unusable for conversation. Transmit-only playback was unaffected in testing. A caller can learn the media port from the SDP answer, while a third party must first discover an active port, and no valid SRTP key is required. This issue is fixed in version 1.11.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119293": {
+    "cvss": 9.3,
+    "description": "FreeSWITCH is a Software Defined Telecom Stack enabling the digital transformation from proprietary telecom switches to a software implementation that runs on any commodity hardware. In 1.11.2 and earlier, rtp_common_read() in src/switch_rtp.c uses one session-wide autoadj_tally to learn RTP sources that differ from the address negotiated in SDP. An unauthenticated remote attacker who sends plaintext RTP during call setup can make packets from one or more non-advertised sources reach the threshold before the legitimate endpoint, causing FreeSWITCH to adopt the source of the threshold-crossing packet as the media peer. The attacker can then receive call audio, inject media, and deny media to the legitimate endpoint without being on the media path. FreeSWITCH 1.11.2 adds two opt-in controls, but both default to zero and the release remains affected unless both are configured before RTP session creation. This vulnerability is fixed in 1.11.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121707": {
+    "cvss": 8.7,
+    "description": "Effect is a TypeScript framework that consists of several packages that work together to help build TypeScript applications. Prior to 3.22.1, Schema.TemplateLiteral schemas containing at least two Schema.String spans compile each span to the ambiguous lazy wildcard [\\s\\S]*?. Decoding a non-matching untrusted string causes cubic regular expression backtracking, which can block the JavaScript event loop. The issue affects Schema.decodeUnknown, Schema.decodeUnknownSync, Schema.is, and consumers such as HttpApi and @effect/rpc payload decoding. This issue is fixed in version 3.22.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121717": {
+    "cvss": 5.0,
+    "description": "fzf is a command-line fuzzy finder. Prior to 0.74.5, trigger-driven zsh completion in shell/completion.zsh uses _fzf_feed_fifo to create a FIFO at the predictable shared path ${TMPDIR:-/tmp}/fzf-complete-fifo-$$ and continues after removal or creation errors. On a multi-user host, a local attacker can pre-create that path as a symlink so the victim's completion stream overwrites a victim-writable file, potentially enabling code execution when that file is later sourced. A pre-created FIFO can instead disclose a bounded stream of completion candidates or block completion. On default modern hosts, fs.protected_symlinks blocks the overwrite variant, and protected_fifos and protected_regular further limit the FIFO disclosure and blocking variants, so exploitation depends on the relevant kernel protections being disabled and on the victim invoking the affected completion. This issue is fixed in version 0.74.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123351": {
+    "cvss": 4.7,
+    "description": "HomeBox is a home inventory and organization system. Prior to 0.27.0, the unauthenticated GET /swagger/doc.json endpoint copies the client-supplied X-Forwarded-Host header into the OpenAPI host field without requiring a trusted proxy or validating the value. An attacker can therefore make the served OpenAPI document direct Swagger UI Try it out requests to an attacker-controlled host. When a shared cache or CDN stores and serves that poisoned document to an authenticated user, Swagger UI sends the user's API requests and bearer token to the attacker, enabling disclosure and modification of the user's HomeBox data. Without a shared cache, the attacker can affect only the attacker's own response. This issue is fixed in version 0.27.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123352": {
+    "cvss": 6.5,
+    "description": "HomeBox is a home inventory and organization system. Prior to 0.27.0, a HomeBox password change revokes the user's other session tokens but does not revoke the user's API keys, and API keys have no default API-key expiration. An attacker who has obtained an API key can therefore retain full API-level access after the account owner changes the password and can keep that access indefinitely unless the owner discovers and manually deletes the key by ID. Because the password change terminates other sessions, the surviving API credential can evade the owner's expected containment and detection. This issue is fixed in version 0.27.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127220": {
+    "cvss": 5.3,
+    "description": "Kadence Security plugin for WordPress (better-wp-security) before 10.0.6.1 contains a brute-force protection bypass vulnerability that allows unauthenticated attackers to evade per-host login lockouts by exploiting IPv6 address handling in ITSEC_Lib::get_ip(), which keys failed-login counters on the full 128-bit IPv6 address rather than a /64 prefix. Attackers who control a routed IPv6 /64 can send each login attempt from a new address within that prefix, resetting the per-host counter each time to perform password spraying and username enumeration, and can similarly evade the auto_ban_admin immediate ban via address rotation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127221": {
+    "cvss": 5.3,
+    "description": "WPS Limit Login (wps-limit-login) before 1.5.9.5 contains an improper access control vulnerability that allows unauthenticated attackers to bypass login lockout protections by keying the per-attempt login counter and lockout map on the raw, non-canonicalized IPv6 client address. Attackers controlling a routable IPv6 /64 prefix can send each login attempt from a fresh address within that range, preventing any counter from reaching the lockout threshold and enabling effectively unlimited brute-force password guessing against WordPress accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128073": {
+    "cvss": 7.5,
+    "description": "gosaml2 is a Pure Go implementation of SAML 2.0. Prior to 0.12.0, ValidateEncodedResponse() calls decryptAssertions() on an EncryptedAssertion before signature or content validation completes, and EncryptedAssertion.DecryptBytes() in types/encrypted_assertion.go slices decoded ciphertext without first validating the required nonce or initialization-vector length. A CipherValue shorter than the 12-byte AES-GCM nonce causes a slice-bounds panic, and an empty AES-CBC CipherValue passes the modulo block-size check before causing a slice-bounds panic at the 16-byte initialization-vector split. An attacker needs only the service provider's public certificate to wrap a symmetric key, and no valid identity-provider signature or relationship is required. The unrecovered panic can terminate the request goroutine or the service process. This issue is fixed in version 0.12.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130622": {
+    "cvss": 7.1,
+    "description": "Incorrect authorization in the credential loading logic in AWS Private CA Connector for Kubernetes (aws-privateca-issuer) before 1.12.0 might allow an authenticated remote user with permission to create namespace-scoped issuers to obtain certificates, including subordinate CA certificates, signed by another namespace's AWS Private CA with that namespace's stored AWS credentials, via a namespace-scoped issuer that references a credentials Secret in that namespace. To remediate this issue, users should first copy any credentials Secret they intend a namespace-scoped issuer to use into that issuer's namespace and update the issuer's secretRef.namespace to match. Then, upgrade aws-privateca-issuer to version 1.12.0 or the AWS Private CA Connector for Kubernetes EKS add-on to version v1.12.0-eksbuild.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130623": {
+    "cvss": 7.1,
+    "description": "Incorrect authorization in the credential handling for namespace-scoped issuers in AWS Private CA Connector for Kubernetes (aws-privateca-issuer) before 1.12.0 might allow an authenticated remote user with permission to create namespace-scoped issuers to obtain certificates, including subordinate CA certificates, from every AWS Private CA and certificate template reachable by the controller's own AWS identity or by any IAM role that identity can assume. This happens because a namespace-scoped issuer that supplies no credentials, or sets only a role, falls back to the controller's own identity. To remediate this issue, users should first update any namespace-scoped issuers that rely on the controller's identity to use their own credentials. Then, upgrade aws-privateca-issuer to version 1.12.0 or the AWS Private CA Connector for Kubernetes EKS add-on to version v1.12.0-eksbuild.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130792": {
+    "cvss": 6.6,
+    "description": "GPAC before 26.07.0 contains an integer underflow in gf_xml_sax_parse_intern() in src/utils/xml_parser.c that causes a heap-based buffer overflow when completing partially buffered entities. Attackers can convince a user to process a crafted XML or XMT file with MP4Box, overflowing xml_sax_append_string() size arithmetic to corrupt heap memory and crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130793": {
+    "cvss": 6.6,
+    "description": "GPAC before 26.07.0 contains a stack-based buffer overflow vulnerability in gf_filter_pid_resolve_file_template_ex() in src/filter_core/filter_pid.c that allows local attackers to write past fixed GF_MAX_PATH stack buffers. Attackers can convince a user to segment a crafted NHML input referencing an overly long media file name with MP4Box -dash to crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130794": {
+    "cvss": 4.3,
+    "description": "Frappe HR (hrms) before 16.9.0 contains a missing authorization vulnerability in the hrms.api.roster.get_events method that allows authenticated employees to view other employees' leave and shift data by bypassing User Permissions. Attackers with the Employee role can call get_events with empty filters for any date range to retrieve every employee's approved leave applications and shift assignments, including leave types, dates, shift locations and times.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130795": {
+    "cvss": 6.6,
+    "description": "GPAC before 26.07.0 contains a type confusion vulnerability in the XMT scene loader that allows local attackers to corrupt memory by supplying unbalanced command buffer closing elements. Attackers can convince a user to open a crafted XMT-A file with MP4Box, causing xmt_node_end() to treat a GF_Command as an SFCommandBuffer and crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130796": {
+    "cvss": 8.2,
+    "description": "Flowise 3.1.3 through 3.1.4 contains an information disclosure vulnerability that allows unauthenticated attackers to read MCP server bearer tokens via the GET /api/v1/public-chatflows/:id handler. Attackers can use the leaked mcpServerConfig token on the POST /api/v1/mcp/:chatflowId route to invoke chatflows, bypassing API key protection and consuming the owner's model quota.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130797": {
+    "cvss": 6.6,
+    "description": "GPAC through 26.07.0 contains a use of uninitialized variable vulnerability in xmt_parse_element() that allows local attackers to corrupt memory by supplying duplicate PROTO field names. Attackers can trick a user into opening a crafted XMT file with MP4Box, causing xmt_parse_sf_field() to write through an uninitialized pointer and crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130798": {
+    "cvss": 6.6,
+    "description": "GPAC before 26.07.0 contains a use-after-free vulnerability in the XMT scene loader that leaves dangling MFURL pointers when xmt_node_end() discards nodes. Attackers can convince a user to open a crafted XMT file with MP4Box, causing xmt_resolve_od_links() to access freed heap memory and crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130799": {
+    "cvss": 6.6,
+    "description": "GPAC before 26.07.0 contains a use-after-free vulnerability in xmt_parse_element() in src/scene_manager/loader_xmt.c that frees a node when a DEF attribute names a previously referenced undefined node. Attackers can convince a user to process a crafted XMT file with MP4Box, causing freed heap memory to be used and crashing the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130829": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.07.0 contains a NULL pointer dereference vulnerability in xmt_new_od_link_from_node() in src/scene_manager/loader_xmt.c that allows attackers to crash the process. Attackers can supply a crafted XMT scene file with an MFURL object-descriptor link lacking an OD ID and name, crashing MP4Box for denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130830": {
+    "cvss": 6.6,
+    "description": "GPAC before 26.07.0 contains a use-after-free vulnerability in load_xmt_done() in src/scene_manager/loader_xmt.c that releases references for duplicate node stack entries. Attackers can supply a crafted XMT-A scene file encoded with MP4Box to crash the process and potentially corrupt heap memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130831": {
+    "cvss": 6.6,
+    "description": "GPAC before 26.07.0 contains a use-after-free vulnerability in xmt_parse_element() that allows attackers to corrupt memory by supplying XMT-A elements that define and use the same node identifier. Attackers can craft an XMT scene file processed by MP4Box so xmt_text_content() accesses the freed node, crashing the process and possibly corrupting heap memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130832": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.07.0 contains a NULL pointer dereference vulnerability in xmt_parse_element() in src/scene_manager/loader_xmt.c that allows attackers to crash the process via ROUTE elements. Attackers can supply a crafted XMT-A scene file placing a ROUTE element before any scene command creates an access unit, crashing MP4Box during encoding and causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130833": {
+    "cvss": 5.5,
+    "description": "Phoboslab pl_mpeg through commit c871f2b contains an integer underflow in plm_demux_seek() that allows attackers to trigger heap out-of-bounds reads via crafted MPEG-PS files. Attackers can supply a PES packet with payload under 6 bytes, wrapping the packet->length - 6 loop bound during force_intra seeking to crash applications.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130834": {
+    "cvss": 6.6,
+    "description": "GPAC before 26.07.0 contains a use-after-free vulnerability in xmt_parse_command() in loader_xmt.c that allows attackers to access freed memory via a dangling command buffer pointer. Attackers can supply a crafted XMT scene file whose Replace command frees a Conditional node, crashing MP4Box and potentially corrupting the heap.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130835": {
+    "cvss": 5.5,
+    "description": "Storyden before 1.26.17 contains a missing authorization vulnerability in the AccountRemoveRole handler that allows non-administrator users with MANAGE_ROLES to remove administrator roles. Attackers can send DELETE requests to the account roles endpoint to demote other administrators, potentially leaving the instance with no administrator.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130836": {
+    "cvss": 6.6,
+    "description": "GPAC before 26.07.0 contains an invalid pointer free vulnerability in gf_sg_command_del() in src/scenegraph/commands.c that allows attackers to corrupt the heap via crafted XMT scene files. Attackers can supply an XMT-A file whose command field_ptr references the embedded new_node member, causing free() on an interior address and crashing MP4Box.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130837": {
+    "cvss": 6.1,
+    "description": "GPAC before 26.07.0 contains a heap-based out-of-bounds read vulnerability in xmt_parse_mf_field() in loader_xmt.c caused by unchecked cursor advancement when splitting multi-value XMT-A fields. Attackers can supply a crafted XMT scene file opened with MP4Box to make xmt_parse_string() read past the heap buffer and crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130838": {
+    "cvss": 7.4,
+    "description": "Radicale 3.3.0 before 3.8.3 contains an authorization bypass vulnerability that allows unauthenticated attackers to inherit group-based rights by reusing group memberships never reset between requests. Attackers can send credential-less requests after a group member logs in to read and write group-shared calendar and address book collections evaluated by the from_file rights backend.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130839": {
+    "cvss": 7.8,
+    "description": "ModelScope 1.11.0 to before 1.40.1 contains an unsafe reflection vulnerability in the image-to-3D SyncDreamer pipeline that allows remote attackers to execute code via crafted model configuration. Attackers can publish a model whose syncdreamer.yaml target field makes instantiate_from_config() import and instantiate any class with controlled params, without an allowlist or trust_remote_code check, executing code when victims load it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130840": {
+    "cvss": 9.8,
+    "description": "BISHENG before 3.0.0 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to impersonate administrators by abusing a hard-coded default jwt_secret used by AuthJwt. Attackers can forge an HS256 token offline naming user_id 1 with the admin role, send it as access_token_cookie, and gain full administrative access to users, workspaces, knowledge bases and workflows.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130841": {
+    "cvss": 7.5,
+    "description": "ioBroker.lovelace before 7.0.0 contains a path traversal vulnerability in the onCards() request handler that allows unauthenticated remote attackers to read arbitrary files via unsanitized dot-dot segments. Attackers can send crafted requests to the /cards/_static_/, /hacsfiles/, or /local/custom_ui/ routes to read files including ioBroker configuration and stored credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130842": {
+    "cvss": 3.1,
+    "description": "HyperFrames before 0.8.73 contains a path traversal vulnerability in the Studio server waveform and thumbnail routes that percent-decode paths without containment checks. Unauthenticated attackers, including script in a malicious composition, can send encoded ../ sequences to probe file existence and extract waveform data from files outside the project.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130843": {
+    "cvss": 8.8,
+    "description": "HyperFrames before 0.9.30 contains a missing Origin and Host validation vulnerability in the unauthenticated Studio API that allows malicious web pages to write project files. Attackers can send CORS-simple POST requests to /api/projects/:id/files/* or use DNS rebinding to plant package.json scripts or agent configs, leading to command execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130844": {
+    "cvss": 4.2,
+    "description": "HyperFrames before 0.8.216 contains a server-side request forgery vulnerability in the engine URL downloader because isBlockedHost() only checks IP literals and never resolves DNS host names. Attackers can supply compositions with remote media, image or font URLs whose host names resolve to private addresses, making preview or render processes send HTTPS requests to internal services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130845": {
+    "cvss": 6.1,
+    "description": "CodeIgniter4 before 4.7.5 contains a cross-site scripting vulnerability in the View Parser (system/View/Parser.php) that allows attackers to bypass auto-escaping through re-scanned substitutions. Attackers controlling one rendered value can inject Parser syntax like {other|raw} or {!other!} to emit unescaped attacker-controlled values, executing scripts in viewers' browsers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130846": {
+    "cvss": 5.4,
+    "description": "AppFlowy-Web before 0.20.0 contains a stored cross-site scripting vulnerability in the TextareaAutosize component that allows workspace members with edit access to inject markup by copying unescaped values into a hidden mirror via innerHTML. Attackers can store a database row title or checklist task containing an element with an event handler to execute script in browsers of users opening the row, including unauthenticated published page visitors.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
