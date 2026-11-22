@@ -145186,5 +145186,629 @@
     "description": "EGroupware is a web-based groupware server written in PHP. Prior to 23.1.20260601 and 26.5.20260507, the processURL2InlineImages logic in api/src/Mail.php treats non-HTTP image sources in an HTML mail body as local paths and passes a decoded attacker-controlled file:// URI to file_get_contents. Any authenticated user with mail access can cause files readable by the web server process to be embedded as inline MIME attachments in outgoing email, exposing local configuration, credentials, private keys, or other server files. This issue is fixed in versions 23.1.20260601 and 26.5.20260507.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-12487": {
+    "cvss": 7.5,
+    "description": "An incorrect authorization vulnerability in the SNMP parameter of Zyxel EE5301-00 customized firmware version 5.63(ACLD.2)b3_D0 could allow an unauthenticated attacker to cause a denial-of-service (DoS) condition on an affected device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130338": {
+    "cvss": 4.6,
+    "description": "AdminNeo before 5.9.1 contains a stored sql injection vulnerability in the MySQL driver that allows database users with table creation rights to inject SQL through unescaped geometry column names in unconvert_field(). Attackers can craft a column name containing an SQL expression that executes with another AdminNeo user's privileges when they edit a row, save it, or export the table.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130341": {
+    "cvss": 5.4,
+    "description": "phpMyFAQ before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains a stored cross-site scripting vulnerability that allows registered users to inject javascript: links via FAQ comments. When the comment editor is enabled, Utils::parseUrl() strips https:// from sanitized hrefs, turning an allowed https://javascript:443/ link into executable script that runs on the shared admin origin when clicked.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130342": {
+    "cvss": 4.2,
+    "description": "phpMyFAQ before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains an improper reference counting flaw on multisite deployments, allowing editors to delete other instances' attachment files. Because linkedRecords() counts only the local faqattachment table, deleting an attachment with shared md5 content makes File::delete() unlink the shared blob, destroying another instance's files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130345": {
+    "cvss": 3.5,
+    "description": "phpMyFAQ 4.2.0-alpha before 4.2.0-RC.2 contains an information disclosure vulnerability that allows authenticated frontend users to receive restricted FAQ titles by subscribing to Web Push notifications. When editors publish user/group-restricted FAQs, WebPushService::sendToAll() delivers the question, FAQ id, category, and slugified URL to every subscriber, bypassing the FAQ ACL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130346": {
+    "cvss": 3.1,
+    "description": "AdminNeo before 5.9.1 contains an sql injection vulnerability in the ClickHouse driver because idf_escape() doubles backticks but does not escape backslashes in identifiers. Attackers can lure a logged-in user into opening a GET link with a column name ending in a backslash in columns, where, or order parameters, causing query text to be parsed as SQL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130349": {
+    "cvss": 4.3,
+    "description": "phpMyFAQ from 4.2.0-alpha.2 before 4.2.0-RC.2 contains an incorrect authorization vulnerability that allows category- or language-restricted editors to bypass scoped rights via public REST write endpoints. Attackers with a scoped right and the shared API token can use PUT faq/update, POST faq/create, and POST category to rewrite published FAQs and create root categories outside their scope.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130350": {
+    "cvss": 3.8,
+    "description": "phpMyFAQ before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains an incorrect authorization vulnerability that allows delegated group or user admins to remove rights they do not hold by submitting empty rights lists. Attackers can send an empty rightIds or userRights array to group/permissions or user/update-rights to wipe all rights of more-privileged groups or administrators.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130353": {
+    "cvss": 5.3,
+    "description": "phpMyFAQ before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains an information disclosure vulnerability in its public FAQ REST API that exposes author names and e-mail addresses to unauthenticated callers. Attackers can query the faq and paginated faqs endpoints to bulk-harvest e-mails and de-anonymise users who opted out of GDPR author visibility.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130357": {
+    "cvss": 5.5,
+    "description": "phpMyFAQ from 4.2.0-alpha.2 before 4.2.0-RC.2 contains an improper authorization vulnerability in updateUserRights that lets USER_EDIT admins drop category restrictions on group rights. Attackers can re-save rights through the user update-rights API to convert category-restricted group rights into global direct rights, then edit, publish or delete FAQs in withheld categories.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130358": {
+    "cvss": 6.5,
+    "description": "AdminNeo before 5.9.1 contains a missing authentication vulnerability in the ClaudeSqlPlugin, GeminiSqlPlugin, and OpenWebUiPlugin sendHeaders() handlers that run on the login page. Unauthenticated attackers can POST claude, gemini, or openwebui fields to relay arbitrary prompts using the operator's API key or bearer token, including to internal Open WebUI endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130361": {
+    "cvss": 8.8,
+    "description": "AdminNeo before 5.9.1 contains a parameter injection vulnerability in its ClickHouse driver that allows attackers to inject ClickHouse HTTP query parameters through an unencoded db GET parameter. Attackers can lure a logged-in victim into opening a crafted GET link that injects a query parameter, bypassing the POST-only CSRF token. ClickHouse then executes attacker-chosen SQL under the victim's credentials to read, modify, or drop data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130362": {
+    "cvss": 5.3,
+    "description": "phpMyFAQ 4.1.9 before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains an account enumeration vulnerability that allows unauthenticated attackers to identify valid logins through differing POST /api/webauthn/prepare responses. Attackers can submit wordlists of usernames, reusing one unconsumed CSRF token without rate limiting, to discover administrator logins for password spraying and phishing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130365": {
+    "cvss": 4.4,
+    "description": "phpMyFAQ from 4.2.0-alpha before 4.2.0-RC.2 contains a stored cross-site scripting vulnerability that allows FAQ_EDIT users to bypass SvgSanitizer using namespace-prefixed elements like . Attackers can upload malicious SVGs through the admin image upload so script runs in the site origin on IIS, hijacking sessions of users like super-admins.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130366": {
+    "cvss": 8.1,
+    "description": "AdminNeo before 5.9.1 contains an authentication bypass vulnerability in the ClickHouse driver that allows remote attackers to log in to passwordless accounts without the configured defaultPasswordHash password. Attackers who know the name of a ClickHouse no_password account can submit any non-empty password, because connect() skips openPasswordless(), and obtain a session with that account's rights.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130369": {
+    "cvss": 8.1,
+    "description": "phpMyFAQ 4.1.9 before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains an authorization bypass vulnerability in multisite deployments that allows attackers to overwrite passkeys of accounts on other tenants via a shared PHP session store. Attackers can run WebAuthn prepare() for a login on one tenant, then replay the session against /api/webauthn/register on another tenant or the master to replace that user's passkeys and log in as admin.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130370": {
+    "cvss": 4.2,
+    "description": "phpMyFAQ 4.1.9 before 4.1.12 and 4.2.0-alpha before 4.2.0-RC.2 contains a missing authentication vulnerability that allows attackers holding a hijacked session to enroll passkeys using only the session and webauthn CSRF token. Attackers can call /api/webauthn/prepare and /api/webauthn/register to replace the owner's passkeys, gaining persistent passwordless login that survives password changes and resets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130373": {
+    "cvss": 3.0,
+    "description": "AdminNeo before 5.9.1 contains a stored HTML injection vulnerability that allows database users to inject markup by creating FULLTEXT indexes with crafted names. Attackers with CREATE, ALTER or INDEX rights can store markup rendered unescaped in the selection search form, enabling meta refresh redirects, content spoofing and form tampering against other users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130374": {
+    "cvss": 7.5,
+    "description": "AdminNeo before 5.9.1 contains an sql injection vulnerability that allows remote attackers to inject SQL by supplying crafted IN and NOT IN search values that process_length() passes unescaped. Attackers can send a logged-in user a cross-site GET link using a backslash-escaped apostrophe to run blind SQL with that user's database rights on PostgreSQL, SQLite, MS SQL, Oracle, or MySQL in NO_BACKSLASH_ESCAPES mode.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130377": {
+    "cvss": 3.8,
+    "description": "phpMyFAQ from 4.2.0-alpha.2 before 4.2.0-RC.2 contains an incorrect authorization vulnerability in DELETE /admin/api/faq/delete that lets language-scoped FAQ_DELETE admins bypass their language scope. Attackers can submit a faqId with an in-scope faqLanguage lacking a translation to wipe shared ACL, tags, votes, comments, and attachments of other translations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130378": {
+    "cvss": 3.7,
+    "description": "AdminNeo before 5.9.1 contains a filter injection vulnerability in its MongoDB driver that allows attackers to affect other documents by embedding ' AND ' or ') OR (' delimiters in a string _id or searched value. Attackers who can store a crafted document can cause a victim's delete or edit to match unintended documents, deleting the entire collection or modifying another document.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130379": {
+    "cvss": 5.3,
+    "description": "AdminNeo before 5.9.1 contains a server-side request forgery vulnerability that allows unauthenticated attackers to bypass the privileged-port restriction by injecting separator characters or connection-string keywords into the login server field. Attackers can make pgsql, Mongo, Oracle and PDO drivers parse a different host and port, reaching internal services and leaking limited information through driver responses and errors.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130381": {
+    "cvss": 4.3,
+    "description": "phpMyFAQ from 4.2.0-alpha.2 before 4.2.0-RC.2 contains an authorization bypass vulnerability that allows language-scoped editors to read other translations by checking FAQ_EDIT against the route language but loading the ?lang= UI-language row. Attackers can request the admin.faq.edit route with an authorized language and a different lang parameter to read drafts, private notes, author e-mails and revisions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130382": {
+    "cvss": 8.8,
+    "description": "AdminNeo before 5.9.1 contains an authentication bypass vulnerability in OtpLoginPlugin that allows attackers knowing the database password to skip TOTP verification by abusing the permanent-login cookie. Attackers can submit a login with a wrong OTP and permanent=1 to obtain a neo_permanent cookie, then replay it to gain full authenticated database access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79614": {
+    "cvss": 9.8,
+    "description": "An out-of-bounds write vulnerability in “libclinkc.so” in Zyxel DX3301-T0/EX3301-T0 firmware versions through 5.50(ABVY.8.3)C0 could allow an unauthenticated attacker to elevate privileges and potentially execute arbitrary commands by sending a crafted HTTP request. WAN access is disabled by default on these devices.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86676": {
+    "cvss": 7.2,
+    "description": "A post-authentication command injection vulnerability in the “Description” parameter of a CGI program in Zyxel DX3300-T0 firmware versions through 5.50(ABVY.8.3)C0 could allow an authenticated attacker with administrator privileges to execute OS commands by sending a crafted HTTP request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125275": {
+    "cvss": 8.2,
+    "description": "Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability in device certificate verification in nerves-hub nerves_hub_web allows an unauthenticated remote attacker to cause a denial of service via a TLS client certificate whose CA is not registered. When a client certificate chains to a root in the device endpoint's trust store but no CA in the chain is registered in NervesHub, NervesHub.SSL.decide/2 refuses it with the reason :unknown_ca. Erlang/OTP ssl reads that reason as a missing trust anchor, looks for an alternative root, finds the same root and validates again without end. The handshake process queries the database on each pass and keeps running after the client disconnects, until the node restarts. The device endpoint trusts the public roots from CAStore unless DEVICE_SSL_CACERTFILE is set, so a client certificate from a public CA whose chain allows client authentication is sufficient. A chain that ends at a root outside the trust store is refused once. This issue affects nerves_hub: from 1.0.0 before 2.5.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107901": {
+    "cvss": 7.1,
+    "description": "TELLUS and TELLUS Lite provided by FUJI ELECTRIC CO., LTD. contain an out-of-bounds read vulnerability. Opening a specially crafted V9 file may lead to information exposure or arbitrary code execution on the affected product.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107902": {
+    "cvss": 7.8,
+    "description": "TELLUS and TELLUS Lite provided by FUJI ELECTRIC CO., LTD. contain a use after free vulnerability. Opening a specially crafted V9 file may lead to information exposure or arbitrary code execution on the affected product.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101358": {
+    "cvss": 3.1,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 17.10 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read CI/CD variable metadata from projects they did not have access to due to improper authorization in pipeline execution policies.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102907": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 14.0 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to create issues with locked discussions despite lacking the required permissions due to improper authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104717": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 13.4 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to view iteration details from private groups they did not have access to due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104902": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 17.7 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read GitLab Duo seat assignments and usage data from other groups due to improper authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104934": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.0 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an unauthenticated user to read files from a project's private repository due to missing authorization checks in snippets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105739": {
+    "cvss": 8.7,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to execute arbitrary JavaScript in the browser of users viewing a wiki page due to improper sanitization of user input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108150": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.12 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read private CI/CD template files from projects they did not have access to due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108153": {
+    "cvss": 8.7,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 16.1 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to execute arbitrary JavaScript in the browser of users viewing Error Tracking pages due to improper sanitization of user input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108154": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 8.0 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to import Git repositories into projects despite administrator restrictions on import sources due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108155": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 8.12 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read Git LFS objects from restricted projects due to incorrect authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110750": {
+    "cvss": 2.2,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 11.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read Git LFS objects from projects restricted by External Authorization due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110990": {
+    "cvss": 2.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.1.7 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed sensitive credential values submitted in GraphQL requests to be written to logs in plaintext due to incomplete filtering of sensitive data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111747": {
+    "cvss": 3.5,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.0 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to hide changes from reviewers in merge request diffs due to improper handling of file names.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112203": {
+    "cvss": 5.9,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 18.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an individual controlling an upstream repository to alter cached Maven packages from other repositories in the same virtual registry due to improper response validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115218": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.8 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read NuGet package metadata that should not have been accessible due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115219": {
+    "cvss": 3.8,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to enable Amazon Q automatic code reviews on a project despite an administrator lock due to improper enforcement of instance-level settings.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115428": {
+    "cvss": 6.5,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with a valid agent token to cause a denial of service in the GitLab agent server (KAS) due to improper input validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115736": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.1 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to view unredacted secret values from secret detection findings they had access to through GitLab Duo Agent Platform due to improper authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118961": {
+    "cvss": 5.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.11 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an unauthenticated user to read commit comments from a private source fork through a public project's merge request discussions due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-11768": {
+    "cvss": 5.8,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 12.4 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read private CI/CD job artifacts belonging to other projects through GitLab Pages due to improper validation of file paths.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120387": {
+    "cvss": 10.0,
+    "description": "An improper JWT signature verification vulnerability in CIRCUTOR PowerStudio SCADA WAVE desktop version allows an unauthenticated remote attacker to bypass authentication by submitting an unsigned JWT with the algorithm set to “none”. The shared JWT validation component accepts the token without verifying a cryptographic signature, allowing the attacker to impersonate another user and access protected functionality with that user's privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121533": {
+    "cvss": 5.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.8 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an unauthenticated user to read restricted job artifact data due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121948": {
+    "cvss": 2.7,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to change the GitLab Duo Code Review consent setting of a parent group due to incorrect authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122045": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 16.10 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to configure GitLab Duo settings for groups without an eligible license due to missing authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122226": {
+    "cvss": 2.2,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 18.8 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to access GitLab Duo features restricted by group-based access rules due to improper handling of failed updates to those rules.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123142": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.4 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user holding an MCP-scoped OAuth token to perform unauthorized issuable state changes on issues and merge requests, including approving and merging, due to incorrect authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125920": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 17.4 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to cause a denial of service affecting Duo usage analytics due to improper input validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126141": {
+    "cvss": 3.5,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 11.11 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to make requests to internal network services through repository import functionality due to insufficient validation of destination addresses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53998": {
+    "cvss": 10.0,
+    "description": "Phoenix is an AI observability and evaluation platform. From 13.0.0 until 15.7.0, the applyChatTemplate GraphQL query passed attacker-controlled F-string templates to FStringTemplateFormatter._format, while DotDict.__getattr__ did not prevent traversal through Python private attributes. A crafted field could traverse object internals such as __class__, __init__, and __globals__ to read process environment variables and internal module state. The endpoint is unauthenticated on default installations, and any account can reach it when authentication is enabled. Exposure of PHOENIX_SECRET can allow administrative session-token forgery and decryption of credentials protected by keys derived from that secret. This issue is fixed in version 15.7.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62336": {
+    "cvss": 8.5,
+    "description": "qbee-agent is the device agent component of the qbee.io IoT device management platform. Prior to 2026.27, the privileged createFile helper followed attacker-controlled symbolic links during file creation. A local unprivileged user whose account is managed by the SSH Keys bundle could replace ~/.ssh with a link to /root/.ssh, causing the agent to write an authorized key for root. On systems using RAUC download mode with ineffective kernel symlink protection, the predictable /tmp/.bundle.raucb.part path could be linked to a system file and then overwritten or truncated during an update. A file-distribution destination beneath an attacker-controlled directory could similarly redirect the partial-download path so the agent changed ownership of a sensitive file. These vectors could result in root privilege escalation, arbitrary file modification, or denial of service. This issue is fixed in version 2026.27.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95839": {
+    "cvss": 7.1,
+    "description": "containerd is an open-source container runtime. From 2.2.0 until 2.2.10, 2.3.7, and 2.4.2, image manifest processing through the transfer service can encounter a child descriptor containing the io.containerd.manifest.subject annotation and a malformed digest. Pulling or importing such an image, including through a default CRI PullImage request, can trigger an unrecovered panic and crash the containerd daemon. In Kubernetes, kubelet retries can repeatedly trigger the crash and disrupt container operations on the worker node. This issue is fixed in versions 2.2.10, 2.3.7, and 2.4.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102892": {
+    "cvss": 5.3,
+    "description": "OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. Prior to 7.260416.0, public TAXII 2.1 collections configured with taxii_public set to true are served under the high-privilege SYSTEM_USER context rather than a restricted public-sharing user context. Unauthenticated requests can therefore bypass object markings, organization segregation, and authorized_members restrictions and retrieve restricted threat-intelligence objects that match the collection filters; a broad or absent filter can expose most of the database. Version 7.260416.0 remediates this issue for new configurations, but public-sharing configurations created before that version are not covered and are tracked separately in GHSA-25r9-q6rp-j7jw.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104253": {
+    "cvss": 5.2,
+    "description": "OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. Prior to 7.260715.0, a ProfileQuery response can expose the user's TOTP MFA secret after activation. A person who can access the profile response can recover the secret, enroll a duplicate authenticator, and generate valid one-time codes, undermining the account's second-factor protection. This issue is fixed in version 7.260715.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104258": {
+    "cvss": 5.5,
+    "description": "OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. In 7.260722.0 and earlier, a user with the SETTINGS_SETCUSTOMIZATION capability can configure a webhook notifier with an arbitrary destination URL and invoke notifierTest to make the OpenCTI server send the request immediately. The request can target internal services or cloud metadata endpoints that are reachable from the server, enabling server-side request forgery without waiting for a notifier event. No fixed release is verified by the available evidence; later releases remain unclassified.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104840": {
+    "cvss": 9.2,
+    "description": "OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. Prior to 7.260428.0, the token GraphQL mutation used for primary login has no endpoint-specific rate limit, while the global Express limiter defaults to permitting 10,000 requests in a one-second window. An unauthenticated remote attacker can make password guesses at network speed against a chosen user account and, if a credential is recovered, access the account's threat-intelligence data and permitted operations. This issue is fixed in version 7.260428.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114505": {
+    "cvss": 6.3,
+    "description": "OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. Prior to 7.260722.0, the GraphQL endpoint accepts query operations over HTTP GET because CSRF prevention is disabled (csrfPrevention: false), placing the complete GraphQL query and its arguments in the request URL. Server and reverse-proxy logs, browser history, and shared caches can retain sensitive filters, marking-restricted identifiers, and investigation search arguments, allowing a person with access to those records to recover legitimate users' query contents. GraphQL mutations are not accepted over GET, and the issue does not permit code execution. This issue is fixed in version 7.260722.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121708": {
+    "cvss": 8.1,
+    "description": "OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. Prior to 7.260513.0, Draft Workspace identifiers are accepted without verifying that the authenticated user can access the referenced draft. Any authenticated user can enumerate draftWorkspaces, use a disclosed DRAFT_ID with draftWorkspaceEntities to read unpublished reports, descriptions, observables, and other staged intelligence, or place the identifier in the opencti-draft-id header and run mutations that inject entities and relationships into another user's private workspace. The flaw permits cross-user disclosure and tampering but does not cause a denial of service. This issue is fixed in version 7.260513.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124017": {
+    "cvss": 6.7,
+    "description": "Phison E12 and E18 PCIe SSD controllers contain a Secure Boot bypass vulnerability that allows a privileged local attacker to inject persistent boot-patch tuples into the unsigned, CRC-protected flash ID page read by the BootROM. By overwriting a fuse-derived RAM variable via a crafted patch entry using Phison Vendor Specific Commands, an attacker can force CRC-only firmware verification instead of signature checking, enabling an unsigned firmware image to load and creating a persistent controller-level implant that survives firmware reinstallation and operates below the host operating system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-57150": {
+    "cvss": 8.7,
+    "description": "GLPI is a free asset and IT management software package. Prior to 10.0.28, 11.0.10, and 12.0.1, authenticated users can craft a URL that invokes massive actions without all required object- and action-specific authorization checks. The bypass permits operations outside the user's granted rights, including unauthorized plugin activation, deactivation, and uninstallation for plugins already present on the filesystem and other state-changing maintenance actions. This issue is fixed in versions 10.0.28, 11.0.10, and 12.0.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63477": {
+    "cvss": 8.8,
+    "description": "OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. Prior to 7.260624.0, an Organization Administrator with VIRTUAL_ORGANIZATION_ADMIN and KNOWLEDGE_KNUPDATE can use organizationFieldPatch to replace the administered organization's grantable_groups without a SETTINGS_SETACCESSES authorization check. The administrator can add the built-in Administrators group to that grant scope and then bypass the grantable_groups guard added by the incomplete CVE-2026-44730 remediation to add their own account to Administrators. Membership grants the BYPASS capability after session cache refresh, escalating the tenant-scoped account to global administrator with access across organizations, users, settings, markings, connectors, and ingestion. This issue is fixed in version 7.260624.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76822": {
+    "cvss": 4.3,
+    "description": "OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. Prior to 7.260701.0, the caseIncidentAdd, caseRfiAdd, and caseRftAdd GraphQL mutations require only authentication and do not require a capability check. An authenticated user with reader-level permissions can therefore create incident, request-for-information, and request-for-takedown case objects regardless of the user's assigned role, causing unauthorized changes to platform data. This issue is fixed in version 7.260701.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76823": {
+    "cvss": 8.7,
+    "description": "OpenCTI is an open source platform for managing cyber threat intelligence knowledge and observables. Prior to 7.260706.0, the logsWorkerConfig GraphQL query is authorized with the broad CONNECTORAPI capability and returns Elasticsearch connection details including elasticsearch_username, elasticsearch_password, elasticsearch_api_key, the URL, index, proxy, and TLS-verification setting. A holder of any connector API bearer token can retrieve this credential material. If the returned credentials are valid and Elasticsearch is reachable, the caller can directly read, modify, or delete OpenCTI indices and audit history outside application-layer role, marking, organization, and audit controls, with the practical impact bounded by the credentials' privileges and network reachability. This issue is fixed in version 7.260706.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77597": {
+    "cvss": 3.5,
+    "description": "iSponsorBlockTV is a SponsorBlock client for YouTube TV clients. Prior to 2.11.0, src/iSponsorBlockTV/dial_client.py trusts the SSDP LOCATION URL supplied by a local-network responder without validating its destination. During automatic discovery, this can cause an attacker-directed GET request and a constrained POST request to a path ending in /YouTube; the POST uses application-defined headers and an application-defined payload rather than attacker-selected request contents. The requests can reach internal services, but the detailed request behavior states that response data and errors are not returned to the attacker, making the demonstrated behavior blind SSRF with bounded integrity impact. This issue is fixed in version 2.11.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-71471": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.02.0 contains a use of uninitialized memory vulnerability in stbl_AddCTS() that allows attackers to corrupt sample table data via crafted MP4 files. Attackers can supply an MP4 with out-of-order composition time offsets for MP4Box import, triggering invalid memory access in gf_list_get() and crashing the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110339": {
+    "cvss": 7.5,
+    "description": "The Libreswan pluto daemon dereferences a NULL pointer when a CERT payload is received with an empty PKCS#7 payload, causing the daemon to crash and restart. The NSS function SEC_PKCS7GetCertificateList() was used to check whether the content was empty, but this check did not trigger if the non-empty content of the PKCS#7 wrapped payload was an empty list. Continued triggering of this vulnerability can lead to a denial of service. Remote code execution is not possible. Authentication is not required to trigger this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115846": {
+    "cvss": 3.7,
+    "description": "The Libreswan IKEv2 state machine did not verify that an IKE_INTERMEDIATE exchange was required to satisfy the addke= PostQuantum algorithm component of the exchange. A connecting client could (maliciously or by implementation error) skip the IKE_INTERMEDIATE exchange and start an IKE_AUTH exchange prematurely. The result is as if the addke= option had not been specified, and such connections are only protected by the classic key exchange algorithm (such as P-256 or Curve25519), allowing \"store now, decrypt later\" attacks once a quantum computer becomes available. Only connections with the addke= keyword in the ike= and/or esp= configuration option are affected. PostQuantum Hybrid Key Exchange support was added in version 5.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120697": {
+    "cvss": 8.7,
+    "description": "Wiki.js is an open source wiki app built on Node.js. Prior to 2.5.315, an authenticated user with write:pages can store JavaScript expressions in the v-slot:tabs or v-slot:content attributes of page HTML because server/modules/rendering/html-security/renderer.js adds those executable Vue directives to DOMPurify's allowlist. The sanitized output is inserted as rendered page HTML and later compiled by the Vue 2 runtime compiler, so the expressions execute in the Wiki.js origin when another user views the page even when the author lacks write:scripts and administrative permissions. The script runs with the viewer's browser session and can read same-origin data, modify displayed content, present phishing content, or perform actions available to that viewer, including privileged GraphQL operations when a privileged user opens the page. This issue is fixed in version 2.5.315.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126828": {
+    "cvss": 6.7,
+    "description": "A vulnerability in Phison SSD controller firmwares (Phison E18; EIFM80.0, Phison E18; EIFK51.2) allows a local attacker with administrative privileges to bypass the \"Security Access\" handshake by leveraging leaked RSA parameters found in vendor utility binaries. By successfully completing the authentication, an attacker can access vendor-specific commands that permit arbitrary memory read and write operations. Because the firmware's code regions lack protection, these primitives can be used to overwrite existing handlers and achieve volatile code execution on the SSD controller.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129187": {
+    "cvss": 6.7,
+    "description": "A vulnerability in the Phison SSD controller firmware Phison E16; EGFM13.2 allows a local attacker with administrative privileges to bypass the \"Security Access\" handshake by leveraging leaked RSA parameters found in vendor utility binaries. By successfully completing the authentication, an attacker can access vendor-specific commands that permit arbitrary memory read and write operations. Because the firmware's code regions lack protection, these primitives can be used to overwrite existing handlers and achieve volatile code execution on the SSD controller.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129190": {
+    "cvss": 6.7,
+    "description": "A vulnerability in the Phison SSD controller firmware Phison E12; ECFM32.2 allows a local attacker with administrative privileges to bypass the \"Security Access\" handshake by leveraging leaked RSA parameters found in vendor utility binaries. By successfully completing the authentication, an attacker can access vendor-specific commands that permit arbitrary memory read and write operations. Because the firmware's code regions lack protection, these primitives can be used to overwrite existing handlers and achieve volatile code execution on the SSD controller.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130061": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.07.0 contains a double free vulnerability in gf_sg_sfcommand_del() that allows attackers to crash the process via crafted XMT scenes. Attackers can supply a crafted XMT/MP4 file where a Conditional node's SFCommandBuffer references a command freed twice during scene teardown, causing MP4Box to crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130063": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.07.0 contains a use-after-free vulnerability in the XMT scene loader that allows attackers to read freed heap memory via discarded nodes left on the parser node stack. Attackers can supply a crafted XMT scene file processed by MP4Box, causing xmt_text_content() to call gf_node_get_tag() on a freed node and crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130064": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.07.0 contains a use-after-free vulnerability in gf_sg_command_del() that allows attackers to trigger reads of freed memory through aliased XMT-A SFCommandBuffer command ownership. Attackers can supply a crafted XMT scene file processed by MP4Box, causing commands freed during node destruction to be reaccessed during access unit cleanup, crashing the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130067": {
+    "cvss": 7.8,
+    "description": "7-Zip File Manager before 26.03 fails to detect archive entry names padded with Unicode space characters, allowing attackers to bypass the deceptive file name warning in CPanel::IsVirus_Message. Attackers can craft archive entries like a PDF name followed by ideographic spaces and .hta to hide the real extension, executing script content via ShellExecuteExW when opened.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130068": {
+    "cvss": 5.4,
+    "description": "Umbraco CMS 17.0.0 before 17.7.1 and 18.0.0 before 18.2.1 contains an authorization bypass vulnerability in Management API document version endpoints that skip per-document ContentPermissionByResource checks. Authenticated back-office users restricted to a start node can list and read document versions outside their tree by GUID, exposing unpublished values and altering prevent-cleanup flags.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130071": {
+    "cvss": 9.8,
+    "description": "TridotsTech go1cms master branch through commit 7f68d05 and version-3 branch before commit ead8da3 contains a missing authentication vulnerability in the guest-whitelisted update_doc method that allows unauthenticated attackers to modify any document. Attackers can supply a doctype, name and arbitrary fields that are saved with ignore_permissions=True, altering User records to escalate privileges, take over accounts or tamper with business data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130072": {
+    "cvss": 9.1,
+    "description": "Cloud Commander (cloudcmd) before 19.21.4 contains an authentication bypass and path traversal vulnerability that allows unauthenticated attackers to rename files by sending PUT /rename requests handled before authentication middleware. Attackers can supply absolute or ../ paths in the from and to arrays to move any file the Node.js process can access outside the configured root, causing data loss or denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130075": {
+    "cvss": 4.3,
+    "description": "SplitPro through 2.1.6 contains a missing authorization vulnerability in the addOrEditExpense and addOrEditCurrencyConversion tRPC mutations that allows authenticated users to assign expenses to arbitrary users. Attackers can enumerate sequential user IDs and supply them in participants or paidBy fields to fabricate debts on victims' balances, even in unseen groups.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130076": {
+    "cvss": 5.8,
+    "description": "crw-server before 0.45.1 contains a server-side request forgery vulnerability that allows unauthenticated attackers to reach internal services by supplying an unvalidated baseUrl to the /v1/scrape endpoint. Attackers can set llmApiKey and request the summary format, making the server POST to loopback or private addresses and use returned warnings as a reachability oracle.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130077": {
+    "cvss": 5.8,
+    "description": "crw-server before 0.45.1 contains a server-side request forgery vulnerability that allows unauthenticated attackers to reach internal hosts via caller-controlled proxy and proxy_list fields in /v1/scrape. Attackers can supply proxy entries pointing to loopback, private-network or link-local hosts, bypassing page URL checks to open HTTP-proxy or SOCKS connections internally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130078": {
+    "cvss": 6.5,
+    "description": "B3log Solo through 4.4.0 contains a missing authorization vulnerability in B3Receiver.receiveArticle that allows visitor accounts to modify any article via the POST /apis/symphony/article endpoint. Attackers can supply their username as userB3Key, since OAuth-created visitors receive it as their B3 key, and overwrite any article's title, content and tags.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130079": {
+    "cvss": 5.4,
+    "description": "B3log Solo through 4.4.0 contains a stored cross-site scripting vulnerability that allows attackers to inject script by setting a malicious article title rendered without escaping. Attackers can set titles, including via the B3 sync endpoint, so admin/article-pwd.ftl, skin templates, and js/page.js article lists execute script in visitors' and administrators' browsers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130080": {
+    "cvss": 6.5,
+    "description": "B3log Solo through 4.4.0 contains an SQL injection vulnerability in the console article update API that allows authenticated authors to inject SQL through unvalidated JSON property names. Attackers can send a PUT request to /console/article/ with crafted property names used as UPDATE column names, then read query results back through the updated article.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130081": {
+    "cvss": 7.5,
+    "description": "B3log Solo through 4.4.0 contains an information disclosure vulnerability that allows unauthenticated attackers to obtain article view passwords by querying the public GET /articles API. The ArticleProcessor.getArticlesByPage handler leaves the articleViewPwd property in JSON responses, letting attackers read passwords for encrypted articles and access their protected content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130083": {
+    "cvss": 4.9,
+    "description": "BookStack before 26.09.2 contains an uncontrolled resource consumption vulnerability in the ZIP content importer that allows authenticated users with the Import Content permission to exhaust server storage. Attackers can upload a small ZIP whose data.json references one bundled file many times, causing ZipImportRunner::importAttachment() to write a full copy per reference.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130206": {
+    "cvss": 5.9,
+    "description": "Chyrp Lite (xenocrat/chyrp-lite) contains a missing brute-force protection vulnerability in the main_login() function that allows remote attackers to repeatedly submit login attempts against the admin account without any attempt counter, lockout, delay, or CAPTCHA enforcement. Attackers can send unlimited password guesses via POST requests to the login action until a correct credential is found, gaining full administrative control including post publishing, user management, and file uploads.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-69154": {
+    "cvss": 7.8,
+    "description": "The Coder VS Code extension opens Coder workspaces in VS Code with a single click. From 0.1.20 until 1.14.6, a malicious repository can provide .vscode/settings.json values for security-sensitive Coder settings because the extension permits workspace and folder scope to override those settings. Values such as coder.headerCommand and coder.tlsCertRefreshCommand are later executed as shell commands, while other affected settings can redirect the Coder CLI binary or download source, inject CLI or SSH flags, replace TLS material, disable TLS verification, or change identity and credential-storage behavior. A victim with the extension installed must open the malicious workspace or repository; when the extension activates, attacker-controlled commands can run with the victim user's privileges. The issue also affects untrusted workspaces because the extension declares untrusted-workspace support without preventing consumption of the workspace-controlled settings. This issue is fixed in version 1.14.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93666": {
+    "cvss": 5.3,
+    "description": "The Bluetooth Classic SDP client built its outgoing request PDUs with bt_sdp_create_pdu(), which allocates from the sdp_pool net-buf pool with a K_FOREVER timeout and no failure handling, in sdp_client_ss_search(), sdp_client_sa_search() and sdp_client_ssa_search() in subsys/bluetooth/host/classic/sdp.c. All of these run on the Bluetooth workqueue bt_workq (via sdp_client_work_handler(), the L2CAP sdp_client_connected() callback, or the continuation-state follow-up from a received response), which is the same single thread that dispatches incoming HCI ACL and event traffic, drives L2CAP, and performs connection and channel teardown. sdp_pool holds only CONFIG_BT_MAX_CONN buffers (one by default) and is shared with the SDP server role. An unauthenticated peer within BR/EDR range can drive both halves of the trigger. The SDP L2CAP server is registered at BT_SECURITY_L0, so any inbound SDP request makes the device allocate the pool's buffer for a response, which is held until the controller has transmitted it. The same peer can then cause a client request to be issued while the pool is empty: in-tree profiles start SDP discovery from inbound connection callbacks (for example hfp_hf_accept() calls bt_sdp_discover() through hfp_hf_create(), and hfp_ag.c mirrors this), and a peer acting as an SDP server can force repeated client requests by answering with partial responses carrying continuation state. With the pool empty, the allocation blocks uninterruptibly and freezes the entire Bluetooth host. The stall becomes permanent when the release of the outstanding buffer itself depends on the blocked workqueue: if the link carrying the queued PDU is dropped or stalls, hci_disconn_complete() and the L2CAP channel cleanup that purges the channel TX queue are themselves bt_workq work items, so the buffer is never returned. The result is an unrecoverable denial of service of all Bluetooth functionality until reboot; there is no memory-safety, confidentiality or integrity impact. The fix allocates client PDUs with K_NO_WAIT via a new sdp_client_create_pdu(), propagates -ENOBUFS, parks the session on a new SDP_CLIENT_FLAG_WAIT_FOR_TX_BUF flag, and adds an sdp_pool destructor that re-submits the SDP client worker when a buffer becomes available. Note that the SDP server role still allocated from the same pool with K_FOREVER at this commit; that path was addressed separately.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93668": {
+    "cvss": 6.5,
+    "description": "The Bluetooth Classic SDP server in subsys/bluetooth/host/classic/sdp.c allocated every response PDU through bt_sdp_create_pdu(), which expands to bt_l2cap_create_pdu() and therefore uses a K_FOREVER timeout. The allocation is made from sdp_pool, a fixed pool holding only CONFIG_BT_MAX_CONN buffers (one in the default configuration) that is shared with the SDP client role. When the pool is empty the call blocks without a bound. The allocation is reached from bt_sdp_recv() on the Bluetooth host's RX context: the bt_workq \"BT RX WQ\" workqueue in the default configuration since v3.1.0, and the dedicated \"BT RX\" thread before that. This context processes all normal-priority HCI events and all received ACL data. The SDP L2CAP server is registered on PSM 0x0001 with no security requirement (BT_SECURITY_L0), so an unpaired, unauthenticated BR/EDR peer within radio range of a connectable device can drive it. Every malformed or unrecognised SDP PDU reaches send_err_rsp(), and the sdp_svc_search_req(), sdp_svc_att_req() and sdp_svc_search_att_req() handlers allocate as well, so a short burst of pipelined requests drains the pool and parks the RX context in the blocking allocation. A pool buffer is released only once its response has been sent, and a peer that withholds baseband acknowledgements keeps the controller's buffers for the link full, so the response is never sent. While the RX context is blocked, the entire Bluetooth host, for all connections and both LE and BR/EDR, stops processing normal-priority HCI events and received data. In most affected releases the stall is permanent. Queued PDUs are freed only by connection or channel teardown, which waits for the normal-priority Disconnection Complete handler, and that handler runs on the blocked RX context, so the host does not recover without a reset. In v3.7.0 through v4.1.x the TX processor discards the queued response once the link supervision timeout drops the connection, so each stall ends at that timeout, but the peer can reconnect and repeat it for as long as it stays in range. The impact is limited to availability; no memory corruption or information disclosure is involved. The fix adds sdp_svc_create_pdu() using K_NO_WAIT, pre-allocates the response buffer once in bt_sdp_recv(), stashes the request in sdp->recv_pending when no buffer is available, and retries it from a work handler once a buffer is freed by the pool destroy callback.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93669": {
+    "cvss": 4.7,
+    "description": "The ITE IT8xxx2 SHI host-command backend in subsys/mgmt/ec_host_cmd/backends/ec_host_cmd_backend_shi_ite.c arms the SPI peripheral before its receive context exists. shi_ite_init_registers() sets the state machine to SHI_STATE_READY_TO_RECV and calls irq_enable() while the device initializes at POST_KERNEL priority CONFIG_KERNEL_INIT_PRIORITY_DEFAULT (40), but data->rx_ctx and data->tx are only assigned later by shi_ite_backend_init(), which ec_host_cmd_init() invokes at CONFIG_EC_HOST_CMD_INIT_PRIORITY (default 80). If the attached host processor starts a SPI transaction inside that window, the Rx-valid-length interrupt fires, shi_ite_int_handler() passes its state check and calls shi_ite_parse_header(), which stores the host-derived request length through the still-NULL data->rx_ctx. On the IT8xxx2 low addresses are not backed by RAM, and with CONFIG_NULL_POINTER_EXCEPTION_DETECTION_PMP the first bytes of the address space are explicitly made inaccessible, so the store raises a fatal access fault in interrupt context. The window widens further when CONFIG_EC_HOST_CMD_INITIALIZE_AT_BOOT is disabled and the application calls ec_host_cmd_init() itself. The result is a kernel panic on the embedded controller: with Zephyr's default fatal handler the CPU halts, so the controller stops servicing host commands until a hardware reset. Because the trigger is traffic from the attached host processor -- an untrusted peer from the controller firmware's point of view -- software on that host can provoke the fault by forcing a controller reset and issuing transactions during the reboot, turning a recoverable reset into a persistent outage. Impact is limited to availability: the faulting address is fixed and not attacker-chosen, so no memory-corruption primitive follows. The fix leaves the interface at SHI_STATE_DISABLED with the interrupt masked during device init, moves irq_enable() into shi_ite_backend_init() after the buffers are published, and makes shi_ite_int_handler() reject a NULL data->rx_ctx while write-clearing IT83XX_SPI_ISR and IT83XX_SPI_RX_VLISR so that an unexpected early interrupt cannot storm.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93670": {
+    "cvss": 3.5,
+    "description": "The Synopsys DesignWare I3C controller driver (drivers/i3c/i3c_dw.c) tracks free Device Address Table (DAT) slots with get_free_pos(), which signals an exhausted table by returning -1. The helper declared its return type as uint8_t, so the sentinel was truncated to 255, and both consumers (dw_i3c_attach_device() and dw_i3c_i2c_attach_device()) also stored it in a uint8_t before testing if (pos < 0) — a comparison that is never true for an unsigned value. The exhaustion guard was therefore inert in every build. With the guard defeated, an attach attempted on a full DAT proceeds with pos == 255: it writes data->dw_i3c_i2c_priv_data[255].id, more than 200 bytes past the end of the 32-element dw_i3c_i2c_priv_data array and past the end of struct dw_i3c_data; it stores the resulting out-of-bounds address in desc->controller_priv, from which later detach, reattach and IBI operations read the slot index back; and it performs a 32-bit MMIO store 1020 bytes beyond the hardware DAT base, outside the table the controller reports. The attach still returns success, so the upper layer believes the device is bound. The DAT is smaller than the software array (its depth is read from DEVICE_ADDR_TABLE_POINTER, commonly 8 or 16 entries), so exhaustion is reachable. In a dual-role build (CONFIG_I3C_DUAL_ROLE with CONFIG_I3C_USE_IBI) acting as a secondary controller, the attach count is supplied by the bus's active controller: i3c_sec_handoffed() attaches one device per entry of the received DEFTGTS list, so a hostile or malfunctioning controller on the local I3C bus that declares more targets than the local DAT depth triggers the condition once per surplus entry. Exhaustion can also be reached from a devicetree that declares more devices than the table holds, or by repeated i3c attach shell commands. Impact is bounded: the out-of-bounds store is a single byte of fixed value at a fixed displacement, with no attacker-chosen data or offset, so the realistic outcomes are corruption of neighbouring static driver state, writes into reserved controller registers, and inconsistent driver bookkeeping (a crash or a wedged I3C bus) rather than a controllable memory-write primitive. The attack vector is the local chip-to-chip I3C bus; there is no network-reachable path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93671": {
+    "cvss": 3.7,
+    "description": "The websocket client's HTTP header callback on_header_value() in subsys/net/lib/websocket/websocket.c receives the Sec-WebSocket-Accept header value as a pointer/length pair from the HTTP parser. The referenced bytes live inside the application-supplied receive buffer and are not NUL terminated. When the received value did not match the expected accept key, the pointer was passed directly to a %s conversion in a NET_DBG() call, so the logging code measured the string with strlen() and read on past the end of the header value looking for a terminator. The value is supplied by the peer during the WebSocket handshake, before any application-level authentication, so a malicious or man-in-the-middle server reached over a ws:// (or otherwise attacker-terminated) connection can trigger the mismatch branch at will simply by answering with a wrong accept key. By sizing the response so the header value ends at the tail of the buffer passed to websocket_connect() as wreq->tmp_buf, the peer can make the scan run off the end of that buffer and into adjacent memory. The defective log statement is compiled in only when websocket debug logging is enabled (CONFIG_NET_WEBSOCKET_LOG_LEVEL_DBG=y, or CONFIG_LOG_DEFAULT_LEVEL=4); it is absent from a default build, which bounds exposure to diagnostic configurations. The consequence is an out-of-bounds read whose contents are emitted to the log stream: memory adjacent to the receive buffer is disclosed wherever the device's logs are collected or displayed. On targets where the memory following the buffer is not mapped, the scan can instead fault and terminate the connection or thread. No out-of-bounds write occurs, so there is no integrity impact. The fix copies at most sizeof(got) - 1 bytes of the parser-provided slice into a bounded stack buffer, NUL terminates the copy, and logs that instead, so the formatter never reads beyond the bytes the parser actually offered.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93672": {
+    "cvss": 5.3,
+    "description": "bt_att_find_req_by_user_data() in subsys/bluetooth/host/att.c walks every ATT channel attached to a connection and dereferences chan->req->user_data without checking chan->req. An ATT channel with no client request in flight holds chan->req == NULL — that is its normal idle state, set by att_handle_rsp() when a response resolves the transaction and tested by att_req_send_process() to pick a free channel — so the lookup reads through a NULL pointer as soon as it visits an idle channel. Every other chan->req user in the file already guards the pointer. The lookup is reached from the public bt_gatt_cancel() API and, more importantly, from the host itself: bt_gatt_unsubscribe() calls bt_gatt_cancel() while a subscribe CCC write is still outstanding (BT_GATT_SUBSCRIBE_FLAG_WRITE_PENDING), and call_notify_cb_and_maybe_unsubscribe() in subsys/bluetooth/host/gatt.c invokes bt_gatt_unsubscribe() from the RX path whenever an application notify callback returns BT_GATT_ITER_STOP. A malicious or malfunctioning peer can hold the trigger window open by withholding the ATT Write Response to the CCC write and then sending a notification for the subscribed handle. With CONFIG_BT_EATT the traversal is very likely to meet an idle sibling channel, since ATT channels are prepended to the list and a channel opened after the pending request was sent is visited first. The dereference is a read of a small constant offset from address zero, so the impact is availability only: no memory corruption, no attacker-chosen address and no information disclosure. On platforms and configurations where a near-NULL read traps — TrustZone non-secure images, MMU targets, native_sim, or builds with CONFIG_NULL_POINTER_EXCEPTION_DETECTION_MPU/_DWT — the fault occurs in the Bluetooth RX context and results in a fatal error and device reset. On a plain Cortex-M build with the vector table mapped at address 0 and null-pointer detection disabled (the default) the read succeeds and the defect is inert. The fix adds an explicit chan->req != NULL test to the channel traversal and additionally rejects a NULL user_data argument, which would otherwise have matched, and cancelled, an unrelated request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93673": {
+    "cvss": 4.8,
+    "description": "The Zephyr WebSocket client validates the server's handshake response in on_header_value() in subsys/net/lib/websocket/websocket.c. The comparison was performed as strncmp(at, str, length), where length is the length of the value the server sent rather than the length of the expected value, so the check only asked whether the received value was a prefix of the expected base64(SHA-1(key || GUID)). A server that returned a handful of correct characters passed, and a response carrying an empty Sec-WebSocket-Accept: header caused strncmp() to be called with a count of zero, which returns 0 and set ctx->sec_accept_ok with no comparison performed at all. The header-value callback also cleared ctx->sec_accept_present after the first chunk, so a value split across receive-buffer boundaries was only ever examined in part. ctx->sec_accept_ok is the sole WebSocket-specific gate in websocket_connect(); the client does not check the HTTP status code or the Upgrade:/Connection: headers. Any HTTP response containing an empty or prefix-matching Sec-WebSocket-Accept header therefore completed the handshake, after which the socket is finalized as a WebSocket and all further peer bytes are parsed as frames. The affected path is driven directly by remote input through subsys/net/lib/http/http_parser.c, and is reached by every user of websocket_connect(), including MQTT over WebSocket (subsys/net/lib/mqtt/mqtt_transport_websocket.c) and subsys/net/lib/ocpp/ocpp.c. The Sec-WebSocket-Accept exchange is not a secret-based authentication -- an endpoint or on-path attacker that sees the request can compute the expected value -- so the impact is bounded to parties that never observed the handshake request: a caching or transparent intermediary replaying a canned response, an off-path attacker injecting a spoofed response, or a non-WebSocket endpoint the client was induced to talk to. For those, the per-connection binding that RFC 6455 requires the client to enforce provided no protection at all, letting a single crafted response convince the device it holds a live WebSocket session and causing it to send application data to, and accept frames from, an unverified peer. There is no memory-safety consequence. The fix compares each delivered chunk against the expected value at the position reached so far, refuses a chunk that would overrun it, and accepts only once every byte of the expected value -- and no more -- has been matched; on_header_field() now also clears the flag for any other header so a partial value cannot be continued across an intervening header.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130327": {
+    "cvss": 9.3,
+    "description": "In Open Object Rexx (ooRexx) before 5.2.0, RXAPI relies on a world-writable /tmp file unless XDG_RUNTIME_DIR is set, or localhost TCP port 10010, allowing RXAPI communication by any local user, e.g., for injection of a macro that will be executed by a REXX script.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
