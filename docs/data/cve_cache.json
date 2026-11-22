@@ -143542,5 +143542,65 @@
     "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Versions 3.13.2 and below of the Python HTTP parser may allow a request smuggling attack with the presence of non-ASCII characters. If a pure Python version of AIOHTTP is installed (i.e. without the usual C extensions) or AIOHTTP_NO_EXTENSIONS is enabled, then an attacker may be able to execute a request smuggling attack to bypass certain firewalls or proxy protections. This issue is fixed in version 3.13.3.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-115563": {
+    "cvss": 7.5,
+    "description": "The Model Context Protocol Python SDK is the official Python SDK for Model Context Protocol servers and clients. From 1.9.1 until 1.30.0 and 2.2.0, OAuth client support in mcp.client.auth can send credentials to an authorization server chosen by an untrusted MCP server. ClientCredentialsOAuthProvider and PrivateKeyJWTOAuthProvider cannot identify the authorization server that owns their credentials. Affected HTTP clients using those providers, OAuthClientProvider, or the deprecated 1.x RFC7523OAuthClientProvider can disclose a client_secret, authorization code, PKCE code_verifier, or signed client assertion. MCP servers, stdio clients, and clients that attach their own tokens or headers are not affected. Interactive OAuthClientProvider use requires a person to start sign-in, while the unattended providers do not. For ClientCredentialsOAuthProvider and PrivateKeyJWTOAuthProvider, callers must configure issuer= after upgrading because omission still follows the MCP server's advertised authorization server, and the deprecated RFC7523OAuthClientProvider must be replaced because it has no issuer option. A stored client registration without an issuer remains unbound after upgrading, so stored OAuth client information must be cleared once to register again or a manually pre-registered record must be updated with its issuer. This issue is fixed in versions 1.30.0 and 2.2.0.",
+    "vendor": "modelcontextprotocol",
+    "product": "python-sdk"
+  },
+  "CVE-2026-121716": {
+    "cvss": 7.0,
+    "description": "fzf is a command-line fuzzy finder. Prior to 0.74.5, bin/fzf-tmux validates separately supplied layout sizes but does not validate attached -l and -u layout values before Bash arithmetic expansion, allowing command substitution in a crafted operand to execute as the invoking user during option parsing. The same validation failure lets space-bearing popup geometry options -x, -y, -w, -h, and -p reach an unquoted tmux popup option string and inject additional tmux flags. Exploitation requires less-trusted project configuration, a wrapper, or a plugin to supply the poisoned value and requires the victim to invoke fzf-tmux; normal values are usually trusted, and the script has been superseded by built-in tmux options. This issue is fixed in version 0.74.5.",
+    "vendor": "junegunn",
+    "product": "fzf"
+  },
+  "CVE-2026-120984": {
+    "cvss": 9.1,
+    "description": "A flaw was found in the Keycloak server's client management component. When a client is created or imported with authorization services enabled, the system fails to properly clear an internal session attribute used during the setup process. This allows an authenticated attacker with client management permissions to bypass security controls and upload a malicious JavaScript policy, which is then executed on the server when an authorization request is made. Successful exploitation could allow the attacker to run arbitrary code on the server, potentially compromising the entire system.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Build of Keycloak"
+  },
+  "CVE-2026-129304": {
+    "cvss": 5.4,
+    "description": "Guard Core is an API security core engine for the FastAPI-Guard, FlaskAPI Guard, and DjAPI Guard adapters. From 1.0.0 until 3.13.0, _extract_from_forwarded_header() in guard_core/utils.py returns the selected X-Forwarded-For entry without validating that it is an IP address. In deployments configured with trusted_proxies where the selected entry is attacker-controlled, the arbitrary client_ip string reaches BehaviorTracker in guard_core/handlers/behavior_handler.py and is interpolated into Redis key names and blocking KEYS glob patterns. Glob metacharacters can cause one request to count other clients' behavior events, embedded separators can disturb key parsing, and rotating identities can create unbounded keys while repeatedly scanning the shared Redis keyspace. A non-IP identity can also reach a ban action and cause an uncaught validation error. This issue is fixed in version 3.13.0.",
+    "vendor": "rennf93",
+    "product": "guard-core"
+  },
+  "CVE-2026-107853": {
+    "cvss": 6.3,
+    "description": "tiny-secp256k1 is a tiny secp256k1 native/JS wrapper. From 2.1.0 until 2.2.5 for tiny-secp256k1 and from 2.2.2 until 2.2.5 for @bitcoin-js/tiny-secp256k1-asmjs, the three-argument xOnlyPointAddTweakCheck path ignores the backend failure return from xOnlyPointAddTweak when a tweak produces the point at infinity. The shared X_ONLY_PUBLIC_KEY_INPUT buffer then still contains the original point, so a caller-controlled resultToCheck equal to that point can make the stale-buffer comparison return true even though no tweaked key exists. Protocols that rely on this helper to validate caller-controlled internal keys, tweaks, and comparison values can accept an invalid derived key. This issue is fixed in version 2.2.5.",
+    "vendor": "bitcoinjs",
+    "product": "tiny-secp256k1"
+  },
+  "CVE-2026-129302": {
+    "cvss": 7.5,
+    "description": "Guard Core is an API security core engine for the FastAPI-Guard, FlaskAPI Guard, and DjAPI Guard adapters. From 3.5.0 until 3.13.0, built-in penetration-detection patterns in guard_core/handlers/suspatterns_handler.py execute through a direct pattern.search(content) call instead of the timeout-protected create_safe_matcher() path used for custom patterns. The built-in template-injection detector contains an unbounded expression with quadratic behavior when scanning repeated opening braces. Because penetration detection and enhanced mode are enabled by a stock SecurityConfig, an unauthenticated request can block the shared asyncio event loop, affecting all application endpoints. The triggering input does not produce a detection match, so the request can complete without incrementing ban counters or being recorded as suspicious. This issue is fixed in version 3.13.0.",
+    "vendor": "rennf93",
+    "product": "guard-core"
+  },
+  "CVE-2026-114728": {
+    "cvss": 5.3,
+    "description": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 is affected by a remote content blocking bypass in the handling of FuncIRI attributes. rcube_washtml detected the CSS url() token with a pattern that enumerated only some of its escaped spellings, so values using other CSS escape sequences, for example \\000075rl( or u\\72 l(, were not recognized and remote content was loaded from an HTML message without the user's consent. Upstream fixed this in the commit “Fix remote content blocking bypass via CSS escapes in FuncIRI attributes (again)”, which resolves CSS escapes before matching and also inspects the `to`, `from` and `by` attributes.",
+    "vendor": "Roundcube",
+    "product": "Webmail"
+  },
+  "CVE-2026-129303": {
+    "cvss": 3.7,
+    "description": "Guard Core is an API security core engine for the FastAPI-Guard, FlaskAPI Guard, and DjAPI Guard adapters. From 1.0.0 until 3.13.0, ContentPreprocessor.preprocess() in guard_core/detection_engine/preprocessor.py collapses all whitespace before built-in pattern matching in the default enhanced mode. This removes carriage returns and newlines required by the http_split and newline-anchored cmd_injection detectors in guard_core/handlers/suspatterns_handler.py, making those detectors unable to match. Framework-decoded CRLF can therefore pass through Guard Core unflagged while the downstream application still receives the raw newline-bearing value. Direct security impact requires a downstream stack or application that persists or re-emits the value into a CRLF-tolerant response or command context. This issue is fixed in version 3.13.0.",
+    "vendor": "rennf93",
+    "product": "guard-core"
+  },
+  "CVE-2026-133528": {
+    "cvss": 8.6,
+    "description": "BeamNG.drive before 0.40.6 contains an out-of-bounds write vulnerability because JIT-compiled LuaJIT traces omit FFI array bounds checks, letting untrusted Lua escape the sandbox. Attackers supplying a malicious mod can JIT-compile an FFI store loop, write out of range using a tostring() address leak, re-enable ffi.load, and run commands as the game user.",
+    "vendor": "BeamNG GmbH",
+    "product": "BeamNG.drive"
+  },
+  "CVE-2026-112020": {
+    "cvss": 6.1,
+    "description": "LodePNG through 20261006 contains a heap out-of-bounds read vulnerability in lodepng::getFilterTypesInterlaced() in lodepng_util.cpp that lacks bounds checks on decompressed IDAT data. Attackers can supply a crafted interlaced PNG declaring a raster larger than its IDAT stream to disclose adjacent heap memory or crash applications.",
+    "vendor": "lvandeve",
+    "product": "lodepng"
   }
 }
