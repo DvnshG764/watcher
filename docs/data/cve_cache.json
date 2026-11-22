@@ -143170,5 +143170,77 @@
     "description": "Dell PowerStore contains an improper input validation vulnerability. An authenticated low-privileged attacker could exploit this vulnerability, potentially leading to stored cross-site scripting in the management interface.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-114488": {
+    "cvss": 7.4,
+    "description": "A flaw was found in Wildfly. A remote attacker can bypass authentication on IIOP EJB invocations as the CSIv2 security interceptor accepts ITTPrincipalName identity assertions in the service context without verifying transport-level authentication, allowing a pre-auth attacker on the port 3528 to impersonate any principal on every IIOP-exposed @Remote EJB.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-15564": {
+    "cvss": 7.4,
+    "description": "Wildfly's IIOP listener may permit deserialization of input streams before authentication is performed. An attacker who can gain access to the IIOP port may be able to construct and send malicious objects and achieve deserialization, if the target EJB allows untyped method parameters, and depending on the potential gadget chains available in the running classpath.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19610": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the platform-mbean component of JBoss EAP, which provides management access to JVM-level metrics and configurations. The issue occurs because the handler for the read-resource operation on the runtime management resource fails to perform required Role-Based Access Control (RBAC) checks. This allows an authenticated user with low-privileged access, such as the Monitor role, to view sensitive system properties and JVM configuration details that should be restricted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84725": {
+    "cvss": 8.1,
+    "description": "when EAP runs with -secmgr, the openjdk-orb's JDKBridge honours attacker-supplied CDR codebase URLs during object unmarshalling on :3528, allowing an unauthenticated attacker to load and instantiate arbitrary classes from a remote URL in the server JVM before EJB security interceptors run.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93488": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Netty. SpdySessionHandler accepts an unlimited number of concurrent remote-initiated streams because localConcurrentStreams defaults to Integer.MAX_VALUE and the handler provides no API to change it. A remote peer can open a SPDY connection and send a large number of SYN_STREAM frames with FLAG_FIN=0, causing unbounded heap and direct memory allocation that can lead to JVM OutOfMemoryError and a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93491": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Netty's HttpServerCodec. A remote, unauthenticated attacker can exploit this vulnerability by pipelining HTTP/1.1 requests on a single connection and withholding reads. This action causes the methodOverflowQueue to grow without limit, leading to unbounded heap memory consumption and a denial of service due to memory exhaustion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93558": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Netty's WebSocketServerExtensionHandler. A remote, unauthenticated attacker can exploit this vulnerability by using HTTP/1.1 pipelining to send requests faster than the application can respond. This leads to an unbounded growth of a per-connection queue, consuming excessive memory. Eventually, this can cause the Java Virtual Machine (JVM) to exhaust its heap, resulting in a Denial of Service (DoS) for the affected server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93565": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Netty RtspDecoder. The `RtspMethods.valueOf()` function incorrectly strips trailing control bytes from method tokens in Real-Time Streaming Protocol (RTSP) requests. A remote attacker can exploit this by sending a specially crafted RTSP request, leading to method-token smuggling. This vulnerability allows an attacker to bypass method-based access controls and can also be used to launder malicious requests through Netty-based RTSP proxies, making them appear legitimate to backend systems.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93566": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Netty. A remote attacker could exploit this by sending a specially crafted HTTP request that includes control characters within the chunk-size line. This bypasses the intended strict validation, allowing the attacker to inject arbitrary HTTP requests. This vulnerability can lead to HTTP request smuggling, potentially resulting in information disclosure or other unauthorized actions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93573": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Netty's HTTP/1.1 decoder. This vulnerability allows a remote attacker to bypass `Transfer-Encoding` header validation by splitting the `Transfer-Encoding` field across multiple headers, with the last field containing a non-final transfer coding like `gzip` or `deflate`. This bypass can lead to HTTP request smuggling, enabling attackers to bypass security controls, desynchronize request processing, or cause requests to be processed in an unintended context.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93562": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Netty's HTTP/1 decoder. Incomplete validation of malformed Transfer-Encoding headers allows a remote attacker to perform HTTP request smuggling. By sending specially crafted HTTP requests, an attacker can inject arbitrary HTTP requests, potentially bypassing security controls or accessing unauthorized resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93574": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Netty's `netty-codec-http` component. A remote attacker could exploit this vulnerability by sending a specially crafted HTTP/1.1 chunk-size token that includes post-digit whitespace. This incorrect parsing of the chunk size can lead to HTTP request smuggling. This allows an attacker to bypass security controls or access unauthorized resources in proxy/backend deployments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
