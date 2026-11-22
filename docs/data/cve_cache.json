@@ -142954,5 +142954,203 @@
     "description": "OpenEMR before 8.5.0 contains a missing authorization vulnerability in the esign_form_submit handler of library/ESign/Form/Controller.php that verifies only the caller's password, not access to the patient, encounter, or form type. Authenticated core users can supply arbitrary formId, formDir, and encounterId values to sign and lock any patient's clinical form, creating unauthorized approval records and blocking normal editing.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-128241": {
+    "cvss": 4.4,
+    "description": "The xmlwf tool in libexpat through 2.10.0 contains a symlink following vulnerability because -d output mode opens files with fopen(\"wb\"), which follows symbolic links. Local attackers with write access to the output directory can plant a symlink at the expected output name to truncate or overwrite files writable by the xmlwf user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128329": {
+    "cvss": 7.7,
+    "description": "Dokploy 0.28.0 before 0.31.1 contains a path traversal vulnerability that allows authenticated organization members to read arbitrary files by supplying ../ sequences in the filePath of patch.readRepoFile. Attackers with service read permission can read /etc/shadow, SSH private keys, and secret environment files on the Dokploy host or managed remote servers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128330": {
+    "cvss": 4.2,
+    "description": "Miniflux before 2.3.5 contains an insufficient session expiration vulnerability that allows attackers to retain account access because password changes do not revoke existing web sessions. Attackers holding a leaked password or copied session cookie keep access for up to 30 days, reading integration credentials, creating API keys, or registering passkeys.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128333": {
+    "cvss": 7.4,
+    "description": "listmonk 6.0.0 before 7.0.0-beta.2 contains an authentication bypass vulnerability in doResetPassword that skips TOTP verification after a password reset. Attackers who can complete a reset, such as by reading the victim's reset email, obtain fully authenticated sessions including Super Admin without the TOTP code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128334": {
+    "cvss": 4.8,
+    "description": "listmonk 6.2.0 before 7.0.0-beta.2 contains a missing authentication vulnerability that allows unauthenticated attackers to submit Azure Event Grid bounce webhooks when no shared secret is configured. Attackers can POST forged EmailDeliveryReportReceived events with Bounced status to /webhooks/service/azure to blocklist, unsubscribe, or delete arbitrary subscribers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128337": {
+    "cvss": 8.6,
+    "description": "ExcelJS through 4.4.0 contains a prototype pollution vulnerability in mergeConditionalFormattings that allows attackers to modify Object.prototype by supplying an x14:cfRule id of __proto__. Attackers can craft an xlsx file that, when loaded with xlsx.load(), sets properties such as type, direction, border and cfvo on every object in the process until it restarts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128338": {
+    "cvss": 7.5,
+    "description": "exceljs through 4.4.0 contains a memory exhaustion vulnerability that allows attackers to crash applications by supplying a worksheet col element with an unbounded max attribute. Attackers can craft a small workbook with a huge max value, causing xlsx.load() to allocate hundreds of millions of Column objects and abort the process with an uncatchable heap out-of-memory error.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128339": {
+    "cvss": 7.5,
+    "description": "ExcelJS through 4.4.0 contains a memory exhaustion vulnerability in Worksheet._parseMergeCells that allows attackers to crash applications by supplying unbounded mergeCell ranges. Attackers can craft a small workbook with a mergeCell ref like A1:XFD1048576, causing xlsx.load() to create billions of Row and Cell objects and abort the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128340": {
+    "cvss": 7.5,
+    "description": "ExcelJS through 4.4.0 contains a memory exhaustion vulnerability that allows attackers to crash applications by supplying a workbook with an oversized defined-name range. DefinedNames.addEx expands ranges such as S!$A$1:$XFD$1048576 from xl/workbook.xml cell by cell, causing an uncatchable fatal heap out-of-memory error during xlsx.load().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128341": {
+    "cvss": 7.5,
+    "description": "ExcelJS through 4.4.0 contains a resource exhaustion vulnerability in data-validations-xform.js that allows attackers to exhaust CPU and memory by supplying unbounded sqref ranges. Attackers can provide a small crafted workbook with a sqref of A1:XFD1048576 to make xlsx.load() iterate billions of addresses, blocking the event loop and crashing the process with an uncatchable out-of-memory error.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128342": {
+    "cvss": 7.5,
+    "description": "ExcelJS through 4.4.0 contains a denial of service vulnerability that allows attackers to block the event loop by supplying an unbounded sheetId in xl/workbook.xml. Attackers can provide a workbook with a huge sheetId, making the sparse worksheet array walk stall worksheets, getWorksheet and writeBuffer for seconds.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128343": {
+    "cvss": 7.5,
+    "description": "exceljs through 4.4.0 contains a denial of service vulnerability that allows attackers to block the event loop by supplying unbounded row r attributes parsed in row-xform.js. Attackers can craft an XLSX file with a row numbered far beyond Excel's limit, making getSheetValues(), workbook writes and CSV export consume time proportional to that number.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128344": {
+    "cvss": 7.5,
+    "description": "ExcelJS through 4.4.0 contains a memory exhaustion vulnerability that allows attackers to crash applications by supplying a workbook with an unbounded image anchor column in the drawing part. Attackers can set an anchor column such as 300000000 in xl/drawings/drawing1.xml so reading getImages() anchor positions makes Worksheet.getColumn allocate millions of Column objects and abort with a heap out-of-memory error.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128345": {
+    "cvss": 5.3,
+    "description": "ExcelJS through 4.4.0 contains a regular expression denial of service vulnerability in slideFormula in lib/utils/shared-formula.js when translating shared formulas to child cells. Attackers can supply a crafted spreadsheet with very long master formulas, such as runs of hyphens, causing quadratic regex backtracking that blocks the Node.js event loop.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128346": {
+    "cvss": 7.5,
+    "description": "ExcelJS through 4.4.0 contains a resource leak vulnerability in the streaming WorkbookReader.parse that leaves temporary files and open descriptors when sheet parsing fails or iteration stops early. Attackers can repeatedly upload malformed multi-sheet workbooks with worksheets placed before xl/sharedStrings.xml to fill the temporary directory and exhaust file descriptors.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128347": {
+    "cvss": 7.5,
+    "description": "ExcelJS through 4.4.0 contains an arbitrary file read vulnerability in the streaming WorkbookWriter that allows attackers to read local files by supplying crafted image filenames to addImage. Attackers can inject ../ path segments into user-controlled image paths, causing addMedia to embed any file readable by the Node.js process under xl/media in the generated workbook.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128348": {
+    "cvss": 5.4,
+    "description": "ExcelJS through 4.4.0 contains a formula injection vulnerability in the totals row formula getter in lib/doc/table.js that fails to escape [, ], # and ' characters in structured reference column names. Attackers can supply column names containing ] via untrusted input like imported CSV headers to inject formulas such as HYPERLINK that exfiltrate cell values when users open and click the generated workbook.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75487": {
+    "cvss": 7.2,
+    "description": "Cudy TR3000 before 2.5.42 contains a command injection vulnerability that allows authenticated administrators to execute commands as root via the WireGuard server private_key option. Attackers can save a private key containing $() command substitution, which runs when action_wireguards_export() passes it to luci.sys.exec during configuration export.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75488": {
+    "cvss": 5.9,
+    "description": "Cudy TR3000 before 2.5.42 contains a stack buffer overflow vulnerability in the CWMP client that allows a malicious ACS to corrupt stack memory via oversized credentials. Attackers controlling the ACS can send Username and Password values up to 256 bytes in TR-069 Download or Upload requests, overflowing 128-byte stack buffers and crashing the CWMP process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75489": {
+    "cvss": 6.8,
+    "description": "Cudy TR3000 before 2.5.42 contains an insufficient verification of data authenticity vulnerability in the mt_wifi Smart Mesh Technology (SMT) onboarding, which protects messages only with an AES-CBC key derived from public values and a CRC32 check. Adjacent unauthenticated attackers can forge SMT messages in Probe Request vendor IEs carrying an attacker-chosen SSID and pre-shared key, forcing unpaired devices to join attacker-controlled access points.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75490": {
+    "cvss": 7.5,
+    "description": "Cudy TR3000 before 2.5.42 contains a remote code execution vulnerability that allows unauthenticated adjacent attackers to run root commands by advertising a rogue automesh controller over mDNS. Attackers on the upstream Ethernet segment can advertise _cudycmagent._tcp records pointing to a malicious MQTT broker, then send commands encrypted with a fixed AES key that router/batchcmd.lua executes as root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75491": {
+    "cvss": 8.1,
+    "description": "Cudy TR3000 before 2.5.42 contains an authentication bypass vulnerability in the Mosquitto plugin auth_plugin_jwt.so that accepts unsigned JWTs using alg none. Attackers holding any Cudy-trusted client certificate can authenticate as admincudydevice on port 8883 and publish batchcmd requests to execute commands as root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75492": {
+    "cvss": 7.5,
+    "description": "Cudy TR3000 before 2.5.42 contains an unauthenticated stack buffer overflow vulnerability in the stun_client TR-111 UDP Connection Request parser that parses requests before verifying username or HMAC. Remote attackers can send a single crafted UDP datagram lacking a space in the request line, causing strncpy() to overflow a 10-byte stack buffer and crash stun_client for denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75493": {
+    "cvss": 5.9,
+    "description": "Cudy TR3000 before 2.5.42 contains a stack buffer overflow vulnerability in an obuspa getter for the TR-098 WLANConfiguration KeyPassphrase parameter, which copies the stored value with strcpy() into a 4,096-byte stack buffer without a length check. A malicious or compromised ACS can set a 5,000-byte passphrase via SetParameterValues, and a later read of the parameter overflows the buffer and crashes obuspa, causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75494": {
+    "cvss": 7.4,
+    "description": "Cudy TR3000 before 2.5.42 contains an argument injection vulnerability that allows a malicious or compromised ACS to inject curl options through unfiltered Username and Password values in the easycwmpd Upload handler. Attackers can embed whitespace to add options like -o and --url to the root-run curl command, writing attacker-controlled HTTP responses to arbitrary files on the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75495": {
+    "cvss": 8.1,
+    "description": "Cudy TR3000 before 2.5.42 contains an OS command injection vulnerability that allows a malicious or compromised ACS to execute commands as root by supplying a crafted InternetGatewayDevice.User.{i}.Password value. Attackers can send a SetParameterValues request with shell metacharacters that obuspa_system.lua concatenates into a luci.util.exec() command string, gaining root command execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75576": {
+    "cvss": 7.2,
+    "description": "Cudy TR3000 before 2.5.42 contains a command injection vulnerability that allows authenticated administrators to execute commands as root via an unvalidated multipart filename in the CBI FileUpload handler. Attackers can upload a valid OpenVPN configuration file through the VPN client config page with a filename containing $() shell substitution, which is passed through Lua %q to /bin/sh -c.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75577": {
+    "cvss": 7.2,
+    "description": "Cudy TR3000 before 2.5.42 contains a command injection vulnerability that allows authenticated administrators to execute commands as root by storing a malicious WireGuard private key. Attackers can save a private_key containing $() shell substitution and call the vpn.export_conf method on the /cgi-bin/luci/rpc/app JSON-RPC endpoint, which passes the key to a wg pubkey shell command.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75578": {
+    "cvss": 7.2,
+    "description": "Cudy TR3000 before 2.5.42 contains a command injection vulnerability in luci/model/cbi/vpn/openvpn/client.lua, which embeds the shellquote()-quoted remote host token of an uploaded OpenVPN configuration inside an already single-quoted sed program run by os.execute(), so the nested quotes terminate the outer quote. Authenticated administrators can upload an .ovpn file whose remote host token contains a semicolon to execute arbitrary commands as root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109903": {
+    "cvss": 7.8,
+    "description": "A buffer overread caused by casting a negative integer to CARD32 in XvQueryImageAttributes in X.Org X Server before 21.1.26 and xwayland before 24.1.15 could be used to causes crashes by authenticated X clients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109904": {
+    "cvss": 6.9,
+    "description": "A buffer overread caused by an integer-overflow in Proc/SProcXResQueryClientIds in X.Org xwayland before 24.1.15 and X Server before 21.1.26 could be used by attackers on authenticated X clients to crash the server or leak out information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123274": {
+    "cvss": 7.4,
+    "description": "Out-of-bounds Write vulnerability in Apache DataSketches C++. An application that deserializes a KLL sketch from an untrusted source can have heap memory corrupted by a crafted sketch, because the serialized level boundaries were not validated. This issue affects Apache DataSketches C++: 2.0.0 through 5.3.0. Users are recommended to upgrade to version 5.3.1, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123338": {
+    "cvss": 7.4,
+    "description": "Out-of-bounds Write vulnerability in Apache DataSketches C++. An application that deserializes a REQ sketch from an untrusted source can have heap memory corrupted by a crafted sketch, because the serialized compactor headers were not validated. This issue affects Apache DataSketches C++: from 3.0.0 through 5.3.0. Users are recommended to upgrade to version 5.3.1, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
