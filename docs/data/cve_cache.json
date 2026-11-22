@@ -146926,5 +146926,917 @@
     "description": "AppFlowy-Web before 0.20.0 contains a stored cross-site scripting vulnerability in the TextareaAutosize component that allows workspace members with edit access to inject markup by copying unescaped values into a hidden mirror via innerHTML. Attackers can store a database row title or checklist task containing an element with an event handler to execute script in browsers of users opening the row, including unauthenticated published page visitors.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-130849": {
+    "cvss": 9.8,
+    "description": "BZFlag bzfs before 2.4.32 contains a heap out-of-bounds write vulnerability in NetHandler::tcpReceive() that allows remote unauthenticated attackers to corrupt heap memory by sending a TCP message with a body length of exactly 1024. Attackers can overwrite the tcplen receive offset with a negative value to write controlled bytes before the buffer, crashing the server or executing commands as the bzfs user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130850": {
+    "cvss": 5.4,
+    "description": "LaraCollab through 0.18.2 contains a stored cross-site scripting vulnerability that allows authenticated client-role users to inject script by posting unsanitized task comments rendered via dangerouslySetInnerHTML. Attackers can post malicious comments that execute when users, including administrators, open the task or view dashboard recent comments, allowing actions in their session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130851": {
+    "cvss": 7.1,
+    "description": "wishthis through 1.2.3 contains an authorization bypass vulnerability in User::ownsWishlist() that allows authenticated users to modify other users' wishes and wishlists. Attackers can supply sequential wish_id and wishlist_id values to the wishes and wishlists API handlers to edit wishes, add wishes, or rename and delete wishlists.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130852": {
+    "cvss": 5.3,
+    "description": "wishthis through 1.2.3 contains a missing authentication vulnerability in the PUT branch of src/api/wishes.php that allows unauthenticated attackers to modify wish URLs across all users. Attackers who know a wish link from a public wishlist can supply wish_url_current and wish_url_proposed parameters to redirect owners and gift-givers to attacker-controlled URLs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130853": {
+    "cvss": 7.2,
+    "description": "Nexterm through 1.2.2-BETA contains a privilege escalation vulnerability that allows users with permissions.manage to gain unauthorized permissions because addGroupMember and setUserGroups lack the grantsBeyondCaller check. Attackers can add their own account to custom groups via the group membership endpoints to inherit permissions like users.impersonate and settings.backup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130854": {
+    "cvss": 5.4,
+    "description": "AudioBookRequest 1.9.0 through 2.0.1 contains a stored cross-site scripting vulnerability that allows low-privileged authenticated users to inject script through manual book request fields due to disabled Jinja2 autoescaping. Attackers can submit malicious title, author, narrator or info values via POST /api/requests/manual to execute script in an administrator's browser and access admin-only endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130855": {
+    "cvss": 8.8,
+    "description": "Bonsai through 6.0 contains an incorrect authorization vulnerability that allows authenticated Editor users to access admin pages because AdminAuthHandler accepts both Administrator and Editor roles. Attackers can use UsersController and DynamicConfigController to reset administrator passwords, promote accounts to Administrator, and change global settings to take over the instance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130856": {
+    "cvss": 9.8,
+    "description": "53AIHub before 0.5.5 contains a missing authentication vulnerability that allows remote unauthenticated attackers to reinitialize installed instances by calling the public POST /api/init endpoint. Attackers can reset an existing account's password, assign the top creator role, and obtain an access token to take over accounts and use admin-only API routes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130857": {
+    "cvss": 8.3,
+    "description": "EveryDocs Core before 1.6.1 contains an authorization bypass vulnerability that allows authenticated users to access other users' records through unscoped Model.find(params[:id]) lookups in multiple controllers. Self-registered attackers can enumerate sequential ids to read, modify, or delete other users' documents and stored files, and rename or delete their folders, tags and people.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130858": {
+    "cvss": 5.4,
+    "description": "FS PBX through 2.2.5 contains a missing authorization vulnerability in FaxesController, PaymentGatewayController and VirtualReceptionistController API routes that only check authentication. Any authenticated user can delete other tenants' fax records by UUID, deactivate or modify the platform-wide payment gateway, and change another tenant's IVR greeting.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130859": {
+    "cvss": 5.4,
+    "description": "Habitat through 1.7.1 contains an insecure direct object reference vulnerability in CreatePostController::addAttachmentsToPost() that allows authenticated users to claim other users' unposted image uploads. Email-verified attackers can submit sequential attachmentIds when creating a post to attach another user's pending image, exposing it publicly and removing it from the uploader's post.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130860": {
+    "cvss": 8.2,
+    "description": "Flagr before 1.2.5 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to access the flag management write API through an insecure default FLAGR_BASIC_AUTH_WHITELIST_PATHS including /api/v1/flags. Because basicAuth.whitelist() in pkg/config/middleware.go matches only path prefixes regardless of HTTP method, attackers can create, modify, enable, disable, and delete flags, variants, segments, constraints, and distributions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130861": {
+    "cvss": 8.8,
+    "description": "UrlHub before 1.20.1 contains a missing authorization vulnerability that allows any authenticated user to create accounts via the POST /admin/user/store route because role:admin middleware only covers view and create actions. Attackers, including self-registered users, can submit a request with role=admin to create an administrator account and gain full administrative control.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130862": {
+    "cvss": 5.4,
+    "description": "BeikeShop through 2.0.0.32 contains a stored cross-site scripting vulnerability that allows registered customers to inject script by submitting an unsanitized RMA comment rendered unescaped in mail templates. Attackers can submit a return request with malicious script saved to mail_logs.content, executing in an administrator's browser session when they view the Mail Logs entry.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130863": {
+    "cvss": 8.8,
+    "description": "ArtisanCloud PowerX through 1.0.2 contains a missing authorization vulnerability in the IAM role management API that allows authenticated tenant members to escalate privileges. Attackers holding even the lowest built-in role can call the permissions/grant-ids, permissions/grant, or bind/member routes to grant permissions or bind privileged roles, gaining tenant administrative access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130864": {
+    "cvss": 4.3,
+    "description": "Coyote before commit d6e8fb9 contains a missing authorization vulnerability in Wiki\\CommentController::save that allows authenticated users to edit other users' wiki comments. Attackers can send POST requests to /Comment/Save/{wiki}/{id} with another user's comment id, bypassing the WikiCommentPolicy update check, so altered text appears under the original author's name.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130865": {
+    "cvss": 5.4,
+    "description": "wireguard_webadmin before 0.9981 contains a missing authorization vulnerability in scheduler/views.py that allows low-privilege authenticated users to manage peer schedules without Peer Manager level. View Only or Debugging Analyst users can create, modify, and delete schedule profiles and time slots to disable WireGuard peers or keep disabled peers off.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130866": {
+    "cvss": 6.1,
+    "description": "Pastefy 7.2.1 before 7.2.7 contains a stored cross-site scripting vulnerability in MermaidViewer.vue that passes attacker-supplied %%{init}%% directives to mermaid.mermaidAPI.updateSiteConfig(). Unauthenticated attackers can create Mermaid or Markdown pastes setting securityLevel to loose with a permissive dompurifyConfig to steal viewers' API session keys and act on their accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130867": {
+    "cvss": 7.5,
+    "description": "GreaterWMS through 2.1.54 contains an unauthenticated path traversal vulnerability in the css, js, statics and fonts routes in greaterwms/views.py, which concatenate raw request.path_info without normalization. Attackers can send URL-encoded ../ sequences to read db.sqlite3 and obtain user openid tokens, enabling impersonation of any account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130868": {
+    "cvss": 7.4,
+    "description": "GreaterWMS through 2.1.54 contains a predictable authentication token vulnerability that allows unauthenticated attackers to forge openid tokens by recomputing an unsalted MD5 hash of username and registration timestamp. Attackers who know a username and can bound its registration time can brute-force candidate openid values in the Token header to gain full read and write access to warehouse, staff, customer, supplier and order data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130869": {
+    "cvss": 4.3,
+    "description": "Ruby Central cfp-app through 2.0 contains a missing authorization vulnerability in CommentsController#create that allows any authenticated user to comment on any proposal by supplying a numeric proposal_id. Attackers can send POST requests to /public_comments or /internal_comments to post into reviewers' private discussions and trigger notifications to event team members.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130870": {
+    "cvss": 7.4,
+    "description": "ClearFlask before 2.7.3 contains an improper authorization vulnerability that allows any account holding an invitation ID to accept it regardless of invited email. Attackers who obtain a forwarded or shared invitation link can redeem it via accountAcceptInvitationAdmin or accountSignupAdmin to become project administrators.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130871": {
+    "cvss": 6.1,
+    "description": "linkdotnet Blog through 17.1 contains an open redirect vulnerability that allows unauthenticated attackers to redirect users by passing unvalidated redirectUri values on the Login and Logout pages. Attackers can craft login links sending victims to attacker-controlled sites after authentication, and inject persistent returnTo destinations into other users' logout redirects via the shared AuthInformation instance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130872": {
+    "cvss": 6.5,
+    "description": "Pytition before 2.10 contains an insecure direct object reference vulnerability in the show_signatures view that allows registered users to delete other petitions' signatures by supplying foreign signature IDs. Attackers can post sequential signature IDs to their own petition's signatures page to permanently delete signatures from any user-owned petition and trigger confirmation emails to other signers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130873": {
+    "cvss": 3.8,
+    "description": "ep3-bs through 1.9.1b contains an improper authorization vulnerability that allows staff users with only user management privilege to delete administrator accounts. Authenticated assistant accounts can invoke the backend UserController deleteAction against administrator targets to remove or mark them deleted, locking administrators out.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130874": {
+    "cvss": 7.5,
+    "description": "Seerr before 3.5.2 contains an uncontrolled resource consumption vulnerability that allows unauthenticated attackers to exhaust disk space through unnormalized /imageproxy cache keys. Attackers can request the same TMDB image using many equivalent dot-segment path spellings, storing unlimited duplicate copies that fill the shared SQLite configuration volume and break logins and requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130875": {
+    "cvss": 7.5,
+    "description": "tac_plus-ng before commit d8493e0 contains a stack-based buffer overflow vulnerability that allows clients holding the TACACS+ shared key to overflow a stack buffer due to an operator precedence error in author_pak_looks_bogus() and accounting_pak_looks_bogus(). Attackers can send packets whose argument-length table exceeds the payload, causing eval_args() to read past the packet and memcpy() oversized cmd values into cmdline, crashing the daemon or executing code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77433": {
+    "cvss": 6.1,
+    "description": "Kiwi TCMS is an open source test management system. From 16.1 until 16.2, the account confirmation page’s incomplete validation of the next parameter accepts protocol-relative URLs because the version 16.1 fix for CVE-2026-54724 only requires the value to start with a slash. An unauthenticated attacker can craft a confirmation URL on a trusted Kiwi TCMS hostname that redirects a user to an external site, enabling phishing and related downstream confidentiality or integrity impacts when the user follows the link. This issue is fixed in version 16.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82037": {
+    "cvss": 4.3,
+    "description": "Bludit through 3.22.0 contains a missing authorization vulnerability that allows authenticated low-privileged users to modify the site logo by calling unprotected AJAX endpoints. Attackers with Author or Editor roles can send requests to logo-upload.php or logo-remove.php under /admin/ajax/ to replace the site logo with an uploaded image or delete it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82038": {
+    "cvss": 5.9,
+    "description": "Bludit through 3.22.0 contains an improper session invalidation vulnerability that allows demoted users to retain revoked privileges because Login::isLogged() never re-reads the session-stored role. Attackers holding a session issued while their account was an administrator can keep using it after demotion to perform administrator actions such as creating new administrator accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82136": {
+    "cvss": 6.7,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3, contain a Download of Code Without Integrity Check vulnerability. A highly privileged attacker with local access could potentially exploit this vulnerability, leading to Code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82138": {
+    "cvss": 7.4,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3 contain a Download of Code Without Integrity Check vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82139": {
+    "cvss": 7.4,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3, contain an Improper Certificate Validation vulnerability. An unauthenticated attacker with local access could potentially exploit this vulnerability, leading to Protection mechanism bypass.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82140": {
+    "cvss": 4.3,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3, contain an Acceptance of Extraneous Untrusted Data With Trusted Data vulnerability. An unauthenticated attacker with physical access could potentially exploit this vulnerability, leading to Information tampering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82142": {
+    "cvss": 7.1,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3, contain a Missing Authorization vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Unauthorized access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82143": {
+    "cvss": 7.8,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3 contain an Improper Authorization vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Elevation of Privilege.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82145": {
+    "cvss": 6.1,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3, contain an Insecure Inherited Permissions vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to unauthorized file operations with elevated privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82146": {
+    "cvss": 7.8,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3, contain an Untrusted Search Path vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Elevation of privilege.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82149": {
+    "cvss": 5.9,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3, contain an External Control of System or Configuration Setting vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability, leading to Elevation of Privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82150": {
+    "cvss": 8.0,
+    "description": "Dell SupportAssist OS Recovery, versions prior to 5.5.16.3, contain an Insufficient Verification of Data Authenticity vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability to bypass manifest signature validation, potentially leading to execution of unauthorized code with elevated privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97699": {
+    "cvss": 7.5,
+    "description": "Mistune is a Python Markdown parser with renderers and plugins. Prior to 3.3.4, inline image parsing sends nested ![ openers through precedence_scan because the no_link_before and _label_contains_link linearization guards are gated by not is_image. In src/mistune/inline_parser.py, each outer image opener can therefore search the remaining image body, while max_image_depth does not apply because the failed scans do not produce image tokens. Rendering untrusted Markdown with the default HTML renderer and no plugins can perform quadratic CPU work and keep a worker at 100 percent utilization. This issue is fixed in version 3.3.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-62165": {
+    "cvss": 9.2,
+    "description": "Pi-hole FTL is the core engine of the Pi-hole network-level advertisement and tracker blocker. From 6.0 until 6.7, CivetWeb permits unauthenticated clients to flood the WebUI login page and API invalid paths without connection or request-rate limits. Repeated requests can consume substantial CPU in request processing and session authentication, making the WebUI sluggish or unresponsive and potentially affecting the wider system and DNS service. Requests to selected invalid or redirecting paths also generate a log entry for each request, allowing network traffic to expand logs and exhaust constrained storage such as an SD card, while other request forms consume CPU without producing a corresponding request log. This vulnerability is fixed in 6.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102529": {
+    "cvss": 7.5,
+    "description": "HtmlSanitizer is a .NET library for cleaning HTML fragments and documents from constructs that can lead to XSS attacks. Prior to 9.0.967 and 9.1.968-beta, HtmlSanitizer CSS style-declaration sanitization can process an attacker-controlled style attribute with quadratic cost because SanitizeStyleDeclaration repeatedly causes the complete declaration to be serialized while removing disallowed CSS properties. One unauthenticated request can occupy a synchronous application worker for seconds, and concurrent requests can saturate all workers and sustain denial of service. This issue is fixed in versions 9.0.967 and 9.1.968-beta.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104796": {
+    "cvss": 4.1,
+    "description": "Chevereto before 4.5.8 contains a server-side request forgery vulnerability that allows authenticated administrators to cause the server to issue arbitrary requests by supplying a malicious URL to the uploadToWebsite function, which fetches the raw source via fetch_url before the Upload::checkValidUrl SSRF guard can be invoked. Attackers can target loopback addresses, RFC1918 internal services, cloud instance metadata endpoints, and file/gopher/dict schemes through the /json upload action to disclose internal responses or credentials when the fetched content is stored and served back as a public image URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130904": {
+    "cvss": 6.5,
+    "description": "Incorrect authorization in SiteSettings in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130905": {
+    "cvss": 5.4,
+    "description": "UI misrepresentation in SVG in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to spoof UI elements via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130906": {
+    "cvss": 8.1,
+    "description": "Incorrect authorization in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to bypass web origin policy into a privileged page via a crafted Chrome extension. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130907": {
+    "cvss": 8.3,
+    "description": "Use after free in Autofill in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130908": {
+    "cvss": 4.2,
+    "description": "Missing authorization in Passwords in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130909": {
+    "cvss": 8.8,
+    "description": "Use after free in Extensions in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130910": {
+    "cvss": 9.6,
+    "description": "Protection mechanism failure in ANGLE in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130911": {
+    "cvss": 6.8,
+    "description": "Race condition in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to bypass web origin policy into a privileged page via a crafted Chrome extension. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130912": {
+    "cvss": 7.4,
+    "description": "Improper state validation in Network in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially bypass web origin policy via crafted network traffic. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130913": {
+    "cvss": 8.1,
+    "description": "Incorrect reference resolution in Mobile in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to bypass web origin policy via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130914": {
+    "cvss": 4.7,
+    "description": "Uninitialized resource in ANGLE in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130915": {
+    "cvss": 8.8,
+    "description": "Use after free in CSS in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130916": {
+    "cvss": 6.5,
+    "description": "Missing authorization in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to obtain sensitive information via a crafted Chrome extension. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130917": {
+    "cvss": 8.3,
+    "description": "Use after free in Browser in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130918": {
+    "cvss": 8.3,
+    "description": "Use after free in Views in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130919": {
+    "cvss": 8.3,
+    "description": "Race condition in Printing in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130920": {
+    "cvss": 4.3,
+    "description": "Information leak in Payments in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130921": {
+    "cvss": 6.5,
+    "description": "Nonce reuse in WebRTC in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially obtain sensitive information via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130922": {
+    "cvss": 5.4,
+    "description": "UI misrepresentation in UI in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to spoof address bar via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130923": {
+    "cvss": 8.8,
+    "description": "Out of bounds write in V8 in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130924": {
+    "cvss": 8.1,
+    "description": "Incorrect authorization in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to bypass web origin policy via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130925": {
+    "cvss": 5.3,
+    "description": "Race condition in Downloads in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to leak sensitive information via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130926": {
+    "cvss": 9.0,
+    "description": "Confused deputy in Sync in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via crafted network traffic. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130927": {
+    "cvss": 8.1,
+    "description": "Incorrect authorization in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to bypass web origin policy via a crafted Chrome extension. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130928": {
+    "cvss": 7.1,
+    "description": "Code injection in Mobile in Google Chrome on on Android prior to 158.0.8127.36 allowed a local attacker leveraging social engineering to bypass web origin policy via a co-installed app. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130929": {
+    "cvss": 9.0,
+    "description": "Use after free in Chromoting in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via crafted network traffic. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130930": {
+    "cvss": 8.3,
+    "description": "Use after free in Ozone in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130931": {
+    "cvss": 4.2,
+    "description": "Incorrect authorization in Extensions in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130932": {
+    "cvss": 4.2,
+    "description": "Improper resource exposure in Core in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130933": {
+    "cvss": 4.3,
+    "description": "Information leak in Paint in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to obtain cross-origin data via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130934": {
+    "cvss": 3.1,
+    "description": "Incorrect authorization in Autofill in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to obtain cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130935": {
+    "cvss": 6.5,
+    "description": "Information leak in Referrer in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to leak sensitive information via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130936": {
+    "cvss": 4.3,
+    "description": "Information leak in Media in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130937": {
+    "cvss": 6.5,
+    "description": "Incorrect authorization in Navigation in Google Chrome on on iOS prior to 158.0.8127.36 allowed a remote attacker to bypass site isolation into a privileged page via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130938": {
+    "cvss": 8.3,
+    "description": "Use after free in Accessibility in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130939": {
+    "cvss": 5.4,
+    "description": "Missing authorization in LocalNetworkAccess in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to bypass system access restrictions via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130940": {
+    "cvss": 4.2,
+    "description": "Improper state validation in GPU in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130941": {
+    "cvss": 4.3,
+    "description": "Incorrect authorization in HTML in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130942": {
+    "cvss": 3.1,
+    "description": "Observable discrepancy in Extensions in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to obtain cross-origin data via a crafted Chrome extension. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130943": {
+    "cvss": 8.8,
+    "description": "Use after free in Chromecast in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130944": {
+    "cvss": 8.3,
+    "description": "Use after free in Omnibox in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130945": {
+    "cvss": 8.3,
+    "description": "Use after free in VR in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130946": {
+    "cvss": 8.1,
+    "description": "Incorrect authorization in PerformanceAPIs in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130947": {
+    "cvss": 4.3,
+    "description": "Integer overflow in Autofill in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to obtain cross-origin data via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130948": {
+    "cvss": 8.3,
+    "description": "Use after free in Omnibox in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130949": {
+    "cvss": 5.4,
+    "description": "UI misrepresentation in Passwords in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130950": {
+    "cvss": 8.8,
+    "description": "Type confusion in V8 in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130951": {
+    "cvss": 8.8,
+    "description": "Use after free in Plugins in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130952": {
+    "cvss": 4.7,
+    "description": "Uninitialized resource in Network in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130953": {
+    "cvss": 6.8,
+    "description": "Incorrect authorization in Core in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass web origin policy via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130954": {
+    "cvss": 4.7,
+    "description": "Incorrect reference resolution in ANGLE in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130955": {
+    "cvss": 5.4,
+    "description": "UI misrepresentation in Mobile in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to spoof address bar via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130956": {
+    "cvss": 8.3,
+    "description": "Improper input validation in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130957": {
+    "cvss": 8.8,
+    "description": "Improper state validation in Performance in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130958": {
+    "cvss": 4.3,
+    "description": "Uninitialized resource in WebRTC in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130959": {
+    "cvss": 8.1,
+    "description": "Missing authorization in FileSystem in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process and leveraged social engineering to bypass site isolation via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130960": {
+    "cvss": 8.3,
+    "description": "Use after free in Session in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130961": {
+    "cvss": 4.3,
+    "description": "Incorrect authorization in Media in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to obtain cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130962": {
+    "cvss": 8.1,
+    "description": "Incomplete cleanup in Navigation in Google Chrome on on iOS prior to 158.0.8127.36 allowed a remote attacker to potentially bypass web origin policy via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130963": {
+    "cvss": 9.0,
+    "description": "Use after free in WebView in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via crafted network traffic. (Chromium security severity: Critical)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130964": {
+    "cvss": 8.1,
+    "description": "Confused deputy in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to bypass web origin policy via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130965": {
+    "cvss": 4.3,
+    "description": "Uninitialized resource in Media in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130966": {
+    "cvss": 4.7,
+    "description": "Out of bounds read in Tint in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker to potentially read memory outside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130967": {
+    "cvss": 6.5,
+    "description": "Incorrect authorization in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to bypass system access restrictions into a privileged page via a crafted Chrome extension. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130968": {
+    "cvss": 9.6,
+    "description": "Use after free in Views in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted Chrome extension. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130969": {
+    "cvss": 8.3,
+    "description": "Incorrect authorization in Omnibox in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process and leveraged social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130970": {
+    "cvss": 3.4,
+    "description": "Uninitialized resource in GPU in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130971": {
+    "cvss": 9.6,
+    "description": "Out of bounds write in ANGLE in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130972": {
+    "cvss": 3.1,
+    "description": "Observable discrepancy in PictureInPicture in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130973": {
+    "cvss": 5.3,
+    "description": "Incorrect authorization in Sensor in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to obtain sensitive information via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130974": {
+    "cvss": 8.3,
+    "description": "Use after free in UserEducation in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130975": {
+    "cvss": 8.8,
+    "description": "Use after free in WebAudio in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130976": {
+    "cvss": 8.8,
+    "description": "Use after free in PDFium in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted PDF file. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130977": {
+    "cvss": 4.7,
+    "description": "Uninitialized resource in Dawn in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130978": {
+    "cvss": 6.5,
+    "description": "Incorrect authorization in Media in Google Chrome prior to 158.0.8127.36 allowed a local attacker to leak sensitive information via UI Interaction. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130979": {
+    "cvss": 8.8,
+    "description": "Use after free in Forms in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130980": {
+    "cvss": 8.8,
+    "description": "Use after free in Layout in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130981": {
+    "cvss": 6.5,
+    "description": "Information leak in Enterprise in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to leak sensitive information via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130982": {
+    "cvss": 8.3,
+    "description": "Incorrect authorization in Omnibox in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130983": {
+    "cvss": 8.1,
+    "description": "Incorrect authorization in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to bypass web origin policy into a privileged page via a crafted Chrome extension. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130984": {
+    "cvss": 8.1,
+    "description": "Incorrect authorization in Canvas in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130985": {
+    "cvss": 6.5,
+    "description": "Improper input validation in DOMStorage in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130986": {
+    "cvss": 5.9,
+    "description": "Incorrect authorization in Sync in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to obtain sensitive information via crafted network traffic. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130987": {
+    "cvss": 8.3,
+    "description": "Race condition in Downloads in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process and leveraged social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130988": {
+    "cvss": 4.3,
+    "description": "Out of bounds read in V8 in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130989": {
+    "cvss": 6.5,
+    "description": "Missing authorization in Paint in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to leak sensitive information via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130990": {
+    "cvss": 8.1,
+    "description": "Missing authorization in PersistentCache in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted PDF file. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130991": {
+    "cvss": 4.3,
+    "description": "Uninitialized resource in Media in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130992": {
+    "cvss": 8.3,
+    "description": "Incorrect authorization in Views in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130993": {
+    "cvss": 4.3,
+    "description": "Use after free in Script in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130994": {
+    "cvss": 9.6,
+    "description": "Use after free in WebGL in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130995": {
+    "cvss": 6.5,
+    "description": "UI misrepresentation in Autofill in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to obtain sensitive information via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130996": {
+    "cvss": 9.6,
+    "description": "Out of bounds write in ANGLE in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130997": {
+    "cvss": 6.5,
+    "description": "Incomplete cleanup in Autofill in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to obtain sensitive information via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130998": {
+    "cvss": 8.1,
+    "description": "Improper input validation in Parser in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially bypass web origin policy via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130999": {
+    "cvss": 8.3,
+    "description": "Use after free in Downloads in Google Chrome on on Windows prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131000": {
+    "cvss": 8.3,
+    "description": "Improper input validation in WebAppInstalls in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131001": {
+    "cvss": 8.8,
+    "description": "Buffer overflow in Video in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131002": {
+    "cvss": 3.4,
+    "description": "Uninitialized resource in GPU in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to potentially read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131003": {
+    "cvss": 8.1,
+    "description": "Confused deputy in TabModel in Google Chrome on on Android prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to bypass web origin policy via UI Interaction. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131004": {
+    "cvss": 8.3,
+    "description": "Use after free in FedCM in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131005": {
+    "cvss": 8.8,
+    "description": "Use after free in DevTools in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131006": {
+    "cvss": 7.0,
+    "description": "Race condition in CredentialProvider in Google Chrome on on Windows prior to 158.0.8127.36 allowed a local attacker to potentially execute arbitrary code outside the sandbox via a local program. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131007": {
+    "cvss": 3.1,
+    "description": "Uninitialized resource in GPU in Google Chrome prior to 158.0.8127.36 allowed a remote attacker who had compromised the renderer process to obtain cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131008": {
+    "cvss": 8.8,
+    "description": "Use after free in GarbageCollection in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131009": {
+    "cvss": 5.4,
+    "description": "UI misrepresentation in Passwords in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to spoof UI elements via a crafted HTML page. (Chromium security severity: Low)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131010": {
+    "cvss": 8.8,
+    "description": "Use after free in Extensions in Google Chrome prior to 158.0.8127.36 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted Chrome extension. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131011": {
+    "cvss": 4.7,
+    "description": "Use of uninitialized variable in Speech in Google Chrome prior to 158.0.8127.36 allowed a remote attacker to potentially read memory outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
