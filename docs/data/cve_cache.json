@@ -144028,5 +144028,515 @@
     "description": "AutoMapper is a convention-based object-object mapper in .NET. Prior to 15.1.4 and from 16.0.0 until 16.3.0, AutoMapper can recurse without an effective MaxDepth limit when mapping polymorphic graphs through Include or IncludeBase, runtime-typed object or interface members, nested Dictionary or ExpandoObject sources, or recursive ConvertUsing type converters. Deep attacker-influenced graphs on these paths can throw an uncatchable StackOverflowException and terminate the process. This issue is fixed in versions 15.1.4 and 16.3.0.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-129541": {
+    "cvss": 5.4,
+    "description": "EdgeChat 2.5.0 through 2.21.0 contains a cross-site scripting vulnerability that allows invited users to inject HTML through unescaped usernames in the Vditor @-mention autocomplete. Attackers can register with a username containing an img onerror payload that executes when mentioned, stealing the localStorage session token to take over victim accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115690": {
+    "cvss": 7.5,
+    "description": "Apache WSS4J remembers the UsernameToken Nonce, the Timestamp and signature of a signed message, and the ID of a SAML 2.0 \"OneTimeUse\" assertion, so that a captured message cannot be accepted twice. It checked whether a value had already been seen, validated the message, and only then remembered the value, as two separate steps. If several copies of the same message were processed at the same time, they could all pass the check before any of them was remembered, and all be accepted. An attacker who obtained a valid message before the recipient first processed it could send several copies at once, so that the same authenticated request was executed more than once. Where a UsernameToken is not bound to the message by a signature, the copies could carry different message bodies. The attacker needs to obtain the message while it is still in transit; a message captured after it has been accepted cannot be replayed. Affects deployments with a replay cache configured, as Apache CXF has by default. The value is now checked and remembered in a single atomic step. Custom ReplayCache implementations should override the new ReplayCache.addIfAbsent method with an operation that is atomic in their underlying store. Users are recommended to upgrade to versions 4.0.3 or 3.0.7 or 2.4.5, which fix this issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128841": {
+    "cvss": 7.5,
+    "description": "** UNSUPPORTED WHEN ASSIGNED ** Missing authentication for critical function vulnerability in Apache Griffin Web Service. The REST API does not have any authentication. This includes sensitive endpoints, such as job submission when a Livy/Spark backend is configured. The API must be properly secured on the network level, and this fact was arguably not documented as clearly as it could have. This issue affects Apache Griffin Web Service: all versions. As this project is retired, we do not plan to release a version that fixes this issue. Users are recommended to find an alternative or restrict access to the instance to trusted users. NOTE: This vulnerability only affects products that are no longer supported by the maintainer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99289": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix app-instance non-durable supersede session UAF ksmbd_close_fd_app_instance_id() supersedes a prior open that has the same AppInstanceId. It reaches that open's session through opinfo->sess. This pointer is not refcounted. Session teardown detaches durable handles before it frees the session. It does not detach a non-durable open. That open still points at the session through opinfo->sess after the session is freed. Another session can supersede the open at the same time. The supersede then takes a write lock through the stale pointer, in the freed session's file table. BUG: KASAN: slab-use-after-free in _raw_write_lock+0x71/0xd0 Call Trace: _raw_write_lock+0x71/0xd0 ksmbd_close_fd_app_instance_id+0xd9/0x670 [ksmbd] smb2_open+0x3e10/0xd910 [ksmbd] Freed by task 212: ksmbd_session_destroy+0x38d/0x480 [ksmbd] Fix this by looking the session up by opinfo->session_id. The lookup returns a reference, as smb2_break_collect_channels() does. Recheck that opinfo->sess still points at it before using it. Do the lookup without m_lock held. destroy_previous_session() takes m_lock under the session table lock, and taking them in the other order here would deadlock.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99290": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix use-after-free after a failed durable reconnect ksmbd_reopen_durable_fd() republishes a detached durable handle in the reconnecting session's file table and takes no reference for that entry. If smb2_open() then fails, cleanup relies on the final ksmbd_fd_put() to remove the volatile id. Two reconnects of the same handle can both take a lookup reference before either attaches it. If the one that reopens first then fails and drops its references first, the other request makes the final put through ksmbd_put_durable_fd(). That frees the handle without removing the first session's table entry, so tearing that session down writes to freed memory. BUG: KASAN: slab-use-after-free in __close_file_table_ids+0x14d/0x740 [ksmbd] Call Trace: __close_file_table_ids+0x14d/0x740 [ksmbd] ksmbd_destroy_file_table+0x76/0x100 [ksmbd] ksmbd_session_destroy+0xf8/0x480 [ksmbd] ksmbd_dispose_sessions+0x13e/0x200 [ksmbd] ksmbd_conn_sessions_cleanup+0x4c3/0x6d0 [ksmbd] Freed by task 1030: __ksmbd_close_fd+0x97d/0x1000 [ksmbd] smb2_open+0x14eb/0xd9f0 [ksmbd] Commit 3515503322f4 (\"ksmbd: fix durable reconnect error path file lifetime\") handles a final put made by the reconnecting request, but not one made by another holder. Remove the volatile id under the file-table lock on this error path, before the references are dropped, as ksmbd_close_fd() does on the request_open path just above. Removal then no longer depends on which holder makes the final put. The stale comment in the reconnect cleanup is updated to match. A successful reconnect is unchanged.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99291": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix SMB2 CREATE response buffer overflow smb2_allocate_rsp_buf() uses the MAX_CIFS_SMALL_BUFFER_SIZE (448-byte) buffer for a single SMB2_CREATE response. That buffer also holds a 4-byte length field, which only leaves 444 bytes for the SMB2 body. The AAPL response made this buffer too small. After 8f1b796ff113, a request with AAPL response contexts may need at least 456 bytes. In the 456-byte case, create_aapl_rsp_buf() is appended last, clears 128 bytes, and writes 12 bytes past the allocation. KASAN reports: BUG: KASAN: slab-out-of-bounds in create_aapl_rsp_buf+0x31/0x6e0 Write of size 128 at addr ffff88800370954c by task kworker/0:0/9 ... create_aapl_rsp_buf+0x31/0x6e0 smb2_open+0x58f9/0xef10 ... smb2_allocate_rsp_buf+0x19d/0x370 ... The buggy address is located 332 bytes inside of allocated 448-byte region [ffff888003709400, ffff8880037095c0) Reserve enough space for any fixed CREATE response KSMBD can build. Store the required allocation size in the per-dialect values table. This keeps the small buffer for other commands and avoids using the max transaction buffer for every CREATE.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99292": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fix slab-out-of-bounds write in id_mode_to_cifs_acl() In id_mode_to_cifs_acl(), while the chown branch reserves sizeof(struct smb_ntsd) + 2 * sizeof(struct smb_sid) (plus sizeof(struct smb_acl) and the worst-case ACE space after commit 0ee150794c75 (\"smb: client: fix heap overflow in DACL owner/group rewrite\")), the chmod branch only adds 2 * sizeof(struct smb_ace) or 5 * sizeof(struct smb_ace) to secdesclen (or 1 * sizeof(struct smb_ace) on posix). However, the chmod branch also invokes build_sec_desc() -> copy_sec_desc(), which unconditionally writes the Owner SID at pnntsd + sidsoffset and the Group SID at pnntsd + sidsoffset + sizeof(struct smb_sid) (2 * 68 = 136 bytes total), and set_chmod_dacl() always writes a struct smb_acl header (8 bytes) even when the source descriptor has dacloffset == 0. When a security descriptor has compact or overlapping Owner/Group SIDs (or dacloffset == 0), calling chmod() under-allocates pnntsd and writes past the end of the slab buffer. Reserve sizeof(struct smb_acl) + 2 * sizeof(struct smb_sid) (plus sizeof(struct smb_ntsd) on the posix path) in the chmod branch of id_mode_to_cifs_acl().",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99295": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: stop processing a read response after a receive error cifs_read_iter_from_socket() may call cifs_reconnect() before returning an error. The reconnect path aborts pending mids and invokes their callbacks. The callback can then release the cifs_io_subrequest containing rdata. cifs_readv_receive() nevertheless continues after a negative return and may dereference rdata in cifs_readv_discard(). KASAN reports the resulting UAF: BUG: KASAN: slab-use-after-free in cifs_readv_receive Read of size 4 by task cifsd cifs_readv_receive (fs/smb/client/transport.c:1284) cifs_demultiplex_thread (fs/smb/client/connect.c:1355) kthread (kernel/kthread.c:436) ret_from_fork (arch/x86/kernel/process.c:158) Freed by task 148: netfs_put_subrequest (fs/netfs/objects.c:267) netfs_read_collection (fs/netfs/read_collect.c:460) netfs_wait_for_in_progress (fs/netfs/misc.c:462) Return the socket error immediately, as this path did before the iterator conversion. This also avoids adding a negative length to total_read.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99296": {
+    "cvss": 7.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: libceph: bound mon_command ack decode to front len handle_command_ack() bounds the decode with msg->front_alloc_len, the size of the reply buffer, instead of msg->front.iov_len, the number of bytes the monitor sent. mon_alloc_msg() routes every CEPH_MSG_MON_COMMAND_ACK to get_generic_reply(), which returns the preallocated ->reply of whichever generic request carries the same tid, so the buffer keeps its fixed size however short the reply is. An ack with hdr.front_len below sizeof(struct ceph_mon_request_header) + sizeof(u32), including 0, still passes ceph_decode_need(), and ceph_decode_32() returns four bytes that were never received: uninitialized slab memory, stale bytes of an earlier message, or bytes the peer planted by sending a reply that lands in the same buffer and is then rejected. The read stays within the allocation, so KASAN does not flag it. req->result reaches userspace through ceph_monc_do_statfs(), ceph_monc_get_version() and ceph_monc_blocklist_add(); rbd hands it back from write() on /sys/bus/rbd/add_single_major, and rbd_get_client() passes it to ERR_PTR() unchecked, which faults: rbd: failed to get latest osdmap: -186318427 BUG: unable to handle page fault for address: fffffbfffe9ca034 Oops: Oops: 0000 [#1] SMP KASAN NOPTI RIP: 0010:do_rbd_add (drivers/block/rbd.c:7105) Call Trace: ... kernfs_fop_write_iter (fs/kernfs/file.c:345) vfs_write (fs/read_write.c:595 fs/read_write.c:687) ksys_write (fs/read_write.c:739) do_syscall_64 (arch/x86/entry/syscall_64.c:61 arch/x86/entry/syscall_64.c:84) entry_SYSCALL_64_after_hwframe (arch/x86/entry/entry_64.S:121) Kernel panic - not syncing: Fatal exception Use msg->front.iov_len, matching handle_subscribe_ack(), handle_statfs_reply(), handle_get_version_reply() and handle_auth_reply(). A well-formed ack has front.iov_len >= 22 and is unaffected; a short one takes the existing bad: path. This applies commit d3c32939fa0e (\"libceph: bound get_version reply decode to front len\") to the last decode-side use of front_alloc_len in this file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99297": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: media: em28xx: fix double free in em28xx_alloc_urbs When allocation of usb_bufs->buf[i] fails, em28xx_alloc_urbs() explicitly frees all items within usb_bufs->buf before calling em28xx_uninit_usb_xfer(), which also frees these items, causing them to be freed twice. BUG: KASAN: double-free in usb_free_urb.part.0 (drivers/usb/core/urb.c:25 ./include/linux/kref.h:65 drivers/usb/core/urb.c:96) Free of addr ffff88802fd37c00 by task kworker/1:2/1182 Workqueue: events request_module_async Call Trace: kasan_report_invalid_free (mm/kasan/report.c:557) check_slab_allocation (mm/kasan/common.c:235) kfree (./include/linux/kasan.h:199 (discriminator 1) mm/slub.c:2693 (discriminator 1) mm/slub.c:6508 (discriminator 1) mm/slub.c:6801 (discriminator 1)) usb_free_urb.part.0 (drivers/usb/core/urb.c:25 ./include/linux/kref.h:65 drivers/usb/core/urb.c:96) usb_free_urb (drivers/usb/core/urb.c:95) em28xx_uninit_usb_xfer (drivers/media/usb/em28xx/em28xx-core.c:964) em28xx_alloc_urbs (drivers/media/usb/em28xx/em28xx-core.c:1076) em28xx_dvb_init (drivers/media/usb/em28xx/em28xx-dvb.c:1734 drivers/media/usb/em28xx/em28xx-dvb.c:1698) em28xx_init_extension (drivers/media/usb/em28xx/em28xx-core.c:1248) request_module_async (drivers/media/usb/em28xx/em28xx-cards.c:3685) process_one_work (kernel/workqueue.c:3396) worker_thread (kernel/workqueue.c:3479 kernel/workqueue.c:3560) kthread (kernel/kthread.c:436) ret_from_fork (arch/x86/kernel/process.c:158) ret_from_fork_asm (arch/x86/entry/entry_64.S:245) Allocated by task 1182: kasan_save_stack (mm/kasan/common.c:57) kasan_save_track (mm/kasan/common.c:78) __kasan_kmalloc (mm/kasan/common.c:398 mm/kasan/common.c:415) __kmalloc_noprof (./include/linux/kasan.h:263 mm/slub.c:5414 mm/slub.c:5439) em28xx_alloc_urbs (./include/linux/slab.h:995 ./include/linux/slab.h:1312 drivers/media/usb/em28xx/em28xx-core.c:1081) em28xx_dvb_init (drivers/media/usb/em28xx/em28xx-dvb.c:1734 drivers/media/usb/em28xx/em28xx-dvb.c:1698) em28xx_init_extension (drivers/media/usb/em28xx/em28xx-core.c:1248) request_module_async (drivers/media/usb/em28xx/em28xx-cards.c:3685) process_one_work (kernel/workqueue.c:3396) worker_thread (kernel/workqueue.c:3479 kernel/workqueue.c:3560) kthread (kernel/kthread.c:436) ret_from_fork (arch/x86/kernel/process.c:158) ret_from_fork_asm (arch/x86/entry/entry_64.S:245) Freed by task 1182: kasan_save_stack (mm/kasan/common.c:57) kasan_save_track (mm/kasan/common.c:78) kasan_save_free_info (mm/kasan/generic.c:584) __kasan_slab_free (mm/kasan/common.c:253 mm/kasan/common.c:285) kfree (./include/linux/kasan.h:235 mm/slub.c:2748 mm/slub.c:6508 mm/slub.c:6801) em28xx_alloc_urbs (drivers/media/usb/em28xx/em28xx-core.c:1084) em28xx_dvb_init (drivers/media/usb/em28xx/em28xx-dvb.c:1734 drivers/media/usb/em28xx/em28xx-dvb.c:1698) em28xx_init_extension (drivers/media/usb/em28xx/em28xx-core.c:1248) request_module_async (drivers/media/usb/em28xx/em28xx-cards.c:3685) process_one_work (kernel/workqueue.c:3396) worker_thread (kernel/workqueue.c:3479 kernel/workqueue.c:3560) kthread (kernel/kthread.c:436) ret_from_fork (arch/x86/kernel/process.c:158) ret_from_fork_asm (arch/x86/entry/entry_64.S:245) Remove the explicit cleanup loop and let em28xx_uninit_usb_xfer() handle the cleanup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99303": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: speakup: Fix NULL pointer dereference on VT switch + selection When selecting/pasting very quickly after VT switch, the tty is not set yet, leading to a NULL dereference. We can just abort the operation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99304": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ceph: fix integer overflow in the snap trace bounds check ceph_update_snap_trace() bounds the two encoded snapid arrays that follow a struct ceph_mds_snap_realm with sizeof(u64) * (num_snaps + num_prior_parent_snaps). Both counts come straight off the wire as __le32, so the addition is evaluated in unsigned int and wraps before sizeof(u64) promotes it to size_t: an MDS sending num_snaps = 1 and num_prior_parent_snaps = 0xffffffff makes the sum zero and the check degenerates to ceph_decode_need(&p, e, 0, bad), which always passes. dup_array() then reads num_snaps * 8 bytes past the end of the message front, which ceph_msg_new2() allocates at exactly front_len bytes. An unsolicited CEPH_MSG_CLIENT_SNAP reaches this from a malicious or compromised MDS with no client-side action, as do the snaptraces carried in an MDS reply and in a cap import. Compute the length with size_add()/size_mul() so it saturates at SIZE_MAX instead of wrapping, in the style fs/ceph/mdsmap.c already uses for num_export_targets. BUG: KASAN: slab-out-of-bounds in dup_array (include/linux/unaligned.h:28 fs/ceph/snap.c:500) Read of size 8 at addr ffff8880102a16c8 by task kworker/1:2/129 Workqueue: ceph-msgr ceph_con_workfn Call Trace: dump_stack_lvl (lib/dump_stack.c:94 lib/dump_stack.c:120) print_report (mm/kasan/report.c:378 mm/kasan/report.c:482) kasan_report (mm/kasan/report.c:595) dup_array (include/linux/unaligned.h:28 fs/ceph/snap.c:500) ceph_update_snap_trace (fs/ceph/snap.c:836) ceph_handle_snap (fs/ceph/snap.c:1155) mds_dispatch (fs/ceph/mds_client.c:7234) ceph_con_process_message (net/ceph/messenger.c:1424) ceph_con_v1_try_read (net/ceph/messenger_v1.c:1430) ceph_con_workfn (net/ceph/messenger.c:1576) process_one_work (kernel/workqueue.c:3396) worker_thread (kernel/workqueue.c:3479 kernel/workqueue.c:3560) kthread (kernel/kthread.c:436) ret_from_fork (arch/x86/kernel/process.c:158) ret_from_fork_asm (arch/x86/entry/entry_64.S:245) ... The buggy address is located 0 bytes to the right of allocated 72-byte region [ffff8880102a1680, ffff8880102a16c8)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99305": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: fbdev: udlfb: don't rebuild the mode list while the framebuffer is in use dlfb_setup_modes() frees info->modelist with fb_destroy_modelist() and rebuilds it, but fbcon holds raw pointers into that list in fb_display[i].mode and nothing un-publishes them the way do_unregister_framebuffer() and store_modes() do with fbcon_delete_modelist(). The function does refuse to install a new mode while the framebuffer has users (dlfb->fb_count != 0), but only after the list is already destroyed. Reached from the 0666 \"edid\" sysfs attribute, an unprivileged write to /sys/class/graphics/fb0/edid therefore fails with -EINVAL and still leaves every fb_display[i].mode dangling; the next console switch reads the freed fb_videomode in fb_videomode_to_var(). Test fb_count before touching the list. fbcon takes a reference through fbcon_open(), so that condition covers exactly the states in which fb_display[] points into the list, and the errno returned to userspace is unchanged. BUG: KASAN: slab-use-after-free in fb_videomode_to_var (drivers/video/fbdev/core/modedb.c:905) Read of size 4 at addr ffff8880107b449c by task kworker/1:1/47 Workqueue: events console_callback Call Trace: fb_videomode_to_var (drivers/video/fbdev/core/modedb.c:905) display_to_var (drivers/video/fbdev/core/fbcon.c:998) fbcon_switch (drivers/video/fbdev/core/fbcon.c:2182) redraw_screen (drivers/tty/vt/vt.c:994) complete_change_console (drivers/tty/vt/vt_ioctl.c:1141) console_callback (drivers/tty/vt/vt.c:3358) process_one_work (kernel/workqueue.c:3396) worker_thread (kernel/workqueue.c:3479 kernel/workqueue.c:3560) kthread (kernel/kthread.c:436) ret_from_fork (arch/x86/kernel/process.c:158) ret_from_fork_asm (arch/x86/entry/entry_64.S:245) ... The buggy address is located 28 bytes inside of freed 96-byte region [ffff8880107b4480, ffff8880107b44e0)",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99306": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ceph: reject mdsmaps that claim more than CEPH_MAX_MDS ranks check_new_map() sizes its export-target bitmap from CEPH_MAX_MDS but walks it with newmap->possible_max_rank, which comes straight off the wire: ceph_mdsmap_decode() sets it to max(m_num_active_mds, m_max_mds), then overwrites it with the size of the \"in\" set. Neither is bounded by CEPH_MAX_MDS, only by m_info allocating, so a monitor announcing more ranks than the bitmap holds makes test_bit() read past the end of targets[]. The clear_bit() loop above indexes the same bitmap, though it is additionally bounded by mdsc->max_sessions. The map arrives on the monitor connection, which is unauthenticated in legacy msgr mode. CEPH_MAX_MDS is a protocol constant from src/mds/mdstypes.h, and the reserved inode ranges in super.h are laid out one rank apart over that span, so a map claiming more ranks is corrupt. Reject it where the rank space is established rather than letting the count reach check_new_map(). BUG: KASAN: stack-out-of-bounds in check_new_map (fs/ceph/mds_client.c:5968) Read of size 8 at addr ffffc90000ac7798 by task kworker/1:2/127 Workqueue: ceph-msgr ceph_con_workfn Call Trace: dump_stack_lvl (lib/dump_stack.c:94 lib/dump_stack.c:120) print_report (mm/kasan/report.c:378 mm/kasan/report.c:482) kasan_report (mm/kasan/report.c:595) kasan_check_range (mm/kasan/generic.c:186 mm/kasan/generic.c:200) check_new_map (fs/ceph/mds_client.c:5968) ceph_mdsc_handle_mdsmap (fs/ceph/mds_client.c:7060) extra_mon_dispatch (fs/ceph/super.c:802) mon_dispatch (net/ceph/mon_client.c:1483) ceph_con_process_message (net/ceph/messenger.c:1424) ceph_con_v1_try_read (net/ceph/messenger_v1.c:1430) ceph_con_workfn (net/ceph/messenger.c:1576) process_one_work (kernel/workqueue.c:3396) worker_thread (kernel/workqueue.c:3479 kernel/workqueue.c:3560) kthread (kernel/kthread.c:436) ret_from_fork (arch/x86/kernel/process.c:158) ret_from_fork_asm (arch/x86/entry/entry_64.S:245) The buggy address belongs to stack of task kworker/1:2/127 and is located at offset 288 in frame: check_new_map (fs/ceph/mds_client.c:5846) This frame has 1 object: [32, 288) 'targets'",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129455": {
+    "cvss": 5.4,
+    "description": "Zr.Admin.NET commit e6ceaf4 through commit eb9228a contains an insecure direct object reference vulnerability in FrontArticleController that allows authenticated users to change other users' article visibility and pin state. Attackers can send PUT /front/article/changePublic with their own UserId in the body to make private articles public, then read them anonymously via GET /front/article/{id}.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129445": {
+    "cvss": 8.2,
+    "description": "A security flaw has been discovered in D-Link DIR-850L FW1.20WWb03. This impacts an unknown function of the file /usr/sbin/consolepwd of the component Console Login. Performing a manipulation results in hard-coded credentials. The attack requires a local approach. The exploit has been released to the public and may be used for attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129451": {
+    "cvss": 9.9,
+    "description": "A flaw has been found in DrayTek Vigor2960 up to 1.5.1.6. This affects the function app_guest_export of the file /cgi-bin/mainfunction.cgi. This manipulation of the argument filename causes path traversal. The attack can be initiated remotely. The exploit has been published and may be used. Upgrading to version 1.5.1.7 is able to mitigate this issue. The affected component should be upgraded. The vendor recommends: \"1.5.1.6 isn't the latest version of 2960, the latest version fixes many security issues. And we have another one in our release plan which should solve the issues reported.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129452": {
+    "cvss": 9.1,
+    "description": "A vulnerability has been found in DrayTek Vigor2960 1.5.1.6. This vulnerability affects the function set_table of the file /cgi-bin/mainfunction.cgi. Such manipulation of the argument jsondata leads to command injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 1.5.1.7 is able to resolve this issue. It is suggested to upgrade the affected component. The vendor recommends: \"1.5.1.6 isn't the latest version of 2960, the latest version fixes many security issues. And we have another one in our release plan which should solve the issues reported.\"",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129467": {
+    "cvss": 4.3,
+    "description": "GeoPulse 1.5.0 through 2.3.0 contains an insecure direct object reference vulnerability in GET /api/v1/places/geocoding/{id} that allows authenticated users to read other users' private locations. Attackers can enumerate sequential reverse_geocoding_location ids to retrieve other users' custom place names, city, country, coordinates and bounding boxes from their history.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129478": {
+    "cvss": 6.1,
+    "description": "Assimp through 6.0.6 contains a heap out-of-bounds read vulnerability in glTFCommon::Util::ParseDataURI caused by storing the data offset in a signed char. Attackers can supply a crafted glTF file with a raw data URI whose segment starts beyond byte 127 to crash applications or leak adjacent heap memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129483": {
+    "cvss": 9.1,
+    "description": "Cyrus SASL through 2.1.28 contains an authentication bypass vulnerability in the SRP server mechanism because srp_server_mech_step2 does not reject client public values A that are multiples of N. Unauthenticated network clients can send A equal to N to force a zero shared secret, authenticating as any existing user without the password and learning session keys.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-71467": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.02.0 contains a NULL pointer dereference vulnerability in gf_node_get_field_by_name() in src/scenegraph/base_scenegraph.c that lets attackers crash applications. Attackers can supply a crafted XMT scene referencing a never-created node to crash MP4Box or GPAC scene loader applications, causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-71468": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.02.0 contains a NULL pointer dereference vulnerability in gf_dash_group_get_audio_channels() in src/media_tools/dash_client.c that allows attackers to crash applications via crafted DASH manifests. Attackers can supply an MPD whose AudioChannelConfiguration element omits schemeIdUri or value, crashing MP4Box or GPAC DASH clients and causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-71469": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.02.0 contains a type confusion vulnerability in ctxload_process() that passes non-object descriptors to ODS_SetupOD() without checking the descriptor tag. Attackers can supply a crafted XMT file with a URL-bearing descriptor that crashes MP4Box or other GPAC-based applications in gf_scene_ns_connect_object(), causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129490": {
+    "cvss": 5.5,
+    "description": "littlefs through 2.11.3, when built with LFS_MIGRATE, contains a type confusion vulnerability in lfs_dir_traverse() that treats a stack lfs_diskoff struct as an lfs_attr array. Attackers can supply a crafted littlefs v1 image whose metadata is read as LFS_FROM_USERATTRS during migration, causing out-of-bounds stack reads and process crashes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123065": {
+    "cvss": 5.7,
+    "description": "When a release was edited, the files of the attachments to remove were deleted by the identifiers submitted in the form rather than by the attachments verified to belong to the release. A user with write access to the releases of any repository, including their own, could submit a crafted identifier that resolves to the stored file of another attachment and delete it, provided they know that attachment's UUID. The attachment record stayed, so downloads of the affected issue, comment or release file failed. Release edits now only delete the files of attachments that belong to the release.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129319": {
+    "cvss": 5.9,
+    "description": "create-ecdh is a browserifiable implementation of Node.js crypto.createECDH. In versions 4.0.4 and below, the JavaScript implementation (browser.js, used by browser bundlers and on Node.js versions without a working native crypto.createECDH) did not validate peer public keys in ECDH.prototype.computeSecret or ECDH.prototype.setPublicKey. The peer point was multiplied by the local private key without checking that it was on the configured curve or in its prime-order subgroup. An attacker who can submit public keys to a party that reuses a static private key can perform an invalid-curve or small-subgroup attack and recover the private key modulo small factors, eventually recovering the full key via the Chinese Remainder Theorem. For the ed25519 and curve25519 curves, low-order points were also accepted, which could force a predictable shared secret. On modern Node.js, create-ecdh re-exports the native implementation, which is not affected. This issue is fixed in version 4.0.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18742": {
+    "cvss": 6.4,
+    "description": "The Flatsome theme for WordPress is vulnerable to Stored Cross-Site Scripting via 'data-text-sec', 'data-title', and 'title' Attributes via Custom HTML Block in all versions up to, and including, 3.20.12 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload survives server-side sanitization because wp_kses_post permits data-* attributes globally via _wp_add_global_attributes, allowing attacker-controlled values in data-text-sec, data-title, and title attributes to persist in saved post content and be later interpreted as HTML by the ux-countdown, scroll-to, and lightbox-gallery JavaScript behaviors.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129247": {
+    "cvss": 4.7,
+    "description": "A security flaw has been discovered in yangzongzhuan RuoYi up to 4.8.3. Impacted is the function VelocityUtils.getFileName of the file VelocityUtils.java of the component Code Generator. Performing a manipulation of the argument className results in path traversal. The attack is possible to be carried out remotely.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129248": {
+    "cvss": 4.3,
+    "description": "A weakness has been identified in Akaunting up to 3.3.0. The affected element is the function calculation_to_quantity of the file helpers.php of the component Invoice Item Validation. Executing a manipulation of the argument quantity can lead to numeric range comparison without minimum check. The attack may be performed from remote. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124536": {
+    "cvss": 7.5,
+    "description": "JSON::XS versions before 4.05 for Perl allow memory exhaustion by buffering incremental input past max_size after a NUL byte in incr_parse. The parser appends each chunk to its buffer and compares max_size with how far it has progressed, not with the buffer length. It treats a NUL byte as the end of the input, so a NUL within the first max_size bytes keeps it short of the limit. The buffer keeps growing, and incr_skip cannot remove the NUL. A peer streaming data to an incr_parse consumer can exhaust process memory regardless of max_size.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124539": {
+    "cvss": 9.1,
+    "description": "JSON::XS versions before 4.05 for Perl leak the decoded key of an object rejected for a missing colon in decode_hv. Unless it is short plain ASCII, a quoted key is decoded into a new scalar. Nothing frees that scalar when the object is rejected for a missing ':' after the key. A process that keeps running after a failed decode retains one key per rejected document, with its size chosen by the sender. Repeated requests exhaust process memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124540": {
+    "cvss": 7.5,
+    "description": "JSON::XS versions before 4.05 for Perl allow stack exhaustion via nested tagged values under allow_tags in decode_tag. With allow_tags, \"(\" starts a tagged value. Its tag and value are decoded recursively, and each can start another tagged value. Unlike arrays and objects, this nesting is not counted against max_depth. A run of \"(\" bytes exhausts the C stack and triggers an uncatchable segmentation fault regardless of max_depth.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124541": {
+    "cvss": 7.5,
+    "description": "JSON::XS versions before 4.05 for Perl leak the decoded part of a rejected long string in decode_str. A string is decoded through a fixed-size buffer (16 KiB in 4.04), and each time the buffer fills its contents move into a new scalar. Nothing frees that scalar when the string is then rejected for a control character, an invalid escape, malformed UTF-8 or the end of the input. A process that keeps running after a failed decode retains the decoded part of each rejected string, with its size chosen by the sender. Repeated requests exhaust process memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129113": {
+    "cvss": 9.1,
+    "description": "JSON::XS versions from 4.0_00 before 4.05 for Perl corrupt the incremental buffer length by chopping past its end in incr_skip after a top-level number. The incremental parser scans any run of digits, signs, dots and exponent markers as one number, but the decoder stops at the end of a valid number, so the parser keeps an offset into bytes it has not decoded. It then empties the buffer without clearing those bytes, and a later incr_parse call without new input reads them again and moves the offset past the end of the buffer. incr_skip, the documented recovery after an error, removes that many bytes and the buffer length wraps. A peer sending input such as \"1-2\" to an incr_parse consumer can make the next read of incr_text exit the process through perl's uncatchable out-of-memory path.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129114": {
+    "cvss": 9.8,
+    "description": "JSON::XS versions from 3.04 before 4.05 for Perl write one byte past a heap buffer when appending a one-byte chunk in incr_parse. The incremental buffer grows to one and a half times the length it must hold, with no room reserved for the terminating NUL. For an empty buffer and a one-byte chunk that request is one byte, which a buffer whose front was removed by earlier decodes can already have, so nothing is reallocated and the NUL lands one byte past the allocation. A peer streaming data to an incr_parse consumer, choosing how the input is split into reads, can cause a one-byte heap out-of-bounds write.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129115": {
+    "cvss": 9.1,
+    "description": "JSON::XS versions from 3.0 before 4.05 for Perl read freed stack memory when a FREEZE result's serialisation grows the Perl stack under allow_tags in encode_rv. With allow_tags, an object's FREEZE method is called in list context and each returned value is encoded through a saved Perl stack pointer. When encoding a returned value calls back into Perl, through TO_JSON under convert_blessed or another FREEZE, and that callback grows the stack, the stack is reallocated while the saved pointer still refers to the freed block. Encoding such objects reads freed memory, and encode can return undef without an error.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129255": {
+    "cvss": 8.8,
+    "description": "A vulnerability was identified in CoolerMaster MASTERPLUS+ 1.9.6. This affects the function sub_11504 in the library WinRing0x64.sys of the component Device Driver. The manipulation of the argument PhysicalAddress leads to incorrect default permissions. The attack can only be performed from a local environment. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129428": {
+    "cvss": 5.4,
+    "description": "Pulse from 5.0.17 before 6.8.0 contains a missing authorization vulnerability in the /api/ai/approvals endpoints that allows authenticated viewer-level users to manage approval requests. Attackers can list pending requests to expose proposed commands and targets, and approve or deny other users' requests, altering decision and audit state.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129431": {
+    "cvss": 6.5,
+    "description": "Ettercap through 0.8.5.1 contains a heap out-of-bounds read vulnerability in dissector_socks() in src/dissectors/ec_socks.c that allows network-adjacent attackers to read heap memory via unchecked SOCKS5 username/password lengths. Attackers can send a crafted SOCKS5 authentication packet observed by Ettercap to read up to 255 bytes past the heap buffer, disclosing memory printed and logged as captured credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129432": {
+    "cvss": 6.5,
+    "description": "Ettercap through 0.8.5.1 contains a heap out-of-bounds read vulnerability in dissector_mountd() in src/dissectors/ec_mountd.c that validates RPC credential and directory lengths independently rather than against the packet end. Network-adjacent attackers can send a crafted MOUNT MNT call to read up to 100 bytes past the heap buffer, leaking memory to the console and logs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2011-10042": {
+    "cvss": 9.8,
+    "description": "HTTP::Session versions before 0.43 for Perl allow memcached command injection via unfiltered session ids in HTTP::Session::Store::Memcached. The session id from the client's cookie reaches memcached unchanged as the cache key. A CR and LF in the session id end the cache command early, and the server reads the bytes after them as further commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116753": {
+    "cvss": 7.2,
+    "description": "The Multi Step for Contact Form 7 plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'multipart field name (array key)' parameter in all versions up to, and including, 2.9.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires the target CF7 form to have the 'Save every step' option enabled and the Database for Contact Form 7 companion plugin to be active with its 'Expandable' table option enabled, both of which are disabled by default.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129260": {
+    "cvss": 6.6,
+    "description": "A security vulnerability has been detected in Mereithhh VanBlog up to 0.54.0. This vulnerability affects the function fs.readFileSync of the file local.provider.ts of the component Custom Page Handler. The manipulation of the argument path leads to path traversal. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used. Upgrading to version test-20261013 is able to resolve this issue. The identifier of the patch is d63aa163f10b6dc1080e2368fe8e71aa95b765cb. Upgrading the affected component is advised.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129261": {
+    "cvss": 8.2,
+    "description": "A vulnerability was found in Kingston FURY CTRL RGB Control Software up to 2.0.66.0. The impacted element is an unknown function in the library NTIOLib_X64.sys of the component IOCTL Handler. Performing a manipulation results in exposed ioctl with insufficient access control. The attack is only possible with local access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129267": {
+    "cvss": 3.5,
+    "description": "A vulnerability was found in sergix44 XBackBone up to 3.8.2. Impacted is the function MediaController::getRawById of the file app/Controllers/MediaController.php. The manipulation results in cross site scripting. It is possible to launch the attack remotely. The exploit has been made public and could be used. The pull request to fix this issue awaits acceptance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2015-10149": {
+    "cvss": 9.8,
+    "description": "Dancer versions before 1.3400 for Perl pass unvalidated session ids from the session cookie to the session engine. read_session_id returns the cookie value as the session id without checking its characters, and Dancer hands it to the session engine to load the session. A remote attacker may cause path traversal or injection in a session engine that uses the id in a file path, cache command or query without checking it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129456": {
+    "cvss": 7.7,
+    "description": "In FRRouting, bgpd frees the sub-TLV chain of a Tunnel Encapsulation attribute (type 23) while routes stored by bgpd still point to it, if the attribute is received from a neighbor that has \"soft-reconfiguration inbound\" configured. A cache added to speed up attribute interning while processing the prefixes of an UPDATE checks whether an interned attribute set may be reused by comparing the parsed attributes with themselves, so the check always succeeds. Interning the parsed attributes for the Adj-RIB-In removes the Tunnel Encapsulation sub-TLVs from them, and the copy that bgpd then interns for the route reuses the cached attribute set, which still holds the sub-TLVs, without taking a reference on them. When the route is later replaced, withdrawn or cleared, for example when the session goes down, the sub-TLV chain is freed while still in use, and bgpd then reads it, decrements a reference count inside it and frees it a second time. In the reporter's build without AddressSanitizer this ended in an assertion failure in bgpd's memory accounting, aborting bgpd and dropping all BGP sessions on the router, and the neighbor can repeat it each time bgpd restarts. Because freed heap memory is written to and freed again, consequences beyond a crash cannot be ruled out. An established BGP session is required, and the attribute does not need to be malformed. bgpd processes attribute 23 from every neighbor, including eBGP neighbors, unless it is explicitly discarded, although RFC 9012 requires it to be filtered on eBGP sessions by default. Neighbors without \"soft-reconfiguration inbound\" are not affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128083": {
+    "cvss": 2.3,
+    "description": "Laravel is a web application framework. Prior to 12.71.0 and 13.40.0, Laravel's Concurrency::run process driver can treat a forged internal result message in child standard output as framework output. An application route must invoke Concurrency::run, and a task must write attacker-controlled bytes at the start of the child's standard output that form a complete JSON document followed by gzip magic bytes. Under those application-specific conditions, an attacker can forge the internal result message and achieve remote code execution. The affected behavior is not exposed by default and requires application code that routes untrusted input into task output. This issue is fixed in versions 12.71.0 and 13.40.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128084": {
+    "cvss": 4.8,
+    "description": "sqlite3 provides Ruby bindings for the SQLite3 embedded database. Prior to 2.10.2, sqlite3-ruby casts Ruby string lengths to int before passing SQL through Database#prepare, bound String or Blob values through Statement#bind_param, and String or Blob results from Ruby-defined SQL functions and aggregates through Database#create_function and Database#create_aggregate. On 64-bit platforms, a string of 4 GiB (2^32 bytes) or larger can wrap the length so SQLite processes only a prefix. A truncated SQL string can drop trailing clauses such as a WHERE condition, while a truncated bound value matters only when the application validated the full value before binding it. Exploitation requires the application and server to accept and retain the unusually large attacker-controlled string. If a dropped SQL clause contained a bind placeholder, binding raises SQLite3::RangeException instead of running the query. This issue is fixed in version 2.10.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128085": {
+    "cvss": 5.3,
+    "description": "OpenTelemetry-Go is the Go implementation of OpenTelemetry. From SDK version 1.33.0, SDK log version 0.9.0, and trace version 1.35.0 until version 1.47.0, the AttributeValueLengthLimit and WithAttributeValueLengthLimit truncation paths in sdk/internal/attrnorm, sdk/log/internal/attrnorm, and trace/auto.go do not count valid U+FFFD replacement characters. This is a distinct incomplete-fix defect in the replacement truncation code introduced by the remediation for CVE-2026-81869. Values composed of or dominated by those characters can therefore exceed the configured character and memory bound in span, log-record, and auto-instrumentation trace attributes. Attacker-controlled telemetry attributes can increase retained memory and pipeline pressure, while confidentiality and integrity are not affected. This issue is fixed in version 1.47.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128088": {
+    "cvss": 2.2,
+    "description": "russh is a Rust SSH client and server library that includes an SSH agent protocol implementation. Prior to version 0.65.1, try_sign() captures an Arc before awaiting Agent::confirm() and does not revalidate the shared lock state or key presence after the await. This is a distinct residual defect in the remediation for CVE-2026-116794. A peer, including a remote SSH server using agent forwarding, can begin a confirmation-constrained signature request while the agent is unlocked and receive the signature after another connection locks the agent if the stale confirmation returns true. New post-lock requests are rejected and private key material is not disclosed, but the pending operation bypasses the current lock state. This issue is fixed in version 0.65.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129217": {
+    "cvss": 6.0,
+    "description": "In FRRouting (FRR) 8.3 through 10.5.1, bgp_notify_decapsulate_hard_reset() in bgpd/bgp_packet.c does not validate the length of the data field of a received BGP NOTIFICATION Cease/Hard Reset message (RFC 8538). When the data field is exactly one byte long, the function reads one byte past the end of a heap buffer and the 16-bit length of the encapsulated data underflows to 65535, causing a 65535-byte out-of-bounds heap read followed by an assertion failure. A remote BGP peer that has established a session and negotiated the Graceful Restart capability with the Notification (N) bit can send such a message to crash the bgpd daemon, terminating all BGP sessions (denial of service). This is fixed in 10.0.5, 10.1.5, 10.2.6, 10.3.4, 10.4.3, 10.5.2 and 10.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62975": {
+    "cvss": 6.9,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to version 1.5.1, the RAMFS-backed FILE implementation accepts AtomicWriteFile(record-access) requests that replace existing records with caller-controlled content. If a client replaces a record with shorter data, the backend can shrink the heap allocation and then continue processing with a trailing-copy length derived from the old layout. During that replace path, the RAMFS backend computes the trailing-copy length from the old file layout, then shrinks the heap allocation, and finally uses the stale length in memmove(). As a result, the source range of that memmove() can extend beyond the end of the reallocated heap buffer, producing a heap out-of-bounds read. This issue has been patched in versions 1.5.1 and 1.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62977": {
+    "cvss": 6.9,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to version 1.5.1, the BACnet FILE object implementation allows remote WriteProperty(PROP_FILE_SIZE) requests to change the size of a stream-access FILE object without checking whether that FILE is marked Read_Only. When the FILE backend is RAMFS, enlarging the file only performs realloc() and updates the stored size; the newly exposed tail region is not initialized before later reads. As a result, a remote client can enlarge a read-only RAMFS-backed stream-access FILE and then immediately retrieve the newly exposed region with AtomicReadFile(stream-access). Depending on the allocator and build configuration, the returned data may contain sanitizer fill bytes, stale heap contents, or other unintended process memory. Shrinking the file through the same path can also remotely truncate content that was intended to be read-only. This issue has been patched in versions 1.5.1 and 1.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-67444": {
+    "cvss": 7.1,
+    "description": "Hubleys is a dashboard for self-hosted services. Prior to version 0.5.2, any authenticated (non-admin) Hubleys user can upload a file with an arbitrary extension as their dashboard \"background image,\" and the server will later serve that file back with a Content-Type derived straight from the attacker's chosen extension - so uploading an .html file gets it served as text/html. Because the endpoint that serves it returns a manually-constructed response rather than going through SvelteKit's normal page-rendering pipeline, the app's configured Content-Security-Policy never gets attached to it either, so a script embedded in the upload runs unrestricted. This issue has been patched in version 0.5.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68510": {
+    "cvss": 6.9,
+    "description": "bit-vec is a compact vector of bits. Prior to version 0.10.0, there is undefined behavior if a user performs deserialize from an untrusted source and unsafe get_unchecked. A user of this library may be impacted by incorrect behavior if they perform deserialize from an untrusted source and run operations on the deserialized BitVec. This issue has been patched in version 0.10.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127214": {
+    "cvss": 8.5,
+    "description": "Flowise through 3.1.4 contains a server-side request forgery vulnerability that allows authenticated attackers with chatflows or agentflows create/update permissions to bypass the Custom Function sandbox's SSRF protection by requiring a module subpath inside an allowlisted package, such as axios/dist/node/axios.cjs or node-fetch/lib/index.js, which evades the vm2 mock table and returns an unwrapped HTTP client that skips the checkDenyList validation. Attackers can issue arbitrary GET and POST requests with attacker-controlled bodies via POST /api/v1/node-custom-function to reach loopback and internal-network addresses or the cloud metadata endpoint, enabling network mapping, credential disclosure, and state changes on internal services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127215": {
+    "cvss": 8.1,
+    "description": "Kanbanz by Softaculous plugin for WordPress before 1.0.3 contains a broken access control vulnerability that allows authenticated Kanban Staff users to access and modify boards they are not members of by exploiting admin-ajax handlers that fail to call kanbanz_user_can_access_board() or per-task edit checks on attacker-supplied board_id or task_id parameters. Attackers can supply arbitrary board IDs to read sensitive task data, overwrite status columns, subtasks, and labels, inject comments, upload or delete attachments, and create tasks or set WIP limits on boards owned by other teams.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128089": {
+    "cvss": 7.5,
+    "description": "dnspython is a DNS toolkit for Python. Prior to version 2.9.2, the from_text() parser for WKS records does not require the service number to be between 0 and 65535 before using it as a bitmap offset. An attacker-controlled zone file can supply a larger number, causing the service bitmap to grow to an extremely large size through inefficient repeated extension, consuming excessive memory and CPU and potentially terminating the process. Applications are affected only when they parse zone-file text whose record type and rdata are attacker controlled. This issue is fixed in version 2.9.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128116": {
+    "cvss": 5.3,
+    "description": "SvelteKit is a framework for rapidly developing robust, performant web applications using Svelte. Prior to versions 2.70.4 and 3.1.1, apps configured with router.resolution: 'server' could treat a pathname beginning with // as a protocol-relative module specifier during client-side navigation. A socially engineered link could therefore make server-side route resolution import and execute JavaScript from another origin in the user's browser. This issue is fixed in 2.70.4 and 3.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128118": {
+    "cvss": 7.5,
+    "description": "SvelteKit is a framework for rapidly developing robust, performant web applications using Svelte. From version 3.0.0 until 3.1.1, the build-time server-only module guard did not treat src/params.js as a client entry point even though parameter matchers can run in the browser. Server-only modules imported through src/params.js could consequently enter the client bundle, where statically replaced private environment values or other server secrets could be exposed. This issue is fixed in 3.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128120": {
+    "cvss": 7.5,
+    "description": "SvelteKit is a framework for rapidly developing robust, performant web applications using Svelte. From version 2.42.0 until 3.1.1, applications using the experimental remote functions flag and a remote form function could perform quadratic synchronous work while parsing a specially crafted request with many form entries. The parsing work could block the event loop for an extended period and deny service. This issue is fixed in 3.1.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128122": {
+    "cvss": 5.9,
+    "description": "SvelteKit is a framework for rapidly developing robust, performant web applications using Svelte. From version 4.7.0 until versions 7.2.10 and 8.0.2, @sveltejs/adapter-cloudflare allowed an attacker-influenced link crawled during prerendering to place whitespace, control characters, wildcards, or placeholders into a prerendered redirect path. The adapter wrote those paths into the Cloudflare _redirects output without output-context validation, allowing a path to create unintended routing rules that could redirect or expose requests beyond the intended prerendered route. This issue is fixed in 7.2.10 and 8.0.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127217": {
+    "cvss": 6.4,
+    "description": "Post to Google My Business plugin for WordPress before 3.5.7 contains a blind server-side request forgery vulnerability that allows authenticated users with Contributor-level privileges or higher to make the server send requests to arbitrary hosts by supplying an unvalidated mbp_post_attachment URL that reaches a raw getimagesize() call in validate_external_image_size() via the preview REST route. Attackers can exploit this to perform internal port scanning, probe internal-only services and cloud metadata endpoints, and trigger GET-based side effects on internal systems, bypassing network perimeter controls since the request originates from the web server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128124": {
+    "cvss": 7.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, Application.add_domain() converts every asterisk wildcard in a domain mask into a greedy regular-expression fragment, so a mask containing two or more wildcards can take polynomial time to reject a long Host header that does not match. A remote attacker can repeatedly send such headers to a server configured with a multi-wildcard domain mask and stall the event loop. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128125": {
+    "cvss": 5.3,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, Set-Cookie parsing treats unrecognized name=value attributes as additional cookies, while CookieJar does not limit the number of cookies stored or sent. A malicious server can make an aiohttp client accumulate a very large cookie set, consume memory and CPU repeatedly across redirects, and construct an excessively large Cookie header for later requests to the same domain. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128126": {
+    "cvss": 7.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, Request.post() does not limit the number of fields in a URL-encoded form body, and inserting many repeated keys into MultiDict takes quadratic time on the event loop. A remote attacker can send a form POST within client_max_size to a handler that calls Request.post() and block the event loop. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128127": {
+    "cvss": 7.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, BodyPartReader.read_chunk() processing a multipart part with Content-Transfer-Encoding set to base64 keeps reading until the chunk length is a multiple of four without enforcing a byte limit. A short Content-Length or a long run of whitespace can cause one call to read the remaining body into memory before the size check or spin on the event loop. A remote attacker can send such a multipart request to a handler that reads multipart data and bypass client_max_size. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128128": {
+    "cvss": 7.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, the C WebSocket reader adds a declared frame length to the size of an already buffered partial message using signed 64-bit arithmetic. A length near two to the power of 63 can overflow, allowing the max_msg_size check to pass. A remote peer can send a small non-final fragment followed by an oversized message and cause unbounded memory consumption. The Python WebSocket reader is unaffected. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128130": {
+    "cvss": 8.3,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, when the pipelined request queue is full, the pure-Python parser stores the unparsed remainder internally and also returns the same data to its caller. After a handler declines an upgrade request, the caller feeds the remainder back to the parser, causing the buffer to grow with each handled request and dispatching already-handled requests to the application again. The issue affects deployments using AIOHTTP_NO_EXTENSIONS or otherwise running without the standard C-extension wheel, and can cause excessive memory use and repeated request processing. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128132": {
+    "cvss": 8.7,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, the WebSocket reader continues parsing frames already received after the receive queue pauses the transport, and empty messages are not counted toward the queue size. With permessage-deflate, one read of compressed frames can add many megabytes of decompressed messages to the receive queue. A remote peer can send many small or compressed messages faster than the application consumes them and cause excessive memory use in a server or client. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82504": {
+    "cvss": 9.8,
+    "description": "VITEC EZ TV Platform Server before 8.5.0 contains an unrestricted file upload vulnerability in the upload handler that allows unauthenticated remote attackers to upload arbitrary files by supplying a target filename in the X-FILENAME request header with no authentication or file type validation required. Attackers can upload a malicious ASPX file directly to the web-accessible uploads directory, where it is immediately executable by the web server, achieving remote code execution in the context of the web server process. Patches are available for versions 8.3.0, 8.3.1, 8.4.0, and 8.4.1. Users running releases prior to 8.3.0 should upgrade to 8.5.0+.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-53697": {
+    "cvss": 8.4,
+    "description": "Use of default credentials vulnerability in Johnson Controls iSTAR Ultra, Johnson Controls iSTAR Ultra SE, Johnson Controls iSTAR Ultra G2, Johnson Controls iSTAR Ultra G2 SE, and Johnson Controls iSTAR Edge G2 allows CAPEC‑560: Use of Default Credentials. This issue affects iSTAR Ultra: before 2.9.2.CU02; iSTAR Ultra SE: before 6.9.2.CU02; iSTAR Ultra G2: before 6.9.2.CU02; iSTAR Ultra G2 SE: before 6.9.2.CU02; iSTAR Edge G2: before 6.9.2.CU02.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-53698": {
+    "cvss": 7.0,
+    "description": "Missing protection mechanism for alternate hardware interface vulnerability in Johnson Controls iSTAR Ultra and Johnson Controls iSTAR Ultra SE allows CAPEC‑554: Functionality Bypass. This issue affects iSTAR Ultra: before 6.9.2.CU02; iSTAR Ultra SE: before 6.9.2.CU02.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-53699": {
+    "cvss": 7.0,
+    "description": "Missing protection mechanism for alternate hardware interface vulnerability in Johnson Controls iSTAR Ultra, Johnson Controls iSTAR Ultra SE, Johnson Controls iSTAR Ultra G2, Johnson Controls iSTAR Ultra G2 SE, and Johnson Controls iSTAR Edge G2 allows CAPEC‑554: Functionality Bypass. This issue affects iSTAR Ultra: before 6.9.2.CU02; iSTAR Ultra SE: before 6.9.2.CU02; iSTAR Ultra G2: before 6.9.2.CU02; iSTAR Ultra G2 SE: before 6.9.2.CU02; iSTAR Edge G2: before 6.9.2.CU02.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110195": {
+    "cvss": 5.4,
+    "description": "IBM ContextForge MCP Gateway 1.0.0 through 1.0.11 could allow an authenticated caller to bypass upstream credential-level authorization policies due to an insufficiently specific cache key in the RFC 8693 token exchange cache, enabling reuse of cached upstream bearer tokens across different credentials belonging to the same user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110331": {
+    "cvss": 7.8,
+    "description": "A flaw was found in abrt. The completeness check introduced to mitigate CVE-2026-54228 and CVE-2026-54229 only verifies that a dump directory contains a \"count\" element, which an unprivileged user can create. This allows a local attacker to bypass the guard and again poison elements in, or seize ownership of, dump directories while privileged ABRT handlers are processing them. Related Problems2 mutating methods remain ungated by the same check.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115788": {
+    "cvss": 8.1,
+    "description": "IBM App Connect Operator and IBM App Connect Enterprise Certified Containers Operands is vulnerable to Log Forging on a request to create a resource.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124021": {
+    "cvss": 8.1,
+    "description": "Control Web Panel (CWP) before webpanel_version 1.30.6 contains an authorization bypass vulnerability in the validate() function of api/v1/index.php that allows attackers holding a password-recovery token and a predictable legacy signature to obtain valid remote-API authorization without a proper API key. Attackers can exploit this flaw via the POST /cronjobsusers/ endpoint to add arbitrary cron commands and achieve command execution as the affected hosting account, and can also abuse the same token to access global account-list and account-detail routes exposing usernames, contact emails, and password hashes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128886": {
+    "cvss": 6.2,
+    "description": "A flaw was found in dbus when configured with the nonce-tcp transport. An unauthenticated attacker able to connect to an exposed listener can cause a Denial of Service (DoS) by opening a connection and withholding the expected authentication token. Because the server processes this verification without enforcing a timeout, the stalled connection blocks the accept process and prevents legitimate clients from establishing new connections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94407": {
+    "cvss": 6.5,
+    "description": "IBM ContextForge MCP Gateway 1.0.0 through 1.0.11 is potentially vulnerable to denial of service due to uncontrolled regular expression complexity (CWE-400 / ReDoS). An authenticated user with tool-registration privileges can embed catastrophically backtracking regex patterns in a tool's JSON Schema `pattern` field; when ContextForge validates arguments against that schema, the validation call may consume unbounded CPU, potentially degrading gateway availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-9821": {
+    "cvss": 5.3,
+    "description": "IBM Cyber Fraud 1.0.0 through 1.1.0 could allow an unauthorized user to inject data into log messages due to improper neutralization of special elements when written to log files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129173": {
+    "cvss": 5.3,
+    "description": "A security flaw has been discovered in Stirling-Tools Stirling-PDF up to 3.3.0. Affected is the function WorkflowParticipantController.getParticipantDetails of the file app/proprietary/src/main/java/stirling/software/proprietary/workflow/controller/WorkflowParticipantController.java of the component Participant Details Endpoint. Performing a manipulation results in insufficient session timeout value. Remote exploitation of the attack is possible. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71519": {
+    "cvss": 8.1,
+    "description": "PrestaShop before 8.2.9 and 9.2.1 contains a broken access control vulnerability that allows an authenticated Webservice API key holder to read and modify customer records belonging to any shop in a multi-shop installation. Attackers can exploit the missing record-level shop ownership check in shopHasRight() and saveEntityFromXml() to read sensitive customer data such as password hashes and secure keys, and change a customer's email and password via create, update, and delete requests, resulting in account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
