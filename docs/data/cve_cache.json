@@ -144538,5 +144538,653 @@
     "description": "PrestaShop before 8.2.9 and 9.2.1 contains a broken access control vulnerability that allows an authenticated Webservice API key holder to read and modify customer records belonging to any shop in a multi-shop installation. Attackers can exploit the missing record-level shop ownership check in shopHasRight() and saveEntityFromXml() to read sensitive customer data such as password hashes and secure keys, and change a customer's email and password via create, update, and delete requests, resulting in account takeover.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-99309": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix overflow in dacloffset bounds check in build_sec_desc() When the large dacl_offset is provided, dacl_offset + sizeof(struct smb_acl) overflows on 32-bit builds and the check is passed, Which makes le16_to_cpu(ppdacl_ptr->size) read out-of-bounds. This only happens for dacl_offset in range [0xFFFFFFF8, 0xFFFFFFFF]. So the oob read is max 8 bytes preceding the allocated ppntsd. unsigned int dacl_offset = le32_to_cpu(ppntsd->dacloffset); int ppdacl_size, ntacl_size = ppntsd_size - dacl_offset; if (!dacl_offset || (dacl_offset + sizeof(struct smb_acl) > ppntsd_size)) goto out; Commit beff0bc9d69b (\"ksmbd: fix overflow in dacloffset bounds check\") fixes similar checks in other functions. But leaves this one out, because it is only valid for 32-bit builds. Reproduced on 32-bit ARM with KASAN, by a client sending SMB2 SET_INFO(SEC) with dacloffset=0xfffffff8, then QUERY_INFO(SEC) on the same file: BUG: KASAN: slab-out-of-bounds in build_sec_desc (fs/smb/server/smbacl.c:1105) Read of size 2 at addr c2a273fa by task kworker/1:1/35 CPU: 1 UID: 0 PID: 35 Comm: kworker/1:1 Not tainted 7.3.0-rc2+ #5 Workqueue: ksmbd-io handle_ksmbd_work Call trace: kasan_check_range from build_sec_desc (fs/smb/server/smbacl.c:1105) build_sec_desc from smb2_query_info (fs/smb/server/smb2pdu.c:7676) smb2_query_info from handle_ksmbd_work (fs/smb/server/server.c:160) handle_ksmbd_work from process_one_work (kernel/workqueue.c:3401) process_one_work from worker_thread (kernel/workqueue.c:3473) worker_thread from kthread (kernel/kthread.c:436) Add overflow check.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99310": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: nfsd: hold cl_lock in client_has_openowners() client_has_openowners() walks clp->cl_openowners and reads so_stateids without clp->cl_lock. nfs4_put_stateowner() unhashes that openowner under cl_lock and then frees it, so a concurrent EXCHANGE_ID with mismatched creds can use-after-free the nfs4_openowner. BUG: KASAN: slab-use-after-free in client_has_state+0x10a/0x140 fs/nfsd/nfs4state.c:3718 client_has_openowners() nfsd4_exchange_id nfsd4_proc_compound nfsd_dispatch svc_process Take clp->cl_lock while client_has_openowners() walks the openowner list.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123745": {
+    "cvss": 6.1,
+    "description": "In affected versions of Octopus Server, improper path validation allowed a user with scoped runbook permissions to execute runbooks on offline package drop targets, this could result in exposure of Server working-directory files outside their permitted scope and deletion of those files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129545": {
+    "cvss": 8.8,
+    "description": "Kalmia through 0.2.0 contains a privilege escalation vulnerability that allows low-privileged authenticated users to modify any account via the /kal-api/auth/user/edit endpoint. Attackers holding only read permission can set their admin flag and 'all' permission or reset an administrator's password to fully take over the instance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129549": {
+    "cvss": 6.1,
+    "description": "Tensei through 0.11.5 contains an unrestricted file upload vulnerability in the @tensei/media plugin that allows unauthenticated attackers to upload dangerous file types via the files/upload route. Attackers can set the multipart Content-Type to upload HTML or SVG files served from the application origin, causing stored cross-site scripting and storage consumption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129553": {
+    "cvss": 6.1,
+    "description": "Tensei through 0.11.5 contains an open redirect vulnerability in the @tensei/social-auth SocialAuthCallbackController that allows unauthenticated attackers to redirect users by supplying an unvalidated clientCallback query parameter. Attackers can craft links to the /:provider/callback route that send victims to attacker-controlled sites for phishing and leak the issued temporary access token appended after login.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21141": {
+    "cvss": 6.9,
+    "description": "Improper access control in Samsung Dialer prior to SMR Nov-2026 Release 1 allows local attackers to access sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21142": {
+    "cvss": 2.1,
+    "description": "Incorrect default permissions in Samsung Contacts prior to SMR Nov-2026 Release 1 allows local attackers to access profile configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21143": {
+    "cvss": 5.1,
+    "description": "Improper authorization in CoverScreenRecentsWidgetProvider in Samsung Contacts prior to SMR Nov-2026 Release 1 allows local attackers to make a call without proper permission.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21144": {
+    "cvss": 5.1,
+    "description": "Improper authorization in RecentsCallLogLargeWidgetProvider in Samsung Contacts prior to SMR Nov-2026 Release 1 allows local attackers to make a call without proper permission.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21145": {
+    "cvss": 4.8,
+    "description": "Improper export of android application components in CoverScreenWidgetActionActivityLarge in Samsung Contacts prior to SMR Nov-2026 Release 1 allows local attackers to make a call without proper permission.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21146": {
+    "cvss": 4.8,
+    "description": "Improper export of android application components in CoverScreenWidgetActionActivitySmall in Samsung Contacts prior to SMR Nov-2026 Release 1 allows local attackers to make a call without proper permission.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21147": {
+    "cvss": 4.8,
+    "description": "Improper export of android application components in CoverScreenWidgetActionActivity in Samsung Contacts prior to SMR Nov-2026 Release 1 allows local attackers to make a call without proper permission.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21148": {
+    "cvss": 5.1,
+    "description": "Incorrect authorization in Samsung Messages prior to SMR Nov-2026 Release 1 allows local attackers to access sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21149": {
+    "cvss": 6.9,
+    "description": "Improper access control in StatusBarManagerService prior to SMR Nov-2026 Release 1 allows local attackers to use the privileged APIs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21150": {
+    "cvss": 5.1,
+    "description": "Improper access control in edmnativehelper prior to SMR Nov-2026 Release 1 allows local attackers to access sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21151": {
+    "cvss": 8.3,
+    "description": "Improper privilege management in TransitionPlayer prior to SMR Nov-2026 Release 1 allows local privileged attackers to execute arbitrary code with launcher privilege.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21152": {
+    "cvss": 7.0,
+    "description": "Improper input validation in libMyFilterPlugin.camera.samsung.so prior to SMR Nov-2026 Release 1 allows local attackers to potentially execute arbitrary code. User interaction is required for triggering this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21153": {
+    "cvss": 7.4,
+    "description": "Stack-based buffer overflow in libsecuibc.so prior to SMR Nov-2026 Release 1 allows local attackers to execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21154": {
+    "cvss": 6.9,
+    "description": "Improper authorization in libsecuibc.so prior to SMR Nov-2026 Release 1 allows local attackers to access dump data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21156": {
+    "cvss": 6.9,
+    "description": "Out-of-bounds write in libsmkvextractor.so prior to SMR Nov-2026 Release 1 allows local attackers to write out-of-bounds memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21158": {
+    "cvss": 4.3,
+    "description": "Improper certificate validation in CP prior to SMR Nov-2026 Release 1 allows local privileged attackers to bypass SIM lock.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21159": {
+    "cvss": 6.8,
+    "description": "Improper authorization in Samsung Pass prior to version 5.2.12.7 allows physical attackers to access sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21160": {
+    "cvss": 5.3,
+    "description": "Cross-site request forgery in Samsung Health prior to version 7.1.0.053 allows remote attackers to access sensitive information. User interaction is required for triggering this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21161": {
+    "cvss": 5.1,
+    "description": "Improper input validation in Samsung Members prior to version 5.8.20.31 allows local attackers to launch arbitrary activity with Samsung Members privilege.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21163": {
+    "cvss": 5.3,
+    "description": "Improper input validation in Bixby prior to version 4.1.20 allows remote attackers to launch arbitrary activity with Bixby privilege.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21164": {
+    "cvss": 5.1,
+    "description": "Improper handling of insufficient permission in Samsung Pay for Galaxy Watch prior to version 8.0.53 allows local attackers to install arbitrary applications.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21165": {
+    "cvss": 6.0,
+    "description": "Insufficient session expiration in Smart Switch prior to version 3.7.74.7 allows adjacent attackers to bypass device authentication. User interaction is required for triggering this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21166": {
+    "cvss": 6.9,
+    "description": "Improper authentication in Smart Switch prior to version 3.7.74.7 allows adjacent attackers to install arbitrary applications.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21167": {
+    "cvss": 8.6,
+    "description": "Binding to an unrestricted IP address in Smart Switch prior to version 3.7.74.7 allows adjacent attackers to bypass authentication. User interaction is required for triggering this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21168": {
+    "cvss": 5.1,
+    "description": "External control of system or configuration setting in Smart Switch prior to version 3.7.74.7 allows local attackers to bypass required user interaction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21169": {
+    "cvss": 5.3,
+    "description": "Improper input validation in Smart Switch prior to version 3.7.74.1 allows adjacent attackers to install arbitrary applications. User interaction is required for triggering this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21170": {
+    "cvss": 6.1,
+    "description": "Improper enforcement of behavioral workflow in Smart Switch prior to version 3.7.74.7 allows adjacent attackers to write arbitrary files with Smart Switch privilege.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21171": {
+    "cvss": 5.8,
+    "description": "Improper initialization in Smart Switch prior to version 3.7.74.7 allows adjacent attackers to bypass user authorization. User interaction is required for triggering this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21172": {
+    "cvss": 6.0,
+    "description": "Incomplete cleanup in Smart Switch prior to version 3.7.74.7 allows adjacent attackers to establish an unauthorized connection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121192": {
+    "cvss": 6.8,
+    "description": "@fastify/proxy-addr determines which network hops are trusted proxies and backs Fastify's trustProxy setting, so that forwarded headers can be believed. In versions 3.0.0 through 5.1.2, when trustProxy is configured with a zoned IPv6 link-local address, the trust comparison checks only the address bits and ignores the zone identifier, so a host on another link of a multi-homed server that carries the same link-local address is trusted as well. Such an attacker can spoof the X-Forwarded-For, X-Forwarded-Host and X-Forwarded-Proto headers, making the client IP, host and protocol reported by Fastify attacker-chosen values and defeating IP allowlists, rate limiting and audit logging. Exploitation requires a multi-homed server whose trustProxy is a zoned link-local address and an attacker directly on one of its other links; the default configuration and global, private or loopback trust entries are not affected. The issue is fixed in @fastify/proxy-addr 5.1.3, and users should upgrade to 5.1.3 or later. As a workaround, avoid trusting a zoned link-local address on a multi-homed host and trust a global, private or loopback proxy address instead.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114737": {
+    "cvss": 2.3,
+    "description": "The fix for CVE-2026-23903 https://shiro.apache.org/security-reports.html#cve_2026_23903 was incomplete for manually-created ShiroFilterFactoryBean, which still matched paths case-sensitively by default. This issue affects Apache Shiro version 3.0.1, only when ShiroFilterFactoryBean is created manually by the application and static files are served from a case-insensitive filesystem. Applications that let Shiro Spring (Boot) Starter create the bean are not affected. Mitigation: Upgrade to version 3.0.2 or later, which fixes the issue. Alternatively, call setCaseInsensitive(true) on the ShiroFilterFactoryBean.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124289": {
+    "cvss": 7.5,
+    "description": "@fastify/multipart is the official Fastify plugin for handling multipart/form-data uploads. In versions 7.4.0 through 10.1.8, when the plugin is registered with the attachFieldsToBody option, the saveRequestFiles helper treats any object in the parsed request body that carries truthy file and buffer properties as an uploaded file. An unauthenticated client can forge such an object through a plain JSON request or a JSON-typed multipart field, so attacker-chosen bytes are written to the temporary directory while upload hooks and the file count and size limits are skipped, and the saved entry keeps the attacker's filename verbatim instead of being reduced to its basename. Because that filename can contain parent directory segments, applications that use it as a write destination, as the project README example does, are exposed to an arbitrary relative-path file write from a single request. The issue is fixed in @fastify/multipart 10.1.9, and users should upgrade to 10.1.9 or later. As a workaround, call saveRequestFiles only after confirming the request is multipart, and reduce each returned filename to its basename or validate it against an allowlist before using it as a destination.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128835": {
+    "cvss": 7.5,
+    "description": "@fastify/busboy is a streaming parser for multipart form data used by Fastify. In versions 1.0.0 through 3.2.5, a multipart part whose header block is never terminated before the next boundary is counted by the vendored Dicer parser as an open part that never ends, so the parser emits neither a finish nor an error event and the request hangs. A single unauthenticated request of roughly one hundred bytes triggers the stall, and through @fastify/multipart the hung handler is not released when the client disconnects, so repeated requests leak handlers and whatever resources they hold, such as files, database connections and concurrency slots, until the process is restarted. The same parser is reached by the formData methods of undici versions 5.25.3 through 6.7.0. The issue is fixed in @fastify/busboy 3.2.6, and users should upgrade to 3.2.6 or later. As a workaround, configure Fastify's handler timeout so hung handlers are eventually terminated and their resources released.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128842": {
+    "cvss": 5.3,
+    "description": "@fastify/busboy is a streaming parser for multipart and url-encoded form data used by Fastify. In versions 1.0.0 through 3.2.5, the url-encoded parser stops accumulating a field only when the decoded length exactly equals the configured per-field size limit, and a malformed percent escape is passed through verbatim by the decoder, so the decoded length can jump from just below the limit to just above it and skip that equality check. The parser then keeps buffering the field in memory until the next delimiter or the end of the request, so a single unauthenticated url-encoded field or field name can grow to the size of the whole request body regardless of a much smaller configured per-field limit, with memory use bounded only by the independent whole-request body limit. The issue is fixed in @fastify/busboy 3.2.6, which clamps a field as soon as the decoded length reaches or exceeds the limit, and users should upgrade to 3.2.6 or later. As a workaround, set a conservative whole-request body limit so the per-field overshoot cannot exceed it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129320": {
+    "cvss": 2.1,
+    "description": "The shiro:principal tags in shiro-web (Jakarta Pages) and shiro-jakarta-ee (Jakarta Faces) did not escape their output, which could allow cross-site scripting when a principal value is not fully trusted. This issue affects all Apache Shiro versions through 3.0.1, only when the principal tag is used. Mitigation: Upgrade to version 3.0.2 or later, which escapes the output. Alternatively, validate principal values on input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129347": {
+    "cvss": 2.3,
+    "description": "`DefaultPasswordService` and `SimpleCredentialsMatcher` could treat an empty stored credential as a match for an empty submitted password. This issue affects all Apache Shiro versions through 3.0.1, only when accounts with an empty stored credential exist. Mitigation: Upgrade to version 3.0.2 or later, which fixes the issue. Alternatively, avoid storing empty credentials, and reject empty passwords in the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129348": {
+    "cvss": 2.3,
+    "description": "When PropertiesRealm reloads its properties file, removed users and narrowed permissions could remain in effect. This issue affects all Apache Shiro versions through 3.0.1, only when PropertiesRealm`loads its properties from a file, which is reloaded periodically by default. Mitigation: Upgrade to version 3.0.2 or later, which fixes the issue. Alternatively, restart the application after removing users or narrowing permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129690": {
+    "cvss": 8.2,
+    "description": "The vulnerability enables any attacker with admin access to dump credentials of all accounts stored on the device, which can then be reused for lateral movement or further compromise. Since passwords are stored or processed in a recoverable format, this represents a critical failure in secure credential handling.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-74762": {
+    "cvss": 5.9,
+    "description": "Apache Shiro is vulnerable to session fixation when a user is authenticated via the \"Remember me\" functionality. In affected versions, when a subject is restored from a \"Remember me\" cookie, the existing session is not invalidated, nor is a new session created with a new ID. Additionally, session IDs were accepted from the request URL even when session ID URL rewriting was disabled. This issue affects all Apache Shiro versions through 3.0.0, only when RememberMe functionality is enabled. Mitigation: Upgrade to version 3.0.1 or later, which fixes the issue by invalidating the existing session and creating a new session with a new ID when a subject is restored from a \"Remember me\" cookie, and by ignoring session IDs in the URL when URL rewriting is disabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-74763": {
+    "cvss": 6.3,
+    "description": "Authorization annotations, such as @RequiresRoles and @RequiresPermissions, are not always enforced in some class or interface hierarchies. Annotations declared on an interface were not enforced when using the shiro-guice, shiro-aspectj, shiro-cdi or shiro-jakarta-ee modules. In addition, annotations declared on a class or a superclass were not always enforced when using shiro-guice or shiro-aspectj, allowing an unauthorized caller to invoke methods that should be protected. This issue affects all Apache Shiro versions through 3.0.1, with impact depending on module and where annotations are declared. Mitigation: Upgrade to version 3.0.2 or later, which fixes the issue. The annotation closest to the invoked method now takes precedence. Alternatively, declare authorization annotations directly on each protected implementing method.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88019": {
+    "cvss": 6.0,
+    "description": "When Apache Shiro is used with the Jakarta EE integration module, the automatic form saving feature weakens the security of a form that is resubmitted after login. Cookies set by the application during the resubmission could lose their security attributes, such as `Secure` and `SameSite`. In addition, the resubmitted form data and cookies could be sent to an untrusted host. This issue affects Apache Shiro from 2.0.0-alpha through 3.0.1, only when using `shiro-jakarta-ee` integration module with form saving enabled (the default). Mitigation: Upgrade to version 3.0.2 or later, which no longer replays the form over the network, and avoids this class of issues entirely. Alternatively, you can set the `org.apache.shiro.form-resubmit-host` (String) and `org.apache.shiro.form-resubmit-port` (Integer) system properties to restrict the host and port that Shiro will connect to when resubmitting a form.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129851": {
+    "cvss": 6.5,
+    "description": "SeaweedFS before 4.42 contains a server-side request forgery vulnerability in the VolumeServer.FetchAndWriteNeedle gRPC method that allows unauthenticated attackers to bypass the incomplete CVE-2026-73080 fix. Attackers can supply crafted replicas[].url entries or an azure_endpoint to make the volume server send requests with controlled tokens and bodies to internal services and metadata addresses.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129852": {
+    "cvss": 5.3,
+    "description": "SeaweedFS before 4.42 contains an information disclosure vulnerability that allows unauthenticated attackers to probe local files by supplying a filesystem path in gcs_google_application_credentials. Attackers can send crafted gRPC FetchAndWriteNeedle requests and use differing error messages to learn file existence, readability, and partial content shape on the host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129856": {
+    "cvss": 6.1,
+    "description": "wallabag 2.3.3 before 2.6.16 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to inject scripts through article author metadata rendered with Twig raw in entry.html.twig. Attackers can embed HTML event handlers in a web page's author metadata so scripts run in a victim's wallabag session when the saved entry is opened, exposing their data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129860": {
+    "cvss": 5.5,
+    "description": "Microsoft jxrlib through 1.1 and the mircomir jxrlib fork before 1.3.7 contain a reachable assertion vulnerability in ParsePFDEntry() that allows attackers to abort applications via an invalid orientation tag. Attackers can supply a crafted JPEG XR file with an out-of-range WMP_tagTransformation value to crash applications using default assertion-enabled builds, or store an unchecked orientation value otherwise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129864": {
+    "cvss": 6.5,
+    "description": "Frappe CRM before 1.84.0 contains a missing authorization vulnerability in the get_deal_contacts method that allows authenticated low-privileged users to read contacts of deals they cannot access. Attackers can supply or iterate CRM Deal names to obtain linked contacts' full names, email addresses, and mobile numbers, bypassing row-level permission rules.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129867": {
+    "cvss": 5.4,
+    "description": "Rocboss paopao-ce through 0.6.0-alpha.3 contains a stored cross-site scripting vulnerability that allows registered users to inject script by abusing #topic link wrapping in preparePost and parsePostTag. Attackers can publish posts or comments with a crafted topic containing a lone '<' and event handler to steal the PAOPAO_TOKEN JWT from localStorage and take over viewer accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129868": {
+    "cvss": 6.5,
+    "description": "Rocboss paopao-ce through 0.6.0-alpha.3 fails to validate the attachment_price field when creating posts, allowing authenticated users to set negative prices on charge attachments. Attackers with two ordinary accounts can download the attachment via GET /v1/attachment, where the negative price increases the buyer's wallet balance, minting funds to purchase other users' paid attachments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129870": {
+    "cvss": 8.1,
+    "description": "Rocboss paopao-ce 0.2.0 through 0.6.0-alpha.3 contains a path traversal vulnerability in LocalOSS DeleteObject that allows authenticated users to delete arbitrary files by submitting crafted media values. Attackers can send dot-dot-slash sequences in the avatar or media content to POST /v1/user/avatar or POST /v1/post/comment, deleting server-writable files including configuration and data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129871": {
+    "cvss": 5.3,
+    "description": "Rocboss paopao-ce through 0.6.0-alpha.3 contains a payment bypass vulnerability that allows unauthenticated attackers to obtain paid attachments by reading storage URLs from the GET /v1/post endpoint. Attackers can download the paid file directly from the unauthenticated LocalOSS /oss static route, whose signed URL expired parameter is never checked.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129872": {
+    "cvss": 7.5,
+    "description": "REBUILD 2.7.0 through 4.5.4 contains an SQL injection vulnerability that allows low-privileged authenticated users to inject AjQL conditions through the plan parameter of /project/tasks/list. Attackers can use priority-* plans and the returned task count as a boolean oracle to recover a task creator's SHA-256 password hash and log in as that user, including the administrator.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129876": {
+    "cvss": 6.1,
+    "description": "OfficeCLI 1.0.56 through 1.0.161 contains a stored cross-site scripting vulnerability in the officecli watch preview that allows attackers to inject script via unescaped numbering w:color values. Attackers can craft a DOCX whose color closes the style element, then abuse the unauthenticated /api/batch endpoint to read local files and modify the watched document.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129880": {
+    "cvss": 7.7,
+    "description": "DeepAudit 2.0.0-beta.5 through 3.8.0 contains a server-side request forgery vulnerability that allows registered users to leak server-wide GitLab or Gitea tokens via repository_url. Attackers can create a gitlab or gitea project pointing to a controlled host and request its branches to capture the operator's token and reach internal hosts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129884": {
+    "cvss": 4.8,
+    "description": "thirdweb Dashboard through commit 940b3745 contains a missing authorization vulnerability in the fetchClientSecret Next.js server action that allows unauthenticated attackers to create Stripe checkout sessions for other teams. Attackers can invoke the action with a forged Team object containing a victim's stripeCustomerId to obtain Growth plan Checkout session client secrets with attacker-influenced return URLs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129888": {
+    "cvss": 6.8,
+    "description": "Cetmix Tower through 17.0.3.0.0 and 18.0 before 18.0.4.0.1 contains an improper SSH host key verification vulnerability in SSHConnection.connect() that falls back to Paramiko's AutoAddPolicy when no host key is pinned. On-path attackers using ARP or DNS spoofing can present their own host key during Skip Host Key or Get from Host connections to capture stored SSH passwords and tamper with commands and files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129940": {
+    "cvss": 6.1,
+    "description": "Prime CMS (@primecms/core) through 0.4.0-beta.0 contains an open redirect vulnerability in the unauthenticated GET /prime/redirect route that allows remote attackers to redirect users to external sites. Attackers can craft links with a 36-character id and arbitrary url parameter on the trusted Prime host to send victims to phishing sites.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129943": {
+    "cvss": 7.2,
+    "description": "Prime CMS (@primecms/core) through 0.4.0-beta.0 contains an OS command injection vulnerability in the updateSystem GraphQL mutation that allows authenticated administrators to execute shell commands via the package version string. Attackers can append shell metacharacters to the unvalidated version value, which is passed to child_process.exec() in yarn add or npm install commands, executing commands as the server process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129944": {
+    "cvss": 5.6,
+    "description": "Keystatic through 0.6.9 contains a path traversal vulnerability in the getIsPathValid function that allows unauthenticated remote attackers to access sibling paths sharing a content directory name prefix. Attackers can send requests with a no-cors header to the blob, update, and tree handlers under /api/keystatic to read, create, overwrite, or delete files such as posts-evil/pwn.yaml.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129947": {
+    "cvss": 8.0,
+    "description": "Contentlayer @contentlayer/core through 0.3.4 contains a code injection vulnerability that allows attackers to inject JavaScript by embedding single quotes in content file names. Attackers can add a content file whose name breaks out of the import specifier in makeDataExportFile(), executing injected code when contentlayer dev or a Next.js dev server imports the generated module.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129948": {
+    "cvss": 8.8,
+    "description": "Contentlayer @contentlayer/source-files through 0.3.4 contains a code injection vulnerability that allows attackers who control content files to execute JavaScript by abusing gray-matter's still-enabled JavaScript engine in parseMarkdown(). Attackers can start a Markdown or MDX file with a ---js or ---javascript frontmatter delimiter to run code during build, exposing CI build secrets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129951": {
+    "cvss": 5.4,
+    "description": "Rowy through 3.0.0 contains a stored cross-site scripting vulnerability that allows authenticated users with table write access to inject scripts via URL field links lacking scheme validation. Attackers can store values like javascript: URIs containing the string http in URL cells, executing script when victims click the open-link button to steal Firebase sessions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129952": {
+    "cvss": 9.8,
+    "description": "NodePress through 8.5.1 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to gain administrator access by forging JWTs with the hardcoded 'nodepress-secret' fallback key. Attackers can sign HS256 bearer tokens with the default issuer, audience, and role 'admin' to access administrator-only APIs for article, comment, options, and file management.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129955": {
+    "cvss": 9.8,
+    "description": "NodePress through 8.5.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to gain administrator access by using the hardcoded default password 'root'. Attackers can send base64-encoded 'root' to POST /admin/login when NP_ADMIN_DEFAULT_PASSWORD is unset to obtain admin tokens and fully control the site.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129956": {
+    "cvss": 7.8,
+    "description": "Sandboxie-Plus before 1.18.6 contains a local privilege escalation vulnerability in SbieSvc that allows standard users to launch UpdUtil.exe as SYSTEM via MSGID_PROCESS_RUN_UPDATER requests. Attackers can inject code into a signed SandMan.exe process to bypass the signature check and write attacker-controlled files to arbitrary paths, achieving SYSTEM code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101351": {
+    "cvss": 1.9,
+    "description": "LibreOffice can import PICT images, which may be embedded in documents. Parts of a crafted image could be left unwritten, so leftover memory became part of the imported image and could be saved with the document. In fixed versions the pixels of a new image start out cleared, so any part the image data does not fill is blank.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101929": {
+    "cvss": 5.4,
+    "description": "LibreOffice documents can contain Basic macro libraries. A library protected by a password is stored in the document in a compiled form, which may be read when the document is loaded. When a value in the compiled form used an older record format, it could be read as a different type from the one the existing value held, which corrupted memory. In fixed versions the existing value is cleared before a value in the older format is read.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101930": {
+    "cvss": 8.5,
+    "description": "LibreOffice Writer can open HTML documents, and an HTML document can bind macros to events of the document as a whole, such as the document being opened or closed. Macros bound to these events were not taken into account by the macro security check, so they could run when the document was opened, whatever the macro security level. In fixed versions these macros follow the macro security settings like any other macro in the document.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101933": {
+    "cvss": 5.4,
+    "description": "LibreOffice documents can contain Basic macro libraries. A library protected by a password is stored in the document in a compiled form, which may be read when the document is loaded. An out-of-bounds write existed when the compiled form was read, because the positions of its strings were not checked against the size of the data they refer to, and a type found by name was not checked to be of the right kind. In fixed versions these positions are checked, a library that fails the check is not loaded, and a type of the wrong kind is ignored.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104933": {
+    "cvss": 6.7,
+    "description": "LibreOffice can embed audio and video in documents. Where it plays media with GStreamer, as on Linux, the media is opened when the document is loaded, and a preview image of a video is shown in the document and in its exports, such as PDF. A crafted media file could make GStreamer read a local file and draw its text into the preview image, so that the content of the file ended up in an exported document. This is a different route to the problem fixed for CVE-2026-63269. In fixed versions GStreamer opens only media in a short list of common, self-contained container formats.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106535": {
+    "cvss": 5.4,
+    "description": "libvisio is a library that reads drawings in the VSD and VSDX formats. LibreOffice and other applications use it to import such drawings. An out-of-bounds write existed when a crafted VSDX file contained a malformed path from one part of the drawing to another. In fixed versions a malformed path is handled without writing outside its data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113631": {
+    "cvss": 6.5,
+    "description": "Incorrect authorization in the sendForm RPC handler and Session JWT reconnect handling in ONLYOFFICE Docs (Document Server) 9.4.0-129 on the official onlyoffice/documentserver container allows an authenticated view-only user to export a reconstructed copy of a document, including content the viewer never displayed such as custom XML, custom document properties and field instruction text, even when download and form-filling are disabled. The attacker reconnects with a valid Session JWT while substituting an attacker-controlled callback URL, which the Session JWT does not bind, then invokes sendForm over RPC, causing DocumentServer to send the reconstructed DOCX to that URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129236": {
+    "cvss": 7.2,
+    "description": "Kubeshark is an eBPF-powered network observability tool for Kubernetes. From 53.1.0 until 53.4.0, the start_kubeshark MCP tool in cmd/mcpRunner.go uses callStartKubeshark to append caller-controlled pod_regex as a bare positional argument to kubeshark tap without a -- end-of-options separator, allowing a value beginning with --set to be parsed as a Helm value override. An attacker who influences tool arguments against kubeshark mcp --allow-destructive can redirect the privileged worker, Hub, and front images through tap.docker.registry and tap.docker.tag to an attacker-controlled registry. Because the deployed worker DaemonSet runs privileged with host networking and host filesystem access, a malicious image can obtain node and cluster-admin access when the host already has permission to deploy it. This issue is fixed in version 53.4.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129237": {
+    "cvss": 5.4,
+    "description": "qbee-agent is the device agent component of the qbee.io IoT device management platform. Prior to 2026.41, the unpackTar extraction logic in app/utils/tar.go validates cleaned archive entry paths with strings.HasPrefix(targetPath, destdirClean) without enforcing a path-separator boundary. When UseContext enables the Docker Compose build context path in app/configuration/bundle_docker_compose.go, a less-privileged archive supplier with delegated configuration and/or file-manager access can provide a sibling-prefix traversal entry that passes the check, causing utils.UnpackTar to create directories and regular files outside the intended context extraction directory with qbee-agent process privileges, despite the supplier lacking authority to write those sibling files. In deployments where only full device or fleet administrators can provide Docker Compose context archives, this behavior is hardening rather than a crossed security boundary. The demonstrated impact is limited to nearby cache or project paths sharing the destination prefix, may affect integrity or availability of qbee-agent-managed Docker Compose state, and does not establish arbitrary absolute-path writes or direct code execution. This issue is fixed in version 2026.41.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129239": {
+    "cvss": 6.5,
+    "description": "Directus is a real-time API and App dashboard for managing SQL database content. Prior to 12.3.1, Directus allows an authenticated non-admin with update permission on directus_shares to modify user_created, role, item, and collection on an existing owned share because authorization checks the pre-update row and does not revalidate the merged row. The update path does not force user_created to the acting user or rerun share access checks when item or collection changes. Setting user_created and role to administrator identifiers causes guest share authentication to derive administrator accountability from both fields, exposing data reachable from the shared item beyond the owner and share role permissions. The issue requires update permission on directus_shares, an item the account can share, and knowledge of administrator user and role identifiers, and it does not issue an administrator token or provide write or availability impact. This issue is fixed in version 12.3.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18563": {
+    "cvss": 5.4,
+    "description": "LibreOffice supports fonts embedded in documents. When a document is exported to PDF, the fonts it uses are embedded in the PDF, and a font in CFF (Compact Font Format) is converted to another font format on the way. An out-of-bounds write existed when the charstring program of a crafted font was interpreted, because some indexes and ranges taken from the font were not checked against the size of the data they refer to. In fixed versions these indexes and ranges are checked, and a font that fails the checks is not converted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18564": {
+    "cvss": 6.9,
+    "description": "LibreOffice can export documents to PDF protected by a password. With the PDF 2.0 option the file is encrypted with 256-bit AES, using a file encryption key and salts that are meant to be random. The key and the salts were drawn from a pseudo-random number generator that is not suitable for cryptography, so the encryption key of an exported PDF could be recovered without knowing the password. In fixed versions the key and the salts are drawn from the random source of the operating system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18565": {
+    "cvss": 1.1,
+    "description": "LibreOffice has an option, called stealth mode in earlier advisories, that stops documents from outside the trusted file locations from loading linked images and other content. The option is not on by default. With the option on, a linked background image in an HTML document was still fetched while the document was imported. In fixed versions a linked background image is checked against the option like other linked images, and is not fetched when the option blocks it.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18566": {
+    "cvss": 5.4,
+    "description": "LibreOffice can import EMF, EMF+ and WMF images, which may be embedded in documents. Several out-of-bounds reads existed in the readers for these formats, because sizes, counts and offsets taken from a crafted image were not checked against the data the image actually holds. In fixed versions these values are checked against the size of each record and the data that remains, and a record that fails the checks is not used.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-64890": {
+    "cvss": 5.5,
+    "description": ": Cleartext Storage of Sensitive Information vulnerability in Johnson Controls Open Blue Companion Android App on Android allows : Retrieve Embedded Secrets from Software. This issue affects Open Blue Companion Android App: before R2.22.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84234": {
+    "cvss": 5.4,
+    "description": "LibreOffice can open PDF files in Draw, where the PDF import converts each page into drawing objects that can be edited. Images in the PDF, including images with a transparency mask, are converted along the way. An out-of-bounds write existed when an image with a transparency mask was converted, because positions taken from a crafted image were not checked against the size of the image buffer. In fixed versions the image size is limited, and the position of each mask pixel is checked before it is written.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84443": {
+    "cvss": 8.5,
+    "description": "LibreOffice Base documents can bind macros to document events, such as opening or closing the document. The macro security setting decides whether macros that come with a document may run. Macros bound to the events of a Base document were run without the macro security setting being applied, so opening or converting a crafted database document could run a macro and, through it, any command. In fixed versions macros bound to the events of a Base document follow the macro security setting, as macros in other documents do.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87932": {
+    "cvss": 6.8,
+    "description": "LibreOffice Writer can save documents in DOCX format. A document can contain content controls whose values are bound to custom XML data, and that data is updated with the current values when the document is exported, including in a conversion run from the command line. Values taken from the document were not escaped where they were used, so a crafted document could write a file of its choosing anywhere the user can write when it was exported to DOCX. In fixed versions these values are written into the document directly, and the XSLT transformations LibreOffice runs can no longer write files or use the network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88989": {
+    "cvss": 4.3,
+    "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, a CMS user who can edit records through a GridField detail form can send a direct save request that creates a new record even when the user does not have permission to create that record type. The server-side save path checks edit access but does not enforce the required create permission before persistence. This issue is fixed in version 6.2.13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91110": {
+    "cvss": 6.4,
+    "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, the HTML sanitiser does not normalize certain control bytes that browsers ignore when parsing URLs. A CMS author can place those bytes before a javascript: URL in stored content so the sanitiser misses the dangerous scheme, and JavaScript executes in the browser of another user who views the content. This issue is fixed in version 6.2.13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91112": {
+    "cvss": 6.8,
+    "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, a user with CMS_ACCESS_SecurityAdmin but without ADMIN can edit or reparent a group that grants ADMIN-equivalent permissions through an assigned role or a parent group, thereby escalating to full administrative privileges. This issue is fixed in version 6.2.13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97892": {
+    "cvss": 5.4,
+    "description": "LibreOffice checks the digital signatures of a PDF document when the document is opened, and shows whether each signature is valid. An out-of-bounds write existed when a signature was checked, because the parts of the file that a crafted signature claims to cover were not checked against the size of the file. In fixed versions a signature that claims to cover anything outside the file is reported as not valid.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97894": {
+    "cvss": 5.4,
+    "description": "LibreOffice Calc can open spreadsheets in the DIF format, and text files such as CSV in the UTF-16 encoding. Both are read one line at a time. An out-of-bounds read existed when a line of a crafted file was read, because the length of the line could be miscalculated, so memory beyond the line could be copied into the imported document. In fixed versions each line is read up to its limit and no further.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97999": {
+    "cvss": 5.4,
+    "description": "LibreOffice Base documents can hold an embedded HSQLDB database. When the experimental features option is enabled, LibreOffice offers to migrate such a database to the embedded Firebird engine when the document is opened. A heap buffer overflow existed when binary values were copied during the migration, because a value could be longer than the space set aside for its column. In fixed versions that space is enlarged whenever a value is longer than its column.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98100": {
+    "cvss": 5.4,
+    "description": "LibreOffice can import documents in the HWP format, including pictures that link to an external file. An out-of-bounds read existed when the link target of a crafted picture was read, so memory past the picture data could end up in the converted document. In fixed versions the link target is taken only from the picture data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129295": {
+    "cvss": 7.5,
+    "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. From 4.2.0 until 4.6.1, attacker-controlled email headers can cause polynomial regular-expression backtracking during ordinary parse_from_string(), parse_from_bytes(), or parse_from_file() calls. In src/mailparser/utils.py, get_addresses() invokes the _ADDR_FALLBACK_RE fallback when strict address parsing yields no usable address, and overlapping quantifiers rescan padded address headers quadratically or cubically. In src/mailparser/const.py, parse_received() applies _CLAUSE_SPLITTER to uncollapsed whitespace in a Received header, causing quadratic backtracking when a whitespace run is not followed by a clause keyword. A small, well-formed message can keep mail gateway, ticketing, quarantine, or archival parsing workers busy for extended periods. This issue is fixed in version 4.6.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129296": {
+    "cvss": 6.5,
+    "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. From 3.8.0 until 4.6.0, the write_attachments() and write_sample() APIs use attacker-controlled attachment filenames without sufficient sanitization and path containment validation. Directory traversal sequences and absolute filesystem paths can cause an attachment to be written outside the intended output directory. An attacker can overwrite files accessible to the parsing process when an application extracts attachments from a crafted message. This issue is fixed in version 4.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129300": {
+    "cvss": 5.3,
+    "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. From 3.7.0 until 4.6.3, receiveds_format() in src/mailparser/utils.py catches only TypeError and ValueError while converting the trailing date of an attacker-controlled Received header. An out-of-range year can cause calendar.timegm() to raise OverflowError, and a sufficiently large timezone offset can cause datetime.fromtimestamp() to raise OSError. These exceptions are outside the MailParserError hierarchy, so one crafted header can abort the entire message parse through every parse_from_* entry point and may drop a queued batch. This issue is fixed in version 4.6.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129301": {
+    "cvss": 6.5,
+    "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. From 4.6.0 until 4.6.3, write_attachments() calls _safe_attachment_filename() and write_sample() without isolating failures for individual attacker-controlled MIME parts. An RFC 2231 filename containing a NUL, a basename exceeding NAME_MAX, or an undecodable base64 payload can raise ValueError, OSError, or binascii.Error and abort the entire save loop. Later attachments remain unwritten; when a caller catches only MailParserError, the failure is not surfaced through the expected library-exception path. If a downstream scanner or sandbox reads only the extraction directory, a payload after the crafted part can be missed even though it remains in the delivered message, and the aborted batch also causes availability loss. This issue is fixed in version 4.6.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119346": {
+    "cvss": 6.0,
+    "description": "Next.js is a React framework for building full-stack web applications. From 15.0.0 until 15.5.29 and 16.4.5, Next.js applications that use NextResponse to set cookies on Edge runtime routes expose the internal x-middleware-set-cookie header in the public response. This affects App Router route handlers and Pages Router Edge API routes. The header duplicates each cookie value and its attributes, so JavaScript already running on the same origin can read values that the Set-Cookie header marks HttpOnly, including sensitive session tokens set on an affected response. This issue is fixed in versions 16.4.5 and 15.5.29.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119347": {
+    "cvss": 6.9,
+    "description": "Next.js is a React framework for building full-stack web applications. From 15.0.0 until 15.5.29 and 16.4.5, the /_next/image optimizer in self-hosted Next.js deployments can process attacker-supplied SVG content even when dangerouslyAllowSVG is false, which is the default. The SVG reaches a parser that the application intended to keep disabled, increasing exposure to denial of service and vulnerabilities in SVG decoding. This issue is fixed in versions 16.4.5 and 15.5.29.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119351": {
+    "cvss": 6.3,
+    "description": "Next.js is a React framework for building full-stack web applications. From 16.2.0 until 16.4.5, Next.js applications with Cache Components enabled can reuse an outer 'use cache' entry across root param values when a nested 'use cache' call reads a root param through next/root-params and returns a value containing pending promises. React Flight can deliver the ready portion to the outer function before the inner cache finishes publishing its root-param dependencies. The outer entry can then complete and be persisted under a key that omits the root param, causing the first written value to be served for other root param values and allowing the outer entry to ignore nested cache tag invalidation and lifetimes. The leaked value is not attacker controlled and depends on which invocation writes the entry first. This variant does not require an existing inner cache entry or a slow cache handler and is not covered by the fix for CVE-2026-103004. This issue is fixed in version 16.4.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119790": {
+    "cvss": 6.3,
+    "description": "Next.js is a React framework for building full-stack web applications. From 16.3.0 until 16.4.5, Next.js applications using the same 'use cache' function directly during rendering and through unstable_cache() can disclose cached data across root params when that function reads a root param. During the first fill after a cold process start, cross-request deduplication allows a concurrent unstable_cache() request to join the direct call's in-flight fill and receive its result before the root param mismatch is rejected. unstable_cache() then persists that result under a key that omits root params, causing later requests for other root param values to receive the same entry until revalidation or eviction. Exploitation requires the unstable_cache() request to arrive while the first fill is in flight. Outside this race, nesting 'use cache' inside unstable_cache() raises an unsupported-operation error, and avoiding that nesting prevents the issue. This issue is fixed in version 16.4.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127218": {
+    "cvss": 7.5,
+    "description": "Axigen Mail Server 10.3.3.67 through 10.3.3.x, 10.4.42 through 10.4.x, 10.5.29 through 10.5.x, 10.6.x before 10.6.41, and 10.7.x before 10.7.3 contains an unauthenticated denial of service vulnerability caused by uncontrolled recursion when validating query parameter and cookie values with a recursive regular expression engine before authentication in the WebAdmin and WebMail services. Attackers can send a single HTTP request with a query parameter or cookie value of a few thousand characters to exhaust the worker thread stack and crash the server process, taking down SMTP, IMAP, POP3, and web services repeatedly.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87027": {
+    "cvss": 5.6,
+    "description": "In EDB Postgres Extended Server and EDB Postgres Advanced Server versions 15 through 18 with Transparent Data Encryption (TDE) enabled, the key used to encrypt temporary files was incompletely initialized. The code applied sizeof() to a pointer to the key buffer rather than to the buffer itself, so only 8 of the intended 32 bytes were filled from a secure random source and the remaining 24 bytes kept whatever was already in memory. This reduces the guaranteed randomness of the temporary-file key from 256 bits to 64 bits. Exploiting this requires local read access to the server's temporary-file directory, and those files normally exist only while the server is running; they persist only after a crash and are removed at the next server start. Permanent data files and WAL are not affected. The issue is fixed in EDB Postgres Extended Server 15.20, 16.16, 17.12 and 18.7 and EDB Postgres Advanced Server 15.20.0, 16.16.0, 17.12.0 and 18.7.0; the server must be restarted after upgrading.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124019": {
+    "cvss": 7.8,
+    "description": "VB-Audio VB-CABLE before 3.5.2.0 contains out-of-bounds read and write vulnerabilities in the vbaudio_cable64_win10.sys kernel streaming driver's KSPROPSETID_Audio MUTE, VOLUMELEVEL, and PEAKMETER2 property handlers that allow a local standard user to supply an all-channels sentinel value improperly used as a loop terminator or array index instead of being bounds-checked. Attackers can exploit the accessible low-integrity KS filter device object to write attacker-controlled values sequentially into kernel memory, corrupting kernel globals and object pointers, or read past an array boundary to leak kernel memory, resulting in local privilege escalation or denial of service via a kernel bug check.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126526": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft Office OneNote allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-45016": {
+    "cvss": 6.5,
+    "description": "EGroupware is a web-based groupware server written in PHP. Prior to 23.1.20260601 and 26.5.20260507, the processURL2InlineImages logic in api/src/Mail.php treats non-HTTP image sources in an HTML mail body as local paths and passes a decoded attacker-controlled file:// URI to file_get_contents. Any authenticated user with mail access can cause files readable by the web server process to be embedded as inline MIME attachments in outgoing email, exposing local configuration, credentials, private keys, or other server files. This issue is fixed in versions 23.1.20260601 and 26.5.20260507.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
