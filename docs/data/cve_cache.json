@@ -143764,5 +143764,269 @@
     "description": "Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability in elixir-grpc grpc_server and grpc allows unauthenticated attackers to occupy a BEAM scheduler indefinitely via a client-streaming or bidirectional-streaming request whose body ends inside a gRPC message. GRPC.Server.Adapters.Cowboy.read_stream/1 (grpc_server/lib/grpc/server/adapters/cowboy.ex, and the Cowboy adapter in grpc before the package split) asks for more data whenever the buffer does not hold a complete message. Once the request body has ended, every further read returns an empty chunk, so the buffer never changes and the function retries without end. A single 5-byte length prefix sent with END_STREAM keeps one scheduler busy for as long as the connection stays open, and repeated requests exhaust all schedulers. This issue affects grpc: from 0.3.1 before 1.0.0; grpc_server: from 1.0.0 before 1.1.0.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-128986": {
+    "cvss": 6.0,
+    "description": "In Eclipse BaSyx Go Components versions up to and including 1.1.3, ABAC-enabled deployments match `ROUTE` access rules against the fully decoded request path, while the router routes on the raw, still encoded path. An encoded slash (`%2F`) inside a path value is a segment separator for the access check but part of the value for the router, so a request can match a narrow `ROUTE` rule while the handler returns a different, larger resource. An authenticated caller whose rules grant READ only on parts of a resource can therefore read the whole resource. In the DPP API, a rule such as `/v1/dpps/*/elements/*`, meant to grant only passport elements, also grants the complete passport whose identifier contains `/elements/`. In the Submodel Repository, AAS Repository and AAS Environment, a rule such as `/submodels/*/submodel-elements/*/attachment`, meant to grant only file attachments, also grants the complete element whose stored idShort contains `%2F`. The issue is fixed in Eclipse BaSyx Go Components v1.1.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129116": {
+    "cvss": 7.5,
+    "description": "C-Kermit from 7.0.197 before 11.1.515 contains an authentication bypass vulnerability in the IKSD SSL build that leaves Telnet authentication state at AUTH_VALID after a refused certificate login. Attackers holding a trusted certificate mapped to a refused account can log in as any other account with any password, gaining that account's shell access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129117": {
+    "cvss": 6.8,
+    "description": "C-Kermit 8.0.200 before 11.1.515 contains an improper certificate validation vulnerability that allows machine-in-the-middle attackers to impersonate Telnet servers because ssl_reply() never calls ssl_check_server_name(). Attackers can refuse START-TLS, offer Telnet AUTHENTICATION SSL, and present any trusted CA certificate to capture user credentials and session data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129120": {
+    "cvss": 5.3,
+    "description": "C-Kermit 11.0.506 before 11.1.515 contains a RECEIVE CONFIRM bypass vulnerability that allows malicious Kermit servers to write unrequested files without prompting by abusing recursive GET root computation in ckcfns.c. Attackers can send files such as .ssh/authorized_keys or shell startup files under the current directory, which rq_under_root() accepts silently, enabling persistent access or code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129121": {
+    "cvss": 6.5,
+    "description": "C-Kermit 8.0.200 before 11.1.515 contains a path traversal vulnerability in doftpget() in ckcftp.c that allows malicious FTP servers to write files outside the intended directory. Attackers can return absolute paths, tilde names, or dot-dot components in NLST or MLSD listings during MGET /RECURSIVE to overwrite files like .bashrc, leading to code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129124": {
+    "cvss": 8.1,
+    "description": "C-Kermit before 11.1.515 contains an OS command injection vulnerability that allows remote clients to execute shell commands by supplying unquoted arguments to REMOTE WHO or REMOTE SPACE. Attackers can append shell metacharacters to arguments passed through WHOCMD or SPACM2 to syscmd(), executing commands on the server host even when DISABLE HOST is set.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129125": {
+    "cvss": 8.1,
+    "description": "C-Kermit 6.0.192 before 11.1.515 contains a remote code execution vulnerability that allows Kermit clients to run shell commands on servers with host commands disabled by abusing REMOTE QUERY evaluation. Attackers can send a REMOTE QUERY invoking the command function, or define a macro via REMOTE ASSIGN and call execute to reach RUN, bypassing the nopush restriction and DISABLE HOST.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129129": {
+    "cvss": 6.5,
+    "description": "AiSOC 12.1.0 before 23.3.0 contains a missing authentication vulnerability that allows unauthenticated attackers to query the enrichment service through Next.js console rewrite routes. Attackers can send requests to /api/v1/enrichment/lookup or /api/v1/enrichment/bulk to retrieve threat-intelligence results and set force to true to consume commercial provider API quota.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129132": {
+    "cvss": 4.2,
+    "description": "MRBS before 1.13.0 contains an LDAP injection vulnerability in web/lib/MRBS/Auth/AuthLdap.php that interpolates unescaped login usernames into DN search and group-membership filters. Attackers with valid directory credentials outside the required group can submit crafted usernames that make the group filter always true, bypassing access restrictions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129133": {
+    "cvss": 5.4,
+    "description": "MRBS before 1.13.0 contains a CSV formula injection vulnerability that allows authenticated users to inject spreadsheet formulas because the escape() function in web/report.php fails to neutralize leading formula characters. Attackers can store formulas in booking names, descriptions or custom fields that execute when privileged users open exported CSV reports, enabling data exfiltration or command execution via DDE.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63150": {
+    "cvss": 8.1,
+    "description": "Omnispace Agora Project through 26.10.0 contains a cross-site request forgery vulnerability that allows remote attackers to forge privileged actions such as administrator user creation by merging $_GET and $_POST parameters without requiring an anti-CSRF token. Attackers can craft a malicious link or auto-navigating page that issues a plain GET request, exploiting the lack of CSRF protection and SameSite=Lax cookie behavior on top-level navigations to create unauthorized administrator accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63151": {
+    "cvss": 7.5,
+    "description": "Omnispace Agora Project through 26.10.0 contains a predictable token generation vulnerability that allows unauthenticated attackers to access private calendar data by exploiting a missing dateCrea value that causes the md5Id token to collapse to md5(calendarId.userId), both small enumerable integers. Attackers can compute valid tokens and request the misc&action=DisplayIcal endpoint with a forged md5Id to read any user's private calendar events without authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63166": {
+    "cvss": 6.1,
+    "description": "Omnispace Agora Project through 26.10.0 contains a stored cross-site scripting vulnerability that allows attackers to inject malicious HTML markup by controlling imported directory data or an uploaded CSV file, as values are rendered into table cell text and value attributes after only Txt::utf8Encode() with no HTML escaping in VuePersonsImportExport.php. Attackers can craft a CSV cell containing an attribute-breakout payload that is rendered verbatim and executed in the browser of the administrator performing the import, leading to arbitrary script execution in the administrative context.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-63167": {
+    "cvss": 6.5,
+    "description": "Omnispace Agora Project through 26.10.0 contains a SQL injection vulnerability that allows authenticated general administrators to inject arbitrary SQL by setting the personsSort session value, which is concatenated unsanitized into ORDER BY clauses in MdlUser.php and MdlSpace.php. Attackers can submit an error-based extractvalue payload through personsSort to leak database information, such as the MariaDB version, via the user and space listing pages.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123965": {
+    "cvss": 9.9,
+    "description": "A prompt injection vulnerability in all versions of Jet Admin Cloud Platform allows a remote attacker with a free account to expose sensitive .env configuration files and exfiltrate critical credentials. Mitigated via sandbox component around October 29, 2026.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124041": {
+    "cvss": 6.5,
+    "description": "Catalis/Patriot Properties WebPro 5.0 allows a remote unauthenticated attacker to execute arbitrary SQL queries against the underlying MSSQL database, enabling exfiltration of sensitive property and taxpayer information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124666": {
+    "cvss": 6.4,
+    "description": "Authentication bypass by spoofing vulnerability in Apache APISIX. On a route where multi-auth falls back from wolf-rbac to another successful authenticator, client-supplied Wolf identity headers can remain in the request. A downstream service that relies on those documented headers may therefore receive an identity that was not established by the successful authenticator. This issue affects Apache APISIX: from 3.8.0 through 3.19.0. Users are recommended to upgrade to version 3.20.0, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124679": {
+    "cvss": 7.8,
+    "description": "Authentication bypass by spoofing vulnerability in Apache APISIX. On routes using jwe-decrypt with strict: false and a forward_header distinct from the token header an unauthenticated client can supply the value the upstream treats as gateway-decrypted plaintext. Similar can happen when forward-auth is configured with allow_degradation: true, and the auth service is unavailable. This issue affects Apache APISIX: from 3.18.0 through 3.19.0. Users are recommended to upgrade to version 3.20.0, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124716": {
+    "cvss": 6.4,
+    "description": "Incorrect Authorization vulnerability in Apache APISIX. An authenticated user who holds any one of a route's required permissions or scopes can reach the protected upstream without the others, including HTTP methods the authorization server denied. This issue affects Apache APISIX: from 1.4.0 through 3.19.0. Users are recommended to upgrade to version 3.20.0, which fixes the issue.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126091": {
+    "cvss": 7.5,
+    "description": "Dental practice sites hosted with iDentalSoft send a JSON response to any user who loads certain pages containing sensitive information, including OAuth credentials, password hashes, and PII. Fixed in iDentalSoft 14.0.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128069": {
+    "cvss": 4.7,
+    "description": "rails-html-sanitizer is responsible for sanitizing HTML fragments in Rails applications. Before 1.7.2, the HTML4 and HTML5 variants of Rails::HTML::SafeListSanitizer reuse one Rails::HTML::PermitScrubber across calls and mutate its tags and attributes without synchronization. In a multithreaded process, concurrent sanitize calls using different tags: or attributes: options can interleave and cause one call to use the other call's allowlist. If a permissive call admits a script element or event-handler attribute, output expected to be sanitized under a stricter policy can retain it and cause cross-site scripting when rendered. Applications that are single-threaded, use one identical allowlist everywhere, or provide a separate scrubber: are not affected. This issue is fixed in version 1.7.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128071": {
+    "cvss": 6.5,
+    "description": "Nuxt is an open-source web development framework for Vue.js. Nuxt from 3.0.0 until 4.6.4, @nuxt/nitro-server from 3.20.0 until 4.6.4, and @nuxt/vite-server from 4.6.0 until 4.6.4, routeRules matching leaves an encoded slash (%2F) in the request path while a catch-all page such as app/pages/[...slug].vue or a custom multi-segment page route decodes it into a route parameter. The getRouteRules result is therefore incomplete, and an unauthenticated request can render the page without the redirect, headers, proxy, SSR, noScripts, appMiddleware, or appLayout rules configured for the decoded path. Protected content is resolved only when the page interprets the decoded parameter accordingly: a custom multi-segment parameter can contain the decoded path, while a repeatable catch-all must join the slash-containing array element; route.path remains encoded and does not resolve that resource. Static pages, single-segment parameters, server/api handlers, and server/routes handlers are not affected because they do not have the same encoded-path mismatch. This issue is fixed in version 4.6.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128074": {
+    "cvss": 6.9,
+    "description": "Nuxt is an open-source web development framework for Vue.js. From 4.6.0 until 4.6.4, _payload.json URL generation and the experimental early-404 path use a trailing-slash regular expression whose work grows quadratically with a long run of slash characters. An unauthenticated request can synchronously occupy the Node.js event loop and delay other requests when server-side rendering uses isr, swr, or cache route rules, or when experimental.early404 is enabled. Applications without those route rules and without experimental.early404, fully prerendered applications, and client-only applications are unaffected; the impact is limited to availability. This issue is fixed in version 4.6.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128076": {
+    "cvss": 3.1,
+    "description": "Nuxt is an open-source web development framework for Vue.js. From 3.21.6 to before 4.0.0 and from 4.4.6 until 4.6.4, the /__nuxt_island path hash uses ohash serialization that does not escape quotes in string values or delimiters in object keys, allowing different island-prop tuples to produce the same path. For prerendering, substituted content is written into the generated page only if the crawler reaches a colliding URL before rendering the page with the legitimate props. Separately, a CDN or reverse proxy that keys island responses by path alone can be primed with the colliding response. If the substituted prop reaches v-html, innerHTML, or another unsafe HTML sink, the response can execute script in the application origin; otherwise the impact is content substitution. Applications that do not use server components or NuxtIsland, islands without attacker-influenced string props, and responses not cached by path alone are unaffected. This issue is fixed in version 4.6.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128078": {
+    "cvss": 5.3,
+    "description": "GLPI is a free asset and IT management software package. From 9.5.0 until 10.0.27 and 11.0.9, authenticated users could access ITIL followups, tasks, or solutions generated from templates without a read-permission check on the parent ticket, problem, or change. Depending on the template configuration, this could reveal information from parent items the user could not otherwise read. This issue is fixed in versions 10.0.27 and 11.0.9.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128079": {
+    "cvss": 6.8,
+    "description": "envd provides reproducible development environments for humans and agents. In versions starting with 0.3.38 and before 1.3.6, insufficient containment of host-side requirements-file reads in install.python_packages(requirements=...) could allow access to files outside the build context. An attacker able to influence build input could cause file contents interpreted as dependency entries to appear in debug logs or build-step metadata, subject to the envd process’s permissions. Exploitation in version 1.3.5 additionally requires concurrent modification of relevant filesystem paths. This issue is fixed in version 1.3.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129139": {
+    "cvss": 8.2,
+    "description": "paicoding from commit b8206b9 through commit 903adce uses predictable credentials for accounts created via ZSXQ login, because loginByZsxq derives both the username and password solely from the member's ZSXQ number. Unauthenticated attackers can read that number from the victim's /user/{userId} profile page, compute the credentials, and log in via /login/username to take over the account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129140": {
+    "cvss": 5.4,
+    "description": "paicoding 1.0.0 through 1.0.3 contains a stored cross-site scripting vulnerability in image upload because ImageServiceImpl.validateStaticImg accepts SVG files, which are then served from the site origin when local storage is used. Authenticated attackers can upload script-bearing SVG images that execute when victims view them, stealing the non-HttpOnly f-session cookie to hijack accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129143": {
+    "cvss": 7.5,
+    "description": "paicoding 1.0.3 contains a missing authorization vulnerability in the ArticleRestController article detail endpoint that allows unauthenticated attackers to read restricted articles. Attackers can enumerate article IDs via GET /article/api/data/detail/{articleId} to retrieve full content of paid, login-only, member-only and draft articles.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129144": {
+    "cvss": 5.4,
+    "description": "paicoding 1.0.3 contains a payment bypass vulnerability that allows authenticated attackers to unlock paid articles by guessing weak payment confirmation codes. Attackers can start a payment, enumerate roughly 2000 IdUtil.genPayCode counter values, and submit the matching verifyCode to the unauthenticated callback to mark it paid.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129153": {
+    "cvss": 7.1,
+    "description": "SurveyKing 1.12.0 through 1.13.2 contains an authorization bypass in the linked survey feature that fails to verify the referenced linkSurveyId belongs to the caller's own project. Authenticated attackers can point a linked option at another user's survey so that loadLinkResult and updateLinkSurveyAnswer read, rewrite, or create responses in that survey.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129154": {
+    "cvss": 6.1,
+    "description": "SurveyKing 1.13.0 through 1.13.2 contains a stored cross-site scripting vulnerability because the server accepts a respondent-supplied survey snapshot and the frontend renders its titles via innerHTML. Anonymous respondents can submit a forged snapshot embedding event handlers such as img onerror that execute in an administrator's browser session when the response is viewed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129157": {
+    "cvss": 4.3,
+    "description": "ragent 1.0.0 through 1.1.0 contains a missing authorization vulnerability in RagTraceController that allows any logged-in user to view all users' RAG traces. Attackers can page through /rag/traces/runs and related node endpoints to read other users' usernames, user ids, conversation ids, questions, and per-node execution details.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129158": {
+    "cvss": 5.4,
+    "description": "ragent 1.1.0 contains a stored cross-site scripting vulnerability that allows authenticated users to inject scripts by uploading SVG knowledge-base documents served inline as image/svg+xml. Attackers can upload a script-bearing SVG via /knowledge-base/{kb-id}/docs/upload so that victims opening /knowledge-base/docs/{docId}/file execute it in the application origin, enabling account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129162": {
+    "cvss": 5.9,
+    "description": "Dromara free-fs 2.0.1 through 2.3.1 contains a missing authentication vulnerability in FileStreamController.preview that allows unauthenticated attackers to download stored files. Attackers who obtain a file ID from share listings or preview links can request /api/file/stream/preview/{fileId} to download any user's or workspace's files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129163": {
+    "cvss": 5.4,
+    "description": "Dromara free-fs 2.0.1 through 2.3.1 contains a stored cross-site scripting vulnerability that allows registered users to run script by uploading HTML files served inline as text/html. Attackers can send a victim the /api/file/stream/preview/{fileId} link to execute script in the application origin, calling /apis endpoints to expose the victim's files and account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129166": {
+    "cvss": 6.5,
+    "description": "Keep 0.34.10 through 0.55.0 contains a blind SQL injection vulnerability in its CEL-to-SQL converter, which inserts bracket-indexed JSON keys from CEL filters unescaped into JSON path expressions for SQLite, PostgreSQL, and MySQL. Authenticated users with read:alert permission can submit crafted CEL expressions to /alerts/query or the cel parameter of /incidents, using result counts as a boolean oracle to extract other tenants' alerts and password hashes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129167": {
+    "cvss": 8.1,
+    "description": "Seafile SeaDoc converter 2.0.4 before 2.0.11 and 3.0.0 before 3.0.8 contains an absolute path traversal vulnerability that allows unauthenticated attackers holding a public share token to execute code. Attackers supply an absolute filename to /api/v1/confluence-to-wiki/ to extract a ZIP from download_url into the Python library path, then trigger the module's import via a file-convert request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129168": {
+    "cvss": 6.1,
+    "description": "PMail 2.9.1 through 2.9.8 contains a stored cross-site scripting vulnerability because the /attachments/{id}/{cid} endpoint returns email attachments verbatim with the sender-supplied Content-Type after cid: references are rewritten into attachment links. Unauthenticated SMTP senders can email a text/html attachment and a page-covering cid link, so a recipient who clicks the message runs script in their webmail session to change passwords, including the administrator's.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129170": {
+    "cvss": 6.1,
+    "description": "FileCodeBox 2.2.1 through 2.8.4 contains a stored cross-site scripting vulnerability in renderMarkdownPreview, which returns unsanitized text when the marked parser throws. Unauthenticated attackers can share text with thousands of nested blockquote markers followed by HTML payloads, executing script that steals the admin token from localStorage.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129171": {
+    "cvss": 9.8,
+    "description": "NginxPulse 1.5.0 before 1.6.26 contains an unauthenticated sql injection vulnerability that allows remote attackers to append SQL via the id and locationType parameters of /api/stats/:type. Attackers can close the quoted table-name identifier and use error-based output to read database contents, and read or write server files via PostgreSQL superuser functions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100403": {
+    "cvss": 7.5,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to versions 1.4.6, 1.5.2, and 1.6.1, the BACnet/SC hub's Linux WebSocket server reassembles fragmented WebSocket messages into a per-connection fragment_buffer. It grows that buffer with realloc() on every non-final frame, with no upper bound. A peer that streams binary continuation fragments and never sets FIN keeps the hub reallocating until the box runs out of memory or the process is OOM-killed. The buffer starts at the maximum legal BVLC-SC NPDU size, but nothing after that ties its growth back to that limit. This issue has been patched in versions 1.4.6, 1.5.2, 1.6.1, and 1.7.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102612": {
+    "cvss": 8.1,
+    "description": "BACnet Stack is a BACnet open source protocol stack C library for embedded systems. Prior to versions 1.4.6, 1.5.2, and 1.6.1, bws_srv_start() in ports/linux/websocket-srv.c builds the libwebsockets server context with a CA certificate loaded but never sets LWS_SERVER_OPTION_REQUIRE_VALID_OPENSSL_CLIENT_CERT, so the hub accepts TLS connections from clients presenting no certificate at all. Any network-reachable host can join the BACnet/SC mesh without credentials. This issue has been patched in versions 1.4.6, 1.5.2, 1.6.1, and 1.7.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128081": {
+    "cvss": 7.5,
+    "description": "AutoMapper is a convention-based object-object mapper in .NET. Prior to 15.1.4 and from 16.0.0 until 16.3.0, AutoMapper can recurse without an effective MaxDepth limit when mapping polymorphic graphs through Include or IncludeBase, runtime-typed object or interface members, nested Dictionary or ExpandoObject sources, or recursive ConvertUsing type converters. Deep attacker-influenced graphs on these paths can throw an uncatchable StackOverflowException and terminate the process. This issue is fixed in versions 15.1.4 and 16.3.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
