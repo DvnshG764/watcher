@@ -133927,7 +133927,7 @@
   },
   "CVE-2024-13237": {
     "cvss": 5.4,
-    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Drupal File Entity (fieldable files) allows Cross-Site Scripting (XSS). This issue affects File Entity (fieldable files): from 7.X-* before 7.X-2.38.",
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Drupal File Entity (fieldable files) allows Cross-Site Scripting (XSS). This issue affects File Entity (fieldable files): from 7.x-1.0 before 7.X-2.38.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -145810,5 +145810,569 @@
     "description": "In Open Object Rexx (ooRexx) before 5.2.0, RXAPI relies on a world-writable /tmp file unless XDG_RUNTIME_DIR is set, or localhost TCP port 10010, allowing RXAPI communication by any local user, e.g., for injection of a macro that will be executed by a REXX script.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-128849": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to start a Duo Workflow session with elevated privileges beyond those declared by the foundational flow due to improper enforcement of privilege boundaries in certain client environments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129252": {
+    "cvss": 3.7,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with an unconfirmed email address to be automatically granted Group Owner-level membership during a group import operation, due to insufficient email verification enforcement in the member identity mapping process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129253": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.1 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with developer-role permissions to bypass admin-configured AI tool governance controls in a governed namespace due to improper binding of authorization tokens to their intended workflow execution context.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129321": {
+    "cvss": 4.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.8 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with planner-role permissions to set a future merge scheduling date on merge requests they authored, a capability restricted to developer-role permissions and above, due to insufficient permission enforcement on the merge scheduling field during merge request updates.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16545": {
+    "cvss": 5.3,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 12.10 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an unauthenticated user to read private project metadata from packages published by other projects due to incorrect authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16609": {
+    "cvss": 5.4,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with owner-role permissions to execute arbitrary JavaScript in another user's browser through the Confluence integration due to improper input validation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18241": {
+    "cvss": 8.2,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 9.3 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to access protected CI/CD variables and resources due to a race condition in pipeline job authorization.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18491": {
+    "cvss": 4.9,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user holding a granular personal access token with limited scope to authorize Kubernetes API proxy access beyond the token's intended boundaries due to missing granular scope enforcement in the Kubernetes agent proxy-user authorization flow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85778": {
+    "cvss": 6.2,
+    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.1 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to run code in protected pipelines through a scheduled pipeline execution policy after the policy had been unassigned due to incorrect authorization checks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97187": {
+    "cvss": 7.6,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.6 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read Kubernetes Secrets from other namespaces in clusters connected through the GitLab agent for Kubernetes due to incorrect authorization in workspaces.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107493": {
+    "cvss": 7.7,
+    "description": "Issue summary: When an application passes a stack to PEM_X509_INFO_read_bio_ex() to add entries to, and reading fails, OpenSSL frees every entry in the stack, both the old ones and any new ones, but leaves them in the stack. Impact summary: An application that passes an existing stack to PEM_X509_INFO_read_bio_ex() and keeps using it after a failed read may use memory that was already freed. This can cause a crash or, in principle, memory corruption. Malformed PEM data can make the read fail, but only applications that pass an existing stack are affected, and OpenSSL itself does not do this. CWE: CWE-416: Use After Free Description: PEM_X509_INFO_read_bio_ex() reads certificates, CRLs and private keys from PEM data and adds them to a stack of X509_INFO structures. If the application passes a stack that is not NULL, the function adds the new entries to it and must leave the entries that are already there unchanged. If reading fails, the function frees every entry in the stack. This includes the entries that were there before the call, and the entries added by the call. It does not remove these entries from the stack, so the stack keeps pointers to freed memory. The failure can happen at any point, even before any entry was added. A PEM item with invalid content is enough. This also happens if the stack was empty: entries added before the failure are freed but stay in the stack. An application that then reads or frees the stack will use memory that was already freed. This can crash the application or, in principle, corrupt memory. Only applications that pass a stack that is not NULL are affected. OpenSSL itself never does this. Its own callers, including the code that TLS uses to load CA certificates, always pass NULL. When the stack is NULL, the function frees only the entries that it created itself, which is safe. We expect that very few applications pass an existing stack. An attacker can make the read fail with malformed PEM data, but cannot make an application pass an existing stack. The same problem affects PEM_X509_INFO_read_bio(), PEM_X509_INFO_read() and PEM_X509_INFO_read_ex(), which use the same code. OpenSSL 1.1.1 and 1.0.2 have only the first two of these functions. FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121864": {
+    "cvss": 8.5,
+    "description": "In nanobot, when sandboxed exec is enabled, the shell executable used to run commands can be selected by the caller and is launched before the sandbox is applied. An attacker who can induce the agent to create an executable in the workspace and select it as the shell can cause that executable to run outside the sandbox (e.g. Linux bubblewrap), with the operating-system permissions of the nanobot process. This issue affects nanobot (nanobot-ai) from 0.2.1 before 0.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121865": {
+    "cvss": 7.6,
+    "description": "In nanobot, the WebSocket gateway allows a standard client holding a valid client token to select an existing directory outside the operator-configured workspace as the root of a new conversation. The agent can then read and expose files in that directory that are readable by the nanobot service account. This issue affects nanobot (nanobot-ai) from 0.3.5 before 0.4.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124709": {
+    "cvss": 7.5,
+    "description": "Issue summary: A QUIC server that rejects a stream opened by the peer may retain that stream's state for the lifetime of the connection if the peer resets the stream before the rejection is signalled, even though the peer's stream credit is returned. Impact summary: A remote client that completes a QUIC handshake can repeatedly open and reset streams, causing server memory to grow without bound until the process runs out of memory and every connection on it is lost. This is a Denial of Service. CWE: CWE-401: Missing Release of Memory after Effective Lifetime Description: QUIC servers track each stream the peer opens. When the incoming stream policy rejects a stream, OpenSSL schedules a STOP_SENDING frame, marks the stream deleted and returns the peer's stream credit. A deleted stream is collected only once its receive part is fully drained, which for a rejected stream means the STOP_SENDING has been acknowledged. If the peer sends RESET_STREAM first, the reset cancels the pending STOP_SENDING, so it is never sent or acknowledged and the stream is never collected. The default configuration reaches this path. Once a connection has a default stream, meaning the application has read from or written to the connection as the tutorial server does, the effective incoming stream policy rejects streams the application does not accept. Applications that set the REJECT policy explicitly are affected too. Each retained stream costs about 300 bytes, and the peer's stream credit window paces how quickly they accumulate. A client that keeps the connection open and keeps opening and resetting streams grows server memory without bound. The severity is Low because growth is slow, needs a long-lived connection, and causes no memory corruption or disclosure. FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-35190": {
+    "cvss": 5.3,
+    "description": "Issue summary: A server configured with the Suite B certificate flag through SSL_CTX_set_cert_flags() and with TLS 1.3 enabled may read past the end of a fixed group list when it processes a ClientHello whose supported_groups and key_share contain no Suite B group. Impact summary: A remote client can send a ClientHello that makes the server read past the end of a static array. The values read are never returned to the client, so no memory is disclosed; on builds with sanitizers or hardened allocators the read may crash the process, causing Denial of Service. CWE: CWE-125: Out-of-bounds Read Description: When the Suite B certificate flag is set, OpenSSL restricts the accepted groups to P-256 and P-384 by substituting a fixed two-element list for the configured group list. The tuple machinery used for key-share selection was not updated for this substitution: tls1_get_group_tuples() still returns the configured tuples, which by default describe eight groups. The server-side walk in tls_parse_ctos_key_share() then advances through the two-element list using those tuple counts without checking the cumulative offset against the number of groups present. Only applications that call SSL_CTX_set_cert_flags() with SSL_CERT_FLAG_SUITEB_128_LOS and leave TLS 1.3 enabled are affected. The openssl s_server -suiteB_128 option sets an X.509 verification parameter instead, so the stock command line server is not vulnerable. Default configurations do not reach this code. A client that offers only groups outside the Suite B set, such as X25519, forces every tuple to be walked and the read to run past the array. The bytes read are compared against client group IDs and never sent back, so no memory is disclosed. On builds with address sanitizers or hardened allocators the read can abort the process; in ordinary release builds it reads a few bytes of adjacent constant data. FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118498": {
+    "cvss": 7.5,
+    "description": "The CODESYS Automation Server Connector uses server-supplied file names without sufficient path traversal checks. An unauthenticated remote attacker controlling a malicious Automation Server and tricking a user to trust it, or performing a man-in-the-middle attack on a trusted communication channel, can exploit this vulnerability to write attacker-controlled files to arbitrary locations on the engineering workstation and subsequently achieve arbitrary code execution with user privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21609": {
+    "cvss": 7.1,
+    "description": "This High severity Improper Authorization vulnerability was introduced in versions 5.12.0, 10.3.0, and 11.3.0 of Jira Service Management Data Center. This Improper Authorization vulnerability, with a CVSS Score of 7.1, allows an authenticated attacker to gain unintended access and can lead to the exposure of resources or functionality, possibly providing attackers with sensitive information or even execute arbitrary code. Atlassian recommends that Jira Service Management Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: Jira Service Management Data Center 10.3: Upgrade to a release greater than or equal to 10.3.27 Jira Service Management Data Center 11.3: Upgrade to a release greater than or equal to 11.3.13 See the release notes (https://confluence.atlassian.com/servicemanagement/jira-service-management-release-notes-780083086.html). You can download the latest version of Jira Service Management Data Center from the download center (https://www.atlassian.com/software/jira/service-management/download-archives). This vulnerability was reported via our Bug Bounty program.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129272": {
+    "cvss": 9.3,
+    "description": "N-able N-central before 2026.4.1 HF3 uses a predictable credential to authenticate appliances to an agent-facing API. A remote, unauthenticated attacker who knows or guesses an appliance identifier can obtain a valid appliance token and session and impersonate that appliance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129273": {
+    "cvss": 8.6,
+    "description": "N-able N-central before 2026.4.1 HF3 does not neutralise control characters in an Audit Export setting before writing it to the system logging configuration. An authenticated attacker with product administrator privileges can inject configuration and execute commands as root on the N-central server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129274": {
+    "cvss": 8.7,
+    "description": "N-able N-central before 2026.4.1 HF3 does not authenticate callers of the ServerMMS2 RemoteExecutionTaskSubmit operation or verify task ownership. A remote, unauthenticated attacker can submit forged results for remote execution tasks belonging to any customer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129275": {
+    "cvss": 8.2,
+    "description": "N-able N-central before 2026.4.1 HF3 allows the repositoryItemGet operation to be called without authentication. A remote, unauthenticated attacker who knows a policy identifier can download the Automation Manager policy of any customer, including embedded scripts and parameter values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129276": {
+    "cvss": 6.9,
+    "description": "N-able N-central before 2026.4.1 HF3 does not authenticate callers of the ServerMMS2 AssetDiscoSimplifiedInfoSubmit operation. A remote, unauthenticated attacker can overwrite the asset data recorded for any appliance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129277": {
+    "cvss": 6.9,
+    "description": "N-able N-central before 2026.4.1 HF3 does not authenticate callers of the MaintActionGet operation. A remote, unauthenticated attacker can read and cancel the pending maintenance actions of any appliance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129278": {
+    "cvss": 6.9,
+    "description": "N-able N-central before 2026.4.1 HF3 does not authenticate callers of the ServerII2 remoteControlMSPAStartEndTimeSubmit operation. A remote, unauthenticated attacker can alter the recorded state and times of Take Control remote control tasks and the associated audit log entries.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129279": {
+    "cvss": 6.9,
+    "description": "The password reset function in N-able N-central before 2026.4.1 HF3 returns distinguishable responses for valid and invalid accounts. A remote, unauthenticated attacker can enumerate the email addresses of valid user accounts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129280": {
+    "cvss": 9.3,
+    "description": "Multiple ServerUI and ServerUI2 SOAP operations in N-able N-central before 2026.4.1 HF3 do not verify the caller's session, permissions or customer scope. A remote attacker, in some cases without authentication, can read device and patch data, test passwords of user accounts, send messages to managed agents, and modify device and service settings belonging to other customers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129281": {
+    "cvss": 8.5,
+    "description": "N-able N-central before 2026.4.1 HF3 checks only a view permission for ServerII2 operations that write device execution configuration. An authenticated user with view-only access to a device can set configuration that the Windows agent on that device acts on.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129282": {
+    "cvss": 8.7,
+    "description": "The test email delivery function in N-able N-central before 2026.4.1 HF3 does not check permissions, lacks CSRF protection, and passes sender and recipient values to the mail program without neutralising option characters. An authenticated attacker can inject arguments into the mail command executed on the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129283": {
+    "cvss": 7.1,
+    "description": "The custom service import in N-able N-central before 2026.4.1 HF3 processes XML external entities. An authenticated attacker can upload a crafted service definition to read files accessible to the N-central service account or cause the server to make outbound requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129284": {
+    "cvss": 5.3,
+    "description": "N-able N-central before 2026.4.1 HF3 does not validate connection targets in the Report Manager and Data Export settings. An authenticated attacker can cause the server to connect to arbitrary hosts, including loopback and internal addresses, and can use the responses to probe internal network services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129285": {
+    "cvss": 5.3,
+    "description": "N-able N-central before 2026.4.1 HF3 does not verify that an action response received over XMPP originates from the appliance the request was sent to. An attacker with the credentials of one appliance can forge responses on behalf of another appliance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129286": {
+    "cvss": 9.2,
+    "description": "N-able N-central before 2026.4.1 HF3 does not validate version values and download locations in software update metadata. An attacker able to supply or modify the update metadata received by the server can write files outside the download directory and execute code as the N-central service account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129287": {
+    "cvss": 8.3,
+    "description": "N-able N-central before 2026.4.1 HF3 processes XML external entities in software repository files. An attacker able to supply or modify the repository files received by the server can read files accessible to the N-central service account or cause the server to make outbound requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127138": {
+    "cvss": 6.8,
+    "description": "pretix provides a mechanism where ticket QR codes are cryptographically signed and can be verified by our pretixSCAN apps in offline mode without any database of valid tickets. pretixSCAN checks the signature to verify that the ticket was issued by the correct pretix event and compares the QR code against a list of revoked QR codes. A QR code becomes revoked when the order is canceled, or the ticket is changed in a way that a new QR code needs to be generated. However, the parsing of the QR code in all of our pretixSCAN apps contained a faulty computation, rendering the check for the correct length of the contents faulty. This way, an attacker is able to craft multiple QR codes for the same ticket which have the same content, but look different and therefore do not match against the revocation list. This does not allow to fabricate entirely new tickets, but it does allow to enter the event with e.g. a canceled ticket. This attack requires pretixSCAN to be scanning in offline mode and the \"pretix signature scheme 1\" to be used for the event's QR codes. If the attack is executed, the ticket unfortunately shows as valid (green) on the scanner but as invalid (red) on the server since the server later cannot match it to a ticket. We scanned the entire database of scans on pretix Hosted and could not find any traces of this being exploited in the past.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127139": {
+    "cvss": 4.4,
+    "description": "pretixSCAN Proxy does not use a secure random generator to generate initialization tokens and API keys for the connection between pretixSCAN devices and the pretixSCAN Proxy. This could allow a skilled attacker with access to at least some of the tokens to predict the value of other tokens more easily. pretixSCAN is usually used on local networks and the level of exposure heavily depends on the structure of that network. If you want to be extra careful, it might make sense to reconnect your devices to the proxy after the update.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127140": {
+    "cvss": 3.8,
+    "description": "Our WordPress plugin for the pretix Widget performs HTTP calls to pre-fetch CSS and JS files into a local cache and stores them publicly on the WordPress instance. These HTTP calls are made with wp_remote_get, not wp_safe_remote_get, and therefore allow SSRF with body extraction. Exploiting this requires sufficient WordPress permissions to create or modify pages.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127174": {
+    "cvss": 5.1,
+    "description": "When changing the settings of a scheduled export, no permission checks are done to see whether the user making the change has access to the exporter after the change. This way, an attacker with access to change organizer settings and e.g. access to all orders could change the export to refer to gift cards instead, even if they do not have access to gift cards. The fix for this is technically a breaking API change, since changing the export type of existing scheduled exports is no longer allowed, but we don't expect this to affect any typical API usage.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130385": {
+    "cvss": 3.1,
+    "description": "Weblate 2026.11 through 2026.11.2 contains a time-of-check time-of-use race condition in the GET /api/tasks/{pk}/ endpoint that exposes unredacted repository error messages. Authenticated project members lacking vcs.view permission can poll failing repository tasks to obtain RepositoryCommandError text revealing upstream repository URLs, filesystem paths, and host names.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130583": {
+    "cvss": 9.3,
+    "description": "Rootways Authorize.net CIM Pro extension for Magento 2 before 4.1.5 contains an unauthenticated server-side request forgery vulnerability in the Apple Pay merchant validation controller. Attackers can supply file://, gopher://, or dict:// URLs in the validationUrl parameter to read app/etc/env.php credentials and encryption keys or reach internal services and cloud metadata endpoints.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130584": {
+    "cvss": 8.3,
+    "description": "Xibo CMS before 4.5.3 contains an insecure direct object reference vulnerability that allows authenticated users to access other DataSets' RSS feeds by pairing their own DataSet id with a foreign RSS id. Attackers with dataset.modify permission can read, edit, or delete feeds and steal PSKs, then use the unauthenticated /rss/{psk} endpoint to exfiltrate victim DataSet rows.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130589": {
+    "cvss": 8.1,
+    "description": "Emitter through 3.1 contains a privilege escalation vulnerability that allows any channel key holder to forge a master key because channel keys use bare XOR Salsa20 encryption without a MAC or signature. Attackers can flip the permissions byte to the master value and present the forged key to the keygen service to mint keys with arbitrary permissions on every channel of the contract.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130590": {
+    "cvss": 4.3,
+    "description": "react-native-webview 11.25.1 through 17.1.0 on Android contains a denial of service vulnerability that allows web content to crash the host application via malformed Content-Disposition headers. Attackers can serve a download whose filename* parameter has invalid percent-encoding, triggering an uncaught IllegalArgumentException in URLUtil.parseContentDisposition on the main thread to terminate the app.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130591": {
+    "cvss": 7.5,
+    "description": "53AIHub before 0.5.5 contains a missing authentication vulnerability that allows unauthenticated attackers to read files by requesting /api/files/:file_id/preview and /api/file-version/:file_body_id without UserTokenAuth. Attackers can enumerate sequential numeric ids to read raw knowledge-base files and stored file versions belonging to any enterprise tenant.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130593": {
+    "cvss": 5.4,
+    "description": "Scalar scalar-ninja 0.1.0 before 0.3.3 contains a cross-site scripting vulnerability in get_scalar_api_reference() that embeds unescaped OpenAPI content inside an inline script element. Attackers can supply an OpenAPI document containing a",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130594": {
+    "cvss": 5.4,
+    "description": "Scalar scalar-ninja 0.1.0 before 0.3.3 contains a cross-site scripting vulnerability that allows attackers to inject scripts by supplying unescaped ScalarConfig title values. Attackers controlling title metadata can close the title element with and inject a script tag that executes in the documentation origin for API reference visitors.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130615": {
+    "cvss": 7.1,
+    "description": "Flowise through 3.1.4 contains a server-side request forgery vulnerability that allows authenticated users to reach internal services by exploiting unpinned DNS validation in checkDenyList(). Attackers can configure a chatflow with Playwright or Puppeteer loaders using a DNS-rebinding domain so headless Chromium fetches internal or cloud metadata endpoints, returning responses as document content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82025": {
+    "cvss": 7.2,
+    "description": "WP File Manager before 8.0.7 contains a file upload restriction bypass vulnerability that allows authenticated administrators to upload arbitrary PHP files by exploiting a misconfigured elFinder connector in file_folder_manager.php where an empty uploadDeny list causes allowPutMime() to unconditionally return true, bypassing the uploadAllow restriction. Attackers can upload a .php file directly or upload it under an allowed filename and then rename it via the rename connector command, achieving remote code execution as the web server user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118789": {
+    "cvss": 8.1,
+    "description": "Farmasimplex retrieves a CIP News file over HTTP and executes embedded SQL statements against the local FarmaCIP database with administrative privileges. An attacker able to tamper with network communications or compromise vendor infrastructure can inject arbitrary SQL commands, leading to unauthorized access to, modification or deletion of database contents and potentially operating system command execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123050": {
+    "cvss": 7.1,
+    "description": "Multiple Farmasimplex healthcare integration modules do not properly validate TLS certificates, allowing an attacker who can intercept network traffic to impersonate trusted healthcare services and perform man-in-the-middle attacks, potentially leading to disclosure or modification of sensitive data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123051": {
+    "cvss": 1.2,
+    "description": "The REV.exe module distributed with Farmasimplex contains embedded OAuth client credentials for integration with the IZS platform. An attacker with access to the executable could extract and reuse the credentials, potentially leading to unauthorized access to integration resources or manipulation of associated information, depending on the privileges granted and authentication controls in place.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123052": {
+    "cvss": 4.7,
+    "description": "The CeliachiaRL integration component distributed with Farmasimplex uses shared OAuth credentials across multiple customer installations. An attacker who obtains the credentials from one installation could reuse them against services associated with other installations, potentially leading to unauthorized access to sensitive information or modification of integration data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130626": {
+    "cvss": 7.5,
+    "description": "The core JDK HTTP client (a2a-java-sdk-http-client) applies the GHSA-9rhm redirect-neutralization only to the POST path. JdkGetBuilder.get(), JdkGetBuilder.getAsyncSSE(), and JdkDeleteBuilder.delete() call the injected httpClient directly, with no redirect gate. An application that supplies a redirect-capable HttpClient (Redirect.NORMAL/ALWAYS) — which is the SDK-documented way to enable POST redirects — silently follows cross-authority redirects on every credentialed GET/DELETE request. The JDK strips Authorization cross-origin, but forwards the four allowlisted custom credential headers (X-API-Key, API-Key, X-Auth-Token, X-Authentication) to the attacker-controlled authority. This is an incomplete-fix variant of GHSA-9rhm: the fix hardened the default client and added a POST-only two-step opt-in, but never covered GET/DELETE.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130627": {
+    "cvss": 7.5,
+    "description": "The Vert.x HTTP client transport (a2a-java-sdk-http-client-vertx) hand-rolls a POST redirect follower that, when the documented PostBuilder.followRedirects(true) opt-in is enabled, re-issues the redirected request with the full request header map copied verbatim and performs no credential stripping and no same-authority check. A malicious, compromised, or mistyped agent that returns a 30x response with an absolute cross-host Location causes the client to forward the standard Authorization header (Bearer/Basic/OAuth) — plus every other header, including the allowlisted API-key headers — to the attacker-controlled authority. This breaks the project's own cross-transport invariant (SECURITY.md §8, OkHttpPostRedirectHeaderLeakTest) that credentials are stripped on cross-authority redirects even when redirects are followed. The sibling JDK and OkHttp/Android transports strip Authorization; Vert.x uniquely does not. This is a \"fix introduced the bug\" variant — the follower was added by the GHSA-9rhm hardening PR (3ae82912, refined by a5e76a0b).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130628": {
+    "cvss": 4.3,
+    "description": "react-native-webview 13.7.0 through 17.1.0 on Windows contains an unrestricted URI scheme launch vulnerability in the WebView2 OnCoreWebView2NewWindowRequested handler, which passes requested URIs to LaunchUriAsync without scheme or user-initiation checks. Malicious web content can call window.open() or use target=_blank links with schemes like ms-settings: to launch Windows protocol handlers without the external-protocol confirmation prompt.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130629": {
+    "cvss": 4.7,
+    "description": "react-native-webview 13.8.0 through 17.1.0 contains a code injection vulnerability that allows attackers to execute JavaScript by placing unescaped backticks or ${} sequences in injectedJavaScriptObject string values. Attackers who control values like profile fields or API responses can break out of the template literal to access the page DOM, non-HttpOnly cookies, and the ReactNativeWebView message bridge.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130630": {
+    "cvss": 5.5,
+    "description": "GPAC 26.02.0 contains a NULL pointer dereference vulnerability in dasher_configure_pid() in src/filters/dasher.c that dereferences ds2->set without checking for NULL. Attackers can supply a crafted MPEG-2 TS file processed with MP4Box -dash to disconnect a PID and crash MP4Box, causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130631": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.07.0 contains an uninitialized pointer access vulnerability in GetESD() in src/isomedia/track.c that allows attackers to trigger invalid memory reads via crafted MP4 files. Attackers can supply an MP4 with an rvcc box having predefined_rvc_config set to 0 and no meta item index, causing strcmp() on an uninitialized mime_type pointer and crashing MP4Box -add.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130632": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.02.0 contains an out-of-bounds read vulnerability in m2tsdmx_send_packet() in src/filters/dmx_m2ts.c caused by double-skipping the VC-1 start-code offset. Attackers can supply a crafted MPEG-2 TS VC-1 stream that underflows the remaining length, causing memcpy() to over-read and crash MP4Box on import.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130633": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.02.0 contains a use-after-free vulnerability in gf_filter_pid_set_args_internal() that leaves a stale pointer after gf_props_reset_single() frees a parsed PID property value. Attackers can supply a crafted filelist input processed by MP4Box with -add, causing gf_props_del_property() to access freed memory and crash the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130634": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.07.0 contains a heap-based buffer overflow in gf_mpd_resolve_url() in src/media_tools/mpd.c that allows attackers to write past a heap buffer via crafted DASH manifests. Attackers can supply a crafted MPD whose segment template expands beyond the allocation through unchecked strcat() calls, crashing MP4Box and causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130635": {
+    "cvss": 5.5,
+    "description": "GPAC before 26.07.0 contains an uncontrolled recursion vulnerability in dasher_gather_deps() in src/filters/dasher.c that fails to detect cyclic stream dependency chains. Attackers can supply a crafted MPEG-2 TS file that MP4Box processes with -dash, exhausting the stack and crashing the process for denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77224": {
+    "cvss": 7.5,
+    "description": "Camunda 7.24.0 before 7.24.14 and 7.23.0 before 7.23.17 contains an XML External Entity (XXE) injection vulnerability in the camunda-external-task-client's DomXmlDataFormat.defaultDocumentBuilderFactory(), which fails to disable external entity resolution when parsing object variables serialized with application/xml. An attacker able to write a process variable can trigger arbitrary file read and out-of-band outbound HTTP requests from every worker JVM that deserializes the variable, enabling exfiltration of credentials, service-account tokens, and private key material from network segments deeper than the engine itself.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100963": {
+    "cvss": 8.1,
+    "description": "NVIDIA TensorRT for Linux contains a vulnerability where a user could cause an integer overflow issue. A successful exploit of this vulnerability might lead to denial of service and data tampering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100970": {
+    "cvss": 6.4,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in the network policy hot-reload component where a local attacker with low privileges could bypass updated network policy restrictions through existing L7-inspected tunnels that continue to use the previous policy after a reload. A successful exploit of this vulnerability might lead to information disclosure and data tampering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100971": {
+    "cvss": 8.4,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in the L7 path allowlist enforcement component where a local attacker with low privileges could cause path traversal by using semicolon-dot path sequences to bypass allowlist restrictions. A successful exploit of this vulnerability might lead to information disclosure, data tampering, and denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100972": {
+    "cvss": 8.1,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in resource-level authorization for create, read, update, and delete operations where an authenticated remote attacker with low privileges could access or modify resources without the required authorization checks. A successful exploit of this vulnerability might lead to information disclosure and data tampering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100973": {
+    "cvss": 6.4,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in L7 policy enforcement for HTTP CONNECT tunnels where a local attacker with low privileges could cause a protection mechanism failure by using nonstandard HTTP methods to bypass policy restrictions. A successful exploit of this vulnerability might lead to information disclosure and data tampering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100974": {
+    "cvss": 6.7,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in the sandbox SSH authentication component where a remote attacker with high privileges could gain unauthorized access to other sandboxes by using an SSH handshake secret shared across sandboxes. A successful exploit of this vulnerability might lead to information disclosure, data tampering, and denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100975": {
+    "cvss": 7.6,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in the Kubernetes sandbox SSH authentication configuration where a local attacker with low privileges could obtain sensitive authentication information by accessing an SSH handshake secret stored in a plaintext environment variable and reuse the shared secret to gain unauthorized access to other sandboxes. A successful exploit of this vulnerability might lead to information disclosure, data tampering, and denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100976": {
+    "cvss": 5.2,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in Kubernetes network policy enforcement where a local attacker with low privileges could cause the proxy to attribute network traffic to a different process due to TCP source-port identity confusion, allowing the attacker to bypass process-based network policy restrictions. A successful exploit of this vulnerability might lead to information disclosure and data tampering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100977": {
+    "cvss": 7.5,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in L7 REST policy enforcement where a local attacker with low privileges could exploit inconsistent HTTP interpretation by using cleartext HTTP/2 (h2c) over an HTTP CONNECT tunnel to bypass policy restrictions. A successful exploit of this vulnerability might lead to information disclosure and data tampering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100978": {
+    "cvss": 6.4,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in its gateway-to-sandbox transport where a network attacker positioned on the internal path could intercept credentials and tamper with commands and data because the transport accepts any host key without verification, permitting a machine-in-the-middle to impersonate the sandbox endpoint. A successful exploit of this vulnerability might lead to information disclosure, data tampering, and code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100979": {
+    "cvss": 6.6,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in its gateway connection-proxy component where an attacker who can manipulate a sandbox's status metadata could cause the control-plane server to initiate connections to arbitrary internal hosts because the connection target is derived from that metadata and used without validation against the expected address range. A successful exploit of this vulnerability might lead to information disclosure and data tampering.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100980": {
+    "cvss": 7.5,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in its command-line diagnostic interface where an attacker could cause OS command injection because user- or configuration-supplied values are incorporated into a command that is interpreted by two successive shell layers in the remote path while being escaped for only one layer. A successful exploit of this vulnerability might lead to code execution, escalation of privileges, information disclosure, data tampering, and denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100981": {
+    "cvss": 6.4,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in its layer-7 REST proxy where a sandboxed actor could bypass the proxy's policy enforcement by sending a request whose body framing is interpreted differently by the proxy and the upstream server, allowing a second request to be smuggled past policy checks. A successful exploit of this vulnerability might lead to data tampering and information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100982": {
+    "cvss": 6.5,
+    "description": "NVIDIA OpenShell for Linux contains a vulnerability in its inference-interception request parser where a sandboxed actor could exhaust processing resources by sending a chunked request that lacks body-size and chunk-count limits, causing excessive parsing work. A successful exploit of this vulnerability might lead to denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122055": {
+    "cvss": 9.8,
+    "description": "ICRTouch PocketTouch version 1.700 build 2025.3726 contains a default socket password set to the literal value password. Where the default value remains unchanged and is accepted by a TouchPoint POS terminal, an attacker with network access to the terminal’s socket service may authenticate using publicly known credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122122": {
+    "cvss": 9.1,
+    "description": "The order-tracking functionality in ICRTouch ByTable and TouchTakeaway does not adequately verify that a requester is authorized to access the specified order. An unauthenticated remote attacker can modify an order identifier to retrieve information associated with other customers’ orders.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122141": {
+    "cvss": 8.1,
+    "description": "The wallet top-up functionality in ICRTouch ByTable and TouchTakeaway does not adequately protect state-changing requests against CSRF. An attacker-controlled website can cause an authenticated customer’s browser to submit a wallet top-up request and add an attacker-selected charge to the customer’s active cart.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122142": {
+    "cvss": 9.8,
+    "description": "ICRTouch Commander administrative login interface does not adequately restrict repeated authentication attempts. The interface also returns distinguishable responses for multiple authentication states, including different behavior when a `siteID` value is supplied.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122143": {
+    "cvss": 7.5,
+    "description": "ICRTouch Commander administrative interface performs security-sensitive operations through HTTP GET requests and includes an API key in the request query string. GET requests are commonly retained in browser history, proxy logs, server logs, analytics systems, referrer headers, and other intermediary records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122145": {
+    "cvss": 7.5,
+    "description": "ICRTouch PocketTouch version 1.700 build 2025.3726 transmits the POS socket password in plaintext XML over an unencrypted TCP connection. The protocol does not provide transport-layer encryption to protect credentials from interception. An attacker able to observe network traffic between a PocketTouch device and a TouchPoint POS terminal can recover the socket password from captured packets.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-13276": {
+    "cvss": 7.5,
+    "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Drupal File Entity (fieldable files) allows Forceful Browsing. This issue affects File Entity (fieldable files): from 7.X-* before 7.X-2.39.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-13280": {
+    "cvss": 9.8,
+    "description": "Insufficient Session Expiration vulnerability in Drupal Persistent Login allows Forceful Browsing. This issue affects Persistent Login: from 1.0.0 before 1.8.0 and from 2.0.0 before 2.2.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-134753": {
+    "cvss": 7.0,
+    "description": "dsniff through 2.5a2 contains an integer underflow in decode_sniffer() in decode_sniffer.c that allows unauthenticated remote attackers to write past the global obuf buffer. Attackers can send a UDP datagram to port 2001 on a monitored segment with a 4096-byte string, disabling base64_pton bounds checks to corrupt memory and crash dsniff.",
+    "vendor": "hackerschoice",
+    "product": "dsniff"
+  },
+  "CVE-2026-19412": {
+    "cvss": 8.7,
+    "description": "This vulnerability exists in the CP Plus CP-XR-DE21-S Router due to the presence of hardcoded HTTP Digest authentication credentials in the firmware that are identical across all devices running the affected firmware. An attacker with access to the local network could exploit this vulnerability by obtaining the hardcoded authentication information from the firmware. Successful exploitation of this vulnerability could allow the attacker to gain unauthorized administrative access and perform privileged operations on the targeted device.",
+    "vendor": "CP Plus",
+    "product": "CP-XR-DE21-S Router"
+  },
+  "CVE-2026-117425": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132147": {
+    "cvss": null,
+    "description": "An arbitrary file read vulnerability was discovered in debbugs, a bug tracking system based on the active Debian BTS. versions.cgi failed to correctly sanitize package name inputs in found and fixed query parameters. Crafted query parameters could cause version.cgi to output any lines of the target file which contained spaces.",
+    "vendor": "Debian",
+    "product": "debbugs"
+  },
+  "CVE-2026-133169": {
+    "cvss": 4.8,
+    "description": "modified eCommerce Shopsoftware through 3.3.0 contains a stored cross-site scripting vulnerability that allows authenticated administrators to inject scripts via the unsanitized products_model field. Attackers with product editing permission can store JavaScript that executes in browsers of other administrators, storefront visitors, and customers viewing carts and order history.",
+    "vendor": "modified-shop",
+    "product": "modified-shop"
+  },
+  "CVE-2026-128135": {
+    "cvss": 7.1,
+    "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. From 3.9.4 to 3.10.3, NLTK ZIP package extraction can write through an existing in-root hardlink whose other link points outside the NLTK data root. A local attacker who can prepare the extraction target can cause a package member write to overwrite an out-of-root file, violating the pathsec containment boundary and affecting integrity and availability. This issues is fixed in version 3.10.4.",
+    "vendor": "nltk",
+    "product": "nltk"
+  },
+  "CVE-2026-120343": {
+    "cvss": 4.3,
+    "description": "A flaw has been found in mathurvishal CloudClassroom-PHP-Project. The impacted element is an unknown function of the file manageassessment2.php. This manipulation of the argument ExamName/Q1/Q2/Q3/Q4/Q5 causes cross site scripting. The attack is possible to be carried out remotely. The exploit has been published and may be used. This product adopts a rolling release strategy to maintain continuous delivery. Therefore, version details for affected or updated releases cannot be specified. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "vendor": "mathurvishal",
+    "product": "CloudClassroom-PHP-Project"
+  },
+  "CVE-2026-129229": {
+    "cvss": 7.5,
+    "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. From 3.10.0 until 3.10.4, TokenSearcher.findall and Text.findall accept caller-controlled regular expressions with an unbounded number of capturing groups throughout the affected range. Starting in 3.10.3, nltk.redos.compile and RegexpTokenizer expose the same compile-time vector. The third-party regex engine compiles group-dense patterns with roughly quadratic cost before the match-time timeout begins, allowing a small unauthenticated request to exhaust CPU and deny service. This issue is fixed in version 3.10.4.",
+    "vendor": "nltk",
+    "product": "nltk"
+  },
+  "CVE-2026-134758": {
+    "cvss": 4.7,
+    "description": "Wfuzz through 3.1.1 contains a stored cross-site scripting vulnerability that allows malicious target servers to inject script by returning crafted links written unescaped into HTML reports. When the links script and html printer are used, attacker-supplied href values close the unquoted anchor tag and execute JavaScript when the operator opens the report.",
+    "vendor": "xmendez",
+    "product": "wfuzz"
+  },
+  "CVE-2026-133112": {
+    "cvss": 3.1,
+    "description": "modified eCommerce Shopsoftware through 3.3.0 contains a cross-site request forgery vulnerability in gv_send.php because the action=process step never validates a CSRF token via check_secure_form(). Attackers can host an auto-submitting form that makes a logged-in customer send their gift voucher balance to an attacker-controlled email address for redemption.",
+    "vendor": "modified-shop",
+    "product": "modified-shop"
   }
 }
