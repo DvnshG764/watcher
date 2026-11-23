@@ -134539,7 +134539,7 @@
   },
   "CVE-2026-121994": {
     "cvss": 8.8,
-    "description": "A stack buffer overflow in the GDB client's remote protocol handler allows an attacker-controlled debug target to execute arbitrary code in the GDB process. The vulnerability exists in fetch_register_using_p, which decodes a stub's register reply into an alloca-sized buffer without bounding writes by the register width.",
+    "description": "Rejected reason: Red Hat Product Security has come to the conclusion that this CVE is not needed. After discussion with engineering and upstream, these issues are not considered security vulnerabilities.",
     "vendor": "Red Hat",
     "product": "Red Hat Enterprise Linux 10"
   },
@@ -154028,6 +154028,42 @@
   "CVE-2026-93008": {
     "cvss": 6.8,
     "description": "A flaw was found in dnsmasq. When following a CNAME in a DNS response, the resolver can cache records for the CNAME target without checking that those records belong to the responding server's authorized zone. In split-DNS deployments that send some domains to a specific upstream, an attacker who controls that upstream can inject cache entries for unrelated names. Later clients may then receive attacker-chosen addresses for those names.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95977": {
+    "cvss": 5.5,
+    "description": "Out-of-bounds read in Windows Event Viewer allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96175": {
+    "cvss": 7.8,
+    "description": "Release of invalid pointer or reference in Desktop Window Manager allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96177": {
+    "cvss": 8.1,
+    "description": "Use after free in DNS Server allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96179": {
+    "cvss": 7.8,
+    "description": "Use after free in DNS Server allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96974": {
+    "cvss": 6.8,
+    "description": "Integer overflow or wraparound in HID Parser Library allows an unauthorized attacker to elevate privileges with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96975": {
+    "cvss": 7.5,
+    "description": "Out-of-bounds read in DNS Server allows an unauthorized attacker to deny service over a network.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
