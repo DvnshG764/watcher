@@ -153496,5 +153496,317 @@
     "description": "Origin validation error in Azure Key Vault allows an unauthorized attacker to disclose information over a network.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-109138": {
+    "cvss": 8.3,
+    "description": "In the Aliro access control reference applications of the Nordic Semiconductor nRF Door Lock and Access Control Add-on v1.0.0 through v1.1.1, built with Credential Issuer CA certificate-based issuer trust (CONFIG_DOOR_LOCK_CREDENTIAL_ISSUER_CA) and the Aliro Step-up phase (CONFIG_DOOR_LOCK_STEP_UP_PHASE) enabled, AccessManagerImpl::ProcessValidityIteration() treats a failed lookup of the Credential Issuer in the provisioned issuer array as success. For an issuer trusted through a certificate chain but not provisioned, the ValidityIteration (credential-rollback) check is therefore skipped. A former authorized holder with an old but correctly issuer-signed Access Document can be granted physical access after the issuer has advanced its iteration to revoke that credential. The default Matter provisioning configuration is not affected. Fixed in v1.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109148": {
+    "cvss": 7.0,
+    "description": "In the Aliro access control reference applications of the Nordic Semiconductor nRF Door Lock and Access Control Add-on v1.0.0 through v1.1.1, the stored Access Document record does not retain validFrom and validUntil. The cached public key path (VerifyPublicKey()) and the Kpersistent fast path (_VerifyKPersistentKey()) therefore never re-evaluate the Access Document validity period. An attacker who held a time-limited Aliro credential that was valid when first presented can continue to obtain physical access after the Access Document has expired, for as long as the cached record remains available. Fixed in v1.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109151": {
+    "cvss": 7.0,
+    "description": "In the Matter and Aliro Door Lock Application of the Nordic Semiconductor nRF Door Lock and Access Control Add-on v1.0.0 through v1.1.1 with CONFIG_DOOR_LOCK_STEP_UP_PHASE enabled, deleting a Credential Issuer passes the 1-based Matter credential index to ClearValidityIterations(), which expects a 0-based storage index. The intended issuer's ValidityIteration state is left in place, and the state of the adjacent, still-provisioned issuer is cleared. This resets that issuer's rollback protection. An attacker holding an older but correctly signed Access Document from the adjacent issuer, whose validity iteration had been superseded, can then potentially obtain physical access. Fixed in v1.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109154": {
+    "cvss": 7.0,
+    "description": "In the Matter door lock applications of the Nordic Semiconductor nRF Door Lock and Access Control Add-on v1.0.0 through v1.1.1, AccessManager::ValidateCredential() checks only credential occupancy and the secret bytes, and never reads the owning user's UserStatus. It also returns success when no owning user can be resolved. A user suspended by setting their status to OccupiedDisabled can continue to unlock the door with their previously assigned credential, and an orphaned but occupied credential is also accepted. Fixed in v1.2.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112209": {
+    "cvss": 5.3,
+    "description": "A Cross-Site Scripting (XSS) vulnerability reflected in the GET parameters `cod_primaria` and `cod_secundaria` of the Novanet Web endpoints `NNws_ShwNewDup` and `NPcd/NFG_VerNoticia`. User-provided data is reflected within a JavaScript block without proper sanitization or context-appropriate output encoding. An unauthenticated remote attacker could craft a manipulated URL that, when visited by a victim, would execute arbitrary JavaScript code in the victim’s browser, within the context of the affected site. The flaw resides in the platform’s shared code, so it could affect organizations using that vulnerable code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119725": {
+    "cvss": 8.2,
+    "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in PocketBook / Obreey Products PocketBook Reader (Android) allows Exposure of Sensitive Information to an Unauthorized Actor. This issue affects PocketBook Reader (Android): 5.65.0.39561.release (com.obreey.reader).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119726": {
+    "cvss": 8.3,
+    "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in PocketBook / Obreey Products PocketBook Reader (Android) allows Exposure of Sensitive Information to an Unauthorized Actor. This issue affects PocketBook Reader (Android): 5.65.0.39561.release (com.obreey.reader).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129542": {
+    "cvss": 3.1,
+    "description": "Files or directories accessible to external parties vulnerability in Samsung Open Source Starfish allows Probe System Files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129543": {
+    "cvss": 6.4,
+    "description": "Access of resource using incompatible type ('type confusion') vulnerability in Samsung Open Source Starfish allows Input Data Manipulation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129606": {
+    "cvss": 7.1,
+    "description": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow') vulnerability in Samsung Open Source mTower allows Overflow Buffers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21162": {
+    "cvss": 5.2,
+    "description": "Out-of-bounds write in libiosotglib.so prior to version 3.7.73.4 allows physical attackers to execute arbitrary code. User interaction is required for triggering this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21173": {
+    "cvss": 6.0,
+    "description": "Improper authorization in Smart Switch prior to version 3.7.74.7 allows adjacent attackers to initiate an unauthorized APK restoration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21174": {
+    "cvss": 6.0,
+    "description": "Improper access control in Smart Switch prior to version 3.7.74.7 allows adjacent attackers to bypass APK verification.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21175": {
+    "cvss": 8.6,
+    "description": "Incorrect permission assignment for critical resource in Samsung Update prior to version 3.0.111.0 allows local attackers to execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21176": {
+    "cvss": 8.6,
+    "description": "Unquoted search path or element in Samsung Device Care prior to version 4.0.80 allows local attackers to execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-21177": {
+    "cvss": 5.2,
+    "description": "Improper input validation in Settings Suggestions prior to One UI 8.5 allows local attackers to automatically launch an application in the background. User interaction is required for triggering this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105622": {
+    "cvss": 6.3,
+    "description": "Improper restriction of excessive authentication attempts in the WAMP-CRA (challenge-response) authentication path in Zenitel Connect before 1.11.0 allows remote attackers to guess user passwords via unlimited authentication attempts, because the path, in which the broker issues a challenge and the client returns an HMAC of it keyed with the user's secret, applies no account lockout or rate limiting. Affected releases enforce a password policy of at least 12 characters including upper-case, lower-case, numeric and special characters, so practical exploitation requires a reused or predictable password rather than exhaustive guessing. The WAMP-CRA authentication path is removed in 1.11.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105623": {
+    "cvss": 6.9,
+    "description": "The web interface in Zenitel Connect before 1.11.0 serves production JavaScript source maps without authentication, which allows remote attackers to obtain the complete front-end source code, including API usage and internal client logic, via requests for the source map files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105624": {
+    "cvss": 6.9,
+    "description": "The login flow in Zenitel Connect before 1.11.0 applies per-account lockout on repeated failed login attempts, which allows remote attackers to cause a denial of service (temporary lockout of targeted user accounts from the web interface, repeatable for as long as the attack continues) via repeated failed login requests for a known or guessed username. Intercom call handling is not affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105625": {
+    "cvss": 5.1,
+    "description": "The web interface in Zenitel Connect before 1.11.0 loads an integration iframe without sandboxing or origin restrictions, which allows remote attackers to present phishing content to authenticated users via a crafted frame source.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-105671": {
+    "cvss": 6.9,
+    "description": "The login flow in Zenitel Connect before 1.11.0 returns different error responses depending on whether a submitted username exists, which allows remote attackers to enumerate valid user accounts via crafted login requests.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95377": {
+    "cvss": 9.4,
+    "description": "OS command injection in the TFTP provisioning module of Zenitel EdgeAudioClient before 9.6.3.0, and 10.x before 10.1.3.0, on VSFF6, VSFF8, VSFF8MP, VSFF8MN, and VSFT devices allows unauthenticated adjacent attackers to execute arbitrary commands as root via a crafted DHCP option 66 (TFTP Server Name) value supplied by a rogue DHCP server on the same network segment. The DHCP-supplied value is passed to a shell without sanitization. Devices using DHCP, the default configuration, are affected on every boot and lease renewal. The same injection is also reachable via the config_update_tftp_server and sw_update_tftp_server configuration fields by an attacker able to modify the device configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95378": {
+    "cvss": 8.6,
+    "description": "Path traversal in the certificate upload endpoint (/api/certificate/upload) of the turbineweb web interface in Zenitel VSFF6, VSFF8, VSFF8MP, VSFF8MN, and VSFT devices with software versions from 10.0.3.0 before 10.1.3.0 allows authenticated administrators to write arbitrary files as root via a crafted filename parameter in a multipart upload request when the type field is set to any value other than https_certificate. In that case, both path validation and certificate content validation are skipped. This can be escalated to arbitrary code execution as root, for example by overwriting startup scripts or planting SSH keys.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95379": {
+    "cvss": 7.0,
+    "description": "Path traversal in the certificate.deleteCertificate JSON-RPC method (POST /api/rpc) of the turbineweb web interface in Zenitel VSFF6, VSFF8, VSFF8MP, VSFF8MN, and VSFT devices with software versions from 10.0.3.0 before 10.1.3.0 allows authenticated administrators to delete arbitrary files as root via a relative path (../) in the file_name parameter. This can be used to cause denial of service or render the device inoperable by removing critical system files, and to weaken device security by removing files such as firewall rules or certificate trust stores.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95613": {
+    "cvss": 8.6,
+    "description": "The pREST database REST API in Zenitel Connect firmware before 1.11.0 signs and verifies JWTs with the platform CA private key, which is stored on a data volume shared between containers, and sets the PostgreSQL session role from the unvalidated sub claim of each request while connected to the database as the \"postgres\" superuser, which allows local attackers who can read the platform CA private key from the container filesystem to execute database operations as the PostgreSQL superuser, including reading the master encryption key and password hashes, via a forged JWT with sub=postgres sent to the pREST API.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95614": {
+    "cvss": 9.3,
+    "description": "The host configuration watcher in Zenitel Connect before 1.11.0 applies a rsyslog configuration file written to a data volume that is shared with the hiatus application container, which allows local attackers with write access to the hiatus container filesystem to execute arbitrary OS commands as root on the host operating system via a crafted rsyslog configuration file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95615": {
+    "cvss": 8.7,
+    "description": "OS command injection vulnerability in audio messages API in Zenitel Connect before 1.11.0 allows remote authenticated users to execute arbitrary OS commands as root in the hiatus application container via filename parameter to the /api/system/audio_messages endpoint.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124279": {
+    "cvss": 8.2,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in elixir-grpc grpc_server allows unauthenticated attackers to exhaust server memory via client-streaming or bidirectional-streaming requests. The streaming read clause of GRPC.Server.Adapters.Cowboy.Handler.info/3 (grpc_server/lib/grpc/server/adapters/cowboy/handler.ex) asks Cowboy for up to 8,000,000 bytes per read and compares the running total with max_body_size only after the read returns. The gRPC length prefix of a message is not checked before the message is buffered. Each stream can therefore buffer up to one full read beyond the configured limit before it is refused, and many concurrent streams exhaust node memory. Releases before 1.0.6 apply no limit to streaming requests at all. This issue affects grpc_server: from 1.0.0 before 1.1.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127030": {
+    "cvss": 7.5,
+    "description": "A flaw was found in freeradius. An improper length validation in the EAP-FAST module allows a stack-based buffer overflow during session ticket processing. A remote, unauthenticated attacker can exploit this flaw by sending a specially crafted handshake request, causing the server process to crash and resulting in a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123747": {
+    "cvss": 7.3,
+    "description": "A flaw was found in pappl-retrofit. The application fails to properly sanitize user-supplied filenames when handling the upload and deletion of PostScript Printer Description (PPD) files. A remote, unauthenticated attacker can exploit this directory traversal flaw by submitting filenames containing path traversal sequences. This allows the attacker to upload or delete arbitrary files on the system, which can result in data corruption, denial of service, or arbitrary command execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96055": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows USB Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96056": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows USB Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96057": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows USB Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125067": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains a NULL pointer dereference vulnerability in vble_decode_frame() in libavcodec/vble.c because it ignores init_get_bits() failure on oversized packets. Attackers can supply a crafted AVI file with a 268435452-byte VBLE frame, causing reads from a NULL bit reader buffer that crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125068": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains a NULL pointer dereference vulnerability in the Bink video decoder because decode_frame() in libavcodec/bink.c ignores init_get_bits() failure. Attackers can supply a crafted Bink file with a frame of about 2^28 bytes, overflowing the bit count and crashing the process for denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125172": {
+    "cvss": 6.1,
+    "description": "FFmpeg through 9.0.2 contains an out-of-bounds read vulnerability in libxevd_receive_frame() in libavcodec/libxevd.c that fails to validate NAL unit length prefixes against remaining packet data. Attackers can supply crafted EVC media with oversized 4-byte NAL length prefixes, causing libxevd to read past the packet buffer, crashing the application or exposing adjacent heap memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125173": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains a memory leak vulnerability in libxevd_receive_frame() in libavcodec/libxevd.c that fails to free pkt_au when an access unit produces no picture. Attackers can supply a crafted EVC stream with many access units containing only parameter sets or non-frame NAL units to exhaust memory in the decoding application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125174": {
+    "cvss": 5.5,
+    "description": "FFmpeg before 8.1.3 and 9.x before 9.0.2 contains a NULL pointer dereference vulnerability in ff_hap_set_chunk_count() in libavcodec/hap.c, where a shadowed return variable masks reallocation failures. Attackers can supply a crafted Hap video frame with an oversized chunk count so the decoder writes through a NULL chunk table, crashing the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124461": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.3.0 contains a missing authorization vulnerability in library/ajax/upload.php that allows any authenticated user to read and overwrite document data by supplying an arbitrary doc_id. Low-privilege users can enumerate doc_id values with the fetch and save actions to disclose patient health information and tamper with medical records across all patients.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123324": {
+    "cvss": 6.5,
+    "description": "In JetBrains YouTrack before 2026.2.19562 information disclosure via shared mailbox message history was possible",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121995": {
+    "cvss": 7.5,
+    "description": "A stack buffer overflow in the GDB client's tracepoint upload handler allows an attacker-controlled debug stub to corrupt stack memory automatically during connection setup. The overflow results from GDB reading beyond the current reply boundary into a stale prior reply in the shared packet buffer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121996": {
+    "cvss": 8.2,
+    "description": "A length validation flaw in gdbserver's agent-expression parser allows an unauthenticated remote attacker to read uninitialized heap memory from the gdbserver process and cause a denial of service. Disclosed heap content includes addresses suitable for defeating ASLR in further exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121997": {
+    "cvss": 8.1,
+    "description": "A heap buffer overflow in gdbserver's QTDPsrc packet handler allows an unauthenticated remote attacker to achieve native code execution in the gdbserver process. The vulnerability results from a mismatch between a packet's declared source length and the actual data length, causing hex2bin to write beyond the allocated heap buffer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120830": {
+    "cvss": 7.4,
+    "description": "A flaw was found in libslirp in icmp_forward_error(). When building an ICMP error response, the length of the quoted original IPv4 packet was taken from the IP header without clamping it to the actual buffer length. A truncated or malformed packet could cause an out-of-bounds heap read, leaking host memory into the ICMP error packet returned to a guest or container.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120194": {
+    "cvss": 7.5,
+    "description": "A flaw was found in json-glib. The JSONPath slice evaluator used by json_path_query() can enter an infinite loop when given a slice expression with a negative step. An application that evaluates attacker-controlled JSONPath expressions can be forced into a hang, leading to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109411": {
+    "cvss": 8.1,
+    "description": "An access control bypass flaw was identified in Samba's vfs_ceph_rgw module in it's openat() function. An authenticated user can bypass access controls to read or overwrite restricted files on shares configured with the experimental vfs_ceph_rgw module. When a client requests an existing file using mismatched character casing, the module fails to perform a case-insensitive lookup correctly, causing the server to treat the operation as creating a new file. As a result, the server skips standard permission checks on the existing file, allowing the attacker to access or overwrite sensitive data owned by other users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110631": {
+    "cvss": 9.8,
+    "description": "Komodo through 2.3.4 contains an authentication bypass vulnerability in the Periphery agent that allows unauthenticated attackers to connect as a trusted Core because empty core_public_keys and passkeys lists fail open by default. Attackers reaching port 8120 can present any generated keypair to issue Periphery API requests, including terminal sessions and container operations, executing commands on managed hosts typically as root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85922": {
+    "cvss": 7.4,
+    "description": "Weak authentication in Azure Key Vault allows an unauthorized attacker to bypass a security feature over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85925": {
+    "cvss": 8.2,
+    "description": "Improper restriction of communication channel to intended endpoints in Azure Key Vault allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96202": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Windows Raw Image Extension allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92821": {
+    "cvss": 8.1,
+    "description": "A flaw was found in SSSD. When configured to evaluate password expiration warnings before restrictive access rules in LDAP (Lightweight Directory Access Protocol) environments, an expired-password warning terminates rule evaluation early and treats the access request as successful. A remote authenticated user with an expired password using an alternative authentication method, such as SSH public key authentication, can exploit this flaw to bypass access control restrictions and gain unauthorized access to protected systems.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-30187": {
+    "cvss": 5.3,
+    "description": "Anope before 2.0.15 does not prevent resetting the password of a suspended account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
