@@ -151960,5 +151960,59 @@
     "description": "A vulnerability was detected in nocobase up to 1.9.4/2.0.0-alpha.37. The affected element is an unknown function of the file nocobase\\packages\\core\\auth\\src\\base\\jwt-service.ts of the component JWT Service. The manipulation of the argument API_KEY results in use of hard-coded cryptographic key . The attack can be launched remotely. A high complexity level is associated with this attack. The exploitability is described as difficult. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
     "vendor": "Unknown",
     "product": "nocobase"
+  },
+  "CVE-2026-103035": {
+    "cvss": 8.3,
+    "description": "TeamPass is a self-hosted collaborative password manager. Prior to 3.2.1.2, the update_folder action in app/sources/folders.queries.php allowed an authenticated, non-read-only user to re-parent a folder without checking whether the target folder or submitted parentId belonged to the caller's user-accessible_folders set. Selecting a personal folder as the new parent passed the personal-folder guard and set personal_folder on the target, transferring the credential subtree into the attacker's accessible space after the next login and hiding it from the organization, including administrators. The change exposed credential labels, logins, URLs, email addresses, and descriptions, while sharekey-protected passwords remained protected; hiding the subtree also denied other users access. This issue is fixed in version 3.2.1.2.",
+    "vendor": "nilsteampassnet",
+    "product": "TeamPass"
+  },
+  "CVE-2026-102945": {
+    "cvss": 4.9,
+    "description": "Aether Project AMF supports termination of NAS signalling, NAS ciphering & integrity protection, registration management, connection management, mobility management, access authentication and authorization, security context management. Prior to 3.1.6, a malformed NGAP PathSwitchRequest can contain a UESecurityCapabilities information element whose extensible APER bit-string representation has no bytes even though decoding reports no error. In ngap/handler.go, HandlePathSwitchRequest checks only whether the element is present before six index-zero reads of its encryption and integrity algorithm fields, causing an unrecovered panic in the NGAP receive goroutine and terminating the AMF. The described attacker is a rogue or compromised gNB on the N2 interface and additionally needs a registered UE's AMF-UE-NGAP-ID; a bare over-the-air UE cannot trigger the issue. This issue is fixed in version 3.1.6.",
+    "vendor": "omec-project",
+    "product": "amf"
+  },
+  "CVE-2026-104129": {
+    "cvss": 8.1,
+    "description": "pREST (PostgreSQL REST) is an API that delivers an application on top of a Postgres database. Prior to 2.4.0, the vulnerable parameter is _groupby, handled by GroupByClause in adapters/postgres/postgres.go. adapters/postgres/postgres.go uses the weaker isSafeSQLExpression check for this function-expression branch instead of the stricter single-field validator used for _select. That check validates only the outer function name against a 13-function allowlist and permits nested subqueries, trailing UNION syntax, and inner pg_ functions. controllers/crud.go concatenates the GROUP BY expression while parameterizing only WHERE values, allowing attacker-controlled SQL structure into the clause. Default configuration permits unauthenticated access; a restricted installation may require a low-privilege table reader. UNION-based extraction requires compatible column counts and types and was not verified end to end, but a delay-producing function can cause denial of service without that alignment. This issue is fixed in 2.4.0.",
+    "vendor": "prest",
+    "product": "prest"
+  },
+  "CVE-2026-128139": {
+    "cvss": 7.5,
+    "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. From 3.6 to 3.10.3, XMLCorpusView._read_xml_fragment accumulates 1 KiB blocks and repeatedly applies whole-buffer XML validation while a comment or CDATA terminator remains ahead. A large comment in an attacker-controlled corpus file causes quadratic CPU consumption through documented XML corpus readers across the affected range. On 3.6 and 3.9.2, a large CDATA section incurs the quadratic scan before rejection, while on 3.10.3 both comment and CDATA documents are read successfully. This vulnerability is fixed in 3.10.4.",
+    "vendor": "nltk",
+    "product": "nltk"
+  },
+  "CVE-2026-128136": {
+    "cvss": 6.1,
+    "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. From 3.10.0 until 3.10.4, allowlisted_pickle_load keys dangerous NumPy globals by export name, allowing submodule-local numpy.lib file input/output callables to evade the denylist under the broad module allowance used by TransitionParser. A crafted pickle can invoke recfromtxt to read a local file or open_memmap to create or truncate an attacker-selected file when a victim loads an untrusted model. This issue is fixed in version 3.10.4.",
+    "vendor": "nltk",
+    "product": "nltk"
+  },
+  "CVE-2026-122247": {
+    "cvss": 8.2,
+    "description": "Budibase is an open-source low-code platform. Prior to 3.50.0, the public POST /api/global/users/init endpoint on a self-hosted single-tenant deployment accepts an attacker-controlled tenantId and evaluates checkAnyUserExists() in the selected tenant database instead of the legitimate default tenant. An unauthenticated attacker can select an unused tenant namespace to bypass the one-time initialization guard, causing packages/worker/src/api/controllers/global/users.ts to create a tenant-specific CouchDB database and a global-administrator document without a session or CSRF token. Repeating this operation with unique tenant identifiers can exhaust datastore resources and leave latent privileged records. The created administrator cannot log into the default tenant while multi-tenancy remains disabled, which limits the immediate impact to persistent writes, denial of service, and records that may become usable during later multi-tenant operation or migration. This issue is fixed in versions 3.50.0 and 4.0.0.",
+    "vendor": "Budibase",
+    "product": "budibase"
+  },
+  "CVE-2026-129221": {
+    "cvss": 5.4,
+    "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. Prior to 3.10.4, nltk.classify.weka.ARFF_Formatter writes attacker-controlled class labels into the Weka ARFF @ATTRIBUTE '-label-' declaration without safely formatting the label tokens. Crafted labels can alter the generated ARFF schema or records, corrupting classifier input and causing integrity loss or processing failure. This issue is fixed in version 3.10.4.",
+    "vendor": "nltk",
+    "product": "nltk"
+  },
+  "CVE-2026-103026": {
+    "cvss": 8.1,
+    "description": "Paymenter is a free and open-source webshop solution for management of hosting services. Prior to 1.5.7, the HasConfirmation trait in app/Livewire/Traits/HasConfirmation.php, included by app/Livewire/Component.php across 36 client-facing Livewire components, exposed executeConfirmedAction as a public action that invoked any component method accepted by method_exists. The action could call inherited InteractsWithProperties::fill(), whose data_set() writes arbitrary public properties, including state marked with #[Locked] and dotted paths into hydrated Eloquent models. Depending on the methods and properties exposed by an individual component, an unauthenticated caller could use this path to bypass intended authorization and modify server-side state intended to be immutable or protected from client-side manipulation. This issue is fixed in version 1.5.7.",
+    "vendor": "Paymenter",
+    "product": "Paymenter"
+  },
+  "CVE-2026-128138": {
+    "cvss": 9.8,
+    "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. From 3.10.3 until 3.10.4, the NLTK 3.10.3 JVM hardening validates Java launcher tokens in the options channel but appends the caller-controlled cmd sequence without requiring its first token to be a main class. Supplying -jar or an @argfile through nltk.internals.java or StanfordSegmenter.java_class can therefore execute attacker-selected Java bytecode without the unsafe-JAR opt-in. This issue is fixed in version 3.10.4.",
+    "vendor": "nltk",
+    "product": "nltk"
   }
 }
