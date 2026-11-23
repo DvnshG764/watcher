@@ -154348,5 +154348,203 @@
     "description": "Lemmy, a link aggregator and forum for the fediverse, is vulnerable to server-side request forgery via a dependency on activitypub_federation, a framework for ActivityPub federation in Rust. Prior to version 0.19.16, the GET /api/v4/image/{filename} endpoint is vulnerable to unauthenticated SSRF through parameter injection in the file_type query parameter. An attacker can inject arbitrary query parameters into the internal request to pict-rs, including the proxy parameter which causes pict-rs to fetch arbitrary URLs. This issue has been patched in version 0.19.16.",
     "vendor": "LemmyNet",
     "product": "lemmy"
+  },
+  "CVE-2026-112115": {
+    "cvss": 8.5,
+    "description": "An untrusted search path in ASUS Armoury Crate allows a local, low-privileged user to achieve privilege escalation by executing a crafted library at a high integrity level, via user-controlled environment settings inherited by an elevated process. Refer to the ' Security Update for Armoury Crate App ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114205": {
+    "cvss": 9.4,
+    "description": "Incorrect authorization in ASUS Control Center Express allows a remote authenticated user with a low-privileged role to create an administrator account, resulting in administrative control of the management console and of the clients it manages. Refer to the ' Security Update for ASUS Control Center Express Agent ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119469": {
+    "cvss": 7.0,
+    "description": "Incorrect default permissions in the ASUS DisplayWidget Center allow a local, low-privileged user to achieve arbitrary code execution in the security context of another user via a crafted executable placed in that user-writable directory, which the application launches when the other user runs it and uses a particular feature.Refer to the ' Security Update for ASUS Display Widget Center ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88711": {
+    "cvss": 8.7,
+    "description": "Improper neutralization of special elements used in an OS command in certain ASUS Router firmware models allows an remote attacker to to execute arbitrary commands with root privileges by inducing a logged-in administrator to visit a malicious website. Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117634": {
+    "cvss": 5.3,
+    "description": "Pleasanter contains an incorrect authorization vulnerability in Publishing feature. If this vulnerability is exploited, a remote unauthenticated attacker who can access a site published using the product may obtain, by sending a specially crafted request, information on records of unpublished sites (e.g., titles), as well as the names of users, groups, and organizations registered in the same tenant. Note that the vulnerability only affects configurations where both of the following conditions are met: a site is published using the Publishing feature, and the published site contains link items (items linked to other sites, users, groups, or organizations).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121811": {
+    "cvss": 4.3,
+    "description": "Pleasanter contains an issue with improper limitation of a pathname to a restricted directory ('Path Traversal') in the API. If this vulnerability is exploited, an arbitrary file on the server where the product is running may be obtained by a remote authenticated attacker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125276": {
+    "cvss": 6.5,
+    "description": "Pleasanter contains an issue with insertion of sensitive information into sent data in the API. If the affected product receives a specially crafted API request sent by a remote authenticated attacker, the authentication credentials of other users, including administrators, such as API keys, may be obtained. As a result, the attacker may perform arbitrary operations on the affected product with the privileges associated with the obtained credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125411": {
+    "cvss": 4.3,
+    "description": "Pleasanter contains an incorrect authorization vulnerability in the access control of Items. If this vulnerability is exploited, a remote authenticated attacker who can view records in the affected product may obtain the values of Items for which read access is restricted by Column access control. Note that the vulnerability affects configurations where read access conditions are set in Column access control settings.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131872": {
+    "cvss": 5.5,
+    "description": "SOIL2 before 1.4.2 contains a NULL pointer dereference vulnerability in its DDS, PVR and PKM image loaders that write results through unchecked caller-supplied output pointers. Attackers can supply a valid DDS, PVR or PKM file to applications passing NULL output pointers to SOIL_load_image or stbi_info, causing a crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131876": {
+    "cvss": 6.5,
+    "description": "fqterm 0.9.9 before 0.9.11 contains an out-of-bounds memory access vulnerability in its SSH client that trusts unchecked server-supplied length fields for allocations, copies and read positions. Malicious servers or man-in-the-middle attackers can send crafted lengths in getString(), KEXINIT name-lists, key parsing or packet framing before host key verification to crash the client.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101113": {
+    "cvss": 7.2,
+    "description": "Multiple ELECOM wireless LAN routers contain an OS command injection vulnerability that may cause an arbitrary OS command to be executed by an attacker who can access the administrative interface of the affected product.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130644": {
+    "cvss": 8.1,
+    "description": "A path traversal flaw was found in ansible-core. When installing a collection with ansible-galaxy collection install, the install destination directory is derived from the namespace and name fields declared inside the collection artifact's own metadata, which are not validated as well-formed collection identifiers or checked for path containment. A malicious collection artifact -- delivered as a local file, a remote URL, a source directory, a git repository, or as a dependency -- can use a crafted name value to redirect the install destination outside the configured collections path, causing ansible-galaxy to delete an existing directory writable by the invoking user and then write attacker-controlled files to that location.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117657": {
+    "cvss": 3.1,
+    "description": "A Cleartext Transmission of Sensitive Information (CWE-319) vulnerability exists in the Android application \"Imperial Palaces Guide\" provided by The Imperial Household Agency. A man-in-the-middle attacker may be able to tamper with data transmitted between the application and the server, resulting in the display of modified content to users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118900": {
+    "cvss": 7.8,
+    "description": "An OS command injection vulnerability exists in the Android application \"Imperial Palaces Guide\" provided by The Imperial Household Agency. An attacker may be able to execute arbitrary OS commands with the privileges of the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104683": {
+    "cvss": 2.7,
+    "description": "The Envira Gallery WordPress plugin before 1.16.4 does not apply its own gallery-permission policy until an administrator first opens its permissions screen, instead copying gallery-management capabilities onto each role from that role's core post capabilities after activation, which lets Contributor accounts create, edit and delete galleries that the policy is meant to restrict to higher roles.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107099": {
+    "cvss": 5.3,
+    "description": "The Royal Addons for Elementor WordPress plugin before 1.7.1071 does not restrict or validate the post meta keys used when counting or rendering a filtered grid, and does not reject private (hidden) meta keys, allowing unauthenticated users to disclose the value of arbitrary private post meta one value at a time from the filtered result count. This is an incomplete fix of CVE-2026-17585, whose 1.7.1067 patch covered only a separate search-based path and left the grid filtering path affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107739": {
+    "cvss": 7.2,
+    "description": "The Search & Replace WordPress plugin before 3.2.4 does not correctly restrict which database tables an administrator of a single site may operate on in a multisite network, allowing subsite administrators to read and modify the tables of other sites and of the network, and to make themselves Super Admin.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107740": {
+    "cvss": 7.2,
+    "description": "The Search & Replace WordPress plugin before 3.2.4 does not restrict one of its database tools to network administrators on multisite installations, allowing administrators of a single subsite to run arbitrary SQL against the whole network's database and make themselves Super Admin.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117489": {
+    "cvss": 4.3,
+    "description": "The Flatsome WordPress theme before 3.20.13 does not perform a capability or nonce check on an AJAX action available to authenticated users, allowing users with a role as low as Subscriber to disclose the name and content of non-public templates stored on the site.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117491": {
+    "cvss": 4.9,
+    "description": "The Flatsome WordPress theme before 3.20.13 does not verify that the acting user is authorised to modify the target post when saving a template, allowing users with a role as low as Contributor to overwrite the content and type of an arbitrary post, including another user's published page, removing it from the front end.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117492": {
+    "cvss": 6.8,
+    "description": "The Flatsome WordPress theme before 3.20.13 does not sanitise post meta saved through an AJAX action, nor escape it when rendering the product page, allowing users with a role as low as Contributor (who lack the unfiltered_html capability) to store JavaScript that executes in the browser of anyone who views the product, including administrators.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124444": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.4.0 contains a mass assignment vulnerability in the patient portal OnsiteDocument query API that lets request parameters set bitwise criteria filters whose values are placed unquoted into the SQL WHERE clause. Authenticated patient portal users can inject SQL via parameters such as Id_BitwiseAnd to read any database table, including other patients' records and staff password hashes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124447": {
+    "cvss": 8.1,
+    "description": "OpenEMR before 8.3.0 contains an insecure direct object reference vulnerability in OnsitePortalActivityController::Update() that checks the request's patientId instead of the stored record's owner. Authenticated portal patients can send PUT requests to the onsiteportalactivity API with another patient's activity id and their own patientId to disclose tableArgs and checksum data, overwrite narratives and status, and take ownership of the record.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124448": {
+    "cvss": 7.6,
+    "description": "OpenEMR before 8.3.0 contains a stored cross-site scripting vulnerability in the CCDA/CCD preview stylesheets, where cda.xsl copies event-handler attributes whose values evade a character denylist and ccd.xsl copies table-cell attributes unsanitized into preview HTML. Authenticated users can upload a crafted CCDA/CCD document with onmouseover, onclick, or onfocus handlers to execute script in a clinician's session when previewed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124451": {
+    "cvss": 5.3,
+    "description": "OpenEMR before 8.4.0 contains an authorization bypass vulnerability in its SMART on FHIR implementation because checkUserHasAccessToPatient() in BearerTokenAuthorizationStrategy.php unconditionally returns true. Authenticated users or malicious SMART apps can manipulate token launch context to bind requests to arbitrary patient UUIDs, gaining unauthorized read/write access to other patients' FHIR resources.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124452": {
+    "cvss": 5.4,
+    "description": "OpenEMR before 8.3.0 contains a stored cross-site scripting vulnerability in interface/forms/eye_mag/report.php that allows authenticated users to inject scripts by adding unescaped document notes. Attackers with document-note write access can store malicious JavaScript in a retina document note that executes when clinicians generate the Eye Exam patient report, exposing session cookies.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124456": {
+    "cvss": 7.1,
+    "description": "OpenEMR before 8.3.0 contains missing authorization and insecure direct object reference vulnerabilities in the oe-module-prior-authorizations module that allow authenticated low-privilege users to access and modify other patients' records. Attackers can request public/reports/list_report.php to view all patients' names, MRNs, insurance and prior-auth data, or submit arbitrary id values to public/index.php to overwrite other patients' prior-authorization records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124457": {
+    "cvss": 7.6,
+    "description": "OpenEMR before 8.3.0 contains a path traversal vulnerability in interface/billing/sl_eob_process.php that allows authenticated users to write and read files by supplying unsanitized eraname values. Attackers without billing privileges can inject ../ sequences to create ERA report .html files anywhere the web user can write and parse arbitrary .edi files echoed into the report.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-124460": {
+    "cvss": 6.5,
+    "description": "OpenEMR before 8.3.0 contains an insecure direct object reference vulnerability in PortalPatientController::Read() that allows authenticated patients to read other patients' pending demographic change requests. Attackers can supply another patient's ID in the patientId query string parameter to retrieve PHI including names, addresses, SSNs, and insurance information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-46595": {
+    "cvss": 10.0,
+    "description": "Previously, CVE-2024-45337 fixed an authorization bypass for misused ssh server configurations; if any other type of callback is passed other than public key, then the source-address validation would be skipped.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-39821": {
+    "cvss": 9.6,
+    "description": "The ToASCII and ToUnicode functions incorrectly accept Punycode-encoded labels that decode to an ASCII-only label. For example, ToUnicode(\"xn--example-.com\") incorrectly returns the name \"example.com\" rather than an error. This behavior can lead to privilege escalation in programs using the idna package. For example, a program which performs privilege checks on the ASCII hostname may reject \"example.com\" but permit \"xn--example-.com\". If that program subsequently converts the ASCII hostname to Unicode, it will inadvertently permits access to the Unicode name \"example.com\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-27139": {
+    "cvss": 2.5,
+    "description": "On Unix platforms, when listing the contents of a directory using File.ReadDir or File.Readdir the returned FileInfo could reference a file outside of the Root in which the File was opened. The impact of this escape is limited to reading metadata provided by lstat from arbitrary locations on the filesystem without permitting reading or writing files outside the root.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-68119": {
+    "cvss": 7.0,
+    "description": "Downloading and building modules with malicious version strings can cause local code execution. On systems with Mercurial (hg) installed, downloading modules from non-standard sources (e.g., custom domains) can cause unexpected code execution due to how external VCS commands are constructed. This issue can also be triggered by providing a malicious version string to the toolchain. On systems with Git installed, downloading and building modules with malicious version strings can allow an attacker to write to arbitrary files on the filesystem. This can only be triggered by explicitly providing the malicious version strings to the toolchain and does not affect usage of @latest or bare module paths.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
