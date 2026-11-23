@@ -152788,5 +152788,59 @@
     "description": "Chamilo LMS is an open-source learning management system. Prior to 2.0.1, Chamilo LMS allows an unauthenticated remote attacker to execute arbitrary code on the server. The authoritative advisory does not identify the affected endpoint, component, input, or exploitation mechanism. This issue is fixed in version 2.0.1.",
     "vendor": "chamilo",
     "product": "chamilo-lms"
+  },
+  "CVE-2026-48201": {
+    "cvss": 7.1,
+    "description": "Unauthenticated Cross Site Scripting (XSS) in Fast Velocity Minify <= 3.5.7 versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111835": {
+    "cvss": 6.5,
+    "description": "Missing Authorization vulnerability in bjorntech BjornTech Swish for WooCommerce woo-swish-e-commerce allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects BjornTech Swish for WooCommerce: from n/a through 3.7.8.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110900": {
+    "cvss": 5.3,
+    "description": "Missing Authorization vulnerability in Liquid Web / StellarWP BookIt bookit allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects BookIt: from n/a through 2.6.0.5.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-104405": {
+    "cvss": 8.1,
+    "description": "Incorrect Privilege Assignment vulnerability in Liquid Web / StellarWP GiveWP give allows Privilege Escalation.This issue affects GiveWP: from n/a through 4.17.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-50035": {
+    "cvss": 6.5,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in CyrilG Fyrebox Quizzes allows Stored XSS. This issue affects Fyrebox Quizzes: from n/a through 3.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-25125": {
+    "cvss": 7.1,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in CyrilG Fyrebox Quizzes allows Stored XSS. This issue affects Fyrebox Quizzes: from n/a through 3.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77610": {
+    "cvss": 6.1,
+    "description": "Semantic MediaWiki is a free, open-source extension to MediaWiki that lets users store and query data within the wiki's pages. Prior to version 7.2.0, query debug output (`format=debug`, or the `debug` request parameter on `Special:Ask`) is assembled by `SMW\\Query\\DebugFormatter` and emitted as raw HTML. Several of its sinks apply no output-context encoding, so attacker-controlled query input is reflected into the page without escaping. On `Special:Ask` the resulting string is concatenated into the page and sent through `OutputPage::addHTML`, never through the MediaWiki parser or Sanitizer. No special user right is required; an anonymous request suffices. This is a reflected XSS: the payload is taken from the request and echoed in the same response. Exploitation requires the query condition to target a text/blob-typed property (whose value is re-serialized verbatim); the predefined `_txt` properties (`Text`, etc.) that ship on every install satisfy this, so no attacker-created content is needed. Version 7.2.0 patches the issue.",
+    "vendor": "SemanticMediaWiki",
+    "product": "SemanticMediaWiki"
+  },
+  "CVE-2026-81195": {
+    "cvss": 5.3,
+    "description": "The MasterStudy LMS WordPress Plugin WordPress plugin before 3.7.46 does not perform an authorization check before returning per-student course enrollment and progress data, allowing unauthenticated attackers to disclose the enrolled courses and learning progress of any registered user.",
+    "vendor": "Unknown",
+    "product": "MasterStudy LMS WordPress Plugin"
+  },
+  "CVE-2026-134624": {
+    "cvss": 9.3,
+    "description": "N-able MailAssure (SpamExperts) before 20261121.1943 does not restrict the destination of the LDAP synchronisation connection check performed when a relay is configured. An authenticated API user can cause the server to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to internal services.",
+    "vendor": "N-able",
+    "product": "MailAssure"
   }
 }
