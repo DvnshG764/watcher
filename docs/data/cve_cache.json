@@ -152842,5 +152842,245 @@
     "description": "N-able MailAssure (SpamExperts) before 20261121.1943 does not restrict the destination of the LDAP synchronisation connection check performed when a relay is configured. An authenticated API user can cause the server to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to internal services.",
     "vendor": "N-able",
     "product": "MailAssure"
+  },
+  "CVE-2026-87114": {
+    "cvss": 7.1,
+    "description": "A flaw was found in kube-compare. When processing a 'container://' reference path, the tool incorrectly executes an untrusted container image's entrypoint instead of merely extracting data from a stopped container. This allows a remote attacker to achieve arbitrary code execution on the operator's workstation. If the Docker daemon requires elevated privileges, the untrusted code may execute with root-mediated daemon privileges, posing a significant security risk.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-135055": {
+    "cvss": 8.0,
+    "description": "A flaw was found in the GLib DMA-BUF path of WebKitGTK. The UIProcess trusted fds.size() as the DMA-BUF plane count when handling AcceleratedBackingStore::DidCreateDMABufBuffer and copied offsets and strides without verifying that those vectors had the same length. A compromised WebProcess can send mismatched vector lengths, causing an out-of-bounds read in the privileged UIProcess. This can disclose UIProcess memory and crash the UIProcess, and may be used as part of a Web Content sandbox-escape chain.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 7"
+  },
+  "CVE-2026-134835": {
+    "cvss": 5.0,
+    "description": "Langfuse before 4.82.0 contains a server-side request forgery vulnerability that allows organization admins to target internal hosts by setting the GitHub Enterprise SSO baseUrl, which skips outbound-URL validation. Attackers can point baseUrl to loopback, RFC1918, or cloud metadata addresses so user sign-ins trigger server requests carrying stored OAuth client credentials.",
+    "vendor": "Langfuse",
+    "product": "Langfuse"
+  },
+  "CVE-2026-134839": {
+    "cvss": 4.3,
+    "description": "Linkwarden before 2.17.0 contains an incorrect authorization vulnerability in the archive upload handler that allows collection members with only add permission to modify other users' links. Attackers can send POST requests to /api/v1/archives/ to replace another user's stored screenshot, PDF, readable, or HTML archive with attacker-supplied content.",
+    "vendor": "Linkwarden",
+    "product": "Linkwarden"
+  },
+  "CVE-2026-134828": {
+    "cvss": 5.4,
+    "description": "Penpot 2.18.0 before 2.19.1 contains a stored cross-site scripting vulnerability in the sanitize-svg function that allows authenticated users to bypass filtering through unescaped re-serialization. Attackers with file edit permission can upload SVGs using entity-encoded or CDATA-wrapped markup or attribute quote breakouts to execute JavaScript in the Penpot origin when victims open them.",
+    "vendor": "Penpot",
+    "product": "Penpot"
+  },
+  "CVE-2026-134824": {
+    "cvss": 5.5,
+    "description": "Nektos act 0.2.92 before 0.2.98 contains a link following vulnerability that allows malicious repositories to read host files by setting --eventpath in an untrusted project .actrc to a symlink. Attackers can commit an event.json symlink pointing to files like ~/.ssh/id_rsa, which act copies into the job container as GITHUB_EVENT_PATH for workflow steps to exfiltrate.",
+    "vendor": "nektos",
+    "product": "act"
+  },
+  "CVE-2026-134820": {
+    "cvss": 4.8,
+    "description": "Gunicorn 25.2.0 before 27.0.0 contains an HTTP request smuggling vulnerability in the pure-Python ASGI parser that allows unauthenticated remote attackers to desynchronize request framing by sending malformed framing headers. Attackers can send whitespace-padded Transfer-Encoding or Content-Length headers, signed Content-Length values, or invalid chunk terminators to smuggle requests past front-end proxies to the ASGI application.",
+    "vendor": "Gunicorn",
+    "product": "Gunicorn"
+  },
+  "CVE-2026-125683": {
+    "cvss": 6.5,
+    "description": "A flaw was found in QEMU's NBD server. A remote attacker can crash qemu-nbd, qemu-storage-daemon, or qemu-system by sending NBD_OPT_SET_META_CONTEXT or NBD_OPT_LIST_META_CONTEXT with a declared option length exceeding the actual payload, triggering an assertion failure and denial of service.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 10"
+  },
+  "CVE-2026-134830": {
+    "cvss": 7.5,
+    "description": "Casdoor before 4.27.1 contains an uncontrolled resource consumption vulnerability in decodeSamlMessage that allows unauthenticated attackers to exhaust memory by sending unbounded DEFLATE-compressed SAML messages. Attackers can send a small, highly compressed SAMLRequest or SAMLResponse to the /api/saml/logout/:owner/:application endpoint, which inflates to gigabytes and crashes or stalls the server.",
+    "vendor": "Casdoor",
+    "product": "Casdoor"
+  },
+  "CVE-2026-134814": {
+    "cvss": 8.1,
+    "description": "binary-parser before 2.3.1 contains a code injection vulnerability that allows attackers controlling parser definitions to inject JavaScript through string-typed options passed unvalidated by Context.generateOption(). Attackers can supply crafted length, lengthInBytes, key, tag, offset, or namely() alias values to execute arbitrary JavaScript in the Node.js process when the parser is compiled.",
+    "vendor": "keichi",
+    "product": "binary-parser"
+  },
+  "CVE-2026-128137": {
+    "cvss": 5.5,
+    "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. From 3.9.4 until 3.10.4, NLTK corpus-reader path pointers and view methods validate a requested relative path without consistently resolving intermediate directory symlinks against the reader's scoped root. A local attacker who can place such a symlink can make abspaths or words reach a readable file outside the corpus root and disclose its contents. On releases with pathsec enforcement, the file must remain inside a global NLTK allowed root; version 3.9.4 has enforcement disabled and permits a broader escape. This issue is fixed in version 3.10.4.",
+    "vendor": "nltk",
+    "product": "nltk"
+  },
+  "CVE-2026-134935": {
+    "cvss": 7.0,
+    "description": "The dell-xps-touchpad-haptics package before 1.0.0-4 for Omarchy allows local users to change ownership of a root-owned file by making their own .config/omarchy/dell-haptic.conf file a symlink to that target file.",
+    "vendor": "Omarchy",
+    "product": "dell-xps-touchpad-haptics"
+  },
+  "CVE-2026-134804": {
+    "cvss": 8.8,
+    "description": "Portainer 2.39.0 before 2.39.9, 2.40.0 before 2.45.4, and 3.0.0 before 3.1.0 contains an authorization bypass vulnerability that allows Standard users to access other users' containers via the WebSocket attach and exec endpoints. Attackers with shared environment access can use leaked container or exec IDs to hijack sessions over /api/websocket/attach or /api/websocket/exec, gaining interactive root shells.",
+    "vendor": "Portainer",
+    "product": "Portainer"
+  },
+  "CVE-2026-134821": {
+    "cvss": 7.5,
+    "description": "Gunicorn 25.2.0 before 27.0.0 contains a memory exhaustion vulnerability in the pure-Python ASGI HTTP/1 parser that buffers protocol lines without size limits. Unauthenticated remote attackers can send request lines, headers, chunk-size lines or trailers lacking CRLF to grow worker memory and consume CPU, causing denial of service.",
+    "vendor": "Gunicorn",
+    "product": "Gunicorn"
+  },
+  "CVE-2026-134837": {
+    "cvss": 4.6,
+    "description": "Frappe before 15.126.0 and 16.x before 16.55.0 contains a prototype pollution vulnerability that allows Dashboard Manager users to pollute Object.prototype by storing __proto__ keys in Dashboard Chart custom_options. When any user, including administrators, views a dashboard rendering the chart, Object.assign merges attacker properties into Object.prototype, altering Frappe desk client behavior for that session.",
+    "vendor": "Frappe",
+    "product": "Frappe"
+  },
+  "CVE-2026-134817": {
+    "cvss": 7.1,
+    "description": "mcp-server-kubernetes before 4.2.0 contains an argument injection vulnerability that allows remote MCP clients to inject kubectl flags by supplying dash-prefixed values as positional operands in tools such as exec_in_pod, kubectl_patch, and kubectl_logs. Attackers connected over SSE or Streamable HTTP transport can supply values like --filename to make kubectl read files from the server host, bypassing file-read restrictions.",
+    "vendor": "Flux159",
+    "product": "mcp-server-kubernetes"
+  },
+  "CVE-2026-121480": {
+    "cvss": 5.3,
+    "description": "Insufficient authorization in personal notification rules in Checkmk <2.5.0p20, <2.4.0p41 and 2.3.0 (EOL) allows authenticated users to receive notifications for hosts and services they are not a contact of by defining broad personal notification rules.",
+    "vendor": "Checkmk GmbH",
+    "product": "Checkmk"
+  },
+  "CVE-2026-134827": {
+    "cvss": 7.7,
+    "description": "Lightdash before 3.212.0 contains an insufficiently protected credentials vulnerability in getGitlabInstallationRepoReadAccess that sends the organization GitLab app token to unverified hosts. Project developers can set the dbt connection host_domain to an attacker-controlled server and capture the token when the AI agent reads the repository, gaining access to every reachable repository.",
+    "vendor": "Lightdash",
+    "product": "Lightdash"
+  },
+  "CVE-2026-134832": {
+    "cvss": 3.3,
+    "description": "Vim 9.2.0405 before 9.2.1352 contains a security bypass vulnerability in expand_tag_fname() that allows attackers to evade 'tagsecure' URL checks by escaping URLs in tags file entries. Attackers can supply a crafted tags file in a cloned repository so that jumping to a tag makes netrw fetch an attacker-controlled URL leaking environment variable values.",
+    "vendor": "Vim",
+    "product": "Vim"
+  },
+  "CVE-2026-134836": {
+    "cvss": 8.1,
+    "description": "Dashy 4.0.0 before 4.9.12 contains a credential disclosure vulnerability in isLocalRequest that attaches user credentials to lookalike hosts due to prefix-only origin checks. Attackers can lure logged-in users to a crafted ?config= link pointing to a lookalike host, capturing bearer tokens or HTTP auth headers to read configuration and stored API keys, or modify them when the victim is an admin.",
+    "vendor": "Lissy93",
+    "product": "Dashy"
+  },
+  "CVE-2026-134829": {
+    "cvss": 6.8,
+    "description": "Umami 3.3.0 before 3.5.0 contains a race condition in two-factor authentication attempt limiting that allows attackers holding a user's password to bypass lockout. Attackers can send many concurrent POST requests to /api/2fa/verify that pass checkRateLimit before recordFailedAttempt runs, brute-forcing TOTP or backup codes beyond the five-attempt limit.",
+    "vendor": "Umami Software",
+    "product": "Umami"
+  },
+  "CVE-2026-134831": {
+    "cvss": 5.3,
+    "description": "Chatwoot before 4.20.0 contains an information disclosure vulnerability that allows unauthenticated attackers to read unpublished help center articles through the public portal API. Attackers can request archived articles by slug via the ArticlesController show actions or read draft translations exposed through associated_articles in article JSON responses.",
+    "vendor": "Chatwoot",
+    "product": "Chatwoot"
+  },
+  "CVE-2026-134808": {
+    "cvss": 7.5,
+    "description": "Gogs before 0.14.4 on Windows contains a path equivalence vulnerability in isRepositoryGitPath that allows authenticated users with write access to bypass .git directory protection using NTFS aliases. Attackers can create, rename or upload files via aliases like git~1 or .git::$INDEX_ALLOCATION to overwrite .git/config or hooks and execute commands as the Gogs process.",
+    "vendor": "Gogs",
+    "product": "Gogs"
+  },
+  "CVE-2026-134823": {
+    "cvss": 3.3,
+    "description": "Kitty 0.43.0 before 0.51.0 contains a terminal escape sequence injection vulnerability that allows attackers to emit escape sequences by crafting malicious file or archive member names. When a victim highlights such an entry in the choose-files kitten preview panel, unsanitized names are written raw, enabling OSC 52 clipboard overwrites, OSC 8 links, window title changes, or screen spoofing.",
+    "vendor": "kovidgoyal",
+    "product": "kitty"
+  },
+  "CVE-2026-115232": {
+    "cvss": 2.1,
+    "description": "In iceoryx2 versions from 0.6.0 to 0.10.0, The C API getters that copy a service's hash into a caller-provided buffer (e.g. iox2_port_factory_pub_sub_service_hash and its other messaging protocol counterparts) write one byte past the end of the caller's buffer when `buffer_len` is less or equal to 40. The out-of-bounds byte is the string's NUL terminator, written at `buffer[buffer_len]`. Resolution: Resolution The bugfix is released with iceoryx2 version 0.10.1 and on main branch (commit 7ca14dd). Please note that the language bindings for C/C++ and Python (including the iceoryx2-ffi-c crate) are not published to crates.io since they are a local development dependency.",
+    "vendor": "Eclipse Foundation",
+    "product": "Eclipse iceoryx"
+  },
+  "CVE-2026-134838": {
+    "cvss": 7.4,
+    "description": "Weblate before 2026.11 contains an account takeover vulnerability in the reset_password view that allows unauthenticated attackers to reset victim passwords by abusing case-insensitive Unicode e-mail matching. Attackers controlling a lookalike mailbox using a dotless i or other case-folding variant receive the victim's reset link, since it is sent to the typed address, and set a new password.",
+    "vendor": "Weblate",
+    "product": "Weblate"
+  },
+  "CVE-2026-128140": {
+    "cvss": 6.5,
+    "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. From 3.6.7 until 3.10.4, nltk.downloader follows collection membership without tracking already visited collection nodes. A self-referencing or mutually referencing collection index can therefore make the package-closure walk loop indefinitely while its queue and memory usage grow, denying service when a victim processes the attacker-influenced index. This issue is fixed in version 3.10.4.",
+    "vendor": "nltk",
+    "product": "nltk"
+  },
+  "CVE-2026-134732": {
+    "cvss": 5.4,
+    "description": "A flaw has been found in Open Asset Import Library Assimp up to 6.0.5. This affects the function ASEImporter::InternReadFile of the file code/AssetLib/ASE/ASELoader.cpp of the component ASE File Importer. This manipulation causes out-of-bounds write. The attack is possible to be carried out remotely. The exploit has been published and may be used. Upgrading to version 6.0.6 mitigates this issue. Patch name: 7ccc44a338dcdcc81023484388126ab1a8250e94. You should upgrade the affected component.",
+    "vendor": "Open Asset Import Library",
+    "product": "Assimp"
+  },
+  "CVE-2026-123886": {
+    "cvss": 8.8,
+    "description": "Spring Data Elasticsearch replaces positional placeholders in string-based @Query methods with the method arguments before it evaluates SpEL expressions in the resulting query string. As a result, an argument that contains a SpEL expression is evaluated as part of the query, even if the declared query does not use SpEL. An application is affected if it passes untrusted input as an argument to a repository query method that declares a @Query with positional placeholders. In that case, a remote attacker can execute arbitrary code in the application, and repeated requests can exhaust memory through the unbounded expression cache.",
+    "vendor": "Spring",
+    "product": "Spring Data Elasticsearch"
+  },
+  "CVE-2026-134815": {
+    "cvss": 8.1,
+    "description": "simple-git before 4.1.0 contains an argument injection vulnerability that allows attackers to bypass the allowUnsafePack guard by supplying the --exec option to non-push git operations. Attackers who influence arguments passed to listRemote() or raw() can inject --exec for ls-remote, archive, fetch-pack or send-pack to execute commands on the host.",
+    "vendor": "steveukx",
+    "product": "simple-git"
+  },
+  "CVE-2026-134802": {
+    "cvss": 6.8,
+    "description": "VoidAuth before 1.19.2 contains an access control bypass vulnerability that allows authenticated users to evade stricter ProxyAuth domain rules by sending percent-encoded path separators. Attackers can request paths with encoded slashes, backslashes, semicolons, or dot segments that match a broader rule, reaching restricted paths once the reverse proxy or backend decodes them.",
+    "vendor": "voidauth",
+    "product": "VoidAuth"
+  },
+  "CVE-2026-134840": {
+    "cvss": 4.3,
+    "description": "HumHub before 1.19.4 contains a missing authorization vulnerability in GroupController actionNewMemberSearch and actionAdminUserSearch, which skip the checkGroupAccess check. A manager of any single group can query admin-user-search and new-member-search with another group's id parameter to enumerate members, including administrators.",
+    "vendor": "HumHub",
+    "product": "HumHub"
+  },
+  "CVE-2026-134818": {
+    "cvss": 6.5,
+    "description": "oasdiff 1.24.0 before 1.34.1 fails to enforce --allow-external-refs=false when --open is used, because the recordingReader() capture reader in load/capture.go never applies the external-reference policy. Attackers supplying an untrusted OpenAPI spec can use external $ref values to read local files or trigger HTTP requests, with contents uploaded in the review bundle.",
+    "vendor": "oasdiff",
+    "product": "oasdiff"
+  },
+  "CVE-2026-126657": {
+    "cvss": 6.5,
+    "description": "A flaw was found in QEMU's NBD block driver. A malicious NBD server can send an incomplete structured read reply marked as done, causing QEMU to return uninitialized host heap memory to the guest VM, resulting in host memory disclosure.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 10"
+  },
+  "CVE-2026-134822": {
+    "cvss": 3.5,
+    "description": "Sustainsys.Saml2 before 1.0.4 and 2.x before 2.11.1 contains an improper signature verification vulnerability that allows attackers to tamper with signed parameters by exploiting mis-parsing in CheckSignature() of Saml2RedirectBinding.cs. Attackers can append data after an extra '=' in RelayState of an intercepted or replayed Redirect-binding message, causing applications to trust the tampered value.",
+    "vendor": "Sustainsys",
+    "product": "Sustainsys.Saml2"
+  },
+  "CVE-2026-134834": {
+    "cvss": 5.4,
+    "description": "Tandoor Recipes before 2.7.4 contains a path traversal vulnerability in Nextcloud.get_file that allows authenticated recipe editors to write and delete files by using unsanitized recipe names in temporary paths. Attackers can set a recipe name containing ../ segments via PATCH /api/recipe/ / and request /api/get_recipe_file/ / to overwrite and remove .pdf files outside the temporary directory.",
+    "vendor": "TandoorRecipes",
+    "product": "Tandoor Recipes"
+  },
+  "CVE-2026-134816": {
+    "cvss": 5.9,
+    "description": "sigstore-js @sigstore/oci before 0.8.0 contains a credential exposure vulnerability that leaks registry credentials by replaying OAuth2 password-grant request bodies on cross-origin 307 or 308 redirects. Attackers who can make a trusted token service redirect to their host via open redirect or compromise receive the username and password POSTed by RegistryClient.",
+    "vendor": "sigstore",
+    "product": "sigstore-js"
+  },
+  "CVE-2026-134833": {
+    "cvss": 5.3,
+    "description": "RSSHub before 2026.11.01-8521.e529e9b contains a domain validation bypass in the javdb routes that allows unauthenticated attackers to capture the operator's JAVDB_SESSION cookie. Attackers can pass an absolute javdb.com URL in the category parameter and set the domain query to a host they control, causing processItems to send the _jdb_session cookie there.",
+    "vendor": "DIYgod",
+    "product": "RSSHub"
+  },
+  "CVE-2026-134825": {
+    "cvss": 6.5,
+    "description": "Gradio 6.27.0 before 6.32.0 contains an authentication bypass vulnerability in gradio/history.py that allows remote unauthenticated attackers to use the operator's locally saved Hugging Face token by sending a forged Host: localhost header. When ssr_mode is enabled, requests proxied through the local Node SSR server pass the loopback check, letting attackers call run history endpoints to list buckets, read records and assets, and write buckets under the operator's account.",
+    "vendor": "Gradio",
+    "product": "Gradio"
+  },
+  "CVE-2026-134805": {
+    "cvss": 6.3,
+    "description": "Zipline before 4.8.3 contains a server-side request forgery vulnerability that allows authenticated OIDC users to make the server fetch arbitrary URLs via the userinfo picture claim. Attackers who control their picture claim at the identity provider can force fetchToDataURL() to request internal or cloud-metadata URLs and read responses from their stored avatar.",
+    "vendor": "diced",
+    "product": "Zipline"
   }
 }
