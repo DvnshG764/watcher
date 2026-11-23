@@ -94267,7 +94267,7 @@
   },
   "CVE-2026-95983": {
     "cvss": 7.8,
-    "description": "High 10 Nov 2026 10 Nov 2026 CPAI-2026-17417 Microsoft CVE-2026-95983 CVE-2026-95983 Microsoft Windows Graphics Kernel Elevation of Privilege (CVE-2026-95983)",
+    "description": "Untrusted pointer dereference in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
     "vendor": "Check Point",
     "product": "Windows 10 Version 1809"
   },
@@ -153806,6 +153806,228 @@
   "CVE-2024-30187": {
     "cvss": 5.3,
     "description": "Anope before 2.0.15 does not prevent resetting the password of a suspended account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107904": {
+    "cvss": 9.8,
+    "description": "Joomla Extension - valorapps.com - Unauthenticated Remote Code Execution in Easy File Uploader < 2.9.7 - An unauthenticated remote attacker can upload a PHP-executable file to the Joomla web root with a single multipart POST request, requiring no credentials and no CSRF token.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119621": {
+    "cvss": 7.7,
+    "description": "When importing a T3D or XML file in the Import/Export module, the file hash values of imported files were taken from the import data without validation and used to build the path of a temporary file. A crafted import file could therefore write files with arbitrary content to any location writable by the web server, for example a PHP file in the public web root, which leads to remote code execution. Exploiting this vulnerability requires an administrator backend user account, or a non-admin backend user for whom importing has been enabled via the user TSconfig option options.impexp.enableImportForNonAdminUser.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119622": {
+    "cvss": 7.1,
+    "description": "The backend endpoint for adding online media (e.g. YouTube or Vimeo videos) accepted a target folder in the fallback storage (storage uid 0), which points to the public web root of the installation. File mount and permission checks are not applied to the fallback storage. As a result, any authenticated, low-privileged backend user, even without file mounts or module access, could create online media files with a partially controllable file name in the public web root. In combination with TYPO3-CORE-SA-2026-027, this could be used to re-enable the installer on an already configured instance. The installer could then be used to create a new administrator and system maintainer account, which leads to remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119623": {
+    "cvss": 9.4,
+    "description": "The installer (first installation wizard) could be re-enabled on an already configured instance by placing a file whose name starts with FIRST_INSTALL in the public web root or the project root. The installer then became accessible without authentication, allowing for example to change the database connection and to create a new administrator and system maintainer account, which leads to remote code execution. As demonstrated in TYPO3-CORE-SA-2026-026, such a file could be created by an authenticated, low-privileged backend user without any further permissions. Other ways of creating files in the web root, as well as leftover or restored marker files, could be abused in the same way. With the fixed versions, the installer can no longer be re-enabled on an already configured instance by a marker file. A new internal setting $GLOBALS['TYPO3_CONF_VARS']['SYS']['isInstalling'] is stored in the system configuration and is only enabled while a new installation is running. Additionally, only the exact file names FIRST_INSTALL and FIRST_INSTALL.txt are accepted as marker files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125159": {
+    "cvss": 8.2,
+    "description": "ImageMagick and GraphicsMagick use small modules, called \"coders\", to read each image format. When processing images, TYPO3 determined the coder from the file type detected by the file contents, as long as the detected mime-type started with image/. A file containing MVG (Magick Vector Graphics) instructions, uploaded with an image file extension like .png, was therefore processed with the MVG coder. MVG instructions can read local files into the processed image, which allows disclosing the contents of arbitrary files readable by the web server, for example configuration files containing credentials, through a publicly accessible processed image. Exploiting this vulnerability requires a way to upload files without a mime-type check, for example a public form of the Form Framework using a FileUpload or ImageUpload element without configured allowedMimeTypes (see TYPO3-CORE-SA-2026-032), which allows exploitation by unauthenticated visitors. Additionally, ImageMagick must be used for image processing, and its default system configuration must allow the MVG coder.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125160": {
+    "cvss": 6.3,
+    "description": "Files uploaded through FileUpload or ImageUpload elements are stored in an unguessable sub-folder that remains the same for the whole form session. If storing an uploaded file failed, for example because of a file name exceeding the file system's length limit, the raw error message was shown to the frontend user disclosing the storage path including the unguessable folder name and the server's temporary upload directory. With this information, attackers could determine the public URL of files they upload through the form. If a form allows uploading files that browsers can execute, such as HTML documents, this could lead to Cross-Site Scripting on web servers that do not apply the Content-Security-Policy recommended by TYPO3 to the form upload target folder. This vulnerability is known to be actively exploited.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125161": {
+    "cvss": 5.3,
+    "description": "The fix for TYPO3-CORE-SA-2026-009 was incomplete. GeneralUtility::sanitizeLocalUrl performed its checks on the URL-decoded value, but returned the original, URL-encoded value. URLs containing certain percent-encoded characters therefore passed the sanitization checks as local URLs, although they point to an external host. Applications that use the sanitized URL for redirects are vulnerable to open redirect attacks. This enables attackers to redirect users to external content and carry out phishing attacks. In the TYPO3 core, this affects redirects in the backend, which require the victim to be logged in to the backend.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125162": {
+    "cvss": 8.2,
+    "description": "The cHash argument, which ensures that only URL arguments originally generated by TYPO3 create separate page cache entries, was treated inconsistently when it was passed as an array. The cHash validation treated such a value as missing, while the page cache identifier treated it as present and included all URL arguments. As a result, unauthenticated visitors could create an unlimited number of page cache entries and trigger uncached page renderings by adding an array cHash with arbitrary values to any URL. This could exhaust server resources and fill the page cache storage. Only installations where the cHash validation is not enforced via $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['enforceValidation'] are affected. This setting is enabled by default for new installations since TYPO3 v12, but is often still disabled in installations upgraded from older versions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125163": {
+    "cvss": 6.3,
+    "description": "The FileUpload and ImageUpload elements of the Form Framework use the property allowedMimeTypes as an allow list of MIME types accepted for upload. An empty allowedMimeTypes list was treated as \"no restriction\". Forms containing upload elements without any configured MIME type, for example in manually created form definitions or when all MIME types were deselected in the form editor, accepted any file except those blocked by the file deny pattern, which only covers PHP-related file extensions. This allowed unauthenticated users to upload files with browser-executable content, such as HTML or SVG documents, to the configured upload folder, which by default is located in a public storage. If attackers know the URL of an uploaded file (see TYPO3-CORE-SA-2026-029), this could lead to Cross-Site Scripting on web servers that do not apply the Content-Security-Policy recommended by TYPO3 to the form upload target folder.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125164": {
+    "cvss": 6.3,
+    "description": "The file dump controller (eID=dumpFile) delivers files, file references and processed files identified by their uid, protected by a token. The token only covered the uid value, but not the type of the requested resource. A valid token issued for a file could therefore be reused to request a file reference or a processed file with the same uid. As a result, unauthenticated visitors could download files, for example from non-public storages, for which no token had been issued.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125165": {
+    "cvss": 5.3,
+    "description": "The RSS widget of the dashboard allows backend users to configure the URL of the RSS feed in the widget settings. The URL was fetched by the server without restricting the target host. Backend users with access to the dashboard could therefore make the server send HTTP requests to arbitrary hosts, including internal network services and cloud metadata endpoints, which are not reachable from the outside.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77940": {
+    "cvss": 3.3,
+    "description": "A maliciously crafted DWG file containing an attacker-controlled network path, when parsed through Autodesk AutoCAD, can force an Information Disclosure vulnerability. A malicious actor can leverage this vulnerability to disclose NTLM authentication information from the current user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77941": {
+    "cvss": 3.3,
+    "description": "A maliciously crafted DWG or DXF file containing an external reference with an attacker-controlled network path, when parsed through Autodesk AutoCAD, can force an Information Disclosure vulnerability. A malicious actor can leverage this vulnerability to disclose NTLM authentication information from the current user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101327": {
+    "cvss": 7.8,
+    "description": "A maliciously crafted DLL placed in a predictable, attacker-writable temporary directory used by the Autodesk Installer can lead to privilege escalation to NT AUTHORITY\\SYSTEM due to insufficient validation of loaded libraries. An attacker with local and low-privilege access could exploit this vulnerability to execute arbitrary code as SYSTEM.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91094": {
+    "cvss": 5.5,
+    "description": "A directory traversal bug was discovered when unpacking 3.0 (quilt) source packages, where the packaging tarball could contain the quilt database directory (.pc) with attacker controlled symlinks, where that in combination with patches that would fail to apply, could be used to make the code used to restore the backup files to either modify or remove the files pointed to by the attacker controlled symlinks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95979": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Brokering File System allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96028": {
+    "cvss": 7.8,
+    "description": "Access of resource using incompatible type ('type confusion') in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96029": {
+    "cvss": 7.8,
+    "description": "Improper access control in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96058": {
+    "cvss": 4.6,
+    "description": "Out-of-bounds read in Windows Kernel allows an unauthorized attacker to disclose information with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96059": {
+    "cvss": 5.5,
+    "description": "Use after free in HID class driver allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96060": {
+    "cvss": 7.8,
+    "description": "Out-of-bounds read in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96061": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96062": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96064": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in DNS Server allows an authorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96066": {
+    "cvss": 7.8,
+    "description": "Stack-based buffer overflow in Windows Local Security Authority Subsystem Service (LSASS) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96067": {
+    "cvss": 9.8,
+    "description": "Integer overflow or wraparound in Microsoft Color Management allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96072": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Connected User Experiences and Telemetry allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96073": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96074": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows AppX Package Manager allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96078": {
+    "cvss": 9.8,
+    "description": "Heap-based buffer overflow in Microsoft Color Management allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96084": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Graphic Fonts allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96158": {
+    "cvss": 7.0,
+    "description": "Use of uninitialized resource in Microsoft ActiveX Installer Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96172": {
+    "cvss": 7.8,
+    "description": "No cwe for this issue in Desktop Window Manager allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96174": {
+    "cvss": 7.8,
+    "description": "Release of invalid pointer or reference in Desktop Window Manager allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125065": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains a NULL pointer dereference vulnerability in tgv_decode_inter() in libavcodec/eatgv.c that ignores init_get_bits() failure on oversized packets. Attackers can supply a crafted EA file with a kVGT frame followed by an fVGT inter frame with a 2^28-byte compressed block section, crashing the process for denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125066": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains a NULL pointer dereference vulnerability in the Cirrus Logic AccuPak (CLJR) decoder in libavcodec/cljrdec.c because decode_frame() ignores init_get_bits() failure. Attackers can supply a crafted AVI file with a 2^28-byte CLJR frame that overflows the bit count, causing reads from a NULL buffer and crashing the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93008": {
+    "cvss": 6.8,
+    "description": "A flaw was found in dnsmasq. When following a CNAME in a DNS response, the resolver can cache records for the CNAME target without checking that those records belong to the responding server's authorized zone. In split-DNS deployments that send some domains to a specific upstream, an attacker who controls that upstream can inject cache entries for unrelated names. Later clients may then receive attacker-chosen addresses for those names.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
