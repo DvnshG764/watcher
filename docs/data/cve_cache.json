@@ -154276,5 +154276,77 @@
     "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. Prior to 3.10.4, DependencyGraph.tree and DependencyGraph.triples walk parsed dependency edges through unbounded Python recursion and do not use a working cycle or depth guard. A crafted CoNLL or Malt-TAB dependency file containing a sufficiently long chain can raise RecursionError when the documented traversal APIs are called, aborting the current worker. This issue is fixed in version 3.10.4.",
     "vendor": "nltk",
     "product": "nltk"
+  },
+  "CVE-2026-105929": {
+    "cvss": 8.1,
+    "description": "A path traversal vulnerability (CWE-22) was found in ansible-core's ansible-galaxy role installation. An explicit role \"name\" taken from a role's meta/requirements.yml is used to construct the on-disk installation path without validating that the resulting destination stays within the selected roles directory. A name containing \"../\" escapes that directory, and an absolute name replaces it entirely. Because ansible-galaxy processes transitive dependencies from an installed role's meta/requirements.yml, a malicious role publisher can cause attacker-supplied files to be written outside the operator's chosen roles directory when the operator installs the role, and, when --force is used, can cause an existing role directory outside that path to be removed and replaced. The impact is bounded by the invoking user's filesystem permissions and requires the operator to install the attacker-influenced content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-57148": {
+    "cvss": 9.8,
+    "description": "PraisonAI is a multi-agent teams system. Prior to 0.1.6, praisonai_platform/services/auth_service.py falls back to the public dev-secret-change-me HS256 signing key when PLATFORM_JWT_SECRET is unset, while the startup and token-issuance guards are disabled because PLATFORM_ENV also defaults to dev. An unauthenticated attacker can sign a JWT containing an attacker-chosen sub value, and AuthService._verify_token() accepts it as an authenticated identity, enabling user or workspace-owner impersonation when a target identifier is known. This vulnerability is fixed in praisonai-platform 0.1.6.",
+    "vendor": "MervinPraison",
+    "product": "PraisonAI"
+  },
+  "CVE-2026-59309": {
+    "cvss": 9.8,
+    "description": "VMware vCenter contains an authentication bypass vulnerability in the VMware Directory Service. A malicious actor with network access to vCenter may exploit this issue to bypass authentication and gain unauthorized access to the system.",
+    "vendor": "VMware",
+    "product": "Cloud Foundation"
+  },
+  "CVE-2025-64179": {
+    "cvss": 5.3,
+    "description": "lakeFS is an open-source tool that transforms object storage into a Git-like repositories. In versions 1.69.0 and below, missing authentication in the /api/v1/usage-report/summary endpoint allows anyone to retrieve aggregate API usage counts. While no sensitive data is disclosed, the endpoint may reveal information about service activity or uptime. This issue is fixed in version 1.71.0 . To workaround the vulnerability, use a load-balancer or application level firewall in order to block the request route /api/v1/usage-report/summary.",
+    "vendor": "treeverse",
+    "product": "lakeFS"
+  },
+  "CVE-2026-100519": {
+    "cvss": 5.3,
+    "description": "Insertion of Sensitive Information Into Sent Data vulnerability in WP Swings PDF Generator for WordPress pdf-generator-for-wp allows Retrieve Embedded Sensitive Data.This issue affects PDF Generator for WordPress: from n/a through 1.6.5.",
+    "vendor": "WP Swings",
+    "product": "PDF Generator for WordPress"
+  },
+  "CVE-2026-41130": {
+    "cvss": 5.5,
+    "description": "Craft CMS is a content management system (CMS). In versions on the 4.x branch through 4.17.8 and the 5.x branch through 5.9.14, the `resource-js` endpoint in Craft CMS allows unauthenticated requests to proxy remote JavaScript resources. When `trustedHosts` is not explicitly restricted (default configuration), the application trusts the client-supplied Host header. This allows an attacker to control the derived `baseUrl`, which is used in prefix validation inside `actionResourceJs()`. By supplying a malicious Host header, the attacker can make the server issue arbitrary HTTP requests, leading to Server-Side Request Forgery (SSRF). Versions 4.17.9 and 5.9.15 patch the issue.",
+    "vendor": "craftcms",
+    "product": "cms"
+  },
+  "CVE-2026-131720": {
+    "cvss": 7.5,
+    "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Liquid Web / StellarWP BookIt bookit allows Retrieve Embedded Sensitive Data.This issue affects BookIt: from n/a through 2.6.0.8.",
+    "vendor": "Liquid Web / StellarWP",
+    "product": "BookIt"
+  },
+  "CVE-2026-29038": {
+    "cvss": 6.1,
+    "description": "changedetection.io is a free open source web page change detection tool. Prior to version 0.54.4, there is a reflected cross-site scripting (XSS) vulnerability identified in the /rss/tag/ endpoint of changedetection.io. The tag_uuid path parameter is reflected directly in the HTTP response body without HTML escaping. Since Flask returns text/html by default for plain string responses, the browser parses and executes injected JavaScript. This issue has been patched in version 0.54.4.",
+    "vendor": "dgtlmoon",
+    "product": "changedetection.io"
+  },
+  "CVE-2026-61740": {
+    "cvss": 9.3,
+    "description": "LightRAG provides simple and fast retrieval-augmented generation. Prior to 1.5.4, when LightRAG is deployed with LIGHTRAG_API_KEY set but AUTH_ACCOUNTS unset, X-API-Key protection can be bypassed because lightrag/api/auth.py falls back to a hardcoded DEFAULT_TOKEN_SECRET, /auth-status and /login can mint guest JWTs, and combined_dependency in lightrag/api/utils_api.py accepts a valid guest token before checking the API key. A remote unauthenticated attacker can call endpoints guarded by combined_auth, including document read, upload, deletion, graph mutation, and query endpoints. This vulnerability is fixed in 1.5.4.",
+    "vendor": "HKUDS",
+    "product": "LightRAG"
+  },
+  "CVE-2026-27948": {
+    "cvss": 5.4,
+    "description": "Copyparty is a portable file server. In versions prior to 1.20.9, an XSS allows for reflected cross-site scripting via URL-parameter `?setck=...`. Version 1.20.9 fixes the issue.",
+    "vendor": "9001",
+    "product": "copyparty"
+  },
+  "CVE-2026-77318": {
+    "cvss": 7.3,
+    "description": "Jupyter MCP Server is a Model Context Protocol server for Jupyter. Prior to 1.0.3, standalone streamable-http mode can enforce MCP_TOKEN on /mcp while leaving the state-changing /api/connect and /api/stop management routes unauthenticated. An unauthenticated network caller can use /api/connect to replace runtime_url and document_url values and their tokens, reset ServerContext, and start a kernel client against attacker-controlled infrastructure, causing the server to send Jupyter API and WebSocket traffic to that backend. The caller can also use /api/stop to stop the current notebook kernel. This boundary failure does not require explicit insecure no-auth mode and occurs outside normal MCP JSON-RPC tool dispatch. This issue is fixed in version 1.0.3.",
+    "vendor": "datalayer",
+    "product": "jupyter-mcp-server"
+  },
+  "CVE-2026-29178": {
+    "cvss": 7.7,
+    "description": "Lemmy, a link aggregator and forum for the fediverse, is vulnerable to server-side request forgery via a dependency on activitypub_federation, a framework for ActivityPub federation in Rust. Prior to version 0.19.16, the GET /api/v4/image/{filename} endpoint is vulnerable to unauthenticated SSRF through parameter injection in the file_type query parameter. An attacker can inject arbitrary query parameters into the internal request to pict-rs, including the proxy parameter which causes pict-rs to fetch arbitrary URLs. This issue has been patched in version 0.19.16.",
+    "vendor": "LemmyNet",
+    "product": "lemmy"
   }
 }
