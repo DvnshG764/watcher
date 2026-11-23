@@ -133604,8 +133604,8 @@
   "CVE-2026-58521": {
     "cvss": 9.8,
     "description": "Improper neutralization of special elements used in an SQL command ('SQL injection') vulnerability in The Wikimedia Foundation Mediawiki - Cargo Extension allows SQL Injection. This issue affects Mediawiki - Cargo Extension: from * before 1.43.9,1.44.6,1.45.4.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "Mediawiki - Cargo Extension"
   },
   "CVE-2026-14358": {
     "cvss": 6.1,
@@ -148448,8 +148448,8 @@
   "CVE-2026-69156": {
     "cvss": 8.1,
     "description": "Atomic Server is an open source headless CMS and real-time database. From 0.30.0 until 0.40.3, the Commit application path in lib/src/commit.rs allows an authenticated Agent to assign the server-managed internalId property to an owned resource without character validation. The /download handler in server/src/handlers/download.rs passes that value to filesystem path construction and NamedFile::open without sanitization, containment validation, or a File-class check, so traversal or absolute paths can read files available to the server process. Reading the server configuration can expose the root Agent private key and allow root impersonation with full read, write, and delete access to server data. This issue is fixed in version 0.40.3.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "atomic-server"
   },
   "CVE-2026-69157": {
     "cvss": 9.8,
@@ -148460,8 +148460,8 @@
   "CVE-2026-69158": {
     "cvss": 8.6,
     "description": "Atomic Server is an open source headless CMS and real-time database. Prior to 0.40.3, unauthenticated requests to /bookmark can supply a url that server/src/plugins/bookmark.rs passes through fetch_data to fetch_body. Endpoint dispatch in lib/src/db.rs invokes the handler before check_read, and lib/src/client/helpers.rs previously checked only that the URL began with HTTP, without restricting loopback, private, link-local, DNS-rebinding, or redirect targets. The handler reflects fetched content in returned resource fields, making this a full-response server-side request forgery that can expose internal services and plain-GET cloud metadata. The short request timeout limits slow targets, and metadata services requiring a separate token request are outside the demonstrated GET-only path. This issue is fixed in version 0.40.3.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "atomic-server"
   },
   "CVE-2026-71304": {
     "cvss": 8.8,
@@ -151652,8 +151652,8 @@
   "CVE-2026-61689": {
     "cvss": 8.8,
     "description": "XWiki Platform is a generic wiki platform. From 4.3-milestone-1 until 16.10.18, 17.10.5, and 18.2.0, the /rest/wikis/{wikiName}/query REST endpoint permits HQL query construction that can combine blind conditions with FROM-clause injection to join BaseObject and StringProperty, bypassing the SELECT-column whitelist. An unauthenticated attacker can recover database values from inaccessible pages, including salted SHA1 password hashes and passwords stored in configuration properties. It should be assumed that, with more complex techniques, this can work even when the attacker cannot read any wiki page. A typical password hash may require roughly 800 requests, and expensive injected queries can also degrade availability. The issue is remediated by disabling HQL and XWQL REST queries by default. This issue is fixed in versions 16.10.18, 17.10.5, and 18.2.0.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "xwiki-platform"
   },
   "CVE-2026-61713": {
     "cvss": 8.3,
@@ -151694,8 +151694,8 @@
   "CVE-2026-69188": {
     "cvss": 7.2,
     "description": "WeGIA is a web manager for charitable institutions. Prior to 3.9.1, a user with backup-management permission can upload a crafted gzip-compressed tar archive through web/html/configuracao/importar_dump.php, after which web/controle/control.php accepts a user-controlled modulo value and combines it with nomeClasse for require_once(). By using a phar:// path to the uploaded archive and selecting the whitelisted InternoControle, whose empty resource list is treated as authorized, the user can cause an embedded controller file and its requested method to execute as the web-server process. The attack path depends on the configured BKP_DIR, and enabling phar.readonly or phar.require_hash does not prevent PHP from reading the gzip tar archive through phar://. Successful exploitation permits access to or modification of sensitive data, configuration, credentials, source files, host commands, and services reachable by the web-server account. This issue is fixed in version 3.9.1.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "WeGIA"
   },
   "CVE-2026-83362": {
     "cvss": 8.8,
@@ -152072,7 +152072,7 @@
   "CVE-2026-63189": {
     "cvss": 9.8,
     "description": "Dialoqbase is an application for creating chatbots. Prior to 1.11.5, the unauthenticated GET /api/v1/view/* route in server/src/routes/api/v1/view/root.ts resolves its attacker-controlled wildcard path without normalization or containment, allowing traversal outside the intended uploads directory and arbitrary server file reads. Reading environment files can disclose DB_SECRET_KEY, the application’s JWT signing key, which permits forged administrator tokens and takeover of bots, conversations, integrations, and stored third-party credentials. This issue is fixed in version 1.11.5.",
-    "vendor": "n4ze3m",
+    "vendor": "Check Point",
     "product": "dialoqbase"
   },
   "CVE-2026-35413": {
@@ -152764,5 +152764,29 @@
     "description": "Deserialization of untrusted data in double-submit cookie vs. form field validation in Idunno.AntiCsrf versions through 0.9.1 Beta on ASP.NET allows remote unauthenticated attackers to execute code via object injection",
     "vendor": "Idunno",
     "product": "AntiCsrf"
+  },
+  "CVE-2025-32164": {
+    "cvss": 6.5,
+    "description": "Exposure of Sensitive System Information to an Unauthorized Control Sphere vulnerability in maennchen1.de m1.DownloadList allows Retrieve Embedded Sensitive Data. This issue affects m1.DownloadList: from n/a through 0.25.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-54673": {
+    "cvss": 8.2,
+    "description": "electron-updater allows for automatic updates for Electron apps. Prior to 9.7.0, the HTTP redirect handler (HttpExecutor.prepareRedirectUrlOptions) only stripped a credential header whose key string matched exactly lowercase \"authorization\", exposing credentials. Other credential-bearing headers — most notably PRIVATE-TOKEN (used by GitLab's personal access token flow) and mixed-case Authorization (used by GitLab's Bearer/OAuth flow) — were not stripped and could be forwarded to an attacker-controlled cross-origin redirect destination. This issue has been fixed in version 9.7.0.",
+    "vendor": "Check Point",
+    "product": "electron-builder"
+  },
+  "CVE-2024-47849": {
+    "cvss": 8.8,
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in The Wikimedia Foundation Mediawiki - Cargo allows SQL Injection.This issue affects Mediawiki - Cargo: from 3.6.X before 3.6.1.",
+    "vendor": "Check Point",
+    "product": "Mediawiki - Cargo"
+  },
+  "CVE-2026-45140": {
+    "cvss": 9.8,
+    "description": "Chamilo LMS is an open-source learning management system. Prior to 2.0.1, Chamilo LMS allows an unauthenticated remote attacker to execute arbitrary code on the server. The authoritative advisory does not identify the affected endpoint, component, input, or exploitation mechanism. This issue is fixed in version 2.0.1.",
+    "vendor": "chamilo",
+    "product": "chamilo-lms"
   }
 }
