@@ -88266,8 +88266,8 @@
     "product": "Unknown"
   },
   "CVE-2026-83844": {
-    "cvss": 8.1,
-    "description": "Out-of-bounds read in Windows Paint allows an unauthorized attacker to execute code over a network.",
+    "cvss": 7.0,
+    "description": "Out-of-bounds read in Windows Paint allows an unauthorized attacker to execute code locally.",
     "vendor": "Microsoft",
     "product": "Microsoft Paint"
   },
@@ -94243,7 +94243,7 @@
   },
   "CVE-2026-88230": {
     "cvss": 7.8,
-    "description": "High 10 Nov 2026 10 Nov 2026 CPAI-2026-17534 Microsoft CVE-2026-88230 CVE-2026-88230 Microsoft Windows LUA File Virtualization Filter Driver Elevation of Privilege (CVE-2026-88230)",
+    "description": "Heap-based buffer overflow in Windows LUAFV allows an authorized attacker to elevate privileges locally.",
     "vendor": "Check Point",
     "product": "Windows 10 Version 1607"
   },
@@ -142878,10 +142878,10 @@
     "product": "Authorizer"
   },
   "CVE-2026-129975": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 8.1,
+    "description": "A flaw was found in gpgme. When processing crafted input, an early return following memory reallocation can leave internal buffer pointers referencing previously freed memory, resulting in a double-free condition during cleanup. A remote attacker could exploit this vulnerability to corrupt process memory, potentially leading to arbitrary code execution or a Denial of Service (DoS) crash.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 10"
   },
   "CVE-2026-17591": {
     "cvss": 3.6,
@@ -144450,13 +144450,13 @@
     "product": "Unknown"
   },
   "CVE-2026-128130": {
-    "cvss": 8.3,
+    "cvss": 7.5,
     "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, when the pipelined request queue is full, the pure-Python parser stores the unparsed remainder internally and also returns the same data to its caller. After a handler declines an upgrade request, the caller feeds the remainder back to the parser, causing the buffer to grow with each handled request and dispatching already-handled requests to the application again. The issue affects deployments using AIOHTTP_NO_EXTENSIONS or otherwise running without the standard C-extension wheel, and can cause excessive memory use and repeated request processing. This issue is fixed in version 3.14.4.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-128132": {
-    "cvss": 8.7,
+    "cvss": 7.5,
     "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, the WebSocket reader continues parsing frames already received after the receive queue pauses the transport, and empty messages are not counted toward the queue size. With permessage-deflate, one read of compressed frames can add many megabytes of decompressed messages to the receive queue. A remote peer can send many small or compressed messages faster than the application consumes them and cause excessive memory use in a server or client. This issue is fixed in version 3.14.4.",
     "vendor": "Unknown",
     "product": "Unknown"
@@ -153398,6 +153398,102 @@
   "CVE-2026-1775": {
     "cvss": 9.1,
     "description": "The Labkotec LID-3300IP has an existing vulnerability in the ice detector software that enables an unauthenticated attacker to alter device parameters and run operational commands when specially crafted packets are sent to the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128129": {
+    "cvss": 7.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, aiohttp buffers all additional connection data received while a request marked for upgrade, such as a WebSocket handshake, is being handled, without a size limit or flow control. A remote attacker can stream data behind an upgrade request to a handler that does not immediately accept or reject the upgrade and cause unbounded memory consumption. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128131": {
+    "cvss": 7.5,
+    "description": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to 3.14.4, aiohttp decompresses each member of a payload containing many concatenated gzip, deflate, or zstd streams by passing the entire remaining input to a new decompressor, causing quadratic CPU use. Empty members produce no output, so client_max_size and output backpressure do not limit the work. A remote attacker can block a server event loop with a crafted compressed request body or WebSocket message, and a malicious server can similarly block a client. This issue is fixed in version 3.14.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88221": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Broadcast DVR User Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88222": {
+    "cvss": 8.8,
+    "description": "Heap-based buffer overflow in Microsoft WDAC OLE DB provider for SQL allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88231": {
+    "cvss": 5.7,
+    "description": "Out-of-bounds read in Windows iSCSI allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88232": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Camera Frame Server Monitor allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88233": {
+    "cvss": 7.8,
+    "description": "Improper authorization in Windows Task Scheduler allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88234": {
+    "cvss": 9.8,
+    "description": "Release of invalid pointer or reference in Windows iSCSI allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88235": {
+    "cvss": 7.8,
+    "description": "Unintended proxy or intermediary ('confused deputy') in Servicing Stack Updates allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88236": {
+    "cvss": 7.5,
+    "description": "Null pointer dereference in Microsoft QUIC allows an unauthorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88238": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Camera Frame Server Monitor allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88239": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Biometric Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96075": {
+    "cvss": 7.0,
+    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Feedback Hub allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96077": {
+    "cvss": 7.5,
+    "description": "Null pointer dereference in Windows TCP/IP allows an unauthorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70096": {
+    "cvss": 9.8,
+    "description": "Heap-based buffer overflow in Windows Rich Text Edit Control allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88132": {
+    "cvss": 5.9,
+    "description": "Origin validation error in Azure Key Vault allows an unauthorized attacker to disclose information over a network.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
