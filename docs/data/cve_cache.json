@@ -152014,5 +152014,71 @@
     "description": "NLTK (Natural Language Toolkit) is a suite of open source Python modules, data sets, and tutorials supporting research and development in Natural Language Processing. From 3.10.3 until 3.10.4, the NLTK 3.10.3 JVM hardening validates Java launcher tokens in the options channel but appends the caller-controlled cmd sequence without requiring its first token to be a main class. Supplying -jar or an @argfile through nltk.internals.java or StanfordSegmenter.java_class can therefore execute attacker-selected Java bytecode without the unsafe-JAR opt-in. This issue is fixed in version 3.10.4.",
     "vendor": "nltk",
     "product": "nltk"
+  },
+  "CVE-2025-39483": {
+    "cvss": 6.5,
+    "description": "Improper Control of Generation of Code ('Code Injection') vulnerability in imithemes Eventer eventer allows Code Injection.This issue affects Eventer: from n/a before 3.9.9.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130765": {
+    "cvss": 4.7,
+    "description": "Obot before 0.27.0 contains an open redirect vulnerability that allows unauthenticated attackers to bypass same-site validation of the rd parameter by inserting a tab character. Attackers can craft sign-in or sign-out links on the Obot domain that browsers resolve to external hosts, redirecting victims to phishing pages.",
+    "vendor": "obot-platform",
+    "product": "obot"
+  },
+  "CVE-2026-62252": {
+    "cvss": 9.8,
+    "description": "Homer is open source telecom observability software. Prior to version 11.0.283, on every fresh Homer deployment using internal authentication, the bootstrap process automatically creates an `admin` account with the password `sipcapture` (stored as a legacy SHA-256 hex hash). There is no first-login forced-change mechanism. Any attacker who reaches the login endpoint immediately gains full administrative access. Version 11.0.283 patches the issue.",
+    "vendor": "sipcapture",
+    "product": "homer"
+  },
+  "CVE-2026-57573": {
+    "cvss": 8.6,
+    "description": "Crawl4AI is an open-source LLM-friendly web crawler and scraper. Prior to 0.9.0, the Docker API server applied its SSRF destination check on the non-streaming /crawl path but not on the streaming path. handle_stream_crawl_request passed seed URLs straight to the crawler with no destination validation, allowing a remote unauthenticated client to call POST /crawl/stream or POST /crawl with crawler_config.stream=true with a URL pointing at an internal, private, or link-local address; the server fetched it and streamed the response body back. This issue is fixed in version 0.9.0.",
+    "vendor": "unclecode",
+    "product": "crawl4ai"
+  },
+  "CVE-2026-52881": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112947": {
+    "cvss": 6.3,
+    "description": "Vite is a frontend tooling framework for JavaScript. From 8.2.0 until 8.2.4 and 8.3.3, the first 4 bytes of files outside of server.fs setting can be returned to the browser by a request containing ?vite-wasm-instance. Requests containing the ?vite-wasm-instance query are handled by the internal Wasm plugin's load hook. The hook removes the query and reads the resulting path directly from disk, but the server.fs checks were not applied. After reading the file, Vite attempts to parse it as WebAssembly. When that parse fails, Node and deno throws an error that contains the first 4 bytes of the file. This vulnerability is fixed in 8.2.4 and 8.3.3.",
+    "vendor": "vitejs",
+    "product": "vite"
+  },
+  "CVE-2026-72788": {
+    "cvss": 5.8,
+    "description": "SiYuan versions before v3.7.4 contain an information disclosure vulnerability in the UILayout filter that fails to properly restrict administrator workspace state from publish readers. Unauthenticated attackers can retrieve the administrator's open documents, search terms, notebook paths, and private asset locations by calling the getConf endpoint without authentication.",
+    "vendor": "siyuan-note",
+    "product": "siyuan"
+  },
+  "CVE-2026-77608": {
+    "cvss": 6.1,
+    "description": "Semantic MediaWiki is a free, open-source extension to MediaWiki that lets users store and query data within the wiki's pages. Prior to version 7.2.0, when the `value` parameter was reflected back into rendered output and error messaging paths without enough output-context encoding. Version 7.2.0 fixes the issue.",
+    "vendor": "SemanticMediaWiki",
+    "product": "SemanticMediaWiki"
+  },
+  "CVE-2026-45627": {
+    "cvss": 8.2,
+    "description": "Arcane is an interface for managing Docker containers, images, networks, and volumes. Prior to 1.19.0, the unauthenticated GET /api/app-images/logo endpoint reflects a user-supplied color query parameter into the body of an SVG document via strings.ReplaceAll with no escaping. The substitution lands inside a",
+    "vendor": "getarcaneapp",
+    "product": "arcane"
+  },
+  "CVE-2026-63189": {
+    "cvss": 9.8,
+    "description": "Dialoqbase is an application for creating chatbots. Prior to 1.11.5, the unauthenticated GET /api/v1/view/* route in server/src/routes/api/v1/view/root.ts resolves its attacker-controlled wildcard path without normalization or containment, allowing traversal outside the intended uploads directory and arbitrary server file reads. Reading environment files can disclose DB_SECRET_KEY, the application’s JWT signing key, which permits forged administrator tokens and takeover of bots, conversations, integrations, and stored third-party credentials. This issue is fixed in version 1.11.5.",
+    "vendor": "n4ze3m",
+    "product": "dialoqbase"
+  },
+  "CVE-2026-35413": {
+    "cvss": 5.3,
+    "description": "Directus is a real-time API and App dashboard for managing SQL database content. Prior to 11.16.1, when GRAPHQL_INTROSPECTION=false is configured, Directus correctly blocks standard GraphQL introspection queries (__schema, __type). However, the server_specs_graphql resolver on the /graphql/system endpoint returns an equivalent SDL representation of the schema and was not subject to the same restriction. This allowed the introspection control to be bypassed, exposing schema structure (collection names, field names, types, and relationships) to unauthenticated users at the public permission level, and to authenticated users at their permitted permission level. This vulnerability is fixed in 11.16.1.",
+    "vendor": "directus",
+    "product": "directus"
   }
 }
