@@ -141937,9 +141937,9 @@
   },
   "CVE-2026-132165": {
     "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "description": "Drupal Core contains a not failing securely vulnerability that could allow an unauthenticated attacker to take over an existing site or execute arbitrary code via the Drupal installer. Under specific conditions, the attacker can use install.php to attempt to reinstall Drupal on the site.",
+    "vendor": "Drupal",
+    "product": "Core"
   },
   "CVE-2026-133430": {
     "cvss": 5.4,
@@ -152761,7 +152761,7 @@
   },
   "CVE-2026-131914": {
     "cvss": 9.3,
-    "description": "Deserialization of untrusted data in double-submit cookie vs. form field validation in Idunno.AntiCsrf versions through 0.9.1 Beta on ASP.NET allows remote unauthenticated attackers to execute code via object injection",
+    "description": "Idunno AntiCsrf contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via object injection. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version.",
     "vendor": "Idunno",
     "product": "AntiCsrf"
   },
@@ -156202,5 +156202,305 @@
     "description": "Parallels Desktop inittool2 Link Following Local Privilege Escalation Vulnerability. This vulnerability allows local attackers to escalate privileges on affected installations of Parallels Desktop. An attacker must first obtain the ability to execute low-privileged code on the target host system in order to exploit this vulnerability. The specific flaw exists within the inittool2 component. By creating a symbolic link, an attacker can abuse the component to take ownership of critical folders. An attacker can leverage this vulnerability to escalate privileges and execute arbitrary code in the context of root on the host system. Was ZDI-CAN-30268.",
     "vendor": "Parallels",
     "product": "Desktop"
+  },
+  "CVE-2026-19732": {
+    "cvss": 9.9,
+    "description": "An OS Command Injection vulnerability affecting Station Launcher App in 3DEXPERIENCE platform from Release 3DEXPERIENCE R2023x through Release 3DEXPERIENCE R2026x could allow an attacker to execute arbitrary commands on the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77033": {
+    "cvss": 9.9,
+    "description": "An OS Command Injection vulnerability affecting Station Launcher App in 3DEXPERIENCE platform from Release 3DEXPERIENCE R2023x through Release 3DEXPERIENCE R2026x could allow an attacker to execute arbitrary commands on the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93664": {
+    "cvss": 10.0,
+    "description": "A Deserialization of Untrusted Data vulnerability affecting Station Launcher App in 3DEXPERIENCE platform from Release 3DEXPERIENCE R2023x through Release 3DEXPERIENCE R2026x could lead to an unauthenticated remote code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112763": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Cloud Files Mini Filter Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95956": {
+    "cvss": 8.1,
+    "description": "Use after free in Windows eSCL Scanner allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95960": {
+    "cvss": 8.8,
+    "description": "Access of resource using incompatible type ('type confusion') in Windows Advanced Rasterization Platform allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95961": {
+    "cvss": 7.0,
+    "description": "Double free in Windows USB Video Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95962": {
+    "cvss": 9.0,
+    "description": "Use after free in Windows Virtual Filtering Platform (VFP) allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95963": {
+    "cvss": 7.8,
+    "description": "Improper link resolution before file access ('link following') in Data Sharing Service Client allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125069": {
+    "cvss": 4.7,
+    "description": "FFmpeg through 9.0.2 contains a NULL pointer dereference vulnerability in the Motion Pixels decoder because mp_decode_frame() ignores init_get_bits() failure. Attackers supplying a roughly 2^28-byte packet through the libavcodec API overflow the bit count, causing reads from a NULL buffer that crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125070": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains a NULL pointer dereference vulnerability in tqi_decode_frame() in libavcodec/eatqi.c, which ignores init_get_bits() failure after an integer overflow. Attackers can supply a crafted EA file with a pIQT chunk carrying a 2^28-byte payload to crash the process, causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125071": {
+    "cvss": 4.7,
+    "description": "FFmpeg through 9.0.2 contains a NULL pointer dereference vulnerability in libavcodec/jvdec.c that allows attackers to crash applications by supplying oversized JV video packets. Attackers can pass a roughly 268435460-byte packet through the libavcodec API, overflowing the bit count so decode_frame() reads from a NULL buffer and causes denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125072": {
+    "cvss": 4.7,
+    "description": "FFmpeg through 9.0.2 contains a NULL pointer dereference vulnerability in mp_decode_frame() in libavcodec/mpegaudiodec_template.c because init_get_bits() failure is ignored after a signed integer overflow. Attackers can pass an oversized packet to the mp3adu decoder through the libavcodec API, causing reads through a NULL buffer that crash the process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125073": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains an infinite loop vulnerability in bit_allocation() in libavcodec/imc.c that allows attackers to hang decoding by supplying audio blocks with a negative bit budget. Attackers can craft IMC or IAC audio files that drive freebits negative, causing the reduction loop to never terminate and consuming 100% CPU.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125095": {
+    "cvss": 3.3,
+    "description": "FFmpeg through 9.0.2 contains an uninitialized memory use vulnerability in the C93 video decoder in libavcodec/c93.c, where decode_frame() never checks how many color table bytes were copied. Attackers can supply a crafted truncated Interplay C93 file so draw_n_color() writes uninitialized stack bytes into decoded frames, disclosing stack memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125098": {
+    "cvss": 3.3,
+    "description": "FFmpeg through 9.0.2 contains an information disclosure vulnerability in vp8_lossy_decode_alpha() in libavcodec/webp.c that leaves alpha plane memory uninitialized for short uncompressed ALPH chunks. Attackers can supply a crafted WebP image whose ALPH chunk is shorter than width * height to disclose stale pixel data from previously decoded frames.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125099": {
+    "cvss": 3.3,
+    "description": "FFmpeg through 9.0.2 contains an uninitialized memory disclosure vulnerability in the GEM raster image decoder in libavcodec/gemdec.c that exposes uninitialized row-buffer bytes. Attackers can supply a crafted GEM .img image using SKIP or pattern opcodes to copy uninitialized heap memory into decoded frames, disclosing heap contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125102": {
+    "cvss": 3.3,
+    "description": "FFmpeg through 9.0.2 contains an uninitialized memory disclosure vulnerability in tak_decode_frame() in libavcodec/takdec.c that fails to verify multichannel decorrelation lists cover every channel. Attackers can supply crafted multichannel TAK files omitting channels from the list, causing undecoded sample buffers to leak heap memory through decoded audio.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101696": {
+    "cvss": 6.8,
+    "description": "Vulnerability in the Oracle Application Object Library product of Oracle E-Business Suite (component: Core). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Application Object Library. Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Application Object Library accessible data as well as unauthorized access to critical data or complete access to all Oracle Application Object Library accessible data. CVSS 3.1 Base Score 6.8 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101700": {
+    "cvss": 8.1,
+    "description": "Vulnerability in the Oracle Application Object Library product of Oracle E-Business Suite (component: Core). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Application Object Library. Successful attacks of this vulnerability can result in takeover of Oracle Application Object Library. CVSS 3.1 Base Score 8.1 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101701": {
+    "cvss": 6.0,
+    "description": "Vulnerability in the Oracle Concurrent Processing product of Oracle E-Business Suite (component: Request Submission and Scheduling). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows high privileged attacker with logon to the infrastructure where Oracle Concurrent Processing executes to compromise Oracle Concurrent Processing. While the vulnerability is in Oracle Concurrent Processing, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Concurrent Processing accessible data. CVSS 3.1 Base Score 6.0 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101703": {
+    "cvss": 7.5,
+    "description": "Vulnerability in the Pasta product of Oracle E-Business Suite (component: Internal Operations). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Pasta. Successful attacks of this vulnerability can result in takeover of Pasta. CVSS 3.1 Base Score 7.5 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112062": {
+    "cvss": 5.9,
+    "description": "lwIP 2.2.0 through 2.2.1, fixed in commit ab2f69c, contains a stack out-of-bounds write vulnerability in mdns_handle_response that allows adjacent attackers to corrupt stack memory by sending mDNS responses with invalid domain names. Attackers on the local link can send multicast PTR answers with oversized RDLENGTH or SRV answers with RDLENGTH below 6 during a service search, overflowing a 256-byte stack buffer and crashing the device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101947": {
+    "cvss": 8.4,
+    "description": "ExifTool for photo and video 5.0.1-gms by CellHubs constructs shell command strings from selected media file paths and invokes /system/bin/sh -c during CSV export. A filename containing an apostrophe can terminate the intended single-quoted shell argument and introduce shell syntax. An attacker who can place a crafted media file in storage accessible to the application can execute commands with the com.exiftool.free Android application UID when a user selects that file and exports CSV metadata.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53683": {
+    "cvss": 4.3,
+    "description": "reset_password.html parses query string parameters and uses the 'url' parameter as a redirection target (window.location = url) after password reset, optionally delayed by a 'delay' parameter. No validation or allowlisting is performed on url, enabling an attacker to redirect users to an arbitrary external site after completion of the password-reset workflow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53682": {
+    "cvss": 5.3,
+    "description": "An unauthenticated client can query the Security Domain hosts inventory via GET /ca/rest/securityDomain/hosts and receive a structured response enumerating internal PKI/CA hosts and roles (security domain topology and participating subsystems), without requiring a principal, client certificate, or session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-64611": {
+    "cvss": 7.5,
+    "description": "A flaw was found in libcupsfilters. The cfIEEE1284NormalizeMakeModel() function enters an infinite loop when processing a printer-advertised IEEE-1284 device ID with an empty model field, causing sustained CPU consumption. A network-adjacent attacker could exploit this by broadcasting a specially crafted printer advertisement, leading to denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-64612": {
+    "cvss": 7.5,
+    "description": "A flaw was found in libcupsfilters and cups-filters. The PNG image reading function creates a libpng reader without installing an error recovery handler, causing the CUPS image filter process to abort when processing a malformed PNG file. An unauthenticated attacker could exploit this by submitting a specially crafted PNG print job, leading to denial of service of the in-flight print job.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53703": {
+    "cvss": 7.1,
+    "description": "A vulnerability was found in the GStreamer RealMedia demuxer (gst-plugins-ugly). When processing a RealMedia (.rm) file, the demuxer parses MDPR (media properties) chunks to configure audio streams. For audio stream header versions 4 and 5, the parser reads fields such as codec type, packet size, sample rate, channel count, and extra codec data length from fixed offsets within the chunk without first checking that the chunk contains enough data. If a malicious file provides an MDPR chunk that is too small to contain a complete audio stream header, the parser reads beyond the end of the buffer. This can cause the application to crash. In some cases, bytes read past the buffer boundary may be incorporated into stream metadata, which could result in limited information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53704": {
+    "cvss": 7.1,
+    "description": "A flaw was found in GStreamer's RealMedia demuxer in the gst-plugins-ugly package. When processing a RealMedia file containing a specially crafted FILEINFO metadata section, the demuxer parses variable-name and variable-value pairs using re_skip_pascal_string() without validating that offsets remain within the mapped buffer. Additionally, the element count controlling the parsing loop is read from attacker-controlled data without validation, which can cause an infinite loop. A crafted RealMedia file can cause the application to crash, hang, or potentially read limited adjacent memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53701": {
+    "cvss": 6.5,
+    "description": "An out-of-bounds write vulnerability was found in GStreamer's H.266/VVC PPS picture partition parser in gst-plugins-bad. In the multi-slice-in-tile processing of gst_h266_parser_parse_picture_partition() (gsth266parser.c), the loop iterates without checking that the slice index stays within bounds, writing past three fixed-size arrays (slice_height_in_ctus, slice_top_left_ctu_x, slice_top_left_ctu_y) in the GstH266PPS structure. While the initial proof-of-concept demonstrated a 4-byte out-of-bounds write, the code permits larger writes across multiple iterations. A crafted H.266/VVC media file can trigger this vulnerability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-53702": {
+    "cvss": 6.5,
+    "description": "A stack buffer overflow flaw was found in the GStreamer H.265 codec parser library (gst-plugins-bad). When parsing a buffering period SEI message, the parser uses an incorrect loop bound derived from cpb_cnt_minus1[i] (the loop index) instead of the sub-layer 0 CPB count cpb_cnt_minus1[0] from the referenced Sequence Parameter Set. A crafted H.265 video file or stream can cause the parser to write beyond the bounds of stack-allocated CPB delay arrays, resulting in a crash or potential stack memory corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-2092": {
+    "cvss": 7.7,
+    "description": "A flaw was found in Keycloak. Keycloak's Security Assertion Markup Language (SAML) broker endpoint does not properly validate encrypted assertions when the overall SAML response is not signed. An attacker with a valid signed SAML assertion can exploit this by crafting a malicious SAML response. This allows the attacker to inject an encrypted assertion for an arbitrary principal, leading to unauthorized access and potential information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-2603": {
+    "cvss": 8.1,
+    "description": "A flaw was found in Keycloak. A remote attacker could bypass security controls by sending a valid SAML response from an external Identity Provider (IdP) to the Keycloak SAML endpoint for IdP-initiated broker logins. This allows the attacker to complete broker logins even when the SAML Identity Provider is disabled, leading to unauthorized authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-41376": {
+    "cvss": 7.5,
+    "description": "Nokia Service Router Operating System (SR OS) 22.10 and SR Linux, when error-handling update-fault-tolerance is not enabled, mishandle BGP path attributes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132224": {
+    "cvss": 7.1,
+    "description": "Optimizely Web Experimentation contains an external control of critical state data vulnerability in its account signup flow that could allow an attacker to impersonate existing customer users and modify Project JavaScript. Successful exploitation can result in attacker-controlled JavaScript being distributed through Optimizely-hosted assets and executed in browsers visiting affected customer websites.",
+    "vendor": "Optimizely",
+    "product": "Web Experimentation"
+  },
+  "CVE-2026-136442": {
+    "cvss": 6.5,
+    "description": "BusyBox ftpd Directory Traversal Arbitrary File Read and Write Vulnerability. This vulnerability allows remote attackers to create or delete arbitrary files or disclose sensitive information on affected installations of BusyBox. Authentication is not required to exploit this vulnerability. The specific flaw exists within the ftpd service, which listens on TCP port 21 by default. The issue results from the lack of proper validation of a user-supplied path prior to using it in file operations. An attacker can leverage this vulnerability to create or delete files or disclose information in the context of the service account. Was ZDI-CAN-27555.",
+    "vendor": "BusyBox",
+    "product": "BusyBox"
+  },
+  "CVE-2026-61580": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-136441": {
+    "cvss": 9.8,
+    "description": "Bytebase DBHub MCP Incorrect Authorization Authentication Bypass Vulnerability. This vulnerability allows remote attackers to bypass authentication on affected installations of Bytebase DBHub. Authentication is not required to exploit this vulnerability. The specific flaw exists within the implementation of the MCP server. The issue results from an incorrect authorization decision when parsing untrusted SQL. An attacker can leverage this vulnerability to bypass authentication on the system. Was ZDI-CAN-27635.",
+    "vendor": "Bytebase",
+    "product": "DBHub"
+  },
+  "CVE-2026-136440": {
+    "cvss": 7.3,
+    "description": "Python Packaging Authority pip Configuration File Incorrect Permission Assignment Local Privilege Escalation Vulnerability. This vulnerability allows local attackers to escalate privileges on affected installations of Python Packaging Authority pip. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. User interaction on the part of a target user is also required. The specific flaw exists within the way configuration files are stored. The issue results from incorrect permissions on files. An attacker can leverage this vulnerability to escalate privileges and execute arbitrary code in the context of a target user. Was ZDI-CAN-25377.",
+    "vendor": "Python Packaging Authority",
+    "product": "pip"
+  },
+  "CVE-2026-136439": {
+    "cvss": 7.8,
+    "description": "DeepSpeed _get_zero_stage Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of checkpoint data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-29242.",
+    "vendor": "DeepSpeed",
+    "product": "DeepSpeed"
+  },
+  "CVE-2026-136438": {
+    "cvss": 7.8,
+    "description": "DeepSpeed build_engine_from_ds_checkpoint Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of model configuration data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-29241.",
+    "vendor": "DeepSpeed",
+    "product": "DeepSpeed"
+  },
+  "CVE-2026-136437": {
+    "cvss": 7.8,
+    "description": "DeepSpeed parse_optim_states Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of checkpoint data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-29243.",
+    "vendor": "DeepSpeed",
+    "product": "DeepSpeed"
+  },
+  "CVE-2026-136436": {
+    "cvss": 7.8,
+    "description": "DeepSpeed torch_checkpoint_engine Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of checkpoint data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-29214.",
+    "vendor": "DeepSpeed",
+    "product": "DeepSpeed"
+  },
+  "CVE-2026-136435": {
+    "cvss": 7.8,
+    "description": "DeepSpeed InferenceEngine Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of checkpoint data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28091.",
+    "vendor": "DeepSpeed",
+    "product": "DeepSpeed"
+  },
+  "CVE-2026-136434": {
+    "cvss": 9.8,
+    "description": "Super Magic PHPSandbox Command Injection Sandbox Escape Vulnerability. This vulnerability allows remote attackers to bypass the sandbox on affected installations of Super Magic. Authentication is not required to exploit this vulnerability. The specific flaw exists within the PHPSandbox endpoint. The issue results from the lack of proper validation of a user-supplied string before using it to execute PHP code. An attacker can leverage this vulnerability to escape the sandbox and execute arbitrary code in the context of the service account. Was ZDI-CAN-28102.",
+    "vendor": "Super Magic",
+    "product": "Super Magic"
+  },
+  "CVE-2026-136433": {
+    "cvss": 7.8,
+    "description": "PyTorch Foundation PyTorch torch_save_to_dcp Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of PyTorch Foundation PyTorch. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the checkpoint format conversion utilities. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current user. Was ZDI-CAN-32834.",
+    "vendor": "PyTorch Foundation",
+    "product": "PyTorch"
+  },
+  "CVE-2026-136431": {
+    "cvss": 7.8,
+    "description": "PyTorch Foundation PyTorch load_state_dict_from_url Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of PyTorch Foundation PyTorch. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the load_state_dict_from_url function. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-32601.",
+    "vendor": "PyTorch Foundation",
+    "product": "PyTorch"
+  },
+  "CVE-2026-136430": {
+    "cvss": 7.8,
+    "description": "PyTorch Foundation PyTorch AOTIModelPackageLoader Directory Traversal Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of PyTorch Foundation PyTorch. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the AOTInductor model package loader. The issue results from the lack of proper validation of a user-supplied path prior to using it in file operations. An attacker can leverage this vulnerability to execute code in the context of the current user. Was ZDI-CAN-33055.",
+    "vendor": "PyTorch Foundation",
+    "product": "PyTorch"
+  },
+  "CVE-2026-136428": {
+    "cvss": 7.8,
+    "description": "PyTorch Foundation PyTorch load_compiled_function Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of PyTorch Foundation PyTorch. User interaction is required to exploit this vulnerability in that the target must open a malicious file. The specific flaw exists within the load_compiled_function function. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-32603.",
+    "vendor": "PyTorch Foundation",
+    "product": "PyTorch"
   }
 }
