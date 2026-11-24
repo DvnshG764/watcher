@@ -154189,7 +154189,7 @@
   },
   "CVE-2026-121758": {
     "cvss": 5.9,
-    "description": "Converting crafted ISO-2022-CN-EXT input to UTF-8 character encoding, in the GNU C Library version 2.2 through 2.44 may result in the converter reading past the end of the input buffer, causing the calling application to crash. When the ISO-2022-CN-EXT decoder encounters an invalid input byte sequence like '\\x0e' it ends up advancing the pointer tracking the read buffer position twice. If this sequence is at the end of the input buffer, the decoder may then end up reading past the bounds of the input buffer. To exploit this, the input and encoding needs to be attacker controlled.",
+    "description": "Converting crafted ISO-2022-CN-EXT input in the GNU C Library version 2.2 through 2.44 may result in the converter reading past the end of the input buffer, causing the calling application to crash. When the ISO-2022-CN-EXT decoder encounters an invalid input byte sequence like '\\x0e' it ends up advancing the pointer tracking the read buffer position twice. If this sequence is at the end of the input buffer, the decoder may then end up reading past the bounds of the input buffer. To exploit this, the input and encoding needs to be attacker controlled.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -154207,13 +154207,13 @@
   },
   "CVE-2026-130020": {
     "cvss": 8.8,
-    "description": "Privilege escalation due to incorrect boundary conditions in the Graphics: CanvasWebGL component on Android. This vulnerability was fixed in Firefox 160.0.1.",
+    "description": "Privilege escalation due to incorrect boundary conditions in the Graphics: CanvasWebGL component on Android. This vulnerability was fixed in Firefox 160.0.1 and Thunderbird 161.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-130021": {
     "cvss": 8.8,
-    "description": "Use-after-free in the Audio/Video: Playback component. This vulnerability was fixed in Firefox 160.0.1.",
+    "description": "Use-after-free in the Audio/Video: Playback component. This vulnerability was fixed in Firefox 160.0.1 and Thunderbird 161.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -156446,31 +156446,31 @@
   "CVE-2026-136439": {
     "cvss": 7.8,
     "description": "DeepSpeed _get_zero_stage Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of checkpoint data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-29242.",
-    "vendor": "DeepSpeed",
+    "vendor": "Check Point",
     "product": "DeepSpeed"
   },
   "CVE-2026-136438": {
     "cvss": 7.8,
     "description": "DeepSpeed build_engine_from_ds_checkpoint Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of model configuration data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-29241.",
-    "vendor": "DeepSpeed",
+    "vendor": "Check Point",
     "product": "DeepSpeed"
   },
   "CVE-2026-136437": {
     "cvss": 7.8,
     "description": "DeepSpeed parse_optim_states Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of checkpoint data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-29243.",
-    "vendor": "DeepSpeed",
+    "vendor": "Check Point",
     "product": "DeepSpeed"
   },
   "CVE-2026-136436": {
     "cvss": 7.8,
     "description": "DeepSpeed torch_checkpoint_engine Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of checkpoint data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-29214.",
-    "vendor": "DeepSpeed",
+    "vendor": "Check Point",
     "product": "DeepSpeed"
   },
   "CVE-2026-136435": {
     "cvss": 7.8,
     "description": "DeepSpeed InferenceEngine Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of DeepSpeed. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of checkpoint data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28091.",
-    "vendor": "DeepSpeed",
+    "vendor": "Check Point",
     "product": "DeepSpeed"
   },
   "CVE-2026-136434": {
@@ -156482,7 +156482,7 @@
   "CVE-2026-136433": {
     "cvss": 7.8,
     "description": "PyTorch Foundation PyTorch torch_save_to_dcp Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of PyTorch Foundation PyTorch. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the checkpoint format conversion utilities. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current user. Was ZDI-CAN-32834.",
-    "vendor": "PyTorch Foundation",
+    "vendor": "Check Point",
     "product": "PyTorch"
   },
   "CVE-2026-136431": {
@@ -156502,5 +156502,161 @@
     "description": "PyTorch Foundation PyTorch load_compiled_function Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of PyTorch Foundation PyTorch. User interaction is required to exploit this vulnerability in that the target must open a malicious file. The specific flaw exists within the load_compiled_function function. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-32603.",
     "vendor": "PyTorch Foundation",
     "product": "PyTorch"
+  },
+  "CVE-2026-112117": {
+    "cvss": 7.3,
+    "description": "A Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') in ASUS System Control Interface , allows a local, low-privileged user to gain full control over arbitrary existing files and folders outside the allowed directories via a crafted path containing dot-segment sequences that satisfies a folder prefix check, which can lead to unauthorized read and modification of protected files and may result in local privilege escalation. Refer to the ' Security Update for ASUS System Control Interface ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-114204": {
+    "cvss": 9.0,
+    "description": "Use of Hard-coded Cryptographic Key in ASUS Control Center Express allows a remote user to bypass authentication by forging a session token for an account with a recent valid login, resulting in administrative control of the management console and of the clients it manages. Refer to the ' Security Update for ASUS Control Center Express Agent ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126574": {
+    "cvss": 9.4,
+    "description": "Missing authorization vulnerability in ASUS Control Center Datacenter and Control Center Enterprise allows remote authenticated users with a low-privileged Viewer role to change the password of an Administrator account, thereby obtaining administrative privileges, via a crafted password update request. Refer to the ' Security Update for ASUS Control Center ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19399": {
+    "cvss": 6.1,
+    "description": "Improper Authentication and Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') in ASUS Router firmware allow an unauthenticated nearby user to perform file operations or read files in an unintended directory via crafted HTTP requests during an active user session. Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88760": {
+    "cvss": 5.3,
+    "description": "Missing Authentication for Critical Function in certain ASUS Router firmware allows unauthenticated nearby users to obtain router information and resources (e.g., multimedia files) via HTTP requests. Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129271": {
+    "cvss": 8.5,
+    "description": "The Patch Management Engine in N-central is vulnerable to LPE via attacker controlled metadata",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96053": {
+    "cvss": 7.8,
+    "description": "Improper neutralization of special elements used in a command ('command injection') in Windows Task Scheduler allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112602": {
+    "cvss": 3.3,
+    "description": "An authorization issue was addressed with improved state management. This issue is fixed in Xcode 27.2. An app may be able to access sensitive user data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112605": {
+    "cvss": 3.3,
+    "description": "This issue was addressed with improved handling of symlinks. This issue is fixed in Xcode 27.2. An app may be able to read arbitrary files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-102925": {
+    "cvss": 7.8,
+    "description": "virtualenv is a tool for creating isolated virtual python environments. Prior to 21.7.13, the generated activate (bash and zsh) and activate.fish scripts place values already escaped by shlex.quote inside an additional quoted context. In the bash and zsh script, a crafted virtual environment path reaches __VIRTUAL_ENV__ when a relocated environment's recorded directory is absent; in the fish script, crafted Tcl or Tk library paths reach __TCL_LIBRARY__ or __TK_LIBRARY__. The surplus quotes can terminate the data-only quoted run and leave shell metacharacters parsed as commands when a user sources the activation script, allowing code execution with that user's privileges. This issue is fixed in version 21.7.13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93769": {
+    "cvss": 7.2,
+    "description": "HumHub 1.18.5 is affected by a stored cross-site scripting (XSS) vulnerability that allows any user holding the delegated, non-system-administrator Manage Users permission (admin_manage_users) to inject persistent HTML/JavaScript into a Profile Field Category title.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73371": {
+    "cvss": 4.3,
+    "description": "Joomla! Core - [20260808] - Improper ACL checks for batch copy actions in Joomla 4.0.0-5.4.7, 6.0.0-6.2.0 - An improper access check allows unauthorized users to perform copy batch operations on uneditable items.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-2297": {
+    "cvss": 5.5,
+    "description": "The import hook in CPython that handles legacy *.pyc files (SourcelessFileLoader) is incorrectly handled in FileLoader (a base class) and so does not use io.open_code() to read the .pyc files. sys.audit handlers for this audit event therefore do not fire.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-13499": {
+    "cvss": 5.5,
+    "description": "Kafka dissector crash in Wireshark 4.6.0 and 4.4.0 to 4.4.10 allows denial of service",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-52735": {
+    "cvss": 9.1,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: bpf, sockmap: Don't let sock_map_{close,destroy,unhash} call itself sock_map proto callbacks should never call themselves by design. Protect against bugs like [1] and break out of the recursive loop to avoid a stack overflow in favor of a resource leak. [1] https://lore.kernel.org/all/00000000000073b14905ef2e7401@google.com/",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2020-22283": {
+    "cvss": 7.5,
+    "description": "A buffer overflow vulnerability in the icmp6_send_response_with_addrs_and_netif() function of Free Software Foundation lwIP version git head allows attackers to access sensitive information via a crafted ICMPv6 packet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131827": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131837": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131836": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131835": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131834": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131833": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131832": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131831": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131830": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131828": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
