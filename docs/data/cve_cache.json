@@ -155350,5 +155350,131 @@
     "description": "A heap-based buffer overflow was found in GIMP’s Hot color filter plug-in. For very large images, a pixel buffer is allocated using overflowing 32-bit width * height (and related) arithmetic while the filter’s pixel access path uses the true image size, after integer overflow in the allocation size",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-121601": {
+    "cvss": 6.1,
+    "description": "A flaw was found in GStreamer's MXF demuxer plugin (gst-plugins-bad). When processing a specially crafted MXF media file, the demuxer indexes its internal delta-entry and slice-offset tables using values from the file without validating that they are within the bounds of the allocated arrays. A local attacker who tricks a user into opening a malicious MXF file can cause the application to crash (denial of service) and may be able to read limited amounts of heap memory adjacent to the affected arrays.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121611": {
+    "cvss": 6.5,
+    "description": "A flaw was found in GStreamer's gst-plugins-bad package. A use of uninitialized memory vulnerability exists in the H.265 (HEVC) bitstream parser when processing Video Parameter Sets that declare more than one HRD (Hypothetical Reference Decoder) parameter set. A remote attacker could exploit this by providing a crafted H.265 media file or stream that, when processed by an application using GStreamer, causes unpredictable parser behavior and may crash the application. This can lead to a denial of service for any application using GStreamer to play back H.265 content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123037": {
+    "cvss": 6.7,
+    "description": "A flaw was found in the ansible-core user module. When generate_ssh_key is enabled, User.ssh_key_gen() guards the key files against symlinks but checks the ~/.ssh directory only with os.path.exists(). An unprivileged user on a managed node who replaces their ~/.ssh with a symlink to an existing root-writable directory causes the privileged module to write the generated key pair through the symlink and then chown both files to that user. Because such files can be dropped into directories processed by schedulers (e.g. /etc/cron.daily) or dynamic MOTD (/etc/update-motd.d), the user can escalate to root on the managed node. This is an incomplete fix of CVE-2024-9902.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120831": {
+    "cvss": 6.5,
+    "description": "A flaw was found in libslirp in if_output(). When moving a session from the fast queue to the batch queue, the code unlinked and reinserted an arbitrary packet via ifm->m_nextpkt instead of the session queue head, corrupting queue pointers. A guest generating burst traffic could crash the host networking process, causing a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-121259": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the GStreamer JPEG 2000 decimator in gst-plugins-bad. Crafted JPEG 2000 media can cause integer overflows or division by zero during tile processing. An application that processes the malicious media may crash, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119727": {
+    "cvss": 6.5,
+    "description": "A flaw was found in GStreamer's gst-plugins-bad H.265 video parser. When parsing a specially crafted H.265 bitstream containing a Screen Content Coding (SCC) extension with certain palette predictor initializer settings, an integer underflow in the upper-bound computation allows the parser to accept an out-of-range value for the number of palette predictor entries. This causes the parser to write beyond the end of a fixed-size array, resulting in memory corruption and an application crash. An attacker can deliver the malformed bitstream as a local file or over a network stream such as HTTP, HLS, DASH, RTSP, RTP, or WebRTC. Successful exploitation requires the application to open or play that content, and is limited to a denial-of-service impact.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119728": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the H.264 video parser in gst-plugins-bad. When processing a specially crafted H.264 video file or network stream with malformed Multiview (MVC) Sequence Parameter Set data, the parser can dereference a NULL pointer during the cleanup of partially allocated internal structures after a parse failure. This can cause the application using GStreamer to crash, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119729": {
+    "cvss": 6.5,
+    "description": "A flaw was found in GStreamer. An integer overflow vulnerability in the AV1 LEB128 variable-length integer parser allows a remote attacker to cause a crash in applications that process AV1 media content. By crafting a malformed AV1 bitstream containing an invalid LEB128-encoded value, an attacker can cause integer overflow in the parser, resulting in incorrect length values being used during stream processing, which can lead to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119842": {
+    "cvss": 6.5,
+    "description": "A flaw was found in GStreamer's gst-plugins-base MicroDVD subtitle parser. When processing a specially crafted subtitle file, the parser may dereference a NULL pointer, causing the application to crash when a user opens or plays media with a malformed MicroDVD (.sub) subtitle file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18495": {
+    "cvss": 6.1,
+    "description": "A flaw was found in libtiff. A heap-buffer overflow vulnerability exists in the `tiff2pdf` utility due to an integer truncation error when processing crafted BigTIFF files. An attacker can provide a specially crafted BigTIFF file, causing a 64-bit `StripByteCounts` value to be truncated to a 32-bit integer. This leads to an undersized memory allocation and a subsequent out-of-bounds memory copy, resulting in a crash and severe memory corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19617": {
+    "cvss": 5.5,
+    "description": "A flaw was found in libdm. A local attacker could craft a malicious Logical Volume Manager (LVM) metadata configuration with deeply nested structures. This could lead to uncontrolled recursion in the libdm configuration file parser, exhausting the stack and causing any LVM command reading the metadata to crash. This vulnerability results in a Denial of Service (DoS) for affected systems.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19879": {
+    "cvss": 5.3,
+    "description": "A flaw was found in Undertow, an HTTP server, within its HTTP response header writing path. The `writeString()` method performs a silent narrowing cast from 16-bit Unicode characters to 8-bit bytes when writing HTTP response header values. A remote attacker can exploit this by supplying specific Unicode characters in user-controlled input that an application places into response headers. This can lead to the truncation of these characters into ASCII control characters or special symbols, potentially resulting in limited integrity impact or information disclosure if the application does not properly sanitize user input.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18728": {
+    "cvss": 6.5,
+    "description": "A flaw was found in open-iscsi. An integer underflow vulnerability in the `iscsiuio` component, specifically during IPv4 Dynamic Host Configuration Protocol (DHCP) parsing, allows a remote attacker on the same local network segment to cause a denial of service. By sending a specially crafted IPv4/UDP DHCP reply, the attacker can trigger an out-of-bounds read, leading to the `iscsiuio` process crashing. This issue affects systems where `iscsiuio` is actively handling IPv4 DHCP traffic.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18663": {
+    "cvss": 5.9,
+    "description": "A flaw was found in 389-ds-base. The get_ldapmessage_controls_ext() function frees the parsed controls array on the Session Tracking critical-control rejection path without clearing the SLAPI_REQCONTROLS pblock slot. Operation teardown then frees the same pointer again, causing a double-free. An unauthenticated remote attacker can trigger this with a single BIND request carrying a critical Session Tracking control, resulting in heap corruption and potential denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19548": {
+    "cvss": 5.5,
+    "description": "Multiple Use-After-Free vulnerabilities were found in the add_archive_element function in ld/ldmain.c of the GNU linker (ld), a component of binutils. The root cause is that plugin_maybe_claim() in ld/plugin.c frees the original BFD object via bfd_close/_bfd_delete_bfd when entry->the_bfd->my_archive == NULL, but the caller retains both the original abfd parameter and a shallow copy (orig_input.the_bfd) as dangling pointers. These dangling pointers are subsequently dereferenced at three distinct locations in add_archive_element: 1. Line ~1442: accessing abfd->my_archive via bfd_usrdata(abfd->my_archive) 2. Line ~1493: multiple accesses to abfd and abfd->my_archive in a conditional check and bfd_get_filename call 3. Line ~1525: dereferencing the shallow copy orig_input.the_bfd->my_archive in trace/verbose logging The vulnerability is triggered when LTO plugins are active (link_info.lto_plugin_active is true) and the input object has abfd->my_archive == NULL, which is a valid state for standalone object files. Red Hat builds binutils with --enable-plugins and --enable-lto, confirming the vulnerable code path is compiled in and reachable. An attacker who can supply a crafted object or archive file to a build process using LTO-enabled linking could exploit this flaw to cause a denial of service (linker crash via segmentation fault). Arbitrary code execution is theoretically possible through heap manipulation but is substantially mitigated by hardening measures including stack protector, FORTIFY_SOURCE, ASLR, and PIE. The attack surface is limited to build-time environments — the linker is a development tool not exposed in production runtime. The most realistic exploitation scenario is a supply chain attack introducing a crafted object file as a build dependency in CI/CD pipelines or development environments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18726": {
+    "cvss": 6.5,
+    "description": "A flaw was found in open-iscsi. This vulnerability allows a remote attacker on the same local network segment to cause a Denial of Service (DoS) in the iscsiuio daemon. By sending a specially crafted Internet Control Message Protocol version 6 (ICMPv6) Router Advertisement with a zero-length option, the attacker can trigger an infinite loop. This leads to sustained CPU usage, rendering the daemon unresponsive and impacting system availability. A secondary risk of out-of-bounds reads exists with a short IPv6 payload, though no memory corruption or data exposure has been confirmed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18727": {
+    "cvss": 6.5,
+    "description": "A flaw was found in open-iscsi's iscsiuio component. This vulnerability involves an integer underflow and out-of-bounds read during Dynamic Host Configuration Protocol for IPv6 (DHCPv6) packet parsing. Specifically, crafted DHCPv6 Advertise traffic with a short User Datagram Protocol (UDP) length can cause the DHCPv6 payload length to underflow. An unauthenticated attacker on an adjacent network segment can exploit this by sending specially crafted IPv6 UDP traffic while the client is in an active DHCPv6 exchange, leading to a denial of service due to a process crash or service disruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19391": {
+    "cvss": 6.5,
+    "description": "A flaw was found in insights-core where the password redaction layer fails to recognize credentials not keyed under the literal string 'password'. This allows SSSD LDAP bind passwords (ldap_default_authtok) and Pacemaker fence device credentials to be included in cleartext in archives uploaded to console.redhat.com.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19404": {
+    "cvss": 6.5,
+    "description": "A flaw was found in 389 Directory Server. The CleanAllRUV and Abort CleanAllRUV replication-maintenance extended operations perform no authorization check, allowing an unauthenticated remote attacker to invoke them when nsslapd-allow-anonymous-access is enabled (the default), or any authenticated low-privilege user to invoke them otherwise. This allows removal of a replica ID from replication metadata, purging of changelog records, and interruption of administrator-initiated cleanup, which can leave replication inconsistent or unavailable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-19079": {
+    "cvss": 4.4,
+    "description": "A TOCTOU (Time-of-Check-Time-of-Use) race condition vulnerability was found in the fixfiles script in policycoreutils. When running fixfiles relabel or fixfiles restore, the script used find and chcon commands to locate and relabel unlabeled files under /tmp and other directories. A local attacker could exploit a race window between the file discovery and the label change operation by swapping directory components with symlinks, causing chcon to follow the symlink and modify SELinux labels on arbitrary system files. This could undermine SELinux mandatory access control protections on critical files such as /etc/shadow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87268": {
+    "cvss": 7.8,
+    "description": "Vulnerability in the Oracle VM VirtualBox product of Oracle Virtualization (component: Core). The supported version that is affected is 7.2.16. Easily exploitable vulnerability allows low privileged attacker with logon to the infrastructure where Oracle VM VirtualBox executes to compromise Oracle VM VirtualBox. Successful attacks of this vulnerability can result in takeover of Oracle VM VirtualBox. Note: This vulnerability applies to Windows host only. CVSS 3.1 Base Score 7.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "vendor": "Oracle Corporation",
+    "product": "Oracle VM VirtualBox"
   }
 }
