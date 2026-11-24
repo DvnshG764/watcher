@@ -157816,5 +157816,203 @@
     "description": "A heap buffer overflow in reading encoding files in X.Org libfontenc before 1.11.0 could be used by local attackers able to inject enc files to the X server could crash or escalate privileges.",
     "vendor": "X.Org",
     "product": "libfontenc"
+  },
+  "CVE-2026-96047": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96048": {
+    "cvss": 4.7,
+    "description": "Use of uninitialized resource in Windows Graphics Kernel allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101669": {
+    "cvss": 6.8,
+    "description": "Vulnerability in the Oracle Public Sector Human Resources product of Oracle E-Business Suite (component: Regression Testing). Supported versions that are affected are 12.2.3-12.2.15. Difficult to exploit vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Public Sector Human Resources. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Public Sector Human Resources accessible data as well as unauthorized access to critical data or complete access to all Oracle Public Sector Human Resources accessible data. CVSS 3.1 Base Score 6.8 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101670": {
+    "cvss": 6.5,
+    "description": "Vulnerability in the Oracle Email Center product of Oracle E-Business Suite (component: Message Component). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Email Center. Successful attacks of this vulnerability can result in unauthorized access to critical data or complete access to all Oracle Email Center accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70187": {
+    "cvss": 8.1,
+    "description": "Use after free in Remote Desktop Gateway Service allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62280": {
+    "cvss": 6.1,
+    "description": "Open Access Management (OpenAM) is an access management solution. From 13.0.0 until 16.1.2, the OAuth2 authorize endpoint's display=wap consent page reflects request-derived values through ConsentRequiredResource and wap/authorize.ftl without HTML escaping. An attacker can induce a user with an active OpenAM session to follow a crafted authorization link and execute JavaScript in the OpenAM origin, enabling session or cookie theft, CSRF-token disclosure, and actions with the victim's privileges. At least one registered OAuth2 client is required, but the attacker does not need to control that client. This issue is fixed in version 16.1.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-74859": {
+    "cvss": 6.8,
+    "description": "The shell theme installer in gnome-tweaks extracts user-supplied ZIP archives without validating archive member paths. As a result, a crafted theme archive can write files outside ~/.themes by using ../ path traversal, absolute paths, or symlink entries.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71219": {
+    "cvss": 4.7,
+    "description": "A stack overflow vulnerability was found in gfs2-utils. The hash table traversal code in metawalk.c uses alloca() with an exponentially-derived size from the untrusted on-disk di_depth field without bounds validation. A crafted GFS2 filesystem image with a large di_depth value causes stack exhaustion and a denial of service when processed by fsck.gfs2, gfs2_edit, or savemeta.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71222": {
+    "cvss": 6.3,
+    "description": "A heap out-of-bounds read vulnerability was found in gfs2-utils. The ea_num_ptrs field from on-disk extended attribute metadata is consumed without bounds validation, causing a heap buffer over-read that may disclose sensitive memory contents or cause a crash when processing crafted GFS2 filesystem images.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71224": {
+    "cvss": 4.7,
+    "description": "A stack overflow vulnerability was found in gfs2-utils. The metadata walk code in metawalk.c uses alloca() with an untrusted inode height value from on-disk metadata without bounds validation, causing stack exhaustion and a denial of service when processing crafted GFS2 filesystem images.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58224": {
+    "cvss": 6.5,
+    "description": "A flaw was found in Samba's CTDB, the clustered database service used by Samba. Insufficient integrity validation of received CTDB protocol packets allows malformed packets containing invalid field lengths, improperly terminated strings, or inconsistent packet sizes to be processed without adequate bounds checking. A remote attacker with access to the CTDB private network may trigger a denial of service through process crashes or excessive memory consumption and, in limited cases, disclose adjacent memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73583": {
+    "cvss": 6.6,
+    "description": "A flaw was found in sblim-sfcb. A local attacker with access to the system can exploit an unsafe deserialization vulnerability in the provider-manager's inter-process communication (IPC) message parsing. By sending a specially crafted message, the attacker can cause out-of-bounds memory access, leading to the termination of the provider-manager process and a denial of service. This could also potentially result in limited unintended information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73584": {
+    "cvss": 6.3,
+    "description": "A flaw was found in sblim-sfcb. A local, low-privileged attacker can exploit a race condition during privileged instance migration by manipulating a temporary file in the `/tmp` directory. By repeatedly recreating a symbolic link, the attacker can redirect privileged output to an arbitrary file. This can lead to privileged file corruption or a denial of service (DoS) on the system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73585": {
+    "cvss": 6.3,
+    "description": "A flaw was found in sblim-cmpi-base. Insecure temporary file creation in the provider registration scripts allows a local unprivileged user to perform a symlink attack. By creating a symlink in a world-writable directory, an attacker can redirect privileged writes to an arbitrary file during script execution in a privileged context. This can lead to the overwrite of root-owned files, potentially disrupting system services or operation. Exploitation is conditional on the script running with elevated privileges and may be mitigated by sticky-directory symlink protections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71218": {
+    "cvss": 5.3,
+    "description": "A flaw was found in iperf3. A remote unauthenticated attacker can exploit a vulnerability in the `JSON_read()` function, which accepts a peer-controlled message length and allocates memory without an upper bound. This allows the attacker to trigger excessive memory consumption, leading to a Denial of Service (DoS) through memory exhaustion, severe slowdown, or termination of the iperf3 service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59088": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GIMP. A signed integer overflow vulnerability exists in the `file-fli` plugin when processing FLI image files. This occurs due to an incorrect calculation during memory allocation for image buffers, where the multiplication of image width and height can exceed the maximum integer value. A remote attacker could exploit this by tricking a user into opening a specially crafted FLI file, leading to the application crashing and resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70367": {
+    "cvss": 5.4,
+    "description": "A Server-Side Request Forgery (SSRF) bypass vulnerability exists in “stunnel” 5.79 and lower when configured in SOCKS proxy mode. This flaw allows a client to bypass intended localhost restrictions by using IPv4-mapped IPv6 addresses (e.g., “::ffff:127.0.0.1”) or unspecified addresses (\"0.0.0.0\", \"::\"), enabling access to loopback-only services on the \"stunnel\" host that should not be network-reachable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-70368": {
+    "cvss": 6.5,
+    "description": "A stack-based out-of-bounds read vulnerability exists in the \"s_vlog\" function of stunnel, when handling oversized log messages via \"vsnprintf\". A remote attacker with network access to a stunnel service can send protocol inputs that trigger a log message longer than 1024 bytes, leading to an out-of-bounds stack read and a potential crash. In certain corner cases, the same vulnerability could be used to replace a series of trailing \"\\n\" characters with \"\\0\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68743": {
+    "cvss": 7.1,
+    "description": "A flaw was found in SSSD. The extract_authtok_v1() function in the PAM responder does not validate the auth_token_length field against the remaining buffer size before processing. A local attacker can exploit this via a crafted protocol v1 request to the PAM responder socket, causing an out-of-bounds read and process crash, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6694": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GIMP's file-png plugin. A remote attacker can exploit this by crafting a malicious Animated Portable Network Graphics (APNG) image containing an oversized tRNS chunk. This can lead to a stack-based buffer overflow (CWE-121), causing the file-png plugin to crash and resulting in a Denial of Service (DoS) for the user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6695": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GIMP. A remote attacker could exploit this by tricking a user into opening a specially crafted PAA (Paint Shop Pro Array) image file. This vulnerability, a heap-based out-of-bounds write in the decode_lzss() function of the PAA file format plugin, allows data to be written beyond the intended memory buffer. This could lead to heap metadata corruption and potentially enable the attacker to execute arbitrary code on the affected system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-68742": {
+    "cvss": 5.5,
+    "description": "A flaw was found in SSSD. The sss_nss_protocol_parse_addr() function in the NSS responder does not validate the addrlen field against the remaining packet body size. A local attacker can exploit this via a crafted GETHOSTBYADDR request to the NSS responder socket, causing an out-of-bounds read and process crash, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66757": {
+    "cvss": 5.5,
+    "description": "A flaw was found in the file-sgi plugin in GIMP. When processing an RLE-compressed SGI image, the plugin allocates memory for a row table. The image header dimensions (ysize and zsize) are read as 16-bit unsigned integers. If a crafted file sets both dimensions to their maximum value (65535), the multiplication ysize * zsize overflows the standard 32-bit int boundary before being passed to calloc. This integer overflow issue results in undefined behavior, aborting the plugin and causing a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66759": {
+    "cvss": 7.1,
+    "description": "A flaw was found in the file-icns plugin in GIMP. When applying a decompressed mask during ICNS image processing, the plugin reads from the mask data buffer without verifying if the cursor exceeds the allocated resource size. If a crafted file contains a truncated mask resource, the icns_decompress function continues reading past the bounds of the buffer. This out-of-bounds read vulnerability results in information disclosure of heap contents, where memory contents are leaked as alpha channel pixel values, or a crash leading to a denial of service if unmapped memory is accessed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66337": {
+    "cvss": 6.5,
+    "description": "A flaw was found in libsoup. An unsigned integer underflow in the soup_filter_input_stream_read_until() function causes a heap buffer over-read when parsing multipart HTTP responses. A malicious HTTP server can exploit this by sending a crafted multipart response, potentially causing the client application to crash or disclose sensitive heap memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-66339": {
+    "cvss": 6.5,
+    "description": "A flaw was found in libsoup. After a CONNECT tunnel is established through an HTTP proxy, libsoup incorrectly attaches the Proxy-Authorization header to subsequent HTTPS requests sent through that tunnel to the destination server. This allows the destination server to capture proxy credentials, leading to information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59089": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GIMP. The PlayStation TIM loader, responsible for handling PlayStation image files, incorrectly calculates the size of the Color Look-Up Table (CLUT) due to an integer overflow. This occurs when multiplying num_colors and num_cluts, both 16-bit unsigned short integers, resulting in a value exceeding the maximum integer limit. An attacker could exploit this by providing a specially crafted image file, leading to undefined behavior and causing the GIMP plug-in to abort, effectively resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58381": {
+    "cvss": 7.3,
+    "description": "A flaw was found in GIMP's PSP file format parser. A double-free condition occurs in the read_layer_block() function when processing a specially crafted PSP file. This could allow an attacker to cause memory corruption, potentially leading to denial of service or arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-57965": {
+    "cvss": 5.1,
+    "description": "A flaw was found in spice-vdagent. A malicious or compromised SPICE host can trigger an integer overflow by sending a specially crafted message. This vulnerability can lead to a heap buffer overflow, causing the spice-vdagent daemon to crash and resulting in a Denial of Service (DoS) for the virtual machine. This issue requires the SPICE host to be untrusted or compromised for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-57966": {
+    "cvss": 4.4,
+    "description": "A path traversal vulnerability was found in spice-vdagent. This flaw allows a malicious or compromised SPICE host to write arbitrary files to any location on the guest operating system. This occurs because the filename provided by the SPICE host during file transfers is not properly sanitized before being used. An attacker could exploit this to write to sensitive locations with the privileges of the spice-vdagent process, typically the logged-in user. This issue requires the SPICE host to be untrusted or compromised for exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6732": {
+    "cvss": 7.5,
+    "description": "A flaw was found in libxml2. This vulnerability occurs when the library processes a specially crafted XML Schema Definition (XSD) validated document that includes an internal entity reference. An attacker could exploit this by providing a malicious document, leading to a type confusion error that causes the application to crash. This results in a denial of service (DoS), making the affected system or application unavailable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4271": {
+    "cvss": 7.5,
+    "description": "A flaw was found in libsoup, a library for handling HTTP requests. This vulnerability, known as a Use-After-Free, occurs in the HTTP/2 server implementation. A remote attacker can exploit this by sending specially crafted HTTP/2 requests that cause authentication failures. This can lead to the application attempting to access memory that has already been freed, potentially causing application instability or crashes, resulting in a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2004-0468": {
+    "cvss": 5.0,
+    "description": "Memory leak in Juniper JUNOS Packet Forwarding Engine (PFE) allows remote attackers to cause a denial of service (memory exhaustion and device reboot) via certain IPv6 packets.",
+    "vendor": "Juniper",
+    "product": "Unknown"
   }
 }
