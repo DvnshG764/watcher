@@ -17432,7 +17432,7 @@
   "CVE-2026-90817": {
     "cvss": 9.8,
     "description": "Vanderbilt University Research Electronic Data Capture (REDCap) contains a code injection vulnerability which could allow an unauthenticated attacker to execute arbitrary code on the server. An attacker could exploit this via crafted HTTP requests that access an unintended controller route from a public survey context and supply a crafted file-path or stream parameter during data import processing. Exploitation requires knowledge of a valid public survey hash.",
-    "vendor": "Vanderbilt University",
+    "vendor": "Check Point",
     "product": "REDCap"
   },
   "CVE-2026-3018": {
@@ -155476,5 +155476,77 @@
     "description": "Vulnerability in the Oracle VM VirtualBox product of Oracle Virtualization (component: Core). The supported version that is affected is 7.2.16. Easily exploitable vulnerability allows low privileged attacker with logon to the infrastructure where Oracle VM VirtualBox executes to compromise Oracle VM VirtualBox. Successful attacks of this vulnerability can result in takeover of Oracle VM VirtualBox. Note: This vulnerability applies to Windows host only. CVSS 3.1 Base Score 7.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
     "vendor": "Oracle Corporation",
     "product": "Oracle VM VirtualBox"
+  },
+  "CVE-2026-128885": {
+    "cvss": 5.5,
+    "description": "A flaw was found in D-Bus. In configurations where the daemon falls back to using the Unix select() mechanism for event monitoring, it does not verify whether file descriptor numbers exceed allocated limits. A local attacker can exploit this flaw by opening a large number of concurrent connections to trigger an out-of-bounds write on the stack. This can cause the daemon to crash, resulting in a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128987": {
+    "cvss": 6.2,
+    "description": "A flaw was found in dbus. A local attacker can exploit this vulnerability by connecting to an affected service, requesting a response, and stopping socket reads while keeping the connection open. Because the socket transport handles broken pipe write errors as retryable, the application enters a continuous retry loop. This can lead to excessive CPU consumption, resulting in a denial of service (DoS) for the target process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126831": {
+    "cvss": 5.5,
+    "description": "A flaw was found in cpio. A local user can cause a Denial of Service (DoS) by triggering a stack-based buffer overflow when creating archives in tar or ustar formats. When archiving files owned by users or groups with names exceeding 32 characters, cpio copies these names into fixed-size memory without verifying their length. This unbounded copy corrupts stack memory and causes the application to crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127099": {
+    "cvss": 5.9,
+    "description": "A flaw was found in SSSD's conversion of X.509 certificate RSA public keys to SSH keys. Missing size checks before copying RSA components into fixed-size stack buffers can cause a stack buffer overflow. An attacker able to supply a certificate with oversized RSA components that passes the configured certificate checks can cause denial of service and corrupt SSH responder memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127100": {
+    "cvss": 5.5,
+    "description": "A flaw was found in SSSD's PAM responder on builds with the JSON PAM extension enabled. A local attacker can submit a crafted authentication request containing a non-string OAuth2 code value. Missing JSON type validation leads to a NULL pointer dereference, terminating the PAM responder and disrupting SSSD-backed authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125672": {
+    "cvss": 6.6,
+    "description": "A flaw was found in cockpit-storaged. A Tang keyserver address read from a clevis token in a LUKS header is concatenated into curl's argument vector without a \"--\" separator. An address beginning with \"-\" is parsed by curl as an option instead of a hostname, allowing an attacker who can attach a crafted LUKS/clevis block device (for example, a local unprivileged user with an active console or desktop login session) to have an administratively-privileged Cockpit user unknowingly trigger curl option injection when editing the device's Tang keyserver settings. This can lead to arbitrary file read or write as the Cockpit session user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125040": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the SRT and WebVTT subtitle parser in GStreamer's gst-plugins-base. While sanitizing inline subtitle markup, the parser repeatedly searches the remaining text with unanchored regular expressions. A crafted subtitle cue with a long line of unmatched markup-like text can force quadratic CPU use and make a GStreamer-based application unresponsive.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125041": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GStreamer's gst-plugins-good MOV/MP4 demuxer. When processing an uncompressed video track, qtdemux fails to validate the declared row alignment and chroma geometry before using them to build a video buffer layout. A crafted file can cause an out-of-bounds heap read while the sample is copied, potentially crashing the application and causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52718": {
+    "cvss": 6.5,
+    "description": "A denial of service vulnerability was found in GStreamer's AV1 codec parser in gst-plugins-bad. The gst_av1_parser_parse_tile_list_obu() function passes a byte count to a bit-reader API that expects a bit count, causing parser desynchronization. A remote attacker could trick a user into opening a specially crafted AV1 media file, triggering an assertion abort and causing the application to crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-52721": {
+    "cvss": 5.3,
+    "description": "Multiple out-of-bounds read vulnerabilities were found in GStreamer's pcapparse element. Malformed PCAP records can trigger reads beyond buffer boundaries during IPv4/TCP header parsing. This element is primarily used in debugging pipelines, limiting real-world exposure. A local attacker could trick a user into processing a specially crafted PCAP file, potentially leading to a crash or information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6420": {
+    "cvss": 6.3,
+    "description": "A flaw was found in Keylime. An attacker with root access on an enrolled monitored machine, where the Keylime agent runs, can exploit a vulnerability in the Keylime verifier. The verifier uses a hardcoded challenge nonce for Trusted Platform Module (TPM) quote attestation instead of a cryptographically random value. This allows the attacker to stockpile valid TPM quotes and replay them to evade detection after compromising the system. This issue affects only the push model deployment.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123903": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
