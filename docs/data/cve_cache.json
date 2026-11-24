@@ -118184,8 +118184,8 @@
   "CVE-2026-123010": {
     "cvss": 7.2,
     "description": "@twilio-labs/netlify-okta-auth through 1.0.2 relies on an unverified iss claim. This affects an outbound HTTP request to retrieve a public signing key. There may be other impacts in a misconfiguration where oktaUrl isn't set.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "twilio-labs",
+    "product": "netlify-okta-auth"
   },
   "CVE-2026-123011": {
     "cvss": 4.2,
@@ -155002,5 +155002,65 @@
     "description": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in ash-project ash allows a user to set the value of a private action argument that is intended to be controlled only by trusted server-side code. Action arguments declared with public?: false are meant to be set internally (for example via Ash.Changeset.set_private_argument/3) and must not be settable from end-user input. When a changeset is built from a parameter map, Ash filters out private arguments, but the filtering is incomplete. In the regular changeset path (for_create, for_update, for_destroy), private arguments are stripped only when the parameter key is an atom. When the key is a binary (string), as is the case for user-supplied parameters, the private argument is kept and the user controls its value. In the atomic path (Ash.Changeset.fully_atomic_changeset/4, also reached through atomic and bulk updates), private arguments are not stripped at all, regardless of whether the key is an atom or a binary. An attacker who can submit parameters to an action that defines a private argument can therefore inject a value for that argument. Depending on how the application uses the argument (for example an acting_user_id driving authorization or record ownership), this can lead to an integrity violation or privilege escalation. This issue affects ash: from 3.0.0-rc.0 before 3.29.3.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-59248": {
+    "cvss": 8.7,
+    "description": "Allocation of resources without limits vulnerability in ninenines cowlib allows an unauthenticated remote HTTP/2 or HTTP/3 peer to exhaust memory on the vulnerable server (or client) and cause a denial of service. The HPACK and QPACK prefixed-integer decoder cow_hpack_common:dec_big_int/3 in src/cow_hpack_common.hrl (invoked from cow_hpack:decode/2 in src/cow_hpack.erl and from cow_qpack:decode_field_section/3 in src/cow_qpack.erl) reads continuation octets until it sees one whose high bit is clear, evaluating Int + (Value bsl M) at each step with the shift M growing by seven per octet. No limit is enforced on the number of continuation octets, on the resulting bit width, or on the value; the decoder consumes whatever encoded length the peer supplies. Because Erlang integers are immutable, each intermediate Value bsl M and each accumulator update allocates a fresh bignum whose digit width grows linearly with the number of octets processed so far. Summed across the whole decode, the transient bignum digit materialization is on the order of the square of the encoded length. A single maximal HPACK indexed representation carried inside one HTTP/2 HEADERS plus one CONTINUATION frame at Cowboy's default max_frame_size_received can force hundreds of megabytes of transient allocation and garbage-collection churn before the resulting header-table index is rejected as invalid. Repeated or concurrent connections multiply the pressure and can drive the Erlang VM to memory exhaustion. Cowlib is the HTTP parser used by Cowboy, RabbitMQ's management plugin, and other Erlang and Elixir HTTP/2 and HTTP/3 servers and clients, so any exposed endpoint that accepts HPACK or QPACK from an untrusted peer is reachable. This issue affects cowlib: from 2.0.0-pre.1 before 2.19.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59252": {
+    "cvss": 8.2,
+    "description": "Improper Validation of Specified Quantity in Input in ZenHive mpp allows an unauthenticated remote client to drain the fee-payer wallet, resulting in denial of service for legitimate clients. When the mpp Elixir library is configured as fee payer (fee_payer: true), the MPP.Methods.Tempo payment method co-signs and broadcasts a client-supplied EVM transaction without first validating that the client-supplied gas_limit is sufficient to complete the intended call. A malicious client can submit a signed transferWithMemo transaction with gas_limit deliberately set just below the amount required for successful execution. The server co-signs the transaction and broadcasts it via rpc_broadcast_sync. The transaction runs out of gas during EVM execution and reverts, but the fee-payer wallet is still charged for the burned gas while the client pays nothing and receives no resource. Repeated requests from one or more malicious clients drain the fee-payer wallet at near-zero cost to the attacker, ultimately preventing the server from sponsoring gas for legitimate payment requests. The wait_for_confirmation = false (optimistic) path is also affected: it invokes simulate_payment_call via eth_call, but that simulation omits the gas parameter and therefore does not catch out-of-gas conditions. This issue affects mpp: from 0.2.0 before 0.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59694": {
+    "cvss": 8.3,
+    "description": "Improper Validation of Specified Quantity in Input in ZenHive mpp allows an unauthenticated remote client to inflate the fee-payer's gas cost per payment by a large multiplier, degrading the sponsor's operating margin. When the mpp Elixir library is configured as fee payer (fee_payer: true), MPP.Tempo.Transaction.cosign_fee_payer/3 re-signs the client-supplied base fields of the 0x76 AASigned envelope verbatim, including the EIP-2930 access list, without validating its length or contents. EIP-2930 access list entries incur intrinsic gas (~2,400 gas per address, plus 1,900 gas per storage key) charged before any opcode executes, regardless of whether the listed addresses are ever touched. A malicious client submits a valid transferWithMemo call alongside a large number of fabricated access-list entries. The server co-signs and broadcasts the transaction. The intended transfer executes normally, but the fee-payer wallet pays a large multiple of the expected gas cost with no corresponding on-chain work. At the maintainer's default of 137 access-list entries (fitting within Bandit's 10,000-byte per-header-field limit) and 100 Gwei max_fee_per_gas, per-payment gas cost rises from ~51,287 to ~380,087 gas, a 7.4x multiplier. Sustained abuse destroys the sponsor's operating margin on low-cost payments and, over time, drains the fee-payer wallet. This issue affects mpp: from 0.2.0 before 0.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59695": {
+    "cvss": 8.3,
+    "description": "Improper Validation of Specified Quantity in Input in ZenHive mpp allows an unauthenticated remote client to drain the fee-payer wallet in a single request by naming an arbitrarily high gas price. When the mpp Elixir library is configured as fee payer (fee_payer: true), MPP.Tempo.Transaction.cosign_fee_payer/3 re-signs the client-supplied base fields of the 0x76 AASigned envelope verbatim, including max_fee_per_gas and max_priority_fee_per_gas, without validating that they are within reasonable bounds. A malicious client embeds arbitrarily large values for these fields in the signed envelope. The server co-signs and broadcasts the transaction. The effective_gas_price billed against the fee-payer wallet is derived from the attacker-supplied ceilings, so the server pays those inflated per-gas rates out of its own wallet. A single crafted request can drain the wallet entirely, after which the server can no longer sponsor gas for legitimate payment requests. This issue affects mpp: from 0.2.0 before 0.6.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59249": {
+    "cvss": 6.3,
+    "description": "Inconsistent interpretation of HTTP requests (HTTP response smuggling) vulnerability in elixir-mint mint allows a malicious HTTP/1 server to desynchronize a strict intermediary and the Mint client on the same pooled connection, enabling response-queue poisoning against subsequent requests that share the connection. The Mint.HTTP1.decode_body/5 function in lib/mint/http1.ex parses the chunk-size line of a Transfer-Encoding: chunked response with Integer.parse(data, 16). RFC 7230 defines chunk-size = 1*HEXDIG and forbids any sign prefix, but Integer.parse/2 accepts an optional leading + or -. A chunk-size line of +5 is accepted as a five-byte chunk; lines of +0 and -0 are accepted as the terminating zero-length chunk and end the message body early. An RFC-strict intermediary in the response path rejects these forms, so the intermediary and the Mint client disagree on where one response ends and the next begins. On a pooled keep-alive connection, an attacker-influenced origin can inject bytes that the client attributes to the next legitimate response on the same connection, poisoning the response queue and corrupting the responses returned to unrelated in-flight requests. This issue affects mint: from 0.1.0 before 1.9.3.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58229": {
+    "cvss": 8.2,
+    "description": "Allocation of resources without limits vulnerability in elixir-mint mint allows a remote HTTP server to exhaust memory on the client host and cause a denial of service. The Mint.HTTP1.decode_headers/5 and Mint.HTTP1.decode_trailer_headers/4 functions in lib/mint/http1.ex accumulate every parsed response header and chunked-trailer field into a per-request list that persists across incoming TCP segments as request.headers_buffer, and only clear it when the terminating blank line is received. The section has no cap on the number of headers or on total bytes, and the underlying :erlang.decode_packet(:httph_bin, binary, []) parser is invoked with an empty option list so its per-line and per-packet size limits also default to unlimited. A malicious HTTP server (reachable directly, via an attacker-controlled redirect, via SSRF, or via a man-in-the-middle) can stream complete header lines (or, after a chunked body, complete trailer lines) indefinitely without ever emitting the terminating blank line. The connection state grows without bound until the BEAM node is killed by the operating system's out-of-memory handler, taking down the entire application that uses Mint as an HTTP client. This issue affects mint: from 0.1.0 before 1.9.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-59246": {
+    "cvss": 6.3,
+    "description": "Allocation of resources without limits vulnerability in elixir-mint mint allows a remote HTTP/2 server to exhaust memory on the client host and cause a denial of service. The Mint.HTTP2.handle_continuation/3 function in lib/mint/http2.ex accumulates the header-block fragment carried by each HTTP/2 CONTINUATION frame into a growing conn.headers_being_processed nesting, one level deeper per frame, and only releases it when a frame with the END_HEADERS flag arrives. The only guard on this accumulator is Mint.HTTP2.assert_header_block_within_max_size/2, which sums the byte size of the fragments received so far. Because a CONTINUATION frame is permitted by the protocol to carry a zero-length payload, an unbounded chain of zero-length CONTINUATION frames adds no bytes to the running total, never trips the size cap, and never emits END_HEADERS, yet each frame still nests the accumulator one level deeper. A malicious HTTP/2 server (reachable directly, via an attacker-controlled redirect, via SSRF, or via a man-in-the-middle) can open a stream by sending a HEADERS frame without END_HEADERS and then stream zero-length CONTINUATION frames indefinitely. Client memory grows one cons cell per frame received; sustained bandwidth from the peer drives the BEAM node running the Mint client to memory exhaustion and eventual out-of-memory termination. This issue affects mint: from 0.1.0 before 1.9.2.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58228": {
+    "cvss": 5.1,
+    "description": "Cross-site scripting vulnerability in phoenixframework phoenix_live_view allows an attacker to bypass URL scheme validation and execute JavaScript in a victim's browser session. The Phoenix.LiveView.Utils.valid_destination!/2 and Phoenix.LiveView.Utils.valid_live_navigation_destination!/2 functions in lib/phoenix_live_view/utils.ex rely on an internal uri_scheme/1 helper that only detects a scheme when the input's first byte is an ASCII letter. Inputs beginning with an ASCII control character or space fall through to a nil-returning clause, causing the URL to be treated as a safe relative path. Standard browsers implement the WHATWG URL parser, which strips leading C0 control and space characters before parsing. As a result, an input such as \" javascript:alert(1)\" is passed unchanged into <.link href={...}> and, when clicked, is parsed by the browser as a javascript: URL that executes attacker-controlled script in the victim's session. Applications that render user-supplied URLs (for example profile links, redirect targets, or external references) via <.link href={...}> are affected. This issue affects phoenix_live_view: from 1.2.2 before 1.2.7.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-58226": {
+    "cvss": 8.7,
+    "description": "Inefficient Algorithmic Complexity vulnerability in elixir-mint hpax allows unauthenticated denial-of-service via unbounded HPACK integer decoding. hpax decodes HPACK variable-length integers with no upper bound on the decoded value or the number of continuation octets. HPAX.Types.decode_remaining_integer/3 accumulates the integer as int + (value <<< m), shifting by 7 more bits for each continuation octet and stopping only on a terminating octet or truncated input, never because the integer grew too large. Because BEAM integers are arbitrary precision, a run of N continuation octets builds an O(N)-bit bignum and re-adds into an ever-larger bignum on each step, so the total decoding cost is superlinear (about O(N^2)). An unauthenticated attacker who can send an HTTP/2 header block to a server using this decoder (reached through the HPAX.decode/2 entry point) can supply a small header block that forces a large, attacker-controlled amount of CPU (and transient memory), a denial-of-service amplification. This issue affects hpax: from 0.1.0 before 1.0.4.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-110858": {
+    "cvss": 8.1,
+    "description": "GitPython from 3.1.30 before 3.2.0 contains a remote code execution vulnerability in Remote.pull() whose unsafe-option guard inspects only keyword arguments, not the positional refspec. Attackers controlling the refspec can supply --upload-pack= to execute OS commands as the calling process over local-path or SSH transports.",
+    "vendor": "gitpython-developers",
+    "product": "GitPython"
   }
 }
