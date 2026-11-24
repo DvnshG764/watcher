@@ -154546,5 +154546,41 @@
     "description": "Downloading and building modules with malicious version strings can cause local code execution. On systems with Mercurial (hg) installed, downloading modules from non-standard sources (e.g., custom domains) can cause unexpected code execution due to how external VCS commands are constructed. This issue can also be triggered by providing a malicious version string to the toolchain. On systems with Git installed, downloading and building modules with malicious version strings can allow an attacker to write to arbitrary files on the filesystem. This can only be triggered by explicitly providing the malicious version strings to the toolchain and does not affect usage of @latest or bare module paths.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-117520": {
+    "cvss": 8.0,
+    "description": "The Dynific Addons for Elementor (formerly Anywhere Elementor) WordPress plugin before 1.3.1 does not perform a capability check on an AJAX action that stores a configuration value, allowing any authenticated user, including Subscribers, to store a value that is later output without proper escaping in a quoted attribute on an administrator settings page, resulting in Stored Cross-Site Scripting that executes in the administrator's session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120390": {
+    "cvss": 7.1,
+    "description": "The WPvivid — Backup, Migration & Staging WordPress plugin before 0.9.140 does not limit its table prefix rewrite to table names when restoring a database backup, which corrupts the length of stored serialized values and allows users with a role as low as Subscriber to plant a PHP object that WordPress instantiates after an administrator restores a backup.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120391": {
+    "cvss": 7.1,
+    "description": "The WPvivid — Backup, Migration & Staging WordPress plugin before 0.9.140 does not prevent serialized data it cannot safely unserialize from being re-serialized as a PHP object during a site migration, allowing users with a role as low as Subscriber to plant a PHP object that WordPress instantiates after an administrator restores a backup onto a different URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120406": {
+    "cvss": 3.7,
+    "description": "The Contact Form 7 WordPress plugin before 6.2.5 does not check that the post a form submission says it was sent from is publicly viewable before resolving post-related mail-tags, allowing unauthenticated users to obtain the title, URL, author name and author email of private, draft and trashed posts where such tags are used in an email or message returned to the submitter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123132": {
+    "cvss": 8.8,
+    "description": "The Otter Blocks WordPress plugin before 3.2.10 does not use URL-aware escaping when it resolves its dynamic data tags inside HTML attributes, which could allow unauthenticated users to post comments containing links that execute arbitrary JavaScript when clicked, for example by a logged-in administrator.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-25931": {
+    "cvss": 6.8,
+    "description": "Medtronic identified that the Pelvic Health clinician apps, which are installed on the Smart Programmer mobile device, have a password vulnerability that requires a security update to fix. Not updating could potentially result in unauthorized control of the clinician therapy application, which has greater control over therapy parameters than the patient app. Changes still cannot be made outside of the established therapy parameters of the programmer. For unauthorized access to occur, an individual would need physical access to the Smart Programmer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
