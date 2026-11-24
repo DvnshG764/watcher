@@ -154744,5 +154744,53 @@
     "description": "A weakness has been identified in TOTOLINK A7100RU 7.4cu.2313_B20191024. This issue affects the function exportOvpn of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. This manipulation of the argument Username causes os command injection. The attack is possible to be carried out remotely.",
     "vendor": "TOTOLINK",
     "product": "A7100RU"
+  },
+  "CVE-2026-123662": {
+    "cvss": 3.1,
+    "description": "The ProfilePress WordPress plugin before 4.18.1 does not atomically consume the source subscription when processing a membership plan change, allowing a customer to submit concurrent plan-change checkouts against a single paid subscription and obtain several active memberships for the price of one.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126040": {
+    "cvss": 7.5,
+    "description": "The Hide My WP Ghost WordPress plugin before 7.0.19 only enforces two-factor authentication on the interactive login flow and not on other authentication paths, allowing an attacker who already has a user's valid password to authenticate as that user without completing the second factor.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126041": {
+    "cvss": 5.3,
+    "description": "The Hide My WP Ghost WordPress plugin before 7.0.19 does not remove or restrict a debug branch in its output rewriting, allowing unauthenticated attackers to reveal the hidden login page, the hidden admin path and the renamed content folders the Hide My WP Ghost WordPress plugin before 7.0.19 is meant to conceal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127003": {
+    "cvss": 6.8,
+    "description": "The RSVP and Event Management WordPress plugin before 2.7.19 does not sanitise and escape attendee data imported from a spreadsheet before outputting it on the frontend RSVP form, which could allow users with the Author role and above to perform Stored Cross-Site Scripting attacks against anyone, including administrators, viewing the affected attendee, even when the unfiltered_html capability is disallowed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-127021": {
+    "cvss": 9.8,
+    "description": "The Flamix: Bitrix24 and WooCommerce Products Sync WordPress plugin before 1.7.0 does not restrict or validate an unauthenticated file-exchange request, allowing anyone to write a file with an attacker-chosen name, extension and path to a web-served location and thereby execute arbitrary PHP.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128851": {
+    "cvss": 9.8,
+    "description": "The Probono Form Basic WordPress plugin before 1.3.3 does not validate the real type of files uploaded through its public form, trusting the client-declared MIME type instead, which could allow unauthenticated attackers to upload PHP files to a public directory and execute them before they are deleted, on servers that do not honour the Probono Form Basic WordPress plugin before 1.3.3's Apache-only access restriction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129434": {
+    "cvss": 4.7,
+    "description": "The OneLogin SAML SSO WordPress plugin before 3.7.1 does not validate a user-supplied parameter before using it to redirect an already-authenticated user, allowing unauthenticated attackers to redirect a logged-in user to an arbitrary external domain via a crafted link (e.g. for phishing).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96054": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Microsoft Color Management allows an unauthorized attacker to execute code locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
