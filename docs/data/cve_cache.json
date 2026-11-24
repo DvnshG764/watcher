@@ -155230,5 +155230,125 @@
     "description": "Homarr is an open-source dashboard. Prior to 1.52.0, a public (unauthenticated) tRPC endpoint widget.app.ping accepts an arbitrary url and performs a server-side request to that URL. This allows an unauthenticated attacker to trigger outbound HTTP requests from the Homarr server, enabling SSRF behavior and a reliable port-scanning primitive (open vs closed ports can be inferred from statusCode vs fetch failed and timing). This vulnerability is fixed in 1.52.0.",
     "vendor": "homarr-labs",
     "product": "homarr"
+  },
+  "CVE-2026-118593": {
+    "cvss": 5.9,
+    "description": "A flaw was found in Red Hat Enterprise Linux 9 kernel builds. An incomplete backport of the CVE-2026-46099 fix in RHEL 9.6 through 9.10 left a local_bh imbalance in seg6_input_core(), where the drop path returns with bottom halves still disabled. This can lead to softirq starvation and denial of service on systems with SRv6 tunnels configured. Upstream and RHEL 10 are not affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-117548": {
+    "cvss": 6.5,
+    "description": "A NULL pointer dereference flaw was found in 389-ds-base. This flaw occurs when a ModifyDN (rename) operation uses an attribute's schema alias name (such as \"commonName\") instead of its canonical name (such as \"cn\") as the new relative distinguished name. An authenticated attacker with the ModifyDN (rename) permission on the affected entry can use this flaw to crash the directory server, causing a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116497": {
+    "cvss": 5.5,
+    "description": "A NULL pointer dereference vulnerability was found in gssproxy. When a GSSX_INIT_SEC_CONTEXT request is received with the target_name field absent, the daemon dereferences the resulting NULL pointer and crashes. The request requires no authentication, allowing any local user to crash the gssproxy daemon via its Unix socket. The daemon does not automatically restart, resulting in a persistent denial of service that also affects dependent services such as Kerberized NFS and IdM.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115484": {
+    "cvss": 7.6,
+    "description": "A flaw was found in the iscsiuio component of open-iscsi. The DHCPv4 option parser incorrectly calculates the length of the options data, causing it to read beyond the allocated buffer into adjacent heap memory. An attacker on the same network segment can send a crafted DHCP response to crash the daemon or corrupt its network configuration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115485": {
+    "cvss": 6.3,
+    "description": "A flaw was found in the iscsiuio component of open-iscsi. The DHCPv6 option parser calls strlen() on raw network data without ensuring a NUL terminator is present, causing it to read past the buffer into heap memory. This can result in a daemon crash, a 1-byte heap overwrite, or corruption of the iSCSI initiator name. An attacker on the same network segment can trigger this by sending a crafted DHCPv6 Advertise message.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115221": {
+    "cvss": 5.4,
+    "description": "A flaw was found in FreeIPA. An improper authorization check allows an authenticated host to retrieve and revoke digital certificates assigned to other users or services. This issue occurs because FreeIPA verifies ownership solely by matching the host name to the certificate's subject Common Name (CN), without confirming actual ownership in the directory service. Consequently, an enrolled host can disrupt services by revoking certificates belonging to other entities.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113495": {
+    "cvss": 5.0,
+    "description": "A flaw was found in cockpit-machines. Red Hat Subscription Management (RHSM) authentication tokens are passed as command-line arguments to background helper processes during image retrieval operations. A local, unprivileged attacker on a system permitting cross-user process inspection can view these arguments while the process is active. This flaw can lead to information disclosure, potentially allowing unauthorized access to RHSM resources within the token's validity period.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-113496": {
+    "cvss": 5.0,
+    "description": "A flaw was found in cockpit-machines. When saving Virtual Network Computing (VNC) console settings, the configured password is passed directly as a command-line argument to an underlying system utility. A local unprivileged attacker on a host that allows cross-user process inspection could read the exposed password from the process list while another user modifies settings. This credential disclosure can allow unauthorized access to the guest virtual machine's graphical console.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-100231": {
+    "cvss": 6.1,
+    "description": "A flaw was found in the GStreamer multimedia framework's ASF muxer plugin (asfmux). When writing string metadata tags containing Unicode characters outside the Basic Multilingual Plane (such as emoji) to an ASF container, the plugin incorrectly calculates the buffer size needed for the UTF-16LE representation. The size calculation assumes each Unicode code point requires 2 bytes, but non-BMP characters require 4 bytes (surrogate pairs). This leads to a heap out-of-bounds write when the actual UTF-16LE conversion is written into the undersized buffer. An attacker could exploit this by providing media with crafted metadata tags to an application that transcodes or remuxes to ASF format while preserving metadata, potentially causing a denial of service or limited memory corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107655": {
+    "cvss": 4.0,
+    "description": "A flaw was found in CUPS. When processing embedded job ticket comments within documents, the service improperly handles specific IPP attributes, causing an unhandled null pointer dereference. An unauthenticated attacker permitted to submit jobs to a shared printer queue can send a crafted Internet Printing Protocol (IPP) request to crash the print daemon, resulting in a temporary Denial of Service (DoS) for all printing services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108063": {
+    "cvss": 5.5,
+    "description": "A flaw was found in libhangul. When parsing Hanja dictionary files, the library fails to verify that an entry contains a valid value alongside its key. By providing a specially crafted dictionary file to an application that queries it, an attacker can trigger an unexpected application crash, resulting in a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108093": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GIMP. The XCF loader processes image-simulation-intent and image-simulation-bpc parasites without ensuring the parasite data is present before dereferencing it. Opening a specially crafted XCF file with a zero-size simulation parasite can cause a NULL pointer dereference and crash the GIMP application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107466": {
+    "cvss": 6.1,
+    "description": "A flaw was found in flatpak-builder. This vulnerability allows an attacker to cause information disclosure by convincing a user or continuous integration (CI) system to process a crafted build manifest. By specifying local file Uniform Resource Identifiers (URIs) within source download definitions, the builder bypasses directory confinement checks. As a result, sensitive host files accessible to the build process can be read and incorporated into the build artifacts.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107651": {
+    "cvss": 5.5,
+    "description": "A flaw was found in Eye of GNOME (eog). A heap-based buffer overflow exists in the PNG metadata reader due to improper state handling when parsing split metadata chunks. A remote attacker could exploit this flaw by enticing a user into opening a specially crafted PNG file, potentially leading to arbitrary code execution or a Denial of Service (DoS) via application crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106064": {
+    "cvss": 6.3,
+    "description": "A heap-based buffer overflow was found in GIMP’s GIF export plug-in. Exporting an image with very large width and height can cause 32-bit overflow when computing the pixel buffer size. The plug-in allocates a buffer based on the wrapped value while GEGL writes using the true image extent, rooted in integer overflow",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107167": {
+    "cvss": 6.2,
+    "description": "A flaw was found in m17n-lib. A user providing specially crafted text input can trigger a heap use-after-free condition during input-method state transitions. Under specific conditions, the library frees an internal input context object but subsequently attempts to write to that freed memory. This issue can cause applications relying on the library to crash, leading to a Denial of Service (DoS), or potentially allow arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107169": {
+    "cvss": 6.2,
+    "description": "A flaw was found in m17n-lib. An attacker could provide specially crafted or truncated UTF-8 input to trigger an unhandled null pointer dereference during text processing. This issue causes the application to crash unexpectedly, resulting in a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106065": {
+    "cvss": 6.3,
+    "description": "A heap-based buffer overflow was found in GIMP’s PCX export plug-in. For images with extremely large width and height, buffer allocation uses overflowing 32-bit width * height arithmetic while subsequent GEGL operations use the full extent, after integer overflow in size calculation",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106066": {
+    "cvss": 6.3,
+    "description": "A heap-based buffer overflow was found in GIMP’s raw data export plug-in. When exporting very large images, g_malloc() sizing based on overflowing width * height * bytes-per-pixel can allocate far less memory than GEGL reads or writes during export, following integer overflow",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-106067": {
+    "cvss": 6.3,
+    "description": "A heap-based buffer overflow was found in GIMP’s Hot color filter plug-in. For very large images, a pixel buffer is allocated using overflowing 32-bit width * height (and related) arithmetic while the filter’s pixel access path uses the true image size, after integer overflow in the allocation size",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
