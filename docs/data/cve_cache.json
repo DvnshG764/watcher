@@ -155062,5 +155062,29 @@
     "description": "GitPython from 3.1.30 before 3.2.0 contains a remote code execution vulnerability in Remote.pull() whose unsafe-option guard inspects only keyword arguments, not the positional refspec. Attackers controlling the refspec can supply --upload-pack= to execute OS commands as the calling process over local-path or SSH transports.",
     "vendor": "gitpython-developers",
     "product": "GitPython"
+  },
+  "CVE-2026-65636": {
+    "cvss": 2.1,
+    "description": "Improper Neutralization of CRLF Sequences vulnerability in ufirstgroup ymlr (Ymlr module) allows attackers to inject arbitrary content into generated YAML documents through document comments. Ymlr.document!/2 interpolates each caller-supplied comment string into the output behind a single # prefix without validating it or escaping line breaks. Because a YAML comment is terminated by a line break, the first carriage return or line feed in the comment string ends the comment context and everything after it is emitted at column 0 of the document body. An attacker who controls text that the host application passes as a comment can forge top-level mapping keys, override values the application itself set, and emit --- or ... markers that split the output into additional documents. Downstream consumers of the generated YAML, such as configuration loaders, deployment manifests, CI pipelines and data importers, parse the injected content as legitimate data. The same clause backs Ymlr.document/2, Ymlr.documents!/2 and Ymlr.documents/2, so every document encoding entry point is affected. This vulnerability is associated with program files lib/ymlr.ex and program routines Ymlr.document!/2, Ymlr.documents!/2. This issue affects ymlr: from 0.0.1 before 5.1.6.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65635": {
+    "cvss": 8.3,
+    "description": "Improper Isolation or Compartmentalization vulnerability in malach-it boruta (Boruta.Openid module) allows attackers to register OpenID Connect clients with administrative privileges through the dynamic client registration entry point. Boruta.Openid.register_client/3 forwards caller-supplied registration parameters to the administrative client creation path without a public/admin field-level allowlist, so an unauthenticated registrant can set security-sensitive attributes including supported grant types, authorized scopes, PKCE enforcement, public refresh and revocation behavior, token lifetimes, and signing settings. The library does not distinguish between metadata a public registrant is allowed to set and administrative controls that should require operator approval. This vulnerability is associated with program files lib/boruta/openid.ex and program routines Boruta.Openid.register_client/3, Boruta.Openid.parse_registration_params/2. This issue affects boruta: from 2.3.0 before 2.3.7 and from 3.0.0-beta.1 onward.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65624": {
+    "cvss": 6.9,
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in ninenines cowboy allows an unauthenticated remote attacker to exhaust connection process memory over HTTP/1.1. The HTTP/1.1 handler in cowboy_http enforces the max_headers limit by counting the number of distinct header names in a map (maps:size(Headers)). When a request contains multiple header lines with the same name, the values are concatenated into a single ever-growing binary stored under that one map key (\", \" for regular headers, \"; \" for cookies), so the map size stays at one and the max_headers cap (default 100) is never reached. Because no accumulator bounds the total number of header lines or the total byte size of the header block (only per-line max_header_name_length and max_header_value_length apply), an unauthenticated client can send an arbitrary number of header lines with the same name and grow the connection process's binary memory to arbitrary size within the request window. The impact per connection is bounded by request_timeout (default 5 seconds, not reset by header data), and by max_heap_size when set (the offending connection process is killed once its heap grows past the limit). When max_heap_size is left at the default (unset), sustained abuse can drive the Erlang VM into out-of-memory conditions. This issue affects cowboy: from 2.0.0-pre.4 before 2.18.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65623": {
+    "cvss": 8.7,
+    "description": "Inefficient Algorithmic Complexity vulnerability in mtrudel bandit allows unauthenticated remote denial of service via CPU exhaustion during WebSocket fragment reassembly. The size guard Bandit.WebSocket.Connection.oversize_message?/2 called from handle_frame/3 in lib/bandit/websocket/connection.ex appends each non-final continuation frame to a left-nested iolist and then re-measures the entire accumulated buffer with IO.iodata_length/1 on every frame. Because the buffer grows by one element per frame and is fully re-traversed each time, reassembly work is quadratic (O(n^2)) in the number of continuation frames. The max_fragmented_message_size limit (default 8 MB) bounds total bytes but not frame count, and each frame can carry as little as one payload byte, so an attacker can send millions of tiny continuation frames using modest bandwidth to pin a CPU core for minutes to hours. Many concurrent connections can starve the whole server of CPU, denying service to legitimate users. The WebSocket read timeout does not help, because it is an idle timeout evaluated between reads and cannot preempt the synchronous reassembly work spent inside a single callback. This issue affects bandit: from 1.11.0 before 1.12.1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
