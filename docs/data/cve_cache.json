@@ -126590,8 +126590,8 @@
   "CVE-2026-63644": {
     "cvss": 7.5,
     "description": "bird-lg-go is a BIRD looking glass in Go. Prior to version 1.4.7, unsanitized input path enables arbitrary local file read, allowing an unauthenticated remote attacker to read sensitive files such as /etc/shadow and /root/.bash_history. This issue has been patched in version 1.4.7.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "xddxdd",
+    "product": "bird-lg-go"
   },
   "CVE-2026-73857": {
     "cvss": 7.5,
@@ -159586,5 +159586,167 @@
     "description": "A flaw was found in GIMP. An attacker can cause a Denial of Service (DoS) or potentially disclose sensitive memory contents by convincing a user to open or preview a specially crafted Bohemia Interactive (PAA) texture file. Due to an integer overflow when calculating image dimensions during file decompression, the application allocates an undersized memory buffer. Subsequent processing reads memory past the buffer boundary, terminating the plug-in process unexpectedly.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-112764": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows USB Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112765": {
+    "cvss": 7.0,
+    "description": "Heap-based buffer overflow in Windows Print Spooler Components allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112766": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows exFAT File System allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112789": {
+    "cvss": 4.7,
+    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Installer allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112790": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112791": {
+    "cvss": 7.0,
+    "description": "Time-of-check time-of-use (toctou) race condition in Windows Print Spooler Components allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112793": {
+    "cvss": 7.5,
+    "description": "Use after free in Windows Event Collector Service allows an authorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112794": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Smart Card allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112795": {
+    "cvss": 6.5,
+    "description": "Untrusted pointer dereference in Windows Security Account Manager allows an authorized attacker to deny service over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112796": {
+    "cvss": 7.0,
+    "description": "Double free in Windows Event Collector Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95901": {
+    "cvss": 9.8,
+    "description": "Double free in Windows Microsoft DirectMusic allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95951": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96046": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125191": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains a reference count leak in libavcodec/v4l2_buffers.c that allows attackers to deadlock the V4L2 mem2mem decoder on multi-plane capture formats. Attackers can supply crafted H.264, HEVC, or VP9 streams with resolution changes, making ff_v4l2_m2m_codec_reinit() wait forever and hang the decoding application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125192": {
+    "cvss": 3.3,
+    "description": "FFmpeg through 9.0.2 contains an uninitialized memory vulnerability in the DXA decoder in libavcodec/dxa.c that allows attackers to disclose heap memory via crafted DXA files. Attackers can supply a DXA video with a type 4 frame that copies the uninitialized decomp_buf buffer into output pictures, exposing leftover heap contents in decoded frames.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112214": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the GStreamer ASF demuxer in gst-plugins-ugly. When parsing a Simple Index object, an attacker-controlled entry count is used to size a heap allocation without being limited to the payload available in the object. Processing a crafted ASF, WMV, or WMA file can cause a very large memory allocation request and lead to denial of service if the allocation fails or the process is memory-constrained.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112259": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GIMP. Importing a crafted SBZ palette without a color-model attribute can cause a NULL pointer dereference during string comparison, resulting in denial of service of the GIMP application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107844": {
+    "cvss": 5.3,
+    "description": "Contao is an Open Source CMS. From version 5.0.0 until 5.3.50 and 5.7.12, ImagesController joins the user-controlled {path} parameter to the configured image target directory with Path::join() but does not use Path::isBasePath() to verify that the canonical path remains inside that directory. An unauthenticated request containing encoded parent-directory segments can therefore return files under the project directory through BinaryFileResponse when their names use an extension allowed by contao.image.valid_extensions. The route can also reveal whether arbitrary paths exist, and debug responses can disclose absolute filesystem paths, but paths below the upload directory were not shown to be readable. This issue is fixed in versions 5.3.50 and 5.7.12.",
+    "vendor": "contao",
+    "product": "contao"
+  },
+  "CVE-2026-71427": {
+    "cvss": 5.3,
+    "description": "WPGraphQL Content Blocks is a WordPress plugin that extends WPGraphQL to support querying Gutenberg blocks as data. Prior to 4.8.6, the editorBlocks renderedHtml field in includes/Data/ContentBlocksResolver.php uses resolve_content_blocks() to read a post with get_post() without applying post_password_required(). An unauthenticated caller who knows a supported post identifier can therefore retrieve the complete body of a password-protected published post without a post password, nonce, or valid cookie, exposing paid, member-only, preview, or internal content. This issue is fixed in version 4.8.6.",
+    "vendor": "wpengine",
+    "product": "wp-graphql-content-blocks"
+  },
+  "CVE-2026-120735": {
+    "cvss": 5.3,
+    "description": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 5.7.7 via the 'key' parameter. This makes it possible for unauthenticated attackers to extract full invoice and receipt records including customer full name, email address, phone number, invoice line items and totals, and the invoice's real access key. This is exploitable via the unauthenticated public routes invoices__view_by_key and transactions__view_receipt_by_key, which apply no ownership, capability, or nonce check before passing the attacker-supplied key into the ORM lookup.",
+    "vendor": "latepoint",
+    "product": "Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress"
+  },
+  "CVE-2026-24124": {
+    "cvss": 8.9,
+    "description": "Dragonfly is an open source P2P-based file distribution and image acceleration system. In versions 2.4.1-rc.0 and below, the Job API endpoints (/api/v1/jobs) lack JWT authentication middleware and RBAC authorization checks in the routing configuration. This allows any unauthenticated user with access to the Manager API to view, update and delete jobs. The issue is fixed in version 2.4.1-rc.1.",
+    "vendor": "dragonflyoss",
+    "product": "dragonfly"
+  },
+  "CVE-2026-44478": {
+    "cvss": 7.5,
+    "description": "hoppscotch is an open source API development ecosystem. The fix for CVE-2026-28215 in version 2026.2.0 addresses the unauthenticated POST /v1/onboarding/config endpoint by checking onboardingCompleted and canReRunOnboarding before allowing config overwrites. However, GET /v1/onboarding/config still leaks all infrastructure secrets in plaintext to unauthenticated users when the ONBOARDING_RECOVERY_TOKEN stored in the database is an empty string. This vulnerability is fixed in 2026.4.0.",
+    "vendor": "hoppscotch",
+    "product": "hoppscotch"
+  },
+  "CVE-2026-43644": {
+    "cvss": 5.4,
+    "description": "podinfo through 6.11.2 contains a reflected cross-site scripting vulnerability in the /echo and /api/echo endpoints where the echoHandler writes request body content directly to the response without setting explicit Content-Type or X-Content-Type-Options headers. Attackers can craft cross-origin HTML pages with auto-submitting forms containing script payloads in the request body, which are served as text/html due to Go's content type detection, allowing the reflected script to execute in the podinfo origin context when victims visit the attacker's page.",
+    "vendor": "stefanprodan",
+    "product": "podinfo"
+  },
+  "CVE-2026-3514": {
+    "cvss": 7.5,
+    "description": "In version 3.6.19 of prefecthq/prefect, an authentication bypass vulnerability exists due to the improper handling of URL path exemptions for health check probes. Specifically, the authentication middleware exempts any URL path ending with 'health' or 'ready' from authentication checks. This allows an attacker to create resources with names ending in 'health' or 'ready' and access them without authentication. Affected endpoints include those for variables, flows, work pools, work queues, and deployments. This vulnerability can lead to unauthorized access to sensitive information, such as API keys and database credentials, stored in Prefect Variables.",
+    "vendor": "prefecthq",
+    "product": "prefecthq/prefect"
+  },
+  "CVE-2026-52769": {
+    "cvss": 8.3,
+    "description": "YesWiki is a wiki system written in PHP. From version 4.6.2 to before version 4.6.6, the POST /api/forms/{formId}/actor/inbox route - exposed publicly with acl:\"public\" - accepts an HTTP Signature header whose keyId parameter is a URL. HttpSignatureService::verifySignature() parses the header and immediately makes a server-side HTTP GET to that URL, before any cryptographic verification or URL validation. An unauthenticated remote attacker can therefore make YesWiki issue arbitrary outbound HTTP requests to any host the server can reach - internal services, cloud-metadata endpoints (169.254.169.254), intranet-only admin panels, etc. - and read enough back via timing and error-message oracles to scan ports, enumerate services, and (on a real cloud instance) reach IAM metadata. The only deployment-side precondition is that ActivityPub be enabled on at least one Bazar form. This issue has been patched in version 4.6.6.",
+    "vendor": "YesWiki",
+    "product": "yeswiki"
+  },
+  "CVE-2026-63520": {
+    "cvss": 8.1,
+    "description": "Improper input validation in Microsoft Office SharePoint allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Microsoft",
+    "product": "Microsoft SharePoint Enterprise Server 2016"
+  },
+  "CVE-2026-129014": {
+    "cvss": 6.5,
+    "description": "Missing Authorization vulnerability in DynamiApps Frontend Admin by DynamiApps acf-frontend-form-element allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Frontend Admin by DynamiApps: from n/a through 3.30.2.",
+    "vendor": "DynamiApps",
+    "product": "Frontend Admin by DynamiApps"
   }
 }
