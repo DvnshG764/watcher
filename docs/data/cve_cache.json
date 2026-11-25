@@ -158402,7 +158402,7 @@
   "CVE-2026-136139": {
     "cvss": 6.3,
     "description": "A vulnerability was determined in Zefan-Cai R-KV up to 6715468b9872442be72e5c97322e4d9c9a2abf55. This impacts the function _shard_files of the file FlashInfer/rkv/loader.py of the component FlashInfer weight loader. This manipulation of the argument weight_map causes path traversal. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. Patch name: 0fdff6ed12b58ad4c33aab5a63f66e04555cafb6. To fix this issue, it is recommended to deploy a patch. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.",
-    "vendor": "Zefan-Cai",
+    "vendor": "F5",
     "product": "R-KV"
   },
   "CVE-2026-135707": {
@@ -158524,5 +158524,11 @@
     "description": "MISP's LinOTPAuth plugin, used for one-time-password authentication against a LinOTP server, did not enforce TLS server certificate verification when the LinOTPAuth.verifyssl configuration option was not explicitly set. In a default or minimally configured deployment, the authentication request to the LinOTP server was sent without peer or peer-name certificate validation, effectively allowing self-signed or spoofed certificates. An attacker with a network position between the MISP instance and the LinOTP server could perform a man-in-the-middle attack to intercept or tamper with the authentication exchange, potentially capturing one-time passwords or user credentials. Preconditions: - The LinOTPAuth plugin is enabled and configured to communicate with a LinOTP server - The LinOTPAuth.verifyssl setting is absent or null (not explicitly set to true or false) - The attacker can position themselves on the network path between MISP and the LinOTP server Security impact: - Confidentiality of OTP tokens and authentication credentials in transit - Potential for credential interception or replay Affected versions: MISP prior to 2.5.52",
     "vendor": "MISP",
     "product": "MISP"
+  },
+  "CVE-2026-85150": {
+    "cvss": 7.5,
+    "description": "A NULL pointer dereference flaw was found in GStreamer's RTSP support library. The vulnerability occurs while parsing an Authorization or WWW-Authenticate header that uses Digest authentication. Specially crafted whitespace placement around a parameter's terminator can cause an internal length calculation to underflow, leading to a crash of the process parsing the header. On an RTSP server this can be triggered by a remote, unauthenticated attacker sending a single malformed request when the server has authentication enabled; the same flaw can also be triggered against an RTSP client by a malicious or compromised RTSP server. Successful exploitation results in a denial of service (application crash) and has no confirmed impact on confidentiality or integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
