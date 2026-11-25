@@ -158014,5 +158014,251 @@
     "description": "Memory leak in Juniper JUNOS Packet Forwarding Engine (PFE) allows remote attackers to cause a denial of service (memory exhaustion and device reboot) via certain IPv6 packets.",
     "vendor": "Juniper",
     "product": "Unknown"
+  },
+  "CVE-2026-96051": {
+    "cvss": 7.0,
+    "description": "Out-of-bounds read in Windows USB Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96052": {
+    "cvss": 7.8,
+    "description": "Integer underflow (wrap or wraparound) in Windows Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91920": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the ChunkReader component of the Undertow web server, which is used to handle chunked transfer encoding in HTTP requests. The issue occurs because a security check for the chunk size is performed before the value is shifted, allowing a specifically crafted 15-digit chunk size to bypass the limit and overflow into internal state flags. This can cause the server to terminate a request body prematurely and interpret the remaining data as a separate, smuggled request.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93006": {
+    "cvss": 6.8,
+    "description": "A flaw was found in dnsmasq. The TFTP server can serve the wrong file contents because a recently used transfer cache is not invalidated when a transfer finishes. An attacker on the local network who can request a TFTP file may cause a later client to receive previously cached data instead of the requested file. In PXE network-boot environments this can substitute attacker-chosen boot content for a victim machine.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93007": {
+    "cvss": 5.3,
+    "description": "A flaw was found in dnsmasq. The TCP DNS service uses a small fixed pool of child processes and does not set a receive timeout on client connections. A remote attacker can open idle TCP connections to port 53 and occupy the entire pool, preventing new TCP DNS connections and DNSSEC validation that requires TCP fallback. UDP DNS resolution continues, and occupied slots are released after a fixed lifetime.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93011": {
+    "cvss": 5.3,
+    "description": "A flaw was found in dnsmasq. After a reduction of internal domain-name buffer sizes, the DNSSEC validator can write a few bytes past a name buffer when converting names to and from DNS wire format. An attacker who can cause the server to validate a crafted DNSSEC response may overwrite a small amount of adjacent heap metadata. DNSSEC support is not compiled in by default and must also be enabled at runtime.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85518": {
+    "cvss": 6.1,
+    "description": "A flaw was found in OpenSCAP. When decomposing a Source DataStream (SDS) file, the application does not properly validate relative file path attributes, leading to a path traversal vulnerability. An attacker can exploit this flaw by tricking a user or automated system into decomposing a crafted datastream containing directory traversal sequences. Successful exploitation allows unauthorized file creation or modification outside the intended target directory with the permissions of the executing process.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89098": {
+    "cvss": 5.5,
+    "description": "A flaw was found in nfs-utils. The fsidd daemon improperly handles input received over its local domain socket by relying on program assertions to verify command arguments. A local user can exploit this vulnerability by sending a malformed request lacking the required arguments to trigger an assertion failure. This causes the daemon to crash, resulting in a Denial of Service (DoS) for filesystem identifier lookup services until restarted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85231": {
+    "cvss": 6.5,
+    "description": "A flaw was found in libtirpc. An authenticated remote attacker could exploit this vulnerability by sending oversized wrapped data requests to an RPC (Remote Procedure Call) service configured with RPCSEC_GSS (Remote Procedure Call Security-Generic Security Service) integrity or privacy. This can lead to unbounded memory allocation, resulting in a Denial of Service (DoS) by exhausting system resources and causing the service to become unstable or terminate.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85977": {
+    "cvss": 5.3,
+    "description": "A flaw was found in libtirpc. A remote attacker can exploit this vulnerability by sending specially crafted PMAPPROC_DUMP replies to a client application that uses the pmap_getmaps() function against an attacker-controlled host. This unbounded decoding can lead to excessive memory and CPU allocation, causing the client process to experience a Denial of Service (DoS) due to resource exhaustion.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89085": {
+    "cvss": 6.6,
+    "description": "A flaw was found in parted. A heap-based buffer overflow can occur when processing a specially crafted FAT32 filesystem due to an integer calculation error during buffer allocation. A local attacker could exploit this by enticing a user or automated service to open a malicious filesystem image, resulting in an application crash leading to a Denial of Service (DoS) or potential memory corruption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89088": {
+    "cvss": 5.5,
+    "description": "A flaw was found in parted. A heap-based buffer overflow exists in libparted's file system resizing logic when handling FAT16 volumes. By convincing a user or administrator to resize a specially crafted FAT16 file system image with malformed directory metadata, an attacker can trigger an oversized read into a fixed-size memory buffer. This issue causes memory corruption, resulting in an application crash and a denial of service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89096": {
+    "cvss": 5.9,
+    "description": "A flaw was found in nfs-utils. An unauthenticated remote attacker can trigger a Denial of Service (DoS) by sending repeated state notification requests to an exposed rpc.statd service. The service fails to properly release memory allocated during callback processing, leading to continuous memory growth. Sustained requests can exhaust system resources, eventually causing the service to degrade or crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88252": {
+    "cvss": 5.5,
+    "description": "A flaw was found in sssd. A local user can cause a Denial of Service (DoS) by exhausting the responder service's available file descriptors (system handles used for open connections). By opening and maintaining many concurrent connections to a responder socket while continuing to queue new connection attempts, an attacker can trigger an unthrottled retry loop. This condition leads to high CPU utilization and stalls the service, preventing legitimate identity and authentication requests from being processed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-86345": {
+    "cvss": 9.0,
+    "description": "A flaw was found in 389-ds-base. The server does not discard plaintext bytes already buffered from a client connection when negotiating StartTLS, allowing an on-path attacker to inject a crafted LDAP message that is processed after the TLS upgrade and whose response is delivered to the client in place of the client's own pending operation's response, due to messageID collision. This can cause a client application to treat a failed authentication (bind) attempt as successful.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-90462": {
+    "cvss": 5.4,
+    "description": "A flaw was found in SSSD. When configured with the LDAP access provider and `ldap_access_order` including `ppolicy` or `lockout`, a fail-open condition in the LDAP ppolicy access check can occur if a user lookup returns zero results. This can incorrectly return success and cache an allow decision, permitting continued authorization for a deleted or deprovisioned user. A remote attacker with prior valid account context could exploit this to maintain access to information and potentially make limited modifications to resources that should no longer be available.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92382": {
+    "cvss": 4.1,
+    "description": "An out-of-bounds write flaw was found in usbredir. Starting an isochronous OUT stream with a transfer count of 1 leaves the stream's single transfer buffer permanently unsubmitted, defeating the bounds check in usbredirhost_iso_packet() and allowing a usbredir peer to write past the end of the packet descriptor array on every subsequent isochronous packet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-91786": {
+    "cvss": 6.1,
+    "description": "A flaw was found in GNOME Shell. When processing icons from a remote search provider via D-Bus, the system fails to validate the icon's declared dimensions against the actual data buffer size. A malicious or compromised remote search provider could exploit this by providing oversized icon dimensions, leading to an out-of-bounds read. This can cause the GNOME Shell process to crash, disrupting the user's session, and potentially disclose sensitive information from adjacent memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-90994": {
+    "cvss": 4.0,
+    "description": "A flaw was found in sssd, specifically within the PAM (Pluggable Authentication Modules) responder's protocol v1 parser, pam_parse_in_data(). A local client with access to the PAM responder's UNIX socket can exploit this by negotiating protocol v1 and sending an empty or truncated PAM request body. This can trigger an out-of-bounds read, potentially causing the PAM responder to terminate or restart, leading to a local denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-90995": {
+    "cvss": 5.5,
+    "description": "A flaw was found in SSSD (System Security Services Daemon). A local attacker with privileges to connect to the PAM (Pluggable Authentication Modules) responder socket can send a specially crafted protocol request. If the `pam_app_services` configuration is enabled and the service item is omitted from the request, a NULL pointer dereference can occur. This vulnerability leads to a denial of service, causing the PAM responder to crash and disrupt authentication services.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-90996": {
+    "cvss": 5.5,
+    "description": "A flaw was found in sssd. A local unprivileged user could send a specially crafted request with a zero-length body to the Network Security Services (NSS) responder. This could lead to a denial-of-service condition, causing the NSS responder to become unstable or terminate. This vulnerability affects the availability of the system responder.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88914": {
+    "cvss": 4.4,
+    "description": "A flaw was found in GStreamer's gst-plugins-good isomp4 plugin. When processing a specially crafted MP4 or MOV file containing CEA-608 closed-caption data, an integer overflow in 32-bit unsigned arithmetic can bypass a bounds check in the caption parser. This leads to an out-of-bounds heap read of up to 244 bytes, which is then included in the downstream caption output. An attacker could exploit this by tricking a user into opening a malicious media file, potentially resulting in disclosure of adjacent heap memory or application crash.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-89329": {
+    "cvss": 6.2,
+    "description": "A flaw was found in `multipathd`. A local attacker with access to the `multipathd` UNIX control socket can exploit this vulnerability by sending valid commands and then ceasing to read replies. This action can cause the `multipathd` listener thread to block, leading to a Denial of Service (DoS) where legitimate Inter-Process Communication (IPC) operations may hang or time out. This issue does not result in privilege escalation, arbitrary code execution, or impact data confidentiality or integrity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88264": {
+    "cvss": 5.6,
+    "description": "A flaw was found in crun. When the container configuration does not give /dev a dedicated mount, terminal setup can redirect /dev/console onto an attacker-controlled path, including via the read-only-rootfs bind-mount fallback. Affected versions are crun 1.29.1 and earlier. Default configurations that mount a fresh /dev are not exposed. No fixed release is available yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88265": {
+    "cvss": 5.6,
+    "description": "A flaw was found in crun. After pivot_root, reopening /dev/null for stdio can follow a symlink and attach a host file to container stdio, then change that file's ownership. Affected versions are crun 1.29.1 and earlier. Default configurations that mount a fresh /dev are not exposed. No fixed release is available yet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84828": {
+    "cvss": 6.5,
+    "description": "A flaw was found in PCS (Pacemaker Configuration System). A local attacker with membership in the 'haclient' group can exploit the 'pcs host auth --token' command to read the contents of arbitrary files on the filesystem, provided the files are shorter than 256 bytes. The file contents are read with root privileges by the pcsd daemon and can be exfiltrated by the attacker through subsequent cluster node communication. This allows disclosure of sensitive data such as API keys, tokens, or configuration secrets that would otherwise be inaccessible to the attacker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88859": {
+    "cvss": 6.3,
+    "description": "A flaw was found in Evolution. A remote attacker can exploit this vulnerability by sending a specially crafted HTML email containing a spoofed vCard control. When a victim clicks on this control, Evolution's trusted JavaScript handler incorrectly assigns an attacker-controlled JavaScript URL to an iframe's source. This action leads to arbitrary JavaScript execution within the mail-viewing context, effectively bypassing the security measures designed to prevent script execution in email content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87875": {
+    "cvss": 4.3,
+    "description": "The cupsUTF32ToUTF8() function in CUPS's cups/transcode.c lacks a source-length bound and can read past the end of the source buffer, resulting in a heap out-of-bounds read. This is reachable via SNMP supply-description parsing in backend/snmp-supplies.c with attacker-controlled content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85534": {
+    "cvss": 5.9,
+    "description": "A flaw was found in libsoup. When a client sends an HTTP/2 request body from a non-pollable input stream, the library can buffer more data than the current flow-control window later allows. A malicious HTTP/2 server can shrink SETTINGS_INITIAL_WINDOW_SIZE while that buffered read is still in progress. The client then copies the full buffer into a smaller DATA callback without a runtime bounds check, which can abort the process or fail the HTTP/2 session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85769": {
+    "cvss": 6.5,
+    "description": "A flaw was found in libtpms, a library that provides software TPM 2.0 emulation. When restoring TPM 2.0 state (for example during a virtual machine's power-on or state/migration restore), a malformed state blob can supply an oversized skip-block length that is not validated against the remaining size of the input buffer. This can drive an internal size counter negative, which bypasses a subsequent bounds check due to an unsafe signed-to-unsigned conversion, causing the parser to read memory outside the bounds of the heap buffer holding the state data. Successful exploitation can crash the process hosting libtpms (such as swtpm), resulting in a denial of service of the emulated TPM device and the virtual machine that depends on it. No data corruption or information disclosure was confirmed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84267": {
+    "cvss": 4.3,
+    "description": "A flaw was found in the SFTP backend in gvfs. When mounting a share, a malicious SFTP server can cause read_string() to allocate a buffer with a certain length but the function does not verify that the buffer is completely filled, leaving the remainder of the buffer containing uninitialized heap contents. If the server sends a short FXP_HANDLE reply, these uninitialized bytes are taken as the file handle. The client will then echo these uninitialized bytes back to the server on all subsequent requests using that handle. With a length of 128 bytes, this issue allows the malicious server to deterministically read uninitialized heap memory from the gvfsd-sftp process, leaking its heap base and the load address of the libgio library, resulting in a deterministic defeat of Address Space Layout Randomization (ASLR).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84269": {
+    "cvss": 6.5,
+    "description": "A flaw was found in the AFP backend in gvfs. When mounting a share, a malicious AFP server can cause the DSI read path to process a length that exceeds the size requested by the client. The function does not verify the server-provided length against the pre-sized reply buffer, causing the operation to access past the intended boundaries. This issue allows a malicious server to overflow a heap buffer and crash the gvfsd-afp process, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84270": {
+    "cvss": 4.3,
+    "description": "A flaw was found in the MTP backend in gvfs. When reading a file from a mounted MTP device, do_read() in gvfsbackendmtp.c trusts the data length returned by the device without limiting it to the original size requested by the client. If a malicious MTP device responds with more bytes than requested, this unrestricted length is passed directly to memcpy(). This causes the operation to read memory outside the intended boundaries. This allows an attacker who plugs in a malicious MTP device to cause a segmentation fault when a file is read and crash the gvfsd-mtp process, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82324": {
+    "cvss": 6.1,
+    "description": "A flaw was found in the file-iff (IFF/ILBM) plugin in GIMP. When processing a specially crafted IFF/ILBM image file, the plugin does not properly validate the HAM row size and improperly handles cases where the number of color planes (nPlanes) is zero. This causes a row size mismatch that bypasses memory bounds checking, resulting in heap out-of-bounds reads. This issue can result in an application crash, leading to a denial of service or a limited information disclosure of heap memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82328": {
+    "cvss": 6.1,
+    "description": "A flaw was found in the file-ico plugin in GIMP. When processing a specially crafted ICO image file, the plugin does not properly validate the used_clrs (palette count) parameter. This incorrect validation leads to improper memory bounds checking, resulting in a heap out-of-bounds read. This issue can result in an application crash, leading to a denial of service or a limited information disclosure of heap memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82330": {
+    "cvss": 6.1,
+    "description": "A flaw was found in the file-pvr plugin in GIMP. When processing a specially crafted PVR image file, the VQ (compressed) decoder does not properly perform memory bounds checking. This missing validation results in a heap out-of-bounds read. This issue can result in an application crash, leading to a denial of service or a limited information disclosure of heap memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82343": {
+    "cvss": 6.1,
+    "description": "A flaw was found in the file-psd plugin in GIMP. When processing a specially crafted PSD image file, the plugin does not properly validate the channel-count parameter. This incorrect validation leads to improper memory bounds checking, resulting in both a heap out-of-bounds read and a stack out-of-bounds access. This issue can result in an application crash, leading to a denial of service or a limited information disclosure of memory contents.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81893": {
+    "cvss": 4.7,
+    "description": "A flaw was found in gdk-pixbuf. When loading a specially crafted JPEG image containing chunked ICC profile markers, an error during ICC profile parsing can leave stale size metadata after the profile buffer is freed. A subsequent allocation in the same decode can cause an out-of-bounds write, potentially crashing the application. To exploit this flaw, an application using gdk-pixbuf must process the malicious JPEG image. Affected version >= 2.26.4",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-3634": {
+    "cvss": 6.5,
+    "description": "A flaw was found in libsoup. An attacker controlling the value used to set the Content-Type header can inject a Carriage Return Line Feed (CRLF) sequence due to improper input sanitization in the `soup_message_headers_set_content_type()` function. This vulnerability allows for the injection of arbitrary header-value pairs, potentially leading to HTTP header injection and response splitting attacks.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-3441": {
+    "cvss": 7.1,
+    "description": "A flaw was found in GNU Binutils. This heap-based buffer overflow vulnerability, specifically an out-of-bounds read in the bfd linker, allows an attacker to gain access to sensitive information. By convincing a user to process a specially crafted XCOFF object file, an attacker can trigger this flaw, potentially leading to information disclosure or an application level denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-3442": {
+    "cvss": 7.1,
+    "description": "A flaw was found in GNU Binutils. This vulnerability, a heap-based buffer overflow, specifically an out-of-bounds read, exists in the bfd linker component. An attacker could exploit this by convincing a user to process a specially crafted malicious XCOFF object file. Successful exploitation may lead to the disclosure of sensitive information or cause the application to crash, resulting in an application level denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
