@@ -94231,7 +94231,7 @@
   },
   "CVE-2026-95874": {
     "cvss": 7.8,
-    "description": "High 10 Nov 2026 10 Nov 2026 CPAI-2026-17597 Microsoft CVE-2026-95874 CVE-2026-95874 Microsoft Xbox Gaming Services Elevation of Privilege (CVE-2026-95874)",
+    "description": "Heap-based buffer overflow in Xbox allows an authorized attacker to elevate privileges locally.",
     "vendor": "Check Point",
     "product": "Windows 10 Version 1607"
   },
@@ -143827,25 +143827,25 @@
   },
   "CVE-2026-63150": {
     "cvss": 8.1,
-    "description": "Omnispace Agora Project through 26.10.0 contains a cross-site request forgery vulnerability that allows remote attackers to forge privileged actions such as administrator user creation by merging $_GET and $_POST parameters without requiring an anti-CSRF token. Attackers can craft a malicious link or auto-navigating page that issues a plain GET request, exploiting the lack of CSRF protection and SameSite=Lax cookie behavior on top-level navigations to create unauthorized administrator accounts.",
+    "description": "Omnispace Agora Project before 26.11.3 contains a cross-site request forgery vulnerability that allows remote attackers to forge privileged actions such as administrator user creation by merging $_GET and $_POST parameters without requiring an anti-CSRF token. Attackers can craft a malicious link or auto-navigating page that issues a plain GET request, exploiting the lack of CSRF protection and SameSite=Lax cookie behavior on top-level navigations to create unauthorized administrator accounts.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-63151": {
     "cvss": 7.5,
-    "description": "Omnispace Agora Project through 26.10.0 contains a predictable token generation vulnerability that allows unauthenticated attackers to access private calendar data by exploiting a missing dateCrea value that causes the md5Id token to collapse to md5(calendarId.userId), both small enumerable integers. Attackers can compute valid tokens and request the misc&action=DisplayIcal endpoint with a forged md5Id to read any user's private calendar events without authentication.",
+    "description": "Omnispace Agora Project before 26.11.3 contains a predictable token generation vulnerability that allows unauthenticated attackers to access private calendar data by exploiting a missing dateCrea value that causes the md5Id token to collapse to md5(calendarId.userId), both small enumerable integers. Attackers can compute valid tokens and request the misc&action=DisplayIcal endpoint with a forged md5Id to read any user's private calendar events without authentication.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-63166": {
     "cvss": 6.1,
-    "description": "Omnispace Agora Project through 26.10.0 contains a stored cross-site scripting vulnerability that allows attackers to inject malicious HTML markup by controlling imported directory data or an uploaded CSV file, as values are rendered into table cell text and value attributes after only Txt::utf8Encode() with no HTML escaping in VuePersonsImportExport.php. Attackers can craft a CSV cell containing an attribute-breakout payload that is rendered verbatim and executed in the browser of the administrator performing the import, leading to arbitrary script execution in the administrative context.",
+    "description": "Omnispace Agora Project before 26.11.3 contains a stored cross-site scripting vulnerability that allows attackers to inject malicious HTML markup by controlling imported directory data or an uploaded CSV file, as values are rendered into table cell text and value attributes after only Txt::utf8Encode() with no HTML escaping in VuePersonsImportExport.php. Attackers can craft a CSV cell containing an attribute-breakout payload that is rendered verbatim and executed in the browser of the administrator performing the import, leading to arbitrary script execution in the administrative context.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-63167": {
     "cvss": 6.5,
-    "description": "Omnispace Agora Project through 26.10.0 contains a SQL injection vulnerability that allows authenticated general administrators to inject arbitrary SQL by setting the personsSort session value, which is concatenated unsanitized into ORDER BY clauses in MdlUser.php and MdlSpace.php. Attackers can submit an error-based extractvalue payload through personsSort to leak database information, such as the MariaDB version, via the user and space listing pages.",
+    "description": "Omnispace Agora Project before 26.11.3 contains a SQL injection vulnerability that allows authenticated general administrators to inject arbitrary SQL by setting the personsSort session value, which is concatenated unsanitized into ORDER BY clauses in MdlUser.php and MdlSpace.php. Attackers can submit an error-based extractvalue payload through personsSort to leak database information, such as the MariaDB version, via the user and space listing pages.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -154597,8 +154597,8 @@
   },
   "CVE-2026-129244": {
     "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
+    "description": "Critical 25 Nov 2026 25 Nov 2026 CPAI-2026-18918 CVE-2026-129244 GeoServer Buffer Overflow (CVE-2026-129244)",
+    "vendor": "Check Point",
     "product": "Unknown"
   },
   "CVE-2026-132779": {
@@ -157549,19 +157549,19 @@
   },
   "CVE-2026-63155": {
     "cvss": 6.1,
-    "description": "Omnispace Agora Project through 26.10.0 contains an open redirect vulnerability that allows remote attackers to redirect users to arbitrary external URLs by manipulating the objUrl parameter in Ctrl.php's redir() function. Attackers can craft login links with objUrl set to a malicious site, causing the application to issue an HTTP 302 redirect to that external URL, which can be abused for phishing and credential theft.",
+    "description": "Omnispace Agora Project before 26.11.3 contains an open redirect vulnerability that allows remote attackers to redirect users to arbitrary external URLs by manipulating the objUrl parameter in Ctrl.php's redir() function. Attackers can craft login links with objUrl set to a malicious site, causing the application to issue an HTTP 302 redirect to that external URL, which can be abused for phishing and credential theft.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-63164": {
     "cvss": 6.5,
-    "description": "Omnispace Agora Project through 26.10.0 contains an insecure direct object reference vulnerability that allows authenticated attackers to access another user's private mail by supplying a crafted reloadMailTypeId parameter to Ctrl::getCurObj() without a readRight() ownership check in CtrlMail.php. Attackers can manipulate the mail identifier value, such as reloadMailTypeId=mail-1, to retrieve the title and body of private messages belonging to other users, resulting in unauthorized disclosure of sensitive communications.",
+    "description": "Omnispace Agora Project before 26.11.3 contains an insecure direct object reference vulnerability that allows authenticated attackers to access another user's private mail by supplying a crafted reloadMailTypeId parameter to Ctrl::getCurObj() without a readRight() ownership check in CtrlMail.php. Attackers can manipulate the mail identifier value, such as reloadMailTypeId=mail-1, to retrieve the title and body of private messages belonging to other users, resulting in unauthorized disclosure of sensitive communications.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
   "CVE-2026-63170": {
     "cvss": 3.7,
-    "description": "Omnispace Agora Project through 26.10.0 contains a predictable token generation vulnerability that allows unauthenticated attackers to forge the shared-calendar iCal share token by deriving md5Id() from predictable fields such as object creation time, which is self-disclosed through autorDate and the iCal CREATED field. Attackers can compute the creation minute and forge the md5Id token to access and read a shared calendar's iCal feed without authorization.",
+    "description": "Omnispace Agora Project before 26.11.3 contains a predictable token generation vulnerability that allows unauthenticated attackers to forge the shared-calendar iCal share token by deriving md5Id() from predictable fields such as object creation time, which is self-disclosed through autorDate and the iCal CREATED field. Attackers can compute the creation minute and forge the md5Id token to access and read a shared calendar's iCal feed without authorization.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -157579,7 +157579,7 @@
   },
   "CVE-2026-63173": {
     "cvss": 5.4,
-    "description": "Omnispace Agora Project through 26.10.0 contains a broken access control vulnerability in which the isAutor() function in MdlObject.php grants accessRight=3 based solely on object authorship without verifying the user still belongs to the object's space. Attackers who were previously members and authored objects can retain unauthorized read access to space objects even after being removed from the space, leading to persistent information disclosure.",
+    "description": "Omnispace Agora Project through 26.11.3 contains a broken access control vulnerability in which the isAutor() function in MdlObject.php grants accessRight=3 based solely on object authorship without verifying the user still belongs to the object's space. Attackers who were previously members and authored objects can retain unauthorized read access to space objects even after being removed from the space, leading to persistent information disclosure.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -158719,8 +158719,8 @@
   },
   "CVE-2026-129243": {
     "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
+    "description": "Critical 25 Nov 2026 25 Nov 2026 CPAI-2026-18919 CVE-2026-129243 GeoServer Authentication Bypass (CVE-2026-129243)",
+    "vendor": "Check Point",
     "product": "Unknown"
   },
   "CVE-2026-32275": {
@@ -158791,8 +158791,8 @@
   },
   "CVE-2026-120705": {
     "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
+    "description": "Critical 25 Nov 2026 25 Nov 2026 CPAI-2026-18922 CVE-2026-120705 GeoServer Arbitrary File Read (CVE-2026-120705)",
+    "vendor": "Check Point",
     "product": "Unknown"
   },
   "CVE-2026-130671": {
@@ -159518,6 +159518,72 @@
   "CVE-2025-27769": {
     "cvss": 2.6,
     "description": "A vulnerability has been identified in Heliox Flex 180 kW EV Charging Station (All versions < F4.11.1), Heliox Mobile DC 40 kW EV Charging Station (All versions < L4.10.1). Affected devices contain improper access control that could allow an attacker to reach unauthorized services via the charging cable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95876": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Local Session Manager (LSM) allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95877": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Biometric Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95879": {
+    "cvss": 7.8,
+    "description": "Out-of-bounds read in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95891": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Microsoft DirectMusic allows an authorized attacker to execute code locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95902": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows USB Hub Driver allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125189": {
+    "cvss": 5.5,
+    "description": "FFmpeg 8.1 through 9.0.2 contains a denial of service vulnerability in the lcevc_metadata bitstream filter caused by a process block position mismatch in lcevc_metadata_handle_vui(). Attackers can supply crafted LCEVC access units with two IDR or non-IDR NAL units to trigger an av_assert0 failure in ff_cbs_lcevc_list_add(), aborting the application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85498": {
+    "cvss": 3.5,
+    "description": "A flaw was found in polkit. When processing input that begins with a null byte, an arithmetic error in the authentication agent helper causes an integer underflow during buffer length calculation, resulting in an out-of-bounds memory read. An attacker capable of supplying crafted input can trigger this flaw, potentially causing an application crash and resulting in a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93009": {
+    "cvss": 4.3,
+    "description": "A flaw was found in dnsmasq. The DHCPv6 client hostname parser can read one byte past the end of a crafted FQDN option because it checks the next label length before confirming the pointer is still inside the option. An attacker on the local network can trigger this with a single DHCPv6 packet. The extra byte is not returned to the client or logged, and no crash has been demonstrated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93010": {
+    "cvss": 4.3,
+    "description": "A flaw was found in dnsmasq. When DHCP leasequery is enabled without listing allowed source addresses, the server does not check who sent the query. A host on the local network can request DHCP lease records and learn assigned addresses, MAC addresses, hostnames, and related lease metadata. The feature is off unless an administrator turns it on.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84823": {
+    "cvss": 7.1,
+    "description": "A flaw was found in WildFly. A user with the `Monitor` role, which is the lowest standard Role-Based Access Control (RBAC) role, can exploit a path traversal vulnerability in the `take-snapshot` operation. By manipulating the `name` parameter, this user can write a copy of the server configuration to an arbitrary location. This allows the `Monitor` role to read back the server configuration, including sensitive credentials, which would otherwise be restricted by RBAC, leading to information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62438": {
+    "cvss": 6.1,
+    "description": "A flaw was found in GIMP. An attacker can cause a Denial of Service (DoS) or potentially disclose sensitive memory contents by convincing a user to open or preview a specially crafted Bohemia Interactive (PAA) texture file. Due to an integer overflow when calculating image dimensions during file decompression, the application allocates an undersized memory buffer. Subsequent processing reads memory past the buffer boundary, terminating the plug-in process unexpectedly.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
