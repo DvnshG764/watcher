@@ -160240,5 +160240,281 @@
     "description": "Heap-based buffer overflow in Windows iSCSI allows an authorized attacker to elevate privileges locally.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-128717": {
+    "cvss": 5.4,
+    "description": "An issue in PHPGurukul Employee Leaves Management System (ELMS) Version 2.1 allows a remote attacker to escalate privileges via the PHP session management mechanism",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132038": {
+    "cvss": 7.8,
+    "description": "Rapid7 Metasploit Framework versions prior to 6.5.10 suffer from an Improper Access Control issue in the msfdb database initialisation component whereby a PostgreSQL cluster initialised via msfdb init is configured with trust authentication and a world-accessible Unix domain socket in /tmp, allowing any local user on the same host to authenticate as the passwordless postgres superuser and execute arbitrary operating system commands as the msfdb owner. This issue is fixed in version 6.5.10.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132150": {
+    "cvss": 7.8,
+    "description": "A flaw was found in the file-xmc plugin in GIMP. When processing a specially crafted XMC image file, the plugin does not properly validate the comment subtype before using it as an array index. This missing validation leads to out-of-bounds memory access, invalid free and use-after-free issues. This vulnerability can result in an application crash, leading to a denial of service, or potentially allow for arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82171": {
+    "cvss": 8.0,
+    "description": "Dell PowerStore contains an XML External Entity (XXE) Injection vulnerability. A high-privileged attacker could exploit this vulnerability, potentially leading to disclosure of sensitive files and root-level compromise of the appliance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-20007": {
+    "cvss": 9.8,
+    "description": "ThinkPHP 2.0 through 2.2 and 3.0 Lite mode contains an eval injection vulnerability in the Dispatcher PATH_INFO parsing, which uses preg_replace with the /e modifier and a double-quoted replacement. Unauthenticated attackers can send crafted requests to index.php with a malicious 's' parameter containing PHP expressions to execute arbitrary code on the server. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2012-20008": {
+    "cvss": 8.8,
+    "description": "openSIS 5.1 before 9.0 contains a local file inclusion vulnerability that allows authenticated users to include arbitrary files through the modname parameter of ajax.php. Attackers can prefix a payload with misc/ and use ../ directory traversal to read sensitive files like /etc/passwd or execute local scripts in the web server context. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-19.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2018-25442": {
+    "cvss": 8.3,
+    "description": "Baidu UEditor 1.4.0 before 1.4.3.1 contains a server-side request forgery vulnerability that allows unauthenticated attackers to make arbitrary requests via the source[] parameter in /ueditor/jsp/controller.jsp?action=catchimage. Attackers can supply crafted URLs that the ImageHunter component fetches through url.openConnection() to reach internal services and bypass network restrictions. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-07-03.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2019-25784": {
+    "cvss": 8.2,
+    "description": "FineCMS versions 5.0.4 before 5.0.11 contain an unauthenticated SQL injection vulnerability in the data2 API action handled by list_tag in libraries/Template.php. Attackers can send GET requests to index.php?c=api&m=data2 with a valid auth hash and the param action=sql sql='...' to execute arbitrary SELECT queries and extract database information. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2021-48021": {
+    "cvss": 8.2,
+    "description": "Chamilo LMS 1.11.10 before 1.11.16 contains an unauthenticated SQL injection vulnerability in the searchOptionsFromTags function through the options parameter of extra_field.ajax.php. Attackers can send POST requests with a malicious JSON options array to inject SQL into the IN clause and extract database information. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2021-48022": {
+    "cvss": 7.5,
+    "description": "Rocket.Chat versions 0.61.0 before 3.11.4, 3.12.x before 3.12.4 and 3.13.x before 3.13.2 contain a missing authorization vulnerability allowing unauthenticated attackers to read any room's messages via the livechat:loadHistory Meteor method. Attackers can mint a guest token through livechat:registerGuest and send POST requests to /api/v1/method.callAnon with a target rid parameter to retrieve message history without membership checks. Exploitation evidence was first observed by the Shadowserver Foundation on 2025-02-13.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2021-48026": {
+    "cvss": 5.3,
+    "description": "Zhongqing Naboo Education Cloud Platform builds through 2021-07-09 contain a missing authentication vulnerability in the /api/TeacherQuery/SearchTeacherInSiteWithPagerRecords endpoint that allows unauthenticated attackers to access sensitive teacher data. Attackers can send unauthenticated GET requests to this endpoint to retrieve user names, login names, and admin ids from the JSON response. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-11-15.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-51028": {
+    "cvss": 8.2,
+    "description": "CmsEasy 7.7.5_20210919 contains an unauthenticated SQL injection vulnerability in the execsql_action function at /?case=crossall&act=execsql that executes attacker-supplied queries decrypted with the hardcoded key 'cmseasy_sql'. Attackers can send a crafted 'sql' parameter to run arbitrary SQL and dump the admin username and password hash. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-22.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2022-51032": {
+    "cvss": 6.1,
+    "description": "Reddit Top RSS through commit 5e38bfd contains a reflected cross-site scripting vulnerability that allows unauthenticated attackers to inject scripts through the unescaped score GET parameter. Attackers can craft links with a score value that closes the input value attribute in html.php, executing JavaScript in victims' browsers. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-19.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-54416": {
+    "cvss": 6.1,
+    "description": "Tiki Wiki CMS Groupware 12.12 through 12.14, 15.5 before 18.10, 19.0 before 21.9, 22.0 before 24.3, and 25.0 contain a reflected cross-site scripting vulnerability that allows unauthenticated attackers to inject scripts through the objectId parameter of tiki-ajax_services.php. Attackers can send a crafted GET request with the comment controller and list action to execute arbitrary JavaScript and steal session tokens or credentials. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-19.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-54420": {
+    "cvss": 7.5,
+    "description": "LiveBOS builds through 2023-08-16 contain a path traversal vulnerability that allows unauthenticated attackers to read arbitrary files via the imgName parameter in /feed/ShowImage.do using a ';.js.jsp' suffix bypass. Attackers can send crafted GET requests with directory traversal sequences in imgName to read system files such as /etc/passwd. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-30.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-54421": {
+    "cvss": 6.1,
+    "description": "phpLDAPadmin 1.1.0 before 1.2.5 contains a reflected cross-site scripting vulnerability that allows unauthenticated attackers to inject scripts through the dn parameter of cmd.php?cmd=template_engine. Attackers can supply an unparseable dn value that pretty_print_dn returns unescaped in the 'No such entry' error, executing JavaScript in victims' browsers. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-23.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58402": {
+    "cvss": 8.2,
+    "description": "Azon Dominator releases through 2024-06-03 contain an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries through the cid parameter in /fetch_products.php. Attackers can send crafted POST requests with boolean-based or time-based blind payloads to extract sensitive database information. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-07-30.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-58403": {
+    "cvss": 7.5,
+    "description": "AnyShare builds through 2024-11 contain a missing authentication vulnerability in the /api/ShareMgnt/Usrm_GetAllUsers endpoint that exposes user records including password fields. Attackers can send unauthenticated POST requests with a [start,limit] body to retrieve usernames, passwords, and department information for all users. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-12-25.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116443": {
+    "cvss": 9.8,
+    "description": "Dell PowerStore SDNAS contains a stack-based buffer overflow in the NAS TFTP service that could allow an unauthenticated remote attacker to cause a denial of service or potential code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116953": {
+    "cvss": 9.8,
+    "description": "Description: When an iRule that processes client traffic using the GENERICMESSAGE::route command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-120285": {
+    "cvss": 9.8,
+    "description": "Description When an HTTP profile and an iRule containing the PSC::ip_address command are configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). Impact Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-120292": {
+    "cvss": 9.8,
+    "description": "Description: When an HTTP profile and an iRule using the MR::message route command are configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE) Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-120718": {
+    "cvss": 8.1,
+    "description": "Description: BIG-IP iControl REST tokens may not expire as expected in all scenarios. Impact: An attacker who has obtained a token may be able to extend its expiry lifetime unless the token owner deletes it. There is no data plane exposure; this is a control plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-120722": {
+    "cvss": 9.8,
+    "description": "Description: When an iRule that processes client traffic using the DNS::scrape command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system. In addition, the attacker may be able to perform RCE. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-121805": {
+    "cvss": 9.8,
+    "description": "Description: When an iRule that processes client traffic using the PEM::subscriber command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may perform RCE. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-121812": {
+    "cvss": 7.5,
+    "description": "Description: When BIG-IP APM is provisioned, and a virtual server is configured with an APM access profile and a per-request policy, and the tmm.access.policytrace database key is enabled, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate. The key is disabled by default. Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system . There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-123637": {
+    "cvss": 9.8,
+    "description": "When BIG-IP APM is provisioned and a per-request policy that includes the Client Information agent and Endpoint Security agents is applied to a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-125272": {
+    "cvss": 7.5,
+    "description": "Description: When BIG-IP APM is licensed and provisioned, and a virtual server with the APM access profile is configured with a per-request policy containing a form-based Logon Page, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate. Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-125274": {
+    "cvss": 8.8,
+    "description": "An authenticated iControl SOAP user with at least Guest access can inject an unauthorized management request. Impact: This vulnerability may allow an authenticated attacker with network access and at least Guest role privileges to the iControl SOAP utility to execute arbitrary system commands, create or delete files, or disable services. There is no data plane exposure; this is a control plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126336": {
+    "cvss": 7.5,
+    "description": "Description: When BIG-IP APM is provisioned and a virtual server is configured with an APM Access profile and a SAML Service Provider (SP) agent with encrypted assertions enabled, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate. Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-126753": {
+    "cvss": 6.1,
+    "description": "LimeSurvey 6.5.0 before 6.16.11 contains an open redirect vulnerability that allows unauthenticated attackers to redirect users by supplying arbitrary values to the url parameter. Attackers can send crafted GET requests to index.php?r=editorLink, where EditorLinkController concatenates url and route unvalidated, redirecting victims to attacker-controlled sites for phishing. Exploitation evidence was first observed by the Shadowserver Foundation on 2026-03-20.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126754": {
+    "cvss": 6.1,
+    "description": "cPanel & WHM 11.134.0.13 contains a reflected cross-site scripting vulnerability that allows unauthenticated attackers to inject scripts through the mpidentity parameter of /mailman/listinfo. Attackers can send crafted requests with a script-context breakout payload in mpidentity to execute arbitrary JavaScript in the victim's browser. Exploitation evidence was first observed by the Shadowserver Foundation on 2026-06-08.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126822": {
+    "cvss": 7.5,
+    "description": "Description: When BIG-IP APM is provisioned, an Access Profile is configured as a SAML SP (Service Provider) and is applied to a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate. Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system. There is no control plane exposure; this is a data plane issue only. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2026-127178": {
+    "cvss": 8.1,
+    "description": "A stored cross site scripting attack when viewing email aliases in postfixadmin 4.0 before 4.0.7, and postfixadmin 3.3 before 3.3.17 could be caused by signed in admins able to inject aliases.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128719": {
+    "cvss": 9.8,
+    "description": "An issue in PHPGurukul Employee Leaves Management System (ELMS) Version 2.1 allows a remote attacker to escalate privileges via the password recovery functionality",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-48728": {
+    "cvss": 6.9,
+    "description": "The GLPI Inventory Plugin handles network discovery, inventory, software deployment, and data collection for GLPI agents. Prior to 1.6.8, the /b/deploy, /b/collect, and /b/esx agent API endpoints do not authenticate requests before processing Deploy, Collect, and ESX task operations. An unauthenticated remote attacker can enumerate jobs and manipulate their status through these endpoints, disclosing job information and interfering with task processing. This issue is fixed in version 1.6.8.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116441": {
+    "cvss": 9.6,
+    "description": "Dell PowerStore SDNAS contains an out-of-bounds write vulnerability in the storage-processor interconnect driver that could allow a malicious peer to execute code with system privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132208": {
+    "cvss": 9.3,
+    "description": "Hardcoded credentials in the executable file. These can be extracted using the “Strings.exe” tool and could allow an attacker unauthorized access to the database and SMTP server. winCRM.exe",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132209": {
+    "cvss": 9.3,
+    "description": "Hardcoded credentials in the executable file. These can be extracted using the “Strings.exe” tool and could allow an attacker unauthorized access to the database and SMTP server. winSAT.exe",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132210": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'idCliente' parameter in'/Gestion/DocumentosCrear/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132211": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'ClientesCamposAdicionales' in '/Clientes/ClientesCamposAdicionales/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132212": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'ClientesClasificaciones' parameter in'/Clientes/ClientesClasificaciones/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132213": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'TareasCrear' parameter in'/Tareas/TareasCrear/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132214": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'ClientesEventos' parameter in'/Clientes/ClientesEventos/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132215": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'ClientesEventos' parameter in'/Clientes/ClientesEventos/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132216": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'ClientesEventos' parameter in'/Clientes/ClientesEventos/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
