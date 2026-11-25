@@ -158314,5 +158314,215 @@
     "description": "A denial of service flaw was found in Poppler's Splash backend. A crafted PDF with tiling-pattern geometry approaching the int32 boundary can cause SplashOutputDev::tilingPatternFill to compute an attacker-controlled repeat count that drives an excessively long loop in the pattern-fill scanline routine, without a corresponding memory allocation. An attacker could exploit this by supplying a malicious PDF to an application that renders it via Poppler's Splash backend, causing the rendering process to consume 100% CPU for an attacker-controlled, extended duration.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-80048": {
+    "cvss": 5.5,
+    "description": "A flaw was found in `sssd-kcm`. A local user or process able to connect to the `sssd-kcm` UNIX socket can exploit this vulnerability. By sending a large request length header and then stalling the connection, an attacker can cause the system to preallocate significant memory. This leads to memory exhaustion within the `sssd-kcm` responder, resulting in a Denial of Service (DoS) for affected deployments.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77159": {
+    "cvss": 5.5,
+    "description": "A symlink-following flaw was found in libvirt's qemuTPMEmulatorPrepareHost() function. The function uses a path-based chown() on the swtpm logfile without checking for symbolic links. A local attacker with access to the swtpm account can replace the logfile with a symlink, causing libvirtd (running as root) to transfer ownership of an arbitrary file to the swtpm user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-76925": {
+    "cvss": 5.8,
+    "description": "A flaw was found in Flatpak. A Time-of-check to time-of-use (TOCTOU) race condition exists in the `org.freedesktop.Flatpak.SystemHelper` component. This vulnerability occurs because a privileged `chmod` operation executes before the OSTree repository validation within the `Deploy()` function. An attacker can exploit this timing window to redirect symlinks to arbitrary files, potentially leading to unauthorized file manipulation or information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-79902": {
+    "cvss": 5.5,
+    "description": "A flaw was found in the Seattle FilmWorks plugin in GIMP. When processing a specially crafted SFW image file, the plugin allocates a Variable-Length Array (VLA) on the stack without integer overflow checks, causing an unbounded stack allocation. This issue leads to an application crash, resulting in a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-78322": {
+    "cvss": 6.5,
+    "description": "A flaw was found in file-roller. When opening or extracting a malicious 7z or RAR archive containing a file entry with an excessively long path, file-roller's progress-line parsing copies the path into a fixed-size stack buffer using an unbounded string copy. This can trigger a stack buffer overflow and cause file-roller to terminate, resulting in a denial of service. To exploit this flaw, a victim must open or extract the crafted archive using file-roller.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-78701": {
+    "cvss": 6.5,
+    "description": "A flaw was found in 389-ds-base. A remote, authenticated attacker could exploit a vulnerability in the Simple Authentication and Security Layer (SASL) UNBIND process. By sending a specially crafted request, the attacker can cause a connection to stall, leading to resource exhaustion and a Denial of Service (DoS) for the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-77680": {
+    "cvss": 5.3,
+    "description": "An algorithmic complexity flaw exists in libsoup's HTTP Range header processing that persists after the CVE-2025-32907 fix. CVE-2025-32907 addressed memory amplification when a client repeated the same range many times in a single Range header. Commit 9bb92f7a corrected merge correctness in soup_message_headers_get_ranges_internal() in libsoup/soup-message-headers.c, but the coalescing loop still removes merged ranges using g_array_remove_index() for each coalesced element. Because GArray is contiguous, each mid-array removal performs an O(N) memmove. When many identical satisfiable ranges are supplied (for example bytes=0-0 repeated thousands of times), the loop performs O(N²) work coalescing them into a single range. The vulnerable path is reachable server-side from handle_partial_get() in libsoup/server/http1/soup-server-message-io-http1.c when a SoupServer handler returns HTTP 200 with a non-empty body. No authentication is required. The number of ranges is bounded only by the maximum request header size (~100 KiB), allowing roughly 25,000 ranges per request. Reporter measurements on libsoup HEAD containing the CVE-2025-32907 fix show ~90 ms single-core CPU per such request at the wire maximum, blocking the server's event loop for that duration. This is a CPU exhaustion / availability issue only. No memory corruption or information disclosure occurs. Affected: libsoup versions containing the CVE-2025-32907 fix but not merge request !550. Fixed upstream: MR !550 merged 2026-08-20, replacing per-element removal with O(N) in-place compaction and rejecting Range headers requesting more than 200 ranges. Upstream report: https://gitlab.gnome.org/GNOME/libsoup/-/issues/538 Related: CVE-2025-32907",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80101": {
+    "cvss": 4.4,
+    "description": "A flaw was found in the file-xwd plugin in GIMP. When processing a specially crafted XWD image file, the plugin validates the image width and bytes-per-line parameters independently rather than ensuring their combined values are consistent with the allocated buffer size. This incorrect validation leads to improper bounds checking, causing a heap out-of-bounds read. This issue can result in an application crash, leading to a denial of service or a limited information disclosure of heap memory contents into the produced image.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80185": {
+    "cvss": 5.7,
+    "description": "BlueZ sdp-xml.c type confusion via RegisterProfile(ServiceRecord) can crash bluetoothd (local DoS): a crafted nested ServiceRecord can corrupt the SDP XML parser stack so scalar union data is treated as a sequence pointer, allowing a local caller to crash bluetoothd.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-78323": {
+    "cvss": 6.5,
+    "description": "A flaw was found in JSS (Java Security Services). The JSSTrustManager class does not verify NSS trust flags when validating CA certificates, allowing certificates present in the NSS database without TRUSTED_CA flags to be accepted as trust anchors for TLS connections. In non-default configurations where certificate revocation checking is disabled, this could allow a man-in-the-middle attacker to forge certificates accepted by PKI client connections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-78475": {
+    "cvss": 6.1,
+    "description": "A flaw was found in the file-pix (ESM) plugin in GIMP. When processing a specially crafted PIX image file, the plugin allocates a Variable-Length Array (VLA) on the stack without proper bounds checking, causing an unbounded stack allocation followed by a 21-byte stack over-read. This can result in a denial of service due to stack exhaustion and a limited information disclosure of stack memory contents into an intermediate file.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75032": {
+    "cvss": 6.3,
+    "description": "A flaw was found in BlueZ. Insufficient validation of packet length fields in GetFolderItems responses within the Audio/Video Remote Control Profile (AVRCP) implementation allows a malicious Bluetooth device within range to cause an out-of-bounds memory read. This vulnerability, affecting the parse_media_element() and parse_media_folder() functions, can lead to a crash of the bluetoothd daemon, resulting in a Denial of Service (DoS). It could also potentially expose sensitive heap memory contents. Exploitation requires user interaction to pair with the malicious device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-9014": {
+    "cvss": 7.5,
+    "description": "A Null Pointer Dereference vulnerability exists in the referer header check of the web portal of TP-Link TL-WR841N v14, caused by improper input validation. A remote, unauthenticated attacker can exploit this flaw and cause Denial of Service on the web portal service. This issue affects TL-WR841N v14: before 250908.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-135472": {
+    "cvss": 6.2,
+    "description": "open62541 1.5.0 through 1.5.10 contains a use-after-free and double free vulnerability in the lookupRefType() function in src/util/ua_util.c that allows attackers to corrupt the heap of the server process by supplying a RelativePath string resolved through UA_RelativePath_parseWithServer(). When the path names a ReferenceType with a string or GUID NodeId, the function returns a shallow copy of the browse result's NodeId and frees its identifier, causing the identifier to be freed a second time when the parsed path is cleared, which attackers can exploit to crash the server process.",
+    "vendor": "open62541",
+    "product": "open62541"
+  },
+  "CVE-2026-136139": {
+    "cvss": 6.3,
+    "description": "A vulnerability was determined in Zefan-Cai R-KV up to 6715468b9872442be72e5c97322e4d9c9a2abf55. This impacts the function _shard_files of the file FlashInfer/rkv/loader.py of the component FlashInfer weight loader. This manipulation of the argument weight_map causes path traversal. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. Patch name: 0fdff6ed12b58ad4c33aab5a63f66e04555cafb6. To fix this issue, it is recommended to deploy a patch. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.",
+    "vendor": "Zefan-Cai",
+    "product": "R-KV"
+  },
+  "CVE-2026-135707": {
+    "cvss": 3.3,
+    "description": "FFmpeg before 9.1 contains an uninitialized memory vulnerability in nist_read_header() in libavformat/nistspheredec.c, where an inverted ff_alloc_extradata() return check leaves the embedded-shorten extradata byte uninitialized. Attackers can supply a crafted NIST SPHERE file declaring pcm,embedded-shorten coding to leak an uninitialized heap byte into copied output or trigger a NULL pointer write on allocation failure.",
+    "vendor": "FFmpeg",
+    "product": "FFmpeg"
+  },
+  "CVE-2026-135716": {
+    "cvss": 6.6,
+    "description": "FFmpeg before 9.1 contains an out-of-bounds write vulnerability in build_frame_code() in libavformat/nutenc.c that allows attackers to corrupt the header_len[] array by supplying inputs with many audio streams. Attackers can remux a crafted input with many audio streams to NUT, causing out-of-bounds reads past static header tables and crashing the application.",
+    "vendor": "FFmpeg",
+    "product": "FFmpeg"
+  },
+  "CVE-2026-135709": {
+    "cvss": 7.0,
+    "description": "FFmpeg before 9.1 contains an out-of-bounds write vulnerability in ogg_buffer_data() in libavformat/oggenc.c because ogg_buffer_page() leaves a full page current after failed allocation. When page allocation fails, a memset with length (size_t)-1 or an overflowing memcpy writes past the segment table, causing heap memory corruption and crashes when writing Ogg output.",
+    "vendor": "FFmpeg",
+    "product": "FFmpeg"
+  },
+  "CVE-2026-135818": {
+    "cvss": 4.3,
+    "description": "A vulnerability was identified in Dispatcharr up to 0.32.0. Affected by this issue is the function get_permissions of the component VODLogoViewSet/M3UAccountViewSet. Such manipulation leads to incorrect authorization. The attack may be launched remotely. Upgrading to version 0.33.0 can resolve this issue. The name of the patch is ac7a23cc584761b88f8d87dd8ac3688426024ed8. It is recommended to upgrade the affected component.",
+    "vendor": "Unknown",
+    "product": "Dispatcharr"
+  },
+  "CVE-2026-129830": {
+    "cvss": 4.7,
+    "description": "When the rsyslog's `imuxsock` is parsing the TAG field from a message with a accepted shorter timestamp, the cursor used to read the message fields and the remaining message length to be read are left in a inconsistent state in relation to the content in the raw message, leading the module to read one byte past the end of the buffer holding the message.",
+    "vendor": "Red Hat",
+    "product": "Red Hat Enterprise Linux 10"
+  },
+  "CVE-2026-135730": {
+    "cvss": 3.3,
+    "description": "FFmpeg before 9.1 contains an uninitialized memory vulnerability in vpk_read_header() in libavformat/vpk.c that computes a last block size not divisible by the channel count. Attackers can supply a crafted VPK file with a large channel count so the last audio packet exposes leftover heap memory contents.",
+    "vendor": "FFmpeg",
+    "product": "FFmpeg"
+  },
+  "CVE-2026-135237": {
+    "cvss": 6.2,
+    "description": "MISP contains a DOM-based Cross-Site Scripting (XSS) vulnerability in the event report element rendering pipeline. The client-side sanitization function used to prepare values for doT templates only escaped ampersand, less-than, and greater-than characters. However, the templates place these values inside double-quoted HTML attributes. Because double-quote and single-quote characters were not escaped, a user with the ability to author or modify report element values could inject a quote character to break out of the attribute context and inject arbitrary HTML or JavaScript that executes in the viewing user's browser. Preconditions: - The attacker must be an authenticated user with permission to create or edit event report elements (e.g., a report author). - A victim must open or view the crafted report in a browser. Security impact: - Execution of arbitrary JavaScript in the context of the victim's MISP session. - Potential theft of session tokens, sensitive data, or unauthorized actions performed on behalf of the victim. Affected versions: MISP prior to 2.5.52.",
+    "vendor": "MISP",
+    "product": "MISP"
+  },
+  "CVE-2026-135703": {
+    "cvss": 3.3,
+    "description": "FFmpeg before 9.1 contains an uninitialized memory use vulnerability in asfrtp_parse_packet() in libavformat/rtpdec_asf.c that allows malicious RTP sources to leak heap contents by supplying an oversized ASF packet length. Attackers controlling an RTSP server with an x-asf-pf payload can set len_off beyond the RTP payload so the ASF demuxer returns stale heap memory as demuxed media data.",
+    "vendor": "FFmpeg",
+    "product": "FFmpeg"
+  },
+  "CVE-2026-136404": {
+    "cvss": 9.8,
+    "description": "ntop n2n supernode 3.0 through 3.1.1 contains a stack-based buffer overflow vulnerability that allows remote unauthenticated attackers to leak memory and execute code by sending an untrusted 16-bit auth token_size in REGISTER_SUPER_NAK datagrams. Attackers can register an edge in a chosen community, then send an oversized token_size to leak stack canaries and pointers, overwrite the return address, or crash the supernode.",
+    "vendor": "ntop",
+    "product": "n2n"
+  },
+  "CVE-2026-135817": {
+    "cvss": 5.3,
+    "description": "A vulnerability was determined in beenuar AiSOC up to 17.0.0. Affected by this vulnerability is an unknown functionality of the component AuditMiddleware. This manipulation causes improper verification of cryptographic signature. The attack may be initiated remotely. Upgrading to version 17.1.0 addresses this issue. Patch name: 8f2224299124010536ff0e3ebcd9efb0149af26c. Upgrading the affected component is recommended.",
+    "vendor": "beenuar",
+    "product": "AiSOC"
+  },
+  "CVE-2026-135724": {
+    "cvss": 4.7,
+    "description": "FFmpeg before 9.1 contains a NULL pointer dereference vulnerability in avformat_stream_group_create() in libavformat/options.c that sets the group type before allocating parameters. Attackers can supply crafted HEIF/AVIF files whose tile grid parsing under allocation failure makes ff_free_stream_group() dereference a NULL tile_grid, crashing the application.",
+    "vendor": "FFmpeg",
+    "product": "FFmpeg"
+  },
+  "CVE-2026-135243": {
+    "cvss": 5.3,
+    "description": "MISP contains an authorization bypass vulnerability in the handling of sightings during server synchronization and bulk operations. The vulnerability allows a remote attacker with access to a synchronized MISP instance to pull sightings for events that are not shared with their organization or community. The sighting pull mechanism previously executed with elevated privileges and accepted event identifiers without verifying that the local event was authorized for sharing with the remote server. Additionally, the bulk save functionality for sightings did not strictly enforce that the attributes referenced in the request belonged to the specific event specified in the URL, allowing an attacker to associate sightings with unauthorized events by referencing attributes from other events. This can lead to unauthorized disclosure of threat intelligence data and integrity issues where sightings are incorrectly attributed to events the attacker should not access. The issue was reported by ENISA and fixed in version 2.5.52.",
+    "vendor": "MISP",
+    "product": "MISP"
+  },
+  "CVE-2026-107784": {
+    "cvss": 6.3,
+    "description": "On Windows, the tarfile \"tar\" and \"data\" extraction filters did not reject member names or link targets that have a drive but no root, such as \"C:foo\". When extracting to a relative destination, such a member was written to the current working directory of that drive instead of the destination, and a symbolic link with such a target pointed outside the destination. The filters now refuse these member names and link targets with AbsolutePathError and AbsoluteLinkError.",
+    "vendor": "Python Software Foundation",
+    "product": "CPython"
+  },
+  "CVE-2026-129514": {
+    "cvss": 10.0,
+    "description": "Deserialization of Untrusted Data vulnerability in the application/vnd.hex+erlang request body parser in hexpm hexpm allows an unauthenticated remote attacker to execute operating system commands via a crafted Erlang external term format request body. This vulnerability was actively exploited against the hex.pm service on 2026-11-23. HexpmWeb.ErlangFormat.decode/1 in lib/hexpm_web/erlang_format.ex decodes the body with Plug.Crypto.non_executable_binary_to_term/2, which accepts maps that have a __struct__ key. HexpmWeb.PlugParser.parse/5 returns the decoded term as the request params. The parser runs in the endpoint before routing and authentication, so a POST to any route reaches it. Elixir dispatches protocols on the __struct__ key, so the client selects which Inspect and Enumerable implementations run when error reporting inspects the params. A chain through Ecto.Query.DynamicExpr and DBConnection.Stream reaches an apply/3 call on a {module, function, args} tuple taken from the request body. This issue affects hex.pm: from 2016-02-23 before 2026-11-23; hexpm/hexpm: from ab1bbcef7cc8395d1056d3b1aa6a174353492d59 before 379b0a29bcc95164249f38ad7d772a37a8ff9533.",
+    "vendor": "hexpm",
+    "product": "hexpm"
+  },
+  "CVE-2026-136411": {
+    "cvss": 9.8,
+    "description": "BusyBox through 1.38.0 contains an absolute path traversal vulnerability in tftpd that allows unauthenticated remote attackers to access files outside any intended directory when started without a DIR argument. Attackers can send RRQ or WRQ packets with file names beginning with '/' to read sensitive files like /etc/shadow or overwrite files, typically as root.",
+    "vendor": "busybox",
+    "product": "busybox"
+  },
+  "CVE-2026-135253": {
+    "cvss": 5.3,
+    "description": "MISP's NIDS rule export functionality for Snort and Suricata formats does not properly escape user-controlled data before embedding it into generated rule text. Attribute values, tag names, and URL paths are inserted directly into rule options (msg, metadata, content matches) without neutralizing characters that are syntactically significant in the NIDS rule grammar, such as double quotes, semicolons, backslashes, commas, and control characters. An authenticated user with the ability to create or modify attributes in a MISP instance can craft attribute values or tag names containing these special characters. When the NIDS rules are exported, the unescaped data breaks out of the intended option or content field, allowing injection of arbitrary rule options, corruption of rule structure, or generation of syntactically invalid rules that may cause the downstream NIDS engine to reject the entire ruleset. The affected export paths include: - Snort and Suricata msg: option (quotes, semicolons, backslashes, control characters) - Suricata metadata: option (commas, semicolons, quotes, whitespace, control characters) - Suricata http.uri content: match for URL path (quotes, semicolons, pipe characters) Security impact is limited to the integrity and availability of the exported NIDS rules and the downstream NIDS engine that consumes them. There is no direct compromise of the MISP application itself. Affected: MISP versions prior to 2.5.52.",
+    "vendor": "MISP",
+    "product": "MISP"
+  },
+  "CVE-2026-136412": {
+    "cvss": 8.1,
+    "description": "OpenResty stream-lua-nginx-module before 0.0.20rc4 contains a use-after-free vulnerability that allows remote peers to trigger access to freed memory when a receiveuntil() pattern iterator is garbage-collected while still referenced by the socket. Attackers can interrupt or close the cosocket connection so later reads or socket closure use the stale pattern pointer, crashing or corrupting the nginx worker.",
+    "vendor": "openresty",
+    "product": "stream-lua-nginx-module"
+  },
+  "CVE-2026-136134": {
+    "cvss": 7.3,
+    "description": "A flaw has been found in mealie-recipes Mealie up to 3.29.0. Affected is the function get of the file mealie/pkgs/i18n/provider_factory.py of the component I18n Locale Provider. Executing a manipulation of the argument Accept-Language can lead to path traversal. It is possible to launch the attack remotely. The exploit has been published and may be used. Upgrading to version 3.30.0 is able to address this issue. This patch is called 4d074185d0dd1bb2dada7a4470bd04bd91227040. It is advisable to upgrade the affected component.",
+    "vendor": "mealie-recipes",
+    "product": "Mealie"
+  },
+  "CVE-2026-135721": {
+    "cvss": 5.5,
+    "description": "FFmpeg before 9.1 contains an infinite loop vulnerability in ff_rtp_send_vc2hq() in libavformat/rtpenc_vc2hq.c that accepts a Dirac next parse offset of zero. Attackers can supply crafted Dirac/VC-2 video remuxed to the RTP muxer, causing the parsing pointer to never advance and consume CPU indefinitely.",
+    "vendor": "FFmpeg",
+    "product": "FFmpeg"
+  },
+  "CVE-2026-135247": {
+    "cvss": 6.3,
+    "description": "MISP's LinOTPAuth plugin, used for one-time-password authentication against a LinOTP server, did not enforce TLS server certificate verification when the LinOTPAuth.verifyssl configuration option was not explicitly set. In a default or minimally configured deployment, the authentication request to the LinOTP server was sent without peer or peer-name certificate validation, effectively allowing self-signed or spoofed certificates. An attacker with a network position between the MISP instance and the LinOTP server could perform a man-in-the-middle attack to intercept or tamper with the authentication exchange, potentially capturing one-time passwords or user credentials. Preconditions: - The LinOTPAuth plugin is enabled and configured to communicate with a LinOTP server - The LinOTPAuth.verifyssl setting is absent or null (not explicitly set to true or false) - The attacker can position themselves on the network path between MISP and the LinOTP server Security impact: - Confidentiality of OTP tokens and authentication credentials in transit - Potential for credential interception or replay Affected versions: MISP prior to 2.5.52",
+    "vendor": "MISP",
+    "product": "MISP"
   }
 }
