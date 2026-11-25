@@ -152762,7 +152762,7 @@
   "CVE-2026-131914": {
     "cvss": 9.3,
     "description": "Idunno AntiCsrf contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via object injection. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version.",
-    "vendor": "Idunno",
+    "vendor": "Check Point",
     "product": "AntiCsrf"
   },
   "CVE-2025-32164": {
@@ -158794,5 +158794,239 @@
     "description": "",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-130671": {
+    "cvss": 3.7,
+    "description": "Parse Server before 8.6.119 and 9.x before 9.10.8-alpha.3 contains a missing authorization vulnerability that allows LiveQuery clients without the master key to subscribe to installation and internal classes. Attackers can receive installation IDs and device tokens of other devices when these classes are in liveQuery.classNames, then modify those installations to redirect push notifications.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130675": {
+    "cvss": 9.8,
+    "description": "Craft CMS from 5.0.0 before 5.11.4 contains a remote code execution vulnerability in ImageTransforms::normalizeTransform() that allows attackers to instantiate arbitrary classes by supplying class:null with a __class key. Attackers can reach the method through Craft Commerce's payments/pay redirect template calling customer.photo.getUrl() with a crafted transform to instantiate classes like yii\\rbac\\PhpManager and execute PHP.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130679": {
+    "cvss": 9.0,
+    "description": "SiYuan before 3.8.10 contains a stored cross-site scripting vulnerability in genAVValueHTML() that allows attackers who can store Attribute View asset values to inject script through an unescaped image src attribute. Attackers can store an image URL containing a double quote and onerror handler that executes OS commands via Node.js in the desktop app when victims open the bound note or row attribute panel.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130683": {
+    "cvss": 8.2,
+    "description": "SiYuan before 3.8.10 uses an incomplete deny-list in IsSensitivePath that omits shell-initialization files such as .zshenv and .bash_profile, as well as ~/.local. Authenticated administrators can call /api/file/copyFile with an absolute destination outside the workspace to write payloads there, which execute as the user on the next shell or login.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130687": {
+    "cvss": 4.6,
+    "description": "NocoDB before 2026.10.1 contains a stored CSS injection vulnerability that allows authenticated Commenter or Editor users to inject inline styles by placing single quotes in mention text. Attackers can break out of the single-quoted data-id attribute in comments or rich text cells to overlay or rearrange the interface for other viewers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130691": {
+    "cvss": 3.7,
+    "description": "NocoDB before 2026.10.1 contains an information disclosure vulnerability that allows unauthenticated attackers to download data exports by reconstructing predictable file paths under nc/uploads/data-export. Attackers can derive paths from the table id, base, table and view titles, and export time to read full exports, including fields hidden from public shared views.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130695": {
+    "cvss": 6.3,
+    "description": "NocoDB before 2026.10.1 contains an authentication bypass vulnerability that allows holders of revoked OAuth access tokens to authenticate as first-party sessions by presenting them through the session header. Attackers can bypass revocation, client-existence, route allowlist and granted_resources scope checks to modify victim profiles, upload to storage, and force global sign-outs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130701": {
+    "cvss": 8.3,
+    "description": "NocoDB before 2026.10.1 contains an SQL injection vulnerability because select-field option titles are embedded into MySQL or MariaDB enum/set column definitions with only single-quote doubling, leaving backslashes unescaped. A base creator or owner can end an option title with a backslash to escape the literal and append ALTER TABLE clauses, adding, dropping or renaming columns and altering indexes in the connected database.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130705": {
+    "cvss": 5.3,
+    "description": "NocoDB before 2026.10.1 contains an information disclosure vulnerability that allows unauthenticated shared view link holders to read hidden columns by grouping on physical column names. Attackers can supply a hidden column's physical name or the unchecked sub-group parameter to the public group-by endpoint to reveal hidden values, counts, and column existence.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130709": {
+    "cvss": 8.8,
+    "description": "NocoDB before 2026.09.0 contains a server-side template injection vulnerability that allows authenticated Creator or Owner users to execute JavaScript by abusing Handlebars webhook helpers. Attackers can supply property paths like constructor.constructor to pluck, sortBy, filter, or withSort helpers to reach the Function constructor and run operating-system commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130713": {
+    "cvss": 3.7,
+    "description": "NocoDB before 2026.10.1 contains a user enumeration vulnerability that allows unauthenticated attackers to identify pending invitees through a distinct sign-in error message. Attackers can submit sign-in requests where validateUser in auth.service.ts skips password comparison for saltless invited accounts, confirming the email address has an account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130717": {
+    "cvss": 6.8,
+    "description": "NocoDB before 2026.04.1 fails to clear reset_password_token and reset_password_expires in users.service.ts when a password is changed, leaving earlier reset links valid. Attackers holding an unexpired reset link, such as from prior mailbox access, can set a new password and regain control of the account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130721": {
+    "cvss": 8.1,
+    "description": "NocoDB from 2026.06.2 before 2026.08.0 contains an authorization bypass vulnerability that allows authenticated base Editors to write to data-read-only sources by abusing the internal batch endpoint. Attackers can name a writable decoy table on the batch envelope and target a read-only source table in dataUpdate, dataInsert or dataDelete sub-operations to modify or destroy records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130725": {
+    "cvss": 5.3,
+    "description": "NocoDB before 2026.10.0 contains an insecure direct object reference vulnerability that allows authenticated users to obtain signed download URLs for other bases' attachments by storing foreign attachment paths in their own rows via prepareNocoData. Attackers with write access to an attachment column can have _convertAttachmentType or the attachment download endpoint sign the foreign path, reading cross-base files despite secure attachment mode.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130729": {
+    "cvss": 7.5,
+    "description": "NocoDB before 2026.08.0 contains an authorization bypass in its public shared-view relation endpoints, which verify that a parent record exists but not that it passes the view's row filters. Unauthenticated attackers holding a public share link can supply guessable auto-incrementing ids of filtered-out records to has-many, many-to-many, one-many, or link endpoints to read their child records.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130733": {
+    "cvss": 9.8,
+    "description": "Grav from 2.0.0 before 2.2.18 contains an authorization bypass vulnerability that allows publishers to overwrite pages their per-page permissions deny by abusing FolderStorage key delimiter collisions and PageStorage folder reconstruction. Attackers can rename a folder like locked*** or save from a page with an unusual prefix width through a front-end Flex pages form, replacing protected content and permissions to access the protected subtree.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130737": {
+    "cvss": 7.2,
+    "description": "Grav from 2.0.0 before 2.2.18 contains a privilege escalation vulnerability that allows user managers to grant super-admin rights by nesting access maps under a YAML merge key. Attackers with admin.users.create or api.users.write can submit '<<' keys, for example via PATCH /api/v1/users/ , that bypass super-grant filtering and gain full site control.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130741": {
+    "cvss": 8.8,
+    "description": "Grav from 2.0.0 before 2.2.18 contains a Twig sandbox bypass vulnerability that allows publishers to read any server file by abusing allowlisted array_key_value() and page accessor setters such as filePath(). Attackers can repoint page objects or overwrite the assets collections to render private keys and the API signing secret, then forge a super-admin API token.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95871": {
+    "cvss": 7.0,
+    "description": "Heap-based buffer overflow in Windows Broadcast DVR User Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96042": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Connection Manager Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96043": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Connection Manager Service allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32575": {
+    "cvss": 7.1,
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Fantastic Plugins SUMO Affiliates Pro affs allows Reflected XSS.This issue affects SUMO Affiliates Pro: from n/a before 11.9.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18393": {
+    "cvss": 5.4,
+    "description": "A flaw was found in FFmpeg. The tdsc_load_cursor() function writes beyond the bounds of a heap-allocated buffer when processing crafted TDSC cursor data. A remote attacker could exploit this by supplying a specially crafted video file, potentially leading to a denial of service or arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12706": {
+    "cvss": 6.5,
+    "description": "A use-after-free vulnerability was found in FFmpeg's RASC video decoder. The decode_move() function initializes a read pointer into a decompressed buffer, but a subsequent reallocation of that same buffer during move-table processing leaves the pointer dangling. An attacker could exploit this by providing a specially crafted AVI file containing a malicious RASC video stream. When a user opens or plays the file, the decoder reads from freed heap memory, which could lead to a denial of service (crash).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12491": {
+    "cvss": 4.8,
+    "description": "A flaw was found in vLLM, an open-source library for large language model inference. This vulnerability arises from improper handling of image metadata, specifically EXIF orientation and PNG transparency (tRNS) data, during image processing. When images are converted to RGB, transparency information may be implicitly discarded or remapped, leading to unexpected rendering of transparent pixels and distortion of input content. This can result in the model misinterpreting image content, potentially affecting the integrity of processed data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-14525": {
+    "cvss": 6.4,
+    "description": "A flaw was found in kubevirt. A user within a virtual machine (VM), if the guest agent is active, can exploit this by causing the agent to report an excessive number of network interfaces. This action can overwhelm the system's ability to store VM configuration updates, effectively blocking changes to the Virtual Machine Instance (VMI). This allows the VM user to restrict the VM administrator's ability to manage the VM, leading to a denial of service for administrative operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-10492": {
+    "cvss": 9.8,
+    "description": "A Java deserialisation vulnerability has been discovered in Jaspersoft Library. Improper handling of externally supplied data may allow attackers to execute arbitrary code remotely on systems that use the affected library",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-135290": {
+    "cvss": 5.5,
+    "description": "OpenCV through 4.14.0 and 5.0.0 through 5.1.0 contains an infinite loop vulnerability in YAMLParser::parse that allows attackers to cause denial of service via crafted YAML dash lines. Attackers can supply YAML files with a non-separator '-' line after the first document, opened through cv::FileStorage, to hang the thread at full CPU.",
+    "vendor": "opencv",
+    "product": "opencv"
+  },
+  "CVE-2026-131924": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-10701": {
+    "cvss": 7.5,
+    "description": "Incorrect boundary conditions in the Graphics: Text component. This vulnerability was fixed in Firefox 151.0.3.",
+    "vendor": "Mozilla",
+    "product": "Firefox"
+  },
+  "CVE-2026-135294": {
+    "cvss": 5.3,
+    "description": "LibreCAD through 2.2.1.6 contains a heap-based out-of-bounds write vulnerability in RS_FilterDXF1::readFileInBuffer() caused by unvalidated truncation of the 64-bit file size. Attackers can persuade users to open a crafted DXF file sized 0xFFFFFFF8 bytes, writing a NUL byte before an 8-byte buffer to corrupt heap metadata and crash the application.",
+    "vendor": "LibreCAD",
+    "product": "LibreCAD"
+  },
+  "CVE-2026-134262": {
+    "cvss": 8.1,
+    "description": "Admidio 5.0.0 before 5.0.18 contains a stored cross-site scripting vulnerability that allows role administrators to inject JavaScript by placing quote-breaking payloads in role names rendered unencoded in the data-message attribute in modules/profile/roles_functions.php. Attackers can execute scripts when a full administrator views an affected profile page, stealing the CSRF token to assign themselves the Administrator role.",
+    "vendor": "Admidio",
+    "product": "admidio"
+  },
+  "CVE-2026-135746": {
+    "cvss": 6.8,
+    "description": "An off-by-one error in String::WriteOneByte() in Samsung lwnode can cause a one-byte out-of-bounds write when copying a UTF-16 string",
+    "vendor": "Samsung Opensource",
+    "product": "lwnode"
+  },
+  "CVE-2026-135164": {
+    "cvss": 8.8,
+    "description": "Formance Ledger 2.2.0-beta.3 before 2.4.18 contains an SQL injection vulnerability that allows remote API callers to execute SQL by supplying unvalidated account expand values. Attackers can inject comment-separated SQL through the expand query parameter or base64 pagination cursor to run queries with the ledger database role's privileges.",
+    "vendor": "formancehq",
+    "product": "ledger"
+  },
+  "CVE-2026-123214": {
+    "cvss": 9.2,
+    "description": "Joomla! Core - [20261111] - Core - Missing authentication in web installer in Joomla 4.0.0-5.4.10, 6.0.0-6.2.0 - The web installer remains usable on an installed site as long as the installation folder exists, allowing unauthenticated users to rewrite the configuration.",
+    "vendor": "Joomla! Project",
+    "product": "Joomla! CMS"
+  },
+  "CVE-2026-135440": {
+    "cvss": 6.1,
+    "description": "MediaInfoLib before 26.10 contains a heap use-after-free vulnerability in the Vorbis setup header parser that allows attackers to trigger reads of freed memory via crafted files. Attackers can supply a crafted Ogg/Vorbis file that makes File_Vorbis::Setup() return early without BS_End_LE(), leaving a stale bitstream pointer that causes crashes or heap disclosure.",
+    "vendor": "MediaArea",
+    "product": "MediaInfoLib"
+  },
+  "CVE-2026-135158": {
+    "cvss": 4.2,
+    "description": "Windmill 1.607.0 before 1.819.0 contains an authorization bypass vulnerability that allows workspace members to resume or cancel suspended flows in other workspaces by abusing the jobs_u/resume and jobs_u/cancel endpoints. Attackers can mint a resume signature for an arbitrary job id via their own workspace's job_signature endpoint to approve or cancel another workspace's suspended flow steps.",
+    "vendor": "windmill-labs",
+    "product": "windmill"
+  },
+  "CVE-2026-25242": {
+    "cvss": 6.9,
+    "description": "Gogs is an open source self-hosted Git service. Versions 0.13.4 and below expose unauthenticated file upload endpoints by default. When the global RequireSigninView setting is disabled (default), any remote user can upload arbitrary files to the server via /releases/attachments and /issues/attachments. This enables the instance to be abused as a public file host, potentially leading to disk exhaustion, content hosting, or delivery of malware. CSRF tokens do not mitigate this attack due to same-origin cookie issuance. This issue has been fixed in version 0.14.1.",
+    "vendor": "gogs",
+    "product": "gogs"
+  },
+  "CVE-2026-32767": {
+    "cvss": 9.8,
+    "description": "SiYuan is a personal knowledge management system. Versions 3.6.0 and below contain an authorization bypass vulnerability in the /api/search/fullTextSearchBlock endpoint. When the method parameter is set to 2, the endpoint passes user-supplied input directly as a raw SQL statement to the underlying SQLite database without any authorization or read-only checks. This allows any authenticated user — including those with the Reader role — to execute arbitrary SQL statements (SELECT, DELETE, UPDATE, DROP TABLE, etc.) against the application's database. This is inconsistent with the application's own security model: the dedicated SQL endpoint (/api/query/sql) correctly requires both CheckAdminRole and CheckReadonly middleware, but the search endpoint bypasses these controls entirely. This issue has been fixed in version 3.6.1.",
+    "vendor": "siyuan-note",
+    "product": "siyuan"
   }
 }
