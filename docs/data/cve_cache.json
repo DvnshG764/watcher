@@ -23988,10 +23988,10 @@
     "product": "Backuply – Backup, Restore, Migrate and Clone"
   },
   "CVE-2025-41450": {
-    "cvss": 8.2,
-    "description": "Improper Authentication vulnerability in Danfoss AKSM8xxA Series.This issue affects Danfoss AK-SM 8xxA Series prior to version 4.2",
+    "cvss": 7.5,
+    "description": "Danfoss AK-SM 800A Series contains an improper authentication vulnerability that could allow an attacker to generate a web report exposing sensitive information, including internal IP addresses, usernames, and store names.",
     "vendor": "Check Point",
-    "product": "AK-SM 8xxA Series"
+    "product": "AK-SM 800A Series"
   },
   "CVE-2025-4602": {
     "cvss": 5.9,
@@ -119018,8 +119018,8 @@
   "CVE-2026-119776": {
     "cvss": 6.1,
     "description": "In all prior released versions of FRRouting, the OSPFv3 (for IPv6) implementation does not check that OSPFv3 packets have a link-local source address and either a link-local destination or one of the protocol multicast destination groups. This may enable malicious actors to establish OSPFv3 adjacencies from unexpectedly, distant IPv6 hosts. Proper usage of OSPFv3 authentication trailers (RFC 7166, as is best practice) prevents full exploitation of this issue, though may allow a malicious actor to waste CPU on authentication checks. Note the linked PR #23935 is not sufficient to fix the issue as it only verifies the source address. It is the destination address that must be checked. Required configuration: The OSPFv3 for IPv6 routing protocol must be running (ospf6d process) and in use (enabled globally with \"router ospf6\" and on specific interfaces with \"ipv6 ospf6 area\".) Workaround: either: * configure OSPFv3 authentication trailers (\"ipv6 ospf6 authentication\") * or ensure through firewall configuration that only packets with link-local or multicast destination addresses are accepted on input for IPv6 protocol 89 (OSPF). Note that checking the source address is insufficient, as some routers may (unexpectedly) forward packets with global-scoped IPv6 destination addresses even if they have link-local source addresses.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "frrouting",
+    "product": "frrouting"
   },
   "CVE-2026-120421": {
     "cvss": 6.1,
@@ -121388,8 +121388,8 @@
   "CVE-2026-123528": {
     "cvss": 6.8,
     "description": "Vikunja before 2.7.1 contains an insufficient session expiration vulnerability that allows holders of revoked access tokens to keep authenticating because SetupTokenMiddleware skips session and account-status checks. Attackers with a stolen token can, after logout, password reset, or account disabling, mint OAuth sessions via /oauth/authorize or tk_ API tokens for persistent access.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "go-vikunja",
+    "product": "vikunja"
   },
   "CVE-2026-123531": {
     "cvss": 8.8,
@@ -154255,9 +154255,9 @@
   },
   "CVE-2026-133469": {
     "cvss": 9.8,
-    "description": "XO (Xen Orchestra) is a solution to visualize, manage, backup and delegate your XCP-ng (or XenServer) infrastructure. Prior to 6.9.2 and 6.10.1, REST cookie parsing turns authenticationToken=j:%7B%7D into {}. REST authentication passes that object to the XO token provider without requiring a string. The token collection treats {} as an unfiltered lookup and returns its first token; the provider authenticates as that token's owner if it is unexpired. The authenticated /rest/v0/users/me/authentication_tokens route then returns reusable login token IDs. This vulnerability is actively exploited in the wild. This vulnerability is fixed in 6.9.2 and 6.10.1.",
-    "vendor": "vatesfr",
-    "product": "xen-orchestra"
+    "description": "Vates Xen Orchestra contains an improper validation of specified type of input vulnerability that could allow an unauthenticated attacker to bypass authentication and perform actions with administrative privileges via a specially crafted authentication token containing an empty JSON object.",
+    "vendor": "Vates",
+    "product": "Xen Orchestra"
   },
   "CVE-2026-129223": {
     "cvss": 7.5,
@@ -154609,7 +154609,7 @@
   },
   "CVE-2026-133323": {
     "cvss": 10.0,
-    "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct a blind command injection attack due to insufficient parameter sanitization. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system. This is MTLVULN-1864.",
+    "description": "Mitel MiCollab contains an improper neutralization of special elements used in an OS command (OS command injection) vulnerability in its Audio, Web, and Video Conferencing (AWV) component that could allow an unauthenticated attacker to execute arbitrary system commands.",
     "vendor": "Mitel",
     "product": "MiCollab"
   },
@@ -159748,5 +159748,455 @@
     "description": "Missing Authorization vulnerability in DynamiApps Frontend Admin by DynamiApps acf-frontend-form-element allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Frontend Admin by DynamiApps: from n/a through 3.30.2.",
     "vendor": "DynamiApps",
     "product": "Frontend Admin by DynamiApps"
+  },
+  "CVE-2026-130745": {
+    "cvss": 5.9,
+    "description": "Grav from 2.0.0 before 2.2.18 contains an access control bypass vulnerability that allows anonymous visitors to read protected pages because admin and site scopes share a page cache key. Routine editor activity through the API plugin rebuilds the page index without frontmatter.yaml access rules, exposing members-only page content until the cache is rebuilt.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130749": {
+    "cvss": 7.5,
+    "description": "Grav from 2.0.0 before 2.2.18 contains a resource exhaustion vulnerability that allows unauthenticated attackers to fill the disk by varying the HTTP Host header. Attackers can send requests with distinct Host values to create per-host compiled configuration, blueprint, language and page index caches, causing session, upload and logging failures.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82951": {
+    "cvss": 6.1,
+    "description": "Latvijas Valsts radio un televīzijas centrs (LVRTC) eParakstītājs 3.0 version 1.10.0-resolute allows an unauthenticated remote attacker to cause HTTP GET requests from a user's workstation by convincing the user to open a crafted signed eDOC file. Automatic certificate validation retrieves a signer-controlled Authority Information Access (AIA) caIssuers URL and follows redirects without restricting the destination, enabling blind SSRF to loopback and private-network services. Additionally, unrestricted loading of local file URIs (such as file:///dev/zero) causes unbounded memory buffering resulting in Denial of Service (OutOfMemoryError). In automated server verification pipelines with UI:N, impact scales up to CVSS 8.6 High.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-82952": {
+    "cvss": 8.8,
+    "description": "Latvijas Valsts radio un televīzijas centrs (LVRTC) eParakstītājs 3.0 version 1.10.0-resolute for Linux allows an unauthenticated remote attacker to execute arbitrary commands with the privileges of the current user by convincing the user to open and validate a signed PDF with a crafted filename and select Open with Adobe Reader. The application embeds the filename in a sh -c command without neutralizing shell command substitution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-84786": {
+    "cvss": 7.5,
+    "description": "Issue summary: A DANE-enabled TLS client may crash by dereferencing a NULL pointer when processing an unusual combination of certificate and TLSA records. Impact summary: The impact is limited to a client crash (potential Denial of Service). CWE: CWE-476: NULL Pointer Dereference Description: A DANE-enabled TLS client that supports TLSA records with at least one of the PKIX-TA(0) or PKIX-EE(1) usages alongside the DANE-TA(2) usage may crash by dereferencing a NULL pointer if the server claims a trusted CA's certificate to be its end-entity certificate and has an unusual mix of associated TLSA records. DANE SMTP clients should not be affected since only the DANE-TA(2) and DANE-EE(3) TLSA record usages are specified applicable in SMTP. For example, the Postfix MTA is not affected, while the Exim MTA does not at present use OpenSSL's DANE implementation. Use of DANE in validation of RFC7250 raw public keys (RPKs) is also unaffected, as these only use DANE-EE(3) TLSA records. Only applications that support combining the DANE PKI with a traditional PKI are potentially affected. A DANE-enabled browser or similar, that uses OpenSSL's DANE API could be affected. FIPS impact: no The DANE API is outside the FIPS module boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87789": {
+    "cvss": 8.8,
+    "description": "Latvijas Valsts radio un televīzijas centrs (LVRTC) eParakstītājs 3.0 version 1.10.0 for macOS allows an unauthenticated remote attacker to execute arbitrary commands with the privileges of the current user by convincing the user to open a PDF with a crafted filename and select Send. The application embeds the attachment path in AppleScript source without neutralizing AppleScript syntax, allowing injected do shell script expressions to execute.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-87790": {
+    "cvss": 8.8,
+    "description": "Latvijas Valsts radio un televīzijas centrs (LVRTC) eParakstītājs 3.0 version 1.10.0-resolute allows an unauthenticated remote attacker to cause HTTP GET requests from a user's workstation by convincing the user to open a crafted signed eDOC file. Automatic certificate validation retrieves a signer-controlled Authority Information Access (AIA) caIssuers URL and follows redirects without restricting the destination, enabling blind SSRF to loopback and private-network services. Additionally, unrestricted loading of local file URIs (such as file:///dev/zero) causes unbounded memory buffering resulting in Denial of Service (OutOfMemoryError). In automated server verification pipelines with UI:N, impact scales up to CVSS 8.6 High.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107517": {
+    "cvss": 5.4,
+    "description": "Dell PowerStore contains a stored cross-site scripting (XSS) vulnerability. A low-privileged authenticated attacker could exploit this vulnerability, potentially leading to execution of malicious script in a higher-privileged user's session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107518": {
+    "cvss": 8.7,
+    "description": "Dell PowerStore contains a Server-Side Request Forgery (SSRF) vulnerability. An authenticated user with limited privileges could potentially exploit this vulnerability to make the appliance connect to attacker-chosen internal systems.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107519": {
+    "cvss": 8.1,
+    "description": "Dell PowerStore contains an integer underflow vulnerability. An attacker could exploit this vulnerability, potentially leading to denial of service of a cryptographic service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109857": {
+    "cvss": 9.2,
+    "description": "CAST Imaging is vulnerable to authentication bypass in the TenantFilter class. The TenantFilter processes the X-ISSUER-LOCATION HTTP header and dynamically registers an OpenID Connect issuer based on its value. An unauthenticated remote attacker can register a malicious identity provider, create users matching existing administrative usernames, and obtain valid JWTs which will be accepted by the application. This results in complete authentication bypass and privilege escalation to administrative access. The vulnerability has only been confirmed in version 3.6.2 but may also affect other versions. The vendor did not provide the affected version range, but assured that the vulnerability is fixed \"in newer versions\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109858": {
+    "cvss": 8.3,
+    "description": "CAST Imaging has multiple path traversal vulnerabilities in various endpoints. The application does not properly validate the path parameters, allowing an authenticated attacker to use \"../\" sequences to escape the intended directory and read arbitrary files. Critically, by reading \"/proc/self/environ\", the attacker can obtain environment variables containing sensitive credentials such as Keycloak and PostgreSQL passwords, leading to full server compromise and administrative access. The vulnerability has only been confirmed in version 3.6.2 but may also affect other versions. The vendor did not provide the affected version range, but assured that the vulnerability is fixed \"in newer versions\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109859": {
+    "cvss": 6.9,
+    "description": "CAST Imaging has a missing authentication vulnerability in the \"/api/auth/keycloak/users/{username}\" endpoint. An unauthenticated remote attacker can modify the email address of an arbitrary Keycloak user and access sensitive account information, including the API authentication token hash. This can lead to account takeover, user impersonation and user enumeration. The vulnerability has only been confirmed in version 3.6.2 but may also affect other versions. The vendor did not provide the affected version range, but assured that the vulnerability is fixed \"in newer versions\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109860": {
+    "cvss": 8.3,
+    "description": "CAST Imaging is vulnerable to Path Traversal vulnerability in \"/api/server-folders\" and \"/api/server-folders/download\" endpoints. These file-management endpoints accept user-supplied filesystem paths and allow selected system commands to be executed at the specified location, but they do not enforce sufficient authorization boundaries or restrict access to a predefined set of resources. An authenticated attacker can enumerate server directories via the \"ls\" command and retrieve arbitrary files outside of the intended application workspace, such as \"/etc/passwd\", exposing sensitive data. The vulnerability has only been confirmed in version 3.6.2 but may also affect other versions. The vendor did not provide the affected version range, but assured that the vulnerability is fixed \"in newer versions\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109861": {
+    "cvss": 8.7,
+    "description": "CAST Imaging contains a hardcoded authentication token in the \"KeyCloakController\" class of auth-service.jar. An attacker who gains access to the source code, application package, logs, or configuration files can reuse this token to call auth-service endpoints without authentication. Using the token with the \"/api/auth/keycloak/users\" endpoint, the attacker can enumerate users across Keycloak realms and retrieve user attributes containing API token hashes, enabling reconnaissance and further exploitation. The vulnerability has only been confirmed in version 3.6.2 but may also affect other versions. The vendor did not provide the affected version range, but assured that the vulnerability is fixed \"in newer versions\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109862": {
+    "cvss": 5.3,
+    "description": "CAST Imaging does not properly check whether a user is authorized to modify another user's notification settings in the \"/api/admin/user/update-subscriber\" endpoint. An authenticated, low-privileged attacker can enable or disable email notifications on another user's behalf, which can suppress important communications such as security alerts and disrupt business processes. The vulnerability has only been confirmed in version 3.6.2 but may also affect other versions. The vendor did not provide the affected version range, but assured that the vulnerability is fixed \"in newer versions\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109863": {
+    "cvss": 5.3,
+    "description": "CAST Imaging allows authenticated, low-privileged users to access parts of the administrator panel. When a user navigates to any URL path the application doesn't recognize, a wildcard route automatically redirects them to the administrative view at \"/admin/applications\". This allows an attacker to perform certain administrator-restricted actions, including triggering app-to-app link generation, configuring regexes, and changing searchable object properties, resulting in unauthorized modification of application configuration. The vulnerability has only been confirmed in version 3.6.2 but may also affect other versions. The vendor did not provide the affected version range, but assured that the vulnerability is fixed \"in newer versions\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-109864": {
+    "cvss": 2.3,
+    "description": "CAST Imaging has an access control flaw in the \"/api/jobs/ /logs/download\" endpoint. An authenticated low-privilege user can download log archives for any job whose UUID they know, even if they are not authorized to access it. The vulnerability has only been confirmed in version 3.6.2 but may also affect other versions. The vendor did not provide the affected version range, but assured that the vulnerability is fixed \"in newer versions\".",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-129961": {
+    "cvss": 9.5,
+    "description": "LMS (Lan Management System) is vulnerable to Remote Code Execution in its e-mail-based Helpdesk ticket intake. The mail parser does not reject Apache .htaccess configuration files or PHP-executable files when saving ticket attachments. A remote unauthenticated attacker can e-mail a Helpdesk ticket with such an attachment; in the default configuration, anyone can request the uploaded file's URL which executes attacker-supplied code with the privileges of the web server process. No operator interaction or LMS client session is required. The issue was fixed in commit d5059b1.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132122": {
+    "cvss": 4.7,
+    "description": "agentic-radar 0.7.0 before 0.14.2 contains an untrusted configuration loading vulnerability that allows malicious repositories to inject environment variables by having load_dotenv() in agentic_radar/cli.py load the scanned repository's .env file. Attackers can set OPENAI_BASE_URL to an attacker-controlled host so that scan openai-agents or --harden-prompts send requests carrying the user's OpenAI API key to the attacker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132123": {
+    "cvss": 4.8,
+    "description": "modified eCommerce Shopsoftware through 3.3.0 contains a stored cross-site scripting vulnerability that allows authenticated administrators to inject scripts via the cross_sell_group_name parameter in admin/cross_sell_groups.php. Attackers with per-page access to cross-selling groups can store a script payload that executes in other administrators' browsers, including full administrators, when they view the group listing.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132124": {
+    "cvss": 4.8,
+    "description": "modified eCommerce Shopsoftware through 3.3.0 contains a stored cross-site scripting vulnerability that allows authenticated administrators to inject scripts via the orders_status_name parameter in admin/orders_status.php. Attackers with per-page order status access can store payloads that execute in other administrators' browsers when the unencoded status name is displayed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132125": {
+    "cvss": 3.3,
+    "description": "Weblate 5.0 through 2026.11.2 contains a privilege escalation vulnerability where deleting a component list leaves stale Group.projects rows, widening team scope to whole projects. A user with componentlist.edit who deletes a list grants 'From component list' team members their full role, including project.edit, across possibly private projects.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132126": {
+    "cvss": 4.3,
+    "description": "Weblate 2026.6 through 2026.11.2 contains an information disclosure vulnerability that allows authenticated users to enumerate all workspaces through an unfiltered ProjectSerializer.workspace field. Low-privilege users can request the browsable /api/projects/ page to render the project creation form, revealing every workspace UUID and name they cannot access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107515": {
+    "cvss": 8.8,
+    "description": "Dell PowerStore contains an Improper Privilege Management vulnerability. An authenticated attacker could exploit this vulnerability, potentially leading to privilege escalation to administrator.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107516": {
+    "cvss": 7.2,
+    "description": "Dell PowerStore contains an OS command injection vulnerability. An authenticated user with limited privileges could potentially exploit this vulnerability, potentially leading to arbitrary command execution with root privileges.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-108323": {
+    "cvss": 6.5,
+    "description": "Tanium addressed an uncontrolled resource consumption vulnerability in Tanium Client.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122042": {
+    "cvss": 7.1,
+    "description": "WarehousePG (WHPG) 6.27.1 through 6.27.7 and 7.2.1 through 7.6.1 are affected by an out-of-bounds write vulnerability (CWE-787) in gpfdist, the file server used to load and unload external tables. When gpfdist attaches a request to a session, it sizes two internal arrays from the client-supplied X-GP-SEGMENT-COUNT header and writes to them at the index given by the X-GP-SEGMENT-ID header, without checking that the index is non-negative and smaller than the count (CWE-129). gpfdist does not authenticate callers unless gpfdists is used with client certificate verification, so an attacker who can reach the gpfdist port can crash it with a single HTTP request, failing every external table load or unload that uses that gpfdist instance. gpfdist is normally reachable only from the cluster's internal network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-123123": {
+    "cvss": 7.5,
+    "description": "An attacker that is able to send a crafted network packet to the affected component may trigger an integer overflow during module size validation. This may cause insufficient bounds checking and result in out-of-bounds memory reads, potentially leading to a denial of service condition due to process termination.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126763": {
+    "cvss": 7.5,
+    "description": "In Eclipse Mosquitto versions 1.6 to 2.0.22 and 2.1.0 to 2.1.2, an MQTT v5.0 client connecting with a will-delay-interval that subsequently disconnects with a shorter interval causes all delayed wills to be suppressed.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132138": {
+    "cvss": 5.3,
+    "description": "A flaw was found in cyrus-sasl. When processing authentication requests using the Salted Challenge Response Authentication Mechanism (SCRAM), a remote attacker can trigger a null pointer dereference by submitting unexpected channel-binding data. This causes the server process to crash before validating authentication proofs, leading to a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-107511": {
+    "cvss": 4.8,
+    "description": "Dell PowerStore contains a CSV Injection vulnerability. A high-privileged attacker could exploit this vulnerability, potentially leading to code execution on another user's workstation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111507": {
+    "cvss": 8.1,
+    "description": "Dell PowerStore contains an authorization bypass vulnerability. A remote attacker could exploit this vulnerability to act under another user's session, potentially leading to denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95881": {
+    "cvss": 7.8,
+    "description": "Heap-based buffer overflow in Windows Push Notifications allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95882": {
+    "cvss": 9.8,
+    "description": "Stack-based buffer overflow in Windows Microsoft DirectMusic allows an unauthorized attacker to execute code over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95884": {
+    "cvss": 5.3,
+    "description": "Buffer over-read in Windows Active Directory Certificate Services allows an authorized attacker to disclose information over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95885": {
+    "cvss": 8.1,
+    "description": "Use after free in Windows Client for NFS allows an unauthorized attacker to elevate privileges over a network.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95888": {
+    "cvss": 7.0,
+    "description": "Heap-based buffer overflow in Windows Graphics Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95889": {
+    "cvss": 6.6,
+    "description": "Untrusted pointer dereference in Windows Storage allows an authorized attacker to elevate privileges with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96027": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99276": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: defer connection scavenging while session locks are busy The expiration worker holds conn_list_lock for reading while checking for authenticated sessions. Without this change, the check can wait for conn->session_lock or sessions_table_lock. In destroy_previous_session(), the status updates after ksmbd_conn_wait_idle_sess() run with both session locks held for writing. Both the KSMBD_SESS_GOOD error path and the KSMBD_SESS_NEED_SETUP success path call ksmbd_all_conn_set_status(), which takes conn_list_lock for reading. A writer queued on conn_list_lock can block these new read acquisitions. The worker then waits for a session lock held by destroy_previous_session(), which waits behind the writer. The writer cannot proceed until the worker releases conn_list_lock. Try both session locks instead of waiting in the scavenging check. Keep the connection when either lock is busy and let the periodic worker retry later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99277": {
+    "cvss": 7.5,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: hold a connection reference for each session channel ksmbd_session_unregister() removes a session from the global and per- connection tables before dropping the table reference. A concurrent reference holder can keep the session and its channel list alive after those removals. Connection cleanup can no longer find the unpublished session to remove its channels. Since a channel only stores a raw conn pointer, the connection can be freed while another session reference holder is still accessing it, for example during SMB3.1.1 binding or a procfs read. Take a connection reference when registering a channel and release it on insertion failure, channel removal, or final session destruction. Keep the channels and signing keys until the session is destroyed so a response can still be signed after the session has been unregistered.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99278": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: limit sessions on each connection The pending setup limit only counts InProgress sessions. A client can complete authentication repeatedly and retain an unbounded number of Valid sessions on one connection. Reserve a connection slot before allocating a session and retain a connection reference while authentication is in progress. The first SMB3 channel takes over that reservation; binding to another connection reserves one slot there. Reauthentication and authentication continuation reuse the existing reservation. Return slots on allocation or insertion failure, channel removal, and final session destruction. Accept max_sessions_per_connection in reserved startup-request space and default to 64 when older tools leave it zero. Keep the request size and existing field offsets unchanged. Expose the configured limit in procfs. The existing connection limits bound the aggregate number of sessions without a separate global session allocation limit.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99279": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: reclaim ended sessions on logoff and expiration LOGOFF and previous-session replacement leave sessions Expired with a zero credential expiry. Ended sessions can retain their memory and connection slots when no further setup arrives on the owning connection. Unpublish a logged-off session while the request reference keeps its response signing and encryption keys alive. Remove its procfs entry before dropping the table reference so a reader cannot remove its own entry on the last put. Clear proc_entry after removal to avoid removing it twice. Reclaim ended sessions from the global table in the existing expiration worker before it acquires conn_list_lock. Only select Expired sessions with zero credential expiry and no references beyond the table reference. Keep sessions whose Kerberos credentials expired available for reauthentication. Unlink the session from its setup connection and all channel connections, so SMB2 sessions and sessions with only secondary SMB3 channels are covered. The session already holds connection references, and sessions_table_lock prevents concurrent channel removal. Queue sessions on a separate disposal list, leaving their hash nodes unhashed, and remove procfs entries and drop table references outside the locks. Keep the pending setup check before allocating a new session so abandoned InProgress sessions can release their slots even at the connection limit. Retain the timeout and reference checks and dispose of those sessions outside the locks. Leave ended Expired sessions to the expiration worker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-99280": {
+    "cvss": null,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: drain session procfs readers before dropping table references Session registration failure and connection cleanup can drop the table reference while the per-session procfs entry is still accessible. If a reader holds the last remaining reference, its final put calls proc_remove() from its own callback and waits for that callback to finish. Remove the procfs entry before dropping the table reference in the registration failure path. Queue sessions removed during connection cleanup and drain their procfs readers after releasing both session locks, then return their table references. Keep the global hash node unhashed while a session is queued so a concurrent unregister cannot drop the reference again. Previous-session replacement also destroys the file table before the session is finally freed. Detach the idr under the lock used by procfs file counters, and report zero files after it has been detached. This prevents a reader from accessing the idr during or after its destruction.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-98447": {
+    "cvss": null,
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97547": {
+    "cvss": null,
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80926": {
+    "cvss": 9.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix use-after-free in oplock break notification smb2_oplock_break_noti() reads opinfo->conn without any lock and dereferences it after two allocations which may sleep. When the durable handle owning the oplock is disconnected, session_fd_check() clears opinfo->conn and drops its conn reference under ci->m_lock, and the last ksmbd_conn_put() frees the connection. A break triggered by another connection that races with the teardown can then resurrect the freed connection: ksmbd_conn_get() is a plain atomic_inc, and the queued break work later dereferences the stale conn via ksmbd_conn_write(), a use-after-free reachable by any authenticated client holding a durable batch oplock. Thread the caller's inode into the notification path instead of taking a new reference on it. Every caller of oplock_break() already holds a live ksmbd_file (or an explicit ksmbd_inode_lookup_lock() reference, in the parent lease break paths) on the inode that owns the break target's oplock list, so ci cannot be freed during the call, and its lock can be taken without dereferencing opinfo->o_fp, which a concurrent close may free. Select and pin the connection under ci->m_lock, the same lock session_fd_check() and ksmbd_reopen_durable_fd() use to update opinfo->conn, so a concurrent detach either loses the race to the clear or keeps the connection alive until the notification work releases it. Transfer the reference to the work item and release it on allocation failures.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-80724": {
+    "cvss": 8.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: ptp: vmclock: prevent read-only mappings from becoming writable vmclock_miscdev_mmap() rejects writable mappings of the shared vmclock ABI page with -EROFS, but leaves VM_MAYWRITE set. Userspace can map the page read-only and then upgrade it to writable with mprotect(), after which the guest can corrupt the host-written timekeeping data (sequence counter, UTC time, TSC offset) that the vmclock ABI defines as read-only. Clear VM_MAYWRITE on the read-only path so the mapping cannot be upgraded, as i915 does for its read-only objects and as fixed in drm/vc4 (CVE-2026-68445) and drm/panthor (CVE-2024-53071).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-10622": {
+    "cvss": 8.0,
+    "description": "A flaw was found in Red Hat Satellite (Foreman component). This vulnerability allows an authenticated user with edit_settings permissions to achieve arbitrary command execution on the underlying operating system via insufficient server-side validation of command whitelisting.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-57984": {
+    "cvss": 7.8,
+    "description": "In the Linux kernel, the following vulnerability has been resolved: i3c: dw: Fix use-after-free in dw_i3c_master driver due to race condition In dw_i3c_common_probe, &master->hj_work is bound with dw_i3c_hj_work. And dw_i3c_master_irq_handler can call dw_i3c_master_irq_handle_ibis function to start the work. If we remove the module which will call dw_i3c_common_remove to make cleanup, it will free master->base through i3c_master_unregister while the work mentioned above will be used. The sequence of operations that may lead to a UAF bug is as follows: CPU0 CPU1 | dw_i3c_hj_work dw_i3c_common_remove | i3c_master_unregister(&master->base) | device_unregister(&master->dev) | device_release | //free master->base | | i3c_master_do_daa(&master->base) | //use master->base Fix it by ensuring that the work is canceled before proceeding with the cleanup in dw_i3c_common_remove.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-25914": {
+    "cvss": 8.8,
+    "description": "Danfoss AK-SM 800A Series contains a path traversal vulnerability that could allow an attacker to access and read underlying server system files via the XML interface.",
+    "vendor": "Danfoss",
+    "product": "AK-SM 800A Series"
+  },
+  "CVE-2023-25915": {
+    "cvss": 9.9,
+    "description": "Danfoss AK-SM 800A Series contains an improper input validation vulnerability that could allow a remote attacker to run arbitrary commands on the affected system.",
+    "vendor": "Danfoss",
+    "product": "AK-SM 800A Series"
+  },
+  "CVE-2026-133324": {
+    "cvss": 5.3,
+    "description": "Mitel MiCollab contains a not failing securely vulnerability in the Audio, Web and Video Conferencing (AWV) component that could allow an unauthenticated attacker to bypass authentication controls and perform unauthorized actions.",
+    "vendor": "Mitel",
+    "product": "MiCollab"
+  },
+  "CVE-2026-133275": {
+    "cvss": 5.3,
+    "description": "Mitel MiCollab contains an unrestricted upload of file with dangerous type vulnerability in the Audio, Web and Video Conferencing (AWV) component due to insufficient file type validation that could allow an unauthenticated attacker to upload arbitrary files.",
+    "vendor": "Mitel",
+    "product": "MiCollab"
+  },
+  "CVE-2026-133311": {
+    "cvss": 5.9,
+    "description": "Mitel MiCollab contains a weak authentication vulnerability in the Audio, Web and Video Conferencing (AWV) component that could allow an unauthenticated attacker to access sensitive information using a specific system-generated random identifier or pre-staged content.",
+    "vendor": "Mitel",
+    "product": "MiCollab"
+  },
+  "CVE-2026-133303": {
+    "cvss": 9.0,
+    "description": "Mitel MiCollab contains an XML injection vulnerability in its Audio, Web, and Video Conferencing (AWV) component that could allow an unauthenticated attacker to execute arbitrary commands using pre-staged malicious content.",
+    "vendor": "Mitel",
+    "product": "MiCollab"
+  },
+  "CVE-2026-135445": {
+    "cvss": 5.5,
+    "description": "MediaInfoLib before 26.10 contains a divide-by-zero vulnerability in TimeCode::FromString() that allows attackers to crash applications by supplying hour-unit timestamps with fewer than three fractional digits. Attackers can craft a TTML file whose begin or end attribute contains such a timestamp, causing MediaInfo or embedding applications to crash with SIGFPE when opened.",
+    "vendor": "MediaArea",
+    "product": "MediaInfoLib"
+  },
+  "CVE-2026-135441": {
+    "cvss": 5.5,
+    "description": "MediaInfoLib before 26.10 contains an uninitialized pointer dereference vulnerability because the File_Mpeg4_Descriptors constructor leaves the IsCmaf pointer holding stale heap contents. Attackers can supply a crafted MP4 file with an AAC/USAC decoder specific descriptor so File_Usac::Streams_Finish_Conformance_Profile dereferences an invalid address, crashing the application.",
+    "vendor": "MediaArea",
+    "product": "MediaInfoLib"
+  },
+  "CVE-2026-133632": {
+    "cvss": 7.8,
+    "description": "In astro-airflow-mcp 0.5.0 through 0.9.1, the af CLI and the MCP server send telemetry from a Python subprocess that can import modules from the current working directory. If a user runs an af command or an MCP tool call from inside a project that contains an attacker-supplied json.py, that file runs with the user's privileges. Users who only run the tool in projects they trust are not affected. Fixed in 0.9.2; in earlier versions, setting AF_TELEMETRY_DISABLED=1 prevents it.",
+    "vendor": "astronomer",
+    "product": "astro-airflow-mcp"
+  },
+  "CVE-2026-135090": {
+    "cvss": 3.5,
+    "description": "A vulnerability was determined in humhub lets-meet up to 1.2.1. Affected by this vulnerability is the function NewInviteNotification::html of the file notifications/NewInviteNotification.php of the component Notification Rendering. Executing a manipulation can lead to cross site scripting. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. Upgrading to version 1.2.2 addresses this issue. This patch is called 6c82534ffcb90e74229671a76caef1a8285c5190. Upgrading the affected component is advised.",
+    "vendor": "humhub",
+    "product": "lets-meet"
+  },
+  "CVE-2026-135288": {
+    "cvss": 4.8,
+    "description": "AIOStreams 2.9.0 through 2.38.1 contains an information disclosure vulnerability in makeRequest() that leaks the internal secret header by matching URLs against INTERNAL_URL using a string-prefix check. Attackers can supply a custom addon manifest URL or redirect to a prefix-matching host or port to capture the secret and directly call internal addon routes.",
+    "vendor": "Viren070",
+    "product": "AIOStreams"
+  },
+  "CVE-2026-135162": {
+    "cvss": 5.4,
+    "description": "Sim 0.5.61 before 0.9.41 contains an incorrect authorization vulnerability that allows write-level workspace members to change workflow MCP server visibility without admin permission. Attackers can set isPublic via POST or PATCH to /api/mcp/workflow-servers, exposing deployed workflows to unauthenticated invocation through /api/mcp/serve.",
+    "vendor": "simstudioai",
+    "product": "sim"
+  },
+  "CVE-2026-135212": {
+    "cvss": 5.3,
+    "description": "AiSOC before 23.6.1 contains a missing authorization vulnerability in the agents service that allows authenticated users to read other tenants' investigation runs by supplying their run_id. Attackers can query GET /api/v1/investigations/{run_id}, report variants, the WebSocket stream, or agent-runs routes to obtain audit logs, forensic output, and incident reports.",
+    "vendor": "beenuar",
+    "product": "AiSOC"
+  },
+  "CVE-2026-134021": {
+    "cvss": 7.5,
+    "description": "TastyIgniter is an open-source online ordering, table reservation, and restaurant management system. Prior to 4.3.1, the Mollie payment notification handler in src/Payments/Mollie.php, processNotifyUrl(), uses a payment ID supplied with the notification to retrieve a paid transaction but does not verify that the transaction's order reference matches the order identified by the notification URL or that the transaction amount matches the order total. An ordinary customer can use a paid Mollie transaction from one order to cause a different, higher-value order to be marked paid without paying its full price. The endpoint is intentionally unauthenticated so Mollie's servers can reach it, and the request's order hash alone does not bind the fetched payment to that order. This issue is fixed in version 4.3.1.",
+    "vendor": "tastyigniter",
+    "product": "TastyIgniter"
+  },
+  "CVE-2026-135444": {
+    "cvss": 6.1,
+    "description": "MediaInfoLib before 26.10 contains an out-of-bounds read vulnerability in File_Mpegv::Streams_Fill() that allows attackers to read adjacent memory via an uninitialized chroma_format index. Attackers can craft media files that reach Streams_Fill() before Synched_Init(), crashing MediaInfo or embedding applications and possibly exposing static memory in parser output.",
+    "vendor": "MediaArea",
+    "product": "MediaInfoLib"
+  },
+  "CVE-2026-125812": {
+    "cvss": 9.8,
+    "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in WP Media WP Rocket wp-rocket allows Path Traversal.This issue affects WP Rocket: from n/a before 3.24.2.",
+    "vendor": "WP Media",
+    "product": "WP Rocket"
+  },
+  "CVE-2026-135163": {
+    "cvss": 7.4,
+    "description": "Okou API before 1.762.0 contains a missing authentication vulnerability in its Microsoft Teams, legacy Slack, and GitHub App integration OAuth flows that trusts caller-supplied userId and orgId values. Unauthenticated attackers who know a member's identifiers can complete the flow with their own external account to bind that identity or installation to the victim's Okou user and organization.",
+    "vendor": "okou-ai",
+    "product": "okou"
+  },
+  "CVE-2026-132270": {
+    "cvss": 4.3,
+    "description": "AutoGPT is a workflow automation platform for creating, deploying, and managing continuous artificial intelligence agents. In versions 0.7.1 through 0.8.4, AutoPilot prices block calls using model-supplied input but executes them with the server-resolved credential. Supplying a syntactically valid placeholder credential causes the price rule to evaluate to zero, skipping both the balance check and debit while still running paid blocks on the operator's credential. This issue is fixed in version 0.9.0.",
+    "vendor": "Significant-Gravitas",
+    "product": "AutoGPT"
+  },
+  "CVE-2026-135089": {
+    "cvss": 3.5,
+    "description": "A vulnerability was found in humhub questions up to 1.1.5. Affected is an unknown function of the file widgets/views/answer.php of the component QA Module. Performing a manipulation of the argument displayName results in cross site scripting. The attack is possible to be carried out remotely. The exploit has been made public and could be used. Upgrading to version 1.1.6 is able to address this issue. The patch is named cdc39878ba457ca71271c1ec3cf05fe025e3e9fc. It is recommended to upgrade the affected component.",
+    "vendor": "humhub",
+    "product": "questions"
+  },
+  "CVE-2026-134023": {
+    "cvss": 7.4,
+    "description": "TastyIgniter is an open-source online ordering, table reservation, and restaurant management system. Prior to 4.2.0, checkResetPasswordCode() in src/Auth/Models/User.php compares a submitted reset code with the stored 42-character token using a normal string comparison, which can return after the first differing byte instead of taking constant time. The password-reset flow exposes this comparison to remote requests, but the endpoint is rate-limited to six requests per minute per IP, and the advisory reports no live exploit or practical token-recovery demonstration. Recovering a high-entropy reset code through the constrained timing signal could permit an unauthorized password reset. This issue is fixed in version 4.2.0.",
+    "vendor": "tastyigniter",
+    "product": "ti-ext-user"
+  },
+  "CVE-2026-134022": {
+    "cvss": 3.7,
+    "description": "TastyIgniter is an open-source online ordering, table reservation, and restaurant management system. Prior to 4.2.0, the User extension’s onRequestResetPassword() handler in src/Http/Controllers/Login.php calls resetPassword() and mailSendResetPasswordRequest() only when an account matches. The resulting database write and reset-email send take longer than the nonexistent-account path despite the endpoint returning the same response, allowing timing measurements against a production deployment using a synchronous queue and real SMTP transport to disclose valid staff or customer email addresses. The advisory’s local log-mailer test showed no measurable timing difference, so the signal depends on mail configuration and is useful for follow-on phishing or credential stuffing rather than direct account access. This issue is fixed in version 4.2.0.",
+    "vendor": "tastyigniter",
+    "product": "ti-ext-user"
+  },
+  "CVE-2026-130178": {
+    "cvss": 7.7,
+    "description": "AutoGPT is a workflow automation platform for creating, deploying, and managing continuous artificial intelligence agents. In versions 0.7.1 through 0.8.4, an incomplete IPv6 blocklist in AutoGPT's outbound SSRF protection allows authenticated users to reach local or private network services. Specifically, _is_ip_blocked and BLOCKED_IP_NETWORKS in autogpt_platform/backend/backend/util/request.py fail to reject the IPv6 unspecified address :: (which connects to ::1 on Linux) as well as 6to4, NAT64, Teredo, and deprecated IPv4-compatible IPv6 encodings. An attacker can pass :: directly to blocks/sql_query_block.py or blocks/email_block.py, or point URL-fetching blocks, web fetch, MCP servers, webhooks, or OAuth at a hostname whose AAAA record resolves to ::. On backends run directly on a host, this exposes unauthenticated internal RPC services and databases listening on ::1, though the default Docker Compose and single-container deployments bind internal services to IPv4 only. This issue is fixed in version 0.9.0.",
+    "vendor": "Significant-Gravitas",
+    "product": "AutoGPT"
+  },
+  "CVE-2026-133455": {
+    "cvss": 6.5,
+    "description": "AutoGPT is a workflow automation platform for creating, deploying, and managing continuous artificial intelligence agents. Prior to 0.9.0, nested tools invoked by OrchestratorBlock bypass the main execution queue and are charged only after succeeding, but post-run billing still refunds a failed tool's catalogue price as a presumed pre-flight charge. Any authenticated customer can trigger failed nested calls to add uncharged credits to their balance and fund later executions using the operator's credentials. This issue is fixed in version 0.9.0.",
+    "vendor": "Significant-Gravitas",
+    "product": "autogpt-platform-beta"
+  },
+  "CVE-2026-135295": {
+    "cvss": 7.8,
+    "description": "FontForge through 20251009 contains a heap out-of-bounds write vulnerability in PcfReadEncodingsNames() that allows attackers to corrupt memory via negative glyph indices from truncated PCF encodings tables. Attackers can supply a crafted .pcf file imported through the GUI or scripting Import() command to write before the encs array, causing crashes or potential code execution.",
+    "vendor": "FontForge",
+    "product": "FontForge"
   }
 }
