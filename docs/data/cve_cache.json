@@ -154915,7 +154915,7 @@
   },
   "CVE-2026-107494": {
     "cvss": 7.5,
-    "description": "Issue summary: The QUIC stack queues a RETIRE_CONNECTION_ID frame also for retransmitted NEW_CONNECTION_ID frames. This allows a remote malicious QUIC stack to queue an unlimited number of RETIRE_CONNECTION_ID frames. Impact summary: A malicious remote QUIC peer can trigger an out-of-memory condition causing a Denial of Service. CWE: CWE-770: Allocation of Resources Without Limits or Throttling Description: The earlier fix for CVE-2026-84784 was not complete. It failed to ignore retransmissions of the NEW_CONNECTION_ID frame. The QUIC implementation created and inserted a RETIRE_CONNECTION_ID frame for every retransmitted NEW_CONNECTION_ID frame it received and there was no limit on how many RETIRE_CONNECTION_ID frames were queued. This allows a malicious remote QUIC stack to trigger an out-of-memory (OOM) condition. FIPS impact: no The FIPS module is not affected as the QUIC implementation is outside the OpenSSL FIPS module boundary.",
+    "description": "Issue summary: The QUIC stack queues a RETIRE_CONNECTION_ID frame also for retransmitted NEW_CONNECTION_ID frames. This allows a remote malicious QUIC stack to queue an unlimited number of RETIRE_CONNECTION_ID frames. Impact summary: A malicious remote QUIC peer can trigger an out-of-memory condition causing a Denial of Service. CWE: CWE-770: Allocation of Resources Without Limits or Throttling Description: The earlier fix for CVE-2026-84784 was not complete. It failed to ignore retransmissions of the NEW_CONNECTION_ID frame. The QUIC implementation created and inserted a RETIRE_CONNECTION_ID frame for every retransmitted NEW_CONNECTION_ID frame it received and there was no limit on how many RETIRE_CONNECTION_ID frames were queued. This issue allows a malicious remote QUIC stack to trigger an unbounded allocation of memory and eventually an out-of-memory (OOM) condition. FIPS impact: no The FIPS module is not affected as the QUIC implementation is outside the OpenSSL FIPS module boundary.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -158680,5 +158680,83 @@
     "description": "Gargoyle 2023.1 through 2026.1.1 contains an infinite loop vulnerability in the bundled Plus interpreter's ReadString() function in terps/plus/loaddatabase.c that fails to handle end of file. Attackers can supply an empty, truncated, or crafted .plus game file that hangs Gargoyle at full CPU until the user kills it.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-19707": {
+    "cvss": 9.5,
+    "description": "A bug in the Airlock Gateway (8.5.2 and earlier, and 8.6.0) allows attacker-controlled HTML in a backend response to exploit the Smart Form Protection feature, possibly leading to a Denial of Service (DoS) or Remote Code Execution (RCE) attack against the Airlock Gateway. The issue has been fixed in Airlock Gateway version 8.5.3 and 8.6.1. For an attack to be executable, the Airlock Gateway needs to have 'Smart Form Protection' (or the corresponding expert settings) enabled on a mapping whose backend returns a response containing certain multi-byte HTML character references. The buffer overflow then happens during the parsing of that HTML response. Such a response can come either from a malicious or compromised backend, or from an otherwise trusted backend that returns attacker-supplied HTML, e.g. an application that stores and serves plain user-provided HTML files. Successfully exploiting the vulnerability can enable an attacker to perform a DoS attack or, in the worst case, an RCE attack against the Airlock Gateway in front of the affected backend. Compromising the functionality of the Airlock Gateway could in this way also affect the availability and protection of other well-intentioned backends deployed behind the same Gateway.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132049": {
+    "cvss": 4.3,
+    "description": "A flaw was found in lldpd. The service fails to verify that Link Layer Discovery Protocol - Media Endpoint Discovery (LLDP-MED) location records received from network neighbors match their declared lengths. An adjacent attacker on the local network can exploit this flaw by sending crafted packets, causing client applications using the liblldpctl library to read past buffer boundaries when parsing location data. This issue can lead to an information disclosure of adjacent process memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-33669": {
+    "cvss": 9.8,
+    "description": "SiYuan is a personal knowledge management system. Prior to version 3.6.2, document IDs were retrieved via the /api/file/readDir interface, and then the /api/block/getChildBlocks interface was used to view the content of all documents. Version 3.6.2 patches the issue.",
+    "vendor": "siyuan-note",
+    "product": "siyuan"
+  },
+  "CVE-2026-77606": {
+    "cvss": 6.1,
+    "description": "Semantic MediaWiki is a free, open-source extension to MediaWiki that lets users store and query data within the wiki's pages. Prior to version 7.2.0, when `headers=plain`, table header text was emitted into ` ` via a raw HTML path. User-controlled `mainlabel` content could therefore become executable HTML. Version 7.2.0 fixes the issue.",
+    "vendor": "SemanticMediaWiki",
+    "product": "SemanticMediaWiki"
+  },
+  "CVE-2026-32248": {
+    "cvss": 9.3,
+    "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.12 and 8.6.38, an unauthenticated attacker can take over any user account that was created with an authentication provider that does not validate the format of the user identifier (e.g. anonymous authentication). By sending a crafted login request, the attacker can cause the server to perform a pattern-matching query instead of an exact-match lookup, allowing the attacker to match an existing user and obtain a valid session token for that user's account. Both MongoDB and PostgreSQL database backends are affected. Any Parse Server deployment that allows anonymous authentication (enabled by default) is vulnerable. This vulnerability is fixed in 9.6.0-alpha.12 and 8.6.38.",
+    "vendor": "parse-community",
+    "product": "parse-server"
+  },
+  "CVE-2026-61426": {
+    "cvss": 8.6,
+    "description": "PraisonAI before 1.7.3 contains an insecure default configuration that binds to all interfaces with no API key requirement and wildcard CORS. Unauthenticated attackers can call GET /api/agents to read agent instructions and system prompts, or POST /api/chat to invoke agents without authentication.",
+    "vendor": "MervinPraison",
+    "product": "PraisonAI"
+  },
+  "CVE-2026-129243": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-32275": {
+    "cvss": 9.1,
+    "description": "Tautulli is a Python based monitoring and tracking tool for Plex Media Server. From version 1.3.10 to before version 2.17.0, an unsanitized JSONP callback parameter allows cross-origin script injection and API key theft. This issue has been patched in version 2.17.0.",
+    "vendor": "Tautulli",
+    "product": "Tautulli"
+  },
+  "CVE-2026-30975": {
+    "cvss": 8.1,
+    "description": "Sonarr is a PVR for Usenet and BitTorrent users. Versions prior to 4.0.16.2942 have an authentication bypass that affected users that had disabled authentication for local addresses (Authentication Required set to: `Disabled for Local Addresses`) without a reverse proxy running in front of Sonarr that didn't not pass through the invalid header. Patches are available in version 4.0.16.2942 in the nightly/develop branch and version 4.0.16.2944 for stable/main releases. Some workarounds are available. Make sure Sonarr's Authentication Required setting is set to `Enabled`, run Sonarr behind a reverse proxy, and/or do not expose Sonarr directly to the internet and instead rely on accessing it through a VPN, Tailscale or a similar solution.",
+    "vendor": "Sonarr",
+    "product": "Sonarr"
+  },
+  "CVE-2026-77616": {
+    "cvss": 6.1,
+    "description": "Semantic MediaWiki is a free, open-source extension to MediaWiki that lets users store and query data within the wiki's pages. In versions 7.0.0 through 7.1.0, `Special:Ask` accepts a `cursor` query parameter for keyset pagination (added in 7.0.0). The token is decoded by `CursorEncoder`, which is an **unsigned** base64url-encoded JSON blob, so its contents are fully attacker-controlled. When the cursor's sort anchor does not match the request's `sort=` / `order=`, `QueryCreator::applyCursorIfRequested()` builds an error message by interpolating the attacker-controlled `sort_prop` / `sort_order` values into a raw string via `Query::addErrors()`. Unlike SMW's message-key errors, this raw string bypasses the message layer's sanitization (`ProcessingErrorMsgHandler::normalizeAndDecodeMessages()` passes a non-key, non-encoded string through unchanged). `ErrorWidget::queryError()` then assembles the errors and passes them to `Html::errorBox()`, whose first argument is emitted as raw HTML. The result is a reflected cross-site scripting vulnerability: a crafted `cursor` token containing markup in `sort_prop` (or `sort_order`) executes script in the victim's browser on the wiki origin. No authentication or special permission is required. The payload is delivered via a crafted link. Version 7.2.0 contains a fix.",
+    "vendor": "SemanticMediaWiki",
+    "product": "SemanticMediaWiki"
+  },
+  "CVE-2026-32760": {
+    "cvss": 10.0,
+    "description": "File Browser is a file managing interface for uploading, deleting, previewing, renaming, and editing files within a specified directory. In versions 2.61.2 and below, any unauthenticated visitor can register a full administrator account when self-registration (signup = true) is enabled and the default user permissions have perm.admin = true. The signup handler blindly applies all default settings (including Perm.Admin) to the new user without any server-side guard that strips admin from self-registered accounts. The signupHandler is supposed to create unprivileged accounts for new visitors. It contains no explicit user.Perm.Admin = false reset after applying defaults. If an administrator (intentionally or accidentally) configures defaults.perm.admin = true and also enables signup, every account created via the public registration endpoint is an administrator with full control over all files, users, and server settings. This issue has been resolved in version 2.62.0.",
+    "vendor": "filebrowser",
+    "product": "filebrowser"
+  },
+  "CVE-2026-27493": {
+    "cvss": 9.5,
+    "description": "n8n is an open source workflow automation platform. Prior to versions 2.10.1, 2.9.3, and 1.123.22, a second-order expression injection vulnerability existed in n8n's Form nodes that could allow an unauthenticated attacker to inject and evaluate arbitrary n8n expressions by submitting crafted form data. When chained with an expression sandbox escape, this could escalate to remote code execution on the n8n host. The vulnerability requires a specific workflow configuration to be exploitable. First, a form node with a field interpolating a value provided by an unauthenticated user, e.g. a form submitted value. Second, the field value must begin with an `=` character, which caused n8n to treat it as an expression and triggered a double-evaluation of the field content. There is no practical reason for a workflow designer to prefix a field with `=` intentionally — the character is not rendered in the output, so the result would not match the designer's expectations. If added accidentally, it would be noticeable and very unlikely to persist. An unauthenticated attacker would need to either know about this specific circumstance on a target instance or discover a matching form by chance. Even when the preconditions are met, the expression injection alone is limited to data accessible within the n8n expression context. Escalation to remote code execution requires chaining with a separate sandbox escape vulnerability. The issue has been fixed in n8n versions 2.10.1, 2.9.3, and 1.123.22. Users should upgrade to one of these versions or later to remediate the vulnerability. If upgrading is not immediately possible, administrators should consider the following temporary mitigations. Review usage of form nodes manually for above mentioned preconditions, disable the Form node by adding `n8n-nodes-base.form` to the `NODES_EXCLUDE` environment variable, and/or disable the Form Trigger node by adding `n8n-nodes-base.formTrigger` to the `NODES_EXCLUDE` environment variable. These workarounds do not fully remediate the risk and should only be used as short-term mitigation measures.",
+    "vendor": "n8n-io",
+    "product": "n8n"
+  },
+  "CVE-2026-33670": {
+    "cvss": 9.8,
+    "description": "SiYuan is a personal knowledge management system. Prior to version 3.6.2, the /api/file/readDir interface was used to traverse and retrieve the file names of all documents under a notebook. Version 3.6.2 patches the issue.",
+    "vendor": "siyuan-note",
+    "product": "siyuan"
   }
 }
