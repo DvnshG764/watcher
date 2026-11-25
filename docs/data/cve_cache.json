@@ -132103,7 +132103,7 @@
   },
   "CVE-2026-126256": {
     "cvss": 7.4,
-    "description": "A out-of-bounds read vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.13, FortiOS 7.2 all versions may allow an unauthenticated attacker to execute arbitrary code or command via crafted packets.",
+    "description": "A out-of-bounds read vulnerability in Fortinet FortiOS 8.0.0 through 8.0.2, FortiOS 7.6.0 through 7.6.8, FortiOS 7.4.0 through 7.4.13, FortiOS 7.2 all versions may allow an unauthenticated attacker to execute arbitrary code or command via crafted packets.",
     "vendor": "Fortinet",
     "product": "Unknown"
   },
@@ -155916,10 +155916,10 @@
     "product": "Unknown"
   },
   "CVE-2026-127280": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 7.8,
+    "description": "C-More EA9 Programming Software V6.80 does not adequately validate data read from a project file before using it in heap memory operations. A crafted file causes a heap buffer overrun during file open, resulting in heap corruption and instability within the application. An attacker can exploit this vulnerability by convincing a user to open a malicious project file delivered through common distribution channels such as email, file sharing, or removable media.",
+    "vendor": "AutomationDirect",
+    "product": "C-More EA9 Programming Software"
   },
   "CVE-2026-126547": {
     "cvss": 7.8,
@@ -159028,5 +159028,83 @@
     "description": "SiYuan is a personal knowledge management system. Versions 3.6.0 and below contain an authorization bypass vulnerability in the /api/search/fullTextSearchBlock endpoint. When the method parameter is set to 2, the endpoint passes user-supplied input directly as a raw SQL statement to the underlying SQLite database without any authorization or read-only checks. This allows any authenticated user — including those with the Reader role — to execute arbitrary SQL statements (SELECT, DELETE, UPDATE, DROP TABLE, etc.) against the application's database. This is inconsistent with the application's own security model: the dedicated SQL endpoint (/api/query/sql) correctly requires both CheckAdminRole and CheckReadonly middleware, but the search endpoint bypasses these controls entirely. This issue has been fixed in version 3.6.1.",
     "vendor": "siyuan-note",
     "product": "siyuan"
+  },
+  "CVE-2026-112792": {
+    "cvss": 7.0,
+    "description": "Use after free in Windows Print Spooler Components allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-112980": {
+    "cvss": 6.7,
+    "description": "Use after free in Windows Print Spooler Components allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125186": {
+    "cvss": 4.7,
+    "description": "FFmpeg through 9.0.2 contains an uncontrolled resource consumption vulnerability in the dts2pts bitstream filter that allows attackers to exhaust CPU through unbounded per-packet POC node allocation. Attackers can supply a crafted H.264 packet with many slices of alternating picture order counts, forcing h264_queue_frame() to allocate tree nodes per slice and deny service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125187": {
+    "cvss": 5.5,
+    "description": "FFmpeg through 9.0.2 contains a reachable assertion vulnerability in the TTA encoder's tta_encode_frame() in libavcodec/ttaenc.c, which never reserves output packet space for the 4-byte CRC. Attackers can supply audio whose sample values and length produce a small, poorly compressible final frame, triggering the av_assert0() in flush_put_bits() and aborting applications transcoding to TTA.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125188": {
+    "cvss": 2.5,
+    "description": "FFmpeg through 9.0.2 contains a heap out-of-bounds read vulnerability in libavcodec/proresenc_anatoliy.c that occurs when the prores_aw encoder processes interlaced, odd-height frames. Attackers can supply odd-height video that causes subimage_with_fill_template() to fill padding rows from memory before the fill_y buffer, leaking heap contents into the encoded output.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-125258": {
+    "cvss": 4.7,
+    "description": "FFmpeg through 9.0.2 contains a division by zero vulnerability in dovi_configure_ext() in libavcodec/dovi_rpuenc.c that allows attackers to crash the process via an unvalidated frame rate denominator. Attackers can supply a crafted HEVC or AV1 input with a nonzero frame rate numerator and zero denominator to the dovi_rpu bitstream filter or libx265, libaom, or libsvtav1 encoders, causing denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-85835": {
+    "cvss": 5.5,
+    "description": "Buffer over-read in Servicing Stack Updates allows an authorized attacker to disclose information locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-62840": {
+    "cvss": 7.0,
+    "description": "Time-of-check time-of-use (toctou) race condition in Linux Kernel allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-65388": {
+    "cvss": 7.5,
+    "description": "A remote attacker who controls a container registry may be able to direct a client's token request to a host of the attacker's choice, and disclose the victim's registry credentials to that host. This vulnerability is addressed in containerization version 0.41.0.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-88031": {
+    "cvss": 8.1,
+    "description": "Improper neutralization of special elements in data query logic in the GridFS component of the MongoDB Go Driver can cause a caller-supplied structured file identifier to be interpreted as a query condition rather than as a literal identifier. An authenticated user who can influence the identifier passed by an affected application may cause all GridFS file chunks in the affected bucket to be removed, rendering stored file content unreadable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-81521": {
+    "cvss": 6.5,
+    "description": "The MongoDB Go Driver's client-level bulk write operation may accept a caller-supplied database name containing a reserved separator character without escaping it before the name is used to build the target namespace for the operation. An application that passes untrusted input as a database name could therefore have the write directed at a database and collection other than the ones it intended. Only the Client.BulkWrite API is affected.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-6501": {
+    "cvss": 3.1,
+    "description": "A flaw was found in NetworkManager. When a system running NetworkManager with DEBUG logs enabled and an interface eth1 configured with LLDP enabled, a malicious user could inject a malformed LLDP packet. NetworkManager would crash, leading to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-103406": {
+    "cvss": 9.8,
+    "description": "Hewlett Packard Enterprise (HPE) Juniper Session Smart Conductor and Session Smart Router contain an OS command injection vulnerability that could allow a remote attacker to execute arbitrary commands as root via a specially crafted salt minion ID.",
+    "vendor": "Hewlett Packard Enterprise (HPE)",
+    "product": "Juniper Session Smart Conductor and Session Smart Router"
   }
 }
