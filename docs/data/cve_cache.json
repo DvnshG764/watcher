@@ -158260,5 +158260,59 @@
     "description": "A flaw was found in GNU Binutils. This vulnerability, a heap-based buffer overflow, specifically an out-of-bounds read, exists in the bfd linker component. An attacker could exploit this by convincing a user to process a specially crafted malicious XCOFF object file. Successful exploitation may lead to the disclosure of sensitive information or cause the application to crash, resulting in an application level denial of service.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-95512": {
+    "cvss": 5.5,
+    "description": "A flaw was found in FreeType, specifically within its CID font loader. A remote attacker could exploit this vulnerability by tricking a user into opening content that embeds or references a specially crafted CID-keyed font. This crafted font can cause repeated allocations and decryptions of subroutine data across multiple font dictionaries, leading to excessive memory and CPU consumption. This can result in a denial of service (DoS) for the application or service processing the font, potentially causing it to hang or terminate.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-97029": {
+    "cvss": 5.7,
+    "description": "Flatpak's process ID namespace separation does not prevent a sandboxed app's kill(0, signal) or killpg(0, signal) calls from reaching processes outside the sandbox that share the same process group. A malicious or compromised Flatpak app can use this to cause denial of service by terminating processes outside its sandbox, such as the desktop shell.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96279": {
+    "cvss": 6.5,
+    "description": "A malicious OCI registry can hardlink arbitrary host files into the extraction directory when a user installs or updates a Flatpak application from an OCI remote, allowing disclosure of arbitrary host file contents. For system-wide installs running as root, this includes sensitive files such as /etc/shadow.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96281": {
+    "cvss": 6.2,
+    "description": "On a multi-user system, a user with an active local login session could downgrade a system-wide Flatpak app to an older version by removing the app's remote ref via the unprivileged system-helper RemoveLocalRef method, causing the anti-downgrade check to fail to find a reference date. A malicious local user could use this to expose other users of the same system to an app version with unfixed vulnerabilities.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-95519": {
+    "cvss": 7.8,
+    "description": "A flaw was found in rpm. An attacker can supply a crafted manifest file that, when processed by a user or automation using `rpm -q -p` or similar manifest-processing flows, leads to arbitrary code execution. This occurs because manifest entries are unexpectedly macro-expanded before being opened, allowing embedded shell commands to run with the privileges of the `rpm` process. Successful exploitation can lead to a full compromise of confidentiality, integrity, and availability for the affected account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96276": {
+    "cvss": 6.5,
+    "description": "If a malicious SDK container declares an extension point with a crafted `directory` path, and a developer runs `flatpak build-init --writable-sdk --sdk-extension` with that SDK, attacker-chosen files could be written outside the working directory, since the target path is resolved via a function that allows `..` traversal.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96545": {
+    "cvss": 4.4,
+    "description": "An out-of-bounds heap read flaw was found in GIMP's TIM image loader. When a user opens a crafted 4bpp TIM image that causes promotion to an RGBA layer, the file-tim plug-in allocates an undersized row buffer but processes it using the larger RGBA row size. This can copy adjacent heap contents into the decoded image and may crash the plug-in.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93433": {
+    "cvss": 5.5,
+    "description": "A flaw was found in libstoragemgmt. An attacker with control over a local or virtual storage device could provide specially crafted SCSI (Small Computer System Interface) Vital Product Data (VPD) page 0x80 data. This malformed data, specifically an untrusted page length field, can lead to a stack buffer overflow in the `_sg_parse_vpd_80()` function during serial number parsing. Successful exploitation could result in a denial of service by crashing or destabilizing the process querying the serial number.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-93653": {
+    "cvss": 5.5,
+    "description": "A denial of service flaw was found in Poppler's Splash backend. A crafted PDF with tiling-pattern geometry approaching the int32 boundary can cause SplashOutputDev::tilingPatternFill to compute an attacker-controlled repeat count that drives an excessively long loop in the pattern-fill scanline routine, without a corresponding memory allocation. An attacker could exploit this by supplying a malicious PDF to an application that renders it via Poppler's Splash backend, causing the rendering process to consume 100% CPU for an attacker-controlled, extended duration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
