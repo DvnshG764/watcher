@@ -112854,8 +112854,8 @@
     "product": "Unknown"
   },
   "CVE-2026-126973": {
-    "cvss": null,
-    "description": "",
+    "cvss": 7.8,
+    "description": "KDE Gwenview PNG File Parsing Integer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of KDE Gwenview. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of PNG files. The issue results from the lack of proper validation of user-supplied data, which can result in an integer overflow before allocating a buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-29373.",
     "vendor": "Unknown",
     "product": "Unknown"
   },
@@ -158608,5 +158608,47 @@
     "description": "SiYuan versions before v3.7.3 contain SQL injection vulnerabilities in the fullTextSearchAssetContent endpoint reachable by unauthenticated users and publish RoleReader tokens. Attackers can execute arbitrary SQL on the read-write asset-content database via unescaped method parameters and REGEXP clauses to read, modify, or delete cross-notebook data.",
     "vendor": "siyuan-note",
     "product": "siyuan"
+  },
+  "CVE-2026-126962": {
+    "cvss": 8.8,
+    "description": "open62541 Subscription Use-After-Free Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of open62541. Authentication is required to exploit this vulnerability. The specific flaw exists within the handling of subscriptions. The issue results from the lack of validating the existence of an object prior to performing operations on the object. An attacker can leverage this vulnerability to execute code in the context of the service account. Was ZDI-CAN-30231.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131844": {
+    "cvss": 6.5,
+    "description": "Poppler through 26.11.0 contains an uncontrolled memory allocation vulnerability in the libcurl-based remote file loader that trusts unvalidated HEAD Content-Length values in CurlCachedFileLoader::init(). Malicious HTTP servers can return an enormous Content-Length so CachedFile resizes its chunk cache accordingly, aborting pdfinfo or PDFDocFactory-based applications with std::bad_alloc for denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131845": {
+    "cvss": 4.4,
+    "description": "Poppler 21.01.0 through 26.11.0 contains a time-of-check time-of-use race condition in FormWidgetSignature::signDocument() that allows local attackers to obtain valid signatures over altered content. Attackers with write access to the output file or directory can overwrite or swap the PDF between writing and hashing, causing the signer's key to sign attacker-controlled content.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131856": {
+    "cvss": 4.9,
+    "description": "Pika before 1.5.0 contains an uncontrolled resource allocation vulnerability that allows malicious brokers to exhaust client memory by declaring oversized frame payloads. Attackers can send frame headers declaring up to 4 GiB payloads, unchecked against frame_max, or very large message bodies to terminate consuming applications.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-131857": {
+    "cvss": 7.5,
+    "description": "Supergateway 4.2.0 through 4.2.2 contains a denial of service vulnerability in stdio-to-SSE mode that allows unauthenticated attackers to crash the gateway via prototype-inherited sessionId values. Attackers can send a POST message request with sessionId set to toString or constructor, triggering an unhandled TypeError that terminates every attached MCP session.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120213": {
+    "cvss": 9.1,
+    "description": "@fastify/http-proxy is a Fastify plugin that proxies HTTP requests to an upstream server under a configured prefix. In versions 9.0.0 through 11.6.5, when an application uses parameterized prefix and rewritePrefix options to pin clients to a fixed upstream path, the plugin substitutes URL-decoded route parameters into rewritePrefix without re-encoding them. A parameter value that encodes a path separator together with a fragment or query delimiter therefore decodes into real separators and delimiters that inject extra upstream path segments and strip the mandatory suffix the rewritePrefix was meant to enforce, without using any dot-dot traversal. An unauthenticated remote attacker can use this to reach upstream locations outside the intended prefix, leading to path-restriction bypass and, depending on the upstream, server-side request forgery or authorization bypass in the proxied service. The issue is fixed in @fastify/http-proxy 11.6.6, and users should upgrade to 11.6.6 or later. There is no workaround other than upgrading.",
+    "vendor": "@fastify/http-proxy",
+    "product": "@fastify/http-proxy"
+  },
+  "CVE-2026-124851": {
+    "cvss": null,
+    "description": "An information disclosure vulnerability in Zstandard versions 1.5.1 through 1.5.7 allows specially crafted compressed data to expose the contents of an internal buffer through decompressed output. The buffer is 64 KiB in the default configuration and may contain uninitialized memory or literals from earlier decompressions performed using the same decompression context. An attacker who can submit compressed data and observe the resulting output can recover the buffer's contents.",
+    "vendor": "Facebook",
+    "product": "Zstandard"
   }
 }
