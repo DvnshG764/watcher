@@ -158758,5 +158758,41 @@
     "description": "SiYuan is a personal knowledge management system. Prior to version 3.6.2, the /api/file/readDir interface was used to traverse and retrieve the file names of all documents under a notebook. Version 3.6.2 patches the issue.",
     "vendor": "siyuan-note",
     "product": "siyuan"
+  },
+  "CVE-2026-123177": {
+    "cvss": 8.4,
+    "description": "A flaw was found in dnf5daemon-server. Unauthenticated D-Bus methods pass caller-controlled URL or .rpm path patterns into a root-privileged cmdline package loader that may store fetched content in a world-readable cache without size limits, or open local paths as root, allowing a local attacker to disclose privileged content and to deny service via disk exhaustion.",
+    "vendor": "F5",
+    "product": "Unknown"
+  },
+  "CVE-2025-12805": {
+    "cvss": 8.1,
+    "description": "A flaw was found in Red Hat OpenShift AI (RHOAI) llama-stack-operator. This vulnerability allows unauthorized access to Llama Stack services deployed in other namespaces via direct network requests, because no NetworkPolicy restricts access to the llama-stack service endpoint. As a result, a user in one namespace can access another user’s Llama Stack instance and potentially view or manipulate sensitive data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1530": {
+    "cvss": 8.1,
+    "description": "A flaw was found in fog-kubevirt. This vulnerability allows a remote attacker to perform a Man-in-the-Middle (MITM) attack due to disabled certificate validation. This enables the attacker to intercept and potentially alter sensitive communications between Satellite and OpenShift, resulting in information disclosure and data integrity compromise.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1531": {
+    "cvss": 8.1,
+    "description": "A flaw was found in foreman_kubevirt. When configuring the connection to OpenShift, the system disables SSL verification if a Certificate Authority (CA) certificate is not explicitly set. This insecure default allows a remote attacker, capable of intercepting network traffic between Satellite and OpenShift, to perform a Man-in-the-Middle (MITM) attack. Such an attack could lead to the disclosure or alteration of sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-14459": {
+    "cvss": 8.5,
+    "description": "A flaw was found in KubeVirt Containerized Data Importer (CDI). This vulnerability allows a user to clone PersistentVolumeClaims (PVCs) from unauthorized namespaces, resulting in unauthorized access to data via the DataImportCron PVC source mechanism.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-120705": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
