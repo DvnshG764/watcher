@@ -158650,5 +158650,29 @@
     "description": "An information disclosure vulnerability in Zstandard versions 1.5.1 through 1.5.7 allows specially crafted compressed data to expose the contents of an internal buffer through decompressed output. The buffer is 64 KiB in the default configuration and may contain uninitialized memory or literals from earlier decompressions performed using the same decompression context. An attacker who can submit compressed data and observe the resulting output can recover the buffer's contents.",
     "vendor": "Facebook",
     "product": "Zstandard"
+  },
+  "CVE-2026-123698": {
+    "cvss": 5.3,
+    "description": "The Security For WooCommerce WordPress plugin through 1.0.16 does not restrict access to one of its REST API routes, allowing unauthenticated users to retrieve its full settings, including configured secret keys and the hidden login URL.",
+    "vendor": "Unknown",
+    "product": "Security For WooCommerce"
+  },
+  "CVE-2026-110016": {
+    "cvss": 5.3,
+    "description": "The Data Tables Generator by Supsystic WordPress plugin before 1.15.8 does not perform any authorization or ownership check before returning the stored contents of a table, relying only on a nonce that is exposed to every anonymous visitor, allowing unauthenticated users to read the full contents of any table by its identifier, including tables that are never published anywhere on the site.",
+    "vendor": "Unknown",
+    "product": "Data Tables Generator by Supsystic"
+  },
+  "CVE-2026-117566": {
+    "cvss": 5.3,
+    "description": "EasyImages2.0 through 2.8.6 contains an unauthenticated path traversal vulnerability in app/down.php, app/thumb.php and app/info.php that allows reading files outside the upload directory. Attackers can supply ../ sequences in the dw, history or img parameters to read files with allowed upload extensions from the server.",
+    "vendor": "icret",
+    "product": "EasyImages2.0"
+  },
+  "CVE-2026-77244": {
+    "cvss": 10.0,
+    "description": "MCP Atlassian is a Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira). Prior to 0.22.0, the HTTP transport accepts requests without a verified user identity and downstream fetcher construction falls back to the operator's globally configured Jira or Confluence credentials. A network client that can reach the MCP endpoint can invoke Atlassian tools as the operator, including read and write operations available to that account. The advisory traces the vulnerable input and processing flow through UserTokenMiddleware, AtlassianOpaqueTokenVerifier, _get_fetcher, and streamable-http, which identify the affected entry points, controls, and code paths. This issue is fixed in version 0.22.0.",
+    "vendor": "sooperset",
+    "product": "mcp-atlassian"
   }
 }
