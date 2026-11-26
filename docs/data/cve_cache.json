@@ -13536,7 +13536,7 @@
     "product": "miniorange otp verification"
   },
   "CVE-2026-1961": {
-    "cvss": 8.0,
+    "cvss": 8.8,
     "description": "A flaw was found in Foreman. A remote attacker could exploit a command injection vulnerability in Foreman's WebSocket proxy implementation. This vulnerability arises from the system's use of unsanitized hostname values from compute resource providers when constructing shell commands. By operating a malicious compute resource server, an attacker could achieve remote code execution on the Foreman server when a user accesses VM VNC console functionality. This could lead to the compromise of sensitive credentials and the entire managed infrastructure.",
     "vendor": "Red Hat",
     "product": "Red Hat Satellite 6.16 for RHEL 8"
@@ -160936,5 +160936,41 @@
     "description": "Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Drupal core allows Forceful Browsing. This issue affects Drupal core versions: from 0.0.0 to 10.6.23, from 11.0.0 to 11.3.23, from 11.4.0 to 11.4.14.",
     "vendor": "Drupal",
     "product": "Drupal core"
+  },
+  "CVE-2025-14969": {
+    "cvss": 4.3,
+    "description": "A flaw was found in Hibernate Reactive. When an HTTP endpoint is exposed to perform database operations, a remote client can prematurely close the HTTP connection. This action may lead to leaking connections from the database connection pool, potentially causing a Denial of Service (DoS) by exhausting available database connections.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-12548": {
+    "cvss": 9.0,
+    "description": "A flaw was found in Eclipse Che che-machine-exec. This vulnerability allows unauthenticated remote arbitrary command execution and secret exfiltration (SSH keys, tokens, etc.) from other users' Developer Workspace containers, via an unauthenticated JSON-RPC / websocket API exposed on TCP port 3333.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-2251": {
+    "cvss": 6.2,
+    "description": "A security flaw exists in WildFly and JBoss Enterprise Application Platform (EAP) within the Enterprise JavaBeans (EJB) remote invocation mechanism. This vulnerability stems from untrusted data deserialization handled by JBoss Marshalling. This flaw allows an attacker to send a specially crafted serialized object, leading to remote code execution without requiring authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-23366": {
+    "cvss": 4.8,
+    "description": "A flaw was found in the HAL Console in the Wildfly component, which does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output used as a web page that is served to other users. The attacker must be authenticated as a user that belongs to management groups “SuperUser”, “Admin”, or “Maintainer”.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-10234": {
+    "cvss": 7.3,
+    "description": "A vulnerability was found in Wildfly, where a user may perform Cross-site scripting in the Wildfly deployment system. This flaw allows an attacker or insider to execute a deployment with a malicious payload, which could trigger undesired behavior against the server.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-116207": {
+    "cvss": 9.1,
+    "description": "YesWiki 4.6.0 before 4.7.0 and 5.0.0-alpha1 before 5.0.0-alpha4 contains an unauthenticated SQL injection vulnerability in SearchManager::prepareSearchRequest(). Field names from the query and searchfields parameters of the public Bazar entries search API are placed in a backtick-quoted alias escaped only with mysqli_real_escape_string. Attackers can supply a backtick to inject subqueries, reading data such as user password hashes or exhausting database threads with SLEEP().",
+    "vendor": "YesWiki",
+    "product": "yeswiki"
   }
 }
