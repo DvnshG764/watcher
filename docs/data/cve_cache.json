@@ -141938,7 +141938,7 @@
   "CVE-2026-132165": {
     "cvss": null,
     "description": "Drupal Core contains a not failing securely vulnerability that could allow an unauthenticated attacker to take over an existing site or execute arbitrary code via the Drupal installer. Under specific conditions, the attacker can use install.php to attempt to reinstall Drupal on the site.",
-    "vendor": "Drupal",
+    "vendor": "Check Point",
     "product": "Core"
   },
   "CVE-2026-133430": {
@@ -154610,7 +154610,7 @@
   "CVE-2026-133323": {
     "cvss": 10.0,
     "description": "Mitel MiCollab contains an improper neutralization of special elements used in an OS command (OS command injection) vulnerability in its Audio, Web, and Video Conferencing (AWV) component that could allow an unauthenticated attacker to execute arbitrary system commands.",
-    "vendor": "Mitel",
+    "vendor": "Check Point",
     "product": "MiCollab"
   },
   "CVE-2026-125294": {
@@ -160058,13 +160058,13 @@
   "CVE-2023-25914": {
     "cvss": 8.8,
     "description": "Danfoss AK-SM 800A Series contains a path traversal vulnerability that could allow an attacker to access and read underlying server system files via the XML interface.",
-    "vendor": "Danfoss",
+    "vendor": "Check Point",
     "product": "AK-SM 800A Series"
   },
   "CVE-2023-25915": {
     "cvss": 8.8,
     "description": "Danfoss AK-SM 800A Series contains an improper input validation vulnerability that could allow a remote attacker to run arbitrary commands on the affected system.",
-    "vendor": "Danfoss",
+    "vendor": "Check Point",
     "product": "AK-SM 800A Series"
   },
   "CVE-2026-133324": {
@@ -161648,6 +161648,90 @@
   "CVE-2024-6861": {
     "cvss": 7.5,
     "description": "A disclosure of sensitive information flaw was found in foreman via the GraphQL API. If the introspection feature is enabled, it is possible for attackers to retrieve sensitive admin authentication keys which could result in a compromise of the entire product's API.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-92092": {
+    "cvss": 7.4,
+    "description": "A flaw was found in openshift-ansible. The installer container's `run` script downloads and executes remote inventory and dynamic scripts without integrity verification. A remote attacker, by performing a Man-in-the-Middle (MITM) attack or compromising the HTTP server providing these scripts, could substitute an arbitrary executable. This malicious executable would then run with the installer's user ID (UID) and full cluster-provisioning privileges, leading to arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96658": {
+    "cvss": 8.8,
+    "description": "A flaw was found in Foreman. This vulnerability allows an authenticated remote attacker with low-level read permissions to achieve arbitrary code execution on the underlying server. By manipulating the permitted methods list within the template rendering engine, an attacker can bypass the safemode sandbox isolation and execute unauthorized commands directly on the host system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-96659": {
+    "cvss": 9.1,
+    "description": "A flaw was found in Foreman. This vulnerability allows an authenticated user with low-level Viewer permissions to cause unauthorized information disclosure by submitting requests to template preview endpoints. By exploiting this issue, the user can access sensitive data, such as host root passwords. Furthermore, under insecure system configurations where Safemode protections are disabled, the flaw may allow the user to execute arbitrary commands as the Foreman system account.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75886": {
+    "cvss": 7.2,
+    "description": "A flaw was found in openshift/console. An unauthenticated remote attacker can exploit a misconfiguration in the CatalogdHandler, which lacks proper authentication, and the forwarding of the `openshift-session-token` cookie. This allows the attacker to send requests to the in-cluster catalogd service, leading to the disclosure of the internal operator-catalog index and providing a relay into the openshift-catalogd namespace.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75887": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the OpenShift console. An unauthenticated attacker can exploit a path traversal vulnerability by manipulating the `lng` and `ns` query parameters in the `/locales/resource.json` endpoint. This allows the attacker to read sensitive `*.json` files from the pod filesystem, including plugin manifests and configuration files. Furthermore, this flaw can enable path traversal against registered dynamic-plugin backends.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-94449": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the SmallRye Fault Tolerance library, which is used by Quarkus to provide strategies like retries and circuit breakers for microservices. The issue occurs when using the ApplyGuard or ApplyFaultTolerance annotations, where the library fails to release internal tracking objects after each request. This causes a steady increase in memory usage that eventually leads to the application slowing down and crashing due to lack of memory.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-75885": {
+    "cvss": 9.3,
+    "description": "A flaw was found in the OpenShift console. Unauthenticated access to the `/api/devfile/` and `/api/devfile/samples/` endpoints allows a remote attacker to send crafted devfile payloads. This can lead to Server-Side Request Forgery (SSRF), where the console pod makes requests to internal services and reflects partial responses to the attacker. Additionally, by sending repeated large requests without a specified content length, an attacker can cause unbounded memory growth, leading to a Denial of Service (DoS).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-18922": {
+    "cvss": 9.8,
+    "description": "A flaw was found in 389 Directory Server. During SASL PLAIN authentication, a stale identity carried in a Cyrus SASL auxiliary property from a prior failed bind attempt can be installed on a connection following a subsequent, unrelated successful bind, regardless of which SASL mechanism completes that second bind. An attacker can send a SASL PLAIN bind as cn=Directory Manager with an incorrect password, then complete a SASL ANONYMOUS bind on the same connection, causing the server to grant Directory Manager authority without any valid credentials. A variant using a valid low-privileged account's own successful bind instead of an anonymous one is also possible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50237": {
+    "cvss": 7.4,
+    "description": "A Server-Side Request Forgery and supply chain flaw was found in the OpenShift Console Helm catalog proxy. A namespace tenant can plant a ProjectHelmChartRepository with an arbitrary URL that the console pod fetches server-side, bypassing tenant egress restrictions. Combined with catalog metadata poisoning and admin-mediated chart installation, this enables privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71576": {
+    "cvss": 8.5,
+    "description": "A flaw was found in multicluster-global-hub. The manager component improperly validates the source identity of incoming CloudEvents on Kafka status topics. A remote attacker, after compromising a managed hub and obtaining its Kafka client certificate, can manipulate the self-asserted source identity. This allows the attacker to falsify or delete critical data, such as compliance, inventory, and cluster health information, belonging to other hubs in the database.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49332": {
+    "cvss": 8.5,
+    "description": "A flaw was found in openshift/oauth-proxy. The proxy sets authenticated identity headers using only dash-variant keys (X-Forwarded-User) but does not strip underscore-variant keys (X_Forwarded_User) from incoming requests. WSGI and PHP frameworks normalize both variants to the same variable, allowing an authenticated low-privilege user to smuggle a forged identity that may override the legitimate authenticated identity in the upstream application.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-46579": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the OpenShift Router. When a Route has `insecureEdgeTerminationPolicy` set to Allow, the HTTP frontend does not remove `X-SSL-Client-*` headers from incoming requests. This allows an unauthenticated attacker to send plain HTTP requests with crafted `X-SSL-Client-*` headers. As a result, backends relying on these headers for mutual TLS (Transport Layer Security) authentication can be bypassed, enabling the attacker to impersonate client certificate identities.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-6857": {
+    "cvss": 7.5,
+    "description": "A flaw was found in camel-infinispan. This vulnerability involves unsafe deserialization in the ProtoStream remote aggregation repository. A remote attacker with low privileges could exploit this by sending specially crafted data, leading to arbitrary code execution. This allows the attacker to gain full control over the affected system, impacting its confidentiality, integrity, and availability.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-6032": {
+    "cvss": 8.3,
+    "description": "A flaw was found in Podman. The podman machine init command fails to verify the TLS certificate when downloading the VM images from an OCI registry. This issue results in a Man In The Middle attack.",
     "vendor": "Unknown",
     "product": "Unknown"
   }
