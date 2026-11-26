@@ -65936,20 +65936,20 @@
   "CVE-2026-105777": {
     "cvss": 6.5,
     "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.6.5 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1 that, under certain conditions, an unauthenticated user could have retrieved sensitive internal server credentials due to improper filtering of internal response headers.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "GitLab",
+    "product": "GitLab"
   },
   "CVE-2026-112212": {
     "cvss": 7.5,
     "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.3 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1 that, under certain conditions, an unauthenticated user could have poisoned a shared cache's OAuth/OIDC discovery document to redirect certain flows to an externally controlled server, due to improper trust of user-supplied values when constructing endpoint URLs in cached discovery responses.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "GitLab",
+    "product": "GitLab"
   },
   "CVE-2026-112326": {
     "cvss": 3.1,
     "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 17.8 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1 that, under certain conditions, could have allowed an authenticated user with read-only permissions to permanently delete existing vulnerability records due to improper cleanup logic that failed to distinguish between pre-existing records from newly created ones during error handling.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "GitLab",
+    "product": "GitLab"
   },
   "CVE-2026-112378": {
     "cvss": 4.3,
@@ -161260,5 +161260,323 @@
     "description": "A vulnerability was found in D-Link DWR-M921 1.1.52. The impacted element is the function system of the file /boafrm/formDiskPartition. Performing a manipulation of the argument devicename results in command injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used.",
     "vendor": "Check Point",
     "product": "DWR-M921"
+  },
+  "CVE-2026-110330": {
+    "cvss": 5.5,
+    "description": "A flaw was found in abrt. abrt-server trusts a client-supplied PID when creating problem dumps over abrt.socket and, running as root, copies that process's /proc data (including environ) into a dump directory owned by the connecting unprivileged user. This allows a local attacker to read environment variables and related metadata of other users' or root processes when abrtd is running.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111581": {
+    "cvss": 3.3,
+    "description": "A flaw was found in libblockdev. The bd_fs_ntfs_set_label() and bd_fs_vfat_set_label() functions pass caller-supplied label values as bare positional arguments to the ntfslabel and fatlabel utilities without end-of-options separators or input validation for values beginning with a dash. This allows a label starting with '-' to be interpreted as a command-line flag by the spawned tool, potentially bypassing safety checks or causing unintended operations. This is reachable by unprivileged local users through the udisks2 Filesystem.SetLabel() D-Bus method without administrator authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-111802": {
+    "cvss": 6.6,
+    "description": "A flaw was found in Nautilus. When a removable drive or disk image is unmounted or ejected, Nautilus prompts the user to empty the trash without verifying whether the trash directory paths are symbolic links. An attacker can exploit this flaw by tricking a user into mounting a crafted storage volume and confirming the prompt to empty the trash, leading to the arbitrary deletion of files accessible to that user.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4633": {
+    "cvss": 3.7,
+    "description": "A flaw was found in Keycloak. A remote attacker can exploit differential error messages during the identity-first login flow when Organizations are enabled. This vulnerability allows an attacker to determine the existence of users, leading to information disclosure through user enumeration.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-126737": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Mollie for Drupal allows Forceful Browsing. This issue affects Mollie for Drupal versions: from 0.0.0 to 2.3.2.",
+    "vendor": "Drupal",
+    "product": "Mollie for Drupal"
+  },
+  "CVE-2026-133209": {
+    "cvss": 3.1,
+    "description": "In Revive Adserver through 6.0.9, deleting an agency, advertiser, or publisher through affected API paths can leave the associated account and user session active because the deletion path does not load the entity's account identifier before cleanup. A user whose entity has been deleted can continue accessing pages of the orphaned account. Access to data belonging to another agency was not demonstrated.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-133204": {
+    "cvss": 4.3,
+    "description": "In Revive Adserver through 6.0.9, the zone-linking page can disclose campaign and banner names and identifiers belonging to another agency. An authenticated manager, or a website user with permission to link banners to zones, can supply another agency's advertiser and campaign identifiers because the selection lists are not restricted to the agency owning the zone.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-122075": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Scheduler allows Forceful Browsing. This issue affects Scheduler versions: from 0.0.0 to 1.7.0, from 2.2.0 to 2.2.3, from 0.0.0 to 2.0.*, from 0.0.0 to 2.1.*, from 2.3.0 to 2.3.1.",
+    "vendor": "Drupal",
+    "product": "Scheduler"
+  },
+  "CVE-2026-133337": {
+    "cvss": 8.2,
+    "description": "Joomla Extension - chronoengine.com - Unauthenticated SQL injection in table sorting in ChronoForms extension 8.0.0-8.0.53 - The order_by request parameter used for sorting DB Table and Read Data listings is insufficiently sanitized before being added to the ORDER BY clause, allowing unauthenticated users to inject SQL expressions. Fixed in 8.0.54.",
+    "vendor": "chronoengine.com",
+    "product": "ChronoForms extension for Joomla"
+  },
+  "CVE-2026-126729": {
+    "cvss": null,
+    "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal Authenticator Login Plus (2FA) allows Authentication Bypass. This issue affects Authenticator Login Plus (2FA) versions: from 0.0.0 to 1.0.3.",
+    "vendor": "Drupal",
+    "product": "Authenticator Login Plus (2FA)"
+  },
+  "CVE-2026-12664": {
+    "cvss": 6.8,
+    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.2 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1 that, under certain conditions, could have allowed an authenticated user with a read_api-scoped token to retrieve a project's incoming email address and create work items, bypassing the token's restrictions, due to insufficient scope enforcement on a GraphQL field.",
+    "vendor": "GitLab",
+    "product": "GitLab"
+  },
+  "CVE-2026-126735": {
+    "cvss": null,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Campaign Monitor allows Cross Site Request Forgery. This issue affects Campaign Monitor versions: from 0.0.0 to 3.0.3.",
+    "vendor": "Drupal",
+    "product": "Campaign Monitor"
+  },
+  "CVE-2026-122083": {
+    "cvss": null,
+    "description": "Privilege Defined With Unsafe Actions vulnerability in Drupal AdobeAnalytics allows Stored XSS. This issue affects AdobeAnalytics versions: from 0.0.0 to 1.1.0.",
+    "vendor": "Drupal",
+    "product": "AdobeAnalytics"
+  },
+  "CVE-2026-126733": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Commerce License allows Forceful Browsing. This issue affects Commerce License versions: from 0.0.0 to 3.1.2.",
+    "vendor": "Drupal",
+    "product": "Commerce License"
+  },
+  "CVE-2026-133525": {
+    "cvss": 8.8,
+    "description": "Deserialization of Untrusted Data vulnerability in ThemeFusion Fusion Builder fusion-builder allows Object Injection.This issue affects Fusion Builder: from n/a before 3.17.1.",
+    "vendor": "ThemeFusion",
+    "product": "Fusion Builder"
+  },
+  "CVE-2026-126732": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Commerce License allows Forceful Browsing. This issue affects Commerce License versions: from 0.0.0 to 3.1.2.",
+    "vendor": "Drupal",
+    "product": "Commerce License"
+  },
+  "CVE-2026-122081": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Islandora allows Forceful Browsing. This issue affects Islandora versions: from 0.0.0 to 2.19.1.",
+    "vendor": "Drupal",
+    "product": "Islandora"
+  },
+  "CVE-2026-126728": {
+    "cvss": null,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Texts: key-based strings and translations allows Cross Site Request Forgery. This issue affects Texts: key-based strings and translations versions: from 1.0.13 to 1.0.17.",
+    "vendor": "Drupal",
+    "product": "Texts: key-based strings and translations"
+  },
+  "CVE-2026-133338": {
+    "cvss": 7.6,
+    "description": "Joomla Extension - chronoengine.com - Unauthenticated stored XSS in DB Table cells in ChronoForms extension 8.0.0-8.0.53 - Values rendered in the cells of the DB Table widget are not escaped, allowing unauthenticated users to store JavaScript through form submissions that is executed when the listing is viewed. Fixed in 8.0.54.",
+    "vendor": "chronoengine.com",
+    "product": "ChronoForms extension for Joomla"
+  },
+  "CVE-2026-126745": {
+    "cvss": null,
+    "description": "Improper Neutralization of Special Elements Used in a Template Engine vulnerability in Drupal Real Name allows Code Injection. This issue affects Real Name versions: from 0.0.0 to 2.0.1.",
+    "vendor": "Drupal",
+    "product": "Real Name"
+  },
+  "CVE-2026-126736": {
+    "cvss": null,
+    "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Drupal Entity Print allows Forceful Browsing. This issue affects Entity Print versions: from 0.0.0 to 2.20.0.",
+    "vendor": "Drupal",
+    "product": "Entity Print"
+  },
+  "CVE-2026-126740": {
+    "cvss": null,
+    "description": "Missing Authorization vulnerability in Drupal Download Count allows Forceful Browsing. This issue affects Download Count versions: from 0.0.0 to 2.2.5, from 3.0.0 to 3.0.2.",
+    "vendor": "Drupal",
+    "product": "Download Count"
+  },
+  "CVE-2026-129182": {
+    "cvss": 9.2,
+    "description": "Use-after-free via repopulation of last_fatal_error_backtrace global after shutdown. A fatal error raised while modified INI settings are restored during request shutdown can repopulate the stored fatal error backtrace after the executor has been cleaned up. The request memory is then freed, and a diagnostic emitted before executor initialization in a later request handled by the same PHP-FPM or mod_php worker can access the stale backtrace. The shutdown error requires per-path configuration of max_memory_limit, or of zlib.output_compression together with output_handler (which .user.ini can also set). The early diagnostic requires Apache per-directory configuration or, for PHP-FPM, a PHP_VALUE or PHP_ADMIN_VALUE parameter sent by the front end. This can cause memory corruption and worker crashes, and may allow remote code execution. This issue affects PHP versions 8.5.* before 8.5.13.",
+    "vendor": "PHP Group",
+    "product": "PHP"
+  },
+  "CVE-2026-133339": {
+    "cvss": 8.6,
+    "description": "Joomla Extension - vi-solutions - SQL injection via form IDs in administrative form export in Visforms extension 1.0.0-5.6.5, 6.0.0-6.2.2 - Form IDs passed to the administrative form export were not cast to integers before being added to SQL queries, allowing SQL injection by backend users.",
+    "vendor": "vi-solutions",
+    "product": "Visforms extension for Joomla"
+  },
+  "CVE-2026-126731": {
+    "cvss": null,
+    "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal Authenticator Login Plus (2FA) allows Authentication Bypass. This issue affects Authenticator Login Plus (2FA) versions: from 0.0.0 to 1.0.3.",
+    "vendor": "Drupal",
+    "product": "Authenticator Login Plus (2FA)"
+  },
+  "CVE-2026-122076": {
+    "cvss": null,
+    "description": "Unverified Password Change vulnerability in Drupal Password Separate Form allows Functionality Bypass. This issue affects Password Separate Form versions: from 0.0.0 to 2.0.3.",
+    "vendor": "Drupal",
+    "product": "Password Separate Form"
+  },
+  "CVE-2026-122072": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Forum Access allows Forceful Browsing. This issue affects Forum Access versions: from 0.0.0 to 2.0.3.",
+    "vendor": "Drupal",
+    "product": "Forum Access"
+  },
+  "CVE-2026-122082": {
+    "cvss": null,
+    "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Drupal Mime Mail allows Forceful Browsing. This issue affects Mime Mail versions: from 0.0.0 to 2.0.4.",
+    "vendor": "Drupal",
+    "product": "Mime Mail"
+  },
+  "CVE-2026-133208": {
+    "cvss": 6.1,
+    "description": "In Revive Adserver through 6.0.9, unauthenticated request parameters in ad delivery can cause reflected cross-site scripting. A crafted delivery URL places a macro token in the source or target parameter and malicious markup in the referer parameter. Macro replacement after initial input encoding can insert the unescaped markup into generated banner output, causing JavaScript execution in the delivery origin when a visitor follows the URL. An active banner is required.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-126742": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Commerce sermepa allows Forceful Browsing. This issue affects Commerce sermepa versions: from 0.0.0 to 2.5.0.",
+    "vendor": "Drupal",
+    "product": "Commerce sermepa"
+  },
+  "CVE-2026-129291": {
+    "cvss": 8.8,
+    "description": "PHP-FPM epoll use-after-free can lead to local privilege escalation. When catch_workers_output is enabled and the epoll event backend is used, the PHP-FPM master can close a worker's output pipe in fpm_child_close() without removing the associated event, and the delayed cleanup can free the worker record while its epoll registration is still active. A later event is then dispatched through a pointer into freed memory. A local attacker who can execute PHP code in an FPM worker can crash the master or execute code with its privileges, commonly root. catch_workers_output is disabled by default but enabled in the official PHP-FPM Docker images. This issue affects PHP versions from 8.1.20 through 8.1.34, from 8.2.7 before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
+    "vendor": "PHP Group",
+    "product": "PHP"
+  },
+  "CVE-2026-133340": {
+    "cvss": 5.1,
+    "description": "Joomla Extension - vi-solutions - Missing data export permission check in administrative form export in Visforms extension 1.0.0-5.6.5, 6.0.0-6.2.2 - The administrative form export did not check the data export permission when copying form data, allowing backend users without this permission to export submitted form data.",
+    "vendor": "vi-solutions",
+    "product": "Visforms extension for Joomla"
+  },
+  "CVE-2026-133336": {
+    "cvss": 9.5,
+    "description": "Joomla Extension - chronoengine.com - Unauthenticated arbitrary file upload in ChronoForms extension 8.0.0-8.0.53 - When the Filename Provider option of a file field is used, the file extension check is performed against the original client filename instead of the final stored filename, allowing unauthenticated users to upload files with dangerous extensions. Fixed in 8.0.54.",
+    "vendor": "chronoengine.com",
+    "product": "ChronoForms extension for Joomla"
+  },
+  "CVE-2026-122069": {
+    "cvss": null,
+    "description": "Improper Verification of Cryptographic Signature vulnerability in Drupal AlternativeCommerce PayPal Checkout allows Signature Spoof. This issue affects AlternativeCommerce PayPal Checkout versions: from 0.0.0 to 1.1.1.",
+    "vendor": "Drupal",
+    "product": "AlternativeCommerce PayPal Checkout"
+  },
+  "CVE-2026-133202": {
+    "cvss": 5.4,
+    "description": "In Revive Adserver through 6.0.9, an authenticated manager with access to two advertisers can associate a conversion tracker owned by one advertiser with a campaign owned by the other. The tracker-campaign page checks access to each object but does not verify that their actual owners match. The resulting association can expose the first advertiser's tracker name and identifier in the second advertiser's restricted conversion report.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-133210": {
+    "cvss": 6.5,
+    "description": "In Revive Adserver through 6.0.9, the zone banner-linking page (zone-include.php) does not cast the keys of the includebanner request array to integers. An authenticated manager, or a trafficker with the zone-linking permission, who owns the submitted website and zone can place SQL in an array key, which is concatenated unquoted into the banner-lookup query, resulting in time-based blind SQL injection bounded by the privileges of the application's database account.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-126726": {
+    "cvss": null,
+    "description": "Missing Authorization vulnerability in Drupal Paragraphs Edit allows Forceful Browsing. This issue affects Paragraphs Edit versions: from 0.0.0 to 3.0.2.",
+    "vendor": "Drupal",
+    "product": "Paragraphs Edit"
+  },
+  "CVE-2026-131916": {
+    "cvss": 4.1,
+    "description": "GENAI Web provided by Digital Agency contains a server-side request forgery (SSRF) vulnerability. An attacker may be able to obtain information about which ports are open on devices located on the same network as the affected product.",
+    "vendor": "Digital Agency",
+    "product": "GENAI Web"
+  },
+  "CVE-2026-126730": {
+    "cvss": null,
+    "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal Authenticator Login Plus (2FA) allows Authentication Bypass. This issue affects Authenticator Login Plus (2FA) versions: from 0.0.0 to 1.0.3.",
+    "vendor": "Drupal",
+    "product": "Authenticator Login Plus (2FA)"
+  },
+  "CVE-2026-126738": {
+    "cvss": null,
+    "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Drupal Mollie for Drupal allows Forceful Browsing. This issue affects Mollie for Drupal versions: from 0.0.0 to 2.3.2.",
+    "vendor": "Drupal",
+    "product": "Mollie for Drupal"
+  },
+  "CVE-2026-133341": {
+    "cvss": 6.9,
+    "description": "Joomla Extension - vi-solutions - Missing SQL statement permission check in Maxsubmissions plugin in Visforms extension 1.0.0-5.6.5, 6.0.0-6.2.2 - The SQL statement permission was not enforced when saving, importing or batch copying forms with Maxsubmissions plugin settings, allowing backend users without this permission to store arbitrary SQL statements.",
+    "vendor": "vi-solutions",
+    "product": "Visforms extension for Joomla"
+  },
+  "CVE-2026-122066": {
+    "cvss": null,
+    "description": "Missing Authorization vulnerability in Drupal Workflow Notifications allows Forceful Browsing. This issue affects Workflow Notifications versions: from 0.0.0 to 3.0.3.",
+    "vendor": "Drupal",
+    "product": "Workflow Notifications"
+  },
+  "CVE-2026-103383": {
+    "cvss": null,
+    "description": "In Eclipse MWE <= 2.27.0 if you debug mwe workflows a remote attacker can cause arbitrary classes with an zero arg constructor from your mwe classpath to be instantiated in a timed attack",
+    "vendor": "Eclipse Foundation",
+    "product": "Eclipse MWE"
+  },
+  "CVE-2026-122070": {
+    "cvss": null,
+    "description": "Missing Authorization vulnerability in Drupal Commerce Product Alternative allows Forceful Browsing. This issue affects Commerce Product Alternative versions: from 0.0.0 to 1.0.1.",
+    "vendor": "Drupal",
+    "product": "Commerce Product Alternative"
+  },
+  "CVE-2026-122058": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Simple OAuth (OAuth2) & OpenID Connect allows Forceful Browsing. This issue affects Simple OAuth (OAuth2) & OpenID Connect versions: from 0.0.0 to 5.2.6, from 6.0.0 to 6.0.10, from 6.1.0 to 6.1.4.",
+    "vendor": "Drupal",
+    "product": "Simple OAuth (OAuth2) & OpenID Connect"
+  },
+  "CVE-2026-118547": {
+    "cvss": null,
+    "description": "Deserialization of Untrusted Data vulnerability in Drupal Content Synchronizer allows Object Injection. This issue affects Content Synchronizer versions: from 0.0.0 to 4.1.1.",
+    "vendor": "Drupal",
+    "product": "Content Synchronizer"
+  },
+  "CVE-2026-126739": {
+    "cvss": null,
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Page Manager allows Cross Site Request Forgery. This issue affects Page Manager versions: from 0.0.0 to 4.1.0.",
+    "vendor": "Drupal",
+    "product": "Page Manager"
+  },
+  "CVE-2026-122067": {
+    "cvss": null,
+    "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal REST & JSON API Authentication for Drupal allows Authentication Bypass. This issue affects REST & JSON API Authentication for Drupal versions: from 0.0.0 to 3.2.1.",
+    "vendor": "Drupal",
+    "product": "REST & JSON API Authentication for Drupal"
+  },
+  "CVE-2026-122077": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Allowed Languages allows Forceful Browsing. This issue affects Allowed Languages versions: from 0.0.0 to 2.0.3.",
+    "vendor": "Drupal",
+    "product": "Allowed Languages"
+  },
+  "CVE-2026-129481": {
+    "cvss": 9.2,
+    "description": "Use-after-free after interrupted session shutdown. The session extension records the filename of the executing script when a session starts. If a fatal error occurs in an application callback while the session variables are destroyed at shutdown, such as stream_close() of a user-defined stream wrapper, the pointer is retained after the request memory is freed, and a later request handled by the same worker can free the stale string. An attacker who can trigger such a failing cleanup may crash the worker or corrupt memory; code execution has not been demonstrated. This requires the filename to be allocated in request memory, for example when the script is not cached by OPcache. This issue affects PHP versions 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
+    "vendor": "PHP Group",
+    "product": "PHP"
+  },
+  "CVE-2026-122071": {
+    "cvss": null,
+    "description": "Improper Verification of Cryptographic Signature vulnerability in Drupal Commerce Escrow allows Signature Spoof. This issue affects Commerce Escrow versions: from 0.0.0 to 1.1.0.",
+    "vendor": "Drupal",
+    "product": "Commerce Escrow"
+  },
+  "CVE-2026-122057": {
+    "cvss": null,
+    "description": "Missing Authorization vulnerability in Drupal S3 File System CORS Upload allows Forceful Browsing. This issue affects S3 File System CORS Upload versions: from 0.0.0 to 1.3.0.",
+    "vendor": "Drupal",
+    "product": "S3 File System CORS Upload"
+  },
+  "CVE-2026-122074": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal Reset Password Email/SMS OTP allows Forceful Browsing. This issue affects Reset Password Email/SMS OTP versions: from 0.0.0 to 1.0.5.",
+    "vendor": "Drupal",
+    "product": "Reset Password Email/SMS OTP"
   }
 }
