@@ -160636,5 +160636,155 @@
     "description": "Relative path traversal in the object detection dataset preparation tool in AutoGluon Multimodal before 1.6.0 might allow adversary-in-the-middle attackers to write arbitrary files with the privileges of the user running the tool via a crafted dataset archive substituted for a dataset downloaded over plaintext HTTP. To remediate this issue, users should upgrade autogluon.multimodal to version 1.6.0 or later.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-130750": {
+    "cvss": 6.2,
+    "description": "Network-AI from 5.11.0 before 5.17.2 contains a CORS misconfiguration in McpStreamableServer that reflects localhost Origins into Access-Control-Allow-Origin regardless of bind interface. Attackers controlling a localhost-origin page or DNS-rebinding name can read unauthenticated /tools and /health responses, exposing tool catalogs and bridge metadata on non-loopback binds.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130751": {
+    "cvss": 8.1,
+    "description": "OpenWrt LuCI luci-app-travelmate on master before 3.0.0-1, on openwrt-25.12 before 2.4.9-6, and on openwrt-24.10 and openwrt-23.05 (no fix available) grants file exec permissions for state-mutating commands in the read scope of its rpcd ACL, letting authenticated read-only users run those commands as root. Attackers can invoke ubus file exec on /etc/init.d/travelmate setup, start, stop, restart, or /sbin/ifup to modify and commit network and firewall configuration or disrupt the travelmate daemon.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130752": {
+    "cvss": 5.3,
+    "description": "OpenWrt LuCI luci-app-uhttpd before commit d38658bedbdd811b798da16b49301478c6cf21af grants '/*' file read in its rpcd read ACL, which rpcd's fnmatch matching applies to every path. Users delegated only luci-app-uhttpd read access can read any file as root, including /etc/shadow, /etc/config/* credentials, /etc/uhttpd.key, and /etc/dropbear keys.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130754": {
+    "cvss": 9.8,
+    "description": "All versions of LaraDashboard contain an authentication bypass in SocialAuthService::findOrCreateUser(), which links a social login to an existing account by email without checking that the OAuth provider verified that email. Unauthenticated attackers using an OAuth/OIDC provider that asserts a victim's email can log in as any user, including Superadmin, and keep persistent access through a linked social_accounts entry.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130756": {
+    "cvss": 9.8,
+    "description": "pnpm exe before 10.34.8 embeds an outdated Node.js runtime that still trusts compromised eMudhra intermediate CA certificates during registry TLS connections. Network attackers holding a recovered intermediate key can intercept standalone pnpm registry fetches and serve forged package metadata or tarballs.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130757": {
+    "cvss": 7.4,
+    "description": "Fleet before 4.92.0 contains an improper authentication vulnerability that allows attackers to reuse case-mutated security tokens because MySQL token columns used case-insensitive collation. Attackers holding a case-normalized invite or email-change token can redirect a victim's email for account takeover or redeem invites with roles up to Global Admin.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130758": {
+    "cvss": 7.2,
+    "description": "Fleet before 4.92.0 contains an authorization bypass vulnerability in the deprecated POST /api/latest/fleet/mdm/apple/enqueue endpoint that allows team-scoped users to enqueue Apple MDM commands outside their teams. Attackers with team admin, maintainer, or GitOps roles can include one own-team host UUID alongside unresolved enrollment IDs to send commands like InstallProfile to deleted or user-channel enrollments without activity logging.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130759": {
+    "cvss": 9.9,
+    "description": "Fleet from 4.71.0 before 4.88.2 contains an authentication bypass vulnerability in the SAML SSO callback that looks up sessions using unvalidated client-supplied identifiers. Users able to run live queries or enroll secret holders can plant attacker-controlled identity provider metadata in the session store, then present a self-signed SAML response to log in as a global admin.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130760": {
+    "cvss": 7.5,
+    "description": "Fleet before 4.86.2 contains a denial of service vulnerability that allows unauthenticated attackers to exhaust server memory via unbounded BER recursion in PKCS#7 parsing. Attackers can send deeply nested indefinite-length structures to Apple MDM check-in, enrollment, SCEP, or OTA endpoints to crash the entire Fleet instance.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130761": {
+    "cvss": 7.5,
+    "description": "Fleet before 4.92.0 contains a denial of service vulnerability that allows enrolled hosts to trigger unbounded per-name database lookups by submitting osquery result logs. Attackers with a valid host node key can send one request to /api/osquery/log containing many distinct query names, exhausting database connections and read replica capacity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130762": {
+    "cvss": 6.5,
+    "description": "Fleet before 4.92.0 contains an SQL injection vulnerability that allows authenticated observer-level users to sort software listings by arbitrary columns via the order_key parameter. Attackers can order by joined hosts table columns such as node keys and use pagination as a binary-search oracle to extract sensitive column values.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130763": {
+    "cvss": 4.4,
+    "description": "Fleet before 4.92.0 contains a CSV formula injection vulnerability in the host inventory export endpoint that allows attackers controlling an enrolled host or enroll secret to plant spreadsheet formulas. Attackers can set osquery-reported fields like hostname or hardware serial to formula values, enabling data exfiltration or DDE command execution when users open the exported CSV.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130766": {
+    "cvss": 8.0,
+    "description": "Obot from 0.26.0 before 0.27.0 fails to validate the resource identifier in remote MCP server protected resource metadata, allowing malicious MCP servers to steal access tokens. Attackers can name a different service and authorization server with chosen scopes, causing Obot to obtain the victim's token for that service and forward it to the attacker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130770": {
+    "cvss": 8.4,
+    "description": "Incus before 7.6.0 creates the NBD servers used for virtual machine migration and disk export on abstract unix sockets, which have no permission checks and whose names are visible in /proc/net/unix. A local unprivileged user can connect while an operation runs to read or modify the VM disk, gaining code execution in the guest on a migration's receiving side.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130774": {
+    "cvss": 8.8,
+    "description": "Incus before 7.6.0 contains a privilege escalation vulnerability: rebuilding a never-started unprivileged container makes it boot without a user namespace. Root processes inside the container run as host uid 0, keeping capabilities like sys_module, with no device cgroup restriction, letting them load kernel modules and compromise the host.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130782": {
+    "cvss": 7.7,
+    "description": "Incus before 7.6.0 contains an improper authorization vulnerability that allows restricted and view-only clients to read default project resources by requesting the default project directly. Attackers knowing resource names can read profiles, images, network zone peer keys and stored credentials, and export custom volume or bucket backups to obtain full contents or S3 admin keys.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130786": {
+    "cvss": 9.9,
+    "description": "Incus before 7.6.0 contains a configuration injection vulnerability that allows users who can launch instances from controlled images to inject LXC directives by embedding line breaks in OCI config.json values or oci.entrypoint and oci.cwd keys. Attackers can add liblxc hooks or crafted tmpfs lxc.mount.entry fields to run commands as root on the host or bind-mount host paths, even from restricted projects.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49185": {
+    "cvss": 9.8,
+    "description": "The FieldX MDM adb messaging topic passes unverified payloads directly into Runtime.exec(), allowing command/instruction injection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49186": {
+    "cvss": 9.8,
+    "description": "The local MQTT broker does not enforce topic-level Access Control Lists (ACLs). This allows any client to subscribe using wildcard characters (# or +) to enumerate hidden network devices or publish rogue control commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49187": {
+    "cvss": 7.5,
+    "description": "The hard-coded APK resource files never expire, and the shared scepter leads to information leaks and potential misuse.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49188": {
+    "cvss": 9.8,
+    "description": "The ai_cmd utility executes with full root permissions. It pipes socket inputs directly to popen(), paving the way for unauthenticated users to execute arbitrary root commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49189": {
+    "cvss": 7.8,
+    "description": "Unchecked public access permissions on a core Broadcast Receiver allow unauthorized local software components to invoke administrative operations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49190": {
+    "cvss": 8.8,
+    "description": "The system fails to evaluate instructional permissions over multiple internal operation codes (opcodes), permitting unauthorized application installations or command executions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49191": {
+    "cvss": 9.8,
+    "description": "The production build of the M3WebServer hard-codes its backend API keys, which can be easily intercepted through verbose error handling pages.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49192": {
+    "cvss": 5.4,
+    "description": "The summary service endpoint suffers from an IDOR vulnerability where it fails to verify user ownership of hardware serial numbers, exposing device data to scraping.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
