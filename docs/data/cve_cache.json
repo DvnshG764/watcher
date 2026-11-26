@@ -160516,5 +160516,29 @@
     "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'ClientesEventos' parameter in'/Clientes/ClientesEventos/'.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-73471": {
+    "cvss": 6.1,
+    "description": "A flaw was found in GStreamer gst-plugins-good (avidemux). In the Nikon metadata tag parser, a pointer can be dereferenced without verifying that data remains in the buffer, causing out-of-bounds reads. Because avidemux is auto-plugged by playbin, decodebin, and gst-discoverer, opening or previewing a crafted AVI is sufficient to trigger the issue. Fixed upstream in gst-plugins-good 1.28.6 (GStreamer-SA-2026-0072).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73472": {
+    "cvss": 6.1,
+    "description": "A flaw was found in GStreamer gst-plugins-good (avidemux). In the superindex and subindex parsers, integer overflow can bypass bounds checks and cause out-of-bounds reads. Because avidemux is auto-plugged by playbin, decodebin, and gst-discoverer, opening or previewing a crafted AVI is sufficient to trigger the issue. Fixed upstream in gst-plugins-good 1.28.6 (GStreamer-SA-2026-0072).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-73473": {
+    "cvss": 5.5,
+    "description": "A flaw was found in GStreamer gst-plugins-good (avidemux). In the subindex parser, missing validation of the entry count can cause excessive memory allocation and denial of service. Because avidemux is auto-plugged by playbin, decodebin, and gst-discoverer, opening or previewing a crafted AVI is sufficient to trigger the issue. Fixed upstream in gst-plugins-good 1.28.6 (GStreamer-SA-2026-0072).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12122": {
+    "cvss": 5.3,
+    "description": "The Kirki – Freeform Page Builder, Website Builder & Customizer plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 6.0.11 via the get_single_symbol. This makes it possible for unauthenticated attackers to extract the full builder metadata and rendered HTML of any kirki_symbol post — including unpublished drafts — by supplying a sequential WordPress post ID.",
+    "vendor": "themeum",
+    "product": "Kirki – Freeform Page Builder, Website Builder & Customizer"
   }
 }
