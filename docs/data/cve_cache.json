@@ -160840,5 +160840,101 @@
     "description": "A flaw was found in device-mapper-persistent-data. A local attacker can cause a Denial of Service (DoS) by inducing a user or system tool to process crafted device metadata containing an excessively large block index. An arithmetic error in the synchronous block reading logic causes the application to panic and unexpectedly terminate.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-2366": {
+    "cvss": 3.1,
+    "description": "A flaw was found in Keycloak. An authorization bypass vulnerability in the Keycloak Admin API allows any authenticated user, even those without administrative privileges, to enumerate the organization memberships of other users. This information disclosure occurs if the attacker knows the victim's unique identifier (UUID) and the Organizations feature is enabled.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-13881": {
+    "cvss": 2.7,
+    "description": "A flaw was found in Keycloak Admin API. This vulnerability allows an administrator with limited privileges to retrieve sensitive custom attributes via the /unmanagedAttributes endpoint, bypassing User Profile visibility settings.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-1190": {
+    "cvss": 3.1,
+    "description": "A flaw was found in Keycloak's SAML brokering functionality. When Keycloak is configured as a client in a Security Assertion Markup Language (SAML) setup, it fails to validate the `NotOnOrAfter` timestamp within the `SubjectConfirmationData`. This allows an attacker to delay the expiration of SAML responses, potentially extending the time a response is considered valid and leading to unexpected session durations or resource consumption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-133203": {
+    "cvss": 5.3,
+    "description": "In Revive Adserver through 6.0.9, the public conversion-variable endpoint does not verify that a caller-supplied conversion belongs to the supplied tracker. An unauthenticated attacker can submit a unique variable for a different tracker's conversion, causing that conversion to be classified as a duplicate and excluded from conversion reports.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-133207": {
+    "cvss": 4.1,
+    "description": "In Revive Adserver through 6.0.9, user-controlled entity names in XLS report exports can be interpreted as spreadsheet formulas. A user with permission to rename a zone can place a formula in the zone name, which is then included in another user's Conversion Tracking report. Opening the affected spreadsheet can evaluate the formula and alter displayed report contents.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-128064": {
+    "cvss": 8.2,
+    "description": "Mixed-case HTTPS and FTPS URLs can expose data in plaintext. The HTTP and FTP stream wrappers recognise URL schemes case-insensitively, but enable TLS only when the scheme contains a lowercase \"s\" at a fixed position. A URL such as HTTPS:// or FTPS:// passed to file_get_contents(), fopen() or other stream functions, or received as an HTTP redirect target, is therefore handled over unencrypted HTTP or FTP. An attacker able to observe the network traffic can read data the application expected TLS to protect, including credentials, request bodies and transferred files. This issue affects PHP versions before 8.2.36, 8.3.* before 8.3.37, 8.4.* before 8.4.28 and 8.5.* before 8.5.13.",
+    "vendor": "PHP Group",
+    "product": "PHP"
+  },
+  "CVE-2026-133211": {
+    "cvss": 4.7,
+    "description": "In Revive Adserver through 6.0.9, the ct0 request parameter of the delivery scripts is only required to start with http:// or https:// and is prepended unescaped to banner click URLs. An unauthenticated attacker can craft a delivery URL that executes JavaScript in the delivery origin when a visitor follows it. An active banner using the raw {clickurl} macro is required.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-133205": {
+    "cvss": 4.3,
+    "description": "In Revive Adserver through 6.0.9, an authenticated manager can supply another agency's advertiser or website identifier as a report scope and obtain that entity's name in an XLS report header. Submitted scope identifiers are not checked against the manager's permitted selections. The demonstrated disclosure is limited to entity names.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-126725": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal GraphQL Core Schema allows Forceful Browsing. This issue affects GraphQL Core Schema versions: from 0.0.0 to 1.0.29.",
+    "vendor": "Drupal",
+    "product": "GraphQL Core Schema"
+  },
+  "CVE-2026-126746": {
+    "cvss": null,
+    "description": "Incorrect Authorization vulnerability in Drupal S3 File System CORS Upload allows Forceful Browsing. This issue affects S3 File System CORS Upload versions: from 0.0.0 to 1.4.0.",
+    "vendor": "Drupal",
+    "product": "S3 File System CORS Upload"
+  },
+  "CVE-2026-128616": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-135690": {
+    "cvss": 3.7,
+    "description": "CivetWeb through 1.16 built with USE_HTTP2 and enable_http2 contains a heap out-of-bounds read vulnerability in hpack_decode() in src/http2.inl. Unauthenticated remote attackers can send a crafted HEADERS frame ending with a Huffman-coded string over TLS-negotiated HTTP/2 to read one byte past the heap frame buffer.",
+    "vendor": "civetweb",
+    "product": "civetweb"
+  },
+  "CVE-2026-133206": {
+    "cvss": 4.3,
+    "description": "In Revive Adserver through 6.0.9, an advertiser can put XML syntax in fields of its own video creative. Unescaped MediaFile attributes and CDATA terminators allow the advertiser to inject elements into VAST responses served for a publisher's zone. A crafted TrackingEvents block can suppress the ad server's video playback event records and redirect tracking requests to an attacker-controlled endpoint.",
+    "vendor": "Revive",
+    "product": "Adserver"
+  },
+  "CVE-2026-126747": {
+    "cvss": null,
+    "description": "Missing Authorization vulnerability in Drupal File Resumable Upload allows Forceful Browsing. This issue affects File Resumable Upload versions: from 0.0.0 to 2.0.6.",
+    "vendor": "Drupal",
+    "product": "File Resumable Upload"
+  },
+  "CVE-2026-126744": {
+    "cvss": null,
+    "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Layout Builder iFrame Modal allows Cross-Site Scripting (XSS). This issue affects Layout Builder iFrame Modal versions: from 0.0.0 to 1.3.9.",
+    "vendor": "Drupal",
+    "product": "Layout Builder iFrame Modal"
+  },
+  "CVE-2026-136716": {
+    "cvss": null,
+    "description": "Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Drupal core allows Forceful Browsing. This issue affects Drupal core versions: from 0.0.0 to 10.6.23, from 11.0.0 to 11.3.23, from 11.4.0 to 11.4.14.",
+    "vendor": "Drupal",
+    "product": "Drupal core"
   }
 }
