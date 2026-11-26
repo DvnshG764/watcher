@@ -161794,5 +161794,11 @@
     "description": "A flaw was found in the Quarkus Cache Runtime. When request processing utilizes a Uni cached using @CacheResult and the cached Uni reuses the initial \"completion\" context, the processing switches to the cached Uni instead of the request context. This is a problem if the cached Uni context contains sensitive information, and could allow a malicious user to benefit from a POST request returning the response that is meant for another user, gaining access to sensitive data.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2023-6394": {
+    "cvss": 9.1,
+    "description": "A flaw was found in Quarkus. This issue occurs when receiving a request over websocket with no role-based permission specified on the GraphQL operation, Quarkus processes the request without authentication despite the endpoint being secured. This can allow an attacker to access information and functionality outside of normal granted API permissions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
