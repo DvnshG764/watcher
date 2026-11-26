@@ -161584,5 +161584,71 @@
     "description": "Squid is vulnerable to Denial of Service, where a remote attacker can perform DoS by sending ftp:// URLs in HTTP Request messages or constructing ftp:// URLs from FTP Native input.",
     "vendor": "Red Hat",
     "product": "Red Hat Enterprise Linux 9"
+  },
+  "CVE-2026-107443": {
+    "cvss": 7.7,
+    "description": "A flaw was found in Foreman. An authenticated user with view_hosts privileges can retrieve rendered provisioning template content for a host via the hosts template API endpoint, disclosing sensitive data such as the host root password. This is an incomplete fix of CVE-2026-96659, which hardened the web UI preview path but left the API host-template render path authorized for Viewer-level users.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-118076": {
+    "cvss": 8.8,
+    "description": "Deserialization of Untrusted Data vulnerability in Frisbii Frisbii Pay reepay-checkout-gateway allows Object Injection.This issue affects Frisbii Pay: from n/a before 1.8.20.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12423": {
+    "cvss": 7.5,
+    "description": "A flaw was found in Foreman. The Red Hat Satellite /unattended/provision API endpoint is vulnerable to an authentication bypass due to a semantic logic flaw in host_verifier.rb. The application verifies the database state of a provisioning token rather than its actual presence in the incoming HTTP request. Because a host actively undergoing provisioning has an unexpired token in the database, the server's valid_host_token? method evaluates to true, granting access to the kickstart template even if the requester provides no token at all in the URL.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12540": {
+    "cvss": 8.2,
+    "description": "A flaw was found in Foreman. A command injection vulnerability exists in the foreman-rake errors:fetch_log task. The request_id parameter is passed to an underlying system command (typically grep) without adequate shell neutralization. While the task is intended to fetch specific log entries, an attacker with sudo permissions to execute this rake task can inject shell metacharacters (such as ;, \", or |) to break out of the intended command and execute arbitrary code.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12541": {
+    "cvss": 8.2,
+    "description": "A flaw was found in Foreman. OS command injection vulnerabilities exist in the foreman-rake db:dump and db:import_dump tasks. The application fails to properly sanitize user-supplied input in the destination parameter (during backups) and the file parameter (during imports) before passing them to a Ruby system() call for execution. An attacker with permissions to execute foreman-rake (e.g., via a restricted sudo configuration) can append malicious shell commands to the provided file paths.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12544": {
+    "cvss": 7.7,
+    "description": "A flaw was found in Foreman. The foreman-rake initialization logic in /usr/share/foreman/config/settings.rb contains a vulnerable code pattern where configuration data is processed through two distinct executable layers. This creates a multi-stage execution chain that allows for both Server-Side Template Injection (SSTI) and insecure deserialization. This vulnerability can lead to remote code execution, total infrastructure compromise and supply chain risk.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12894": {
+    "cvss": 8.8,
+    "description": "A flaw was found in the Qute template engine, which is used by Quarkus to generate dynamic content like HTML pages or emails. The issue exists in the component responsible for looking up data values (ReflectionValueResolver), which fails to properly block access to sensitive Java internal functions when processing certain data types like Enums. An attacker who can provide or influence the template text can exploit this bypass to take control of the server by executing unauthorized commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-10059": {
+    "cvss": 9.1,
+    "description": "A flaw was found in the Multicluster Engine for Kubernetes ClusterCurator controller. A tenant administrator with namespace-scoped privileges can exploit this vulnerability by creating a namespaced ClusterCurator. This action inadvertently grants the tenant administrator the ability to mint a token for a ServiceAccount with cluster-wide administrative authority. This leads to a privilege escalation, allowing the tenant administrator to gain full control over the cluster.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-16242": {
+    "cvss": 9.4,
+    "description": "A flaw was found in the Konnectivity proxy-server configuration for hosted control planes. The agent-facing listener was started without --cluster-ca-cert (and without token-based agent authentication), so client certificates were not validated. A remote attacker who can reach the Konnectivity cluster endpoint could connect as an unauthenticated agent, join the routing pool, and potentially proxy, inspect, modify, or drop control-plane-to-node traffic.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-10840": {
+    "cvss": 7.1,
+    "description": "A flaw was found in the OpenShift Pipelines operator. The tekton-scheduler-rolebinding ClusterRoleBinding grants the system:authenticated group write access to Kueue and cert-manager custom resources via the tekton-scheduler-role ClusterRole. When Kueue or cert-manager CRDs are present on the cluster, any authenticated user can disrupt workload scheduling, tamper with scheduling priorities, delete other tenants' Workload objects, or induce cert-manager to overwrite TLS Secrets including the default ingress controller certificate.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-6861": {
+    "cvss": 7.5,
+    "description": "A disclosure of sensitive information flaw was found in foreman via the GraphQL API. If the introspection feature is enabled, it is possible for attackers to retrieve sensitive admin authentication keys which could result in a compromise of the entire product's API.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
