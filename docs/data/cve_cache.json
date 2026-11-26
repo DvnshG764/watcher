@@ -160564,5 +160564,77 @@
     "description": "CISO Assistant before 4.2.3 contains a denial of service vulnerability that allows unauthenticated attackers to block all logins by exhausting a shared rate limit keyed on the frontend server IP. Attackers can send a low sustained rate of failed login attempts through the SvelteKit frontend to exhaust the django-allauth per-address budget, locking out every user.",
     "vendor": "intuitem",
     "product": "ciso-assistant-community"
+  },
+  "CVE-2026-132217": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'ClientesEventos' parameter in'/Clientes/ClientesEventos/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132218": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'ClientesEventos' parameter in'/Clientes/ClientesEventos/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132219": {
+    "cvss": 7.1,
+    "description": "Insecure Direct Object Reference (IDOR) vulnerability. Exploiting this vulnerability allows a user to view the names of other users/companies on the platform by iterating over the numerical value that identifies the customer in 'DocumentosOpcionesImprimir' parameter in'/Gestion/DocumentosOpcionesImprimir/'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-132220": {
+    "cvss": 5.1,
+    "description": "Stored Cross-Site Scripting (XSS) vulnerability in winCRM. Exploiting this vulnerability could allow a remote user to send a specially crafted URL to the victim and steal their session data by allowing JavaScript code to be injected in 'Tarea' parameter in '/Tareas/TareasCrear?ddv=cal'.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-115622": {
+    "cvss": 5.5,
+    "description": "A flaw was found in ansible-core. When a task or its parameters are marked no_log: true, sensitive values passed to a module's warn() or deprecate() calls are not redacted and are printed in cleartext to stdout/stderr in warning and deprecation messages. The 'warnings' and 'deprecations' keys are retained in the PRESERVE allow-list in lib/ansible/_internal/_task.py when the task result is censored, so sensitive parameters bypass masking and can be disclosed in output captured in terminal sessions, CI logs, and any automation wrapping ansible-playbook, even though every task touching the secrets is marked no_log: true.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128658": {
+    "cvss": 3.5,
+    "description": "PHPGurukul Beauty Parlour Management System V1.1 uses a non-cryptographic function to generate security-sensitive appointment and invoice identifiers. The identifiers are generated within a restricted numeric range and are subsequently used in record lookup operations. This implementation exposes the application to identifier prediction or guessing attacks under conditions where the identifiers are relied upon as a security boundary.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128660": {
+    "cvss": 4.8,
+    "description": "PHPGurukul Beauty Parlour Management System V 1.1 is vulnerable to Cross Site Scripting (XSS) in admin/search-invoices.php via the searchdata parameter.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128661": {
+    "cvss": 9.8,
+    "description": "PHPGurukul Employee Leaves Management System v2.1 contains an insufficient verification vulnerability in the password recovery functionality in forgot-password.php. The application allows an unauthenticated user to access the password-change workflow by providing a valid employee ID and corresponding email address without requiring an additional out-of-band verification mechanism.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128662": {
+    "cvss": 7.5,
+    "description": "PHPGurukul Employee Leaves Management System V2.1 contains an information disclosure vulnerability because database backup files are stored within the publicly accessible web root. An unauthenticated remote attacker can download the SQL backup files and retrieve sensitive database contents, including employee personally identifiable information and password hashes.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128664": {
+    "cvss": 8.3,
+    "description": "An insecure password reset vulnerability in the Admin Password Recovery Module of PHPGurukul News Portal Project v4.1 allows unauthenticated remote attackers to change an administrator or sub-administrator account password by providing the corresponding username and email address. The application does not require verification of account ownership through an email token, OTP, or another authentication mechanism before updating the password, potentially resulting in account takeover.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-128666": {
+    "cvss": 6.1,
+    "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in PHPGurukul News Portal Project V4.1. The $currenturl variable in news-details.php is constructed using unencoded REQUEST_URI and HTTP_HOST server variables and echoed directly into the href attributes of social share links. An unauthenticated remote attacker can exploit this by crafting a URL containing HTML metacharacters to break out of the href attribute and execute arbitrary HTML or JavaScript in the context of the victim's browser.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-130638": {
+    "cvss": 6.8,
+    "description": "Relative path traversal in the object detection dataset preparation tool in AutoGluon Multimodal before 1.6.0 might allow adversary-in-the-middle attackers to write arbitrary files with the privileges of the user running the tool via a crafted dataset archive substituted for a dataset downloaded over plaintext HTTP. To remediate this issue, users should upgrade autogluon.multimodal to version 1.6.0 or later.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
