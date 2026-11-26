@@ -156600,10 +156600,10 @@
     "product": "Unknown"
   },
   "CVE-2026-131827": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 7.8,
+    "description": "RustDesk Client for Windows reg_recovery Missing Authorization Local Privilege Escalation Vulnerability. This vulnerability allows local attackers to escalate privileges on affected installations of RustDesk Client for Windows. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The specific flaw exists within the main IPC endpoint exposed by the RustDesk service. The issue results from the lack of authorization prior to allowing access to functionality. An attacker can leverage this vulnerability to escalate privileges and execute arbitrary code in the context of SYSTEM. Was ZDI-CAN-34805.",
+    "vendor": "RustDesk",
+    "product": "Client for Windows"
   },
   "CVE-2026-131837": {
     "cvss": null,
@@ -160540,5 +160540,29 @@
     "description": "The Kirki – Freeform Page Builder, Website Builder & Customizer plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 6.0.11 via the get_single_symbol. This makes it possible for unauthenticated attackers to extract the full builder metadata and rendered HTML of any kirki_symbol post — including unpublished drafts — by supplying a sequential WordPress post ID.",
     "vendor": "themeum",
     "product": "Kirki – Freeform Page Builder, Website Builder & Customizer"
+  },
+  "CVE-2026-135213": {
+    "cvss": 4.3,
+    "description": "Worklenz before 3.4.3 contains an insecure direct object reference vulnerability in GET /api/v1/activity-logs/:id that allows authenticated users to read other teams' task activity logs because it lacks the verifyTaskAccess middleware. Attackers who know another team's task UUID can retrieve reporter and assignee names and avatars plus the full timeline of status, priority, label and estimation changes.",
+    "vendor": "Worklenz",
+    "product": "worklenz"
+  },
+  "CVE-2025-53607": {
+    "cvss": null,
+    "description": "",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-135150": {
+    "cvss": 9.1,
+    "description": "In Eclipse Ditto versions 1.1.0 to 3.9.9, the nginx reverse proxy configurations shipped with Ditto (Helm chart, Docker Compose, Kubernetes and OpenShift deployment files) forward a client-supplied `x-ditto-pre-authenticated` header to the Ditto gateway on locations that do not apply nginx authentication, such as `/api/2/connections`. nginx selects the location based on the normalized request URI but forwards the raw URI, while the gateway does not treat an encoded slash (`%2f`) as a path separator. A crafted request path is therefore routed by nginx through such an unauthenticated location and by the gateway to the regular Things and Policies HTTP API, including routes that send live messages to devices. When pre-authentication is enabled (the default of the Helm chart and the Docker Compose setup), an unauthenticated remote attacker can impersonate arbitrary policy subjects and read, modify and delete Things, read Policies, send messages to devices and create entities. Additionally, the optional Ingress of the Helm chart (Ditto 3.9.0 to 3.9.9) routes requests directly to the gateway without setting or removing that header, and the WebSocket Ingress of the Helm chart of Ditto 3.3.0 to 3.8.15 does not set it, allowing the same impersonation without path manipulation when pre-authentication is enabled. This bypasses the fix for CVE-2026-120753.",
+    "vendor": "Eclipse Foundation",
+    "product": "Eclipse Ditto"
+  },
+  "CVE-2026-135165": {
+    "cvss": 5.3,
+    "description": "CISO Assistant before 4.2.3 contains a denial of service vulnerability that allows unauthenticated attackers to block all logins by exhausting a shared rate limit keyed on the frontend server IP. Attackers can send a low sustained rate of failed login attempts through the SvelteKit frontend to exhaust the django-allauth per-address budget, locking out every user.",
+    "vendor": "intuitem",
+    "product": "ciso-assistant-community"
   }
 }
