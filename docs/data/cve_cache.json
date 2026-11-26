@@ -155544,10 +155544,10 @@
     "product": "Unknown"
   },
   "CVE-2026-123903": {
-    "cvss": null,
-    "description": "",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "cvss": 9.8,
+    "description": "VMware vCenter contains an authentication bypass vulnerability in the VMware Directory Service. Broadcom has evaluated the severity of this issue to be in the Critical severity range with a maximum CVSSv3 base score of 9.8. Affected versions: VMware vCenter Server 9.1.x.x: fixed in 9.1.2 VMware vCenter Server 9.0.x.x: fixed in 9.0.2.0300 VMware vCenter Server 8.0: fixed in 8.0 U3m VMware Cloud Foundation 5.x: fixed in 5.2.5 VMware Telco Cloud Platform 3.0: fixed in KB463501 VMware Telco Cloud Platform 4.x: fixed in KB463501 VMware Telco Cloud Platform 5.0.x: fixed in KB463501 VMware Telco Cloud Platform 5.1.x: fixed in KB463501 VMware Telco Cloud Platform 5.2: fixed in KB463501 VMware Telco Cloud Infrastructure 3.0: fixed in KB463501",
+    "vendor": "VMware",
+    "product": "VMware vCenter Server"
   },
   "CVE-2026-127044": {
     "cvss": null,
@@ -160972,5 +160972,185 @@
     "description": "YesWiki 4.6.0 before 4.7.0 and 5.0.0-alpha1 before 5.0.0-alpha4 contains an unauthenticated SQL injection vulnerability in SearchManager::prepareSearchRequest(). Field names from the query and searchfields parameters of the public Bazar entries search API are placed in a backtick-quoted alias escaped only with mysqli_real_escape_string. Attackers can supply a backtick to inject subqueries, reading data such as user password hashes or exhausting database threads with SLEEP().",
     "vendor": "YesWiki",
     "product": "yeswiki"
+  },
+  "CVE-2026-50227": {
+    "cvss": 6.1,
+    "description": "An unauthenticated local attacker can connect to the MQTT broker over its localhost WebSocket endpoint in Acer NitroSense software (versions up to and including 5.2.62). This allows the attacker to invoke exposed ddsc RPC functions, including child_process.execSync(), resulting in arbitrary command execution in the application context.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50228": {
+    "cvss": 6.1,
+    "description": "An unauthenticated local attacker can connect to the Electron DevTools endpoint exposed by Acer NitroSense software (versions up to and including 5.2.63) on localhost TCP port 9993. Because Chromium remote debugging is enabled in the production application, the attacker can execute JavaScript in the privileged application context and achieve arbitrary code execution.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50603": {
+    "cvss": 4.9,
+    "description": "A vulnerability has been identified in the Acer Agent Service component included with NitroSense and PredatorSense. The vulnerability is caused by the use of a hard-coded AES encryption key within the software. Under certain circumstances, a local attacker may be able to use the embedded key to access protected information or perform unauthorized actions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50604": {
+    "cvss": 4.9,
+    "description": "A vulnerability has been identified in the Acer Agent Service component included with NitroSense and PredatorSense. The socket handshake process does not properly require authentication before granting access to the service. Under certain circumstances, an unauthorized connection may be established, potentially allowing access to functionality that should be restricted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50605": {
+    "cvss": 7.4,
+    "description": "A vulnerability has been identified in the Acer Agent Service component included with NitroSense and PredatorSense. Insufficient access controls within a privileged service may allow an authenticated local user to perform unauthorized registry operations. In certain situations, this could lead to privilege escalation or compromise of the affected system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50606": {
+    "cvss": 1.2,
+    "description": "A vulnerability has been identified in the Acer System Monitoring component included with NitroSense and PredatorSense. The vulnerability is caused by the use of a hard-coded AES encryption key within the software. Under certain circumstances, a local attacker may be able to use the embedded key to access protected information or perform unauthorized actions.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50607": {
+    "cvss": 2.7,
+    "description": "A vulnerability has been identified in the Acer System Monitoring component included with NitroSense and PredatorSense. A WebSocket service was configured to listen on all network interfaces, which may expose the service to unintended network access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50608": {
+    "cvss": 1.2,
+    "description": "A vulnerability has been identified in the Acer System Monitoring component included with NitroSense and PredatorSense. The WebSocket handshake process does not properly require authentication before allowing connections to the service. Under certain circumstances, unauthorized access to service functionality may be possible.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50609": {
+    "cvss": 7.4,
+    "description": "A vulnerability has been identified in the Acer System Monitoring component included with NitroSense and PredatorSense. Insufficient access controls within a privileged Named Pipe service may allow an authenticated local user to perform unauthorized registry operations. In certain situations, this could lead to privilege escalation or compromise of the affected system.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50610": {
+    "cvss": 7.4,
+    "description": "A vulnerability has been identified in the Acer System Monitoring component included with NitroSense and PredatorSense due to insufficient access controls in a privileged service. An authenticated local user may be able to access the service and perform unauthorized registry modifications, potentially resulting in local privilege escalation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49193": {
+    "cvss": 7.5,
+    "description": "Overly permissive configuration settings on cloud storage containers expose active telemetry information publicly to the internet.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49194": {
+    "cvss": 8.8,
+    "description": "The debugging routine SCREEN_CLICK(5053) enables a connection to skip the standard device login prompt entirely and directly enter an interactive shell interface.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49202": {
+    "cvss": 8.6,
+    "description": "Internal multimedia session archives are accessible without authentication, exacerbated by loose Cross-Origin Resource Sharing (CORS) rules that allow cross-site theft.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49203": {
+    "cvss": 8.3,
+    "description": "Crucial management API endpoints for cellular eSIM allocation do not validate caller authorization, allowing remote profiles to be rewritten or deleted.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49204": {
+    "cvss": 6.5,
+    "description": "Leftover debug modules contain fixed credentials for internal AWS Cognito test sandboxes, risking asset exploitation.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50205": {
+    "cvss": 8.2,
+    "description": "System log files output unencrypted SMTP server authentication passwords alongside sensitive employee corporate identification data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50206": {
+    "cvss": 6.8,
+    "description": "Incoming VPN network profile settings fail to process special characters safely, enabling command injection via malicious config files.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50207": {
+    "cvss": 7.8,
+    "description": "The system Binder boundary accepts unverified pass-through AT commands, giving local applications the power to read baseband files or disable cellular connectivity.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50208": {
+    "cvss": 9.4,
+    "description": "High-risk TrustAllCerts routines disable standard TLS certificate validation. Combined with hard-coded DES symmetric encryption keys, a Man-in-the-Middle (MITM) actor could decrypt network traffic.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50209": {
+    "cvss": 7.8,
+    "description": "Broadcast events allow malicious software to rewrite the device's default Mobile Device Management (MDM) endpoint address, shifting administrative ownership to an external attacker.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50210": {
+    "cvss": 7.5,
+    "description": "The device encrypts data using AES-CBC with static zero-filled Initialization Vectors (IVs), making it susceptible to replay attacks and known-plaintext decryption.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50211": {
+    "cvss": 9.8,
+    "description": "Leftover engineering diagnostics and factory-level diagnostic software remain exposed on retail builds, giving malicious apps write privileges to internal NVRAM registers.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50212": {
+    "cvss": 6.5,
+    "description": "Weak validation logic within device dissociation API routines allows a remote entity to forcefully unbind unrelated user endpoints, causing severe denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50213": {
+    "cvss": 7.5,
+    "description": "The account validation endpoint /v1/User/validate returns comprehensive user profile data sheets, which can be crawled by iterating predictable identification strings.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50214": {
+    "cvss": 9.8,
+    "description": "The /v1/Plan service relies entirely on a shared global API token for full administrative management, allowing arbitrary creation of zero-cost network access plans.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50224": {
+    "cvss": 4.9,
+    "description": "The web administration panel binds broadly to the public IPv6 address space on port [::]:8080 without default firewall limits, making internal API endpoints reachable over the WAN.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50225": {
+    "cvss": 9.1,
+    "description": "The registration path /v1/account/register provides no bot mitigation mechanisms, allowing malicious automated systems to flood the database.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50226": {
+    "cvss": 5.3,
+    "description": "Fixed AES-128-CBC keys inside the AcerConnect OTA application let attackers forge authorization credentials for arbitrary IMEI numbers. This allows unauthorized actors to list catalog items and extract protected binaries from pre-signed cloud links.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-14025": {
+    "cvss": 8.5,
+    "description": "A flaw was found in Ansible Automation Platform (AAP). Read-only scoped OAuth2 API Tokens in AAP, are enforced at the Gateway level for Gateway-specific operations. However, this vulnerability allows read-only tokens to perform write operations on backend services (e.g., Controller, Hub, EDA). If this flaw were exploited, an attacker‘s capabilities would only be limited by role based access controls (RBAC).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4586": {
+    "cvss": 7.4,
+    "description": "A vulnerability was found in the Hot Rod client. This security issue occurs as the Hot Rod client does not enable hostname validation when using TLS, possibly resulting in a man-in-the-middle (MITM) attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
