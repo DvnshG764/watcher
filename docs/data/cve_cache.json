@@ -161734,5 +161734,35 @@
     "description": "A flaw was found in Podman. The podman machine init command fails to verify the TLS certificate when downloading the VM images from an OCI registry. This issue results in a Man In The Middle attack.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2023-50781": {
+    "cvss": 7.5,
+    "description": "A flaw was found in m2crypto. This issue may allow a remote attacker to decrypt captured messages in TLS servers that use RSA key exchanges, which may lead to exposure of confidential or sensitive data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-50782": {
+    "cvss": 7.5,
+    "description": "A flaw was found in the python-cryptography package. This issue may allow a remote attacker to decrypt captured messages in TLS servers that use RSA key exchanges, which may lead to exposure of confidential or sensitive data.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-47039": {
+    "cvss": 7.8,
+    "description": "A vulnerability was found in Perl. This security issue occurs while Perl for Windows relies on the system path environment variable to find the shell (`cmd.exe`). When running an executable that uses the Windows Perl interpreter, Perl attempts to find and execute `cmd.exe` within the operating system. However, due to path search order issues, Perl initially looks for cmd.exe in the current working directory. This flaw allows an attacker with limited privileges to place`cmd.exe` in locations with weak permissions, such as `C:\\ProgramData`. By doing so, arbitrary code can be executed when an administrator attempts to use this executable from these compromised locations.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-47038": {
+    "cvss": 7.8,
+    "description": "A vulnerability was found in perl 5.30.0 through 5.38.0. This issue occurs when a crafted regular expression is compiled by perl, which can allow an attacker controlled byte buffer overflow in a heap allocated buffer.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-4886": {
+    "cvss": 4.4,
+    "description": "A sensitive information exposure vulnerability was found in foreman. Contents of tomcat's server.xml file, which contain passwords to candlepin's keystore and truststore, were found to be world readable.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
