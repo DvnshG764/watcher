@@ -161818,5 +161818,35 @@
     "description": "LibTIFF is vulnerable to an integer overflow. This flaw allows remote attackers to cause a denial of service (application crash) or possibly execute an arbitrary code via a crafted tiff image, which triggers a heap-based buffer overflow.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-10533": {
+    "cvss": 5.0,
+    "description": "A flaw was found in OpenShift Container Platform. Completed pods with restartPolicy: Never do not count toward ResourceQuota pod limits, and Kubernetes events are not quota-scoped. A non-privileged user who can create pods in a namespace can exploit this to generate a large volume of events that accumulate in etcd, causing API server performance degradation across the cluster.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2025-9572": {
+    "cvss": 6.5,
+    "description": "n authorization flaw in Foreman's GraphQL API allows low-privileged users to access metadata beyond their assigned permissions. Unlike the REST API, which correctly enforces access controls, the GraphQL endpoint does not apply proper filtering, leading to an authorization bypass.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-8447": {
+    "cvss": 5.9,
+    "description": "A security issue was discovered in the LRA Coordinator component of Narayana. When Cancel is called in LRA, an execution time of approximately 2 seconds occurs. If Join is called with the same LRA ID within that timeframe, the application may crash or hang indefinitely, leading to a denial of service.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-8553": {
+    "cvss": 6.3,
+    "description": "A vulnerability was found in Foreman's loader macros introduced with report templates. These macros may allow an authenticated user with permissions to view and create templates to read any field from Foreman's database. By using specific strings in the loader macros, users can bypass permissions and access sensitive information.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-6162": {
+    "cvss": 7.5,
+    "description": "A vulnerability was found in Undertow, where URL-encoded request paths can be mishandled during concurrent requests on the AJP listener. This issue arises because the same buffer is used to decode the paths for multiple requests simultaneously, leading to incorrect path information being processed. As a result, the server may attempt to access the wrong path, causing errors such as \"404 Not Found\" or other application failures. This flaw can potentially lead to a denial of service, as legitimate resources become inaccessible due to the path mix-up.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
