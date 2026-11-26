@@ -119510,8 +119510,8 @@
   "CVE-2026-102894": {
     "cvss": 9.1,
     "description": "GPUStack is an open-source GPU cluster manager for AI model serving and GPU instance provisioning. From 0.7.1 until 2.2.2, the /auth/saml/callback endpoint decoded SAML XML, used its NameID and attributes to resolve or provision a user, and minted a gpustack_session JWT without calling OneLogin_Saml2_Auth.process_response to verify the signature, issuer, audience, destination, or time conditions. Any network client could submit an identity for an existing user, including an administrator, or provision a new non-administrator account, even when SAML was not configured. Response and Assertion identifiers were not consumed, so captured signed responses could also be replayed. This issue is fixed in version 2.2.2.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Check Point",
+    "product": "gpustack"
   },
   "CVE-2026-103002": {
     "cvss": 8.8,
@@ -137060,7 +137060,7 @@
   "CVE-2024-10441": {
     "cvss": 9.8,
     "description": "Synology DSM contains an improper encoding or escaping of output vulnerability in the system plugin daemon in Synology BeeStation OS (BSM) that could allow a remote attacker to execute arbitrary code via unspecified vectors.",
-    "vendor": "Synology",
+    "vendor": "Check Point",
     "product": "DiskStation Manager (DSM)"
   },
   "CVE-2026-123007": {
@@ -139694,7 +139694,7 @@
   "CVE-2026-129987": {
     "cvss": 9.9,
     "description": "Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, the database password validation used by the MySQL, PostgreSQL, MariaDB, MongoDB, and Redis change-password procedures permits backticks, and the procedures interpolate attacker-controlled passwords into Bash command strings. An authenticated user who can update a database password can trigger command substitution before the database command runs, resulting in arbitrary operating-system command execution with the Dokploy process privileges, which are typically root. This issue is fixed in version 0.31.1.",
-    "vendor": "Dokploy",
+    "vendor": "Check Point",
     "product": "dokploy"
   },
   "CVE-2026-115716": {
@@ -141548,7 +141548,7 @@
   "CVE-2026-103025": {
     "cvss": 8.7,
     "description": "bep/imagemeta is a Go library for reading EXIF, IPTC and XMP image meta data from JPEG, TIFF, PNG, and WebP files. Prior to 0.17.3, imagemeta.Decode could exhaust memory when parsing PNG zTXt chunks whose keyword is \"Raw profile type iptc\": the declared chunk length can drive an allocation far larger than the input file, and the embedded zlib stream is decompressed without an output limit. The advisory reports a 42-byte input causing a 256 MB allocation and a 127 KB input inflating to 460 MB. The oversized-allocation path's memory effect depends on platform overcommit and configured GOMEMLIMIT or cgroup limits, while the decompression path reliably creates resident memory. Applications that decode untrusted PNGs with IPTC metadata processing can therefore suffer denial of service through memory exhaustion. This issue is fixed in 0.17.3.",
-    "vendor": "bep",
+    "vendor": "Check Point",
     "product": "imagemeta"
   },
   "CVE-2026-97196": {
@@ -142418,7 +142418,7 @@
   "CVE-2026-114516": {
     "cvss": 9.8,
     "description": "Etherpad is a real-time collaborative editor. From 1.8.14 until 3.3.3, the pre-authentication /static/* plugin asset handler in src/node/utils/Minify.ts performs a backslash-to-forward-slash conversion after src/node/utils/sanitizePathname.ts has completed its POSIX path checks. On POSIX systems the sanitizer correctly treats backslashes as ordinary filename bytes, but the later conversion turns encoded backslash-separated parent-directory segments into traversal components without revalidation or containment. The expressPreSession registration and the always-present ep_etherpad-lite core pseudo-plugin make this path reachable without credentials, allowing a remote attacker to read any file available to the Etherpad process. Disclosed configuration or environment secrets can expose administrator credentials, after which the administrator plugin installer can provide in-process code execution and full server compromise. This issue is fixed in version 3.3.3.",
-    "vendor": "ether",
+    "vendor": "Check Point",
     "product": "etherpad"
   },
   "CVE-2026-133626": {
@@ -142730,13 +142730,13 @@
   "CVE-2026-105803": {
     "cvss": 8.6,
     "description": "Git LFS is a Git extension for versioning large files. From 1.3.0 until 3.8.1, Git LFS does not correctly filter the limited set of options permitted in a repository's .lfsconfig file when option keys contain certain additional components. Crafted keys can mimic options that configure Git LFS to use a custom command to transfer objects, causing Git LFS to execute an attacker-selected command or binary while fetching objects. This issue is fixed in version 3.8.1.",
-    "vendor": "git-lfs",
+    "vendor": "Check Point",
     "product": "git-lfs"
   },
   "CVE-2026-132275": {
     "cvss": 7.5,
     "description": "svglib reads SVG files and converts them to other formats. Prior to 2.3.1, the svg2rlg() renderer recursively expands nested SVG references by deep-copying each referenced subtree; SvgRenderer.renderUse() in src/svglib/svglib.py calls xlink_href_target(), which rejects direct cycles but permits acyclic reference graphs with repeated fan-out. A small attacker-controlled SVG can therefore trigger exponentially increasing node expansion, consuming excessive CPU and memory in any application that renders it without a non-default option; HTML-to-PDF workflows using xhtml2pdf can reach the same renderer when an embedded data:image/svg+xml image in an HTML img element is passed to pisa.CreatePDF(). This issue is fixed in 2.3.1.",
-    "vendor": "deeplook",
+    "vendor": "Check Point",
     "product": "svglib"
   },
   "CVE-2026-132277": {
@@ -142754,7 +142754,7 @@
   "CVE-2026-133493": {
     "cvss": 10.0,
     "description": "A vulnerability was identified in D-Link DIR-600L 2.17b02. Affected is the function genacgi_main of the file gena.cgi of the component GENA Handler. Such manipulation leads to os command injection. The attack can be launched remotely. The exploit is publicly available and might be used.",
-    "vendor": "D-Link",
+    "vendor": "Check Point",
     "product": "DIR-600L"
   },
   "CVE-2026-104885": {
@@ -142862,7 +142862,7 @@
   "CVE-2026-121385": {
     "cvss": 9.8,
     "description": "The User Registration Aide WordPress plugin through 1.5.3.8 does not verify the current password or a reset token before changing a user's password, allowing unauthenticated attackers who know a user's username and email address to change the password of any account, including administrators, and take it over.",
-    "vendor": "Unknown",
+    "vendor": "Check Point",
     "product": "User Registration Aide"
   },
   "CVE-2026-116561": {
@@ -154256,7 +154256,7 @@
   "CVE-2026-133469": {
     "cvss": 9.8,
     "description": "Vates Xen Orchestra contains an improper validation of specified type of input vulnerability that could allow an unauthenticated attacker to bypass authentication and perform actions with administrative privileges via a specially crafted authentication token containing an empty JSON object.",
-    "vendor": "Vates",
+    "vendor": "Check Point",
     "product": "Xen Orchestra"
   },
   "CVE-2026-129223": {
@@ -154592,7 +154592,7 @@
   "CVE-2026-133680": {
     "cvss": 9.9,
     "description": "A vulnerability was found in D-Link DCS-935L 1.10.01. This affects the function loginRouter of the file web/cgi-bin/localrecording/setconf.cgi of the component Local Recording CGI. Performing a manipulation of the argument account/password results in os command injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used.",
-    "vendor": "D-Link",
+    "vendor": "Check Point",
     "product": "DCS-935L"
   },
   "CVE-2026-129244": {
@@ -154718,7 +154718,7 @@
   "CVE-2026-129991": {
     "cvss": 9.9,
     "description": "Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, the backup prefix field is only checked for a nonempty value, and normalizeS3Path preserves shell metacharacters before the prefix is interpolated into rclone upload and retention-cleanup command strings. An authenticated organization member with backup permission for a service can execute arbitrary commands as root on the Dokploy host or configured remote server when a PostgreSQL, MySQL, MariaDB, MongoDB, libSQL, Compose, or web-server backup runs manually, on schedule, or performs retention cleanup. This issue is fixed in version 0.31.1.",
-    "vendor": "Dokploy",
+    "vendor": "Check Point",
     "product": "dokploy"
   },
   "CVE-2026-116449": {
@@ -161164,5 +161164,101 @@
     "description": "A flaw was found in Keycloak. An offline session continues to be valid when the offline_access scope is removed from the client. The refresh token is accepted and you can continue to request new tokens for the session. As it can lead to a situation where an administrator removes the scope, and assumes that offline sessions are no longer available, but they are.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-54065": {
+    "cvss": 8.7,
+    "description": "NukeViet CMS is a multi Content Management System. Prior to 4.5.09, an authenticated administrator can submit a crafted attach value to modules/comment/admin/edit.php. The handler removed a fixed-length upload prefix without validating containment, allowing padding followed by a traversal path to be stored in the database. When the comment is deleted, modules/comment/admin/del.php joins the stored path to NV_UPLOADS_REAL_DIR and passes it to nv_deletefile(), whose realpath() check restricts deletion only to NV_ROOTDIR rather than the upload directory, permitting deletion of application files such as config.php and causing an outage. This issue is fixed in version 4.5.09.",
+    "vendor": "Check Point",
+    "product": "nukeviet"
+  },
+  "CVE-2026-54044": {
+    "cvss": 7.7,
+    "description": "LibreChat is an enhanced ChatGPT clone that supports multiple AI providers. Prior to 0.8.7, POST /api/agents/actions/:agent_id in api/server/routes/agents/actions.js loads an existing action with owner credentials and merges editor-controlled metadata.domain and metadata.raw_spec while preserving metadata.api_key and related OAuth client secrets. A collaborator with EDIT permission can repoint an action to an attacker-controlled host, and a later tool invocation decrypts and sends the retained owner credential to that destination. This issue is fixed in version 0.8.7.",
+    "vendor": "Check Point",
+    "product": "LibreChat"
+  },
+  "CVE-2026-54039": {
+    "cvss": 8.1,
+    "description": "LibreChat is an enhanced ChatGPT clone that supports multiple AI providers. From 0.7.0 until 0.8.6, when local registration is enabled and at least one social provider is configured, POST /api/auth/register passes an unparsed request object into api/server/services/AuthService.js, allowing an unauthenticated attacker to persist a forged provider value for a known victim email. The api/strategies/socialLogin.js email-fallback path then accepts the planted record when the victim signs in because it compares the stored provider name without requiring the provider subject identifier. The victim OAuth session and the attacker local-password session become bound to the same user record, giving the attacker persistent read and write access to data created by the victim. The first-user administrator role is an additional conditional impact only on a fresh deployment. This issue is fixed in version 0.8.6.",
+    "vendor": "Check Point",
+    "product": "LibreChat"
+  },
+  "CVE-2026-133500": {
+    "cvss": 9.1,
+    "description": "A vulnerability was identified in Gladys Assistant up to 4.71.0. This affects an unknown function of the file gateway.downloadBackup.js of the component Backup Restore Endpoint. The manipulation of the argument file_url leads to os command injection. The attack can be initiated remotely. The exploit is publicly available and might be used. Upgrading to version 4.72.0 mitigates this issue. Upgrading the affected component is recommended.",
+    "vendor": "Check Point",
+    "product": "Gladys Assistant"
+  },
+  "CVE-2026-77315": {
+    "cvss": 8.5,
+    "description": "Flyto2 Core is an execution kernel for automation and AI-agent workflows. Prior to 2.26.8, http.paginate in src/core/modules/atomic/http/paginate.py validates only the initial base_url, and _paginate_link_header then follows a server-supplied Link: rel=\"next\" URL without calling the SSRF guard again. A low-privileged caller can make an allowed first page point the next request at an internal or metadata service, causing a readable second-order SSRF whose response body is aggregated into all_items and returned. This issue is fixed in version 2.26.8.",
+    "vendor": "Check Point",
+    "product": "flyto-core"
+  },
+  "CVE-2026-68903": {
+    "cvss": 7.7,
+    "description": "LLMKube is a Kubernetes operator for self-hosted large language model inference across heterogeneous hardware. Prior to 0.9.0, the ModelReconciler accepts arbitrary absolute paths and file:// URIs in Model.spec.source without restricting them to approved roots. A namespace user who can create or update Model and InferenceService resources can cause copyLocalModel to open an attacker-selected file in the controller pod or cause a HostPathVolumeSource to mount an attacker-selected node file when modelCache.enabled is enabled, which is the default. The selected file is copied into model storage and can expose controller service-account credentials or other node secrets outside the attacker's namespace. This issue is fixed in version 0.9.0.",
+    "vendor": "Check Point",
+    "product": "LLMKube"
+  },
+  "CVE-2026-76913": {
+    "cvss": 8.8,
+    "description": "NotrinosERP is an open-source web-based enterprise resource planning system written in PHP and MySQL. From 1.0.0 until 1.1.0, the employee document handler in hrm/manage/employees.php allows an authenticated user with SA_EMPLOYEE permission to submit doc_file through tab_documents() and stores the raw client filename, including an executable extension, under company/0/documents/employees/ without extension, MIME, or content validation. Uploading a PHP file places executable content beneath the web root, where requesting the stored file results in server-side code execution. This issue is fixed in version 1.1.0.",
+    "vendor": "Check Point",
+    "product": "NotrinosERP"
+  },
+  "CVE-2026-77296": {
+    "cvss": 9.3,
+    "description": "MyMangaDB is a self-hosted manga collection manager with automatic metadata, MyAnimeList import, Docker support, and collection statistics. Prior to 2.7.2, the unauthenticated /api/v1/images/manga/save handler in backend/app/api/v1/endpoints/image.py accepts a client-controlled filename and joins it to IMAGE_SAVE_PATH without confining the result. Traversal sequences can escape the image directory and overwrite process-writable files, including DATABASE_PATH for the live SQLite database, while the client-supplied image content type does not validate the uploaded bytes. An attacker can replace the database to plant an administrative user and can overwrite other writable files, causing full application compromise and availability loss. This issue is fixed in version 2.7.2.",
+    "vendor": "Check Point",
+    "product": "MyMangaDB"
+  },
+  "CVE-2026-129989": {
+    "cvss": 9.9,
+    "description": "Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, the Nixpacks publishDirectory build setting accepts shell metacharacters and is interpolated into a docker cp command executed through child_process.exec. An authenticated user with access to an application can execute arbitrary commands on the Dokploy host when triggering a Nixpacks deployment, leading to host compromise through the privileged Docker environment. This issue is fixed in version 0.31.1.",
+    "vendor": "Check Point",
+    "product": "dokploy"
+  },
+  "CVE-2026-129986": {
+    "cvss": 9.9,
+    "description": "Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, mount.deleteFileMount passes a path containing the user-controlled filePath to the local removeFileOrDirectory helper, which interpolates it unquoted into rm -rf, while the remote branch is quoted. An authenticated member with file-mount create and delete permissions can execute arbitrary commands in the host context immediately when deleting a local file mount, without requiring a running container. This issue is fixed in version 0.31.1.",
+    "vendor": "Check Point",
+    "product": "dokploy"
+  },
+  "CVE-2026-129433": {
+    "cvss": 9.9,
+    "description": "Dokploy before 0.31.1 contains an OS command injection vulnerability in getComposeContainerCommand() that allows authenticated organization members to execute shell commands via the serviceName parameter. Attackers can store serviceName values with shell metacharacters through backup.create or backup.update tRPC procedures, executing commands as root when scheduled backups run and taking over the host via the mounted Docker socket.",
+    "vendor": "Check Point",
+    "product": "dokploy"
+  },
+  "CVE-2026-130156": {
+    "cvss": 9.4,
+    "description": "Bazarr is a companion application to Sonarr and Radarr. Prior to 1.6.3-beta.11, the /api/subtitles/subtitles-info handler uses SubtitleNameContents.get() in subtitles_contents.py and reads the caller-supplied subtitlePath after checking only its subtitle extension; because the resolved path is not confined to files indexed by Bazarr, traversal can read files outside the media library. The /api/subtitles/subtitles handler in subtitles.py passes caller-supplied path and reference to sync and translation without per-path authorization, allowing an out-of-library reference file to be read and output to overwrite a file outside the media library. The authenticate decorator gates both endpoints when API authentication is enabled, while auth = None allows access without credentials. Both paths can affect only files that the Bazarr process can read or write. This issue is fixed in version 1.6.3-beta.11.",
+    "vendor": "Check Point",
+    "product": "bazarr"
+  },
+  "CVE-2026-44487": {
+    "cvss": 7.5,
+    "description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios’s Node.js HTTP adapter may forward a Proxy-Authorization header to a redirected origin during specific proxy-to-direct redirect flows. This affects Node.js usage, where an initial HTTP request is sent through an authenticated HTTP proxy, redirects are followed, and the redirected URL is no longer proxied. Under affected redirect shapes, the final origin can receive the proxy credential that was intended only for the outbound proxy. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+    "vendor": "Check Point",
+    "product": "axios"
+  },
+  "CVE-2026-100745": {
+    "cvss": 6.3,
+    "description": "A vulnerability has been found in Edimax BR-6428nC 1.16. The impacted element is an unknown function of the file /goform/formWizSurvey of the component Wireless Wizard Handler. The manipulation of the argument interface1/interface2 leads to stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been disclosed to the public and may be used.",
+    "vendor": "Check Point",
+    "product": "BR-6428nC"
+  },
+  "CVE-2026-90705": {
+    "cvss": 6.6,
+    "description": "A vulnerability was determined in D-Link DWR-M921 1.1.52. This affects the function formsysCmd of the file /boafrm/formsysCmd of the component Boa Dispatch Table. Executing a manipulation of the argument sysCmd can lead to os command injection. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized.",
+    "vendor": "Check Point",
+    "product": "DWR-M921"
+  },
+  "CVE-2026-90704": {
+    "cvss": 6.6,
+    "description": "A vulnerability was found in D-Link DWR-M921 1.1.52. The impacted element is the function system of the file /boafrm/formDiskPartition. Performing a manipulation of the argument devicename results in command injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used.",
+    "vendor": "Check Point",
+    "product": "DWR-M921"
   }
 }
