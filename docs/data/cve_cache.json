@@ -161848,5 +161848,41 @@
     "description": "A vulnerability was found in Undertow, where URL-encoded request paths can be mishandled during concurrent requests on the AJP listener. This issue arises because the same buffer is used to decode the paths for multiple requests simultaneously, leading to incorrect path information being processed. As a result, the server may attempt to access the wrong path, causing errors such as \"404 Not Found\" or other application failures. This flaw can potentially lead to a denial of service, as legitimate resources become inaccessible due to the path mix-up.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-12542": {
+    "cvss": 7.8,
+    "description": "A flaw was found in Foreman. The foreman-tail utility is vulnerable to OS command injection due to the unsafe use of the eval command. The script takes user-supplied arguments and incorporates them directly into a string that is then executed by eval to expand file paths. Because the input is not sanitized or quoted, a local attacker can inject shell metacharacters (e.g., ;, &, |) to execute arbitrary system commands.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-12545": {
+    "cvss": 6.7,
+    "description": "A flaw was found in rubygem-hammer_cli. A command injection vulnerability exists in Hammer CLI and the Railties (Ruby on Rails) component distributed with Satellite due to the insecure interpolation of the $EDITOR environment variable into the Ruby system() method. By passing a single interpolated string to system(), the application invokes a system shell (/bin/sh) that interprets shell metacharacters (e.g., ;, |, &).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-49331": {
+    "cvss": 6.5,
+    "description": "A flaw was found in openshift/oauth-proxy. On paths configured to bypass authentication (skip-auth-regex), the proxy forwards client-supplied identity headers (X-Forwarded-User, X-Forwarded-Email, X-Forwarded-Access-Token) to the upstream application without stripping them. An unauthenticated attacker can inject forged identity headers on whitelisted paths.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50262": {
+    "cvss": 5.5,
+    "description": "An out-of-bounds read flaw was found in the X.Org X server and Xwayland in __glXDisp_ChangeDrawableAttributes(). A wrong size validation check can read a client-controlled number of bytes, exceeding the request buffer, leading to information disclosure. A write path also exists but requires byte-swapped clients which is disabled by default.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-50263": {
+    "cvss": 5.5,
+    "description": "A use-after-free flaw was found in the X.Org X server and Xwayland in CreateSaverWindow(). A client can trigger a use-after-free read after changing window attributes and forcing the screen saver, leading to information disclosure.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-4324": {
+    "cvss": 5.4,
+    "description": "A flaw was found in the Katello plugin for Red Hat Satellite. This vulnerability, caused by improper sanitization of user-provided input, allows a remote attacker to inject arbitrary SQL commands into the sort_by parameter of the /api/hosts/bootc_images API endpoint. This can lead to a Denial of Service (DoS) by triggering database errors, and potentially enable Boolean-based Blind SQL injection, which could allow an attacker to extract sensitive information from the database.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
