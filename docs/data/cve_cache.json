@@ -162274,5 +162274,41 @@
     "description": "pyLoad is a free and open-source download manager written in Python. Prior to 0.5.0b3.dev101, the `/web/ ` route in `src/pyload/webui/app/blueprints/app_blueprint.py` renders Jinja2 templates without any authentication requirement. Every equivalent direct route (`/logs`, `/settings`, `/queue`, `/dashboard`, etc.) is protected by `@login_required`, but the underlying templates for all of these pages are accessible unauthenticated via this endpoint. Combined with an exception attribute typo in `src/pyload/webui/app/handlers.py` (`exc.desc` instead of `exc.description`), internal Jinja2 variable names are leaked in HTTP 500 response bodies to unauthenticated callers. An attacker can also enumerate all valid template names by observing 200 vs 500 response differentiation. Version 0.5.0b3.dev101 contains a patch.",
     "vendor": "pyload",
     "product": "pyload"
+  },
+  "CVE-2026-119918": {
+    "cvss": 6.8,
+    "description": "Use after free in Windows Kernel allows an unauthorized attacker to elevate privileges with a physical attack.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119925": {
+    "cvss": 8.8,
+    "description": "Out-of-bounds read in Windows Text Services Framework allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-119929": {
+    "cvss": 7.8,
+    "description": "Use after free in Windows Installer allows an authorized attacker to elevate privileges locally.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-101671": {
+    "cvss": 6.1,
+    "description": "Vulnerability in the Oracle Email Center product of Oracle E-Business Suite (component: Message Component). Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Email Center. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Oracle Email Center, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in unauthorized update, insert or delete access to some of Oracle Email Center accessible data as well as unauthorized read access to a subset of Oracle Email Center accessible data. CVSS 3.1 Base Score 6.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-122060": {
+    "cvss": 5.3,
+    "description": "The WP Recipe Maker WordPress plugin before 10.9.2 does not check whether the post a recipe is embedded in is password protected before returning the recipe through its REST API and structured data output, allowing unauthenticated users to read the full content of recipes in password-protected posts.",
+    "vendor": "Unknown",
+    "product": "WP Recipe Maker"
+  },
+  "CVE-2026-120846": {
+    "cvss": 5.3,
+    "description": "Missing Authorization vulnerability in Uncanny Owl Uncanny Automator uncanny-automator allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Uncanny Automator: from n/a through 7.7.1.",
+    "vendor": "Uncanny Owl",
+    "product": "Uncanny Automator"
   }
 }
