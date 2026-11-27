@@ -80582,8 +80582,8 @@
   "CVE-2026-0087": {
     "cvss": 7.8,
     "description": "In approvalLevelForDomainInternal of DomainVerificationService.java, there is a possible way to hijack an arbitrary app link due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-    "vendor": "Unknown",
-    "product": "Unknown"
+    "vendor": "Google",
+    "product": "Android"
   },
   "CVE-2026-0089": {
     "cvss": 7.8,
@@ -161950,5 +161950,35 @@
     "description": "A log injection flaw was found in Keycloak. A text string may be injected through the authentication form when using the WebAuthn authentication mode. This issue may have a minor impact to the logs integrity.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-25505": {
+    "cvss": 9.8,
+    "description": "Bambuddy is a self-hosted print archive and management system for Bambu Lab 3D printers. Prior to version 0.1.7, a hardcoded secret key used for signing JWTs is checked into source code and ManyAPI routes do not check authentication. This issue has been patched in version 0.1.7.",
+    "vendor": "maziggy",
+    "product": "bambuddy"
+  },
+  "CVE-2026-133335": {
+    "cvss": 9.2,
+    "description": "Joomla Extension - virtuemart.net - Unauthenticated local file inclusion leading to remote code execution via controller fallback in VirtueMart extension 4.0.0-4.8.7 - The main controller of the component fell back to including a controller file derived from the request without filtering the name, allowing path traversal to arbitrary local PHP files. Depending on the server setup, for example an available pearcmd.php, this could be used to execute code. The issue has been exploited in the wild. Fixed in 4.8.8.",
+    "vendor": "virtuemart.net",
+    "product": "VirtueMart extension for Joomla"
+  },
+  "CVE-2026-48053": {
+    "cvss": 5.8,
+    "description": "Kolibri is an offline-first education platform. Prior to version 0.19.4, several Kolibri API endpoints accept an unvalidated `baseurl` parameter and fetch attacker-controlled URLs from the Kolibri server, reflecting the response body back to the caller. The original report identified two endpoints on the `RemoteFacilityUser*` viewsets; remediation review found two further reflection points on the same pattern. The GET endpoint was unauthenticated. Version 0.19.4 fixes the vulnerability.",
+    "vendor": "learningequality",
+    "product": "kolibri"
+  },
+  "CVE-2026-73245": {
+    "cvss": 6.5,
+    "description": "Kestra is an open-source, event-driven orchestration platform. Prior to 2.0.0-rc6, Kestra's cli/src/main/resources/application.yml serves Micronaut management endpoints on port 8081 without authentication even when Basic Auth protects /api/v1/** on port 8080, allowing unauthenticated GET /env requests to disclose resolved configuration and POST /loggers/{name} requests to change runtime log levels. This issue is fixed in 2.0.0-rc6.",
+    "vendor": "kestra-io",
+    "product": "kestra"
+  },
+  "CVE-2026-62314": {
+    "cvss": 5.8,
+    "description": "Anubis is a Web AI Firewall Utility that challenges users' connections in order to protect upstream resources from scraper bots. From 1.22.0 until 1.26.0-pre1, lib/policy/checker.go PathChecker.Check() trusted the client-controlled X-Original-URI header before matching r.URL.Path, allowing an HTTP client to match default data/common/keep-internet-working.yaml ALLOW rules such as ^/\\.well-known/.*$ and bypass the Anubis challenge. This issue is fixed in version 1.26.0-pre1.",
+    "vendor": "TecharoHQ",
+    "product": "anubis"
   }
 }
