@@ -158719,9 +158719,9 @@
   },
   "CVE-2026-129243": {
     "cvss": null,
-    "description": "Critical 25 Nov 2026 25 Nov 2026 CPAI-2026-18919 CVE-2026-129243 GeoServer Authentication Bypass (CVE-2026-129243)",
+    "description": "GeoServer contains an incorrect authorization vulnerability that allows an unauthenticated remote attacker to bypass service-level role checks and invoke operations protected solely by those checks via a request with a prefixed service parameter. This vulnerability can be chained with CVE-2026-129244, CVE-2026-120705, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance.",
     "vendor": "Check Point",
-    "product": "Unknown"
+    "product": "GeoServer"
   },
   "CVE-2026-32275": {
     "cvss": 9.1,
@@ -158791,9 +158791,9 @@
   },
   "CVE-2026-120705": {
     "cvss": null,
-    "description": "Critical 25 Nov 2026 25 Nov 2026 CPAI-2026-18922 CVE-2026-120705 GeoServer Arbitrary File Read (CVE-2026-120705)",
+    "description": "OsGeo GeoServer contains an XML injection vulnerability that allows an unauthenticated remote attacker to cause the server to read local text files accessible to the GeoServer process or fetch attacker-specified HTTP or HTTPS URLs via a crafted ID parameter in the WFS 2.0 GetFeatureById stored query. This vulnerability can be chained with CVE-2026-129244, CVE-2026-129243, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance.",
     "vendor": "Check Point",
-    "product": "Unknown"
+    "product": "GeoServer"
   },
   "CVE-2026-130671": {
     "cvss": 3.7,
@@ -160933,9 +160933,9 @@
   },
   "CVE-2026-136716": {
     "cvss": 9.8,
-    "description": "Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Drupal core allows Forceful Browsing. This issue affects Drupal core versions: from 0.0.0 to 10.6.23, from 11.0.0 to 11.3.23, from 11.4.0 to 11.4.14.",
+    "description": "Drupal Core contains an improper check for unusual or exceptional conditions vulnerability that allows an unauthenticated remote attacker to take over a site via the exposed Drupal installer when the site is in one of the affected unusual or incomplete installation states.",
     "vendor": "Drupal",
-    "product": "Drupal core"
+    "product": "Core"
   },
   "CVE-2025-14969": {
     "cvss": 4.3,
@@ -162322,5 +162322,35 @@
     "description": "MiniDVBLinux 5.4 contains a remote code execution vulnerability in the SVDRP protocol that allows remote attackers to send commands to manipulate TV systems. Attackers can send crafted SVDRP commands through the svdrpsend.sh script to execute messages and potentially control the video disk recorder remotely.",
     "vendor": "MiniDVBLinux",
     "product": "MiniDVBLinux"
+  },
+  "CVE-2022-50691": {
+    "cvss": 9.8,
+    "description": "MiniDVBLinux 5.4 contains a remote command execution vulnerability that allows unauthenticated attackers to execute arbitrary commands as root through the 'command' GET parameter. Attackers can exploit the /tpl/commands.sh endpoint by sending malicious command values to gain root-level system access.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-53770": {
+    "cvss": 7.5,
+    "description": "MiniDVBLinux 5.4 contains an unauthenticated configuration download vulnerability that allows remote attackers to access sensitive system configuration files through a direct object reference. Attackers can exploit the backup download endpoint by sending a GET request with 'action=getconfig' to retrieve a complete system configuration archive containing sensitive credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-53771": {
+    "cvss": 9.8,
+    "description": "MiniDVBLinux 5.4 contains an authentication bypass vulnerability that allows remote attackers to change the root password without authentication. Attackers can send crafted POST requests to the system setup endpoint with modified SYSTEM_PASSWORD parameters to reset root credentials.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-53772": {
+    "cvss": 7.5,
+    "description": "MiniDVBLinux 5.4 contains an arbitrary file disclosure vulnerability that allows attackers to read sensitive system files through the 'file' GET parameter. Attackers can exploit the about page by supplying file paths to disclose arbitrary file contents on the affected device.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2023-53773": {
+    "cvss": 5.3,
+    "description": "MiniDVBLinux 5.4 contains an unauthenticated vulnerability in the tv_action.sh script that allows remote attackers to generate live stream snapshots through the Simple VDR Protocol. Attackers can request /tpl/tv_action.sh to create and retrieve a live TV screenshot stored in /var/www/images/tv.jpg without authentication.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
