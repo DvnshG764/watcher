@@ -161884,5 +161884,23 @@
     "description": "A flaw was found in the Katello plugin for Red Hat Satellite. This vulnerability, caused by improper sanitization of user-provided input, allows a remote attacker to inject arbitrary SQL commands into the sort_by parameter of the /api/hosts/bootc_images API endpoint. This can lead to a Denial of Service (DoS) by triggering database errors, and potentially enable Boolean-based Blind SQL injection, which could allow an attacker to extract sensitive information from the database.",
     "vendor": "Unknown",
     "product": "Unknown"
+  },
+  "CVE-2026-89298": {
+    "cvss": 4.9,
+    "description": "A flaw was found in the Dynamic Client Registration service of Keycloak, an open-source identity and access management solution. The issue occurs when a user with the view-clients role accesses the client registration endpoint to retrieve client details. Due to a failure to mask sensitive information, the service returns the client's confidential secret in cleartext. This could allow a read-only administrator to obtain full access to the affected client's account and potentially escalate their privileges within the realm.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2026-71577": {
+    "cvss": 6.3,
+    "description": "A flaw was found in multicluster-global-hub. During a ManagedClusterMigration, the system incorrectly grants all managed hubs read access to a shared communication topic. This allows a compromised managed hub to intercept and collect sensitive bootstrap kubeconfigs, which contain API server tokens intended for other hubs. These tokens have an extended validity of approximately 9.86 years, significantly increasing the risk of unauthorized access and information disclosure to other managed clusters.",
+    "vendor": "Unknown",
+    "product": "Unknown"
+  },
+  "CVE-2024-1102": {
+    "cvss": 6.5,
+    "description": "A vulnerability was found in jberet-core logging. An exception in 'dbProperties' might display user credentials such as the username and password for the database-connection.",
+    "vendor": "Unknown",
+    "product": "Unknown"
   }
 }
